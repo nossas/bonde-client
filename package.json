@@ -47,7 +47,7 @@
     "autoprefixer": "^6.3.3",
     "autoprefixer-core": "^5.2.0",
     "autoprefixer-loader": "^2.0.0",
-    "babel": "^5.8.21",
+    "babel": "^6.5.2",
     "babel-loader": "^5.3.2",
     "babel-plugin-typecheck": "^1.2.0",
     "babel-runtime": "^5.8.20",
