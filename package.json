@@ -106,7 +106,7 @@
     "sinon": "^1.15.3",
     "sinon-chai": "^2.8.0",
     "strip-loader": "^0.1.0",
-    "style-loader": "^0.12.3",
+    "style-loader": "^0.13.1",
     "superagent": "^1.2.0",
     "tls": "0.0.1",
     "url-loader": "^0.5.6",
