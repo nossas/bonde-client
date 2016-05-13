@@ -113,25 +113,25 @@ export default class AutoFireForm extends React.Component {
 
     return (
       <form onSubmit={::this.handleSubmit}>
-        <Label htmlFor="buttonText">Nome remetente</Label>
+        <Label htmlFor="buttonText">Nome do remetente</Label>
         {senderNameError && senderNameTouched && <span className="red ml2">{senderNameError}</span>}
         <input
           id="senderName"
           type="text"
           className="field-light block h3 full-width mt1 mb3"
-          placeholder="Defina o nome que irá aparecer na mensagem enviada."
+          placeholder="Ex: João do Minha Sampa"
           style={{height: '48px'}}
           value={senderName}
           onChange={handleChange('senderName')}
           onBlur={handleBlur('senderName')} />
 
-        <Label htmlFor="buttonText">E-mail remetente</Label>
+        <Label htmlFor="buttonText">E-mail do remetente</Label>
         {senderEmailError && senderEmailTouched && <span className="red ml2">{senderEmailError}</span>}
         <input
           id="senderEmail"
           type="text"
           className="field-light block h3 full-width mt1 mb3"
-          placeholder="Defina o e-mail que irá aparecer na mensagem enviada."
+          placeholder="Ex: joao@minhasampa.org.br"
           style={{height: '48px'}}
           value={senderEmail}
           onChange={handleChange('senderEmail')}
@@ -143,7 +143,7 @@ export default class AutoFireForm extends React.Component {
           id="emailSubject"
           type="text"
           className="field-light block h3 full-width mt1 mb3"
-          placeholder="Defina o e-mail que irá aparecer na mensagem enviada."
+          placeholder="Ex: Por uma nova cidade"
           style={{height: '48px'}}
           value={emailSubject}
           onChange={handleChange('emailSubject')}

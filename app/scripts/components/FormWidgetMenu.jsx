@@ -24,7 +24,7 @@ export default class FormWidgetMenu extends React.Component {
               isActive={formPath === location.pathname} />
             <TabMenuItem
               path={autofirePath}
-              text='Mensagem agradecimento'
+              text='Mensagem de agradecimento'
               isActive={autofirePath === location.pathname} />
           </ul>
         </div>
