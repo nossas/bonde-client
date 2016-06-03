@@ -6,7 +6,8 @@ import * as WidgetActions from './../actions/WidgetActions'
 import * as Paths from '../Paths'
 import { DonationWidgetMenu, Loading, CloseButton, Label} from './../components'
 import reduxForm from 'redux-form'
-import ColorPicker from 'react-color';
+import ColorPicker from 'react-color'
+import download from './../actions/ForceDownload'
 
 function widgetFormValidation(data) {
   const errors = { valid: true }
@@ -118,6 +119,11 @@ export default class DonationWidgetSettings extends React.Component {
   handleCancelClick(event) {
     event.preventDefault()
     Paths.editMobilization(this.props.mobilization.id)
+  }
+
+  handleDownloadClick(event) {
+    event.preventDefault()
+    download("hello world", "dlText.txt", "text/plain");
   }
 
   handleSubmit(event) {
@@ -365,6 +371,9 @@ export default class DonationWidgetSettings extends React.Component {
 
           <Label htmlFor="payment_methods">conta bancária</Label>
           <p className="mb3"><em>Este bloco de doação está associado à conta correspondente da cidade no Pagar.me.</em></p>
+
+          <Label htmlFor="payment_methods">Relatório de doações</Label>
+          <p  className="mb3"><a href="#" onClick={::this.handleDownloadClick}>Clique para baixar a planilha completa.</a></p>
         </div>
         <div className="sm-col sm-col-10">
           <button
