@@ -45,6 +45,13 @@ export default class MobilizationMenu extends React.Component {
           <i className="fa fa-paint-brush mr2" />
           Editar Estilo
         </Link>
+        <h6 className="px3 silver caps muted">dados da mobilização</h6>
+        <Link
+          to={Paths.donationListMobilization(mobilization.id)}
+          className="silver button-menu button-transparent pl3 full-width">
+          <i className="fa fa-dollar mr2" />
+          Doações
+        </Link>
         <h6 className="px3 silver caps muted">Visualização da página</h6>
         <a
           href={Paths.mobilization(mobilization)}

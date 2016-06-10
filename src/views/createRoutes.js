@@ -26,7 +26,8 @@ import {
   RequireLogin,
   CustomDomainWrapper,
   MobilizationCustomDomain,
-  DonationWidgetSettings
+  DonationWidgetSettings,
+  DonationList
 } from '../../app/scripts/pages'
 
 export default function(store, host) {
@@ -50,6 +51,7 @@ export default function(store, host) {
               <Route path="/mobilizations/:mobilization_id/widgets/:widget_id/autofire" component={AutoFireForm} />
               <Route path="/mobilizations/:mobilization_id/widgets/:widget_id/donation" component={DonationWidgetSettings} />
               <Route path="/mobilizations/:mobilization_id/fonts" component={MobilizationFonts} />
+              <Route path="/mobilizations/:mobilization_id/donations" component={DonationList} />
               <Route component={MobilizationSettings} >
                 <Route path="/mobilizations/:mobilization_id/basics" component={MobilizationBasics} />
                 <Route path="/mobilizations/:mobilization_id/city" component={MobilizationCity} />
