@@ -54,6 +54,10 @@ export function customDomainMobilization(id) {
   return `/mobilizations/${id}/customDomain`
 }
 
+export function donationListMobilization(mobilization_id) {
+  return `/mobilizations/${mobilization_id}/donations`
+}
+
 export function newMobilizationBlock(mobilization_id) {
   return `/mobilizations/${mobilization_id}/blocks/new`
 }
