@@ -1,7 +1,6 @@
-import React from 'react/addons'
+import React from 'react'
+import TestUtils from 'react-addons-test-utils'
 import { Progress } from './../../components'
-
-const { TestUtils } = React.addons
 
 describe('Progress', () => {
   describe('#render', () => {
@@ -9,9 +8,14 @@ describe('Progress', () => {
       const component = TestUtils.renderIntoDocument(
         <Progress className="foobar" percent={34} />
       )
-      const container = TestUtils.scryRenderedDOMComponentsWithTag(component, 'div')[1]
-      expect(container.props.className).to.equal('foobar')
-      expect(container.props.style).to.eql({width: '34%'})
+
+      expect(
+        component.refs.progress.getAttribute('class')
+      ).to.eql('foobar')
+
+      expect(
+        component.refs.progress.getAttribute('style')
+      ).to.eql('width:34%;')
     })
   })
 })

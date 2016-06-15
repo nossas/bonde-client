@@ -1,9 +1,9 @@
-import React from 'react/addons'
+import React from 'react'
+import TestUtils from 'react-addons-test-utils'
 import DocumentMeta from 'react-document-meta'
 import ShowMobilization from './../../pages/ShowMobilization'
 import { Navbar, Block } from './../../components'
 
-const { TestUtils } = React.addons
 let component
 let metaData
 

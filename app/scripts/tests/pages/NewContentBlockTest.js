@@ -1,22 +1,39 @@
-import React from 'react/addons'
+import React from 'react'
+import TestUtils from 'react-addons-test-utils'
 import ReactS3Uploader from 'react-s3-uploader'
-import * as BlockActions from './../../actions/BlockActions'
+
 import { BlockMiniature, ColorPicker, Progress } from './../../components'
 import NewBlock from './../../pages/NewBlock.jsx'
-import classnames from 'classnames'
 import { BLOCK_LAYOUTS } from './../../constants/BlockLayouts'
 
-const { TestUtils } = React.addons
+class NewBlockWithContext extends NewBlock {
+  static childContextTypes = {
+    router: React.PropTypes.object.isRequired
+  }
 
-let container, component, mobilization, dispatch
+  getChildContext() {
+    return {
+      router: {}
+    }
+  }
+}
 
 describe('NewBlock', () => {
+  let component
 
   beforeEach(() => {
-    mobilization = { id: 1, color_scheme: "nossascidades-scheme" }
-    dispatch = () => {}
+    const mobilization = { id: 1, color_scheme: 'nossascidades-scheme' }
+    const dispatch = () => {}
+    const blocks = {}
+    const auth = {}
+
     component = TestUtils.renderIntoDocument(
-      <NewBlock mobilization={mobilization} dispatch={dispatch} />
+      <NewBlockWithContext
+        mobilization={mobilization}
+        dispatch={dispatch}
+        blocks={blocks}
+        auth={auth}
+      />
     )
   })
 
@@ -109,7 +126,6 @@ describe('NewBlock', () => {
   })
 
   describe('#render', () => {
-
     it('should render block miniatures', () => {
       const components = TestUtils.scryRenderedComponentsWithType(component, BlockMiniature)
       expect(components).to.have.length(4)
@@ -152,29 +168,39 @@ describe('NewBlock', () => {
     })
 
     it('should render buttons not disabled when not uploading', () => {
+      const spyHandleCancelClick = sinon.spy()
+      component.handleCancelClick = spyHandleCancelClick
+
+      const spyHandleAddBlockClick = sinon.spy()
+      component.handleAddBlockClick = spyHandleAddBlockClick
+
       component.setState({uploadProgress: null})
       const buttons = TestUtils.scryRenderedDOMComponentsWithTag(component, 'button')
       expect(buttons).to.have.length(3)
-      expect(buttons[0].getDOMNode().textContent.trim()).to.equal('Cancelar')
-      expect(buttons[1].getDOMNode().textContent.trim()).to.equal('Adicionar')
-      expect(buttons[0].props.disabled).to.be.false
-      expect(buttons[1].props.disabled).to.be.false
-      expect(buttons[0].props.onClick.toString()).to.equal(component.handleCancelClick.bind(component).toString())
-      expect(buttons[1].props.onClick.toString()).to.equal(component.handleAddBlockClick.bind(component).toString())
+      expect(buttons[0].textContent.trim()).to.equal('Cancelar')
+      expect(buttons[1].textContent.trim()).to.equal('Adicionar')
+      expect(buttons[0].getAttribute('disabled')).to.be.null
+      expect(buttons[1].getAttribute('disabled')).to.be.null
+
+      TestUtils.Simulate.click(buttons[0])
+      expect(spyHandleCancelClick).to.be.calledOnce
+
+      TestUtils.Simulate.click(buttons[1])
+      expect(spyHandleAddBlockClick).to.be.calledOnce
     })
 
     it('should render buttons disabled when uploading', () => {
       component.setState({uploadProgress: 1})
       const buttons = TestUtils.scryRenderedDOMComponentsWithTag(component, 'button')
-      expect(buttons[0].props.disabled).to.be.true
-      expect(buttons[1].props.disabled).to.be.true
+      expect(buttons[0].getAttribute('disabled')).to.be.eql('')
+      expect(buttons[1].getAttribute('disabled')).to.be.eql('')
     })
 
     it('should render bg image', () => {
       component.setState({bgImage: 'foo.jpg'})
       const images = TestUtils.scryRenderedDOMComponentsWithTag(component, 'img')
       expect(images).to.have.length(1)
-      expect(images[0].props.src).to.equal('foo.jpg')
+      expect(images[0].getAttribute('src')).to.equal('foo.jpg')
     })
 
     it('should not render bg image when no image is set', () => {

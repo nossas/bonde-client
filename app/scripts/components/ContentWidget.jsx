@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import ReactDOM from 'react-dom'
 import { WYSIHTMLToolbar, Loading } from './'
 import classnames from 'classnames'
 import { bindActionCreators } from 'redux'
@@ -30,7 +31,7 @@ export default class ContentWidget extends React.Component {
   componentDidMount() {
     if (this.props.editable) {
       const editor = new wysihtml5.Editor(
-        React.findDOMNode(this.refs.content), {
+        ReactDOM.findDOMNode(this.refs.content), {
           toolbar: this.state.toolbarId,
           parserRules: wysihtml5ParserRules
         }
@@ -57,7 +58,7 @@ export default class ContentWidget extends React.Component {
     this.setState({editing: false})
     this.props.onCancelEdit && this.props.onCancelEdit()
     window.removeEventListener('keyup', ::this.handleEscapePress)
-    React.findDOMNode(this.refs.content).blur()
+    ReactDOM.findDOMNode(this.refs.content).blur()
   }
 
   handleEditorFocus() {

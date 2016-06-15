@@ -1,9 +1,9 @@
-import React from 'react/addons'
+import React from 'react'
+import TestUtils from 'react-addons-test-utils'
 import { DropDownMenuItem } from './../../components'
 
-const { TestUtils } = React.addons
-
-let component, clickString
+let component
+let clickString
 
 const onClick = () => { clickString = clickString + 'bar' }
 const onItemClick = () => { clickString = 'foo' }
@@ -26,7 +26,7 @@ describe('DropDownMenuItem', () => {
 
     it('should not call onItemClick or onClick when disabled', () => {
       component = TestUtils.renderIntoDocument(
-        <DropDownMenuItem {...props} disabled={true} />
+        <DropDownMenuItem {...props} disabled />
       )
       const event = { preventDefault() {}}
       component.handleClick(event)
@@ -36,20 +36,22 @@ describe('DropDownMenuItem', () => {
 
   describe('#render', () => {
     it('should render enabled and bind onClick event', () => {
-      component = TestUtils.renderIntoDocument(
-        <DropDownMenuItem {...props} />
-      )
+      const handleClick = sandbox.spy()
+      component = TestUtils.renderIntoDocument(<DropDownMenuItem {...props} onClick={handleClick} />)
+
       const link = TestUtils.findRenderedDOMComponentWithTag(component, 'a')
-      expect(link.getDOMNode().getAttribute('disabled')).to.be.null
-      expect(link.props.onClick.toString()).to.equal(component.handleClick.bind(component).toString())
+      TestUtils.Simulate.click(link)
+
+      expect(link.getAttribute('disabled')).to.be.null
+      expect(handleClick).to.have.been.calledOnce
     })
 
     it('should render disabled', () => {
       component = TestUtils.renderIntoDocument(
-        <DropDownMenuItem {...props} disabled={true} />
+        <DropDownMenuItem {...props} disabled />
       )
       const link = TestUtils.findRenderedDOMComponentWithTag(component, 'a')
-      expect(link.getDOMNode().getAttribute('disabled')).not.to.be.null
+      expect(link.getAttribute('disabled')).not.to.be.null
     })
   })
 })

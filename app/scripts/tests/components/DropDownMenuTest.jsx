@@ -1,10 +1,12 @@
-import React from 'react/addons'
+import React from 'react'
+import TestUtils from 'react-addons-test-utils'
 import { DropDownMenu } from './../../components'
 
-const { TestUtils } = React.addons
-
 let component
-let props = { text: 'Foo bar' }
+const props = {
+  text: 'Foo bar',
+  buttonClassName: 'button-class'
+}
 
 describe('DropDownMenu', () => {
   before(() => {
@@ -55,8 +57,8 @@ describe('DropDownMenu', () => {
           <p>bar</p>
         </DropDownMenu>
       )
-      const icon = component.renderIcon()
-      expect(icon.props.className).to.equal('fa fa-test-icon')
+
+      expect(component.refs.icon.getAttribute('class')).to.equal('fa fa-test-icon')
     })
   })
 
@@ -75,20 +77,16 @@ describe('DropDownMenu', () => {
   })
 
   describe('#renderChildren', () => {
-    it('should render children with added onItemClick prop set to handleOverlayClick', () => {
-      const children = component.renderChildren()
+    it('should render children', () => {
       const paragraphs = TestUtils.scryRenderedDOMComponentsWithTag(component, 'p')
       expect(paragraphs).to.have.length(2)
-      expect(paragraphs[0].props.onItemClick.toString()).to.equal(component.handleOverlayClick.bind(component).toString())
-      expect(paragraphs[1].props.onItemClick.toString()).to.equal(component.handleOverlayClick.bind(component).toString())
     })
   })
 
   describe('#render', () => {
     it('should render button and bind click', () => {
-      const button = TestUtils.findRenderedDOMComponentWithTag(component, 'button')
-      expect(button.getDOMNode().textContent.trim()).to.equal('Foo bar')
-      expect(button.props.onClick.toString()).to.equal(component.handleClick.bind(component).toString())
+      const button = component.refs.button
+      expect(button.textContent.trim()).to.equal('Foo bar')
     })
 
     it('should render render icon', () => {

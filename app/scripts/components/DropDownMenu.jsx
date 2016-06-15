@@ -1,15 +1,15 @@
 import React, { PropTypes } from 'react'
 import classnames from 'classnames'
 
-export default class DropDownMenuItem extends React.Component {
+export default class DropDownMenu extends React.Component {
   static propTypes = {
-    icon: PropTypes.string.isRequired,
     className: PropTypes.string,
     menuClassName: PropTypes.string,
     wrapperClassName: PropTypes.string,
     buttonClassName: PropTypes.string,
     text: PropTypes.string,
-    children: PropTypes.array
+    children: PropTypes.array,
+    icon: PropTypes.string
   }
 
   constructor(props, context) {
@@ -28,7 +28,7 @@ export default class DropDownMenuItem extends React.Component {
   renderIcon() {
     if (this.props.icon) {
       return (
-        <i className={classnames('fa', 'fa-' + this.props.icon)} />
+        <i ref='icon' className={classnames('fa', 'fa-' + this.props.icon)} />
       )
     }
   }
@@ -57,7 +57,7 @@ export default class DropDownMenuItem extends React.Component {
 
     return (
       <div style={{marginTop: '5px'}} className={classnames('relative', wrapperClassName)}>
-        <button className={buttonClassName} onClick={::this.handleClick}>
+        <button ref='button' className={buttonClassName} onClick={::this.handleClick}>
           {this.renderIcon()} {text}
         </button>
         <div className={classnames('absolute nowrap z2', menuClassName, (this.state.open ? '' : 'display-none'))}>

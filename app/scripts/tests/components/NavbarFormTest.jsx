@@ -1,7 +1,6 @@
-import React from 'react/addons'
+import React from 'react'
+import TestUtils from 'react-addons-test-utils'
 import { NavbarForm } from './../../components'
-
-const { TestUtils } = React.addons
 
 const handleCloseForm = () => {}
 const mobilization = {}
