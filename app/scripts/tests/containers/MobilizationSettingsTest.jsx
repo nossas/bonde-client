@@ -1,11 +1,11 @@
-import React from 'react/addons'
+import React from 'react'
+import TestUtils from 'react-addons-test-utils'
 import MobilizationSettings from './../../containers/MobilizationSettings'
 import ConfigurationsMenu from './../../components/ConfigurationsMenu'
 
-const { TestUtils } = React.addons
 import stubRouterContext from './../stubRouterContext'
 const mobilization = {}
-const location = {}
+const location = ''
 
 describe('MobilizationSettings', () => {
   it('should render MobilizationMenu', () => {

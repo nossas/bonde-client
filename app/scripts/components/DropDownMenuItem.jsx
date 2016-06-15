@@ -4,10 +4,11 @@ import classnames from 'classnames'
 export default class DropDownMenuItem extends React.Component {
   static propTypes = {
     href: PropTypes.string,
-    children: PropTypes.array,
+    children: PropTypes.object,
     onClick: PropTypes.func,
     onItemClick: PropTypes.func,
-    disabled: PropTypes.bool
+    disabled: PropTypes.bool,
+    className: PropTypes.string
   }
 
   handleClick(event) {
