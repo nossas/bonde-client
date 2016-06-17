@@ -1,0 +1,54 @@
+
+#content .widget .donation {
+  a:hover {
+    text-decoration: none;
+  }
+  a {
+    color: #b0b0b0;
+    &.button {
+      color: #fff;
+    }
+  }
+
+  .icon-payment-recurring,
+  .icon-payment-unique {
+    background: 50% 50% url('./../scripts/components/DonationWidget/donation-recurring.png') transparent no-repeat;
+    background-size: contain;
+    width: 2.2rem;
+    height: 2.2rem;
+    display: inline-block;
+    margin: 0 .5em 0 0;
+    opacity: .8;
+  }
+  .icon-payment-unique {
+    background-image: url('./../scripts/components/DonationWidget/donation-unique.png');
+  }
+
+
+  .payment-type {
+    font-size: .9rem;
+
+    span {
+      margin-top: .7em;
+      vertical-align: top;
+    }
+    span,img {
+      display: inline-block;
+    }
+
+    &.active {
+      .icon-payment-recurring,
+      .icon-payment-unique {
+        opacity: .8;
+      }
+    }
+  }
+
+  .value-option {
+    border-radius: .3rem;
+    box-sizing: border-box;
+    border-width: .3rem;
+    border-style: solid;
+    border-color: #fff;
+  }
+}
