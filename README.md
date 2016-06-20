@@ -21,6 +21,12 @@ npm run test
 ```
 Now sit and relax.
 
+If you want to test a single file you can temporarily change the first line of `webpack.test.config.js` to:
+
+```
+var context = require.context('./app/scripts/tests', true, /MyComponentTest\.jsx/);
+```
+
 ## Deploy
 We have now two environments, staging and production, hosted by Heroku. All you have to do is to push changes to the master branch of these Heroku repositories, and it will be automatically deployed.
 

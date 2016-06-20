@@ -1,6 +1,8 @@
 // Karma configuration
 // Generated on Fri Jul 03 2015 10:56:54 GMT-0300 (BRT)
 var webpack = require('webpack');
+var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
+var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack/webpack-isomorphic-tools'))
 
 module.exports = function(config) {
   config.set({
@@ -10,7 +12,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-    './app/scripts/tests/globals.js',
+      './app/scripts/tests/globals.js',
       'webpack.test.config.js'
     ],
 
@@ -18,13 +20,21 @@ module.exports = function(config) {
       devtool: 'inline-source-map',
 
       resolve: {
-        extensions: [ '', '.js', '.jsx' ]
+        extensions: [ '', '.js', '.jsx', '.json' ]
       },
 
       module: {
         loaders: [
-          { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader?optional=runtime' }
+          { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader?optional=runtime' },
+          { test: /\.json$/, loader: 'json' },
+          { test: webpackIsomorphicToolsPlugin.regular_expression('images'), loader: 'url-loader?limit=10240' }
         ]
+      },
+
+      externals: {
+        'react/addons': true,
+        'react/lib/ExecutionEnvironment': true,
+        'react/lib/ReactContext': 'window'
       },
 
       plugins: [

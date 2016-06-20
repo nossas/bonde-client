@@ -1,7 +1,7 @@
-import React from 'react/addons'
+import React from 'react'
+import TestUtils from 'react-addons-test-utils'
+import ReactDOM from 'react-dom'
 import { FacebookShareButton } from './../../components'
-
-const { TestUtils } = React.addons
 
 describe('FacebookShareButton', () => {
   it('should open a popup on click', () => {
@@ -9,7 +9,7 @@ describe('FacebookShareButton', () => {
       <FacebookShareButton href='http://meurio.org.br' />
     )
 
-    const button = React.findDOMNode(component.refs.button)
+    const button = ReactDOM.findDOMNode(component.refs.button)
     const stubOpen = sinon.spy()
     window.open = stubOpen
 

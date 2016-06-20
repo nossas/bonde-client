@@ -8,14 +8,14 @@ import {addBlock} from '../reducers/blocks'
 
 export default class NewBlock extends React.Component {
   static propTypes = {
-    dispatch: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired,
     blocks: PropTypes.object.isRequired,
     auth: PropTypes.object.isRequired,
     mobilization: PropTypes.object.isRequired
   }
 
   static contextTypes = {
-    router: React.PropTypes.object.isRequired
+    router: React.PropTypes.object
   }
 
   constructor(props, context) {
@@ -146,7 +146,12 @@ export default class NewBlock extends React.Component {
           </div>
           <div className="clearfix mb1">
             <label className="caps h6 bold mb1 block">Fundo (cor ou imagem)</label>
-            <ColorPicker {...this.props} selectedClass={this.state.bgClass} onClick={::this.handleColorClick} colorScheme={this.props.mobilization.color_scheme.split("-")[0]} />
+            <ColorPicker
+              {...this.props}
+              selectedClass={this.state.bgClass}
+              onClick={::this.handleColorClick}
+              colorScheme={this.props.mobilization.color_scheme.split('-')[0]}
+            />
             {this.renderBgImage()}
             <div className="col col-2 p1" style={{overflow: 'hidden'}}>
               {this.renderUploader()}

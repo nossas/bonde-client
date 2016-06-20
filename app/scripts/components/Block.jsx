@@ -8,15 +8,15 @@ import { startEditingBlock, stopEditingBlock } from './../reducers/mobilizationE
 
 export default class Block extends React.Component {
   static propTypes = {
-    dispatch: PropTypes.func.isRequired,
     block: PropTypes.object.isRequired,
     mobilization: PropTypes.object.isRequired,
-    auth: PropTypes.object.isRequired,
-    blocks: PropTypes.array.isRequired,
+    blocks: PropTypes.object.isRequired,
     editable: PropTypes.bool.isRequired,
-    widgets: PropTypes.array.isRequired,
-    canMoveUp: PropTypes.bool.isRequired,
-    canMoveDown: PropTypes.bool.isRequired
+    widgets: PropTypes.object.isRequired,
+    auth: PropTypes.object,
+    canMoveUp: PropTypes.bool,
+    canMoveDown: PropTypes.bool,
+    dispatch: PropTypes.func
   }
 
   constructor(props, context) {
@@ -310,29 +310,40 @@ export default class Block extends React.Component {
               <DropDownMenuItem
                 onClick={::this.handleEditBackgroundClick}
                 className="button button-transparent">
-                <i className="fa fa-picture-o" /> Alterar fundo
+                <span>
+                  <i className="fa fa-picture-o" /> Alterar fundo
+                </span>
               </DropDownMenuItem>
               <DropDownMenuItem
                 onClick={::this.handleToggleHiddenClick}
                 className="button button-transparent">
-                <i className={classnames('fa', (block.hidden ? 'fa-eye' : 'fa-eye-slash'))} /> {(block.hidden ? 'Mostrar' : 'Esconder')}
+                <span>
+                  <i className={classnames('fa', (block.hidden ? 'fa-eye' : 'fa-eye-slash'))} />
+                  {(block.hidden ? ' Mostrar' : ' Esconder')}
+                </span>
               </DropDownMenuItem>
               <DropDownMenuItem
                 onClick={::this.handleRemoveClick}
                 className="button button-transparent">
-                <i className="fa fa-trash" /> Remover
+                <span>
+                  <i className="fa fa-trash" /> Remover
+                </span>
               </DropDownMenuItem>
               <DropDownMenuItem
                 disabled={!canMoveUp}
                 onClick={::this.handleMoveUpClick}
                 className="button button-transparent">
-                <i className="fa fa-chevron-up" /> Mover para cima
+                <span>
+                  <i className="fa fa-chevron-up" /> Mover para cima
+                </span>
               </DropDownMenuItem>
               <DropDownMenuItem
                 disabled={!canMoveDown}
                 onClick={::this.handleMoveDownClick}
                 className="button button-transparent">
-                <i className="fa fa-chevron-down" /> Mover para baixo
+                <span>
+                  <i className="fa fa-chevron-down" /> Mover para baixo
+                </span>
               </DropDownMenuItem>
             </DropDownMenu>
           </div>

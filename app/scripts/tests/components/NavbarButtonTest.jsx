@@ -1,11 +1,13 @@
-import React from 'react/addons'
+import React from 'react'
+import TestUtils from 'react-addons-test-utils'
 import { NavbarButton } from './../../components'
 
-const { TestUtils } = React.addons
 let renderedComponent
-let children
-let className
-let targetId
+
+const children = 'Hello world'
+const className = 'class'
+const targetId = 'targetId'
+const scrollableId = 'scrollableId'
 
 describe('NavbarButton', () => {
   describe('#handleClick', () => {
@@ -17,7 +19,10 @@ describe('NavbarButton', () => {
     before(() => {
       const shallowRenderer = TestUtils.createRenderer()
       shallowRenderer.render(
-        <NavbarButton className={className} targetId={targetId}>
+        <NavbarButton
+          className={className}
+          targetId={targetId}
+          scrollableId={scrollableId}>
           {children}
         </NavbarButton>
       )
