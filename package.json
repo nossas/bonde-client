@@ -20,7 +20,9 @@
     "watch-client": "node ./node_modules/better-npm-run watch-client",
     "start-dev": "node ./node_modules/better-npm-run start-dev",
     "dev": "concurrent --kill-others \"npm run watch-client\" \"npm run start-dev\"",
-    "test": "./node_modules/.bin/karma start --single-run --browsers Firefox",
+    "test": "./node_modules/.bin/karma start --single-run",
+    "test:unique": "./node_modules/.bin/mocha $(find ./app -regex '.*.spec.js') --compilers js:babel-core/register",
+    "test:w": "npm run test:unique -- --watch",
     "postinstall": "npm run build"
   },
   "betterScripts": {
@@ -57,6 +59,7 @@
     "better-npm-run": "0.0.1",
     "body-parser": "^1.15.1",
     "chai": "^3.2.0",
+    "cheerio": "^0.20.0",
     "classnames": "^2.2.5",
     "clean-webpack-plugin": "^0.1.9",
     "compression": "^1.6.2",
