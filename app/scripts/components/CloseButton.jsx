@@ -1,17 +1,20 @@
-import React from 'react'
-import reactMixin from 'react-mixin'
-import { Navigation } from 'react-router'
+import React, { PropTypes } from 'react'
 
-@reactMixin.decorate(Navigation)
 
-export default class Color extends React.Component {
+class Color extends React.Component {
+
+  constructor(props, context) {
+    super(props, context)
+    this.context = context
+  }
+
   handleClick() {
     const { dirty, path } = this.props
-    if (!dirty || (dirty && confirm("Ao sair sem salvar você perderá suas modificações. Deseja sair sem salvar?"))) {
+    if (!dirty || (dirty && window.confirm("Ao sair sem salvar você perderá suas modificações. Deseja sair sem salvar?"))) {
       if (path) {
-        this.transitionTo(path)
+        this.context.router.transitionTo(path)
       } else {
-        this.goBack()
+        this.context.router.goBack()
       }
     }
   }
@@ -26,3 +29,9 @@ export default class Color extends React.Component {
     )
   }
 }
+
+Color.contextTypes = {
+  router: PropTypes.object.isRequired,
+}
+
+export default Color

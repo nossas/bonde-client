@@ -6,7 +6,6 @@ import { render, mount, shallow } from 'enzyme'
 import FormWidgetInput from './FormWidgetInput'
 
 describe('FormWidgetInput', () => {
-
   context('when render form edit input settings', () => {
     let props = {
       uid: '',
@@ -18,9 +17,15 @@ describe('FormWidgetInput', () => {
       }
     }
 
-    it('should call renderForm when initialize editable', () => {
+    before(() => {
       sinon.spy(FormWidgetInput.prototype, 'renderForm');
+    })
 
+    after(() => {
+      FormWidgetInput.prototype.renderForm.restore()
+    })
+
+    it('should call renderForm when initialize editable', () => {
       let wrapper = shallow(<FormWidgetInput {...props} />)
       expect(FormWidgetInput.prototype.renderForm.calledOnce).to.equal(true)
     })
@@ -37,12 +42,20 @@ describe('FormWidgetInput', () => {
       }
     }
 
-    it('should call renderInput, renderInstructions, renderFieldKind when not initialize editable', () => {
-      props.field = { }
-
+    before(() => {
       sinon.spy(FormWidgetInput.prototype, 'renderInput');
       sinon.spy(FormWidgetInput.prototype, 'renderInstructions');
       sinon.spy(FormWidgetInput.prototype, 'renderFieldKind');
+    })
+
+    after(() => {
+      FormWidgetInput.prototype.renderInput.restore()
+      FormWidgetInput.prototype.renderInstructions.restore()
+      FormWidgetInput.prototype.renderFieldKind.restore()
+    })
+
+    it('should call renderInput, renderInstructions, renderFieldKind when not initialize editable', () => {
+      props.field = { }
 
       let wrapper = shallow(<FormWidgetInput {...props} />)
       expect(FormWidgetInput.prototype.renderInput.calledOnce).to.equal(true)

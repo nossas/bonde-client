@@ -78,8 +78,10 @@ export default class FormWidgetInput extends React.Component {
   }
 
   handleCancel(event) {
-    event.preventDefault()
-    event.stopPropagation()
+    if (event) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
     const { field, uid } = this.props
     this.setState({
       kind: field.kind,
@@ -93,8 +95,10 @@ export default class FormWidgetInput extends React.Component {
   }
 
   handleSave(event) {
-    event.preventDefault()
-    event.stopPropagation()
+    if (event) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
     const { fields } = this.props.widget.settings
     const newFields = fields.map((field) => {
       if(field.uid == this.props.field.uid) {
@@ -113,8 +117,10 @@ export default class FormWidgetInput extends React.Component {
   }
 
   handleMoveUp(event) {
-    event.preventDefault()
-    event.stopPropagation()
+    if (event) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
     const { fields } = this.props.widget.settings
     const newFields = fields.map((field, index) => {
       if (index + 1 < fields.length && fields[index + 1].uid == this.props.field.uid) {
@@ -129,8 +135,10 @@ export default class FormWidgetInput extends React.Component {
   }
 
   handleMoveDown(event) {
-    event.preventDefault()
-    event.stopPropagation()
+    if (event) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
     const { fields } = this.props.widget.settings
     const newFields = fields.map((field, index) => {
       if (index > 0 && fields[index - 1].uid == this.props.field.uid) {
@@ -145,9 +153,11 @@ export default class FormWidgetInput extends React.Component {
   }
 
   handleRemove(event) {
-    event.preventDefault()
-    event.stopPropagation()
-    if (confirm("Você tem certeza que quer remover este campo?")) {
+    if (event) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
+    if (window.confirm("Você tem certeza que quer remover este campo?")) {
       const { fields } = this.props.widget.settings
       const newFields = fields.filter(field =>
         field.uid != this.props.field.uid
@@ -157,10 +167,12 @@ export default class FormWidgetInput extends React.Component {
   }
 
   handleOverlayClick(event) {
-    event.preventDefault()
-    event.stopPropagation()
+    if (event) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
     const dirty = this.dirty()
-    if (!dirty || (dirty && confirm("Ao sair sem salvar você perderá suas modificações. Deseja sair sem salvar?"))) {
+    if (!dirty || (dirty && window.confirm("Ao sair sem salvar você perderá suas modificações. Deseja sair sem salvar?"))) {
       this.handleCancel(event)
     }
   }

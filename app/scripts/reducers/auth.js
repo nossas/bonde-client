@@ -4,7 +4,7 @@ import {
   AUTH_LOAD, AUTH_LOAD_SUCCESS, AUTH_LOAD_FAIL
 } from './../constants/ActionTypes'
 
-const initialState = {
+export const initialState = {
   loaded: false
 }
 
@@ -69,8 +69,8 @@ export default function auth(state = initialState, action = {}) {
   }
 }
 
-export function isLoaded(globalState) {
-  return globalState.auth && globalState.auth.loaded
+export function isLoaded(globalState = {}) {
+  return !!(globalState.auth && globalState.auth.loaded)
 }
 
 export function load() {
