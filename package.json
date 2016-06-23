@@ -23,6 +23,7 @@
     "test": "./node_modules/.bin/karma start --single-run && npm run test:unique",
     "test:unique": "./node_modules/.bin/mocha $(find ./app -regex '.*.spec.js') --require app/scripts/tests/setup.js --compilers js:babel-core/register",
     "test:w": "npm run test:unique -- --watch",
+    "test:single": "./node_modules/.bin/mocha $(find ./app -name $CLASSNAME.spec.js) --require app/scripts/tests/setup.js --compilers js:babel-core/register",
     "postinstall": "npm run build"
   },
   "betterScripts": {

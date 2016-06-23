@@ -4,9 +4,11 @@ import { connect } from 'react-redux'
 import reduxForm from 'redux-form'
 import reactMixin from 'react-mixin'
 import { Navigation } from 'react-router'
-import * as MobilizationActions from './../actions/MobilizationActions'
-import * as Paths from '../Paths'
-import { CloseButton } from './'
+import * as MobilizationActions from './../../actions/MobilizationActions'
+import * as Paths from './../../Paths'
+import { CloseButton } from './../'
+
+import { RenderInputLength, RenderInputError, RenderErrorMessage } from './../FormUtils'
 
 function mobilizationBasicsValidation(data) {
   const errors = { valid: true }
@@ -86,14 +88,6 @@ export default class MobilizationBasicsForm extends React.Component {
     this.goBack()
   }
 
-  renderErrorMessage() {
-    if (this.state.error) {
-      return (
-        <div className="red center mt2">{this.state.error}</div>
-      )
-    }
-  }
-
   renderCancelButton() {
     if(this.props.mobilization) {
       return (
@@ -103,24 +97,6 @@ export default class MobilizationBasicsForm extends React.Component {
           onClick={::this.handleCancelClick}>
           Cancelar
         </button>
-      )
-    }
-  }
-
-  renderNameLength() {
-    const { data: {name} } = this.props
-    if(name && name.length > 0) {
-      return(
-        <div className={classnames('right h3', (name.length > 90 ? 'red' : null))}>{100 - name.length}</div>
-      )
-    }
-  }
-
-  renderGoalLength() {
-    const { data: {goal} } = this.props
-    if(goal && goal.length > 0) {
-      return(
-        <div className={classnames('right h3', (goal.length > 490 ? 'red' : null))}>{500 - goal.length}</div>
       )
     }
   }
@@ -139,8 +115,8 @@ export default class MobilizationBasicsForm extends React.Component {
     return (
       <form onSubmit={::this.handleSubmit}>
         <label className="block h4 caps bold mb1 left">Nome</label>
-        { this.renderNameLength() }
-        {nameError && nameTouched && <span className="red ml2">{nameError}</span>}
+        <RenderInputLength value={name} limit={100} />
+        <RenderInputError error={nameError} touched={nameTouched} />
         <input
           type="text"
           className="field-light block h3 full-width mt1 mb2"
@@ -151,8 +127,8 @@ export default class MobilizationBasicsForm extends React.Component {
           onBlur={handleBlur('name')} />
 
         <label className="block h4 caps bold mb1 left">Objetivo</label>
-        { this.renderGoalLength() }
-        {goalError && goalTouched && <span className="red ml2">{goalError}</span>}
+        <RenderInputLength value={name} limit={500} />
+        <RenderInputError error={goalError} touched={goalTouched} />
         <textarea
           className="field-light block h3 full-width mt1 mb2"
           placeholder="Faça um texto curto, capaz de motivar outras pessoas a se unirem à sua mobilização. Você poderá alterar este texto depois."
@@ -171,7 +147,7 @@ export default class MobilizationBasicsForm extends React.Component {
             value={this.state.submitting ? "Salvando..." : submitText} />
         </div>
 
-        {::this.renderErrorMessage()}
+        <RenderErrorMessage error={this.state.error} />
       </form>
     )
   }

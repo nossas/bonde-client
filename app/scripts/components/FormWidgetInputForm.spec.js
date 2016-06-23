@@ -43,6 +43,14 @@ describe('FormWidgetInputForm', () => {
 
     describe('move up and down action', () => {
 
+      beforeEach(() => {
+        sinon.spy(props, 'dispatch')
+      })
+
+      afterEach(() => {
+        props.dispatch.restore()
+      })
+
       it('should disabled move up if canMoveUp props false', () => {
         props.canMoveUp = false
 
@@ -60,8 +68,6 @@ describe('FormWidgetInputForm', () => {
       })
 
       it('should call dispatch in EDIT_WIDGET action when move down', () => {
-        props.dispatch = sinon.spy()
-
         let wrapper = shallow(<FormWidgetInputForm {...props} />)
 
         let node = wrapper.find('button').at(btnIndex.MOVE_DOWN)
@@ -71,8 +77,6 @@ describe('FormWidgetInputForm', () => {
       })
 
       it('should call dispatch in EDIT_WIDGET action when move up', () => {
-        props.dispatch = sinon.spy()
-
         let wrapper = shallow(<FormWidgetInputForm {...props} />)
         let node = wrapper.find('button').at(btnIndex.MOVE_UP)
         node.simulate('click')
@@ -82,6 +86,14 @@ describe('FormWidgetInputForm', () => {
     })
 
     describe('add and remove action', () => {
+
+      beforeEach(() => {
+        sinon.spy(props, 'dispatch')
+      })
+
+      afterEach(() => {
+        props.dispatch.restore()
+      })
 
       it('should disabled saved button when state.loading', () => {
         let wrapper = shallow(<FormWidgetInputForm {...props} />)
@@ -93,8 +105,6 @@ describe('FormWidgetInputForm', () => {
       })
 
       it('should call dispatch in EDIT_WIDGET action when save', () => {
-        props.dispatch = sinon.spy()
-
         let wrapper = shallow(<FormWidgetInputForm {...props} />)
         let node = wrapper.find('button').at(btnIndex.SAVE)
         node.simulate('click')
@@ -104,56 +114,62 @@ describe('FormWidgetInputForm', () => {
 
       describe('when cancel confirm dialog', () => {
 
-        it('not should call updateSettings when clicked cancel', () => {
-          let stub = sinon.stub(window, 'confirm')
-          stub.returns(false);
+        beforeEach(() => {
+          sinon.stub(window, 'confirm')
+          window.confirm.returns(false)
 
           sinon.spy(FormWidgetInputForm.prototype, 'updateSettings')
+        })
 
+        afterEach(() => {
+          window.confirm.restore()
+          FormWidgetInputForm.prototype.updateSettings.restore()
+        })
+
+        it('not should call updateSettings when clicked cancel', () => {
           let wrapper = shallow(<FormWidgetInputForm {...props} />)
           let node = wrapper.find('button').at(btnIndex.REMOVE)
           node.simulate('click')
 
-          stub.restore()
           expect(FormWidgetInputForm.prototype.updateSettings.calledOnce).to.equal(false)
         })
 
         it('should open confirm popup when field changed and clicked out to form', () => {
-          sinon.spy(window, 'confirm')
-
           let wrapper = shallow(<FormWidgetInputForm {...props} />)
           wrapper.setState({label: 'changedLabel'})
 
           let node = wrapper.find('div.fixed.top-0').at(0)
           node.simulate('click')
 
-          expect(window.confirm.calledOnce).to.equal(true)
-
-          window.confirm.restore()
+          expect(window.confirm.called).to.equal(true)
         })
       })
 
       describe('when done confirm dialog', () => {
 
+        beforeEach(() => {
+          sinon.stub(window, 'confirm')
+          window.confirm.returns(true)
+
+          sinon.spy(FormWidgetInputForm.prototype, 'updateSettings')
+          sinon.spy(FormWidgetInputForm.prototype, 'handleCancel')
+        })
+
+        afterEach(() => {
+          window.confirm.restore()
+          FormWidgetInputForm.prototype.updateSettings.restore()
+          FormWidgetInputForm.prototype.handleCancel.restore()
+        })
+
         it('should call dispatch in EDIT_WIDGET action when confirm remove', () => {
-          let stub = sinon.stub(window, 'confirm')
-          stub.returns(true);
-
-          props.dispatch = sinon.spy()
-
           let wrapper = shallow(<FormWidgetInputForm {...props} />)
           let node = wrapper.find('button').at(btnIndex.REMOVE)
           node.simulate('click')
 
-          stub.restore()
           expect(props.dispatch.calledOnce).to.equal(true)
         })
 
         it('should reset changes and close form when clicked out form and confirm', () => {
-          let stub = sinon.stub(window, 'confirm')
-          stub.returns(true);
-          sinon.spy(FormWidgetInputForm.prototype, 'handleCancel')
-
           let wrapper = shallow(<FormWidgetInputForm {...props} />)
           wrapper.setState({label: 'changedLabel'})
 
@@ -162,9 +178,6 @@ describe('FormWidgetInputForm', () => {
 
           expect(FormWidgetInputForm.prototype.handleCancel.calledOnce).to.equal(true)
           expect(wrapper.state().label).to.equal(props.field.label)
-
-          stub.restore()
-          FormWidgetInputForm.prototype.handleCancel.restore()
         })
       })
 
