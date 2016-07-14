@@ -10,6 +10,6 @@ deployment:
     commands:
       - ./bin/deploy.sh
   feature:
-    branch: /add-.*/
+    branch: /add|fix-.*/
     commands:
       - ./bin/deploy.sh

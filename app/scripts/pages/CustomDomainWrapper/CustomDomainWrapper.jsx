@@ -22,6 +22,7 @@ export class CustomDomainWrapper extends React.Component {
   }
 
   static fetchData(store, params, query, host) {
+    host = host.replace(/^www\./, '')
     const regex = host.match(`(.+)\.${process.env.APP_DOMAIN}`)
     let findParams
 
