@@ -19,7 +19,7 @@ export default class DonationWidgetMenu extends React.Component {
               isActive={donationPath === location.pathname} />
             <TabMenuItem
               path={autofirePath}
-              text='Mensagem agradecimento'
+              text='Mensagem de agradecimento'
               isActive={autofirePath === location.pathname} />
           </ul>
         </div>
