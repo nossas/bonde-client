@@ -9,3 +9,41 @@ a.wysihtml5-command-dialog-opened {
 .wysiwyg-font-size-h3 { font-size: 2rem; }
 .wysiwyg-font-size-h2 { font-size: 3rem; }
 .wysiwyg-font-size-h1 { font-size: 5rem; }
+
+[data-wysihtml5-dialog="foreColorStyle"] {
+  top: 52px!important;
+  left: 0;
+  width: 435px;
+  padding: 0;
+  background-color: #364C55;
+  padding-bottom: 10px;
+
+  .react-colorpicker-panel {
+    width: auto;
+  }
+
+  .react-colorpicker-panel-board {
+    float: left;
+    height: auto;
+  }
+
+  .react-colorpicker-panel-wrap {
+    float: left;
+    width: 49%;
+    margin-left: 10px;
+
+    .react-colorpicker-panel-params {
+          margin-top: 10px;
+    }
+  }
+
+  .react-colorpicker-panel {
+    min-height: 114px;
+  }
+
+  [data-wysihtml5-dialog-action="save"] {
+    width: 49%;
+    float: left;
+    margin: -2px 0 0 9px;
+  }
+}
