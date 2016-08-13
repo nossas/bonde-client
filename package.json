@@ -97,7 +97,7 @@
     "piping": "^0.3.2",
     "postcss-loader": "^0.5.1",
     "pretty-error": "^1.1.2",
-    "query-string": "^2.4.0",
+    "query-string": "^4.2.3",
     "raven": "^0.11.0",
     "raven-js": "^3.2.0",
     "react": "^0.14.8",
