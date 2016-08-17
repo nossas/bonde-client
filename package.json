@@ -55,7 +55,7 @@
     "autoprefixer-core": "^5.2.0",
     "autoprefixer-loader": "^2.0.0",
     "babel": "^5.8.38",
-    "babel-loader": "^5.3.2",
+    "babel-loader": "^6.2.5",
     "babel-plugin-typecheck": "^1.2.0",
     "babel-runtime": "^5.8.38",
     "basscss-sass": "github:nicolasiensen/basscss-sass#v1.0.2-branch",
