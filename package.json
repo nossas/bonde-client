@@ -102,7 +102,7 @@
     "raven-js": "^3.2.0",
     "react": "^0.14.8",
     "react-addons-test-utils": "^15.1.0",
-    "react-addons-transition-group": "^0.14.8",
+    "react-addons-transition-group": "^15.3.1",
     "react-color": "^2.2.0",
     "react-colors-picker": "2.1.1",
     "react-document-meta": "^2.0.3",
