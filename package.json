@@ -68,7 +68,7 @@
     "compression": "^1.6.2",
     "concurrently": "^0.1.1",
     "console": "^0.5.2",
-    "css-loader": "^0.16.0",
+    "css-loader": "^0.24.0",
     "downloadjs": "gabrielrtakeda/download",
     "drmonty-chosen": "^1.4.2",
     "enzyme": "^2.3.0",
