@@ -95,7 +95,7 @@
     "newrelic": "^1.28.1",
     "node-sass": "^3.7.0",
     "piping": "^0.3.2",
-    "postcss-loader": "^0.5.1",
+    "postcss-loader": "^0.11.0",
     "pretty-error": "^1.1.2",
     "query-string": "^2.4.0",
     "raven": "^0.11.0",
