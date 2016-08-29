@@ -110,7 +110,7 @@
     "react-ga": "^1.2.0",
     "react-hot-loader": "^1.2.8",
     "react-mixin": "^1.7.0",
-    "react-redux": "^3.1.2",
+    "react-redux": "^4.4.5",
     "react-router": "1.0.0-beta3",
     "react-s3-uploader": "^1.2.3",
     "redux": "^1.0.1",
