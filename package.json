@@ -111,7 +111,7 @@
     "react-hot-loader": "^1.2.8",
     "react-mixin": "^1.7.0",
     "react-redux": "^3.1.2",
-    "react-router": "1.0.0-beta3",
+    "react-router": "2.8.1",
     "react-s3-uploader": "^1.2.3",
     "redux": "^1.0.1",
     "redux-form": "^0.2.1",
