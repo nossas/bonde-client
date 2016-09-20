@@ -106,7 +106,7 @@
     "react-color": "^2.2.2",
     "react-colors-picker": "2.1.1",
     "react-document-meta": "^2.0.3",
-    "react-dom": "^0.14.8",
+    "react-dom": "^15.3.2",
     "react-ga": "^1.2.0",
     "react-hot-loader": "^1.2.8",
     "react-mixin": "^1.7.0",
