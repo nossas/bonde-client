@@ -66,7 +66,7 @@
     "classnames": "^2.2.5",
     "clean-webpack-plugin": "^0.1.9",
     "compression": "^1.6.2",
-    "concurrently": "^0.1.1",
+    "concurrently": "^3.1.0",
     "console": "^0.5.2",
     "css-loader": "^0.16.0",
     "downloadjs": "gabrielrtakeda/download",
