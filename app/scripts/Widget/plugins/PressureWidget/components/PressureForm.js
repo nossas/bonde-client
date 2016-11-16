@@ -67,49 +67,58 @@ class PressureForm extends Component {
   render() {
     const { buttonColor, buttonText, children } = this.props
     const { email, name, lastname, subject, body, errors } = this.state
-    const errorSpanStyle = {
-      fontSize: '.95em'
-    }
     return (
       <form className="pressure-form" onSubmit={::this.handleSubmit}>
         <div className={classnames('activist-form bg-white', !children ? 'rounded-bottom': null)}>
-          <div className={classnames('border-bottom border-gray94', controlClassname)}>
-            {(errors && errors['email'] && <span className="red">{errors['email']}</span>)}
-            <input
-              className="col-12"
-              style={inputReset}
-              type="email"
-              placeholder="Insira seu e-mail"
-              value={email}
-              onChange={e => this.setState({ email: e.target.value })}
-            />
-          </div>
-          <div className={classnames('border-bottom border-gray94', controlClassname)}>
-            {(errors && errors['name'] && <span className="red">{errors['name']}</span>)}
-            <input
-              className="col-12"
-              style={inputReset}
-              type="text"
-              placeholder="Insira seu nome"
-              value={name}
-              onChange={e => this.setState({ name: e.target.value })}
-            />
-          </div>
-          <div className={classnames('border-bottom border-gray94', controlClassname)}>
-            {(errors && errors['lastname'] && <span className="red">{errors['lastname']}</span>)}
-            <input
-              className="col-12"
-              style={inputReset}
-              type="text"
-              placeholder="Insira seu sobrenome"
-              value={lastname}
-              onChange={e => this.setState({ lastname: e.target.value })}
-            />
-          </div>
           <div className="form bg-white rounded-bottom">
             <div className={classnames('form-group', controlClassname)}>
-              <label className="py1 gray" htmlFor="pressure-subject-id">Assunto</label>
-              {(errors && errors['subject'] && <span className="red ml1" style={errorSpanStyle}>{errors['subject']}</span>)}
+              <label className="py1 gray" htmlFor="pressure-sender-email-id">
+                E-mail
+                {(errors && errors['email'] && <span className="error">{errors['email']}</span>)}
+              </label>
+              <input
+                id="pressure-sender-email-id"
+                className="col-12"
+                style={inputReset}
+                type="email"
+                placeholder="Insira seu e-mail"
+                value={email}
+                onChange={e => this.setState({ email: e.target.value })}
+              />
+            </div>
+            <div className={classnames('form-group', controlClassname)}>
+              <label className="py1 gray" htmlFor="pressure-sender-email-id">
+                Nome
+                {(errors && errors['name'] && <span className="error">{errors['name']}</span>)}
+              </label>
+              <input
+                className="col-12"
+                style={inputReset}
+                type="text"
+                placeholder="Insira seu nome"
+                value={name}
+                onChange={e => this.setState({ name: e.target.value })}
+              />
+            </div>
+            <div className={classnames('form-group', controlClassname)}>
+              <label className="py1 gray" htmlFor="pressure-sender-email-id">
+                Sobrenome
+                {(errors && errors['lastname'] && <span className="error">{errors['lastname']}</span>)}
+              </label>
+              <input
+                className="col-12"
+                style={inputReset}
+                type="text"
+                placeholder="Insira seu sobrenome"
+                value={lastname}
+                onChange={e => this.setState({ lastname: e.target.value })}
+              />
+            </div>
+            <div className={classnames('form-group', controlClassname)}>
+              <label className="py1 gray" htmlFor="pressure-subject-id">
+                Assunto
+                {(errors && errors['subject'] && <span className="error">{errors['subject']}</span>)}
+              </label>
               <input
                 id="pressure-subject-id"
                 className="col-12"
@@ -120,12 +129,10 @@ class PressureForm extends Component {
               />
             </div>
             <div className={classnames('form-group', controlClassname)}>
-              <label className="py1 gray" htmlFor="pressure-body-id">E-mail</label>
-              {
-                errors && errors['body'] && (
-                  <span className="red ml1" style={errorSpanStyle}>{errors['body']}</span>
-                )
-              }
+              <label className="py1 gray" htmlFor="pressure-body-id">
+                Corpo do e-mail
+                {(errors && errors['body'] && <span className="error">{errors['body']}</span>)}
+              </label>
               <textarea
                 id="pressure-body-id"
                 className="col-12 mt1"
