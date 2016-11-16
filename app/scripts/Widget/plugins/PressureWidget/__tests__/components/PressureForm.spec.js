@@ -5,7 +5,7 @@ import { mount } from 'enzyme'
 import { PressureForm, PressureCount } from '../../components'
 
 
-describe('<PressureForm />', () => {
+describe('app/scripts/Widget/plugins/PressureWidget/components/PressureForm', () => {
   let component
 
   beforeEach(() => {
@@ -65,7 +65,7 @@ describe('<PressureForm />', () => {
       onSubmit: data => submitted = data
     })
     component.find('form').simulate('submit')
-    expect(component.find('span.red').length).to.equal(5)
+    expect(component.find('span.error').length).to.equal(5)
     expect(submitted).to.equal(undefined)
   })
 })
