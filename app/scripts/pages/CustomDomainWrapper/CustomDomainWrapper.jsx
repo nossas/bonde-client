@@ -7,6 +7,7 @@ import { ShowMobilization } from './../'
 import { fetchMobilizations, mobilizationsIsLoaded } from '../../Mobilization/MobilizationActions'
 import { GoogleFontsLoader } from '../../../components/Fonts'
 import * as arrayUtil from '../../../util/array'
+import { TechnicalIssues } from '../../../components/Error'
 
 export class CustomDomainWrapper extends React.Component {
   static fetchData(store, params, query, host) {
@@ -60,23 +61,10 @@ export class CustomDomainWrapper extends React.Component {
     )
   }
 
-  renderMobilizationNotFound() {
-    return (
-      <div className='absolute top-0 bottom-0 left-0 right-0 flex flex-center bg-atomic'>
-        <div className='center flex-auto white'>
-          <div className='h1'>
-            Ops! Estamos com um problema técnico. Em caso de dúvida, escreva
-            para <a href="mailto:contato@nossascidades.org">contato@nossascidades.org</a>.
-          </div>
-        </div>
-      </div>
-    )
-  }
-
   render() {
     return (
       this.props.mobilizations.length === 0
-       ? this.renderMobilizationNotFound()
+       ? <TechnicalIssues />
        : this.renderMobilization()
     )
   }

@@ -28,5 +28,10 @@ describe('CustomDomainWrapper', () => {
       const component = shallow(<CustomDomainWrapper {...props} mobilizations={[{id: 1}]} />)
       expect(component.find('GoogleFontsLoader')).to.have.length(1)
     })
+
+    it('should render TechnicalIssues error page when there is no mobilizations', () => {
+      const component = shallow(<CustomDomainWrapper {...props} mobilizations={[]} />)
+      expect(component.find('TechnicalIssues')).to.have.length(1)
+    })
   })
 })
