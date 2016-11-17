@@ -7,7 +7,7 @@ module.exports = [
     test: /\.jsx?$/,
     exclude: /node_modules/,
     loaders: [
-      'react-hot',
+      'react-hot-loader/webpack',
       'babel?stage=0&optional=runtime&plugins=typecheck'
     ]
   },
