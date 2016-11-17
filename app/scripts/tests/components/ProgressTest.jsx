@@ -13,9 +13,7 @@ describe('Progress', () => {
         component.refs.progress.getAttribute('class')
       ).to.eql('foobar')
 
-      expect(
-        component.refs.progress.getAttribute('style')
-      ).to.eql('width:34%;')
+      expect(component.refs.progress.getAttribute('style')).to.eql('width: 34%;')
     })
   })
 })

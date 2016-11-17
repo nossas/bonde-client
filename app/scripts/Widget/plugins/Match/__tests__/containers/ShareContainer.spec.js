@@ -41,7 +41,7 @@ describe('Match/containers/ShareContainer', () => {
     })
 
     it('should render one empty <noscript> component', () => {
-      expect(wrapper.html()).to.equal('<noscript></noscript>')
+      expect(wrapper.html()).to.be.empty
     })
     it('should calls metaData method', () => {
       expect(spy.metaData).to.have.been.called
