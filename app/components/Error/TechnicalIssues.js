@@ -19,15 +19,12 @@ class TechnicalIssues extends Component {
             <p className="contact link">
               <span className="bold darkblue">Você pode tentar novamente daqui a pouco?</span><br />
               Qualquer dúvida, pode falar com a gente<br />
-              pelo e-mail: <a href="mailto:contato@nossas.org?Subject=Problemas%20Técnicos" target="_blank">
-                contato@nossas.org
-              </a>
+              pelo e-mail: <a href="mailto:contato@nossas.org?Subject=Problemas%20Técnicos" target="_blank">contato@nossas.org</a>
             </p>
             <footer className="link">
-              A página que vocês está procurando foi criada usando uma ferramenta
-              do <a href="http://reboo.org" target="_blank">Nossas</a> - organização
-              ativista por natureza que trabalhar pra armar e articular a potência pra
-              reinventar e reconstruir a política, todos os dias. Conheça nosso trabalho aqui.
+              A página que vocês está procurando foi criada usando uma ferramenta do Nossas - organização
+                ativista por natureza que trabalhar pra armar e articular a potência pra reinventar e reconstruir
+                a política, todos os dias. <a href="http://nossas.org" target="_blank">Conheça nosso trabalho</a>.
             </footer>
           </div>
         </div>
