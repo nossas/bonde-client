@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import classnames from 'classnames'
 
+import './scss/pressure-form.scss'
 import { isValidEmail } from '../../../../../util/validation-helper'
 
 // TODO: Reusable Input
