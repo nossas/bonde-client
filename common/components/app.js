@@ -4,6 +4,10 @@ import Nav from './global/nav'
 import Footer from './global/footer'
 import { StyleSheet, css } from 'aphrodite'
 
+if (process.env.BROWSER) {
+  require('../../client/styles/main.scss')
+}
+
 const App = ({ children }) => (
   <div className={css(styles.root)}>
     <Helmet title='Vibrate' titleTemplate='%s' />

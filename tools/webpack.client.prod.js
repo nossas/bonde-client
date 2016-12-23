@@ -1,9 +1,13 @@
 const path = require('path')
 const webpack = require('webpack')
 const AssetsPlugin = require('assets-webpack-plugin')
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const CONFIG = require('./webpack.base')
 const { CLIENT_ENTRY, CLIENT_OUTPUT, PUBLIC_PATH } = CONFIG
+
+const inlinesvg = require('postcss-inline-svg');
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
   devtool: false,
@@ -23,6 +27,12 @@ module.exports = {
     chunkFilename: '[name]_[chunkhash].js',
     publicPath: PUBLIC_PATH,
     path: CLIENT_OUTPUT
+  },
+  postcss: function() {
+    return [autoprefixer, inlinesvg];
+  },
+  sassLoader: {
+    includePaths: [path.join(__dirname, 'scss')]
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -48,6 +58,9 @@ module.exports = {
       }
     }),
     new webpack.NoErrorsPlugin(),
+    new ExtractTextPlugin('styles.css', {
+      allChunks: true
+    })
   ],
   module: {
     loaders: [
@@ -59,6 +72,10 @@ module.exports = {
           presets: ["es2015", "react", "stage-0", "react-optimize"],
         },
         exclude: /(node_modules)/
+      },
+      {
+        test: /\.(scss|sass)$/,
+        loader: ExtractTextPlugin.extract('style-loader', ['css-loader?sourceMap', 'postcss-loader?parser=postcss-scss', 'sass-loader?sourceMap'])
       }
     ]
   }

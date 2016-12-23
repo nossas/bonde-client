@@ -1,6 +1,10 @@
 const path = require('path')
 const webpack = require('webpack')
 const CONFIG = require('./webpack.base')
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+const inlinesvg = require('postcss-inline-svg');
+const autoprefixer = require('autoprefixer');
 
 const { CLIENT_ENTRY, CLIENT_OUTPUT, PUBLIC_PATH } = CONFIG
 
@@ -46,7 +50,17 @@ module.exports = {
           presets: ["es2015", "react", "stage-0"]
         }
       },
+      {
+        test: /\.(scss|sass)$/,
+        loader: ExtractTextPlugin.extract('style-loader', ['css-loader?sourceMap', 'postcss-loader?parser=postcss-scss', 'sass-loader?sourceMap'])
+      }
     ]
+  },
+  postcss: function() {
+    return [autoprefixer, inlinesvg];
+  },
+  sassLoader: {
+    includePaths: [path.join(__dirname, 'scss')]
   },
   standard: {
     // config options to be passed through to standard e.g.
@@ -59,6 +73,9 @@ module.exports = {
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js', 2),
+    new ExtractTextPlugin('styles.css', {
+      allChunks: true
+    }),
     new webpack.NoErrorsPlugin()
   ],
 }

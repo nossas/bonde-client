@@ -13,10 +13,10 @@
 @import './color_schemes/nossascidades.scss';
 @import './color_schemes/nuestrasciudades.scss';
 @import './color_schemes/ourcities.scss';
-@import './font_sets/proxima_nova.scss';
-@import './font_sets/pfdin.scss';
-@import './../scripts/components/TopMenu/top_menu.scss';
-@import './../scripts/components/Editor/color-picker.scss';
+// @import './font_sets/proxima_nova.scss';
+// @import './font_sets/pfdin.scss';
+// @import './../scripts/components/TopMenu/top_menu.scss';
+// @import './../scripts/components/Editor/color-picker.scss';
 @import './forms.scss';
 
 //
@@ -230,7 +230,7 @@ a.no-underscore {
     &.nossas {
       background-color: #ff0099;
       position: relative;
-      background-image: url('./logo-icon-white-strokes.svg');
+      background-image: svg-load('./logo-icon-white-strokes.svg', fill=#000, stroke=#fff);
 
       &:after {
         content: '';
