@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { reducer as formReducer } from 'redux-form';
+import { reducer as formReducer } from 'redux-form'
 
 import colorPicker from '../../app/components/ColorPicker/ColorPickerReducer'
 import widgets from '../../app/scripts/Widget/reducer'
@@ -29,5 +29,5 @@ export default combineReducers({
 
   blocks,
   auth,
-  community,
+  community
 })

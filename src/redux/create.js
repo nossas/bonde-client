@@ -10,10 +10,10 @@ const getDebugSessionKey = () => {
   // You can write custom logic here!
   // By default we try to read the key from ?debug_session=<key> in the address bar
   const matches = window.location.href.match(/[?&]debug_session=([^&#]+)\b/)
-  return (matches && matches.length > 0)? matches[1] : null
+  return (matches && matches.length > 0) ? matches[1] : null
 }
 
-export default function createApiClientStore(client, initialState) {
+export default function createApiClientStore (client, initialState) {
   const request = new Request()
   const thunkWithExtraArgument = thunk.withExtraArgument(request)
   const middleware = createMiddleware(client)

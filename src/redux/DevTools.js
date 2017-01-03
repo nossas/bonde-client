@@ -6,12 +6,12 @@ import SliderMonitor from 'redux-slider-monitor'
 
 const DevTools = createDevTools(
   <DockMonitor
-    toggleVisibilityKey="ctrl-h"
-    changePositionKey="ctrl-q"
-    changeMonitorKey="ctrl-m"
+    toggleVisibilityKey='ctrl-h'
+    changePositionKey='ctrl-q'
+    changeMonitorKey='ctrl-m'
     defaultIsVisible={false}
   >
-    <LogMonitor theme="google" />
+    <LogMonitor theme='google' />
     <SliderMonitor />
   </DockMonitor>
 )
