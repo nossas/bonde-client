@@ -7,7 +7,6 @@ export const select = id => dispatch => {
 }
 
 export const create = community => (dispatch, getState, request) => {
-
   const { auth: { credentials } } = getState()
 
   return request
@@ -48,10 +47,10 @@ export const downloadActivists = ({ id, name, ...community }) => (dispatch, getS
       if (status === 400 && data.errors) {
         return Promise.reject({ ...data.errors })
       } else if (status === 200) {
-          if (data.length > 0) {
-              downloadjs(new Blob([data]), `relatorio-ativistas-${name}.csv`,  'text/csv')
-            return Promise.resolve()
-          }
+        if (data.length > 0) {
+          downloadjs(new Blob([data]), `relatorio-ativistas-${name}.csv`, 'text/csv')
+          return Promise.resolve()
+        }
       }
     })
     .catch(error => Promise.reject(error))

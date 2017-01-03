@@ -11,7 +11,7 @@ import {
 
   REQUEST_TEMPLATE_DESTROY,
   SUCCESS_TEMPLATE_DESTROY,
-  FAILURE_TEMPLATE_DESTROY,
+  FAILURE_TEMPLATE_DESTROY
 } from './MobilizationTemplatesActions'
 
 export const initialState = {

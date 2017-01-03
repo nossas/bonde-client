@@ -1,9 +1,7 @@
 import React, { PropTypes } from 'react'
 import Menu from './menu'
 
-
 const Navbar = props => {
-
   const { blocks, editable } = props
 
   const onlyVisibleBlocks = blocks.filter(
@@ -11,12 +9,12 @@ const Navbar = props => {
   )
 
   return (
-    <div className="absolute col-12 z3">
-      <div className="lg-show center">
+    <div className='absolute col-12 z3'>
+      <div className='lg-show center'>
         <Menu blocks={onlyVisibleBlocks} />
       </div>
       {/* mobile version */}
-      <div className="lg-hide">
+      <div className='lg-hide'>
         <Menu blocks={onlyVisibleBlocks} />
       </div>
     </div>
@@ -25,12 +23,12 @@ const Navbar = props => {
 
 Navbar.propTypes = {
   editable: PropTypes.bool.isRequired,
-  blocks: PropTypes.array,
+  blocks: PropTypes.array
 }
 
 Navbar.defaultProps = {
   editable: false,
-  blocks: [],
+  blocks: []
 }
 
 export default Navbar

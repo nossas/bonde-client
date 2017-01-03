@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 
 export const MobilizationList = ({ children }) => {
   return (
-    <div className="mobilization-list gray20 content-box">
+    <div className='mobilization-list gray20 content-box'>
       {children}
     </div>
   )

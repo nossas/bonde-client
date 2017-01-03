@@ -21,14 +21,14 @@ import {
   MobilizationListItemMore,
   MobilizationListItemMoreMenu,
   MobilizationListItemMoreMenuAction
-}  from '../../../components/MobilizationList/MobilizationListItem'
+} from '../../../components/MobilizationList/MobilizationListItem'
 import {
   MobilizationListItemHeader,
   MobilizationListItemHeaderName,
   MobilizationListItemHeaderCreatedAt,
   MobilizationListItemHeaderCopyNumber,
   MobilizationListItemHeaderFundRaising
-}  from '../../../components/MobilizationList/MobilizationListItemHeader'
+} from '../../../components/MobilizationList/MobilizationListItemHeader'
 import {
   setCurrentMobilizationId,
   setMobilizationMoreMenuActiveIndex
@@ -38,12 +38,12 @@ import { Loading } from '../../../../components'
 import EmptyList from '../../../../../components/EmptyList'
 
 export class MobilizationTemplatesListPage extends Component {
-  componentDidMount() {
+  componentDidMount () {
     const { dispatch } = this.props
     dispatch(setMobilizationMoreMenuActiveIndex(undefined))
   }
 
-  render() {
+  render () {
     const {
       dispatch,
       mobilizationMoreMenuActiveIndex,
@@ -55,18 +55,18 @@ export class MobilizationTemplatesListPage extends Component {
     return (
       <SettingsPageLayout>
         {loading && <Loading />}
-        <SettingsPageMenuLayout title="Suas Mobilizações">
+        <SettingsPageMenuLayout title='Suas Mobilizações'>
           <MobilizationsHeader {...this.props} />
         </SettingsPageMenuLayout>
 
-        <SettingsPageContentLayout containerClassName="lg-col-12">
+        <SettingsPageContentLayout containerClassName='lg-col-12'>
           {
             !mobilizationTemplates.custom.length ? (
               <EmptyList>
                 Nenhum template criado. <br />
                 Crie a partir de uma mobilização. <br />
                 <Link
-                  className="bg-pagenta btn caps h3 rounded white py2 px3 mt3"
+                  className='bg-pagenta btn caps h3 rounded white py2 px3 mt3'
                   to={Paths.mobilizations()}
                 >
                   Lista de mobilizações
@@ -90,7 +90,7 @@ export class MobilizationTemplatesListPage extends Component {
                     >
                       <MobilizationListItemAvatar {...template} />
 
-                      <div className="list-item-table-container overflow-hidden">
+                      <div className='list-item-table-container overflow-hidden'>
                         <MobilizationListItemName {...template} />
                         <MobilizationListItemCreatedAt {...template} />
                         <MobilizationListItemCopyNumber {...template} />
@@ -102,16 +102,16 @@ export class MobilizationTemplatesListPage extends Component {
                           active={mobilizationMoreMenuActiveIndex === index}
                         >
                           <MobilizationListItemMoreMenuAction
-                            componentClass="div"
-                            text="Editar"
+                            componentClass='div'
+                            text='Editar'
                             path={Paths.mobilizationTemplatesUpdate(1)}
-                            icon="pencil-square-o"
+                            icon='pencil-square-o'
                           />
                           <MobilizationListItemMoreMenuAction
-                            componentClass="div"
-                            text="Remover"
+                            componentClass='div'
+                            text='Remover'
                             path={Paths.mobilizationTemplatesDestroy(1)}
-                            icon="trash-o"
+                            icon='trash-o'
                             onClick={() => {
                               const confirmMessage = 'Tem certeza que deseja remover este template? Ao'
                                 + ' confirmar, não é possível desfazer esta ação.'
@@ -130,7 +130,7 @@ export class MobilizationTemplatesListPage extends Component {
         {
           typeof mobilizationMoreMenuActiveIndex !== 'undefined' && (
             <div
-              className="mobilization-list-more-menu-cancel-overlay z1"
+              className='mobilization-list-more-menu-cancel-overlay z1'
               style={{ position: 'fixed', top: 0, right: 0, bottom: 0, left: 0 }}
               onClick={() => { dispatch(setMobilizationMoreMenuActiveIndex(undefined)) }}
             />
@@ -143,12 +143,12 @@ export class MobilizationTemplatesListPage extends Component {
 
 MobilizationTemplatesListPage.propTypes = {
   dispatch: PropTypes.func,
-  destroyTemplateAsync: PropTypes.func,
+  destroyTemplateAsync: PropTypes.func
 }
 
 const mapStateToProps = state => ({
   mobilizationMoreMenuActiveIndex: state.mobilization.mobilizationMoreMenuActiveIndex,
-  mobilizationTemplates: state.mobilizationTemplates,
+  mobilizationTemplates: state.mobilizationTemplates
 })
 
 export default connect(

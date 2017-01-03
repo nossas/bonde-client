@@ -16,7 +16,7 @@ describe('MobilizationActions', () => {
       const mobilizations = [{id: 1}, {id: 2}]
       expect(request.url).to.equal(`${process.env.API_URL}/mobilizations`)
       expect(request.method).to.equal('GET')
-      request.respond(200, { "Content-Type": "application/json" }, JSON.stringify(mobilizations))
+      request.respond(200, { 'Content-Type': 'application/json' }, JSON.stringify(mobilizations))
       expect(dispatch).to.have.been.calledWith({
         type: FETCH_MOBILIZATIONS,
         mobilizations
@@ -28,7 +28,7 @@ describe('MobilizationActions', () => {
     let mobilization, params
 
     before(() => {
-      mobilization = { google_analytics_code: "UA-12345678" }
+      mobilization = { google_analytics_code: 'UA-12345678' }
       params = { id: 1, mobilization: mobilization }
     })
 
@@ -38,7 +38,7 @@ describe('MobilizationActions', () => {
       const request = requests[0]
       expect(request.url).to.equal(`${process.env.API_URL}/mobilizations/1`)
       expect(request.method).to.equal('PUT')
-      request.respond(200, { "Content-Type": "application/json" }, JSON.stringify(params.mobilization))
+      request.respond(200, { 'Content-Type': 'application/json' }, JSON.stringify(params.mobilization))
     })
 
     it('should dispatch the edit action', () => {

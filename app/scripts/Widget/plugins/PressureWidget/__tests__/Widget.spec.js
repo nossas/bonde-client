@@ -4,7 +4,6 @@ import { shallow } from 'enzyme'
 
 import { PressureWidget } from '../Widget'
 
-
 describe('app/scripts/Widget/plugins/PressureWidget/Widget', () => {
   let widget
   const props = {
@@ -55,7 +54,7 @@ describe('app/scripts/Widget/plugins/PressureWidget/Widget', () => {
   })
 
   it('should hide PressureCount when show_counter is "false"', () => {
-    widget.setProps({ widget: { id: 1, settings: { show_counter: "false" }} })
+    widget.setProps({ widget: { id: 1, settings: { show_counter: 'false' }} })
     expect(widget.find('PressureCount').length).to.equal(0)
   })
 

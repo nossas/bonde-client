@@ -34,53 +34,53 @@ const MobilizationSharingPage = ({
   const handleSubmit = values => editMobilizationAsync({ ...mobilization, ...values })
 
   return (
-    <SettingsPageContentLayout className="darkengray">
+    <SettingsPageContentLayout className='darkengray'>
       <FormRedux
         {...rest}
         onSubmit={handleSubmit}
-        className="transparent clearfix"
-        floatButton="Salvar"
-        successMessage="Furmlário atualizado com sucesso!"
+        className='transparent clearfix'
+        floatButton='Salvar'
+        successMessage='Furmlário atualizado com sucesso!'
       >
-        <div className="h5 caps bold mb2 inline">
-          <img className="align-middle" src={iconFacebook} width="32" height="32" />
-          <span className="align-middle pl2 h6">Share de Facebook</span>
+        <div className='h5 caps bold mb2 inline'>
+          <img className='align-middle' src={iconFacebook} width='32' height='32' />
+          <span className='align-middle pl2 h6'>Share de Facebook</span>
         </div>
-        <p className="mb2 lightgray">
+        <p className='mb2 lightgray'>
           Configure o post que será publicado no Facebook sempre que alguém compartilhar a ação.
           É importante que esses textos sejam cativantes e curtos para não aparecerem cortados. :)
         </p>
 
-        <div className="form-group col col-5 mb3" style={{ paddingRight: '.7rem' }}>
-          <Label htmlFor="facebookShareImage">Imagem</Label>
+        <div className='form-group col col-5 mb3' style={{ paddingRight: '.7rem' }}>
+          <Label htmlFor='facebookShareImage'>Imagem</Label>
           <div
-            className="border border-gray94 rounded p2 bg-white center relative overflow-hidden"
+            className='border border-gray94 rounded p2 bg-white center relative overflow-hidden'
             style={{ height: '226px' }}
           >
-            <div className="clearfix">
+            <div className='clearfix'>
               {
                 facebookShareImage.value ? (
                   <div
-                    className="bg-cover square"
+                    className='bg-cover square'
                     style={{ backgroundImage: `url(${facebookShareImage.value})` }}
                   />
                 ) : (
-                  <div className="square-float">
-                    <i className="fa fa-image silver mt2 mb1" style={{ fontSize: '5em' }} />
+                  <div className='square-float'>
+                    <i className='fa fa-image silver mt2 mb1' style={{ fontSize: '5em' }} />
                   </div>
                 )
               }
               <div className={facebookShareImage.value ? 'hide' : null}>
-                <div className="mb1 gray">Sua imagem deve ter 470x270 pixels</div>
+                <div className='mb1 gray'>Sua imagem deve ter 470x270 pixels</div>
               </div>
-              <div className="overflow-hidden">
+              <div className='overflow-hidden'>
                 {
                   isFacebookShareImageUploading
-                  ? <i className="fa fa-spin fa-refresh" />
+                  ? <i className='fa fa-spin fa-refresh' />
                   : <ReactS3Uploader
-                    id="facebookShareImage"
+                    id='facebookShareImage'
                     signingUrl={`${process.env.API_URL}/uploads`}
-                    accept="image/*"
+                    accept='image/*'
                     onProgress={() =>
                       !isFacebookShareImageUploading && dispatch(progressUploadFacebookImage())
                     }
@@ -89,7 +89,7 @@ const MobilizationSharingPage = ({
                       facebookShareImage.onChange(imageUrl)
                       dispatch(finishUploadFacebookImage())
                     }}
-                    className="border-none bg-darken-4 rounded p1 white"
+                    className='border-none bg-darken-4 rounded p1 white'
                     style={{
                       position: 'absolute',
                       left: '50%',
@@ -104,24 +104,24 @@ const MobilizationSharingPage = ({
           </div>
         </div>
 
-        <div className="col col-7">
+        <div className='col col-7'>
           <FormGroup
             {...facebookShareTitle}
-            controlId="facebookShareTitle"
+            controlId='facebookShareTitle'
             style={{ paddingLeft: '0' }}
           >
-            <ControlLabel className="ml1">
+            <ControlLabel className='ml1'>
               Título do post
               <InputCounter
                 maxLength={70}
                 length={facebookShareTitle.value ? facebookShareTitle.value.length : 0}
-                className="right regular"
+                className='right regular'
               />
             </ControlLabel>
             <FormControl
-              componentClass="textarea"
-              rows="2"
-              placeholder="Um título direto que passe a ideia da sua mobilização"
+              componentClass='textarea'
+              rows='2'
+              placeholder='Um título direto que passe a ideia da sua mobilização'
               maxLength={70}
               style={{ paddingTop: '1.35rem', paddingBottom: '1.35rem' }}
             />
@@ -129,49 +129,49 @@ const MobilizationSharingPage = ({
 
           <FormGroup
             {...facebookShareDescription}
-            controlId="facebookShareDescription"
+            controlId='facebookShareDescription'
             style={{ paddingLeft: '0' }}
           >
-            <ControlLabel className="ml1">
+            <ControlLabel className='ml1'>
               Subtítulo do post
               <InputCounter
                 maxLength={90}
                 length={facebookShareDescription.value ? facebookShareDescription.value.length : 0}
-                className="right regular"
+                className='right regular'
               />
             </ControlLabel>
             <FormControl
-              componentClass="textarea"
-              rows="2"
-              placeholder="Complete a informação do título e chame o leitor para a mobilização"
+              componentClass='textarea'
+              rows='2'
+              placeholder='Complete a informação do título e chame o leitor para a mobilização'
               maxLength={90}
               style={{ paddingTop: '1.35rem', paddingBottom: '1.35rem' }}
             />
           </FormGroup>
         </div>
 
-        <div className="col col-12">
-          <div className="h5 caps bold mb2 inline">
-            <img className="align-middle" src={iconTwitter} width="32" height="32" />
-            <span className="align-middle pl2 h6">Share de Twitter</span>
+        <div className='col col-12'>
+          <div className='h5 caps bold mb2 inline'>
+            <img className='align-middle' src={iconTwitter} width='32' height='32' />
+            <span className='align-middle pl2 h6'>Share de Twitter</span>
           </div>
-          <p className="mb2 lightgray">
+          <p className='mb2 lightgray'>
             Configure a mensagem que será publicada no Twitter
             sempre que alguém compartilhar sua mobilização.
           </p>
 
-          <FormGroup controlId="twitterShareText" {...twitterShareText}>
+          <FormGroup controlId='twitterShareText' {...twitterShareText}>
             <ControlLabel>
               Texto do Tweet
               <InputCounter
                 maxLength={140}
                 length={twitterShareText.value ? twitterShareText.value.length : 0}
-                className="right regular"
+                className='right regular'
               />
             </ControlLabel>
             <FormControl
               componentClass='textarea'
-              placeholder="Insira uma frase e chame o leitor para a mobilização"
+              placeholder='Insira uma frase e chame o leitor para a mobilização'
               maxLength={140}
             />
           </FormGroup>

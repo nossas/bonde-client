@@ -1,6 +1,5 @@
 import * as t from './action-types'
 
-
 const initialState = {
   loading: false,
   isLoaded: false,
@@ -8,7 +7,6 @@ const initialState = {
   relationshipId: undefined,
   currentId: undefined
 }
-
 
 export default (state = initialState, action) => {
   switch (action.type) {

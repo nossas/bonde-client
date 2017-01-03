@@ -3,11 +3,11 @@ import React, { PropTypes } from 'react'
 import './scss/mobilization-list-item-avatar.scss'
 
 const MobilizationListItemAvatar = ({ image, facebook_share_image, imageSize }) => (
-  <div className="list-item-avatar left pr3">
+  <div className='list-item-avatar left pr3'>
     {
       image || facebook_share_image ? (
         <div
-          className="avatar-width avatar-height bg-cover bg-center overflow-hidden"
+          className='avatar-width avatar-height bg-cover bg-center overflow-hidden'
           style={{
             backgroundImage: `url(${image || facebook_share_image})`,
             width: imageSize.width,
@@ -15,8 +15,8 @@ const MobilizationListItemAvatar = ({ image, facebook_share_image, imageSize }) 
           }}
         />
       ) : (
-        <div className="avatar-width avatar-height bg-darken-2 table">
-          <i className="fa fa-picture-o white table-cell align-middle center" />
+        <div className='avatar-width avatar-height bg-darken-2 table'>
+          <i className='fa fa-picture-o white table-cell align-middle center' />
         </div>
       )
     }

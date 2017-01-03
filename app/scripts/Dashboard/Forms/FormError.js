@@ -1,17 +1,16 @@
 import React, { Component, PropTypes } from 'react'
 import classnames from 'classnames'
 
-
 class FormError extends Component {
 
-  render() {
+  render () {
     const { $formRedux: { error } } = this.context
     const { className } = this.props
 
     return error ? (
-        <div className={classnames("h5 white bold center animated shake", className)}>
-          {error}
-        </div>
+      <div className={classnames('h5 white bold center animated shake', className)}>
+        {error}
+      </div>
       ) : <noscript />
   }
 }

@@ -4,7 +4,6 @@ import { mount } from 'enzyme'
 
 import { Tag } from '../../components'
 
-
 describe('<Tag />', () => {
   let component
   const props = {

@@ -27,14 +27,13 @@ const FAILURE_FIND_WIDGETS = 'FAILURE_FIND_WIDGETS'
 const EDIT_WIDGET = 'EDIT_WIDGET'
 const ADD_FORM_ENTRY = 'ADD_FORM_ENTRY'
 
-
 const initialState = {
   loaded: false,
   data: [],
   saving: false
 }
 
-export default function reducer(state = initialState, action) {
+export default function reducer (state = initialState, action) {
   switch (action.type) {
     case FETCH_WIDGETS_REQUEST:
       return {...state, loaded: false}
@@ -148,15 +147,15 @@ export default function reducer(state = initialState, action) {
   }
 }
 
-export function isWidgetsLoaded(globalState) {
+export function isWidgetsLoaded (globalState) {
   return globalState.blocks.loaded
 }
 
-export function fetchWidgets(options) {
+export function fetchWidgets (options) {
   return {
     types: [FETCH_WIDGETS_REQUEST, FETCH_WIDGETS_SUCCESS, FETCH_WIDGETS_FAILURE],
-    promise: function() {
-      return new Promise(function(resolve, reject) {
+    promise: function () {
+      return new Promise(function (resolve, reject) {
         superagent.get(`${process.env.API_URL}/mobilizations/${options.mobilization_id}/widgets`).end((err, res) => {
           if (err) {
             reject(res.body || err)
@@ -169,11 +168,11 @@ export function fetchWidgets(options) {
   }
 }
 
-export function findWidgets(options) {
+export function findWidgets (options) {
   return {
     types: [REQUEST_FIND_WIDGETS, SUCCESS_FIND_WIDGETS, FAILURE_FIND_WIDGETS],
-    promise: function() {
-      return new Promise(function(resolve, reject) {
+    promise: function () {
+      return new Promise(function (resolve, reject) {
         superagent.get(`${process.env.API_URL}/widgets`)
         .send(options)
         .end((err, res) => {

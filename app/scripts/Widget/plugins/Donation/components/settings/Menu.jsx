@@ -9,15 +9,15 @@ const Menu = ({ mobilization, widget, location }) => {
   const autofirePath = Paths.autofireMobilizationWidget(mobilization.id, widget.id)
 
   return (
-    <SettingsPageMenuLayout title="Configure o bloco de doação">
+    <SettingsPageMenuLayout title='Configure o bloco de doação'>
       <Tabs>
         <Tab
-          text="Ajustes"
+          text='Ajustes'
           path={donationPath}
           isActive={donationPath === location.pathname}
         />
         <Tab
-          text="Mensagem agradecimento"
+          text='Mensagem agradecimento'
           path={autofirePath}
           isActive={autofirePath === location.pathname}
         />

@@ -19,15 +19,14 @@ import { createRoutes as donationCreateRoutes } from './plugins/Donation'
 
 import Container from '../Dashboard/Container'
 
-
 export default () => (
-  <Route path="/widgets/:widget_id" component={SettingsContainer}>
+  <Route path='/widgets/:widget_id' component={SettingsContainer}>
     {pressureCreateRoutes()}
     {formCreateRoutes()}
     {matchCreateRoutes()}
     {donationCreateRoutes()}
-    <Route path="/autofire" component={AutoFireFormPage} />
-    <Route path="/export" component={ExportWidgetData} />
-    <Route path="/donation" component={DonationWidgetSettings} />
+    <Route path='/autofire' component={AutoFireFormPage} />
+    <Route path='/export' component={ExportWidgetData} />
+    <Route path='/donation' component={DonationWidgetSettings} />
   </Route>
 )

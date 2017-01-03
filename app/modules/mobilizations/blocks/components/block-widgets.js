@@ -19,7 +19,7 @@ const BlockWidgets = ({ widgets, props, onChange }) => {
 BlockWidgets.propTypes = {
   widgets: PropTypes.array,
   props: PropTypes.object,
-  onChange: PropTypes.func,
+  onChange: PropTypes.func
 }
 
 export default BlockWidgets

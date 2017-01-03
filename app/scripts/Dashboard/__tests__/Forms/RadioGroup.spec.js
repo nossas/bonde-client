@@ -4,11 +4,9 @@ import { mount } from 'enzyme'
 
 import { RadioGroup } from '../../Forms'
 
-
 const Radio = (props) => {
-  return <input type="radio" {...props} />
+  return <input type='radio' {...props} />
 }
-
 
 describe('<RadioGroup />', () => {
   let wrapper
@@ -16,8 +14,8 @@ describe('<RadioGroup />', () => {
   beforeEach(() => {
     wrapper = mount(
       <RadioGroup>
-        <Radio value="radio-group1" />
-        <Radio value="radio-group2" />
+        <Radio value='radio-group1' />
+        <Radio value='radio-group2' />
       </RadioGroup>,
       { context: {} }
     )

@@ -5,10 +5,10 @@ import { NewMobilizationHeader } from '../components'
 import { getMobilization } from '../MobilizationSelectors'
 
 class NewMobilizationContainer extends Component {
-  render() {
+  render () {
     const { children, ...rest } = this.props
     return (
-      <div className="flex-auto bg-silver gray">
+      <div className='flex-auto bg-silver gray'>
         <NewMobilizationHeader location={rest.location} />
         {
           React.cloneElement(children, {...rest})

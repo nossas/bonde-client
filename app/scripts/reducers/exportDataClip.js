@@ -5,12 +5,11 @@ import {
   EXPORT_DATACLIP_MOUNT
 } from '../actions/ExportActions'
 
-
 const initialState = {
   loading: false
 }
 
-export default function exportDataClip(state=initialState, action) {
+export default function exportDataClip (state = initialState, action) {
   switch (action.type) {
     case EXPORT_DATACLIP_REQUEST:
       return {

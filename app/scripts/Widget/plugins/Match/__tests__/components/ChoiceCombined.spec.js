@@ -15,7 +15,7 @@ describe('Match/components/ChoiceCombined', () => {
     wrapper = mount(<ChoiceCombined {...props} />)
   })
 
-  /*it('should receive Goal object when upload finish', () => {
+  /* it('should receive Goal object when upload finish', () => {
     let expectedGoal
     wrapper.setProps({
       handleFinishUpload: (goal) => {
@@ -27,5 +27,5 @@ describe('Match/components/ChoiceCombined', () => {
       b: 'ChoiceB',
       imageUrl: ''
     })
-  })*/
+  }) */
 })

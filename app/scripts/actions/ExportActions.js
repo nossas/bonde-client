@@ -29,7 +29,7 @@ export const exportDataClipByEndpoint = (options) => {
           })
 
           const matriz = [
-            data.length && data[0].map(entity => entity.label),
+            data.length && data[0].map(entity => entity.label)
           ].concat(data.map(row => row.map(entity => entity.value)))
 
           forceDownloadFile(makeExcelFile(matriz), options.filename || 'export.xlsx')
@@ -78,7 +78,7 @@ const safariCallback = (dataBase64) => {
 const makeExcelFile = (data, sheetName = 'Sheet 1') => {
   let workbook = { Sheets: {}, Props: {}, SSF: {}, SheetNames: [] }
   let workbookSheet = {}
-  let range = { s: {c:0, r:0}, e: {c:0, r:0} }
+  let range = { s: {c: 0, r: 0}, e: {c: 0, r: 0} }
 
   for (let r = 0; r != data.length; ++r) {
     if (range.e.r < r) range.e.r = r

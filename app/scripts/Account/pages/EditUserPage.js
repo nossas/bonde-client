@@ -17,16 +17,16 @@ import { edit } from '../actions'
 
 class EditUserPage extends Component {
 
-  render() {
+  render () {
     const { editAccount, fields: { avatar, first_name, last_name, email }, ...formProps } = this.props
 
     return (
       <SettingsPageLayout>
-        <SettingsPageMenuLayout title="Minha conta">
+        <SettingsPageMenuLayout title='Minha conta'>
           <Tabs>
             <Tab
-              text="Usuário"
-              isActive={true}
+              text='Usuário'
+              isActive
             />
           </Tabs>
         </SettingsPageMenuLayout>
@@ -34,29 +34,29 @@ class EditUserPage extends Component {
           {/* TODO: Change FormRedux to be transparent by default */}
           <FormRedux
             nosubmit
-            className="transparent"
-            successMessage="Dados atualizados com sucesso."
+            className='transparent'
+            successMessage='Dados atualizados com sucesso.'
             onSubmit={values => editAccount(values)} {...formProps}
           >
-            <FormGroup controlId="avatarId" {...avatar}>
+            <FormGroup controlId='avatarId' {...avatar}>
               <UploadImageField signingUrl={`${process.env.API_URL}/uploads`} />
             </FormGroup>
-            <FormGroup controlId="firstNameId" {...first_name}>
+            <FormGroup controlId='firstNameId' {...first_name}>
               <ControlLabel>Nome</ControlLabel>
-              <FormControl type="text" />
+              <FormControl type='text' />
             </FormGroup>
-            <FormGroup controlId="lastNameId" {...last_name}>
+            <FormGroup controlId='lastNameId' {...last_name}>
               <ControlLabel>Sobrenome</ControlLabel>
-              <FormControl type="text" />
+              <FormControl type='text' />
             </FormGroup>
-            <FormGroup controlId="emailId" {...email}>
+            <FormGroup controlId='emailId' {...email}>
               <ControlLabel>E-mail</ControlLabel>
-              <FormControl type="email" />
+              <FormControl type='email' />
             </FormGroup>
 
-            <FloatLayout position="floatTopRight">
+            <FloatLayout position='floatTopRight'>
               <SubmitButton>Salvar</SubmitButton>
-              <SuccessMessage text="Dados editados com sucesso." />
+              <SuccessMessage text='Dados editados com sucesso.' />
             </FloatLayout>
           </FormRedux>
         </SettingsPageContentLayout>
@@ -80,5 +80,5 @@ export default reduxForm({
   initialValues: {  // gambiarra para ajudar o amigo do backend
     ...state.auth.user,
     avatar: state.auth.user.avatar_url
-  },
+  }
 }), { editAccount: edit })(EditUserPage)

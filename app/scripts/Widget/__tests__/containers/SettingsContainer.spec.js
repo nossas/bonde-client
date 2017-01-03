@@ -6,7 +6,6 @@ import * as Paths from '../../../Paths'
 
 import { Settings } from '../../containers/SettingsContainer'
 
-
 describe('app/scripts/Widget/containers/SettingsContainer', () => {
   let settings
   const props = {

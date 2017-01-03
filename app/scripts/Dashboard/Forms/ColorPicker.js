@@ -4,7 +4,7 @@ import classnames from 'classnames'
 import ColorPickerTheme from '../../../components/ColorPicker'
 
 class ColorPicker extends Component {
-  render() {
+  render () {
     const formGroup = this.context.$formGroup
     const { value, onChange } = formGroup || {}
     const { className, ...props } = this.props
@@ -22,7 +22,7 @@ class ColorPicker extends Component {
 }
 
 ColorPicker.contextTypes = {
-  $formGroup: PropTypes.object,
+  $formGroup: PropTypes.object
 }
 
 ColorPicker.propTypes = {

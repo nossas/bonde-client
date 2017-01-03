@@ -1,10 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import { EditorState } from 'draft-js'
 
-
 export default class HistoryControls extends Component {
 
-  handleUndoClick() {
+  handleUndoClick () {
     const { editorState, setEditorState } = this.props
 
     if (!editorState.getUndoStack().isEmpty()) {
@@ -13,7 +12,7 @@ export default class HistoryControls extends Component {
     }
   }
 
-  handleRedoClick() {
+  handleRedoClick () {
     const { editorState, setEditorState } = this.props
     if (!editorState.getRedoStack().isEmpty()) {
       setEditorState(EditorState.redo(editorState))
@@ -21,17 +20,16 @@ export default class HistoryControls extends Component {
     }
   }
 
-  render() {
-
+  render () {
     const { buttonClassName } = this.props
 
     return (
-      <div className="historyControls">
-        <button type="button" className={buttonClassName} onClick={this.handleUndoClick.bind(this)}>
-          <i className="fa fa-undo regular" />
+      <div className='historyControls'>
+        <button type='button' className={buttonClassName} onClick={this.handleUndoClick.bind(this)}>
+          <i className='fa fa-undo regular' />
         </button>
-        <button type="button" className={buttonClassName} onClick={this.handleRedoClick.bind(this)}>
-          <i className="fa fa-repeat regular" />
+        <button type='button' className={buttonClassName} onClick={this.handleRedoClick.bind(this)}>
+          <i className='fa fa-repeat regular' />
         </button>
       </div>
     )

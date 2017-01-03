@@ -5,11 +5,10 @@ import { expect } from 'chai'
 
 import { OverlayWidget } from '../../components'
 
-
 describe('OverlayWidget', () => {
   let component
   let props = {
-    children: [],
+    children: []
   }
 
   before(() => {
@@ -17,7 +16,6 @@ describe('OverlayWidget', () => {
   })
 
   context('when editable is true', () => {
-
     before(() => {
       component.setProps({ editable: true })
     })
@@ -34,7 +32,7 @@ describe('OverlayWidget', () => {
     })
 
     it('should render children', () => {
-      component = mount(<OverlayWidget><div className="teste">dassa</div></OverlayWidget>)
+      component = mount(<OverlayWidget><div className='teste'>dassa</div></OverlayWidget>)
       expect(component.find('.teste').length).to.equal(1)
     })
 

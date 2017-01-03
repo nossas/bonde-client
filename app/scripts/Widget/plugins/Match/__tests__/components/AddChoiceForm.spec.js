@@ -58,7 +58,7 @@ describe('Match/components/AddChoiceForm', () => {
   })
 
   it('should not add choice when choice exists in list', () => {
-    let expected = undefined
+    let expected
     wrapper.setProps({
       choices: ['Item1'],
       handleAddItem: (choice) => {

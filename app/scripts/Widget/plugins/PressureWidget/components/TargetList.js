@@ -9,19 +9,19 @@ const parseTarget = target => {
 }
 
 const TargetList = ({ targets }) => (
-  <div className="target-list px2 py1">
-    <p className="target-list-label bold">Quem você vai pressionar</p>
-    <div className="target-list-container clearfix">
-      <div className="target-list-wrapper clearfix">
+  <div className='target-list px2 py1'>
+    <p className='target-list-label bold'>Quem você vai pressionar</p>
+    <div className='target-list-container clearfix'>
+      <div className='target-list-wrapper clearfix'>
         {targets.length > 0 && targets.map((obj, index) => {
           const target = parseTarget(obj)
           return !target ? null : (
             <div
               key={`target-item-${index}`}
-              className="target-item left py1 px2 mr1 bg-white rounded"
+              className='target-item left py1 px2 mr1 bg-white rounded'
             >
-              <p className="black h6 m0">
-                <span className="bold flex">{target.name}</span>
+              <p className='black h6 m0'>
+                <span className='bold flex'>{target.name}</span>
                 <span>{target.email}</span>
               </p>
             </div>
@@ -33,11 +33,11 @@ const TargetList = ({ targets }) => (
 )
 
 TargetList.propTypes = {
-  targets: PropTypes.arrayOf(PropTypes.string),
+  targets: PropTypes.arrayOf(PropTypes.string)
 }
 
 TargetList.defaultProps = {
-  targets: [],
+  targets: []
 }
 
 export default TargetList

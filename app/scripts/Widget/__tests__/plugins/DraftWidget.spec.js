@@ -6,7 +6,6 @@
 // import DraftWidget from '../../plugins/DraftWidget/_DraftWidget'
 // import * as WidgetComponents from '../../plugins'
 
-
 // describe('<DraftWidget />', () => {
 //   // Remove draft to simulate render menu
 //   const components = Object.assign({}, WidgetComponents)

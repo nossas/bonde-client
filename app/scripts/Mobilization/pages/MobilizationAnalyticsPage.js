@@ -21,18 +21,18 @@ const MobilizationAnalyticsPage = ({
   editMobilizationAsync,
   ...props
 }) => (
-  <SettingsPageContentLayout className="mobilization-analytics-page darkengray">
-    <p className="h5">
+  <SettingsPageContentLayout className='mobilization-analytics-page darkengray'>
+    <p className='h5'>
       Para acompanhar os resultados da sua mobilização, você precisa configurar
       uma conta no Google Analytics.
     </p>
-    <p className="h5">
+    <p className='h5'>
       Siga os passos abaixo:
     </p>
-    <ol className="h5">
-      <li className="link">
+    <ol className='h5'>
+      <li className='link'>
         Crie uma conta no Google
-        Analytics <a href="http://www.google.com/analytics/" target="_blank">
+        Analytics <a href='http://www.google.com/analytics/' target='_blank'>
           clicando aqui
         </a>
       </li>
@@ -40,18 +40,18 @@ const MobilizationAnalyticsPage = ({
         Obtenha sua ID de acompanhamento no Google Analytics. É um código
         que começa sempre com as letras UA, que você verá após criar sua conta lá.
       </li>
-      <li className="m0">
+      <li className='m0'>
         Copie a ID de acompanhamento e cole no campo abaixo:
         <FormRedux
           {...props}
           onSubmit={values => editMobilizationAsync({ ...mobilization, ...values })}
-          className="transparent"
-          floatButton="Salvar"
-          successMessage="Formulário atualizado com sucesso!"
+          className='transparent'
+          floatButton='Salvar'
+          successMessage='Formulário atualizado com sucesso!'
         >
-          <FormGroup controlId="googleAnalyticsCode" {...googleAnalyticsCode}>
+          <FormGroup controlId='googleAnalyticsCode' {...googleAnalyticsCode}>
             <ControlLabel>ID do Google Analytics</ControlLabel>
-            <FormControl type='text' placeholder="UA-00000000-0" />
+            <FormControl type='text' placeholder='UA-00000000-0' />
           </FormGroup>
         </FormRedux>
       </li>
@@ -89,5 +89,5 @@ const mapStateToProps = (state, ownProps) => {
 export default reduxForm({
   form: 'mobilizationForm',
   fields,
-  validate,
+  validate
 }, mapStateToProps, MobilizationActions)(MobilizationAnalyticsPage)

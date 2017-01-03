@@ -11,7 +11,7 @@ const Menu = ({ location, mobilization_id, widget_id }) => {
   const autofirePath = Paths.autofireMobilizationWidget(mobilization_id, widget_id)
 
   return (
-    <SettingsPageMenuLayout title="Configure seu formulário de pressão">
+    <SettingsPageMenuLayout title='Configure seu formulário de pressão'>
       <Tabs>
         <Tab
           path={formPath}
@@ -38,7 +38,7 @@ Menu.propTypes = {
     pathname: PropTypes.string
   }).isRequired,
   mobilization_id: PropTypes.number.isRequired,
-  widget_id: PropTypes.number.isRequired,
+  widget_id: PropTypes.number.isRequired
 }
 
 export default Menu

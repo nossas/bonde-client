@@ -32,9 +32,9 @@ export const fontsData = {
     name: 'Source Sans Pro',
     weight: ['200', '200italic', '300', '300italic', 'regular', 'italic', '600', '600italic', '700',
       '700italic', '900', '900italic']
-    },
+  },
   'ubuntu': {
-    name: 'Ubuntu' ,
+    name: 'Ubuntu',
     weight: ['300', '300italic', 'regular', 'italic', '500', '500italic', '700', '700italic']
   }
 }

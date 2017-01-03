@@ -19,21 +19,21 @@ const MobilizationCustomDomainPage = ({
   // Actions
   editMobilizationAsync
 }) => (
-  <SettingsPageContentLayout className="darkengray">
-    <p className="h5">
+  <SettingsPageContentLayout className='darkengray'>
+    <p className='h5'>
       Você pode personalizar o endereço da sua mobilização caso já tenha um domínio. Preencha o
       campo abaixo e clique em Salvar.
     </p>
     <FormRedux
       {...rest}
       onSubmit={values => editMobilizationAsync({ ...mobilization, ...values })}
-      className="transparent"
-      floatButton="Salvar"
-      successMessage="Formulário atualizado com sucesso!"
+      className='transparent'
+      floatButton='Salvar'
+      successMessage='Formulário atualizado com sucesso!'
     >
-      <FormGroup controlId="customDomain" {...customDomain}>
+      <FormGroup controlId='customDomain' {...customDomain}>
         <ControlLabel>Domínio personalizado</ControlLabel>
-        <FormControl type="text" placeholder="www.meudominio.com.br" />
+        <FormControl type='text' placeholder='www.meudominio.com.br' />
       </FormGroup>
     </FormRedux>
     <p>
@@ -41,7 +41,7 @@ const MobilizationCustomDomainPage = ({
       registro para que ele seja redirecionado para a página da sua mobilização. Para isso,
       utilize as informações abaixo.
     </p>
-    <table className="col-12 left-align">
+    <table className='col-12 left-align'>
       <tbody>
         <tr>
           <th>Nome</th>

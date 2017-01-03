@@ -3,9 +3,9 @@ import React, { PropTypes } from 'react'
 const ForceDownloadViaAjax = props => {
   const { onClick, title } = props
   return (
-    <div className="DownloadItem" style={{ cursor: 'pointer' }}>
+    <div className='DownloadItem' style={{ cursor: 'pointer' }}>
       <p>
-        <a href="#" onClick={onClick}>{title}</a>
+        <a href='#' onClick={onClick}>{title}</a>
       </p>
     </div>
   )

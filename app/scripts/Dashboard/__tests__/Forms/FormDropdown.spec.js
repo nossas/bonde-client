@@ -4,7 +4,6 @@ import { shallow } from 'enzyme'
 
 import { FormDropdown } from '../../Forms'
 
-
 describe('Dashboard/Forms/FormDropdown', () => {
   let wrapper
 
@@ -44,7 +43,7 @@ describe('Dashboard/Forms/FormDropdown', () => {
     it('should render with one <option> children', () => {
       wrapper = shallow(
         <FormDropdown>
-          <option value="foo">Foo</option>
+          <option value='foo'>Foo</option>
         </FormDropdown>
       )
       expect(wrapper.find('option')).to.have.lengthOf(1)
@@ -52,9 +51,9 @@ describe('Dashboard/Forms/FormDropdown', () => {
     it('should render with multiple <option> childrens', () => {
       wrapper = shallow(
         <FormDropdown>
-          <option value="foo">Foo</option>
-          <option value="bar">Bar</option>
-          <option value="baz">Baz</option>
+          <option value='foo'>Foo</option>
+          <option value='bar'>Bar</option>
+          <option value='baz'>Baz</option>
         </FormDropdown>
       )
       expect(wrapper.find('option')).to.have.lengthOf(3)

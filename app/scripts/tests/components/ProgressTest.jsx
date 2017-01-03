@@ -6,7 +6,7 @@ describe('Progress', () => {
   describe('#render', () => {
     it('should render unselected and bind onClick event', () => {
       const component = TestUtils.renderIntoDocument(
-        <Progress className="foobar" percent={34} />
+        <Progress className='foobar' percent={34} />
       )
 
       expect(

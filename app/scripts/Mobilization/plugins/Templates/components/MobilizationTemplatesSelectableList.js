@@ -7,7 +7,7 @@ import { setSelectedIndex } from '../../../../../components/SelectableList/Selec
 import { FilterableSearchBar } from '../../../../../components/FilterableSearchBar'
 
 class MobilizationTemplatesSelectableList extends Component {
-  render() {
+  render () {
     const {
       list,
       filterableSearchBarList,
@@ -19,17 +19,17 @@ class MobilizationTemplatesSelectableList extends Component {
     const buttonDisabled = !filterableSearchBarList.filter(item => item.id === selectedIndex).length
 
     return (
-      <div className="mobilization-templates-selectable-list">
+      <div className='mobilization-templates-selectable-list'>
         <FilterableSearchBar list={list} />
 
-        <div className="bg-white rounded-bottom" style={{ padding: '1.6rem 2rem' }}>
+        <div className='bg-white rounded-bottom' style={{ padding: '1.6rem 2rem' }}>
           <SelectableList
             list={filterableSearchBarList}
             activeCondition={(item, index) => item.id === selectedIndex}
             onClick={(item, index) => {
               dispatch(setSelectedIndex(item.id === selectedIndex ? undefined : item.id))
             }}
-            emptyListText="Não existe nenhum template com esse nome"
+            emptyListText='Não existe nenhum template com esse nome'
           />
           <button
             disabled={buttonDisabled}

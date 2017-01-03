@@ -22,14 +22,14 @@ import {
   MobilizationListItemMore,
   MobilizationListItemMoreMenu,
   MobilizationListItemMoreMenuAction
-}  from '../components/MobilizationList/MobilizationListItem'
+} from '../components/MobilizationList/MobilizationListItem'
 import {
   MobilizationListItemHeader,
   MobilizationListItemHeaderName,
   MobilizationListItemHeaderCreatedAt,
   MobilizationListItemHeaderUsers,
   MobilizationListItemHeaderFundRaising
-}  from '../components/MobilizationList/MobilizationListItemHeader'
+} from '../components/MobilizationList/MobilizationListItemHeader'
 import {
   setCurrentMobilizationId,
   setMobilizationMoreMenuActiveIndex
@@ -37,13 +37,13 @@ import {
 
 export class MobilizationListPage extends Component {
 
-  componentDidMount() {
+  componentDidMount () {
     const { setCurrentMobilizationId, setMobilizationMoreMenuActiveIndex } = this.props
     setCurrentMobilizationId(null)
     setMobilizationMoreMenuActiveIndex(undefined)
   }
 
-  render() {
+  render () {
     const {
       mobilization: { data: mobilizations, loading, loaded },
       setMobilizationMoreMenuActiveIndex,
@@ -52,11 +52,11 @@ export class MobilizationListPage extends Component {
 
     return (
       <SettingsPageLayout>
-        <SettingsPageMenuLayout title="Suas Mobilizações">
+        <SettingsPageMenuLayout title='Suas Mobilizações'>
           <MobilizationsHeader {...this.props} />
         </SettingsPageMenuLayout>
 
-        <SettingsPageContentLayout containerClassName="lg-col-12">
+        <SettingsPageContentLayout containerClassName='lg-col-12'>
           {(
             loading && !loaded ? <Loading /> :
             <MobilizationList>
@@ -73,12 +73,12 @@ export class MobilizationListPage extends Component {
                   className={classnames({ 'z2': mobilizationMoreMenuActiveIndex === index })}
                 >
                   <Link
-                    className="gray20"
+                    className='gray20'
                     to={Paths.editMobilization(mobilization.id)}
                   >
                     <MobilizationListItemAvatar {...mobilization} />
 
-                    <div className="list-item-table-container overflow-hidden">
+                    <div className='list-item-table-container overflow-hidden'>
                       <MobilizationListItemName {...mobilization} />
                       <MobilizationListItemCreatedAt {...mobilization} />
                       <MobilizationListItemUsers {...mobilization} />
@@ -90,16 +90,16 @@ export class MobilizationListPage extends Component {
                       active={mobilizationMoreMenuActiveIndex === index}
                     >
                       <MobilizationListItemMoreMenuAction
-                        componentClass="a"
-                        target="_blank"
-                        text="Abrir página"
+                        componentClass='a'
+                        target='_blank'
+                        text='Abrir página'
                         path={Paths.mobilization(mobilization)}
-                        icon="external-link"
+                        icon='external-link'
                       />
                       <MobilizationListItemMoreMenuAction
-                        text="Criar template"
+                        text='Criar template'
                         path={Paths.mobilizationTemplatesCreate(mobilization)}
-                        icon="star"
+                        icon='star'
                       />
                     </MobilizationListItemMoreMenu>
                   </MobilizationListItemMore>
@@ -111,7 +111,7 @@ export class MobilizationListPage extends Component {
         {
           typeof mobilizationMoreMenuActiveIndex !== 'undefined' && (
             <div
-              className="mobilization-list-more-menu-cancel-overlay z1"
+              className='mobilization-list-more-menu-cancel-overlay z1'
               style={{ position: 'fixed', top: 0, right: 0, bottom: 0, left: 0 }}
               onClick={() => { setMobilizationMoreMenuActiveIndex(undefined) }}
             />
@@ -125,7 +125,7 @@ export class MobilizationListPage extends Component {
 MobilizationListPage.propTypes = {
   mobilization: PropTypes.object.isRequired,
   setMobilizationMoreMenuActiveIndex: PropTypes.func,
-  setCurrentMobilizationId: PropTypes.func,
+  setCurrentMobilizationId: PropTypes.func
 }
 
 const mapStateToProps = state => ({

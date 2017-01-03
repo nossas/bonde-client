@@ -1,14 +1,12 @@
 import React, { PropTypes } from 'react'
 
-
 const Tag = ({ value, onClick, onRemove }) => {
-
   const clickable = onClick && typeof onClick === 'function'
   const removable = onRemove && typeof onRemove === 'function'
 
   return (
     <span
-      className="bg-white mr1 mt1 p1 darkengray"
+      className='bg-white mr1 mt1 p1 darkengray'
       style={{ cursor: clickable ? 'pointer' : null }}
     >
       <span
@@ -17,7 +15,7 @@ const Tag = ({ value, onClick, onRemove }) => {
       >
         {value}
       </span>
-      {(removable ? <i className="fa fa-close" onClick={() => onRemove(value)}></i> : null)}
+      {(removable ? <i className='fa fa-close' onClick={() => onRemove(value)} /> : null)}
     </span>
   )
 }

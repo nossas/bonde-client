@@ -25,7 +25,7 @@ function propagateToGlobal (window) {
   }
 }
 
-function noop() { return null }
-require.extensions['.scss'] = noop;
-require.extensions['.png'] = noop;
-require.extensions['.svg'] = noop;
+function noop () { return null }
+require.extensions['.scss'] = noop
+require.extensions['.png'] = noop
+require.extensions['.svg'] = noop

@@ -47,46 +47,46 @@ const FormPage = ({
         <FormRedux
           {...props}
           onSubmit={handleSubmit}
-          className="transparent"
-          floatButton="Salvar"
-          successMessage="Formulário de pressão configurado com sucesso!"
+          className='transparent'
+          floatButton='Salvar'
+          successMessage='Formulário de pressão configurado com sucesso!'
         >
-          <FormGroup controlId="title-text-id" {...title_text}>
+          <FormGroup controlId='title-text-id' {...title_text}>
             <ControlLabel>Título do formulário</ControlLabel>
             <FormControl
-              type="text"
-              placeholder="Envie um e-mail para quem pode tomar essa decisão"
+              type='text'
+              placeholder='Envie um e-mail para quem pode tomar essa decisão'
             />
           </FormGroup>
-          <FormGroup controlId="button-text-id" {...button_text}>
+          <FormGroup controlId='button-text-id' {...button_text}>
             <ControlLabel>Texto do botão</ControlLabel>
-            <FormControl type="text" placeholder="Enviar e-mail" />
+            <FormControl type='text' placeholder='Enviar e-mail' />
           </FormGroup>
-          <FormGroup controlId="main-color-id" {...main_color}>
+          <FormGroup controlId='main-color-id' {...main_color}>
             <ControlLabel>Cor do formulário</ControlLabel>
             <ColorPicker
               dispatch={dispatch}
               theme={colorScheme.replace('-scheme', '')}
             />
           </FormGroup>
-          <FormGroup controlId="show-counter-id" {...show_counter}>
+          <FormGroup controlId='show-counter-id' {...show_counter}>
             <ControlLabel>Mostrar contador de pressão</ControlLabel>
             <RadioGroup>
-              <Radio value="true">Sim</Radio>
-              <Radio value="false">Não</Radio>
+              <Radio value='true'>Sim</Radio>
+              <Radio value='false'>Não</Radio>
             </RadioGroup>
           </FormGroup>
           {(show_counter.value === 'true' ? (
-            <FormGroup controlId="count-text-id" {...count_text}>
+            <FormGroup controlId='count-text-id' {...count_text}>
               <ControlLabel>Texto do contador</ControlLabel>
-              <FormControl type="text" placeholder="pressões feitas" />
+              <FormControl type='text' placeholder='pressões feitas' />
             </FormGroup>
           ) : null)}
-          <FormGroup controlId="show-city-field-id" {...show_city}>
+          <FormGroup controlId='show-city-field-id' {...show_city}>
             <ControlLabel>Mostrar campo de cidade</ControlLabel>
             <RadioGroup>
-              <Radio value="city-true">Sim</Radio>
-              <Radio value="city-false">Não</Radio>
+              <Radio value='city-true'>Sim</Radio>
+              <Radio value='city-false'>Não</Radio>
             </RadioGroup>
           </FormGroup>
         </FormRedux>
@@ -118,7 +118,7 @@ const fields = [
 
 const validate = values => {
   const errors = {}
-  if (!values.title_text || values.title_text === "") {
+  if (!values.title_text || values.title_text === '') {
     errors.title_text = 'Insira um título para o formulário'
   }
   if (!values.button_text) {

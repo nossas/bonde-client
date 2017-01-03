@@ -6,22 +6,21 @@ import { Loading } from '../../Dashboard/components'
 
 import { fetch } from '../MobilizationActions'
 
-
 class MobilizationContainer extends Component {
 
-  componentDidMount() {
+  componentDidMount () {
     const { fetch, community: { currentId }, mobilization: { loaded } } = this.props
     if (!loaded && currentId) fetch(currentId)
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     const { fetch, mobilization: { communityId }, community: { currentId } } = nextProps
     if (communityId !== currentId) {
       fetch(currentId)
     }
   }
 
-  render() {
+  render () {
     const { children, ...props } = this.props
     const { mobilization: { loading } } = this.props
 

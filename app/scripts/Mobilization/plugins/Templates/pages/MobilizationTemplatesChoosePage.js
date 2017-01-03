@@ -8,25 +8,25 @@ import {
 import { NewMobilizationHeader } from '../../../components'
 
 const MobilizationTemplatesChoosePage = ({ mobilization, location, mobilizationTemplates }) => (
-  <div className="flex-auto bg-silver gray">
+  <div className='flex-auto bg-silver gray'>
     <NewMobilizationHeader location={location} />
-    <div className="p3 lg-col-5 mx-auto">
-      <h3 className="h1 mt0 mb3 center">Como você deseja começar?</h3>
+    <div className='p3 lg-col-5 mx-auto'>
+      <h3 className='h1 mt0 mb3 center'>Como você deseja começar?</h3>
       <BrowsableList>
         <BrowsableListItem
-          leftIcon="plus-square-o"
-          title="Criar mobilização do zero"
+          leftIcon='plus-square-o'
+          title='Criar mobilização do zero'
           path={Paths.editMobilization(mobilization.id)}
         />
         <BrowsableListItem
-          leftIcon="columns"
-          title="Meus templates"
+          leftIcon='columns'
+          title='Meus templates'
           subtitle={mobilizationTemplates.custom.length}
           path={Paths.mobilizationTemplatesChooseCustomList(mobilization)}
         />
         <BrowsableListItem
-          leftIcon="globe"
-          title="Templates globais"
+          leftIcon='globe'
+          title='Templates globais'
           subtitle={mobilizationTemplates.global.length}
           path={Paths.mobilizationTemplatesChooseGlobalList(mobilization)}
         />
@@ -38,7 +38,7 @@ const MobilizationTemplatesChoosePage = ({ mobilization, location, mobilizationT
 MobilizationTemplatesChoosePage.propTypes = {
   mobilization: PropTypes.object,
   location: PropTypes.object,
-  mobilizationTemplates: PropTypes.object,
+  mobilizationTemplates: PropTypes.object
 }
 
 export default MobilizationTemplatesChoosePage

@@ -7,8 +7,8 @@ import { NewMobilizationHeaderSteps } from './'
 import './new-mobilization-header.scss'
 
 const NewMobilizationHeader = ({ location }) => (
-  <div className="new-mobilization-header bg-white px5 pt3 pb1 clearfix">
-    <h1 className="h1 mt0">Nova mobilização</h1>
+  <div className='new-mobilization-header bg-white px5 pt3 pb1 clearfix'>
+    <h1 className='h1 mt0'>Nova mobilização</h1>
     <NewMobilizationHeaderSteps
       steps={[
         { name: 'Objetivo', active: location && location.pathname === Paths.newMobilization() },

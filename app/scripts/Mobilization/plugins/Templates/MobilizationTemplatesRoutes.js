@@ -6,7 +6,7 @@ import {
   MobilizationTemplatesListPage as ListPage,
   MobilizationTemplatesChoosePage as ChoosePage,
   MobilizationTemplatesChooseCustomListPage as ChooseCustomListPage,
-  MobilizationTemplatesChooseGlobalListPage as ChooseGlobalListPage,
+  MobilizationTemplatesChooseGlobalListPage as ChooseGlobalListPage
 } from './pages'
 
 import { MobilizationTemplatesContainer } from './containers'

@@ -12,9 +12,7 @@ const initialState = {
 }
 
 describe('MobilizationsReducers', () => {
-
   describe('#asyncFilter', () => {
-
     it('should loading request', () => {
       const action = { type: t.REQUEST_FILTER }
       const nextState = reducer(undefined, action)
@@ -40,7 +38,6 @@ describe('MobilizationsReducers', () => {
   })
 
   describe('#asyncFetch', () => {
-
     it('shoud loading request with relationshipId', () => {
       const relationshipId = 1
       const action = { type: t.REQUEST_FETCH, relationshipId }
@@ -68,7 +65,6 @@ describe('MobilizationsReducers', () => {
   })
 
   describe('#select', () => {
-
     it('should set currentId in mobilizations store', () => {
       const currentId = 1
       const action = { type: t.SELECT, currentId }
@@ -79,5 +75,4 @@ describe('MobilizationsReducers', () => {
       })
     })
   })
-
 })

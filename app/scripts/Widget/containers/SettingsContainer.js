@@ -15,7 +15,7 @@ Settings.propTypes = {
   children: PropTypes.object,
   mobilization: PropTypes.object.isRequired,
   widget: PropTypes.object.isRequired,
-  credentials: PropTypes.object.isRequired,
+  credentials: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state, ownProps) => ({

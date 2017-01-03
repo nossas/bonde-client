@@ -9,5 +9,5 @@ export default {
   constants,
   utils,
   selectors,
-  reducers,
+  reducers
 }

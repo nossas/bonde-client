@@ -6,18 +6,18 @@ import { ControlButtons } from './'
 import './scss/form-redux.scss'
 
 class FormRedux extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = { submitted: false }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     if (this.props.submitting && !nextProps.submitting && !nextProps.submitFailed) {
       this.setState({ submitted: true })
     }
   }
 
-  getChildContext() {
+  getChildContext () {
     const { inline, floatButton, successMessage, ...rest } = this.props
     return {
       $formRedux: {
@@ -30,7 +30,7 @@ class FormRedux extends Component {
     }
   }
 
-  render() {
+  render () {
     const {
       children,
       onSubmit,

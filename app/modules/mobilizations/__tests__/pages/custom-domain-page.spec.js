@@ -5,7 +5,6 @@ import { mount } from 'enzyme'
 import { CustomDomainPage } from '../../pages/custom-domain-page'
 import * as arrayUtil from '../../../../util/array'
 
-
 describe('<CustomDomainPage />', () => {
   let wrapper
   const props = {

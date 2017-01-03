@@ -3,19 +3,18 @@ import React, { Component, PropTypes } from 'react'
 import NewEditorContentWidget from './NewEditorContentWidget'
 import OldEditorContentWidget from './OldEditorContentWidget'
 
-
 export default class ContentWidget extends Component {
 
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = { forceRenderNewEditor: false }
   }
 
-  handleForceRender() {
+  handleForceRender () {
     this.setState({ forceRenderNewEditor: true })
   }
 
-  render() {
+  render () {
     const { widget: { settings } } = this.props
 
     try {
@@ -35,7 +34,6 @@ export default class ContentWidget extends Component {
         )
       }
     }
-
   }
 }
 

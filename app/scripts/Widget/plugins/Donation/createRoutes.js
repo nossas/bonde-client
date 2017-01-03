@@ -3,5 +3,4 @@ import { Route } from 'react-router'
 
 import { DonationPage } from './settings'
 
-
-export default () => <Route path="/donation" component={DonationPage} />
+export default () => <Route path='/donation' component={DonationPage} />

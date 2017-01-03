@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import classnames from 'classnames'
 
 class Radio extends Component {
-  render() {
+  render () {
     const { children, alignment, className, checked, value, onChange } = this.props
     const id = `radio-${value}-id`
     const current = {
@@ -22,9 +22,9 @@ class Radio extends Component {
         htmlFor={id}
       >
         <input
-          type="radio"
+          type='radio'
           id={id}
-          className="mr1"
+          className='mr1'
           value={value}
           onChange={onChange}
           checked={checked === value}
@@ -37,7 +37,7 @@ class Radio extends Component {
 
 Radio.propTypes = {
   checked: PropTypes.any,
-  alignment: PropTypes.oneOf(['horizontal', 'vertical']),
+  alignment: PropTypes.oneOf(['horizontal', 'vertical'])
 }
 
 Radio.defaultProps = {

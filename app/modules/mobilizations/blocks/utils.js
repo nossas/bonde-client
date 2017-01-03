@@ -35,6 +35,6 @@ export const generateStyle = block => {
 
   return {
     backgroundImage: backgroundImage ? `url(${backgroundImage})` : null,
-    backgroundColor,
+    backgroundColor
   }
 }

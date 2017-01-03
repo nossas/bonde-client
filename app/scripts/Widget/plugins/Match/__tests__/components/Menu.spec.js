@@ -18,7 +18,7 @@ describe('Match/components/Menu', () => {
   const GOALS_TAB = 1
 
   beforeEach(() => {
-    wrapper = shallow(<Menu { ...props } />)
+    wrapper = shallow(<Menu {...props} />)
   })
 
   describe('#render', () => {
