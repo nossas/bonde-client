@@ -25,7 +25,7 @@ const app = new Express()
 app.use(responseTime())
 app.use(compression())
 app.use(helmet({
-	frameguard: false
+  frameguard: false
 }))
 app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')))
 app.use(require('serve-static')(path.join(__dirname, '..', 'static')))
@@ -35,16 +35,16 @@ app.use('/auth', proxy({
   pathRewrite: { '^/auth': '' }
 }))
 
-app.get(/\/users|\/pt\/users|\/membros/, function(req, res) {
+app.get(/\/users|\/pt\/users|\/membros/, function (req, res) {
   res.redirect('/')
 })
 
-app.get('/robots.txt', function(req, res) {
+app.get('/robots.txt', function (req, res) {
   res.send('User-Agent: * \n' +
     'Allow: /')
 })
 
-if ( (app.get('env') === 'production') || (app.get('env') === 'staging') ) {
+if ((app.get('env') === 'production') || (app.get('env') === 'staging')) {
   // The error handler must be before any other error middleware
   app.use(raven.middleware.express.errorHandler(process.env.SENTRY_DSN))
 }
@@ -70,8 +70,7 @@ app.use((req, res, next) => {
   if (!isAppSubdomain && !__DISABLE_SSR__ && !www && !blacklist) {
     res.redirect(301, `${req.protocol}://www.${host}`)
     return
-  }
-  else if (!isAppSubdomain && !__DISABLE_SSR__ && www && blacklist) {
+  } else if (!isAppSubdomain && !__DISABLE_SSR__ && www && blacklist) {
     res.redirect(301, `${req.protocol}://${www[1]}`)
     return
   }
@@ -90,7 +89,7 @@ app.use((req, res) => {
   const location = new Location(req.path, req.query)
   if (__DISABLE_SSR__) {
     res.send('<!doctype html>\n' +
-      ReactDOMServer.renderToString(<Html assets={webpackIsomorphicTools.assets()} component={<div/>} store={store}/>))
+      ReactDOMServer.renderToString(<Html assets={webpackIsomorphicTools.assets()} component={<div />} store={store} />))
   } else {
     universalRouter(location, undefined, store, req.headers.host)
       .then(({component, transition, isRedirect}) => {
@@ -99,7 +98,7 @@ app.use((req, res) => {
           return
         }
         res.send('<!doctype html>\n' +
-          ReactDOMServer.renderToString(<Html assets={webpackIsomorphicTools.assets()} component={component} store={store}/>))
+          ReactDOMServer.renderToString(<Html assets={webpackIsomorphicTools.assets()} component={component} store={store} />))
       })
       .catch((error) => {
         if (error.redirect) {
