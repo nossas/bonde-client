@@ -32,7 +32,7 @@ module.exports = {
     return [autoprefixer, inlinesvg];
   },
   sassLoader: {
-    includePaths: [path.join(__dirname, 'scss')]
+    includePaths: [path.join(__dirname, '.scss')]
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -58,7 +58,7 @@ module.exports = {
       }
     }),
     new webpack.NoErrorsPlugin(),
-    new ExtractTextPlugin('styles.css', {
+    new ExtractTextPlugin('[name].css', {
       allChunks: true
     })
   ],

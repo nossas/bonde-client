@@ -152,6 +152,7 @@ export const createServer = (config) => {
                     padding: 0;
                   }
                 </style>
+                <link href="/main.css" media="all" rel="stylesheet" />
                 <style data-aphrodite>${data.css.content}</style>
               </head>
               <body>

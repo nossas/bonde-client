@@ -60,7 +60,7 @@ module.exports = {
     return [autoprefixer, inlinesvg];
   },
   sassLoader: {
-    includePaths: [path.join(__dirname, 'scss')]
+    includePaths: [path.join(__dirname, '.scss')]
   },
   standard: {
     // config options to be passed through to standard e.g.
@@ -73,7 +73,7 @@ module.exports = {
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js', 2),
-    new ExtractTextPlugin('styles.css', {
+    new ExtractTextPlugin('[name].css', {
       allChunks: true
     }),
     new webpack.NoErrorsPlugin()
