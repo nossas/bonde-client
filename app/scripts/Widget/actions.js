@@ -59,10 +59,10 @@ export const fillWidget = (widget_id, fill) => dispatch => {
     })
 }
 
-export function fetchWidgets(params) {
+export function fetchWidgets (params) {
   return dispatch => {
     $.ajax(`${process.env.API_URL}/mobilizations/${params.mobilization_id}/widgets`, {
-      success: function(data, textStatus, jqXHR){
+      success: function (data, textStatus, jqXHR) {
         dispatch({
           type: FETCH_WIDGETS,
           widgets: data
@@ -78,7 +78,7 @@ const addMatch = (params) => {
       method: 'post',
       data: { match: params.match },
       headers: params.credentials,
-      success: function(data, textStatus, jqXHR){
+      success: function (data, textStatus, jqXHR) {
         dispatch({
           type: ADD_MATCH,
           match: data

@@ -1,6 +1,5 @@
 import * as t from '../../action-types'
 
-
 export default query => (dispatch, getState, axios) => {
   const { auth: { credentials } } = getState()
 
@@ -9,7 +8,6 @@ export default query => (dispatch, getState, axios) => {
   return axios
     .get('/mobilizations', query, { headers: credentials })
     .then(({ status, data }) => {
-
       if (status === 200) {
         dispatch({ type: t.SUCCESS_FILTER, data })
         return Promise.resolve()

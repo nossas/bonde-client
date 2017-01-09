@@ -4,13 +4,11 @@ import { mount } from 'enzyme'
 
 import { HorizontalLayout } from '../../Grids'
 
-
 const Dummy = (props) => {
   return (
     <span {...props}>Dummy</span>
   )
 }
-
 
 describe('<HorizontalLayout />', () => {
   let wrapper

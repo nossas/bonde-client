@@ -2,9 +2,7 @@ import React from 'react'
 import { expect } from 'chai'
 import { mount } from 'enzyme'
 
-
 import { FormFooter } from '../../components'
-
 
 describe('<FormFooter />', () => {
   let component

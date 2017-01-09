@@ -3,7 +3,7 @@ import superagent from 'superagent'
 import {
   SHOW_MATCH_REQUEST,
   SHOW_MATCH_SUCCESS,
-  SHOW_MATCH_FAILURE,
+  SHOW_MATCH_FAILURE
 } from '../../../constants/ActionTypes'
 import {
   REQUEST_ADD_ACTIVIST_MATCH,
@@ -14,7 +14,7 @@ import {
 export const initialState = { data: [] }
 export const initialAction = { type: '' }
 
-export default function matches(state = initialState, action = initialAction) {
+export default function matches (state = initialState, action = initialAction) {
   switch (action.type) {
     case SHOW_MATCH_REQUEST: return { ...state }
     case SHOW_MATCH_SUCCESS: return { ...state, data: action.result }

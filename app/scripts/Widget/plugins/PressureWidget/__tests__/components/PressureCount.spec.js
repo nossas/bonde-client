@@ -4,7 +4,6 @@ import { mount } from 'enzyme'
 
 import { PressureCount } from '../../components'
 
-
 describe('<PressureCount />', () => {
   let componet
 

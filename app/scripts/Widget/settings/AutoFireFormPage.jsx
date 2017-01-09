@@ -45,7 +45,7 @@ const AutoFireFormPage = (props) => {
 
   return (
     widgets.data.length === 0 ? <Loading /> :
-    <div className="flex-auto flex flex-column">
+    <div className='flex-auto flex flex-column'>
       {(widget.kind === 'donation'
         ? <DonationWidgetMenu {...props} widget={widget} />
         : widget.kind === 'pressure'
@@ -55,37 +55,37 @@ const AutoFireFormPage = (props) => {
       <SettingsPageContentLayout>
         <FormRedux
           {...rest}
-          className="transparent"
-          floatButton="Salvar"
+          className='transparent'
+          floatButton='Salvar'
           onSubmit={handleSubmit}
-          successMessage="Mensagem de agradecimento configurada com sucesso!"
+          successMessage='Mensagem de agradecimento configurada com sucesso!'
         >
-          <FormGroup controlId="senderName" {...senderName}>
+          <FormGroup controlId='senderName' {...senderName}>
             <ControlLabel>Nome do remetente</ControlLabel>
             <FormControl
-              type="text"
-              placeholder="Defina o nome que irá aparecer na mensagem enviada."
+              type='text'
+              placeholder='Defina o nome que irá aparecer na mensagem enviada.'
             />
           </FormGroup>
-          <FormGroup controlId="senderEmail" {...senderEmail}>
+          <FormGroup controlId='senderEmail' {...senderEmail}>
             <ControlLabel>E-mail remetente</ControlLabel>
             <FormControl
-              type="text"
-              placeholder="Defina o e-mail que irá aparecer na mensagem enviada."
+              type='text'
+              placeholder='Defina o e-mail que irá aparecer na mensagem enviada.'
             />
           </FormGroup>
-          <FormGroup controlId="emailSubject" {...emailSubject}>
+          <FormGroup controlId='emailSubject' {...emailSubject}>
             <ControlLabel>Assunto do e-mail</ControlLabel>
             <FormControl
-              type="text"
-              placeholder="Defina o assunto que irá aparecer na mensagem enviada."
+              type='text'
+              placeholder='Defina o assunto que irá aparecer na mensagem enviada.'
             />
           </FormGroup>
-          <FormGroup controlId="emailText" {...emailText}>
+          <FormGroup controlId='emailText' {...emailText}>
             <ControlLabel>Email de agradecimento</ControlLabel>
             <FormControl
-              componentClass="textarea"
-              rows="6"
+              componentClass='textarea'
+              rows='6'
               placeholder={'Ex: Obrigado por apostar na força da ação coletiva em rede. Sua'
                 + ' participação é muito importante e, agora, precisamos da sua ajuda para que mais'
                 + ' gente colabore com esta mobilização. Compartilhe nas suas redes clicando em um'
@@ -93,7 +93,7 @@ const AutoFireFormPage = (props) => {
             />
           </FormGroup>
         </FormRedux>
-        </SettingsPageContentLayout>
+      </SettingsPageContentLayout>
     </div>
   )
 }

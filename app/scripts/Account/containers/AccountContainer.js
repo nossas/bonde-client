@@ -3,10 +3,9 @@ import { connect } from 'react-redux'
 
 import { SidebarContainer } from '../../Dashboard/containers'
 
-
 class AccountContainer extends Component {
 
-  render() {
+  render () {
     const { children, ...sidebarProps } = this.props
     return <SidebarContainer {...sidebarProps}>{children}</SidebarContainer>
   }

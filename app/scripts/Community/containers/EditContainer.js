@@ -5,11 +5,9 @@ import { SettingsPageLayout, SettingsPageMenuLayout, SettingsPageContentLayout }
 
 import * as paths from '../paths'
 
-
 class EditContainer extends Component {
 
-  render() {
-
+  render () {
     const { children, community, location: { pathname } } = this.props
 
     const editPath = paths.edit('info')
@@ -18,11 +16,11 @@ class EditContainer extends Component {
 
     return (
       <SettingsPageLayout>
-        <SettingsPageMenuLayout title="Configurações da comunidade">
+        <SettingsPageMenuLayout title='Configurações da comunidade'>
           <Tabs>
-            <Tab text="Informações" path={editPath} isActive={editPath === pathname} />
-            <Tab text="Mailchimp" path={mailchimpPath} isActive={mailchimpPath === pathname} />
-            <Tab text="Recebedor" path={recipientPath} isActive={recipientPath === pathname} />
+            <Tab text='Informações' path={editPath} isActive={editPath === pathname} />
+            <Tab text='Mailchimp' path={mailchimpPath} isActive={mailchimpPath === pathname} />
+            <Tab text='Recebedor' path={recipientPath} isActive={recipientPath === pathname} />
           </Tabs>
         </SettingsPageMenuLayout>
         <SettingsPageContentLayout>
@@ -34,7 +32,7 @@ class EditContainer extends Component {
 }
 
 const mapStateToProps = ({ community }) => ({
-  community: community.data.filter(c => c.id === community.currentId)[0],
+  community: community.data.filter(c => c.id === community.currentId)[0]
 })
 
 export default connect(mapStateToProps)(EditContainer)

@@ -2,13 +2,11 @@ import React, { Component, PropTypes } from 'react'
 import classnames from 'classnames'
 import styleWholeSelectedBlocksModifier from './styleWholeSelectedBlocksModifier'
 
-
 const alignments = ['left', 'center', 'right']
-
 
 export default class AlignmentControls extends Component {
 
-  handleToggleAlign(alignment) {
+  handleToggleAlign (alignment) {
     const { editorState, setEditorState } = this.props
     const editorStateWithAlignment = styleWholeSelectedBlocksModifier(
       editorState,
@@ -20,7 +18,7 @@ export default class AlignmentControls extends Component {
     this.props.focusEditor()
   }
 
-  hasAlignmentStyle(alignment) {
+  hasAlignmentStyle (alignment) {
     const { editorState } = this.props
     const selectionState = editorState.getSelection()
 
@@ -35,34 +33,33 @@ export default class AlignmentControls extends Component {
     return alignmentStyle === alignment ? 'active' : null
   }
 
-  render() {
+  render () {
     const { buttonClassName } = this.props
 
     return (
-      <div className="alignmentControls">
+      <div className='alignmentControls'>
         <button
           className={classnames(buttonClassName, this.hasAlignmentStyle('left'))}
           onClick={() => this.handleToggleAlign('left')}
         >
-          <i className="fa fa-align-left" />
+          <i className='fa fa-align-left' />
         </button>
         <button
           className={classnames(buttonClassName, this.hasAlignmentStyle('center'))}
           onClick={() => this.handleToggleAlign('center')}
         >
-          <i className="fa fa-align-center" />
+          <i className='fa fa-align-center' />
         </button>
         <button
           className={classnames(buttonClassName, this.hasAlignmentStyle('right'))}
           onClick={() => this.handleToggleAlign('right')}
         >
-          <i className="fa fa-align-right" />
+          <i className='fa fa-align-right' />
         </button>
       </div>
     )
   }
 }
-
 
 AlignmentControls.propTypes = {
   editorState: PropTypes.object.isRequired,

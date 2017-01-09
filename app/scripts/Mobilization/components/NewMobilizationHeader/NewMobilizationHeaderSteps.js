@@ -6,7 +6,7 @@ import { sanitize } from '../../../../util/string-helper'
 import './new-mobilization-header-steps.scss'
 
 const NewMobilizationHeaderSteps = ({ steps }) => (
-  <ul className="list-reset m0 lightgray block">
+  <ul className='list-reset m0 lightgray block'>
     {steps.map((step, index) => (
       <li
         key={`${sanitize(step.name)}-${index}`}

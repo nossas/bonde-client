@@ -15,12 +15,10 @@ import { createRoutes as accountCreateRoutes, requireLoginWrapper } from '../../
 import { createRoutes as communityCreateRoutes } from '../../app/scripts/Community'
 import { createRoutes as mobilizationCreateRoutes } from '../../app/scripts/Mobilization'
 
-
-export default function(store, host) {
+export default function (store, host) {
   const isAppSubdomain = (host === `app.${process.env.APP_DOMAIN}`)
 
   if (isAppSubdomain) {
-
     const requiredLogin = requireLoginWrapper(store, Paths.login())
 
     return (
@@ -28,16 +26,16 @@ export default function(store, host) {
         {accountCreateRoutes(requiredLogin, '/community')}
         {mobilizationCreateRoutes(requiredLogin)}
         {communityCreateRoutes(requiredLogin)}
-        <Route path="*" component={NotFound} status={404} />
+        <Route path='*' component={NotFound} status={404} />
       </Route>
     )
   }
 
   return (
     <Route component={Application}>
-      <Route path="/" component={CustomDomainPage} />
+      <Route path='/' component={CustomDomainPage} />
       {matchCreateExternalRoutes({ prefix: '/widgets/:widget_id' })}
-      <Route path="*" component={NotFound} status={404} />
+      <Route path='*' component={NotFound} status={404} />
     </Route>
   )
 }

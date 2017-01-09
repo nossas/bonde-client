@@ -15,12 +15,12 @@ describe('Match/containers/ShareContainer', () => {
       first_choice: 'Foo Choice',
       second_choice: 'Bar Choice',
       goal_image: 'foo-bar-image.jpg',
-      widget_title: "Foo Bar Widget Title!"
+      widget_title: 'Foo Bar Widget Title!'
     }
   }
   let props = { matches, params }
   let store = {
-    getState() { return matches },
+    getState () { return matches },
     subscribe: sinon.spy(),
     dispatch: sinon.spy()
   }
@@ -28,7 +28,7 @@ describe('Match/containers/ShareContainer', () => {
 
   before(() => {
     sandbox = sinon.sandbox.create()
-    wrapper = shallow(<ShareContainer { ...props } />)
+    wrapper = shallow(<ShareContainer {...props} />)
   })
 
   afterEach(() => {

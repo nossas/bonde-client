@@ -17,7 +17,7 @@ describe('Match/components/Choices', () => {
 
   before(() => {
     sandbox = sinon.sandbox.create()
-    wrapper = mount(<Choices { ...props } />)
+    wrapper = mount(<Choices {...props} />)
   })
 
   afterEach(() => {
@@ -68,7 +68,7 @@ describe('Match/components/Choices', () => {
   it('selected option should be as expected', () => {
     let selectedChoice
     wrapper.setProps({
-      onChange: (selected) => selectedChoice = selected.target.value,
+      onChange: (selected) => selectedChoice = selected.target.value
     })
     const target = { value: props.options[1] }
     wrapper.find('select').simulate('change', { target })

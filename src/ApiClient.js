@@ -8,9 +8,9 @@ import config from './config'
  * Remove it at your own risk.
  */
 class ApiClient_ {
-  constructor(req) {
-    ['get', 'post', 'put', 'patch', 'del'].
-      forEach((method) => {
+  constructor (req) {
+    ['get', 'post', 'put', 'patch', 'del']
+      .forEach((method) => {
         this[method] = (path, options) => {
           return new Promise((resolve, reject) => {
             const request = superagent[method](this.formatUrl(path))
@@ -38,7 +38,7 @@ class ApiClient_ {
   }
 
   /* This was originally a standalone function outside of this class, but babel kept breaking, and this fixes it  */
-  formatUrl(path) {
+  formatUrl (path) {
     const adjustedPath = path[0] !== '/' ? '/' + path : path
     if (__SERVER__) {
       // Prepend host and port of the API server to the path.

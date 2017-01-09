@@ -4,7 +4,6 @@ import { mount } from 'enzyme'
 
 import { PressureForm, PressureCount } from '../../components'
 
-
 describe('app/scripts/Widget/plugins/PressureWidget/components/PressureForm', () => {
   let component
   const widget = { settings: {} }
@@ -25,7 +24,7 @@ describe('app/scripts/Widget/plugins/PressureWidget/components/PressureForm', ()
   })
 
   it('should return onSubmit values of state when clicked button', () => {
-    let returned = undefined
+    let returned
     const state = {
       email: 'igor@local.cc',
       name: 'igor',

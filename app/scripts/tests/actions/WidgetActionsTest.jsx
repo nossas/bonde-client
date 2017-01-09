@@ -12,7 +12,7 @@ describe('WidgetActions', () => {
       const widgets = [{id: 1}, {id: 2}]
       expect(request.url).to.equal(`${process.env.API_URL}/mobilizations/1/widgets`)
       expect(request.method).to.equal('GET')
-      request.respond(200, { "Content-Type": "application/json" }, JSON.stringify(widgets))
+      request.respond(200, { 'Content-Type': 'application/json' }, JSON.stringify(widgets))
       expect(dispatch).to.have.been.calledWith({
         type: FETCH_WIDGETS,
         widgets

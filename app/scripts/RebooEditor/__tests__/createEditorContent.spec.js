@@ -3,7 +3,6 @@ import { expect } from 'chai'
 import { createEditorContent } from '../'
 
 describe('RebooEditor.createEditorContent', () => {
-
   it('should return string rawContentState with text passed', () => {
     const text = 'Clique aqui para editar...'
     const str_result = createEditorContent(text)

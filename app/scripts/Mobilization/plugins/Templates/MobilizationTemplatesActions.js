@@ -22,7 +22,7 @@ export const createTemplateAsync = (template, next) =>
         dispatch(createTemplateFailure(error))
         return Promise.reject({ _error: `Response ${error}` })
       })
-}
+  }
 
 export const REQUEST_TEMPLATE_FETCH = 'REQUEST_TEMPLATE_FETCH'
 export const SUCCESS_TEMPLATE_FETCH = 'SUCCESS_TEMPLATE_FETCH'
@@ -44,7 +44,7 @@ export const fetchTemplatesAsync = () =>
         dispatch(fetchTemplatesFailure(error))
         return Promise.reject({ _error: `Response ${error}` })
       })
-}
+  }
 
 export const REQUEST_TEMPLATE_DESTROY = 'REQUEST_TEMPLATE_DESTROY'
 export const SUCCESS_TEMPLATE_DESTROY = 'SUCCESS_TEMPLATE_DESTROY'
@@ -66,4 +66,4 @@ export const destroyTemplateAsync = template =>
         dispatch(destroyTemplateFailure(error))
         return Promise.reject({ _error: `Response ${error}` })
       })
-}
+  }

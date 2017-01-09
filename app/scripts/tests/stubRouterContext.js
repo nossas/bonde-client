@@ -1,20 +1,20 @@
 import React from 'react'
 
-export default function stubRouterContext(Component, props, stubs) {
+export default function stubRouterContext (Component, props, stubs) {
   const RouterStub = Object.assign({}, {
-    makePath() {},
-    makeHref() {},
-    transitionTo() {},
-    replaceWith() {},
-    goBack() {},
-    getCurrentPath() {},
-    getCurrentRoutes() {},
-    getCurrentPathname() {},
-    getCurrentParams() {},
-    getCurrentQuery() {},
-    isActive() {},
-    getRouteAtDepth() {},
-    setRouteComponentAtDepth() {}
+    makePath () {},
+    makeHref () {},
+    transitionTo () {},
+    replaceWith () {},
+    goBack () {},
+    getCurrentPath () {},
+    getCurrentRoutes () {},
+    getCurrentPathname () {},
+    getCurrentParams () {},
+    getCurrentQuery () {},
+    isActive () {},
+    getRouteAtDepth () {},
+    setRouteComponentAtDepth () {}
   }, stubs)
 
   return React.createClass({
@@ -23,14 +23,14 @@ export default function stubRouterContext(Component, props, stubs) {
       routeDepth: React.PropTypes.number
     },
 
-    getChildContext() {
+    getChildContext () {
       return {
         router: RouterStub,
         routeDepth: 0
       }
     },
 
-    render() {
+    render () {
       return <Component {...props} />
     }
   })

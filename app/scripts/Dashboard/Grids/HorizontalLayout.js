@@ -1,17 +1,15 @@
 import React, { PropTypes } from 'react'
 import classnames from 'classnames'
 
-
 const HorizontalLayout = ({ children, className, cols, ...props }) => {
-
-  const size = parseInt(12/cols)
+  const size = parseInt(12 / cols)
   const childProps = {
     layout: 'inline',
     className: `sm-col sm-col-${size}`
   }
 
   return (
-    <div className="form-horizontal-layout flex flex-wrap">
+    <div className='form-horizontal-layout flex flex-wrap'>
       {
         children && children.map((child, index) =>
           React.cloneElement(child, { ...childProps, key: `h-layout-${index}` })
@@ -22,11 +20,11 @@ const HorizontalLayout = ({ children, className, cols, ...props }) => {
 }
 
 HorizontalLayout.propTypes = {
-  cols: PropTypes.number.isRequired,
+  cols: PropTypes.number.isRequired
 }
 
 HorizontalLayout.defaultProps = {
-  cols: 1,
+  cols: 1
 }
 
 export default HorizontalLayout

@@ -4,7 +4,6 @@ import { mount } from 'enzyme'
 
 import { Mobilization } from '../../components'
 
-
 describe('<Mobilization />', () => {
   let wrapper
   const props = {
@@ -21,11 +20,11 @@ describe('<Mobilization />', () => {
     },
     blocks: [
       { id: 1, hidden: false, menu_hidden: false, mobilization_id: 1 },
-      { id: 2, hidden: true, menu_hidden: true, mobilization_id: 1 },
+      { id: 2, hidden: true, menu_hidden: true, mobilization_id: 1 }
     ],
     widgets: [
       { id: 1, block_id: 1 },
-      { id: 2, block_id: 2 },
+      { id: 2, block_id: 2 }
     ]
   }
 
@@ -49,7 +48,6 @@ describe('<Mobilization />', () => {
   })
 
   describe('when is editable', () => {
-
     beforeEach(() => {
       wrapper.setProps({ editable: true })
     })
@@ -71,7 +69,6 @@ describe('<Mobilization />', () => {
   })
 
   describe('when isnt editable', () => {
-
     beforeEach(() => {
       wrapper.setProps({ editable: false })
     })
@@ -80,7 +77,7 @@ describe('<Mobilization />', () => {
       const layoutClassName = '.absolute.flex'
       const main = wrapper.find(`div${layoutClassName}`)
       expect(main.length).to.equal(1)
-      expect(main.props().style).to.deep.equal({ top:0, bottom:0, left:0, right:0 })
+      expect(main.props().style).to.deep.equal({ top: 0, bottom: 0, left: 0, right: 0 })
     })
 
     it('should render DocumentMeta with mobilization infos', () => {

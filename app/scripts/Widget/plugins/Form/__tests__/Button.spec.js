@@ -15,7 +15,6 @@ describe('FormWidget/components/Button', () => {
   }
 
   context('when it static', () => {
-
     it('should render with buttonText label', () => {
       let wrapper = render(<Button {...props} />)
 

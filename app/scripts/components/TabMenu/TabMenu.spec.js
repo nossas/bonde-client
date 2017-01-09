@@ -8,14 +8,14 @@ import TabMenu from './TabMenu'
 describe('TabMenu', () => {
   let wrapper
   let props = {
-    title: 'Foo Bar Title!',
+    title: 'Foo Bar Title!'
   }
 
   before(() => {
     wrapper = mount(
       <TabMenu {...props}>
-        <div id="foo">Foo div children</div>
-        <span id="bar">Bar span children</span>
+        <div id='foo'>Foo div children</div>
+        <span id='bar'>Bar span children</span>
       </TabMenu>
     )
   })

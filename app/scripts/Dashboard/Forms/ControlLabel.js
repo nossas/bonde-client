@@ -4,7 +4,7 @@ import classnames from 'classnames'
 import Raise from './Raise'
 
 class ControlLabel extends Component {
-  render() {
+  render () {
     const formGroup = this.context.$formGroup
     const controlId = formGroup && formGroup.controlId
     const error = formGroup && formGroup.error
@@ -26,11 +26,11 @@ class ControlLabel extends Component {
 }
 
 ControlLabel.contextTypes = {
-  $formGroup: PropTypes.object,
+  $formGroup: PropTypes.object
 }
 
 ControlLabel.propTypes = {
-  htmlFor: PropTypes.string,
+  htmlFor: PropTypes.string
 }
 
 export default ControlLabel

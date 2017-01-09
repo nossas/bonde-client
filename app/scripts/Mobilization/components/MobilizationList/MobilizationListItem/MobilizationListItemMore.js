@@ -5,9 +5,9 @@ import { setMobilizationMoreMenuActiveIndex } from '../../../MobilizationActions
 import './scss/mobilization-list-item-more.scss'
 
 export const MobilizationListItemMore = ({ index, onClick, children }) => (
-  <div className="list-item-more right pr3">
+  <div className='list-item-more right pr3'>
     <i
-      className="fa fa-ellipsis-h"
+      className='fa fa-ellipsis-h'
       onClick={(e) => {
         if (e) e.preventDefault()
         onClick(index)

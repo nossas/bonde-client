@@ -4,10 +4,9 @@ import { mount } from 'enzyme'
 
 import { FormGroup } from '../../Forms'
 
-
 class ControlLabel extends Component {
 
-  render() {
+  render () {
     const formGroup = this.context.$formGroup
 
     return <label {...formGroup} />
@@ -15,16 +14,15 @@ class ControlLabel extends Component {
 }
 
 ControlLabel.contextTypes = {
-  $formGroup: PropTypes.object.isRequired,
+  $formGroup: PropTypes.object.isRequired
 }
-
 
 describe('<FormGroup />', () => {
   let wrapper
 
   beforeEach(() => {
     wrapper = mount(
-      <FormGroup controlId="form-group-id">
+      <FormGroup controlId='form-group-id'>
         <ControlLabel>Dummy</ControlLabel>
       </FormGroup>
     )

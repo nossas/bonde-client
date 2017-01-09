@@ -4,7 +4,6 @@ import { shallow } from 'enzyme'
 
 import { Radio } from '../../Forms'
 
-
 describe('app/scripts/Dashboard/Forms/Radio', () => {
   let wrapper
 

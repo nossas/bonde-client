@@ -1,9 +1,7 @@
 import React, { PropTypes } from 'react'
 import { Entity } from 'draft-js'
 
-
 const Link = ({ children, entityKey }) => {
-
   const { href, target } = Entity.get(entityKey).getData()
 
   return (
@@ -11,9 +9,8 @@ const Link = ({ children, entityKey }) => {
   )
 }
 
-
 Link.propTypes = {
-  entityKey: PropTypes.string.isRequired,
+  entityKey: PropTypes.string.isRequired
 }
 
 export default Link

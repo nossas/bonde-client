@@ -3,5 +3,5 @@ import * as actionTypes from './action-types'
 
 export default {
   BLOCK_LAYOUTS,
-  ...actionTypes,
+  ...actionTypes
 }

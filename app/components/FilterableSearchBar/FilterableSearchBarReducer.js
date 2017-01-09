@@ -1,7 +1,7 @@
 import { FILTERABLE_SEARCH_BAR_SET_LIST } from './FilterableSearchBarActions'
 
 export const initialState = {
-  list: [],
+  list: []
 }
 
 const FilterableSearchBarReducer = (state = initialState, action) => {

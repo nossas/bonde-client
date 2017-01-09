@@ -8,7 +8,7 @@ const block = {name: 'My block'}
 const dispatch = () => {}
 const auth = {}
 
-function generateComponent(options = {}) {
+function generateComponent (options = {}) {
   return (
     <NavbarForm
       handleCloseForm={options.handleCloseForm || handleCloseForm}

@@ -20,7 +20,7 @@ const Widget = ({ widget, ...rest }) => {
     <div className={className}>
       {Wrapper ?
         <Wrapper {...rest} widget={widget} /> :
-        <span className="red">Widget {widget.kind} not found</span>
+        <span className='red'>Widget {widget.kind} not found</span>
       }
     </div>
   )

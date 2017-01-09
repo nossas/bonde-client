@@ -49,7 +49,7 @@ describe('app/scripts/Block/components/BlockMiniature', () => {
     describe('when selected layout is not the current layout to render', () => {
       beforeEach(() => {
         const currentProps = { ...props, selectedLayout: BLOCK_LAYOUTS[1] }
-        wrapper = shallow(<BlockMiniature  {...currentProps} />)
+        wrapper = shallow(<BlockMiniature {...currentProps} />)
       })
       it('should render .layout-wrapper div without .is-active className', () => {
         expect(wrapper.find('div.layout-wrapper').props().className).to.have.not.string('is-active')

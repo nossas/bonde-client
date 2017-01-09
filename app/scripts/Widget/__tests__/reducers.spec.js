@@ -4,9 +4,7 @@ import reducer from '../reducer'
 
 import { SUCCESS_FILL_WIDGET } from '../actions'
 
-
 describe('WidgetReducers', () => {
-
   it('should add count in success fill widget', () => {
     // state while requesting
     const globalState = {

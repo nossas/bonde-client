@@ -95,7 +95,7 @@ describe('Block', () => {
   describe.skip('#handleColorClick', () => {
     it('should set bg class to the selected bg class event current target', () => {
       const component = render(<Block {...props} />)
-      const event = {currentTarget: {getAttribute() { return 'bg-purple' }}}
+      const event = {currentTarget: {getAttribute () { return 'bg-purple' }}}
       component.handleColorClick(event)
       expect(component.state.bgClass).to.eql('bg-purple')
     })

@@ -1,23 +1,22 @@
 import React, { Component, PropTypes } from 'react'
 
-
 class InsertScriptButton extends Component {
 
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = { showInputDialog: false, script: '' }
   }
 
-  getTagName(script) {
+  getTagName (script) {
     if (script.startsWith('<iframe')) {
       return 'iframe'
     } else if (script.startsWith('<script')) {
       return 'script'
     }
-    throw "Sorry, script name not permitted"
+    throw 'Sorry, script name not permitted'
   }
 
-  handleInsertScript() {
+  handleInsertScript () {
     const { handleInsertScript } = this.props
     const { script } = this.state
 
@@ -25,7 +24,7 @@ class InsertScriptButton extends Component {
     this.setState({ script: '', showInputDialog: false })
   }
 
-  render() {
+  render () {
     const { buttonClassName, popoverClassName } = this.props
 
     return (
@@ -34,20 +33,20 @@ class InsertScriptButton extends Component {
           className={buttonClassName}
           onClick={e => this.setState({ showInputDialog: !this.state.showInputDialog })}
         >
-          <i className="fa fa-code" />
+          <i className='fa fa-code' />
         </button>
         {this.state.showInputDialog ?
           (<div className={popoverClassName}>
             <input
-              type="text"
+              type='text'
               value={this.state.script}
               onChange={e => this.setState({ script: e.target.value })}
             />
             <button
-              className="btn btn-outline white mx1"
+              className='btn btn-outline white mx1'
               onClick={this.handleInsertScript.bind(this)}
             >
-              <i className="fa fa-check" />
+              <i className='fa fa-check' />
             </button>
           </div>) : null}
       </div>
@@ -58,7 +57,7 @@ class InsertScriptButton extends Component {
 InsertScriptButton.propTypes = {
   buttonClassName: PropTypes.string,
   popoverClassName: PropTypes.string,
-  handleInsertScript: PropTypes.func.isRequired,
+  handleInsertScript: PropTypes.func.isRequired
 }
 
 export default InsertScriptButton

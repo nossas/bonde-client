@@ -5,7 +5,6 @@ import { EXPORT_DATACLIP_SUCCESS } from './../../actions/ExportActions'
 import reducer from './../reducer'
 
 describe('Widget/reducer', () => {
-
   context('kind equals match', () => {
     let initialState
 
@@ -59,9 +58,9 @@ describe('Widget/reducer', () => {
           id: 1,
           kind: 'match',
           match_list: [
-            { id: 1, first_choice: "framboesa", second_choice: "lula", goal_image: 'test.png' },
-            { id: 2, first_choice: "framboesa", second_choice: "tatu", goal_image: 'test.png' },
-            { id: 3, first_choice: "gota", second_choice: "tatu", goal_image: 'test.png' },
+            { id: 1, first_choice: 'framboesa', second_choice: 'lula', goal_image: 'test.png' },
+            { id: 2, first_choice: 'framboesa', second_choice: 'tatu', goal_image: 'test.png' },
+            { id: 3, first_choice: 'gota', second_choice: 'tatu', goal_image: 'test.png' }
           ]
         }]
       }
@@ -77,7 +76,7 @@ describe('Widget/reducer', () => {
           kind: 'match',
           match_list: [
             {
-              id: 1, first_choice: "framboesa", second_choice: "lula", goal_image: 'test.png'
+              id: 1, first_choice: 'framboesa', second_choice: 'lula', goal_image: 'test.png'
             }
           ]
         }]
@@ -88,7 +87,7 @@ describe('Widget/reducer', () => {
       initialState = {
         data: [{
           id: 1,
-          kind: 'form_entry',
+          kind: 'form_entry'
         }]
       }
       const action = { type: EXPORT_DATACLIP_SUCCESS, widget_id: 1 }
@@ -100,7 +99,7 @@ describe('Widget/reducer', () => {
       initialState = {
         data: [{
           id: 1,
-          kind: 'form_entry',
+          kind: 'form_entry'
         }]
       }
       const action = { type: EXPORT_DATACLIP_SUCCESS, widget_id: 1 }
@@ -108,5 +107,4 @@ describe('Widget/reducer', () => {
       expect(nextState.data[0].exported_at).to.be.Date
     })
   })
-
 })

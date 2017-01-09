@@ -1,12 +1,12 @@
 // Karma configuration
 // Generated on Fri Jul 03 2015 10:56:54 GMT-0300 (BRT)
-var webpack = require('webpack');
+var webpack = require('webpack')
 var path = require('path')
 var webpackUniversalLoaders = require('./webpack/universal.loaders.config')
 var webpackUniversalPostCSS = require('./webpack/universal.postcss.config')
 var webpackUniversalResolveAlias = require('./webpack/universal.resolve-alias.config')
 
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
@@ -23,7 +23,7 @@ module.exports = function(config) {
 
       resolve: {
         extensions: [ '', '.js', '.jsx', '.json' ],
-        alias: webpackUniversalResolveAlias,
+        alias: webpackUniversalResolveAlias
       },
 
       module: {

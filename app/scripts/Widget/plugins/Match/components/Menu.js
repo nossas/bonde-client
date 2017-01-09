@@ -9,16 +9,16 @@ const Menu = ({ mobilization, widget, location }) => {
   const goalsPath = Paths.matchGoalsMobilizationWidget(mobilization.id, widget.id)
 
   return (
-    <SettingsPageMenuLayout title="Configure as combinações da sua ação">
+    <SettingsPageMenuLayout title='Configure as combinações da sua ação'>
       <Tabs>
         <Tab
           path={choicesPath}
-          text="Opções de combinação"
+          text='Opções de combinação'
           isActive={choicesPath === location.pathname}
         />
         <Tab
           path={goalsPath}
-          text="Resultados das combinações"
+          text='Resultados das combinações'
           isActive={goalsPath === location.pathname}
         />
       </Tabs>

@@ -12,79 +12,78 @@ import MediaControls, { blockRendererFn as mediaBlockRendererFn } from './MediaC
 
 import './styles.scss'
 
-
 class Toolbar extends Component {
 
-  toggleInlineStyle(style) {
+  toggleInlineStyle (style) {
     const { editorState, setEditorState } = this.props
     setEditorState(RichUtils.toggleInlineStyle(editorState, style))
     this.props.focusEditor()
   }
 
-  toggleBlockType(blockType) {
+  toggleBlockType (blockType) {
     const { editorState, setEditorState } = this.props
     setEditorState(RichUtils.toggleBlockType(editorState, blockType))
     this.props.focusEditor()
   }
 
-  hasInlineStyle(inlineStyle) {
+  hasInlineStyle (inlineStyle) {
     const { editorState } = this.props
     const hasStyle = editorState.getCurrentInlineStyle().filter(style => style === inlineStyle)
     return hasStyle.size > 0 ? 'active' : null
   }
 
-  hasBlockType(blockType) {
+  hasBlockType (blockType) {
     const { editorState } = this.props
     const selectionState = editorState.getSelection()
     const block = editorState.getCurrentContent().getBlockForKey(selectionState.getStartKey())
     return block.getType() === blockType ? 'active' : null
   }
 
-  render() {
+  render () {
     const { editorState, setEditorState, focusEditor, buttonClassName, popoverClassName, theme } = this.props
     const controlsProps = { editorState, setEditorState, focusEditor }
 
     return (
       <div
-        className="toolbar absolute full-width top-0 left-0 bg-darken-4 flex flex-wrap"
+        className='toolbar absolute full-width top-0 left-0 bg-darken-4 flex flex-wrap'
       >
         <div>
           {/* InlineStyle buttons */}
           <button
-            type="button"
+            type='button'
             className={classnames(buttonClassName, this.hasInlineStyle('BOLD'))}
             onClick={() => this.toggleInlineStyle('BOLD')}
           >
-            <i className="fa fa-bold" />
+            <i className='fa fa-bold' />
           </button>
           <button
-            type="button"
+            type='button'
             className={classnames(buttonClassName, this.hasInlineStyle('ITALIC'))}
             onClick={() => this.toggleInlineStyle('ITALIC')}
           >
-            <i className="fa fa-italic" />
+            <i className='fa fa-italic' />
           </button>
           <button
-            type="button"
+            type='button'
             className={classnames(buttonClassName, this.hasInlineStyle('UNDERLINE'))}
             onClick={() => this.toggleInlineStyle('UNDERLINE')}
           >
-            <i className="fa fa-underline" />
+            <i className='fa fa-underline' />
           </button>
           {/* BlockType buttons */}
           <button
-            type="button"
+            type='button'
             className={classnames(buttonClassName, this.hasBlockType('ordered-list-item'))}
             onClick={() => this.toggleBlockType('ordered-list-item')}
           >
-            <i className="fa fa-list-ol" />
+            <i className='fa fa-list-ol' />
           </button>
           <button
-            type="button"
+            type='button'
             className={classnames(buttonClassName, this.hasBlockType('unordered-list-item'))}
             onClick={() => this.toggleBlockType('unordered-list-item')}
           >
-            <i className="fa fa-list-ul" />
+            <i className='fa fa-list-ul' />
           </button>
         </div>
         <LinkControls
@@ -139,7 +138,7 @@ export const toolbarEditorProps = {
 }
 
 export const decorator = new CompositeDecorator([
-  linkDecorator,
+  linkDecorator
 ])
 
 export { default as getBlockAlignment } from './AlignmentControls/getBlockAlignment'

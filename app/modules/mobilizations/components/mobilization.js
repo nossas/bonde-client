@@ -5,9 +5,7 @@ import DocumentMeta from 'react-document-meta'
 import { Navbar } from './navbar'
 import Block from '../../mobilizations/blocks/components'
 
-
 const Mobilization = props => {
-
   const {
     mobilization: {
       name,
@@ -17,12 +15,12 @@ const Mobilization = props => {
       facebook_share_image,
       color_scheme,
       header_font,
-      body_font,
+      body_font
     },
     blocks,
     widgets,
     editable,
-    blockEditionMode,
+    blockEditionMode
   } = props
 
   const themeClassName = `${color_scheme} ${header_font}-header ${body_font}-body`
@@ -63,7 +61,7 @@ const Mobilization = props => {
             }
           }}
         />
-      ): null}
+      ) : null}
     </div>
   )
 }
@@ -73,7 +71,7 @@ Mobilization.propTypes = {
   mobilization: PropTypes.object.isRequired,
   blocks: PropTypes.array.isRequired,
   widgets: PropTypes.array.isRequired,
-  blockEditionMode: PropTypes.bool,
+  blockEditionMode: PropTypes.bool
 }
 
 Mobilization.defaultProps = {

@@ -4,7 +4,6 @@ import { mount } from 'enzyme'
 
 import { BlockTag } from '../../components'
 
-
 describe('<BlockTag />', () => {
   let component
 

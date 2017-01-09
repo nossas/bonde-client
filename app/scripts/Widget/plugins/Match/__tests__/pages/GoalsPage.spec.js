@@ -55,6 +55,6 @@ describe('Match/pages/GoalsPage', () => {
         choicesA: '4,5'
       } }]}
     })
-    expect(wrapper.find('ChoiceCombined').length).to.equal(3*2)
+    expect(wrapper.find('ChoiceCombined').length).to.equal(3 * 2)
   })
 })

@@ -10,14 +10,14 @@ import { createEditorContent } from '../../../RebooEditor'
 import './draft-widget.scss'
 
 export class DraftWidget extends React.Component {
-  constructor(props, context) {
+  constructor (props, context) {
     super(props, context)
     this.state = {
       loading: false
     }
   }
 
-  updateKind(kind) {
+  updateKind (kind) {
     const { dispatch, auth, widget: widgetOriginal } = this.props
     const bindedWidgetActions = bindActionCreators(WidgetActions, dispatch)
     let widget = { ...widgetOriginal, kind }
@@ -55,7 +55,7 @@ export class DraftWidget extends React.Component {
     bindedWidgetActions.editWidgetAsync(widget)
   }
 
-  render() {
+  render () {
     const { loading } = this.state
     const { editable } = this.props
     const updateContent = () => this.updateKind('content')
@@ -65,14 +65,14 @@ export class DraftWidget extends React.Component {
     const updatePressure = () => this.updateKind('pressure')
 
     return loading ? <Loading /> : (!editable ? null : (
-      <div className="draft-widget widget center rounded lightgray clearfix">
-        <div className="title">Escolha um tipo de widget</div>
+      <div className='draft-widget widget center rounded lightgray clearfix'>
+        <div className='title'>Escolha um tipo de widget</div>
 
-        <DraftWidgetButton onClick={updateContent} icon="font" label="Texto" />
-        <DraftWidgetButton onClick={updateForm} icon="list" label="Formulário" />
-        <DraftWidgetButton onClick={updateDonation} icon="money" label="Doação" />
-        <DraftWidgetButton onClick={updateMatch} icon="compress" label="Match" />
-        <DraftWidgetButton onClick={updatePressure} icon="bullseye" label="Pressão" />
+        <DraftWidgetButton onClick={updateContent} icon='font' label='Texto' />
+        <DraftWidgetButton onClick={updateForm} icon='list' label='Formulário' />
+        <DraftWidgetButton onClick={updateDonation} icon='money' label='Doação' />
+        <DraftWidgetButton onClick={updateMatch} icon='compress' label='Match' />
+        <DraftWidgetButton onClick={updatePressure} icon='bullseye' label='Pressão' />
       </div>
     ))
   }

@@ -19,7 +19,7 @@ const fonts = [
   ['fjalla-one', 'Fjalla One'], ['glegoo', 'Glegoo'], ['lato', 'Lato'],
   ['merriweather', 'Merriweather'], ['merriweather-sans', 'Merriweather Sans'],
   ['open-sans', 'Open Sans'], ['oswald', 'Oswald'], ['pfdin', 'PF Din'],
-  ['proxima-nova', 'Proxima Nova'], ['pt-mono', 'PT Mono'], ['ubuntu', 'Ubuntu'],
+  ['proxima-nova', 'Proxima Nova'], ['pt-mono', 'PT Mono'], ['ubuntu', 'Ubuntu']
 ]
 
 const MobilizationFontsPage = ({
@@ -37,23 +37,23 @@ const MobilizationFontsPage = ({
   const handleSubmit = values => editMobilizationAsync({ ...mobilization, ...values })
 
   return (
-    <div className="flex-auto bg-silver gray relative">
-      <div className="bg-white px3 clearfix">
-        <h2 className="mb3">Estilo da Página</h2>
+    <div className='flex-auto bg-silver gray relative'>
+      <div className='bg-white px3 clearfix'>
+        <h2 className='mb3'>Estilo da Página</h2>
         <div>
-          <ul className="list-reset mb0">
+          <ul className='list-reset mb0'>
             <TabMenuItem
               path={fontsMobilizationPath}
-              text="Fontes"
+              text='Fontes'
               isActive={fontsMobilizationPath === location.pathname}
             />
           </ul>
         </div>
       </div>
 
-      <div className="py3 px4">
+      <div className='py3 px4'>
         <FormRedux onSubmit={handleSubmit} {...rest}>
-          <FormGroup controlId="headerFont" {...headerFont}>
+          <FormGroup controlId='headerFont' {...headerFont}>
             <ControlLabel>Fonte dos títulos</ControlLabel>
             <FormDropdown>
               {fonts.map(font =>
@@ -62,11 +62,11 @@ const MobilizationFontsPage = ({
             </FormDropdown>
           </FormGroup>
           <FontPreview
-            text="Os títulos ficarão assim"
+            text='Os títulos ficarão assim'
             className={`${headerFont.value}-header`}
           />
 
-          <FormGroup controlId="bodyFont" {...bodyFont}>
+          <FormGroup controlId='bodyFont' {...bodyFont}>
             <ControlLabel>Fonte do texto</ControlLabel>
             <FormDropdown>
               {fonts.map(
@@ -76,7 +76,7 @@ const MobilizationFontsPage = ({
           </FormGroup>
           <FontPreview
             componentClass='p'
-            text="Os títulos ficarão assim"
+            text='Os títulos ficarão assim'
             className={`${bodyFont.value}-body`}
           />
         </FormRedux>

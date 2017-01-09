@@ -7,9 +7,9 @@ const MobilizationBasicsEditFormPage = props => (
   <SettingsPageContentLayout>
     <MobilizationBasicsForm
       {...props}
-      className="transparent"
-      floatButton="Salvar"
-      successMessage="Formulário atualizado com sucesso!"
+      className='transparent'
+      floatButton='Salvar'
+      successMessage='Formulário atualizado com sucesso!'
     />
   </SettingsPageContentLayout>
 )

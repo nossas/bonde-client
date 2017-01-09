@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import classnames from 'classnames'
 
 class SidenavListItem extends Component {
-  render() {
+  render () {
     const { text, icon, linkType, children, className, href, target, style } = this.props
     const { customIcon, customContent } = this.props
 
@@ -17,19 +17,19 @@ class SidenavListItem extends Component {
     return (
       <div className={classnames('item', className)} style={style}>
         <Component
-          className="block clearfix"
+          className='block clearfix'
           {...current.props}
         >
 
-          <div className="item-icon">
+          <div className='item-icon'>
             {!!customIcon && customIcon}
             {!!icon && (<i className={`fa fa-${icon}`} />)}
           </div>
-          <div className="item-content">
-            <div className="item-content-wrapper">
+          <div className='item-content'>
+            <div className='item-content-wrapper'>
               {!!customContent && customContent}
               {!!text && (<div>{text}</div>)}
-              {!!children && (<div className="item-content-children">{children}</div>)}
+              {!!children && (<div className='item-content-children'>{children}</div>)}
             </div>
           </div>
         </Component>

@@ -14,42 +14,41 @@ import {
 } from '../../Dashboard/Forms'
 import { FloatLayout } from '../../Dashboard/Grids'
 
-
 class InfoPage extends Component {
 
-  onClickItem(community) {
+  onClickItem (community) {
     this.props.downloadActivists(community)
   }
 
-  render() {
+  render () {
     const { community, fields: { image, name, city, description }, ...formProps } = this.props
 
     return (
       <FormRedux nosubmit {...formProps}>
-        <FormGroup controlId="imageId" {...image}>
+        <FormGroup controlId='imageId' {...image}>
           <UploadImageField signingUrl={`${process.env.API_URL}/uploads`} />
         </FormGroup>
-        <FormGroup controlId="nameId" {...name}>
+        <FormGroup controlId='nameId' {...name}>
           <ControlLabel>Nome</ControlLabel>
-          <FormControl type="text" />
+          <FormControl type='text' />
         </FormGroup>
-        <FormGroup controlId="descriptionId" {...description}>
+        <FormGroup controlId='descriptionId' {...description}>
           <ControlLabel>Descrição</ControlLabel>
-          <FormControl componentClass="textarea" />
+          <FormControl componentClass='textarea' />
         </FormGroup>
-        <FormGroup controlId="cityId" {...city}>
+        <FormGroup controlId='cityId' {...city}>
           <ControlLabel>Cidade</ControlLabel>
-          <FormControl type="text" />
+          <FormControl type='text' />
         </FormGroup>
 
         <ForceDownloadViaAjax
-          title="Baixar resumo de ações dos ativistas"
+          title='Baixar resumo de ações dos ativistas'
           onClick={this.onClickItem.bind(this, community)}
         />
 
-        <FloatLayout position="floatTopRight">
+        <FloatLayout position='floatTopRight'>
           <SubmitButton>Salvar</SubmitButton>
-          <SuccessMessage text="Dados editados com sucesso." />
+          <SuccessMessage text='Dados editados com sucesso.' />
         </FloatLayout>
       </FormRedux>
     )

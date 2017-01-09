@@ -3,7 +3,7 @@ import classnames from 'classnames'
 
 const FontPreview = ({ componentClass: Component, className, text }) => (
   <div className={classnames('bg-white border rounded p2 mb3', className)}>
-    <Component className="m0">{text}</Component>
+    <Component className='m0'>{text}</Component>
   </div>
 )
 

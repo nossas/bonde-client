@@ -7,12 +7,12 @@ import SelectFontFamily from './SelectFontFamily'
 import './styles.scss'
 
 export default class FontControls extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = { ...this.props.initialValue }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     const { editorState } = nextProps
 
     const hasChangeInlineStyle = (
@@ -48,7 +48,7 @@ export default class FontControls extends Component {
     }
   }
 
-  handleChangeSize(e) {
+  handleChangeSize (e) {
     const { editorState, setEditorState } = this.props
     const fontSize = e.target.value
 
@@ -62,7 +62,7 @@ export default class FontControls extends Component {
     }
   }
 
-  handleChangeFont(e) {
+  handleChangeFont (e) {
     const { editorState, setEditorState } = this.props
     const fontFamily = e.target.value
 
@@ -74,19 +74,19 @@ export default class FontControls extends Component {
     this.setState({ fontFamily })
   }
 
-  handleMouseOut() {
+  handleMouseOut () {
     this.props.focusEditor()
   }
 
-  render() {
+  render () {
     return (
-      <div className="font-controls">
+      <div className='font-controls'>
         <input
-          type="number"
+          type='number'
           value={this.state.fontSize}
           onChange={this.handleChangeSize.bind(this)}
           onMouseOut={this.handleMouseOut.bind(this)}
-          className="font-controls-size input col col-3 h5 mx1"
+          className='font-controls-size input col col-3 h5 mx1'
         />
         <SelectFontFamily
           onChange={this.handleChangeFont.bind(this)}
@@ -108,7 +108,6 @@ FontControls.propTypes = {
   })
 
 }
-
 
 export const customStyleFn = (style) => {
   const output = {}

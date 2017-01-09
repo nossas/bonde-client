@@ -12,7 +12,7 @@ const BrowsableList = ({ children, className, style }) => (
 BrowsableList.propTypes = {
   children: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   className: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
-  style: PropTypes.object,
+  style: PropTypes.object
 }
 
 export default BrowsableList

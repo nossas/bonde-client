@@ -26,7 +26,7 @@ describe('Match/pages/ChoicesPage', () => {
   }
 
   beforeEach(() => {
-    wrapper = shallow(<ChoicesPage { ...props } />, { context: _context })
+    wrapper = shallow(<ChoicesPage {...props} />, { context: _context })
   })
 
   describe('#render', () => {
@@ -67,7 +67,7 @@ describe('Match/pages/ChoicesPage', () => {
           id: 1, settings: { 'title_text': '', 'choices1': '1', 'choicesA': 'A' }
         }]
       }
-      wrapper = shallow(<ChoicesPage {...props}  />, { context: _context })
+      wrapper = shallow(<ChoicesPage {...props} />, { context: _context })
       wrapper.find('form').simulate('submit')
       expect(wrapper.find('span.red').length).to.equal(1)
     })
@@ -79,7 +79,7 @@ describe('Match/pages/ChoicesPage', () => {
           settings: { 'title_text': 'lorem', 'choices1': '', 'choicesA': 'A' }
         }]
       }
-      wrapper = shallow(<ChoicesPage {...props}  />, { context: _context })
+      wrapper = shallow(<ChoicesPage {...props} />, { context: _context })
       wrapper.find('form').simulate('submit')
       expect(wrapper.find('span.red').length).to.equal(1)
     })
@@ -91,7 +91,7 @@ describe('Match/pages/ChoicesPage', () => {
           settings: { 'title_text': 'lorem', 'choices1': '1', 'choicesA': '' }
         }]
       }
-      wrapper = shallow(<ChoicesPage {...props}  />, { context: _context })
+      wrapper = shallow(<ChoicesPage {...props} />, { context: _context })
       wrapper.find('form').simulate('submit')
       expect(wrapper.find('span.red').length).to.equal(1)
     })
@@ -100,7 +100,7 @@ describe('Match/pages/ChoicesPage', () => {
       props.widgets = {
         data: [{id: 1, settings: {}}]
       }
-      wrapper = shallow(<ChoicesPage {...props}  />, { context: _context })
+      wrapper = shallow(<ChoicesPage {...props} />, { context: _context })
       wrapper.find('form').simulate('submit')
       expect(wrapper.find('span.red').length).to.equal(3)
     })

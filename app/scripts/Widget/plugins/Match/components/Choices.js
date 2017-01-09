@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react'
 import classnames from 'classnames'
 
-const Choices = ({ options=[], onChange, title, className, disabled }) => {
+const Choices = ({ options = [], onChange, title, className, disabled }) => {
   return (
     <div className={classnames(className)}>
       <label
-        className="caps bold mb1"
+        className='caps bold mb1'
         style={{
           fontSize: '.75rem',
           fontWeight: 600,
@@ -16,7 +16,7 @@ const Choices = ({ options=[], onChange, title, className, disabled }) => {
         {title}*
       </label>
       <select
-        className="choices select block col-12"
+        className='choices select block col-12'
         disabled={disabled}
         onChange={onChange}>
         <option>Selecione...</option>

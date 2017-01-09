@@ -4,7 +4,6 @@ import { shallow } from 'enzyme'
 
 import { ColorPicker } from '../../Forms'
 
-
 describe('app/scripts/Dashboard/Forms/ColorPicker', () => {
   let wrapper
   const props = {

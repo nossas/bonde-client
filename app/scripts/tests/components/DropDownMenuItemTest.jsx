@@ -19,7 +19,7 @@ describe('DropDownMenuItem', () => {
       component = TestUtils.renderIntoDocument(
         <DropDownMenuItem {...props} />
       )
-      const event = { preventDefault() {}}
+      const event = { preventDefault () {}}
       component.handleClick(event)
       expect(clickString).to.be.equal('foobar')
     })
@@ -28,7 +28,7 @@ describe('DropDownMenuItem', () => {
       component = TestUtils.renderIntoDocument(
         <DropDownMenuItem {...props} disabled />
       )
-      const event = { preventDefault() {}}
+      const event = { preventDefault () {}}
       component.handleClick(event)
       expect(clickString).to.be.null
     })

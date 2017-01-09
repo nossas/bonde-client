@@ -5,7 +5,6 @@ import { constants as c } from '../../mobilizations/blocks'
 import reducers, { initialState } from '../../mobilizations/blocks/reducers'
 
 describe('BlockReducer', () => {
-
   it('should load blocks in data', () => {
     const action = createAction(c.SUCCESS_ASYNC_BLOCK_FETCH, [{ id: 1 }])
     const nextState = reducers(undefined, action)

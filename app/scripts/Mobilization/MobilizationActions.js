@@ -63,12 +63,12 @@ export const addMobilizationAsync = (mobilization, next = null) => (dispatch, ge
     request
       .post(`/mobilizations`, { mobilization }, { headers: credentials })
       .then(response => {
-          const { data } = response
-          dispatch(addMobilization(data))
+        const { data } = response
+        dispatch(addMobilization(data))
           // TODO: Update react-router and install react-router-redux to make only a push in history.
           // See: https://github.com/reactjs/react-router-redux#pushlocation-replacelocation-gonumber-goback-goforward
-          next && typeof next === 'function' && next(data)
-          return resolve()
+        next && typeof next === 'function' && next(data)
+        return resolve()
       })
       .catch(error => reject({ _error: `Response ${error}` }))
   })
@@ -128,4 +128,4 @@ export const createMobilizationFromTemplateAsync = (template_mobilization_id, mo
         dispatch(createMobilizationFromTemplateFailure(error))
         return Promise.reject({ _error: `Response ${error}` })
       })
-}
+  }

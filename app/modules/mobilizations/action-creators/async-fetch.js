@@ -1,6 +1,5 @@
 import * as t from '../../action-types'
 
-
 export default relationshipId => (dispatch, getState, axios) => {
   const { auth: { credentials } } = getState()
 

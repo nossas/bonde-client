@@ -4,7 +4,6 @@ import { mount } from 'enzyme'
 
 import { Navbar } from '../../../components/navbar'
 
-
 describe('<Navbar />', () => {
   let wrapper
   const props = {
@@ -41,7 +40,6 @@ describe('<Navbar />', () => {
   })
 
   describe('when is editable', () => {
-
     beforeEach(() => {
       wrapper.setProps({ editable: true })
     })
@@ -55,7 +53,6 @@ describe('<Navbar />', () => {
   })
 
   describe('when isnt editable', () => {
-
     beforeEach(() => {
       wrapper.setProps({ editable: false })
     })

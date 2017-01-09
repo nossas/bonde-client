@@ -11,25 +11,25 @@ const MobilizationSettingsMenu = ({ mobilization, location }) => {
   const customDomainMobilizationPath = Paths.customDomainMobilization(mobilization.id)
 
   return (
-    <SettingsPageMenuLayout title="Configure sua mobilização">
+    <SettingsPageMenuLayout title='Configure sua mobilização'>
       <Tabs>
         <Tab
-          text="Informações básicas"
+          text='Informações básicas'
           path={basicsMobilizationPath}
           isActive={basicsMobilizationPath === location.pathname}
         />
         <Tab
-          text="Compartilhamento"
+          text='Compartilhamento'
           path={sharingMobilizationPath}
           isActive={sharingMobilizationPath === location.pathname}
         />
         <Tab
-          text="Google Analytics"
+          text='Google Analytics'
           path={analyticsMobilizationPath}
           isActive={analyticsMobilizationPath === location.pathname}
         />
         <Tab
-          text="Domínio"
+          text='Domínio'
           path={customDomainMobilizationPath}
           isActive={customDomainMobilizationPath === location.pathname}
         />

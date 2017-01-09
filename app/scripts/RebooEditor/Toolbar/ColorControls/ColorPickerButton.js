@@ -3,38 +3,36 @@ import { SketchPicker } from 'react-color'
 
 import themes from '../themes'
 
-
 class ColorPickerButton extends Component {
 
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = { showColorPicker: false }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     const { color } = nextProps
     if (this.props.color !== color) {
       this.setState({ color })
     }
   }
 
-  toggleColorPicker(e) {
+  toggleColorPicker (e) {
     this.setState({ showColorPicker: !this.state.showColorPicker })
   }
 
-  handleChange(color) {
+  handleChange (color) {
     const { onChangeColor } = this.props
     this.setState({ color: color.rgb })
     onChangeColor(this.state.color)
   }
 
-  handleChangeColor(color) {
+  handleChangeColor (color) {
     this.setState({ showColorPicker: false })
     this.props.focusEditor()
   }
 
-  render() {
-
+  render () {
     const { showColorPicker, color } = this.state
     const { className, theme } = this.props
 
@@ -48,14 +46,14 @@ class ColorPickerButton extends Component {
 
     return (
       <div>
-        <button type="button" className={className} onClick={this.toggleColorPicker.bind(this)}>
-          <i className="fa fa-eyedropper" />
+        <button type='button' className={className} onClick={this.toggleColorPicker.bind(this)}>
+          <i className='fa fa-eyedropper' />
         </button>
         {(showColorPicker ? (
-          <div className="absolute left-0">
+          <div className='absolute left-0'>
             <SketchPicker {...colorPickerProps} />
             <button
-              className="btn bg-darken-4 white col-12 rounded-bottom"
+              className='btn bg-darken-4 white col-12 rounded-bottom'
               onClick={this.handleChangeColor.bind(this)}
             >
               Fechar

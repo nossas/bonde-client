@@ -52,7 +52,7 @@ describe('DropDownMenu', () => {
 
     it('should render when passed icon', () => {
       component = TestUtils.renderIntoDocument(
-        <DropDownMenu {...props} icon="test-icon">
+        <DropDownMenu {...props} icon='test-icon'>
           <p>foo</p>
           <p>bar</p>
         </DropDownMenu>

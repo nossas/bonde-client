@@ -20,7 +20,7 @@ const initialState = {
   data: []
 }
 
-export default function mobilizations(state = initialState, action) {
+export default function mobilizations (state = initialState, action) {
   switch (action.type) {
     case REQUEST_FETCH_MOBILIZATIONS:
       return {...state, loaded: false}
@@ -59,15 +59,15 @@ export default function mobilizations(state = initialState, action) {
   }
 }
 
-export function isMobilizationsLoaded(globalState) {
+export function isMobilizationsLoaded (globalState) {
   return globalState.mobilizations.loaded
 }
 
-export function fetchMobilizations(options = {}) {
+export function fetchMobilizations (options = {}) {
   return {
     types: [REQUEST_FETCH_MOBILIZATIONS, SUCCESS_FETCH_MOBILIZATIONS, FAILURE_FETCH_MOBILIZATIONS],
-    promise: function() {
-      return new Promise(function(resolve, reject) {
+    promise: function () {
+      return new Promise(function (resolve, reject) {
         superagent.get(`${process.env.API_URL}/mobilizations`)
         .send(options)
         .end((err, res) => {
@@ -82,22 +82,22 @@ export function fetchMobilizations(options = {}) {
   }
 }
 
-export function editMobilization(params) {
+export function editMobilization (params) {
   return {
     types: [REQUEST_EDIT_MOBILIZATION, SUCCESS_EDIT_MOBILIZATION, FAILURE_EDIT_MOBILIZATION],
-    promise: function() {
-      return new Promise(function(resolve, reject) {
+    promise: function () {
+      return new Promise(function (resolve, reject) {
         superagent
           .put(`${process.env.API_URL}/mobilizations/${params.id}`)
           .set(params.credentials)
           .send({mobilization: params.mobilization})
           .end((err, res) => {
-          if (err) {
-            reject(res.body || err)
-          } else {
-            resolve(res.body)
-          }
-        })
+            if (err) {
+              reject(res.body || err)
+            } else {
+              resolve(res.body)
+            }
+          })
       })
     }
   }
