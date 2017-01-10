@@ -35,13 +35,11 @@ docker-compose version 1.10.0-rc1, build ecff6f1
 
 ### Install
 ```
-mkdir ~/code/ && cd ~/code/
+mkdir code/ && cd code/
 git clone git@github.com:ourcities/rebu-client.git
 git clone git@github.com:ourcities/rebu-server.git
-cd rebu-server/ && git checkout --track -b add/support-docker
-git fetch origin add/support-docker
-cd ../rebu-client && git checkout --track -b add/refactor-ssr
-git fetch origin add/refactor-ssr
+cd rebu-server/ && git fetch origin && git checkout -b my-support-docker origin/add/support-docker
+cd ../rebu-client && git fetch origin && git checkout -b my-refactor-ssr origin/add/refactor-ssr
 docker-compose up -
 ```
 
