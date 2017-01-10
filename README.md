@@ -43,7 +43,16 @@ cd ../rebu-client && git checkout --track -b add/refactor-ssr
 docker-compose up -
 ```
 
-### Useful commands
+When container start from the first time, you need to create database and run migrate, to do that, after docker-compose finish, run:
+
+```
+docker-compose exec postgres psql -Upostgres -c 'create database reboo;'
+docker-compose exec postgres psql -Upostgres -c 'create database reboo_test;'
+docker-compose exec api ./bin/rake db:migrate
+docker-compose up --build
+```
+
+### Others Useful commands
 
 ```
 docker-compose logs client # Show logs from container nodejs
@@ -52,21 +61,16 @@ docker-compose exec api /bin/bash # Open bash inside ruby container
 docker-compose up --build # Force build from images
 ```
 
-When container start from the first time, you need to create database, to do that, after docker-compose finish, run:
-
-```
-docker-compose exec postgres psql -Upostgres -c 'create database reboo;'
-docker-compose exec postgres psql -Upostgres -c 'create database reboo_test;'
-docker-compose up --build
-```
-
-If you need to run some npm or yarn command by hand you could do:
+If you need to run npm or yarn do:
 
 ```
 docker-compose exec client /bin/ash
 npm rebuild node-sass
-```
 
+# or just
+
+docker-compose exec client npm rebuild node-sass
+```
 
 And you are done!
 
