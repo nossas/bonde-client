@@ -40,15 +40,24 @@ git clone git@github.com:ourcities/rebu-client.git
 git clone git@github.com:ourcities/rebu-server.git
 cd rebu-server/ && git checkout --track -b add/support-docker
 cd ../rebu-client && git checkout --track -b add/refactor-ssr
-docker-compose up -d
+docker-compose up -
 ```
 
 ### Useful commands
 
 ```
 docker-compose logs client # Show logs from container nodejs
+docker-compose exec client /bin/ash # Open bash inside ruby container
 docker-compose exec api /bin/bash # Open bash inside ruby container
 docker-compose up --build # Force build from images
+```
+
+When container start from the first time, you need to create database, to do that, after docker-compose finish, run:
+
+```
+docker-compose exec postgres psql -Upostgres -c 'create database reboo;'
+docker-compose exec postgres psql -Upostgres -c 'create database reboo_test;'
+docker-compose up --build
 ```
 
 And you are done!
