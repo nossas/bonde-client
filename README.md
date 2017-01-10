@@ -60,6 +60,14 @@ docker-compose exec postgres psql -Upostgres -c 'create database reboo_test;'
 docker-compose up --build
 ```
 
+If you need to run some npm or yarn command by hand you could do:
+
+```
+docker-compose exec client /bin/ash
+npm rebuild node-sass
+```
+
+
 And you are done!
 
 ## Local Development
