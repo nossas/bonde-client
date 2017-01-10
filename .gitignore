@@ -38,3 +38,5 @@ public/assets
 coverage
 .env
 .yarnclean
+webpack-assets.json
+static
