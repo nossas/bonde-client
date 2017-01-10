@@ -7,6 +7,6 @@ RUN mkdir /code
 VOLUME /code
 WORKDIR /code
 COPY . /code
-RUN yarn # && yarn run build
+RUN yarn && npm rebuild node-sass
 CMD ["node", "-r 'babel-register'", "./server"]
 EXPOSE 3001
