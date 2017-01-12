@@ -72,11 +72,12 @@ npm rebuild node-sass
 docker-compose exec client npm rebuild node-sass
 ```
 
-To cleanup volumes, images and unused containers run:
+To cleanup all volumes, images and containers run:
 
 ```
-docker rmi $(docker images -f "dangling=true" -q)
-docker rm -v $(docker ps -a -q -f status=exited)
+docker rmi $(docker images -a -q)
+docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)
+docker volume rm $(docker volume ls -f dangling=true -q)
 ```
 
 And you are done!
