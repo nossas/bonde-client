@@ -3,18 +3,16 @@
 # Bonde Client
 
 [![Build Status][circleimg]][circle]
-[![Dependencies Status][depstatusimg]][depstatus]
-[![Dev Dependencies Status][devdepstatusimg]][devdepstatus]
 [![Docker Automated Deploy][dockerautoimg]][circle]
+[![Code Climate](https://codeclimate.com/github/nossas/bonde-client/badges/gpa.svg)](https://codeclimate.com/github/nossas/bonde-client)
 
-[![Code Climate](https://codeclimate.com/github/ourcities/rebu-client/badges/gpa.svg)](https://codeclimate.com/github/ourcities/rebu-client)
-[![Test Coverage](https://codeclimate.com/github/ourcities/rebu-client/badges/coverage.svg)](https://codeclimate.com/github/ourcities/rebu-client/coverage)
-[![Issue Count](https://codeclimate.com/github/ourcities/rebu-client/badges/issue_count.svg)](https://codeclimate.com/github/ourcities/rebu-client)
+[![Test Coverage](https://codeclimate.com/github/nossas/bonde-client/badges/coverage.svg)](https://codeclimate.com/github/nossas/bonde-client/coverage)
+[![Issue Count](https://codeclimate.com/github/nossas/bonde-client/badges/issue_count.svg)](https://codeclimate.com/github/nossas/bonde-client)
 
 ---
 
 ## Configuration
-Hub Client app depends on the host name to decide how to behave, considering this you should [setup a wildcard DNS domain](http://asciithoughts.com/posts/2014/02/23/setting-up-a-wildcard-dns-domain-on-mac-os-x/) on the development environment.
+Bonde Client app depends on the host name to decide how to behave, considering this you should [setup a wildcard DNS domain](http://asciithoughts.com/posts/2014/02/23/setting-up-a-wildcard-dns-domain-on-mac-os-x/) on the development environment.
 
 ## Container Development
 
@@ -36,7 +34,7 @@ docker-compose version 1.10.0-rc1, build ecff6f1
 ### Install
 ```
 mkdir code/ && cd code/
-git clone git@github.com:ourcities/rebu-client.git
+git clone git@github.com:nossas/bonde-client.git
 git clone git@github.com:ourcities/rebu-server.git
 cd rebu-server/ && git fetch origin && git checkout -b my-support-docker origin/add/support-docker
 cd ../rebu-client && git fetch origin && git checkout -b my-refactor-ssr origin/add/refactor-ssr
@@ -113,14 +111,14 @@ We have now two environments, staging and production, hosted by Heroku. All you 
 
 Add staging and production environments into your list of remote repos:
 ```
-git remote add staging https://git.heroku.com/hub-client-staging.git
-git remote add production https://git.heroku.com/hub-client.git
+git remote add dokku dokku@server:0-client
+git remote add dokku-prod dokku@server:0-client
 ```
 
 Commit your changes to the desired environment:
 ```
-git push staging master
-git push production master
+git push dokku commithash:master
+git push dokku-prod commithash:master
 ```
 
 ## Links
@@ -128,10 +126,6 @@ git push production master
 - [Invision](https://projects.invisionapp.com/share/763UO3YDT#/screens)
 - [Zeplin](https://app.zeplin.io/project.html#pid=55d1d57e14a5317a0e909551)
 
-[circleimg]: https://img.shields.io/circleci/project/ourcities/rebu-client.svg?style=flat-square
-[circle]: https://circleci.com/gh/ourcities/rebu-client
-[depstatusimg]: https://img.shields.io/david/ourcities/rebu-client.svg?style=flat-square
-[depstatus]: https://david-dm.org/ourcities/rebu-client
-[devdepstatusimg]: https://img.shields.io/david/dev/ourcities/rebu-client.svg?style=flat-square
-[devdepstatus]: https://david-dm.org/ourcities/rebu-client#info=devDependencies
+[circleimg]: https://img.shields.io/circleci/project/nossas/bonde-client.svg?style=flat-square
+[circle]: https://circleci.com/gh/nossas/bonde-client
 [dockerautoimg]: https://img.shields.io/badge/dokku-auto%20deploy-blue.svg?style=flat-square
