@@ -7,7 +7,10 @@ import { connect } from 'react-redux'
 import * as Paths from '../../../scripts/Mobilization/plugins/Templates/MobilizationTemplatesPaths'
 
 // Children module dependencies
-import { selectors as BlockSelectors } from '../../../modules/mobilizations/blocks'
+import {
+  selectors as BlockSelectors,
+  actions as BlockActions
+} from '../../../modules/mobilizations/blocks'
 import { selectors as WidgetSelectors } from '../../../modules/widgets'
 
 // Current module dependencies
@@ -34,6 +37,7 @@ MobilizationPage.propTypes = {
   blocks: PropTypes.array,
   blocksIsLoaded: PropTypes.bool,
   blockEditionMode: PropTypes.bool,
+  blockUpdate: PropTypes.func,
   widgets: PropTypes.array
 }
 
@@ -46,4 +50,8 @@ const mapStateToProps = state => ({
   auth: state.auth
 })
 
-export default connect(mapStateToProps)(MobilizationPage)
+const mapActionCreatorsToProps = {
+  blockUpdate: BlockActions.asyncBlockUpdate,
+}
+
+export default connect(mapStateToProps, mapActionCreatorsToProps)(MobilizationPage)

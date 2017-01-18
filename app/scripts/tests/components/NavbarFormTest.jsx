@@ -5,7 +5,7 @@ import { NavbarForm } from './../../components'
 const handleCloseForm = () => {}
 const mobilization = {}
 const block = {name: 'My block'}
-const dispatch = () => {}
+const blockUpdate = () => {}
 const auth = {}
 
 function generateComponent(options = {}) {
@@ -14,7 +14,7 @@ function generateComponent(options = {}) {
       handleCloseForm={options.handleCloseForm || handleCloseForm}
       mobilization={options.mobilization || mobilization}
       block={options.block || block}
-      dispatch={options.dispatch || dispatch}
+      blockUpdate={options.blockUpdate || blockUpdate}
       auth={options.auth || auth}
       defaultValue={block.name}
     />
@@ -57,7 +57,7 @@ describe('NavbarForm', () => {
     it('should dispatch the edit block action', () => {
       const mockedDispatch = sinon.spy()
       const component = TestUtils.renderIntoDocument(
-        generateComponent({dispatch: mockedDispatch})
+        generateComponent({blockUpdate: mockedDispatch})
       )
       component.submit({preventDefault: () => {}})
       expect(mockedDispatch).to.have.been.calledOnce

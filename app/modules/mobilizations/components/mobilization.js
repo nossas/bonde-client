@@ -18,6 +18,7 @@ const Mobilization = props => {
       body_font: bodyFont
     },
     blocks,
+    blockUpdate,
     editable,
     blockEditionMode
   } = props
@@ -31,7 +32,12 @@ const Mobilization = props => {
   return (
     <div className={classnames('flex flex-column', themeClassName, layoutClassName)} style={layoutStyle}>
       {!blockEditionMode && (
-        <Navbar blocks={blocks} editable={editable} />
+        <Navbar
+          mobilization={props.mobilization}
+          blocks={blocks}
+          editable={editable}
+          blockUpdate={blockUpdate}
+        />
       )}
       {/* render blocks */}
       <div id='blocks-list' className='flex-auto' style={{ overflowY: 'scroll' }}>
@@ -69,6 +75,7 @@ Mobilization.propTypes = {
   editable: PropTypes.bool.isRequired,
   mobilization: PropTypes.object.isRequired,
   blocks: PropTypes.array.isRequired,
+  blockUpdate: PropTypes.func,
   widgets: PropTypes.array.isRequired,
   blockEditionMode: PropTypes.bool
 }

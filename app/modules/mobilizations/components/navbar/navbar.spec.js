@@ -7,6 +7,7 @@ import Navbar from './navbar'
 describe('app/modules/mobilizations/components/navbar/navbar', () => {
   let wrapper
   const props = {
+    editable: false,
     mobilization: {},
     blocks: [
       {

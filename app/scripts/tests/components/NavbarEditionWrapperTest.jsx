@@ -1,18 +1,18 @@
 import React from 'react'
 import TestUtils from 'react-addons-test-utils'
-import { NavbarEditionWrapper, NavbarForm, NavbarButton } from './../../components'
+import { NavbarEditionWrapper, NavbarForm, NavbarButton } from '../../components'
 
 const block = {}
 const mobilization = {}
 const auth = {}
-const dispatch = () => {}
+const blockUpdate = () => {}
 
 const rawComponent = (
   <NavbarEditionWrapper
     block={block}
     mobilization={mobilization}
     auth={auth}
-    dispatch={dispatch}
+    blockUpdate={blockUpdate}
   />
 )
 

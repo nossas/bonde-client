@@ -1,15 +1,12 @@
 import React, { PropTypes } from 'react'
 
-import { actions as BlockActions } from '../../modules/mobilizations/blocks'
-
 
 export default class NavbarForm extends React.Component {
   static propTypes = {
     handleCloseForm: PropTypes.func.isRequired,
     mobilization: PropTypes.object.isRequired,
     block: PropTypes.object.isRequired,
-    dispatch: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired,
+    blockUpdate: PropTypes.func.isRequired,
     defaultValue: PropTypes.string
   }
 
@@ -42,14 +39,13 @@ export default class NavbarForm extends React.Component {
 
   submit(e) {
     e.preventDefault()
-    const { mobilization, block, dispatch } = this.props
+    const { mobilization, block, blockUpdate } = this.props
 
-    dispatch(
-      BlockActions.asyncBlockUpdate({
-        mobilization,
-        block: { ...block, name: this.state.name },
-      })
-    )
+    blockUpdate({
+      mobilization,
+      block: { ...block, name: this.state.name },
+    })
+    
     this.props.handleCloseForm()
   }
 
