@@ -1,10 +1,15 @@
 import React, { PropTypes, Component } from 'react'
-import { connect } from 'react-redux'
 import classnames from 'classnames'
 import keycode from 'keycode'
 
+// Global module dependencies
 import { Loading } from '../../../../scripts/components'
-import { actions as BlockActions, utils, selectors } from '../../../mobilizations/blocks'
+
+// Sibling module dependencies
+import { selectors as WidgetSelectors } from '../../../../modules/widgets'
+
+// Current module dependencies
+import { actions as BlockActions, utils } from '../../../mobilizations/blocks'
 import {
   BlockColorPicker,
   BlockWidgets,
@@ -70,7 +75,7 @@ class Block extends Component {
               state={this.state}
               props={this.props}
               onChange={::this.onChange}
-              widgets={selectors.getWidgets({ widgets, block })}
+              widgets={WidgetSelectors.getBlockWidgets({ widgets, block })}
             />
           </div>
           <div className="relative">

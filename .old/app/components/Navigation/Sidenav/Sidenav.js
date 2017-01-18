@@ -10,8 +10,7 @@ import './sidenav.scss'
 class Sidenav extends Component {
 
   render() {
-    const { children, community: { data, currentId } } = this.props
-    const community = data.filter(c => c.id === currentId)[0] || {}
+    const { children, community } = this.props
 
     return (
       <nav className="sidenav clearfix">

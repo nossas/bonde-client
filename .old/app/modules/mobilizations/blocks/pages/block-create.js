@@ -3,13 +3,22 @@ import { connect } from 'react-redux'
 import classnames from 'classnames'
 import ReactS3Uploader from 'react-s3-uploader'
 
+// Global module dependencies
 import * as Paths from '../../../../scripts/Paths'
 import { Tabs, Tab } from '../../../../components/Navigation'
 import ColorPicker from '../../../../components/ColorPicker'
-import { actions as BlockActions, constants as c } from '../../../mobilizations/blocks'
-import { BlockMiniature } from '../../../mobilizations/blocks/components'
 
-import '../../../mobilizations/blocks/pages/scss/block-create.scss'
+// Parent module dependencies
+import * as MobilizationSelectors from '../../selectors'
+
+// Current module dependencies
+import { BlockMiniature } from '../components'
+import {
+  actions as BlockActions,
+  selectors as BlockSelectors,
+  constants as c
+} from '../'
+import './scss/block-create.scss'
 
 export class BlockCreate extends Component {
   render() {
@@ -28,8 +37,8 @@ export class BlockCreate extends Component {
     const newBlockPath = Paths.createBlock(mobilization)
 
     return (
-      <div className="block-create col-12 flex flex-column bg-silver gray relative pl4">
-        <div className="block-create-header bg-white pt3 pr4 pl5">
+      <div className="block-create col-12 flex flex-column bg-silver gray relative">
+        <div className="block-create-header bg-white pt3 pr4 pl3">
           <h1 className="h1 mt0 mb3">Adicione um bloco de conteúdo</h1>
           <Tabs>
             <Tab
@@ -42,7 +51,7 @@ export class BlockCreate extends Component {
 
 
         <div className="clearfix overflow-auto">
-          <div className="col-6 clearfix py3 pr4 pl5">
+          <div className="col-6 clearfix py3 pr4 pl3">
             <p className="lightgray mb2">
               Os blocos serão adicionados ao fim da sua página, mas você pode trocá-los de ordem a
               qualquer momento
@@ -165,9 +174,8 @@ BlockCreate.propTypes = {
     pathname: PropTypes.string.isRequired
   }).isRequired,
   dispatch: PropTypes.func.isRequired,
-  blocks: PropTypes.object.isRequired,
-  auth: PropTypes.object.isRequired,
   mobilization: PropTypes.object.isRequired,
+  blocks: PropTypes.array.isRequired,
   selectedColor: PropTypes.object.isRequired,
   bgImage: PropTypes.string,
   selectedLayout: PropTypes.array.isRequired
@@ -180,6 +188,8 @@ BlockCreate.defaultProps = {
 }
 
 const mapStateToProps = state => ({
+  mobilization: MobilizationSelectors.getCurrent(state),
+  blocks: BlockSelectors.getList(state),
   selectedLayout: state.blocks.selectedLayout,
   uploadingBackgroundImage: state.blocks.uploadingBackgroundImage,
   uploadedBackgroundImage: state.blocks.uploadedBackgroundImage,

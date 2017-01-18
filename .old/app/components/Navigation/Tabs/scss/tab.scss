@@ -21,4 +21,14 @@
   &:hover {
     border-color: $lightGray;
   }
+
+  .circle {
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    color: $white;
+    font-weight: bold;
+    font-style: normal;
+    font-size: .9rem;
+  }
 }

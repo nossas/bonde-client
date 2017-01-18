@@ -3,6 +3,7 @@
 .bg-reboo {
   background-image: url('../assets/bg-login.png');
   color: $darkGray;
+  overflow: auto;
 
   h1 {
     font-size: 36px;

@@ -2,6 +2,7 @@ import c from '../../mobilizations/blocks/constants'
 
 export const initialState = {
   loaded: false,
+  loading: false,
   data: [],
   error: undefined,
   uploadingBackgroundImage: false,
@@ -24,11 +25,11 @@ export default function BlockReducers(state = initialState, action) {
     // @suggestion: Maybe this block of code turns
     // into a file called `async-block-fetch-reducer`?
     case c.REQUEST_ASYNC_BLOCK_FETCH:
-      return { ...state, loaded: false }
+      return { ...state, loaded: false, loading: true }
     case c.SUCCESS_ASYNC_BLOCK_FETCH:
-      return { ...state, loaded: true, data: action.payload }
+      return { ...state, loaded: true, loading: false, data: action.payload }
     case c.FAILURE_ASYNC_BLOCK_FETCH:
-      return { ...state, loaded: true, error: action.payload }
+      return { ...state, loaded: true, loading: false, error: action.payload }
 
     case c.REQUEST_ASYNC_BLOCK_CREATE:
       return { ...state, loaded: false }

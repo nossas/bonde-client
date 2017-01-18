@@ -10,7 +10,7 @@
     &.hover { opacity: 1 }
 
     &:hover {
-      z-index: 2;
+      z-index: 1;
       position: relative;
       box-shadow: 0 0 10px $darken-3;
     }

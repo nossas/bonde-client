@@ -1,21 +1,24 @@
-import * as t from '../../action-types'
+import * as t from '../action-types'
+import { createAction } from './create-action'
 
+const asyncFilter = query => (dispatch, getState, axios) => {
+  const endpoint = '/mobilizations'
+  const config = { params: query }
 
-export default query => (dispatch, getState, axios) => {
-  const { auth: { credentials } } = getState()
-
-  dispatch({ type: t.REQUEST_FILTER })
-
-  return axios
-    .get('/mobilizations', query, { headers: credentials })
+  dispatch({ type: t.ASYNC_FILTER_REQUEST })
+  return axios.get(endpoint, config)
     .then(({ status, data }) => {
-
       if (status === 200) {
-        dispatch({ type: t.SUCCESS_FILTER, data })
+        dispatch(createAction(t.ASYNC_FILTER_SUCCESS, data))
         return Promise.resolve()
       }
 
       return Promise.reject({ message: `Request code ${status}` })
     })
-    .catch(err => dispatch({ type: t.FAILURE_FILTER, error: err.message }))
+    .catch(failure => {
+      dispatch(createAction(t.ASYNC_FILTER_FAILURE, failure.message))
+      return Promise.reject({ message: `Request ${failure}` })
+    })
 }
+
+export default asyncFilter

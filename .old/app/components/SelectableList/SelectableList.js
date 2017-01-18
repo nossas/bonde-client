@@ -1,5 +1,4 @@
 import React, { PropTypes, Component } from 'react'
-import { connect } from 'react-redux'
 import classnames from 'classnames'
 
 import {
@@ -17,7 +16,7 @@ export const SelectableList = ({
   list,
   dispatch,
   selectedIndex,
-  onClick,
+  setSelectedIndex,
   activeCondition,
   emptyListText,
   emptyListIcon
@@ -28,10 +27,10 @@ export const SelectableList = ({
         list.length ? list.map((item, index) => (
           <MobilizationListItem
             key={`template-${index}`}
-            onClick={() => { onClick(item, index) }}
+            onClick={() => { setSelectedIndex(item.id, item) }}
             className={classnames(
               'border border-whisper',
-              { 'border-pagenta': activeCondition(item, index) }
+              { 'border-pagenta': item.id === selectedIndex }
             )}
           >
             <MobilizationListItemAvatar {...item} />
@@ -53,9 +52,8 @@ export const SelectableList = ({
 
 SelectableList.propTypes = {
   list: PropTypes.array.isRequired,
-  dispatch: PropTypes.func.isRequired,
-  onClick: PropTypes.func.isRequired,
-  activeCondition: PropTypes.func.isRequired,
+  selectedIndex: PropTypes.number,
+  setSelectedIndex: PropTypes.func.isRequired,
   emptyListText: PropTypes.string,
   emptyListIcon: PropTypes.string
 }
@@ -65,8 +63,4 @@ SelectableList.defaultProps = {
   emptyListIcon: 'frown-o'
 }
 
-const mapStateToProps = state => ({
-  selectedIndex: state.selectableList.selectedIndex
-})
-
-export default connect(mapStateToProps)(SelectableList)
+export default SelectableList

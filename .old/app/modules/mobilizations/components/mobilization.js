@@ -5,9 +5,7 @@ import DocumentMeta from 'react-document-meta'
 import { Navbar } from './navbar'
 import Block from '../../mobilizations/blocks/components'
 
-
 const Mobilization = props => {
-
   const {
     mobilization: {
       name,
@@ -15,17 +13,16 @@ const Mobilization = props => {
       facebook_share_title,
       facebook_share_description,
       facebook_share_image,
-      color_scheme,
-      header_font,
-      body_font,
+      color_scheme: colorScheme,
+      header_font: headerFont,
+      body_font: bodyFont
     },
     blocks,
-    widgets,
     editable,
-    blockEditionMode,
+    blockEditionMode
   } = props
 
-  const themeClassName = `${color_scheme} ${header_font}-header ${body_font}-body`
+  const themeClassName = `${colorScheme} ${headerFont}-header ${bodyFont}-body`
   const layoutClassName = editable ? 'flex-auto relative' : 'absolute'
   const layoutStyle = !editable ? { top: 0, bottom: 0, left: 0, right: 0 } : undefined
 
@@ -37,7 +34,7 @@ const Mobilization = props => {
         <Navbar blocks={blocks} editable={editable} />
       )}
       {/* render blocks */}
-      <div id='blocks-list' className='flex-auto' style={{overflowY: 'scroll'}}>
+      <div id='blocks-list' className='flex-auto' style={{ overflowY: 'scroll' }}>
         {visibleBlocks.map((block, index) => (
           <Block
             key={`block-${block.id}`}
@@ -63,7 +60,7 @@ const Mobilization = props => {
             }
           }}
         />
-      ): null}
+      ) : null}
     </div>
   )
 }
@@ -73,7 +70,7 @@ Mobilization.propTypes = {
   mobilization: PropTypes.object.isRequired,
   blocks: PropTypes.array.isRequired,
   widgets: PropTypes.array.isRequired,
-  blockEditionMode: PropTypes.bool,
+  blockEditionMode: PropTypes.bool
 }
 
 Mobilization.defaultProps = {

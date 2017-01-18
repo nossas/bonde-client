@@ -1,7 +1,7 @@
 //
 // Check if bg_class key of block object has value starting with "bg-"
 //
-const isBackgroundClass = block => /^bg\-\d+/.test(block.bg_class)
+const isBackgroundClass = block => /^bg-\d+/.test(block.bg_class)
 
 //
 // Generate block component array of class names
@@ -35,6 +35,6 @@ export const generateStyle = block => {
 
   return {
     backgroundImage: backgroundImage ? `url(${backgroundImage})` : null,
-    backgroundColor,
+    backgroundColor
   }
 }

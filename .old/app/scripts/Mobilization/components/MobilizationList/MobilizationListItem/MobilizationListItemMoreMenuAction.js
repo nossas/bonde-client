@@ -17,7 +17,7 @@ const MobilizationListItemMoreMenuAction = ({
       <span>{text}</span>
     </Link>
   ) : (
-    <Component {...rest} href={path} className={classNameProp}>
+    <Component {...rest} href={path ? path : undefined} className={classNameProp}>
       <i className={`fa fa-${icon}`} />
       <span>{text}</span>
     </Component>
@@ -28,7 +28,7 @@ MobilizationListItemMoreMenuAction.propTypes = {
   componentClass: PropTypes.oneOf(['Link', 'a', 'div']),
   className: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   text: PropTypes.string.isRequired,
-  path: PropTypes.string.isRequired,
+  path: PropTypes.string,
   icon: PropTypes.string.isRequired
 }
 

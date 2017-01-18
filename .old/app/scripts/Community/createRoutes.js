@@ -11,11 +11,9 @@ export default requiredLogin => [
     <Route path="/community" component={ListPage} />
     <Route path="/community/new" component={AddPage} />
   </Route>,
-  <Route component={SidebarContainer} onEnter={requiredLogin}>
-    <Route component={EditContainer}>
-      <Route path="/community/info" component={InfoPage} />
-      <Route path="/community/mailchimp" component={MailchimpPage} />
-      <Route path="/community/recipient" component={RecipientPage} />
-    </Route>
+  <Route component={EditContainer} onEnter={requiredLogin}>
+    <Route path="/community/info" component={InfoPage} />
+    <Route path="/community/mailchimp" component={MailchimpPage} />
+    <Route path="/community/recipient" component={RecipientPage} />
   </Route>
 ]

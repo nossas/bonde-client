@@ -1,49 +1,65 @@
 import * as t from './action-types'
 
-
-const initialState = {
-  loading: false,
+export const initialState = {
   isLoaded: false,
+  loading: false,
   data: [],
-  relationshipId: undefined,
-  currentId: undefined
+  currentId: undefined,
+  menuActiveIndex: undefined,
+  error: undefined
 }
-
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case t.REQUEST_FETCH:
+    case t.ADD:
+      return {
+        ...state,
+        data: [action.payload, ...state.data],
+        currentId: action.payload.id
+      }
+    case t.UPDATE:
+      return {
+        ...state,
+        data: state.data.map(m => m.id === action.payload.id ? action.payload : m)
+      }
+    case t.FETCH:
       return {
         ...state,
         loading: true,
-        relationshipId: action.relationshipId
+        data: [],
+        currentId: undefined
       }
-    case t.REQUEST_FILTER:
+    case t.LOAD:
       return {
         ...state,
-        loading: true
-      }
-    case t.SUCCESS_FETCH:
-    case t.SUCCESS_FILTER:
-      return {
-        ...state,
-        loading: false,
         isLoaded: true,
-        data: action.data
-      }
-    case t.FAILURE_FETCH:
-    case t.FAILURE_FILTER:
-      return {
-        ...state,
         loading: false,
-        isLoaded: false,
-        error: action.error
+        data: action.payload,
+        currentId: undefined
       }
     case t.SELECT:
       return {
         ...state,
-        currentId: action.currentId
+        currentId: action.payload
       }
+    case t.UNSELECT:
+      return {
+        ...state,
+        currentId: undefined
+      }
+    case t.TOGGLE_MENU:
+      return {
+        ...state,
+        menuActiveIndex: action.payload === state.menuActiveIndex ? undefined : action.payload
+      }
+
+    case t.ASYNC_FILTER_REQUEST:
+      return { ...state, loading: true }
+    case t.ASYNC_FILTER_SUCCESS:
+      return { ...state, loading: false, isLoaded: true, data: action.payload }
+    case t.ASYNC_FILTER_FAILURE:
+      return { ...state, loading: false, error: action.payload }
+
     default:
       return state
   }

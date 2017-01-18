@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 
-import { Widget } from '../../../../scripts/components'
+import Widget from '../../../../modules/widgets/components'
 
 const BlockWidgets = ({ widgets, props, onChange }) => {
   return <div>

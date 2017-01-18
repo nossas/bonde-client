@@ -1,8 +1,13 @@
+// Sibling module dependencies
+import * as WidgetActions from '../../../widgets/action-creators'
+
+// Current module dependencies
 import { createAction } from './create-action'
 import c from '../../../mobilizations/blocks/constants'
 
 const asyncBlockCreate = ({ block, mobilization, next }) => (dispatch, getState, axios) => {
-  const { auth: { credentials } } = getState()
+  const state = getState()
+  const { auth: { credentials } } = state
 
   const endpoint = `/mobilizations/${mobilization.id}/blocks`
   const body = { block }
@@ -12,6 +17,7 @@ const asyncBlockCreate = ({ block, mobilization, next }) => (dispatch, getState,
   return axios.post(endpoint, body, config)
     .then(response => {
       dispatch(createAction(c.SUCCESS_ASYNC_BLOCK_CREATE, response.data))
+      dispatch(WidgetActions.asyncWidgetFetch(mobilization.id))
       next()
       return Promise.resolve()
     })

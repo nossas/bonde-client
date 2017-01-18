@@ -31,4 +31,10 @@ describe('<ControlLabel />', () => {
     wrapper.setContext({ $formGroup })
     expect(wrapper.find('Raise')).to.have.length(1)
   })
+  it('should render <InputCounter /> if maxLength passed', () => {
+    const $formGroup = { value: 'xunda', touched: true }
+    wrapper.setContext({ $formGroup })
+    wrapper.setProps({ maxLength: 100 })
+    expect(wrapper.find('InputCounter')).to.have.length(1)
+  })
 })

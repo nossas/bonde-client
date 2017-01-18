@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { reduxForm } from 'redux-form'
 import { generateValidation } from 'redux-form-validation'
+import { CPF, CNPJ } from 'cpf_cnpj'
 
 import {
   FormRedux,
@@ -203,6 +204,10 @@ const validate = values => {
     errors.recipient.bank_account.document_number = 'CNPJ deve conter 14 digitos'
   } else if (document_number.length < 11) {
     errors.recipient.bank_account.document_number = 'CPF deve conter 11 digitos'
+  } else if (document_number.length === 11 && !CPF.isValid(document_number)) {
+    errors.recipient.bank_account.document_number = 'CPF inválido'
+  } else if (document_number.length === 14 && !CNPJ.isValid(document_number)) {
+    errors.recipient.bank_account.document_number = 'CNPJ inválido'
   }
 
   return errors

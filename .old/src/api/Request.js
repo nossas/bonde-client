@@ -7,11 +7,6 @@ class Request extends Axios {
     this.defaults.baseURL = `${process.env.API_URL}`
   }
 
-  editWidget(widget, mobilization, headers) {
-    const endpoint = `/mobilizations/${mobilization.id}/widgets/${widget.id}`
-    return this.put(endpoint, { widget }, { headers })
-  }
-
   createTemplate(body, headers) {
     return this.post('/templates', body, { headers })
   }

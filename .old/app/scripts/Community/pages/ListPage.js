@@ -38,7 +38,13 @@ class ListPage extends Component {
         <h2>Escolha uma das suas comunidades</h2>
         {isLoaded ? (
           <div className="rounded bg-white">
-            {data && data.map(community => <ListItem onClick={this.onClickItem.bind(this)} community={community} />)}
+            {data && data.map((community, key) => (
+              <ListItem
+                key={`list-item-${key}`}
+                onClick={this.onClickItem.bind(this)}
+                community={community}
+              />
+            ))}
           </div>
         ) : null}
         <p className="white center">ou <Link to={paths.add()}>Crie uma nova comunidade</Link></p>

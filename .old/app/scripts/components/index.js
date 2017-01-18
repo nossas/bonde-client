@@ -1,4 +1,3 @@
-export { default as Widget } from './Widget.jsx'
 export { default as ColorPicker } from './ColorPicker.jsx'
 export { default as Color } from './Color.jsx'
 export { default as DropDownMenu } from './DropDownMenu.jsx'

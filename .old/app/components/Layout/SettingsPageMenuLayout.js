@@ -4,7 +4,7 @@ import classnames from 'classnames'
 const SettingsPageMenuLayout = ({ children, title, className }) => (
   <div
     className={classnames(
-      'settings-page-menu-layout bg-white pt3 pr4 pl5 border-only-bottom border-gray94',
+      'settings-page-menu-layout bg-white pt3 pr4 pl3 border-only-bottom border-gray94',
       className
     )}
   >

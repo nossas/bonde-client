@@ -7,10 +7,6 @@ const asyncBlockSelect = where => (dispatch, getState, axios) => {
   const endpoint = '/blocks'
   const config = { headers: credentials, params: where }
 
-  //
-  // HTTP GET method passing body?
-  // Maybe needs to refact the API endpoint.
-  //
   dispatch({ type: c.REQUEST_ASYNC_BLOCK_SELECT })
   return axios.get(endpoint, config)
     .then(response => {

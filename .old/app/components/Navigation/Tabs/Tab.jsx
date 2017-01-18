@@ -8,17 +8,29 @@ import './scss/tab.scss'
 @reactMixin.decorate(Navigation)
 class Tab extends Component {
   render() {
-    const { text, path, isActive } = this.props
+    const { text, index, path, isActive } = this.props
+    if (path) {
+      return (
+        <Link
+          to={path}
+          className={classnames(
+            'tab btn border-only-bottom px0 py2 mr3 inline-block',
+            isActive ? 'h4 is-active' : null
+          )}
+        >
+          {text}
+        </Link>
+      )
+    }
     return (
-      <Link
-        to={path}
-        className={classnames(
-          'tab btn border-only-bottom px0 py2 mr3 inline-block',
-          isActive ? 'h4 is-active' : null
-        )}
-      >
+      <span className={classnames("tab inline-block mr2 py2", isActive ? 'bold black' : null)}>
+        <i
+          className={classnames('circle center inline-block mr2', isActive ? 'bg-pagenta' : 'bg-gray94')}
+        >
+          {index}
+        </i>
         {text}
-      </Link>
+      </span>
     )
   }
 }
@@ -26,11 +38,11 @@ class Tab extends Component {
 Tab.propTypes = {
   text: PropTypes.string.isRequired,
   isActive: PropTypes.bool,
-  path: PropTypes.string
+  path: PropTypes.string,
+  index: PropTypes.number
 }
 
 Tab.defaultProps = {
-  path: ' ',
   isActive: false
 }
 

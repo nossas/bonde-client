@@ -10,7 +10,8 @@ webpack-assets.json
 webpack-stats.json
 static/dist
 .DS_Store
-
+.nyc_output
+coverage
 # floobits file
 .floo
 .flooignore

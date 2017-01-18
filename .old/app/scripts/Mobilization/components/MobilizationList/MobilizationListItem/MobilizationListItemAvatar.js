@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react'
 import './scss/mobilization-list-item-avatar.scss'
 
 const MobilizationListItemAvatar = ({ image, facebook_share_image, imageSize }) => (
-  <div className="list-item-avatar left pr3">
+  <div className="list-item-avatar left">
     {
       image || facebook_share_image ? (
         <div

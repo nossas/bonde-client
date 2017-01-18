@@ -6,7 +6,6 @@ import {
   FINISH_UPLOAD_FACEBOOK_IMAGE,
 
   SET_CURRENT_MOBILIZATION,
-  SET_MOUSE_OVER,
   SET_MOBILIZATION_MORE_MENU_ACTIVE_INDEX,
 
   REQUEST_CREATE_MOBILIZATION_FROM_TEMPLATE,
@@ -24,7 +23,6 @@ export const initialState = {
 
 const MobilizationReducer = (state = initialState, action) => {
   switch (action.type) {
-    case t.REQUEST_FETCH_MOBILIZATIONS:
     case t.FETCH:
       return {
         ...state,
@@ -32,20 +30,12 @@ const MobilizationReducer = (state = initialState, action) => {
         loaded: false,
         communityId: action.communityId
       }
-    case t.SUCCESS_FETCH_MOBILIZATIONS:
     case t.FETCH_SUCCESS:
       return {
         ...state,
         loading: false,
         loaded: true,
         data: action.result
-      }
-    case t.FAILURE_FETCH_MOBILIZATIONS:
-      return {
-        ...state,
-        loading: false,
-        loaded: false,
-        error: action.error
       }
     case PROGRESS_UPLOAD_FACEBOOK_IMAGE:
       return {

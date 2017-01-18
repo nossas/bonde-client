@@ -1,11 +1,11 @@
 import React from 'react'
-// import TestUtils from 'react-addons-test-utils'
-// import { shallow, render } from 'enzyme'
+import TestUtils from 'react-addons-test-utils'
+import { shallow, render } from 'enzyme'
 import { expect } from 'chai'
 
-import { Widget, ColorPicker, DropDownMenu, DropDownMenuItem } from '../../../../../scripts/components'
+import { ColorPicker, DropDownMenu, DropDownMenuItem } from '../../../../../scripts/components'
 import { actions as BlockActions } from '../../../../mobilizations/blocks'
-import { Block } from '../../../../mobilizations/blocks/components/block'
+import Block from '../../../../mobilizations/blocks/components'
 
 const widget1 = { block_id: 1, id: 1, settings: { content: 'My widget1' } }
 const widget2 = { block_id: 2, id: 2, settings: { content: 'My widget2' } }
@@ -28,8 +28,8 @@ const props = {
   canMoveDown: true
 }
 
-describe('Block', () => {
-  describe.skip('#constructor', () => {
+describe.skip('Block', () => {
+  describe('#constructor', () => {
     it('should set initial state', () => {
       const component = shallow(<Block {...props} />)
       expect(component.state()).to.deep.equal({
@@ -44,7 +44,7 @@ describe('Block', () => {
     })
   })
 
-  describe.skip('#filterWidgets', () => {
+  describe('#filterWidgets', () => {
     it('should return widgets filtered by block_id', () => {
       const filteredWidgets = Block.prototype.filterWidgets(allWidgets.data, block)
       expect(filteredWidgets).to.include(widget1)
@@ -52,7 +52,7 @@ describe('Block', () => {
     })
   })
 
-  describe.skip('#renderWidgets', () => {
+  describe('#renderWidgets', () => {
     it('should return widgets components', () => {
       const renderedWidgets = Block.prototype.renderWidgets(allWidgets.data)
       expect(renderedWidgets).to.have.length(allWidgets.data.length)
@@ -61,7 +61,7 @@ describe('Block', () => {
     })
   })
 
-  describe.skip('#handleKeyUp', () => {
+  describe('#handleKeyUp', () => {
     it('should set editing background to false when pressed ESC key', () => {
       const component = shallow(<Block {...props} />)
       component.setState({ editingBackground: true })
@@ -77,7 +77,7 @@ describe('Block', () => {
     })
   })
 
-  describe.skip('#handleCancelEdit', () => {
+  describe('#handleCancelEdit', () => {
     it('should set editing background to false', () => {
       const component = shallow(<Block {...props} />)
       component.setState({
@@ -92,7 +92,7 @@ describe('Block', () => {
     })
   })
 
-  describe.skip('#handleColorClick', () => {
+  describe('#handleColorClick', () => {
     it('should set bg class to the selected bg class event current target', () => {
       const component = render(<Block {...props} />)
       const event = {currentTarget: {getAttribute() { return 'bg-purple' }}}
@@ -101,7 +101,7 @@ describe('Block', () => {
     })
   })
 
-  describe.skip('#handleSaveEdit', () => {
+  describe('#handleSaveEdit', () => {
     it('should dispatch edit block action', () => {
       const editBlockStub = sandbox.stub(BlockActions, 'editBlock')
       const component = render(
@@ -126,7 +126,7 @@ describe('Block', () => {
     })
   })
 
-  describe.skip('#handleUploadProgress', () => {
+  describe('#handleUploadProgress', () => {
     it('should set the progress', () => {
       const component = render(<Block {...props} />)
       component.handleUploadProgress(34)
@@ -134,7 +134,7 @@ describe('Block', () => {
     })
   })
 
-  describe.skip('#handleUploadError', () => {
+  describe('#handleUploadError', () => {
     it('should set the progress to null', () => {
       const component = render(<Block {...props} />)
       component.handleUploadError()
@@ -142,7 +142,7 @@ describe('Block', () => {
     })
   })
 
-  describe.skip('#handleUploadFinish', () => {
+  describe('#handleUploadFinish', () => {
     it('should set the progress to null and bg image to url', () => {
       const component = render(<Block {...props} />)
       const image = { signedUrl: 'http://foo.bar/foobar.jpg?abc=123' }
@@ -152,7 +152,7 @@ describe('Block', () => {
     })
   })
 
-  describe.skip('#handleEditBackgroundClick', () => {
+  describe('#handleEditBackgroundClick', () => {
     it('should set editing background to true', () => {
       const component = render(<Block {...props} />)
       component.setState({editingBackground: false})
@@ -161,7 +161,7 @@ describe('Block', () => {
     })
   })
 
-  describe.skip('#handleClearBgImage', () => {
+  describe('#handleClearBgImage', () => {
     it('should clear the image', () => {
       const component = render(<Block {...props} />)
       sandbox.stub(window, 'confirm').returns(true)
@@ -171,7 +171,7 @@ describe('Block', () => {
     })
   })
 
-  describe.skip('#handleMoveUpClick', () => {
+  describe('#handleMoveUpClick', () => {
     it('should dispatch move block up action', () => {
       const moveBlockUpStub = sandbox.stub(BlockActions, 'moveBlockUp')
       const component = render(
@@ -187,7 +187,7 @@ describe('Block', () => {
     })
   })
 
-  describe.skip('#handleMoveDownClick', () => {
+  describe('#handleMoveDownClick', () => {
     it('should dispatch move block down action', () => {
       const moveBlockDownStub = sandbox.stub(BlockActions, 'moveBlockDown')
       const component = render(
@@ -203,7 +203,7 @@ describe('Block', () => {
     })
   })
 
-  describe.skip('#handleToggleHiddenClick', () => {
+  describe('#handleToggleHiddenClick', () => {
     it('should dispatch edit block action when visible', () => {
       const editBlockStub = sandbox.stub(BlockActions, 'editBlock')
       const component = render(
@@ -243,7 +243,7 @@ describe('Block', () => {
     })
   })
 
-  describe.skip('#handleRemoveClick', () => {
+  describe('#handleRemoveClick', () => {
     it('should dispatch remove block action when confirmed', () => {
       sandbox.stub(window, 'confirm').returns(true)
       const removeBlockStub = sandbox.stub(BlockActions, 'removeBlock')
@@ -269,7 +269,7 @@ describe('Block', () => {
     })
   })
 
-  describe.skip('#handleMouseOver', () => {
+  describe('#handleMouseOver', () => {
     it('should set has mouse over to true', () => {
       const component = render(<Block {...props} />)
       component.setState({hasMouseOver: false})
@@ -278,7 +278,7 @@ describe('Block', () => {
     })
   })
 
-  describe.skip('#handleMouseOut', () => {
+  describe('#handleMouseOut', () => {
     it('should set has mouse over to false', () => {
       const component = render(<Block {...props} />)
       component.setState({hasMouseOver: true})
@@ -287,7 +287,7 @@ describe('Block', () => {
     })
   })
 
-  describe.skip('#render', () => {
+  describe('#render', () => {
     it('should render filtered widgets components', () => {
       const wrapper = shallow(<Block {...props} blocks={{}} />)
       expect(wrapper.find('Widget')).to.have.length(blockWidgets.length)
@@ -367,7 +367,7 @@ describe('Block', () => {
     })
   })
 
-  describe.skip('#displayDropDownMenu', () => {
+  describe('#displayDropDownMenu', () => {
     it('should be false when editable is false', () => {
 
     })

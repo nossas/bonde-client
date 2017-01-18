@@ -54,10 +54,4 @@ describe('Paths', () => {
       expect(Paths.createBlock(mobilization)).to.equal('/mobilizations/1/blocks/create')
     })
   })
-
-  describe('#configDonationMobilizationWidget', () => {
-    it('should return the path', () => {
-      expect(Paths.donationMobilizationWidget(1, 2)).to.equal('/mobilizations/1/widgets/2/donation')
-    })
-  })
 })

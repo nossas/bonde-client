@@ -17,7 +17,6 @@ class UploadImageField extends Component {
   }
 
   onError(error) {
-    console.log('error', error)
     this.setState({ loading: false })
   }
 
@@ -36,7 +35,7 @@ class UploadImageField extends Component {
 
   render() {
     const { loading } = this.state
-    const { className, signingUrl } = this.props
+    const { className, signingUrl, theme } = this.props
     const { $formGroup: { value } } = this.context
 
     let content = (<i className="fa fa-image" />)
@@ -46,20 +45,41 @@ class UploadImageField extends Component {
       content = <img src={value} role="presentation" />
     }
 
-    return (
-      <div className="uploadImageFile">
-        <button type="button" disable={loading} className={className} onClick={this.onClick.bind(this)}>
-          {content}
-        </button>
-        <ReactS3Uploader
-          signingUrl={signingUrl}
-          accept="image/*"
-          onProgress={this.onProgress.bind(this)}
-          onError={this.onError.bind(this)}
-          onFinish={this.onFinish.bind(this)}
-          ref="inputFile"
-        />
-      </div>
+    if (theme === 'icon') {
+      return (
+        <div className="uploadImageFile">
+          <button type="button" disable={loading} className={className} onClick={this.onClick.bind(this)}>
+            {content}
+          </button>
+          <ReactS3Uploader
+            signingUrl={signingUrl}
+            accept="image/*"
+            onProgress={this.onProgress.bind(this)}
+            onError={this.onError.bind(this)}
+            onFinish={this.onFinish.bind(this)}
+            ref="inputFile"
+          />
+        </div>
+      )
+    }
+    // if theme === 'classic'
+    return loading ? <i className="fa fa-spin fa-refresh" /> : (
+      <ReactS3Uploader
+        signingUrl={signingUrl}
+        accept="image/*"
+        onProgress={this.onProgress.bind(this)}
+        onError={this.onError.bind(this)}
+        onFinish={this.onFinish.bind(this)}
+        ref="inputFile"
+        className="border-none bg-darken-4 rounded p1 white"
+        style={{
+          position: 'absolute',
+          left: '50%',
+          bottom: '1rem',
+          width: '80%',
+          marginLeft: '-40%'
+        }}
+      />
     )
   }
 }
@@ -73,7 +93,12 @@ UploadImageField.contextTypes = {
 
 UploadImageField.propTypes = {
   className: PropTypes.string,
-  signingUrl: PropTypes.string.isRequired
+  signingUrl: PropTypes.string.isRequired,
+  theme: PropTypes.oneOf(['classic', 'icon'])
+}
+
+UploadImageField.defaultProps = {
+  theme: 'icon'
 }
 
 export default UploadImageField
