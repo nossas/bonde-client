@@ -4,20 +4,21 @@ import Menu from './menu'
 
 const Navbar = props => {
 
-  const { blocks, editable } = props
+  const { mobilization, blocks, editable } = props
 
   const onlyVisibleBlocks = blocks.filter(
     block => editable ? !block.hidden : !block.hidden && !block.menu_hidden
   )
+  const menuProps = { mobilization, blocks: onlyVisibleBlocks, editable }
 
   return (
     <div className="absolute col-12 z3">
       <div className="lg-show center">
-        <Menu blocks={onlyVisibleBlocks} />
+        <Menu {...menuProps} />
       </div>
       {/* mobile version */}
       <div className="lg-hide">
-        <Menu blocks={onlyVisibleBlocks} />
+        <Menu {...menuProps} />
       </div>
     </div>
   )
@@ -25,12 +26,13 @@ const Navbar = props => {
 
 Navbar.propTypes = {
   editable: PropTypes.bool.isRequired,
-  blocks: PropTypes.array,
+  mobilization: PropTypes.object.isRequired,
+  blocks: PropTypes.array
 }
 
 Navbar.defaultProps = {
   editable: false,
-  blocks: [],
+  blocks: []
 }
 
 export default Navbar

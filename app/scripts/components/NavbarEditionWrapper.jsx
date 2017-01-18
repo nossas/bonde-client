@@ -1,14 +1,16 @@
 import React, { PropTypes } from 'react'
+import { connect } from 'react-redux'
 import classnames from 'classnames'
 
 import { NavbarButton, NavbarForm } from './'
 import { actions as BlockActions } from '../../modules/mobilizations/blocks'
 
 
-export default class NavbarEditionWrapper extends React.Component {
+class NavbarEditionWrapper extends React.Component {
   static propTypes = {
+    mobilization: PropTypes.object.isRequired,
     block: PropTypes.object.isRequired,
-    dispatch: PropTypes.func,
+    asyncBlockUpdate: PropTypes.func,
     auth: PropTypes.object,
     className: PropTypes.string
   }
@@ -29,15 +31,13 @@ export default class NavbarEditionWrapper extends React.Component {
   }
 
   handleHideButtonClick() {
-    this.refs.hideButton.getDOMNode().blur()
-    const { dispatch, mobilization, block } = this.props
-
-    dispatch(
-      BlockActions.asyncBlockUpdate({
-        mobilization,
-        block: { ...block, menu_hidden: !block.menu_hidden },
-      })
-    )
+    this.refs.hideButton.blur()
+    const { asyncBlockUpdate, mobilization, block } = this.props
+    
+    asyncBlockUpdate({
+      mobilization,
+      block: { ...block, menu_hidden: !block.menu_hidden },
+    })
   }
 
   handleCloseForm() {
@@ -138,3 +138,5 @@ export default class NavbarEditionWrapper extends React.Component {
     )
   }
 }
+
+export default connect(undefined, BlockActions)(NavbarEditionWrapper)

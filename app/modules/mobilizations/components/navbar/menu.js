@@ -5,12 +5,14 @@ import { DropDownMenu, NavbarEditionWrapper } from '../../../../scripts/componen
 
 const Menu = props => {
 
-  const { mobile, blocks } = props
+  const { mobile, mobilization, blocks, editable } = props
   const children = blocks.map(block => (
     <div key={block.id} className={classnames({ "inline-block": !mobile })}>
       <NavbarEditionWrapper
         key={`navbar-edition-wrapper-${block.id}`}
+        mobilization={mobilization}
         block={block}
+        editable={editable}
         className="btn btn-transparent block white p2"
       />
     </div>
@@ -34,12 +36,15 @@ const Menu = props => {
 
 Menu.propTypes = {
   mobile: PropTypes.bool.isRequired,
+  mobilization: PropTypes.object.isRequired,
   blocks: PropTypes.array.isRequired,
+  editable: PropTypes.bool,
 }
 
 Menu.defaultProps = {
   blocks: [],
-  mobile: false
+  mobile: false,
+  editable: false
 }
 
 export default Menu

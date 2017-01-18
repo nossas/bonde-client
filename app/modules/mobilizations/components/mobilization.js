@@ -31,7 +31,7 @@ const Mobilization = props => {
   return (
     <div className={classnames('flex flex-column', themeClassName, layoutClassName)} style={layoutStyle}>
       {!blockEditionMode && (
-        <Navbar blocks={blocks} editable={editable} />
+        <Navbar mobilization={props.mobilization} blocks={blocks} editable={editable} />
       )}
       {/* render blocks */}
       <div id='blocks-list' className='flex-auto' style={{ overflowY: 'scroll' }}>
