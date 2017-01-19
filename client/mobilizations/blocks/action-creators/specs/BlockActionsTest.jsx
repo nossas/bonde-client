@@ -1,7 +1,13 @@
-import { actions, constants as c } from '../../../../mobilizations/blocks'
+import { expect } from 'chai'
+
+// Current module dependencies
+import { actions, constants as c } from '../../'
 import $ from 'jquery'
 
 describe.skip('Block Actions', () => {
+  const sandbox = {}
+  const requests = []
+
   describe('#fetchBlocks', () => {
     it('should GET blocks using correct URL and dispatch action', () => {
       const dispatch = sandbox.spy()
@@ -10,7 +16,7 @@ describe.skip('Block Actions', () => {
       const blocks = [{id: 1}, {id: 2}]
       expect(request.url).to.equal(`${process.env.API_URL}/mobilizations/1/blocks`)
       expect(request.method).to.equal('GET')
-      request.respond(200, { "Content-Type": "application/json" }, JSON.stringify(blocks))
+      request.respond(200, { 'Content-Type': 'application/json' }, JSON.stringify(blocks))
       expect(dispatch).to.have.been.calledWith({
         type: c.FETCH_BLOCKS,
         blocks
@@ -21,7 +27,7 @@ describe.skip('Block Actions', () => {
   describe('#addBlock', () => {
     it('should POST block using correct URL transition to edit mobilization', () => {
       const dispatch = sandbox.spy()
-      const router = { transitionTo() {} }
+      const router = { transitionTo: () => {} }
       const transitionToStub = sandbox.stub(router, 'transitionTo')
       const block = {
         bg_class: 'bg-test',
@@ -57,7 +63,7 @@ describe.skip('Block Actions', () => {
       expect(request.url).to.equal(`${process.env.API_URL}/mobilizations/1/blocks/2`)
       expect(request.method).to.equal('PUT')
       expect(request.requestBody).to.equal($.param({block}))
-      request.respond(200, { "Content-Type": "application/json" }, JSON.stringify(block))
+      request.respond(200, { 'Content-Type': 'application/json' }, JSON.stringify(block))
       expect(dispatch).to.have.been.calledWith({
         type: c.EDIT_BLOCK,
         block
@@ -77,7 +83,7 @@ describe.skip('Block Actions', () => {
       expect(request.method).to.equal('DELETE')
       expect(request.requestBody).to.be.null
       const block = {id: 2}
-      request.respond(200, { "Content-Type": "application/json" }, JSON.stringify(block))
+      request.respond(200, { 'Content-Type': 'application/json' }, JSON.stringify(block))
       expect(dispatch).to.have.been.calledWith({
         type: c.REMOVE_BLOCK,
         block
@@ -102,7 +108,7 @@ describe.skip('Block Actions', () => {
       expect(request.method).to.equal('PUT')
       expect(request.requestBody).to.equal($.param({block: {position: 6}}))
       const movedBlock = {...block3, position: 6}
-      request.respond(200, { "Content-Type": "application/json" }, JSON.stringify(movedBlock))
+      request.respond(200, { 'Content-Type': 'application/json' }, JSON.stringify(movedBlock))
       expect(dispatch).to.have.been.calledWith({
         type: c.MOVE_BLOCK_UP,
         block: movedBlock
@@ -127,7 +133,7 @@ describe.skip('Block Actions', () => {
       expect(request.method).to.equal('PUT')
       expect(request.requestBody).to.equal($.param({block: {position: 9}}))
       const movedBlock = {...block3, position: 9}
-      request.respond(200, { "Content-Type": "application/json" }, JSON.stringify(movedBlock))
+      request.respond(200, { 'Content-Type': 'application/json' }, JSON.stringify(movedBlock))
       expect(dispatch).to.have.been.calledWith({
         type: c.MOVE_BLOCK_DOWN,
         block: movedBlock

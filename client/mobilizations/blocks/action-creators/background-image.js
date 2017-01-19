@@ -1,4 +1,5 @@
-import c from '../../../mobilizations/blocks/constants'
+// Current module dependencies
+import c from '../constants'
 
 export const setBackgroundImageUploading = uploading =>
   ({ type: c.BLOCK_BACKGROUND_IMAGE_UPLOADING, uploading })

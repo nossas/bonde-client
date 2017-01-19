@@ -1,5 +1,6 @@
+// Current module dependencies
 import { createAction } from './create-action'
-import c from '../../../mobilizations/blocks/constants'
+import c from '../constants'
 
 const asyncBlockDestroy = ({ block, mobilization }) => (dispatch, getState, axios) => {
   const { auth: { credentials } } = getState()

@@ -4,9 +4,9 @@ import classnames from 'classnames'
 import ReactS3Uploader from 'react-s3-uploader'
 
 // Global module dependencies
-import * as Paths from '../../../../scripts/Paths'
-import { Tabs, Tab } from '../../../../components/Navigation'
-import ColorPicker from '../../../../components/ColorPicker'
+import * as paths from '~client/paths'
+import { Tabs, Tab } from '~components/navigation'
+import ColorPicker from '~components/color-picker'
 
 // Parent module dependencies
 import * as MobilizationSelectors from '../../selectors'
@@ -34,7 +34,7 @@ export class BlockCreate extends Component {
       uploadingBackgroundImage,
     } = this.props
     const { color_scheme: colorScheme } = mobilization
-    const newBlockPath = Paths.createBlock(mobilization)
+    const newBlockPath = paths.createBlock(mobilization)
 
     return (
       <div className="block-create col-12 flex flex-column bg-silver gray relative">
@@ -149,7 +149,7 @@ export class BlockCreate extends Component {
                   },
                   next: () => {
                     this.context.router.transitionTo(
-                      `${Paths.editMobilization(mobilization.id)}?newBlock=true`
+                      `${paths.editMobilization(mobilization.id)}?newBlock=true`
                     )
                   }.bind(this)
                 }))

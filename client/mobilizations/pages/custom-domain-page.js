@@ -3,19 +3,19 @@ import ReactGA from 'react-ga'
 import { connect } from 'react-redux'
 
 // Global module dependencies
-import { TechnicalIssues } from '../../../components/Error'
-import { GoogleFontsLoader } from '../../../components/Fonts'
-import * as arrayUtil from '../../../util/array'
+import { TechnicalIssues } from '~components/error'
+import { GoogleFontsLoader } from '~components/fonts'
+import * as arrayUtil from '~util/array'
 
 // Children modules dependencies
 import {
   actions as BlockActions,
   selectors as BlockSelectors
-} from '../../../modules/mobilizations/blocks'
+} from '~mobilizations/blocks'
 import {
   actions as WidgetActions,
   selectors as WidgetSelectors
-} from '../../../modules/widgets'
+} from '~mobilizations/widgets'
 
 // Current module dependencies
 import * as MobilizationSelectors from '../selectors'

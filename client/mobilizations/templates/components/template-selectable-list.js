@@ -1,12 +1,10 @@
 import React, { PropTypes } from 'react'
 import classnames from 'classnames'
 
-import { SelectableList } from '../../../../components/SelectableList'
-import { FilterableSearchBar } from '../../../../components/FilterableSearchBar'
-
+import SelectableList from '~components/selectable-list'
+import FilterableSearchBar from '~components/filterable-search-bar'
 
 const TemplateSelectableList = props => {
-
   const {
     templates,
     filterableTemplates,

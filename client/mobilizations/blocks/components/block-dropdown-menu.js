@@ -2,8 +2,9 @@ import React, { PropTypes } from 'react'
 import classnames from 'classnames'
 
 import { DropDownMenu, DropDownMenuItem } from '../../../../scripts/components'
-import { actions as BlockActions } from '../../../mobilizations/blocks'
 
+// Current module dependencies
+import * as BlockActions from '../action-creators'
 
 const displayDropDownMenu = ({ state, props }) => (
   state.hasMouseOver &&
@@ -20,14 +21,14 @@ const BlockDropdownMenu = ({ state, props, onChange }) => {
     canMoveDown,
     mobilization,
     block,
-    blocks,
+    blocks
   } = props
 
   const {
     asyncBlockUpdate,
     asyncBlockDestroy,
     asyncBlockMoveUp,
-    asyncBlockMoveDown,
+    asyncBlockMoveDown
   } = BlockActions
 
   return (
@@ -37,14 +38,14 @@ const BlockDropdownMenu = ({ state, props, onChange }) => {
         {'display-none': !displayDropDownMenu({ state, props })}
       )}
       menuClassName='bg-darken-4 rounded white right-0 top-0 mr4'
-      buttonClassName="btn bg-darken-4 white rounded"
-      icon="cog"
+      buttonClassName='btn bg-darken-4 white rounded'
+      icon='cog'
     >
       <DropDownMenuItem
         onClick={() => onChange({ editingBackground: true })}
-        className="btn">
+        className='btn'>
         <span>
-          <i className="fa fa-picture-o" /> Alterar fundo
+          <i className='fa fa-picture-o' /> Alterar fundo
         </span>
       </DropDownMenuItem>
       <DropDownMenuItem
@@ -55,7 +56,7 @@ const BlockDropdownMenu = ({ state, props, onChange }) => {
             block: { ...block, hidden: !block.hidden }
           }))
         }}
-        className="btn">
+        className='btn'>
         <span>
           <i className={classnames('fa', (block.hidden ? 'fa-eye' : 'fa-eye-slash'))} />
           {(block.hidden ? ' Mostrar' : ' Esconder')}
@@ -63,14 +64,14 @@ const BlockDropdownMenu = ({ state, props, onChange }) => {
       </DropDownMenuItem>
       <DropDownMenuItem
         onClick={() => {
-          if (confirm('Você tem certeza que quer remover este bloco?')) {
+          if (window.confirm('Você tem certeza que quer remover este bloco?')) {
             onChange({ loading: true })
             dispatch(asyncBlockDestroy({ mobilization, block }))
           }
         }}
-        className="btn">
+        className='btn'>
         <span>
-          <i className="fa fa-trash" /> Remover
+          <i className='fa fa-trash' /> Remover
         </span>
       </DropDownMenuItem>
       <DropDownMenuItem
@@ -79,9 +80,9 @@ const BlockDropdownMenu = ({ state, props, onChange }) => {
           onChange({ loading: true })
           dispatch(asyncBlockMoveUp({ mobilization, block, blocks }))
         }}
-        className="btn">
+        className='btn'>
         <span>
-          <i className="fa fa-chevron-up" /> Mover para cima
+          <i className='fa fa-chevron-up' /> Mover para cima
         </span>
       </DropDownMenuItem>
       <DropDownMenuItem
@@ -90,9 +91,9 @@ const BlockDropdownMenu = ({ state, props, onChange }) => {
           onChange({ loading: true })
           dispatch(asyncBlockMoveDown({ mobilization, block, blocks }))
         }}
-        className="btn">
+        className='btn'>
         <span>
-          <i className="fa fa-chevron-down" /> Mover para baixo
+          <i className='fa fa-chevron-down' /> Mover para baixo
         </span>
       </DropDownMenuItem>
     </DropDownMenu>
@@ -104,7 +105,7 @@ BlockDropdownMenu.propTypes = {
     hasMouseOver: PropTypes.bool,
     editingBackground: PropTypes.bool,
     editingWidget: PropTypes.bool,
-    loading: PropTypes.bool,
+    loading: PropTypes.bool
   }),
   props: PropTypes.shape({
     editable: PropTypes.bool,
@@ -114,10 +115,10 @@ BlockDropdownMenu.propTypes = {
     mobilization: PropTypes.object,
     blocks: PropTypes.array,
     block: PropTypes.shape({
-      hidden: PropTypes.bool,
-    }),
+      hidden: PropTypes.bool
+    })
   }),
-  onChange: PropTypes.func,
+  onChange: PropTypes.func
 }
 
 export default BlockDropdownMenu

@@ -4,7 +4,7 @@ import * as selectors from './selectors'
 import * as actionCreators from './action-creators'
 
 import mobilizationReducers from './reducers'
-import { reducers as templateReducers } from './templates'
+import templateReducers from './templates/reducers'
 
 export default {
   selectors,

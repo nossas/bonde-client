@@ -1,9 +1,9 @@
 // Sibling module dependencies
-import * as WidgetActions from '../../../widgets/action-creators'
+import * as WidgetActions from '../../widgets/action-creators'
 
 // Current module dependencies
 import { createAction } from './create-action'
-import c from '../../../mobilizations/blocks/constants'
+import c from '../constants'
 
 const asyncBlockCreate = ({ block, mobilization, next }) => (dispatch, getState, axios) => {
   const state = getState()
