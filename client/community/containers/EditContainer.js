@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Tabs, Tab } from '../../../components/Navigation'
-import { SettingsPageLayout, SettingsPageMenuLayout, SettingsPageContentLayout } from '../../../components/Layout'
+import { Tabs, Tab } from '~components/navigation'
+import { SettingsPageLayout, SettingsPageMenuLayout, SettingsPageContentLayout } from '~components/layout'
 
 import Sidebar from '../../Dashboard/Sidebar/sidebar'
 import getSidebarProps from '../../Dashboard/Sidebar/map-state-to-props'
 
 import * as selectors from '../selectors'
 import * as paths from '../paths'
-
 
 class EditContainer extends Component {
 
