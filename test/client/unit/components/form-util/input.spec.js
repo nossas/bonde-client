@@ -2,9 +2,9 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { Input } from './../'
+import { Input } from '~components/form-util'
 
-describe('/app/components/FormUtil/Input', () => {
+describe('client/components/form-util/input', () => {
   let wrapper
   const props = {
     uid: 'foo',
@@ -35,7 +35,7 @@ describe('/app/components/FormUtil/Input', () => {
 
   describe('default props', () => {
     let unrenderedProps
-    before(() => {
+    beforeAll(() => {
       unrenderedProps = wrapper.unrendered.props
     })
 

@@ -2,9 +2,9 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { Error } from './../'
+import { Error } from '~components/form-util'
 
-describe('/app/components/FormUtil/Error', () => {
+describe('client/components/form-util/error', () => {
   let wrapper
   const props = { message: 'Foo Bar Error Message!' }
 
