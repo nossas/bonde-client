@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
 
-import { setFilterableSearchBarList } from './FilterableSearchBarActions'
+import { setFilterableSearchBarList } from './actions'
 
 export class FilterableSearchBar extends Component {
 

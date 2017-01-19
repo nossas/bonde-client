@@ -2,16 +2,16 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { TechnicalIssues } from '~components/error'
+import { FilterableSearchBar } from '~components/filterable-search-bar'
 
-describe('components/error/technical-issues', () => {
+describe('components/filterable-search-bar/index', () => {
   let wrapper
   const props = {
     dispatch: () => {}
   }
 
   beforeAll(() => {
-    wrapper = shallow(<TechnicalIssues {...props} />)
+    wrapper = shallow(<FilterableSearchBar {...props} />)
   })
 
   describe('#render', () => {
