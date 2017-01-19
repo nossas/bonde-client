@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 
 import './technical-issues.scss'
-import logoIcon from '../Navigation/Sidenav/logo-icon.svg'
+import logoIcon from '../../../.old/app/components/Navigation/Sidenav/logo-icon.svg'
 
 class TechnicalIssues extends Component {
   render() {
