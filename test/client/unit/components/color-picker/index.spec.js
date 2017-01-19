@@ -2,15 +2,15 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { ColorPicker } from '../ColorPicker'
+import { ColorPicker } from '../../../../../common/components/color-picker'
 
-describe('app/components/ColorPicker/ColorPicker', () => {
+describe('components/color-picker/index', () => {
   let wrapper
   const props = {
     dispatch: () => {}
   }
 
-  before(() => {
+  beforeAll(() => {
     wrapper = shallow(<ColorPicker {...props} />)
   })
 

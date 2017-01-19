@@ -4,7 +4,7 @@ import { SketchPicker } from 'react-color'
 import classnames from 'classnames'
 
 import themes from './themes'
-import * as ColorPickerActions from './ColorPickerActions'
+import * as ColorPickerActions from './actions'
 
 export const ColorPicker = ({
   dispatch,

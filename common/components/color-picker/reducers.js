@@ -1,6 +1,6 @@
 import {
   SET_SELECTED_COLOR
-} from './ColorPickerActions'
+} from './actions'
 
 const initialState = {
   loading: false,
