@@ -2,9 +2,9 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { Tabs } from '../'
+import { Tabs } from '~components/navigation/tabs'
 
-describe('app/components/Navigation/Tabs', () => {
+describe('client/components/navigation/tabs/tabs', () => {
   describe('#render', () => {
     it('should render one root .tabs <nav> element', () => {
       const wrapper = shallow(<Tabs />)

@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import classnames from 'classnames'
 
-import './scss/browsable-list.scss'
+import './browsable-list.scss'
 
 const BrowsableList = ({ children, className, style }) => (
   <div className={classnames('browsable-list rounded', className)} style={style}>

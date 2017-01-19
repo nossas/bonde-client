@@ -1,5 +1,0 @@
-export { default as Tabs } from './Tabs/Tabs.jsx'
-export { default as Tab } from './Tabs/Tab.jsx'
-export { default as Sidenav } from './Sidenav/Sidenav'
-export { default as SidenavList } from './Sidenav/SidenavList'
-export { default as SidenavListItem } from './Sidenav/SidenavListItem'

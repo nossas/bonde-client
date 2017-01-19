@@ -2,23 +2,22 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { Tab } from '../'
+import { Tab } from '~components/navigation/tabs'
 
-describe('app/components/Navigation/Tab', () => {
+describe('client/components/navigation/tabs/tab', () => {
   let wrapper
   const context = { router: {} }
   const props = {
-    text: 'Foo Text',
+    text: 'Foo Text'
   }
 
   describe('#render', () => {
-    before(() => {
+    beforeAll(() => {
       wrapper = shallow(<Tab {...props} />, { context })
     })
 
     describe('should passed path', () => {
-
-      before(() => {
+      beforeAll(() => {
         wrapper.setProps({ path: '/' })
       })
 
@@ -27,7 +26,7 @@ describe('app/components/Navigation/Tab', () => {
       })
 
       describe('when isActive is false', () => {
-        before(() => {
+        beforeAll(() => {
           wrapper.setProps({ ...props, isActive: true })
         })
         it('should render a tab with h4 className', () => {
@@ -37,7 +36,6 @@ describe('app/components/Navigation/Tab', () => {
     })
 
     describe('when without path', () => {
-
       it('should render span with index', () => {
         wrapper.setProps({ index: 1, path: undefined })
         expect(wrapper.find('i').text()).to.deep.equal('1')

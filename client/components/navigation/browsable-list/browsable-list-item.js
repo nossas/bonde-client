@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import classnames from 'classnames'
 
-import './scss/browsable-list-item.scss'
+import './browsable-list-item.scss'
 
 const BrowsableListItem = ({ className, style, leftIcon, title, subtitle, rightIcon, path }) => (
   <Link className={classnames('browsable-list-item', className)} style={style} to={path}>

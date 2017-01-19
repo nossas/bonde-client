@@ -2,9 +2,9 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { SidenavList } from '../'
+import { SidenavList } from '~components/navigation/sidenav'
 
-describe('app/components/Navigation/Sidenav/SidenavList', () => {
+describe('client/components/navigation/sidenav/sidenav-list', () => {
   let wrapper
 
   beforeEach(() => {

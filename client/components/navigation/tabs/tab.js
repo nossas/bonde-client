@@ -3,7 +3,7 @@ import { Link, Navigation } from 'react-router'
 import reactMixin from 'react-mixin'
 import classnames from 'classnames'
 
-import './scss/tab.scss'
+import './tab.scss'
 
 @reactMixin.decorate(Navigation)
 class Tab extends Component {
