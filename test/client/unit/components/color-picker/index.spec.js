@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { ColorPicker } from '../../../../../common/components/color-picker'
+import { ColorPicker } from '~components/color-picker'
 
 describe('components/color-picker/index', () => {
   let wrapper
