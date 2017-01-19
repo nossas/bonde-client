@@ -5,8 +5,7 @@ import { ColorPicker, Progress } from '../../../../scripts/components'
 import { actions as BlockActions } from '../../../mobilizations/blocks'
 
 const BlockColorPicker = ({ state, props, onChange }) => {
-  const { mobilization, block, dispatch } = props
-  const { asyncBlockUpdate } = BlockActions
+  const { mobilization, block, blockUpdate } = props
 
   return (
     <div>
@@ -70,16 +69,15 @@ const BlockColorPicker = ({ state, props, onChange }) => {
           disabled={!!state.uploadProgress}
           onClick={() => {
             onChange({ editingBackground: false, loading: true })
-            dispatch(
-              asyncBlockUpdate({
-                mobilization,
-                block: {
-                  ...block,
-                  bg_class: state.bgClass,
-                  bg_image: state.bgImage
-                }
-              })
-            )
+            props.setEditionMode(false)
+            blockUpdate({
+              mobilization,
+              block: {
+                ...block,
+                bg_class: state.bgClass,
+                bg_image: state.bgImage
+              }
+            })
           }}
         >
           Salvar
@@ -112,7 +110,7 @@ BlockColorPicker.propTypes = {
   props: PropTypes.shape({
     mobilization: PropTypes.object,
     block: PropTypes.object,
-    dispatch: PropTypes.func,
+    blockUpdate: PropTypes.func,
   }),
   state: PropTypes.shape({
     bgClass: PropTypes.string,

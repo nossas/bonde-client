@@ -15,7 +15,7 @@ describe('app/modules/widgets/__plugins__/content/components/__content__', () =>
     editable: true,
     onEdit: () => {},
     onCancelEdit: () => {},
-    dispatch: () => {},
+    widgetUpdate: () => {},
     auth: {}
   }
 

@@ -9,7 +9,6 @@ import { Loading } from '../../../../scripts/components'
 import { selectors as WidgetSelectors } from '../../../../modules/widgets'
 
 // Current module dependencies
-import { actions as BlockActions, utils } from '../../../mobilizations/blocks'
 import {
   BlockColorPicker,
   BlockWidgets,
@@ -17,7 +16,11 @@ import {
   BlockDropdownMenu,
 } from '../../../mobilizations/blocks/components'
 
+import { generateClassName, generateStyle } from '../utils'
+
+
 class Block extends Component {
+
   constructor(props, context) {
     super(props, context)
     this.state = {
@@ -31,17 +34,6 @@ class Block extends Component {
     }
   }
 
-  componentWillUpdate(props, state) {
-    const { editingBackground, editingWidget } = this.state
-    const { dispatch } = this.props
-    const { setEditionMode } = BlockActions
-
-    if (editingBackground && !state.editingBackground) dispatch(setEditionMode(false))
-    else if (!editingBackground && state.editingBackground) dispatch(setEditionMode(true))
-    else if (editingWidget && !state.editingWidget) dispatch(setEditionMode(false))
-    else if (!editingWidget && state.editingWidget) dispatch(setEditionMode(true))
-  }
-
   onChange(state) {
     this.setState({ ...this.state, ...state })
   }
@@ -52,8 +44,8 @@ class Block extends Component {
     return (
       <div
         id={`block-${block.id}`}
-        style={{ ...utils.generateStyle(block) }}
-        className={classnames('clearfix', utils.generateClassName(block))}
+        style={{ ...generateStyle(block) }}
+        className={classnames('clearfix', generateClassName(block))}
         onMouseOver={() => ::this.onChange({ hasMouseOver: true })}
         onMouseOut={() => ::this.onChange({ hasMouseOver: false })}
         onKeyUp={event => {
@@ -101,7 +93,8 @@ class Block extends Component {
 Block.propTypes = {
   block: PropTypes.object.isRequired,
   widgets: PropTypes.array.isRequired,
-  dispatch: PropTypes.func,
+  widgetUpdate: PropTypes.func,
+  setEditionMode: PropTypes.func
 }
 
 export default Block

@@ -11,7 +11,10 @@ import {
   selectors as BlockSelectors,
   actions as BlockActions
 } from '../../../modules/mobilizations/blocks'
-import { selectors as WidgetSelectors } from '../../../modules/widgets'
+import {
+  selectors as WidgetSelectors,
+  actions as WidgetActions
+} from '../../../modules/widgets'
 
 // Current module dependencies
 import * as MobilizationSelectors from '../selectors'
@@ -52,6 +55,16 @@ const mapStateToProps = state => ({
 
 const mapActionCreatorsToProps = {
   blockUpdate: BlockActions.asyncBlockUpdate,
+  setEditionMode: BlockActions.setEditionMode,
+  blockDestroy: BlockActions.asyncBlockDestroy,
+  blockMove: (direction, payload) => dispatch => {
+    if (direction === 'up') {
+      dispatch(BlockActions.asyncBlockMoveUp(payload))
+    } else if (direction === 'down') {
+      dispatch(BlockActions.asyncBlockMoveDown(payload))
+    }
+  },
+  widgetUpdate: WidgetActions.asyncWidgetUpdate
 }
 
 export default connect(mapStateToProps, mapActionCreatorsToProps)(MobilizationPage)

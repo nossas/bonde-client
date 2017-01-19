@@ -10,7 +10,6 @@ import * as Paths from '../../../../../scripts/Paths'
 import { WidgetOverlay, FinishMessageCustom } from '../../../../../modules/widgets/components'
 
 // Current module dependencies
-import * as DonationActions from '../action-creators'
 import { DonationTellAFriend } from '../components'
 import './__donation__.scss'
 
@@ -35,12 +34,12 @@ class Donation extends React.Component {
       widget.settings && widget.settings.default_donation_value ?
       widget.settings.default_donation_value : 1
     )
-    this.setState({selected_value: Number(defaultDonationValue)})
+    this.setState({ selected_value: Number(defaultDonationValue) })
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.state.loading) {
-      this.setState({loading: false, success: true})
+      this.setState({ loading: false, success: true })
     }
   }
 
@@ -60,7 +59,7 @@ class Donation extends React.Component {
   }
 
   handleClickDonate() {
-    const { widget, dispatch } = this.props
+    const { widget, asyncDonationTransactionCreate } = this.props
     const { success, selected_value, selected_payment_type } = this.state
     const that = this
 
@@ -81,7 +80,7 @@ class Donation extends React.Component {
         data.amount = widget.settings['donation_value' + selected_value] + "00"
 
         that.setState({ success: true })
-        dispatch(DonationActions.asyncDonationTransactionCreate(data))
+        asyncDonationTransactionCreate(data)
       },
       error: err => { console.error(err) }
     })
