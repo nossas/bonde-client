@@ -4,6 +4,8 @@ import { expect } from 'chai'
 
 import { TechnicalIssues } from '../../../../../common/components/error'
 
+jest.mock('../../../../../.old/app/components/Navigation/Sidenav/logo-icon.svg', ()=> 'test-file-stub');
+
 describe('components/error/technical-issues', () => {
   let wrapper
   const props = {
