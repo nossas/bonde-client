@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Universal JS app",
   "scripts": {
-    "test": "BABEL_DISABLE_CACHE=1 jest",
+    "test": "BABEL_DISABLE_CACHE=1 jest --config ./tools/jest.config.json",
     "test:watch": "npm test -- --watch",
     "coverage": "nyc npm test",
     "start": "cross-env NODE_ENV=development ./node_modules/.bin/nodemon -r 'babel-register' ./server",
@@ -88,6 +88,7 @@
     "superagent": "^3.3.2",
     "testdouble": "^1.9.1",
     "throng": "^4.0.0",
+    "url-loader": "^0.5.7",
     "webpack": "^1.14",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.10.0"
