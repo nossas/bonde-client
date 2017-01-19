@@ -2,9 +2,9 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { SettingsPageMenuLayout } from '../'
+import { SettingsPageMenuLayout } from '~components/layout'
 
-describe('app/components/Layout/SettingsPageMenuLayout', () => {
+describe('client/components/layout/settings-page-menu-layout', () => {
   let wrapper
   const props = { title: 'Foo Title' }
 
