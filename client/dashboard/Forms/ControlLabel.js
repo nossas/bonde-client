@@ -1,12 +1,14 @@
 import React, { Component, PropTypes } from 'react'
 import classnames from 'classnames'
 
-import Raise from './Raise'
-import { InputCounter } from '../../components'
+// Global module dependencies
+import { InputCounter } from '~components/form-util'
 
+// Current module dependencies
+import Raise from './Raise'
 
 class ControlLabel extends Component {
-  render() {
+  render () {
     const formGroup = this.context.$formGroup
     const controlId = formGroup && formGroup.controlId
     const error = formGroup && formGroup.error
@@ -17,7 +19,13 @@ class ControlLabel extends Component {
     return (
       <label style={{ cursor: 'pointer' }} htmlFor={htmlFor} {...props}>
         <span className={classnames('caps', className)}>{children}</span>
-        {maxLength ? <InputCounter className="right regular" maxLength={maxLength} length={formGroup.value ? formGroup.value.length : 0} /> : null}
+        {!maxLength ? null : (
+          <InputCounter
+            className='right regular'
+            maxLength={maxLength}
+            length={formGroup.value ? formGroup.value.length : 0}
+          />
+        )}
         {error && touched && <Raise error={error} />}
       </label>
     )
@@ -25,11 +33,11 @@ class ControlLabel extends Component {
 }
 
 ControlLabel.contextTypes = {
-  $formGroup: PropTypes.object,
+  $formGroup: PropTypes.object
 }
 
 ControlLabel.propTypes = {
-  htmlFor: PropTypes.string,
+  htmlFor: PropTypes.string
 }
 
 export default ControlLabel

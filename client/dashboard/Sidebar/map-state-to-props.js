@@ -1,6 +1,6 @@
-import { selectors as AccountSelectors } from '../../../modules/account'
-import { selectors as CommunitySelectors } from '../../../modules/community'
-import { selectors as MobilizationSelectors } from '../../../modules/mobilizations'
+import { selectors as AccountSelectors } from '~account'
+import { selectors as CommunitySelectors } from '~community'
+import { selectors as MobilizationSelectors } from '~mobilizations'
 
 export default (state, ownProps) => ({
   loading: MobilizationSelectors.isLoading(state),
