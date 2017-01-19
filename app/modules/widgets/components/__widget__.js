@@ -30,7 +30,8 @@ Widget.propTypes = {
     sm_size: PropTypes.number,
     md_size: PropTypes.number,
     lg_size: PropTypes.number
-  }).isRequired
+  }).isRequired,
+  widgetUpdate: PropTypes.func
 }
 
 export default Widget

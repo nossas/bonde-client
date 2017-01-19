@@ -15,7 +15,6 @@ const displayDropDownMenu = ({ state, props }) => (
 
 const BlockDropdownMenu = ({ state, props, onChange }) => {
   const {
-    dispatch,
     canMoveUp,
     canMoveDown,
     mobilization,
@@ -41,7 +40,10 @@ const BlockDropdownMenu = ({ state, props, onChange }) => {
       icon="cog"
     >
       <DropDownMenuItem
-        onClick={() => onChange({ editingBackground: true })}
+        onClick={() => {
+          onChange({ editingBackground: true })
+          props.setEditionMode(true)
+        }}
         className="btn">
         <span>
           <i className="fa fa-picture-o" /> Alterar fundo
@@ -50,10 +52,10 @@ const BlockDropdownMenu = ({ state, props, onChange }) => {
       <DropDownMenuItem
         onClick={() => {
           onChange({ loading: true })
-          dispatch(asyncBlockUpdate({
+          props.blockUpdate({
             mobilization,
             block: { ...block, hidden: !block.hidden }
-          }))
+          })
         }}
         className="btn">
         <span>
@@ -65,7 +67,7 @@ const BlockDropdownMenu = ({ state, props, onChange }) => {
         onClick={() => {
           if (confirm('Você tem certeza que quer remover este bloco?')) {
             onChange({ loading: true })
-            dispatch(asyncBlockDestroy({ mobilization, block }))
+            props.blockDestroy({ mobilization, block })
           }
         }}
         className="btn">
@@ -77,7 +79,7 @@ const BlockDropdownMenu = ({ state, props, onChange }) => {
         disabled={!canMoveUp}
         onClick={() => {
           onChange({ loading: true })
-          dispatch(asyncBlockMoveUp({ mobilization, block, blocks }))
+          props.blockMove('up', { mobilization, block, blocks })
         }}
         className="btn">
         <span>
@@ -88,7 +90,7 @@ const BlockDropdownMenu = ({ state, props, onChange }) => {
         disabled={!canMoveDown}
         onClick={() => {
           onChange({ loading: true })
-          dispatch(asyncBlockMoveDown({ mobilization, block, blocks }))
+          props.blockMove('down', { mobilization, block, blocks })
         }}
         className="btn">
         <span>

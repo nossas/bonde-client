@@ -4,9 +4,6 @@ import React, { PropTypes, Component } from 'react'
 import { createEditorContent } from '../../../../../scripts/RebooEditor'
 import { Loading } from '../../../../../scripts/components'
 
-// Parent module dependencies
-import { actions as WidgetActions } from '../../../../../modules/widgets'
-
 // Current module dependencies
 import { DraftWidgetButton } from '../components'
 
@@ -21,7 +18,7 @@ export class Draft extends Component {
   }
 
   updateKind (kind) {
-    const { dispatch, widget: widgetOriginal } = this.props
+    const { widgetUpdate, widget: widgetOriginal } = this.props
     let widget = { ...widgetOriginal, kind }
     let assignments = {}
 
@@ -54,7 +51,7 @@ export class Draft extends Component {
     }
     Object.assign(widget, assignments)
     this.setState({ loading: true })
-    dispatch(WidgetActions.asyncWidgetUpdate(widget))
+    widgetUpdate(widget)
   }
 
   render () {
@@ -81,9 +78,9 @@ export class Draft extends Component {
 }
 
 Draft.propTypes = {
-  dispatch: PropTypes.func.isRequired,
   mobilization: PropTypes.object.isRequired,
   widget: PropTypes.object.isRequired,
+  widgetUpdate: PropTypes.func,
   editable: PropTypes.bool.isRequired,
   auth: PropTypes.shape({
     user: PropTypes.shape({
