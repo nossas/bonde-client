@@ -6,7 +6,7 @@ import {
   normalizeFontsToLinkStyle,
   getGoogleFontsLoadURL,
   needsToLoadGoogleFonts
-} from './font-name-handler'
+} from '~utils/font-name-handler'
 
 describe('app/util/font-name-handler', () => {
   describe('#normalizeFontsToLinkStyle', () => {

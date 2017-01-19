@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 
-import * as array from './array'
+import * as array from '~utils/array'
 
 describe('app/util/array', () => {
   describe('#distinct', () => {

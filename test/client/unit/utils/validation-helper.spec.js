@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 
-import * as validator from './validation-helper'
+import * as validator from '~utils/validation-helper'
 
 describe('util/validation-helper', () => {
   describe('isValidEmail(email[:string:required])', () => {

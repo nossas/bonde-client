@@ -1,7 +1,7 @@
 import React from 'react'
 import { expect } from 'chai'
 
-import { sanitize } from './string-helper'
+import { sanitize } from '~utils/string-helper'
 
 describe('app/util/string-helper', () => {
   describe('#sanitize', () => {
