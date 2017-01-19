@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react'
 
-import './empty-list.scss'
+import './index.scss'
 
 class EmptyList extends Component {
   render () {

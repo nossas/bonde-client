@@ -2,12 +2,12 @@ import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-import EmptyList from './EmptyList'
+import EmptyList from '../../../../../common/components/empty-list'
 
-describe('app/components/EmptyList/EmptyList', () => {
+describe('components/empty-list/index', () => {
   let wrapper
 
-  before(() => {
+  beforeAll(() => {
     wrapper = shallow(
       <EmptyList>
         <h1>Nenhum template criado.</h1>
