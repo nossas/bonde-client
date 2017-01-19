@@ -4,7 +4,7 @@ import { expect } from 'chai'
 
 import { GoogleFontsLoader } from '~components/fonts'
 
-describe('app/components/Fonts/GoogleFontsLoader', () => {
+describe('client/components/fonts/google-fonts-loader', () => {
   const googleWebFonts = ['Armata', 'Ubuntu', 'Open Sans']
   const localFonts = ['PF Din', 'Proxima Nova']
 

@@ -4,7 +4,7 @@ import { shallow } from 'enzyme'
 
 import EmptyList from '~components/empty-list'
 
-describe('components/empty-list/index', () => {
+describe('client/components/empty-list/index', () => {
   let wrapper
 
   beforeAll(() => {

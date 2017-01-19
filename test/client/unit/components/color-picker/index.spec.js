@@ -4,7 +4,7 @@ import { expect } from 'chai'
 
 import { ColorPicker } from '~components/color-picker'
 
-describe('components/color-picker/index', () => {
+describe('client/components/color-picker/index', () => {
   let wrapper
   const props = {
     dispatch: () => {}

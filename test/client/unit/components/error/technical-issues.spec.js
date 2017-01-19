@@ -4,7 +4,7 @@ import { expect } from 'chai'
 
 import { TechnicalIssues } from '~components/error'
 
-describe('components/error/technical-issues', () => {
+describe('client/components/error/technical-issues', () => {
   let wrapper
   const props = {
     dispatch: () => {}
