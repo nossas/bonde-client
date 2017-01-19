@@ -1,4 +1,7 @@
-import { selectors as MobilizationSelectors } from '../../mobilizations'
+// Parent module dependencies
+import * as MobilizationSelectors from '../../'
+
+// Current module dependencies
 import * as t from '../action-types'
 import { createAction } from './create-action'
 
