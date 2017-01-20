@@ -75,7 +75,6 @@ class Block extends Component {
               <BlockHiddenTag />
             )}
           </div>
-          {this.state.loading && <Loading />}
 
           <div className="relative">
             <BlockDropdownMenu
