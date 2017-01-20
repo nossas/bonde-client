@@ -1,11 +1,13 @@
 import React from 'react'
-import Color from "./Color.jsx"
 
-export default class ColorPicker extends React.Component {
-  renderColors(bgClasses) {
-    return bgClasses.map(function(bgClass){
-      return(
-        <Color
+// Current module dependencies
+import BasicColorPickerItem from './basic-color-picker-item'
+
+class BasicColorPicker extends React.Component {
+  renderColors (bgClasses) {
+    return bgClasses.map(function (bgClass) {
+      return (
+        <BasicColorPickerItem
           {...this.props}
           key={`color-${bgClass}`}
           bgClass={bgClass}
@@ -16,7 +18,7 @@ export default class ColorPicker extends React.Component {
     }.bind(this))
   }
 
-  render() {
+  render () {
     const ourcities = ['nossascidades', 'nuestrasciudades', 'ourcities']
     const networkClasses = ['bg-9',
       'bg-10', 'bg-11', 'bg-12', 'bg-13', 'bg-14', 'bg-15', 'bg-16', 'bg-17', 'bg-18', 'bg-19',
@@ -37,3 +39,5 @@ export default class ColorPicker extends React.Component {
     )
   }
 }
+
+export default BasicColorPicker
