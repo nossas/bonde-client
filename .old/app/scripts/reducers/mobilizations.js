@@ -1,6 +1,3 @@
-// TODO encapsulate all superagent calls in this file to an ApiClient
-import superagent from 'superagent'
-
 import {
   REQUEST_EDIT_MOBILIZATION,
   SUCCESS_EDIT_MOBILIZATION,
@@ -51,25 +48,4 @@ export default function mobilizations (state = initialState, action) {
 
 export function isMobilizationsLoaded (globalState) {
   return globalState.mobilizations.loaded
-}
-
-export function editMobilization (params) {
-  return {
-    types: [REQUEST_EDIT_MOBILIZATION, SUCCESS_EDIT_MOBILIZATION, FAILURE_EDIT_MOBILIZATION],
-    promise: function () {
-      return new Promise(function (resolve, reject) {
-        superagent
-          .put(`${process.env.API_URL}/mobilizations/${params.id}`)
-          .set(params.credentials)
-          .send({mobilization: params.mobilization})
-          .end((err, res) => {
-            if (err) {
-              reject(res.body || err)
-            } else {
-              resolve(res.body)
-            }
-          })
-      })
-    }
-  }
 }
