@@ -22,12 +22,12 @@ deployment:
   production:
     branch: master
     commands:
-      - ./bin/deploy.sh
+      - ./tools/deploy.sh
   develop:
     branch: develop
     commands:
-      - ./bin/deploy.sh
+      - ./tools/deploy.sh
   feature:
     branch: /(add|fix)(-|\/).*/
     commands:
-      - ./bin/deploy.sh
+      - ./tools/deploy.sh
