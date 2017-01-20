@@ -49,37 +49,34 @@ class MobilizationEditContainer extends Component {
     const {
       children,
       blocksIsLoaded,
-      blocksIsLoading,
       widgetsIsLoaded,
-      widgetsIsLoading,
+      widgetsIsSaving,
+      blockIsRequesting,
       mobilization
     } = this.props
 
+    const fonts = [
+      mobilization.header_font,
+      mobilization.body_font
+    ].filter(arrayUtil.distinct)
+
     const isLoaded = blocksIsLoaded && widgetsIsLoaded
-    const isntLoading = !blocksIsLoading && !widgetsIsLoading
+    const isLoading = widgetsIsSaving || blockIsRequesting
 
-    if (isLoaded && isntLoading) {
-      const fonts = [
-        mobilization.header_font,
-        mobilization.body_font
-      ].filter(arrayUtil.distinct)
-
-      return (
-        <div className='flex flex-auto overflow-hidden'>
-          {children}
-          <GoogleFontsLoader fonts={fonts} />
-        </div>
-      )
-    }
-
-    return <Loading />
+    return (
+      <div className='flex flex-auto overflow-hidden'>
+        {isLoading && <Loading />}
+        {isLoaded ? children : <Loading />}
+        <GoogleFontsLoader fonts={fonts} />
+      </div>
+    )
   }
 }
 
 MobilizationEditContainer.propTypes = {
   blocksIsLoaded: PropTypes.bool.isRequired,
-  blocksIsLoading: PropTypes.bool.isRequired,
-  widgetsIsLoading: PropTypes.bool.isRequired,
+  blocksIsRequesting: PropTypes.bool.isRequired,
+  widgetsIsSaving: PropTypes.bool.isRequired,
   widgetsIsLoaded: PropTypes.bool.isRequired,
   mobilization: PropTypes.shape({
     id: PropTypes.number.isRequired,
@@ -92,8 +89,9 @@ const mapStateToProps = state => ({
   mobilization: MobilizationSelectors.getCurrent(state),
   blocksIsLoaded: BlockSelectors.isLoaded(state),
   blocksIsLoading: BlockSelectors.isLoading(state),
+  blockIsRequesting: BlockSelectors.isRequesting(state),
   widgetsIsLoaded: WidgetSelectors.isLoaded(state),
-  widgetsIsLoading: WidgetSelectors.isLoading(state)
+  widgetsIsSaving: WidgetSelectors.isSaving(state)
 })
 
 const mapActionCreatorsToProps = {

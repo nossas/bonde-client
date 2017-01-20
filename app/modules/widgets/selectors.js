@@ -12,3 +12,5 @@ export const getBlockWidgets = ({ widgets, block }) => widgets.filter(
 export const isLoaded = state => state.widgets.list.loaded
 
 export const isLoading = state => state.widgets.list.loading
+
+export const isSaving = state => state.widgets.list.saving
