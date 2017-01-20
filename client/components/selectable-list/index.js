@@ -1,15 +1,16 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 import classnames from 'classnames'
 
+// Parent module dependencies
 import {
   MobilizationListItem,
   MobilizationListItemAvatar,
   MobilizationListItemName,
   MobilizationListItemCreatedAt
-} from '../../scripts/Mobilization/components/MobilizationList/MobilizationListItem'
-import MobilizationList from '../../scripts/Mobilization/components/MobilizationList'
-import { setSelectedIndex } from './SelectableListActions'
+} from '~tmp-mobilizations/components/MobilizationList/MobilizationListItem'
+import MobilizationList from '~tmp-mobilizations/components/MobilizationList'
 
+// Current module dependencies
 import './selectable-list.scss'
 
 export const SelectableList = ({
@@ -21,7 +22,7 @@ export const SelectableList = ({
   emptyListText,
   emptyListIcon
 }) => (
-  <div className="selectable-list col-12">
+  <div className='selectable-list col-12'>
     <MobilizationList>
       {
         list.length ? list.map((item, index) => (
@@ -34,15 +35,15 @@ export const SelectableList = ({
             )}
           >
             <MobilizationListItemAvatar {...item} />
-            <MobilizationListItemName {...item} className="col-7" />
+            <MobilizationListItemName {...item} className='col-7' />
             <MobilizationListItemCreatedAt {...item} />
           </MobilizationListItem>
         )) : (
           <div>
-            <div className="center">
+            <div className='center'>
               <i className={`fa fa-${emptyListIcon} mb1`} style={{ fontSize: '5rem' }} />
             </div>
-            <div className="center">{emptyListText}</div>
+            <div className='center'>{emptyListText}</div>
           </div>
         )
       }

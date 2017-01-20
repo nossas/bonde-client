@@ -3,10 +3,17 @@
   "moduleFileExtensions": ["js", "jsx"],
   "moduleDirectories": ["node_modules"],
   "moduleNameMapper": {
+    "^~client(.*)$": "<rootDir>/client$1",
+    "^~account(.*)$": "<rootDir>/client/account$1",
     "^~components(.*)$": "<rootDir>/client/components$1",
+    "^~community(.*)$": "<rootDir>/client/community$1",
+    "^~dashboard(.*)$": "<rootDir>/client/dashboard$1",
+    "^~mobilizations(.*)$": "<rootDir>/client/mobilizations$1",
     "^~util(.*)$": "<rootDir>/client/util$1",
 
-    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/mock-file.js",
-    "\\.(css|less|scss)$": "<rootDir>/test/mock-style.js"
+    "^~tmp-mobilizations(.*)$": "<rootDir>/.old/app/scripts/Mobilization$1",
+
+    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|wav|mp3|aac)$": "<rootDir>/test/mock-file.js",
+    "\\.(css|scss)$": "<rootDir>/test/mock-style.js"
   }
 }

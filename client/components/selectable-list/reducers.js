@@ -1,6 +1,6 @@
 import {
   SELECTABLE_LIST_SET_SELECTED_INDEX
-} from './SelectableListActions'
+} from './actions'
 
 export const initialState = {}
 
