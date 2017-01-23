@@ -87,6 +87,7 @@
     "request": "^2.79.0",
     "request-promise": "^4.1.1",
     "sass-loader": "^4.1.1",
+    "sinon": "^1.17.7",
     "source-map-support": "^0.4.0",
     "standard": "^8.0.0",
     "standard-loader": "^5.0.0",
