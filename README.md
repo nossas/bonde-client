@@ -35,9 +35,9 @@ docker-compose version 1.10.0-rc1, build ecff6f1
 ```
 mkdir code/ && cd code/
 git clone git@github.com:nossas/bonde-client.git
-git clone git@github.com:ourcities/rebu-server.git
-cd rebu-server/ && git fetch origin && git checkout -b my-support-docker origin/add/support-docker
-cd ../rebu-client && git fetch origin && git checkout -b my-refactor-ssr origin/add/refactor-ssr
+git clone git@github.com:nossas/bonde-server.git
+cd bonde-server/ && git fetch origin && git checkout -b my-support-docker origin/add/support-docker
+cd ../bonde-client && git fetch origin && git checkout -b my-refactor-ssr origin/add/refactor-ssr
 docker-compose up -
 ```
 
