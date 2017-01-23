@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
-import { FacebookShareButton, TwitterShareButton } from './../'
+
+import { FacebookShareButton, TwitterShareButton } from '~components/share'
 
 const TellAFriend = ({ href, message, mobilization, imageUrl, imageWidth }) => (
   <div className='center p3 bg-white darkengray rounded'>

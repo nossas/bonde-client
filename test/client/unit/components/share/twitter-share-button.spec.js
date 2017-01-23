@@ -1,44 +1,44 @@
 import React from 'react'
-import TestUtils from 'react-addons-test-utils'
-import ReactDOM from 'react-dom'
-import { TwitterShareButton } from './../../components'
+import { expect } from 'chai'
+import { shallow } from 'enzyme'
+import sinon from 'sinon'
 
-describe('TwitterShareButton', () => {
+import { TwitterShareButton } from '~components/share'
+
+describe('client/components/share/twitter-share-button', () => {
   it('should open a popup on click', () => {
-    const component = TestUtils.renderIntoDocument(
+    const wrapper = shallow(
       <TwitterShareButton href='http://meurio.org.br' text='Change the world!' />
     )
 
-    const button = ReactDOM.findDOMNode(component.refs.button)
     const stubOpen = sinon.spy()
     window.open = stubOpen
 
-    TestUtils.Simulate.click(button)
+    wrapper.find('button').at(0).simulate('click')
     const expectedText = encodeURIComponent('Change the world!')
 
-    expect(stubOpen).to.have.been.calledWith(
+    expect(stubOpen.calledWith(
       `https://twitter.com/intent/tweet?text=${expectedText}&url=http://meurio.org.br`,
       'Compartilhar no Twitter',
       'width=800,height=600'
-    )
+    )).to.be.true
   })
 
   it('should render text that contains hashtag and at mention chars', () => {
-    const component = TestUtils.renderIntoDocument(
+    const wrapper = shallow(
       <TwitterShareButton href='http://meurio.org.br' text='Change the world! #foo @bar' />
     )
 
-    const button = ReactDOM.findDOMNode(component.refs.button)
     const stubOpen = sinon.spy()
     window.open = stubOpen
 
-    TestUtils.Simulate.click(button)
+    wrapper.find('button').at(0).simulate('click')
     const expectedText = encodeURIComponent('Change the world! #foo @bar')
 
-    expect(stubOpen).to.have.been.calledWith(
+    expect(stubOpen.calledWith(
       `https://twitter.com/intent/tweet?text=${expectedText}&url=http://meurio.org.br`,
       'Compartilhar no Twitter',
       'width=800,height=600'
-    )
+    )).to.be.true
   })
 })
