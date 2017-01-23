@@ -36,6 +36,6 @@ export const editAccount = () => '/account/edit'
 //
 // Interface to modules paths
 //
-// export * from '../modules/widgets/paths'
-// export * from './Mobilization/plugins/Templates/MobilizationTemplatesPaths'
-// export * from '../modules/mobilizations/blocks/paths'
+export * from '~mobilizations/widgets/paths'
+export * from '~mobilizations/blocks/paths'
+export * from '~tmp-mobilizations/plugins/Templates/MobilizationTemplatesPaths'
