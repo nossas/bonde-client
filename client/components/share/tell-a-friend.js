@@ -23,7 +23,7 @@ TellAFriend.propTypes = {
 }
 
 TellAFriend.defaultProps = {
-  imageUrl: require('./checkMarkImage.png')
+  imageUrl: require('./check-mark-image.png')
 }
 
 export default TellAFriend
