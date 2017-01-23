@@ -5,6 +5,8 @@ import sinon from 'sinon'
 
 import { FacebookShareButton } from '~components/share'
 
+global.window = {}
+
 describe('client/components/share/facebook-share-button', () => {
   it('should open a popup on click', () => {
     const wrapper = shallow(<FacebookShareButton href='http://meurio.org.br' />)
@@ -12,7 +14,7 @@ describe('client/components/share/facebook-share-button', () => {
     const stubOpen = sinon.spy()
     window.open = stubOpen
 
-    wrapper.find('button').at(0).simulate('click')
+    wrapper.find('button').simulate('click')
 
     expect(stubOpen.calledWith(
       `http://www.facebook.com/sharer.php?u=http://meurio.org.br`,

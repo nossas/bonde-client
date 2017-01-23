@@ -5,6 +5,8 @@ import sinon from 'sinon'
 
 import { TwitterShareButton } from '~components/share'
 
+global.window = {}
+
 describe('client/components/share/twitter-share-button', () => {
   it('should open a popup on click', () => {
     const wrapper = shallow(
