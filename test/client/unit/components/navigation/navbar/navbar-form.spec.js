@@ -1,14 +1,17 @@
 import React from 'react'
-import TestUtils from 'react-addons-test-utils'
-import { NavbarForm } from './../../components'
+import { expect } from 'chai'
+import { shallow } from 'enzyme'
+import sinon from 'sinon'
+
+import { NavbarForm } from '~components/navigation/navbar'
 
 const handleCloseForm = () => {}
 const mobilization = {}
-const block = {name: 'My block'}
+const block = { name: 'My block' }
 const dispatch = () => {}
 const auth = {}
 
-function generateComponent(options = {}) {
+function generateComponent (options = {}) {
   return (
     <NavbarForm
       handleCloseForm={options.handleCloseForm || handleCloseForm}
@@ -21,16 +24,16 @@ function generateComponent(options = {}) {
   )
 }
 
-describe('NavbarForm', () => {
+describe('client/components/navigation/navbar/navbar-form', () => {
   it('should initialize state with a name', () => {
-    const component = TestUtils.renderIntoDocument(generateComponent())
-    expect(component.state.name).to.be.eq(block.name)
+    const wrapper = shallow(generateComponent())
+    expect(wrapper.state().name).to.be.eq(block.name)
   })
 
   describe('#componentDidMount', () => {
     it('should add an event listenter for the window', () => {
       sinon.spy(window, 'addEventListener')
-      TestUtils.renderIntoDocument(generateComponent())
+      shallow(generateComponent())
       expect(window.addEventListener).to.have.been.calledOnce
     })
   })
@@ -38,37 +41,31 @@ describe('NavbarForm', () => {
   describe('#componentWillUnmount', () => {
     it('should remove an event listenter from the window', () => {
       sinon.spy(window, 'removeEventListener')
-      const component = TestUtils.renderIntoDocument(generateComponent())
-      component.componentWillUnmount()
       expect(window.removeEventListener).to.have.been.calledOnce
     })
   })
 
   describe('#handleKeyUp', () => {
     it('should call submit when ESC is pressed', () => {
-      const component = TestUtils.renderIntoDocument(generateComponent())
-      sinon.spy(component, 'submit')
-      component.handleKeyUp({preventDefault: () => {}, keyCode: 27})
-      expect(component.submit).to.have.been.calledOnce
+      const wrapper = shallow(generateComponent())
+      sinon.spy(wrapper.instance(), 'submit')
+      wrapper.simulate('keyUp', { preventDefault: () => {}, keyCode: 27 })
+      expect(wrapper.instance().submit).to.have.been.calledOnce
     })
   })
 
   describe('#submit', () => {
     it('should dispatch the edit block action', () => {
       const mockedDispatch = sinon.spy()
-      const component = TestUtils.renderIntoDocument(
-        generateComponent({dispatch: mockedDispatch})
-      )
-      component.submit({preventDefault: () => {}})
+      const wrapper = shallow(generateComponent({ dispatch: mockedDispatch }))
+      wrapper.instance().submit({ preventDefault: () => {} })
       expect(mockedDispatch).to.have.been.calledOnce
     })
 
     it('should call close form callback', () => {
       const mockedHandleCloseForm = sinon.spy()
-      const component = TestUtils.renderIntoDocument(
-        generateComponent({handleCloseForm: mockedHandleCloseForm})
-      )
-      component.submit({preventDefault: () => {}})
+      const wrapper = shallow(generateComponent({ handleCloseForm: mockedHandleCloseForm }))
+      wrapper.instance().submit({ preventDefault: () => {} })
       expect(mockedHandleCloseForm).to.have.been.calledOnce
     })
   })

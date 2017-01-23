@@ -55,6 +55,7 @@
     "history": "^4.0.0",
     "hpp": "^0.2.0",
     "http-proxy-middleware": "^0.17.3",
+    "jquery": "^3.1.1",
     "json-loader": "^0.5.4",
     "lodash": "^4.17.2",
     "moment": "^2.17.1",
