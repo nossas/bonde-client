@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 // The content widget module it is not the perfect module to provide these actions.
 // Needs to refact to more abstract component like global reusable components module.
 //
-import * as ContentActions from '../../modules/widgets/__plugins__/content/action-creators'
+import * as ContentActions from '~mobilizations/widgets/__plugins__/content/action-creators'
 
 // You may will see the warning below:
 // Warning: Stateless function components cannot be given refs (See ref "wrappedInstance" in
@@ -15,7 +15,7 @@ import * as ContentActions from '../../modules/widgets/__plugins__/content/actio
 // Upgrade React Redux to version 4 will should go away this warning.
 // See: https://github.com/reactjs/react-redux/issues/141#issuecomment-148358733
 
-const WYSIHTMLToolbarCreateLink = ({ editorLinkTargetType, setEditorLinkTargetType }) => (
+export const WYSIHTMLToolbarCreateLink = ({ editorLinkTargetType, setEditorLinkTargetType }) => (
   <div
     data-wysihtml5-dialog='createLink'
     className='white p2 bg-darken-3'
