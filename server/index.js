@@ -18,6 +18,7 @@ import Helm from 'react-helmet' // because we are already using helmet
 import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
+import proxy from 'http-proxy-middleware' // used in authenticate
 
 import DefaultServerConfig from './config'
 import webpackConfig from '../tools/webpack.client.dev'
@@ -60,6 +61,12 @@ export const createServer = (config) => {
   }
 
   app.use(express.static('public'))
+
+  // proxy for authentication server
+  app.use('/auth', proxy({
+    target: `http://localhost:${config.authPort}`,
+    pathRewrite: { '^/auth': '' }
+  }))
 
   app.get('*', (req, res) => {
     const store = configureStore({
