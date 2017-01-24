@@ -81,6 +81,7 @@
     "standard": "^8.0.0",
     "standard-loader": "^5.0.0",
     "style-loader": "^0.13.1",
+    "superagent": "^3.3.2",
     "testdouble": "^1.9.1",
     "throng": "^4.0.0",
     "webpack": "^1.14",

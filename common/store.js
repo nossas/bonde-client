@@ -12,10 +12,10 @@ const api = axios.create({
   baseURL: DefaultServerConfig.apiUrl
 })
 
-export function configureStore (initialState) {
+export function configureStore (initialState, thunkExtraArgument) {
   let store = createStore(createReducer(), initialState, compose(
     applyMiddleware(
-      thunk.withExtraArgument({ axios, api }),
+      thunk.withExtraArgument({ axios, api, ...thunkExtraArgument }),
       promise,
       logger
     ),
