@@ -1,11 +1,10 @@
 // Parent module dependencies
-import * as WidgetSelectors from '../../../../../modules/widgets/selectors'
-import * as WidgetsActions from '../../../../../modules/widgets/action-creators'
+import * as WidgetSelectors from '~mobilizations/widgets/selectors'
+import * as WidgetsActions from '~mobilizations/widgets/action-creators'
 
 // Current module dependencies
 import { createAction } from './create-action'
-import * as t from '../../../../../modules/widgets/__plugins__/match/action-types'
-
+import * as t from '../action-types'
 
 const asyncMatchUpdate = ({ match, props }) => (dispatch, getState, axios) => {
   const state = getState()

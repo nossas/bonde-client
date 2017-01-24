@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react'
 
 // Global module dependencies
-import { SettingsPageLayout } from '../../../../../components/Layout'
+import { SettingsPageLayout } from '~components/layout'
 
 // Current module dependencies
-import { SettingsMenu } from '../../../../../modules/widgets/__plugins__/pressure/components'
+import { SettingsMenu } from '~mobilizations/widgets/__plugins__/pressure/components'
 
 const SettingsBase = ({ children, location, mobilization, widget }) => (
   <SettingsPageLayout>

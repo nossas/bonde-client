@@ -1,13 +1,15 @@
 import React from 'react'
-import { InputCounter } from '../../../scripts/components'
+
+// Global module dependencies
 import {
   FormRedux,
   FormGroup,
   ControlLabel,
   FormControl
-} from '../../../scripts/Dashboard/Forms'
-import MobilizationSettingsForm from './mobilization-settings-form'
+} from '~tmp-dashboard/forms'
 
+// Current module dependencies
+import { MobilizationSettingsForm } from '../components'
 
 export default (props) => {
   const { floatSubmit, fields: { name, goal }, ...formProps } = props
@@ -16,22 +18,22 @@ export default (props) => {
 
   return (
     <ComponentForm {...formProps}>
-      <FormGroup controlId="name" {...name}>
+      <FormGroup controlId='name' {...name}>
         <ControlLabel maxLength={100}>Nome</ControlLabel>
         <FormControl
-          type="text"
-          placeholder="Ex: Pela criação de uma delegacia de desaparecidos"
+          type='text'
+          placeholder='Ex: Pela criação de uma delegacia de desaparecidos'
           maxLength={100}
         />
       </FormGroup>
-      <FormGroup controlId="goal" {...goal}>
+      <FormGroup controlId='goal' {...goal}>
         <ControlLabel maxLength={500}>Objetivo</ControlLabel>
         <FormControl
           componentClass='textarea'
-          placeholder={'Faça um texto curto, capaz de motivar outras pessoas a se unirem à'
-            + ' sua mobilização. Você poderá alterar este texto depois.'}
+          placeholder={'Faça um texto curto, capaz de motivar outras pessoas a se unirem à' +
+            ' sua mobilização. Você poderá alterar este texto depois.'}
           maxLength={500}
-          rows="4"
+          rows='4'
         />
       </FormGroup>
     </ComponentForm>

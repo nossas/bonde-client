@@ -1,13 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import classnames from 'classnames'
 
 // Global module dependencies
-import * as Paths from '../../../../../scripts/Paths'
-import Editor from '../../../../../scripts/RebooEditor'
+import * as paths from '~client/paths'
 
 // Parent module dependencies
-import { WidgetOverlay, FinishMessageCustom } from '../../../../../modules/widgets/components'
+import { WidgetOverlay, FinishMessageCustom } from '~mobilizations/widgets/components'
 
 // Current module dependencies
 import {
@@ -23,26 +21,26 @@ import * as PressureActions from '../action-creators'
  * - bgColor
  */
 export class Pressure extends Component {
-  constructor(props, context) {
+  constructor (props, context) {
     super(props, context)
     this.state = { filled: false }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     this.setState({ filled: this.props.saving && !nextProps.saving })
   }
 
-  getTargetList() {
+  getTargetList () {
     const { targets } = this.props.widget.settings || { targets: '' }
     return targets && targets.split(';').filter(target => !!target.trim())
   }
 
-  getEmailTarget(target) {
+  getEmailTarget (target) {
     const targetSplit = target.split('<')
     return targetSplit[1].replace('>', '')
   }
 
-  handleSubmit(data) {
+  handleSubmit (data) {
     const { widget, asyncFillWidget } = this.props
     const payload = {
       activist: {
@@ -60,17 +58,17 @@ export class Pressure extends Component {
     asyncFillWidget({ payload, widget })
   }
 
-  handleOverlayOnClick(e) {
+  handleOverlayOnClick (e) {
     const { mobilization, widget, editable } = this.props
     if (editable) {
       if (e) e.preventDefault()
       this.context.router.transitionTo(
-        Paths.formPressureWidget(mobilization.id, widget.id)
+        paths.formPressureWidget(mobilization.id, widget.id)
       )
     }
   }
 
-  render() {
+  render () {
     const {
       widget,
       editable,
@@ -158,7 +156,7 @@ Pressure.propTypes = {
 }
 
 Pressure.contextTypes = {
-  router: PropTypes.object.isRequired,
+  router: PropTypes.object.isRequired
 }
 
 const mapStateToProps = ({ widgets: { plugins: { pressure } } }) => ({

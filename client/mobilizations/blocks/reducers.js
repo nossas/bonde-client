@@ -7,7 +7,7 @@ export const initialState = {
   error: undefined,
   uploadingBackgroundImage: false,
   uploadedBackgroundImage: undefined,
-  editionMode: false,
+  editionMode: false
 }
 
 //
@@ -15,7 +15,7 @@ export const initialState = {
 // to turns more explicit what is its responsibility and let
 // the code more cleaner
 //
-export default function BlockReducers(state = initialState, action) {
+const BlockReducers = (state = initialState, action) => {
   let data
 
   switch (action.type) {
@@ -49,7 +49,7 @@ export default function BlockReducers(state = initialState, action) {
     case c.REQUEST_ASYNC_BLOCK_SELECT:
       return { ...state, loaded: false }
     case c.SUCCESS_ASYNC_BLOCK_SELECT:
-      return { ...state, loaded: true, data: action.payload  }
+      return { ...state, loaded: true, data: action.payload }
     case c.FAILURE_ASYNC_BLOCK_SELECT:
       return { ...state, loaded: true, error: action.payload }
 
@@ -109,3 +109,5 @@ export default function BlockReducers(state = initialState, action) {
       return state
   }
 }
+
+export default BlockReducers

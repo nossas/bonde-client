@@ -1,7 +1,10 @@
+// Parent module dependencies
+import * as WidgetSelectors from '~mobilizations/widgets/selectors'
+import { actions as WidgetsActions } from '~mobilizations/widgets'
+
+// Current module dependencies
 import * as t from '../action-types'
 import { createAction } from './create-action'
-import * as WidgetSelectors from '../../../../../modules/widgets/selectors'
-import { actions as WidgetsActions } from '../../../../../modules/widgets'
 
 //
 // The name of this action needs to be refactored to make more sense.

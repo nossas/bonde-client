@@ -3,13 +3,14 @@ import $ from 'jquery'
 import classnames from 'classnames'
 
 // Global module dependencies
-import { WYSIHTMLToolbar, Loading } from '../../../../../scripts/components'
+import { WYSIHTMLToolbar } from '~components/editor-wysihtml'
+import { Loading } from '~components/await'
 
 // Parent module dependencies
-import { actions as WidgetActions } from '../../../../../modules/widgets'
+import { actions as WidgetActions } from '~mobilizations/widgets'
 
 class EditorOld extends React.Component {
-  constructor(props, context) {
+  constructor (props, context) {
     super(props, context)
     this.state = {
       editing: false,
@@ -20,7 +21,7 @@ class EditorOld extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     if (this.props.editable) {
       const editor = new wysihtml5.Editor(
         this.refs.content, {
@@ -34,49 +35,49 @@ class EditorOld extends React.Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     if (this.state.loading && this.props.widget.settings.content !== nextProps.widget.settings.content) {
       this.setState({loading: false})
     }
   }
 
-  enableEditor() {
+  enableEditor () {
     this.setState({editing: true})
     this.props.onEdit && this.props.onEdit()
     window.addEventListener('keyup', ::this.handleEscapePress)
   }
 
-  disableEditor() {
+  disableEditor () {
     this.setState({editing: false})
     this.props.onCancelEdit && this.props.onCancelEdit()
     window.removeEventListener('keyup', ::this.handleEscapePress)
     this.refs.content.blur()
   }
 
-  handleEditorFocus() {
+  handleEditorFocus () {
     this.enableEditor()
   }
 
-  handleEscapePress(e) {
+  handleEscapePress (e) {
     if (e.keyCode === 27) {
       this.save()
     }
   }
 
-  handleOverlayClick() {
+  handleOverlayClick () {
     this.save()
   }
 
-  setClick() {
+  setClick () {
     const links = document.querySelectorAll('.content-widget a:not([target="_blank"])')
     for (let link of links) {
       $(link).on('click touchstart', ::this.handleClick)
     }
   }
 
-  handleClick(e) {
+  handleClick (e) {
     e.preventDefault()
-    const target = $(e.target).closest("a").prop("hash")
+    const target = $(e.target).closest('a').prop('hash')
     const scrollable = $('#blocks-list')
     const yPosition = $(target).offset().top + scrollable.scrollTop() - scrollable.position().top
 
@@ -85,7 +86,7 @@ class EditorOld extends React.Component {
     })
   }
 
-  save() {
+  save () {
     const { editor, content } = this.state
     const hasChanged = editor.getValue() !== content
     this.setState({content: editor.getValue()})
@@ -97,12 +98,12 @@ class EditorOld extends React.Component {
       this.setState({loading: true})
       dispatch(WidgetActions.asyncWidgetUpdate({
         ...widget,
-        settings: { content: this.state.editor.getValue() },
+        settings: { content: this.state.editor.getValue() }
       }))
     }
   }
 
-  renderLoading() {
+  renderLoading () {
     if (this.state.loading) {
       return (
         <Loading />
@@ -110,7 +111,7 @@ class EditorOld extends React.Component {
     }
   }
 
-  handleRenderNewEditor() {
+  handleRenderNewEditor () {
     const { handleForceRender } = this.props
     if (window.confirm(`Ao converter seu conteúdo para o novo editor
       algumas informações podem ser perdidas,
@@ -119,7 +120,7 @@ class EditorOld extends React.Component {
     }
   }
 
-  render() {
+  render () {
     const { toolbarId, editing } = this.state
     const { mobilization: { header_font: headerFont, body_font: bodyFont } } = this.props
     const { handleForceRender } = this.props
@@ -128,12 +129,12 @@ class EditorOld extends React.Component {
         <div className={classnames('content-widget col-12', {'display-none': !editing})}>
           <WYSIHTMLToolbar
             elementId={toolbarId}
-            className="absolute col-12 top-0 bg-darken-4 z7"
-            buttonClassName="btn white p2"
+            className='absolute col-12 top-0 bg-darken-4 z7'
+            buttonClassName='btn white p2'
             style={{ left: '80px' }}
           />
           <div
-            className="fixed top-0 right-0 bottom-0 left-0 z5"
+            className='fixed top-0 right-0 bottom-0 left-0 z5'
             onClick={::this.handleOverlayClick}
           />
         </div>
@@ -141,20 +142,20 @@ class EditorOld extends React.Component {
           <div
             className={classnames('widget', `${headerFont}-header`, `${bodyFont}-body`)}
             dangerouslySetInnerHTML={{__html: this.state.content}}
-            ref="content"
+            ref='content'
           />
           <div className={classnames('right mt1', {'display-none': !editing})}>
             {handleForceRender ? (
               <button
                 onClick={this.handleRenderNewEditor.bind(this)}
-                className="btn caps bg-darken-4 white rounded mr1"
+                className='btn caps bg-darken-4 white rounded mr1'
               >
                 Alterar editor
               </button>
             ) : null}
             <button
               onClick={::this.save}
-              className="btn caps bg-darken-4 white rounded"
+              className='btn caps bg-darken-4 white rounded'
             >
               Salvar
             </button>

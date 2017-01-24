@@ -2,10 +2,11 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { BLOCK_LAYOUTS } from '../../../../mobilizations/blocks/constants'
-import { BlockMiniature } from '../../../../mobilizations/blocks/components'
+// Current module dependencies
+import { BLOCK_LAYOUTS } from '~mobilizations/blocks/constants'
+import { BlockMiniature } from '~mobilizations/blocks/components'
 
-describe('app/scripts/Block/components/BlockMiniature', () => {
+describe('client/mobilizations/blocks/components/block-miniature', () => {
   let wrapper
   const props = {
     selectedLayout: BLOCK_LAYOUTS[0],
@@ -49,7 +50,7 @@ describe('app/scripts/Block/components/BlockMiniature', () => {
     describe('when selected layout is not the current layout to render', () => {
       beforeEach(() => {
         const currentProps = { ...props, selectedLayout: BLOCK_LAYOUTS[1] }
-        wrapper = shallow(<BlockMiniature  {...currentProps} />)
+        wrapper = shallow(<BlockMiniature {...currentProps} />)
       })
       it('should render .layout-wrapper div without .is-active className', () => {
         expect(wrapper.find('div.layout-wrapper').props().className).to.have.not.string('is-active')

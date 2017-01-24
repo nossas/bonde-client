@@ -2,7 +2,8 @@ import React, { PropTypes } from 'react'
 import ReactS3Uploader from 'react-s3-uploader'
 
 // Global module dependencies
-import { ColorPicker, Progress } from '../../../../scripts/components'
+import { BasicColorPicker } from '~components/basic-color-picker'
+import { Progress } from '~components/await'
 
 // Current module dependencies
 import * as BlockActions from '../action-creators'
@@ -15,7 +16,7 @@ const BlockColorPicker = ({ state, props, onChange }) => {
     <div>
       <div className='absolute col-12 top-0 bg-darken-4 z5' style={{ left: '80px' }}>
         <div className='col-7'>
-          <ColorPicker
+          <BasicColorPicker
             {...props}
             selectedClass={state.bgClass}
             onClick={event => {

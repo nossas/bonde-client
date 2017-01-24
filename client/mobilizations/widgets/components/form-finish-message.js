@@ -8,9 +8,9 @@ import {
   RadioGroup,
   Radio,
   ControlLabel
-} from '../../../scripts/Dashboard/Forms'
-import { SettingsPageLayout, SettingsPageContentLayout } from '../../../components/Layout'
-import Editor from '../../../scripts/RebooEditor'
+} from '~tmp-dashboard/forms'
+import { SettingsPageLayout, SettingsPageContentLayout } from '~components/layout'
+import Editor from '~tmp-reboo-editor'
 
 // Current module dependencies
 import * as styles from './form-finish-message.scss'

@@ -1,5 +1,5 @@
 // Sibling module dependencies
-import * as WidgetActions from '../../widgets/action-creators'
+import * as WidgetActions from '~mobilizations/widgets/action-creators'
 
 // Current module dependencies
 import { createAction } from './create-action'

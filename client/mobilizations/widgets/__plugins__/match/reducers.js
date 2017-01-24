@@ -1,4 +1,4 @@
-import * as t from '../../../../modules/widgets/__plugins__/match/action-types'
+import * as t from './action-types'
 
 export const initialState = {
   loading: false,

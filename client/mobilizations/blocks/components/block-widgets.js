@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react'
 
-import Widget from '../../../../modules/widgets/components'
+// Sibling module dependencies
+import Widget from '~mobilizations/widgets/components'
 
-const BlockWidgets = ({ widgets, props, onChange }) => {
-  return <div>
+const BlockWidgets = ({ widgets, props, onChange }) => (
+  <div>
     {widgets.map(widget => (
       <Widget
         {...props}
@@ -14,12 +15,12 @@ const BlockWidgets = ({ widgets, props, onChange }) => {
       />
     ))}
   </div>
-}
+)
 
 BlockWidgets.propTypes = {
   widgets: PropTypes.array,
   props: PropTypes.object,
-  onChange: PropTypes.func,
+  onChange: PropTypes.func
 }
 
 export default BlockWidgets

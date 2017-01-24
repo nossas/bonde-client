@@ -1,14 +1,14 @@
 import React, { PropTypes } from 'react'
 
 // Global module dependencies
-import * as Paths from '../../../../../scripts/Paths'
-import { Tabs, Tab } from '../../../../../components/Navigation'
-import { SettingsPageMenuLayout } from '../../../../../components/Layout'
+import * as paths from '~client/paths'
+import { Tabs, Tab } from '~components/navigation/tabs'
+import { SettingsPageMenuLayout } from '~components/layout'
 
 const SettingsMenu = ({ mobilization, widget, location }) => {
-  const donationPath = Paths.donation(mobilization.id, widget.id)
-  const autofirePath = Paths.autofireMobilizationWidget(mobilization.id, widget.id)
-  const donationFinishPath = Paths.donationFinish(mobilization.id, widget.id)
+  const donationPath = paths.donation(mobilization.id, widget.id)
+  const autofirePath = paths.autofireMobilizationWidget(mobilization.id, widget.id)
+  const donationFinishPath = paths.donationFinish(mobilization.id, widget.id)
 
   return (
     <SettingsPageMenuLayout title='Configure o bloco de doação'>

@@ -1,15 +1,14 @@
 import React, { PropTypes, Component } from 'react'
 
 // Global module dependencies
-import { createEditorContent } from '../../../../../scripts/RebooEditor'
-import { Loading } from '../../../../../scripts/components'
+import { createEditorContent } from '~tmp-reboo-editor'
+import { Loading } from '~components/await'
 
 // Parent module dependencies
-import { actions as WidgetActions } from '../../../../../modules/widgets'
+import { actions as WidgetActions } from '~mobilizations/widgets'
 
 // Current module dependencies
 import { DraftWidgetButton } from '../components'
-
 import './__draft__.scss'
 
 export class Draft extends Component {

@@ -1,10 +1,7 @@
 import React, { PropTypes } from 'react'
-import classnames from 'classnames'
 import { reduxForm } from 'redux-form'
 
 // Global module dependencies
-import * as Paths from '../../../../../scripts/Paths'
-import { Loading } from '../../../../../scripts/components'
 import {
   FormRedux,
   FormGroup,
@@ -25,16 +22,16 @@ import { actions as WidgetActions } from '../../../../../modules/widgets'
 import { SettingsMenu } from '../components'
 
 class SettingsDonationPage extends React.Component {
-  handleSubmit(values) {
+  handleSubmit (values) {
     const { widget, asyncWidgetUpdate } = this.props
     const settings = widget.settings || {}
     return asyncWidgetUpdate({
       ...widget,
-      settings: { ...settings, ...values },
+      settings: { ...settings, ...values }
     })
   }
 
-  render() {
+  render () {
     const {
       dispatch,
       fields: {
@@ -57,22 +54,22 @@ class SettingsDonationPage extends React.Component {
         <SettingsPageContentLayout>
           <FormRedux
             {...props}
-            className="transparent"
-            floatButton="Salvar"
+            className='transparent'
+            floatButton='Salvar'
             onSubmit={::this.handleSubmit}
-            successMessage="Formulário de doação configurado com sucesso!"
+            successMessage='Formulário de doação configurado com sucesso!'
           >
-            <FormGroup controlId="title-text-id" {...title_text}>
+            <FormGroup controlId='title-text-id' {...title_text}>
               <ControlLabel>Título do bloco de doação</ControlLabel>
-              <FormControl type="text" placeholder="Ex.: Escolha um valor e contribua agora!" />
+              <FormControl type='text' placeholder='Ex.: Escolha um valor e contribua agora!' />
             </FormGroup>
 
-            <FormGroup controlId="payment-type-id" {...payment_type}>
+            <FormGroup controlId='payment-type-id' {...payment_type}>
               <ControlLabel>Tipo de doação</ControlLabel>
               <RadioGroup>
-                <Radio value="unique">Única</Radio>
-                <Radio value="recurring">Recorrente</Radio>
-                <Radio value="users_choice">Usuário escolhe</Radio>
+                <Radio value='unique'>Única</Radio>
+                <Radio value='recurring'>Recorrente</Radio>
+                <Radio value='users_choice'>Usuário escolhe</Radio>
               </RadioGroup>
             </FormGroup>
 

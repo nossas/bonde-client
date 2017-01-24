@@ -2,8 +2,11 @@ import React, { PropTypes } from 'react'
 import classnames from 'classnames'
 import DocumentMeta from 'react-document-meta'
 
+// Children module dependencies
+import Block from '~mobilizations/blocks/components'
+
+// Current module dependencies
 import { Navbar } from './navbar'
-import Block from '../../mobilizations/blocks/components'
 
 const Mobilization = props => {
   const {

@@ -1,12 +1,13 @@
 import React, { PropTypes } from 'react'
 import classnames from 'classnames'
 
-import './scss/block-miniature.scss'
+// Current module dependencies
+import './index.scss'
 
 const isActive = (selected, layout) => JSON.stringify(selected) === JSON.stringify(layout)
 const BlockMiniature = ({ selectedLayout, layout, onClick }) => (
   <div
-    className="block-miniature col col-3 mb3 px1"
+    className='block-miniature col col-3 mb3 px1'
     onClick={onClick}
   >
     <div
@@ -15,17 +16,17 @@ const BlockMiniature = ({ selectedLayout, layout, onClick }) => (
         isActive(selectedLayout, layout) ? 'is-active' : null
       )}
     >
-      <div className="mxn1">
+      <div className='mxn1'>
         {layout.map((size, index) => (
           <div
             key={index}
             className={classnames(`lines clearfix px1 col col-${size.lg_size}`)}
           >
-            <div className="line line-lg col-12" />
-            <div className="line line-sm col-12" />
-            <div className="line line-sm col-12" />
-            <div className="line line-sm col-12" />
-            <div className="line line-sm col-12" />
+            <div className='line line-lg col-12' />
+            <div className='line line-sm col-12' />
+            <div className='line line-sm col-12' />
+            <div className='line line-sm col-12' />
+            <div className='line line-sm col-12' />
           </div>
         ))}
       </div>

@@ -1,15 +1,16 @@
 import React, { PropTypes } from 'react'
 
-import * as Paths from '../../../../../scripts/Paths'
-import { Tabs, Tab } from '../../../../../components/Navigation'
-import { SettingsPageMenuLayout } from '../../../../../components/Layout'
+// Global module dependencies
+import * as paths from '~client/paths'
+import { Tabs, Tab } from '~components/navigation/tabs'
+import { SettingsPageMenuLayout } from '~components/layout'
 
 const SettingsMenu = ({ mobilization, widget, location }) => {
-  const fieldsPath = Paths.fieldsMobilizationWidget(mobilization.id, widget.id)
-  const formPath = Paths.formMobilizationWidget(mobilization.id, widget.id)
-  const autofirePath = Paths.autofireMobilizationWidget(mobilization.id, widget.id)
-  const exportPath = Paths.exportWidgetData(mobilization.id, widget.id)
-  const finishPath = Paths.widgetFormSettingsFinish(mobilization.id, widget.id)
+  const fieldsPath = paths.fieldsMobilizationWidget(mobilization.id, widget.id)
+  const formPath = paths.formMobilizationWidget(mobilization.id, widget.id)
+  const autofirePath = paths.autofireMobilizationWidget(mobilization.id, widget.id)
+  const exportPath = paths.exportWidgetData(mobilization.id, widget.id)
+  const finishPath = paths.widgetFormSettingsFinish(mobilization.id, widget.id)
 
   return (
     <SettingsPageMenuLayout title='Configure o formulário da sua ação'>

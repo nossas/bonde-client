@@ -1,6 +1,6 @@
 // Parent module dependencies
-import * as WidgetSelectors from '../../../../../modules/widgets/selectors'
-import { actions as WidgetActions } from '../../../../../modules/widgets'
+import * as WidgetSelectors from '~mobilizations/widgets/selectors'
+import { actions as WidgetActions } from '~mobilizations/widgets'
 
 // Current module dependencies
 import * as t from '../action-types'

@@ -4,10 +4,10 @@ import reactMixin from 'react-mixin'
 import classnames from 'classnames'
 
 // Global module dependencies
-import * as Paths from '../../../../../scripts/Paths'
+import * as paths from '~client/paths'
 
 // Parent module dependencies
-import { WidgetOverlay, FinishMessageCustom } from '../../../../../modules/widgets/components'
+import { WidgetOverlay, FinishMessageCustom } from '~mobilizations/widgets/components'
 
 // Current module dependencies
 import * as DonationActions from '../action-creators'
@@ -16,7 +16,7 @@ import './__donation__.scss'
 
 @reactMixin.decorate(Navigation)
 class Donation extends React.Component {
-  constructor(props, context) {
+  constructor (props, context) {
     super(props, context)
     this.state = {
       hasMouseOver: false,
@@ -28,38 +28,39 @@ class Donation extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     const { widget } = this.props
 
     const defaultDonationValue = (
-      widget.settings && widget.settings.default_donation_value ?
-      widget.settings.default_donation_value : 1
+      widget.settings && widget.settings.default_donation_value
+        ? widget.settings.default_donation_value
+        : 1
     )
     this.setState({selected_value: Number(defaultDonationValue)})
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     if (this.state.loading) {
       this.setState({loading: false, success: true})
     }
   }
 
-  handleOverlayOnClick() {
+  handleOverlayOnClick () {
     const { mobilization, widget, editable } = this.props
     if (editable) {
-      this.transitionTo(Paths.donation(mobilization.id, widget.id))
+      this.transitionTo(paths.donation(mobilization.id, widget.id))
     }
   }
 
-  handleClickSetTypeDonation(v) {
+  handleClickSetTypeDonation (v) {
     this.setState({ selected_payment_type: v })
   }
 
-  handleClickSetValueDonation(v) {
+  handleClickSetValueDonation (v) {
     this.setState({ selected_value: Number(v) })
   }
 
-  handleClickDonate() {
+  handleClickDonate () {
     const { widget, dispatch } = this.props
     const { success, selected_value, selected_payment_type } = this.state
     const that = this

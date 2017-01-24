@@ -1,15 +1,15 @@
 import React, { PropTypes } from 'react'
 
 // Global module dependencies
-import * as Paths from '../../../../../scripts/Paths'
-import { Tabs, Tab } from '../../../../../components/Navigation'
-import { SettingsPageMenuLayout } from '../../../../../components/Layout'
+import * as paths from '~client/paths'
+import { Tabs, Tab } from '~components/navigation/tabs'
+import { SettingsPageMenuLayout } from '~components/layout'
 
 const SettingsMenu = ({ location, mobilization, widget }) => {
-  const formPath = Paths.formPressureWidget(mobilization.id, widget.id)
-  const emailPath = Paths.emailPressureWidget(mobilization.id, widget.id)
-  const finishPath = Paths.finishPressureWidget(mobilization.id, widget.id)
-  const autofirePath = Paths.autofireMobilizationWidget(mobilization.id, widget.id)
+  const formPath = paths.formPressureWidget(mobilization.id, widget.id)
+  const emailPath = paths.emailPressureWidget(mobilization.id, widget.id)
+  const finishPath = paths.finishPressureWidget(mobilization.id, widget.id)
+  const autofirePath = paths.autofireMobilizationWidget(mobilization.id, widget.id)
 
   return (
     <SettingsPageMenuLayout title='Configure seu formulário de pressão'>

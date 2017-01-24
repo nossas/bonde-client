@@ -1,18 +1,19 @@
 import React from 'react'
+
+// Global module dependencies
 import {
   FormRedux,
   SubmitButton,
   SuccessMessage
-} from '../../../scripts/Dashboard/Forms'
-import { FloatLayout } from '../../../scripts/Dashboard/Grids'
-
+} from '~tmp-dashboard/forms'
+import { FloatLayout } from '~tmp-dashboard/Grids'
 
 export default ({ children, ...props }) => (
   <FormRedux nosubmit {...props}>
     {children}
-    <FloatLayout position="floatTopRight">
+    <FloatLayout position='floatTopRight'>
       <SubmitButton>Salvar</SubmitButton>
-      <SuccessMessage text="Dados editados com sucesso." />
+      <SuccessMessage text='Dados editados com sucesso.' />
     </FloatLayout>
   </FormRedux>
 )

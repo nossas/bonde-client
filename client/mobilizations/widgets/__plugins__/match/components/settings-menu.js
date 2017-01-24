@@ -1,13 +1,14 @@
 import React from 'react'
 
-import * as Paths from '../../../../../scripts/Paths'
-import { Tabs, Tab } from '../../../../../components/Navigation'
-import { SettingsPageMenuLayout } from '../../../../../components/Layout'
+// Global module dependencies
+import * as paths from '~client/paths'
+import { Tabs, Tab } from '~components/navigation/tabs'
+import { SettingsPageMenuLayout } from '~components/layout'
 
 const SettingsMenu = ({ mobilization, widget, location }) => {
-  const choicesPath = Paths.matchChoicesMobilizationWidget(mobilization.id, widget.id)
-  const goalsPath = Paths.matchGoalsMobilizationWidget(mobilization.id, widget.id)
-  const finishPath = Paths.matchWidgetFinish(mobilization.id, widget.id)
+  const choicesPath = paths.matchChoicesMobilizationWidget(mobilization.id, widget.id)
+  const goalsPath = paths.matchGoalsMobilizationWidget(mobilization.id, widget.id)
+  const finishPath = paths.matchWidgetFinish(mobilization.id, widget.id)
 
   return (
     <SettingsPageMenuLayout title='Configure as combinações da sua ação'>

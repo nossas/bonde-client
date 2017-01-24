@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 
 // Global module dependencies
-import { TellAFriend } from '../../../../../scripts/components'
+import { TellAFriend } from '~components/share'
 
 const PressureTellAFriend = ({ mobilization }) => (
   <TellAFriend

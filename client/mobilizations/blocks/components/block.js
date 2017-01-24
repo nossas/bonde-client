@@ -3,22 +3,23 @@ import classnames from 'classnames'
 import keycode from 'keycode'
 
 // Global module dependencies
-import { Loading } from '../../../../scripts/components'
+import { Loading } from '~components/await'
 
 // Sibling module dependencies
-import { selectors as WidgetSelectors } from '../../../../modules/widgets'
+import * as WidgetSelectors from '~mobilizations/widgets/selectors'
 
 // Current module dependencies
-import { actions as BlockActions, utils } from '../../../mobilizations/blocks'
+import * as BlockUtils from '../utils'
+import * as BlockActions from '../action-creators'
 import {
   BlockColorPicker,
   BlockWidgets,
   BlockHiddenTag,
-  BlockDropdownMenu,
-} from '../../../mobilizations/blocks/components'
+  BlockDropdownMenu
+} from '../components'
 
 class Block extends Component {
-  constructor(props, context) {
+  constructor (props, context) {
     super(props, context)
     this.state = {
       hasMouseOver: false,
@@ -31,7 +32,7 @@ class Block extends Component {
     }
   }
 
-  componentWillUpdate(props, state) {
+  componentWillUpdate (props, state) {
     const { editingBackground, editingWidget } = this.state
     const { dispatch } = this.props
     const { setEditionMode } = BlockActions
@@ -42,18 +43,18 @@ class Block extends Component {
     else if (!editingWidget && state.editingWidget) dispatch(setEditionMode(true))
   }
 
-  onChange(state) {
+  onChange (state) {
     this.setState({ ...this.state, ...state })
   }
 
-  render() {
+  render () {
     const { widgets, block } = this.props
 
     return (
       <div
         id={`block-${block.id}`}
-        style={{ ...utils.generateStyle(block) }}
-        className={classnames('clearfix', utils.generateClassName(block))}
+        style={{ ...BlockUtils.generateStyle(block) }}
+        className={classnames('clearfix', BlockUtils.generateClassName(block))}
         onMouseOver={() => ::this.onChange({ hasMouseOver: true })}
         onMouseOut={() => ::this.onChange({ hasMouseOver: false })}
         onKeyUp={event => {
@@ -62,7 +63,7 @@ class Block extends Component {
           }
         }}
       >
-        <div className="col-10 mx-auto">
+        <div className='col-10 mx-auto'>
           {this.state.editingBackground && (
             <BlockColorPicker
               state={this.state}
@@ -70,7 +71,7 @@ class Block extends Component {
               onChange={::this.onChange}
             />
           )}
-          <div className="clearfix" style={{ padding: '5em 0' }}>
+          <div className='clearfix' style={{ padding: '5em 0' }}>
             <BlockWidgets
               state={this.state}
               props={this.props}
@@ -78,14 +79,14 @@ class Block extends Component {
               widgets={WidgetSelectors.getBlockWidgets({ widgets, block })}
             />
           </div>
-          <div className="relative">
+          <div className='relative'>
             {this.props.block.hidden && (
               <BlockHiddenTag />
             )}
           </div>
           {this.state.loading && <Loading />}
 
-          <div className="relative">
+          <div className='relative'>
             <BlockDropdownMenu
               state={this.state}
               props={this.props}
@@ -101,7 +102,7 @@ class Block extends Component {
 Block.propTypes = {
   block: PropTypes.object.isRequired,
   widgets: PropTypes.array.isRequired,
-  dispatch: PropTypes.func,
+  dispatch: PropTypes.func
 }
 
 export default Block

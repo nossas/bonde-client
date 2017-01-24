@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react'
 
 // Global module dependencies
-import { Loading } from '../../../../../scripts/components'
-import Editor from '../../../../../scripts/RebooEditor'
+import { Loading } from '~components/await'
+import Editor from '~tmp-reboo-editor'
 
 // Parent module dependencies
-import { actions as WidgetActions } from '../../../../../modules/widgets'
+import { actions as WidgetActions } from '~mobilizations/widgets'
 
 import './editor-new.scss'
 
@@ -83,7 +83,7 @@ EditorNew.propTypes = {
   editable: PropTypes.bool.isRequired,
   onEdit: PropTypes.func.isRequired,
   onCancelEdit: PropTypes.func.isRequired,
-  dispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired
 }
 
 export default EditorNew

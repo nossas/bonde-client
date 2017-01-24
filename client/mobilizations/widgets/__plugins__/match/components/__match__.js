@@ -1,19 +1,19 @@
 import React, { Component, PropTypes } from 'react'
 
 // Global module dependencies
-import * as Paths from '../../../../../scripts/Paths'
-import { isValidEmail } from '../../../../../util/validation-helper'
-import { Error, Input } from '../../../../../components/FormUtil'
+import * as paths from '~client/paths'
+import { isValidEmail } from '~utils/validation-helper'
+import { Error, Input } from '~components/form-util'
 
 // Parent module dependencies
-import { WidgetOverlay, FinishMessageCustom } from '../../../components'
+import { WidgetOverlay, FinishMessageCustom } from '~mobilizations/components'
 
 // Current module dependencies
 import * as MatchActions from '../action-creators'
 import { Choices, MatchTellAFriend } from '../components'
 
 class Match extends Component {
-  constructor(props, context) {
+  constructor (props, context) {
     super(props, context)
     this.state = {
       numberSelected: undefined,
@@ -23,17 +23,17 @@ class Match extends Component {
     }
   }
 
-  redirectTo(e) {
+  redirectTo (e) {
     const { mobilization, widget, editable } = this.props
     if (e) e.preventDefault()
     if (editable) {
       this.context.router.transitionTo(
-        Paths.matchChoicesMobilizationWidget(mobilization.id, widget.id)
+        paths.matchChoicesMobilizationWidget(mobilization.id, widget.id)
       )
     }
   }
 
-  formIsValid() {
+  formIsValid () {
     const { firstname, lastname, email } = this.state
     let errors = []
 
@@ -47,10 +47,10 @@ class Match extends Component {
     return !hasErrors
   }
 
-  handleCombineClick(e) {
+  handleCombineClick (e) {
     if (e) e.preventDefault()
     if (this.formIsValid()) {
-      const { dispatch }  = this.props
+      const { dispatch } = this.props
       const { firstname, lastname, email } = this.state
       const matchItem = this.findMatchItem()
       const activist = { firstname, lastname, email }
@@ -65,20 +65,20 @@ class Match extends Component {
     }
   }
 
-  enableMatchButton() {
+  enableMatchButton () {
     const { selectedChoice1, selectedChoiceA } = this.state
     return selectedChoice1 && selectedChoiceA
   }
 
-  renderErrors() {
+  renderErrors () {
     const { errors } = this.state
     return (
-      errors.length > 0
-      && <div>{errors.map(error => <Error message={error} />)}</div>
+      errors.length > 0 &&
+      <div>{errors.map(error => <Error message={error} />)}</div>
     )
   }
 
-  renderChoices() {
+  renderChoices () {
     const {
       selectedChoice1, selectedChoiceA,
       name, email,
