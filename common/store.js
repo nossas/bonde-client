@@ -3,14 +3,19 @@ import thunk from 'redux-thunk'
 import promise from 'redux-promise'
 import createLogger from 'redux-logger'
 import axios from 'axios'
+import DefaultServerConfig from '../server/config'
 import createReducer from './createReducer'
 
 const logger = createLogger()
 
+const api = axios.create({
+  baseURL: DefaultServerConfig.apiUrl
+})
+
 export function configureStore (initialState) {
   let store = createStore(createReducer(), initialState, compose(
     applyMiddleware(
-      thunk.withExtraArgument({ axios }),
+      thunk.withExtraArgument({ axios, api }),
       promise,
       logger
     ),
