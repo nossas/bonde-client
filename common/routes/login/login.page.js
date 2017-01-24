@@ -1,6 +1,6 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import Login from '../../components/login'
+import Login from '../../components/login.connected'
 
 const LoginPage = () => (
   <div>

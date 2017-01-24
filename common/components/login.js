@@ -1,13 +1,13 @@
 import React from 'react'
 import { css, StyleSheet } from 'aphrodite'
 
-const Login = () => (
+const Login = ({ login }) => (
   <div className={css(styles.login)}>
-    <a
-      href='/api/users/login'
+    <button
+      onClick={() => login({ email: 'foo@bar.com', password: 'foobar' })}
       className={css(styles.button, styles.facebook)}>
       Login with Facebook
-    </a>
+    </button>
     <div className={css(styles.info)}>
       <p>Login is not required to purchase tickets</p>
     </div>

@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { StyleSheet, css } from 'aphrodite'
 import Helmet from 'react-helmet'
 import { loadAccount } from '../../redux/action-creators/load-account'
+import { logout } from '../../redux/action-creators/logout'
 import Account from '../../components/account'
 
 const redial = {
@@ -15,12 +16,15 @@ const mapStateToProps = (state) => ({
 })
 
 const AccountPage = (props) => {
-  const { account } = props
+  const { account, logout } = props
   return (
     <div>
       <Helmet title='Account Account' />
       <h2 className={css(styles.title)}>Account</h2>
       <Account {...account} />
+      <button style={{ cursor: 'pointer' }} onClick={() => {
+        logout()
+      }}>Logout</button>
     </div>
   )
 }
@@ -38,4 +42,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default provideHooks(redial)(connect(mapStateToProps)(AccountPage))
+export default provideHooks(redial)(connect(mapStateToProps, { logout })(AccountPage))

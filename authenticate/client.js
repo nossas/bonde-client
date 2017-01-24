@@ -13,14 +13,12 @@ export default class Client {
     ['get', 'post', 'put', 'patch', 'del'].forEach(method => {
       this[method] = (path, config) => new Promise((resolve, reject) => {
         const request = superagent[method](this.formatUrl(path, server))
-        debugger
         // Set server cookie in request if server-side
         if (server && server.get('cookie')) {
           request.set('cookie', server.get('cookie'))
         }
 
         if (config && config.params) request.query(config.params)
-
         if (config && config.data) request.send(config.data)
 
         request.end((err, res) => {

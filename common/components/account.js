@@ -1,21 +1,13 @@
 import React from 'react'
 import { StyleSheet, css } from 'aphrodite'
-import { Link } from 'react-router'
 
 const Account = (props) => {
-  const { account: { name, club } } = props
+  const { account: { user } } = props
   return (
     <div>
       <div className={css(styles.info)}>
-        <h3>Name: { name }</h3>
+        <h3>Name: { user ? `${user.first_name} ${user.last_name}` : 'Anonymous User' }</h3>
       </div>
-      {
-        club && (
-          <Link to='account/dashboard'>
-            <div className={css(styles.button)}>View Event Dashboard</div>
-          </Link>
-        )
-      }
     </div>
   )
 }

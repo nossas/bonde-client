@@ -2,7 +2,6 @@ import path from 'path'
 import http from 'http'
 import express from 'express'
 import helmet from 'helmet'
-import bodyParser from 'body-parser'
 import morgan from 'morgan'
 import compression from 'compression'
 import hpp from 'hpp'
@@ -36,10 +35,6 @@ export const createServer = (config) => {
   const app = express()
   let assets = null
   app.disable('x-powered-by')
-  app.use(bodyParser.json())
-  app.use(bodyParser.urlencoded({ extended: true }))
-  app.use(require('cookie-parser')());
-  app.use(require('express-session')({ secret: 'keyboard', resave: true, saveUninitialized: true }));
 
   if (__PROD__ || __TEST__) {
     app.use(morgan('combined'))
