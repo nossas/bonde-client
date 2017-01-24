@@ -9,10 +9,11 @@ import browserHistory from 'react-router/lib/browserHistory'
 import { Provider } from 'react-redux'
 import { StyleSheet } from 'aphrodite'
 
+import AuthClient from '../authenticate/client'
 import { configureStore } from '../common/store'
 const initialState = window.INITIAL_STATE || {}
 // Set up Redux (note: this API requires redux@>=3.1.0):
-const store = configureStore(initialState)
+const store = configureStore(initialState, { auth: new AuthClient() })
 const { dispatch } = store
 
 const container = document.getElementById('root')

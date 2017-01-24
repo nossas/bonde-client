@@ -26,7 +26,8 @@ import { compileDev, startDev } from '../tools/dx'
 import { configureStore } from '../common/store'
 import reducer from '../common/createReducer'
 import createRoutes from '../common/routes/root'
-import { startServer as authStartServer } from './authenticate'
+import { startServer as authStartServer } from '../authenticate'
+import AuthClient from '../authenticate/client'
 
 export const createServer = (config) => {
   const __PROD__ = config.nodeEnv === 'production'
@@ -74,7 +75,7 @@ export const createServer = (config) => {
         protocol: req.headers['x-forwarded-proto'] || req.protocol,
         host: req.headers.host
       }
-    })
+    }, { auth: new AuthClient(req) })
     const routes = createRoutes(store)
     const history = createMemoryHistory(req.originalUrl)
     const { dispatch } = store
