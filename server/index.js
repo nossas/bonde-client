@@ -25,6 +25,7 @@ import { compileDev, startDev } from '../tools/dx'
 import { configureStore } from '../common/store'
 import reducer from '../common/createReducer'
 import createRoutes from '../common/routes/root'
+import { startServer as authStartServer } from './authenticate'
 
 export const createServer = (config) => {
   const __PROD__ = config.nodeEnv === 'production'
@@ -207,6 +208,11 @@ export const startServer = (serverConfig) => {
     } else {
       startDev(config.port, err)
     }
+
+    authStartServer(config)
+      .then(() => {
+        console.log(`authenticate listening on port ${config.authPort}`)
+      })
   })
 }
 
