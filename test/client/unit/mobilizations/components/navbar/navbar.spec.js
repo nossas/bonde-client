@@ -2,9 +2,9 @@ import React from 'react'
 import { expect } from 'chai'
 import { mount } from 'enzyme'
 
-import Navbar from './navbar'
+import { Navbar } from '~mobilizations/components/navbar'
 
-describe('app/modules/mobilizations/components/navbar/navbar', () => {
+describe('client/mobilizations/components/navbar/navbar', () => {
   let wrapper
   const props = {
     mobilization: {},

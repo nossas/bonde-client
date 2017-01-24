@@ -32,9 +32,10 @@ class DropdownMenu extends React.Component {
 
   renderChildren () {
     return this.props.children.map((child, index) => {
+      const props = child.type !== 'div' ? { onItemClick: ::this.handleOverlayClick } : {}
       return React.cloneElement(child, {
         key: 'item-' + index,
-        onItemClick: ::this.handleOverlayClick
+        ...props
       })
     })
   }

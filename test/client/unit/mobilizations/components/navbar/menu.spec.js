@@ -2,9 +2,9 @@ import React from 'react'
 import { expect } from 'chai'
 import { mount } from 'enzyme'
 
-import Menu from './menu'
+import { Menu } from '~mobilizations/components/navbar'
 
-describe('app/modules/mobilizations/components/navbar/menu', () => {
+describe('client/mobilizations/components/navbar/menu', () => {
   let wrapper
   const props = {
     blocks: [
@@ -24,9 +24,9 @@ describe('app/modules/mobilizations/components/navbar/menu', () => {
     expect(wrapper).to.be.ok
   })
 
-  it('should render DropDownMenu if mobile version is true', () => {
+  it('should render DropdownMenu if mobile version is true', () => {
     wrapper.setProps({ mobile: true })
-    expect(wrapper.find('DropDownMenu').length).to.equal(1)
+    expect(wrapper.find('DropdownMenu').length).to.equal(1)
   })
 
   it('should render div.bg-darken-4 if mobile version is false', () => {
