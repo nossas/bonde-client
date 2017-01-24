@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, css } from 'aphrodite'
 
 const Account = (props) => {
-  const { account: { user } } = props
+  const { user } = props
   return (
     <div>
       <div className={css(styles.info)}>

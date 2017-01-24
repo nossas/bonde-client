@@ -3,16 +3,15 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { StyleSheet, css } from 'aphrodite'
 import Helmet from 'react-helmet'
-import { loadAccount } from '../../redux/action-creators/load-account'
-import { logout } from '../../redux/action-creators/logout'
+import { actions as authActions } from '../../../authenticate/redux'
 import Account from '../../components/account'
 
 const redial = {
-  fetch: ({ dispatch }) => dispatch(loadAccount())
+  fetch: ({ dispatch }) => dispatch(authActions.load())
 }
 
 const mapStateToProps = (state) => ({
-  account: state.account
+  account: state.auth
 })
 
 const AccountPage = (props) => {
@@ -42,4 +41,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default provideHooks(redial)(connect(mapStateToProps, { logout })(AccountPage))
+export default provideHooks(redial)(connect(mapStateToProps, { logout: authActions.logout })(AccountPage))
