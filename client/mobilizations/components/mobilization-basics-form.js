@@ -11,7 +11,7 @@ import {
 // Current module dependencies
 import { MobilizationSettingsForm } from '../components'
 
-export default (props) => {
+const MobilizationBasicsForm = props => {
   const { floatSubmit, fields: { name, goal }, ...formProps } = props
 
   const ComponentForm = floatSubmit ? MobilizationSettingsForm : FormRedux
@@ -57,3 +57,5 @@ export const validate = values => {
   }
   return errors
 }
+
+export default MobilizationBasicsForm

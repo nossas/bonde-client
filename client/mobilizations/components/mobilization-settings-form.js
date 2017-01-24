@@ -8,7 +8,7 @@ import {
 } from '~tmp-dashboard/forms'
 import { FloatLayout } from '~tmp-dashboard/Grids'
 
-export default ({ children, ...props }) => (
+const MobilizationSettingsForm = ({ children, ...props }) => (
   <FormRedux nosubmit {...props}>
     {children}
     <FloatLayout position='floatTopRight'>
@@ -17,3 +17,5 @@ export default ({ children, ...props }) => (
     </FloatLayout>
   </FormRedux>
 )
+
+export default MobilizationSettingsForm
