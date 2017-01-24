@@ -1,0 +1,163 @@
+version: '2.1'
+
+volumes:
+  # We'll define a volume that will store the data from the postgres databases:
+  postgres-data:
+    driver: local
+  # The rabbitmq data store volume
+  redis-data:
+    driver: local
+  # We'll also define a volume that will store gems installed manually after the initial app
+  # development image build process:
+  app-gems:
+    driver: local
+
+services:
+  # Our PostgreSQL service:
+  postgres:
+    image: postgres:9.6.1
+    ports:
+      # We'll bind our host's port 5432 to postgres's port 5432, so we can use
+      # our database IDEs with it:
+      - 5432:5432
+    volumes:
+      # Mount the DB dumps folder into the container, to be able to create & access database dumps:
+      - ./db/dumps:/db/dumps:Z
+      # Mount out tmp folder, we might want to have access to something there during development:
+      - ./tmp:/tmp:Z
+      # Mount our 'restoredb' script:
+      - ./bin/restoredb:/bin/restoredb:ro
+      # Mount our 'dumpdb' script:
+      - ./bin/dumpdb:/bin/dumpdb:ro
+      # We'll mount the 'postgres-data' volume into the location Postgres stores it's data:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: 3x4mpl3
+
+  # Our Redis service:
+  redis:
+    image: redis:3.2.4-alpine
+    ports:
+      # We'll bind our host's port 6379 to redis's port 6379, so we can use
+      # Redis Desktop Manager (or other tools) with it:
+      - 6379:6379
+    volumes:
+      # We'll mount the 'redis-data' volume into the location redis stores it's data:
+      - redis-data:/var/lib/redis
+    command: redis-server --appendonly yes
+
+  # Application: -----------------------------------------------------------------
+  # We'll also use this configuration (&app_base) for the web and test containers:
+  jobs: &app_base
+    build:
+      context: ./../bonde-server/
+      dockerfile: Dockerfile.dev
+    # entrypoint: ./development-entrypoint
+
+    # The command this container will run - in this case, this container will run our sidekiq
+    # process:
+
+    command: bundle exec rake environment resque:work
+
+    volumes:
+      # Mount our app code directory (".") into our app containers at the
+      # "/usr/src/app" folder:
+      - ./../bonde-server:/usr/src/app:Z
+
+      # Mount the 'gems' volume on the folder that stores bundled gems:
+      - app-gems:/usr/local/bundle
+
+    # Keep the stdin open, so we can attach to our app container's process and do things such as
+    # byebug, etc:
+    stdin_open: true
+
+    # Enable sending signals (CTRL+C, CTRL+P + CTRL+Q) into the container:
+    tty: true
+
+    # Link to our postgres and redis containers, so they can be visible from our
+    # app containers:
+    links:
+      # We'll include a link to the 'db' (postgres) container, making it visible from the container
+      # using the 'postgres.local' hostname (which is not necessary, but I'm doing it here to
+      # illustrate that you can play with this):
+      - postgres:db.local
+
+      # We'll include a link to the 'keyval' (redis) container, making it
+      # visible from the container using the 'keyval.local' hostname:
+      - redis:keyval.local
+
+    environment: &app_environment
+      # The postgres database URL:
+      DATABASE_URL: postgres://postgres:3x4mpl3@db.local:5432/reboo
+
+      QUEUE: "*"
+
+      # The redis URL:
+      REDIS_URL: redis://keyval.local:6379
+
+      # Sidekiq configuration:
+      WEB_CONCURRENCY: 1
+      WEB_MEMORY: 256
+
+      # Run the app in the 'development' environment:
+      RACK_ENV: development
+      RAILS_ENV: development
+
+  # This container will run the rails web server:
+  api:
+    # We'll copy from &app_base, and override:
+    <<: *app_base
+    command: bundle exec puma -C config/puma.rb
+    # command: rails server -p 3000 -b 0.0.0.0
+    ports:
+      - "3000:3000" # Bind our host's port 3000 to the app port 3000:
+
+  # App Guard: Keeps running tests on a separate process:
+  test:
+    # We'll copy from &app_base, and override:
+    <<: *app_base
+    command: bundle exec rspec --color --require spec_helper spec --format progress
+    environment:
+      <<: *app_environment
+      # PostgreSQL Test Database:
+      DATABASE_URL: postgres://postgres:3x4mpl3@db.local:5432/reboo_test
+      # Run the app in the 'test' environment, instead of the default 'developent'
+      RACK_ENV: test
+      RAILS_ENV: test
+
+  client:
+    depends_on:
+      - api
+    command: './node_modules/.bin/concurrently --kill-others "node webpack/webpack-dev-server.js" "node ./bin/server.js"'
+    volumes:
+      - ./:/code:Z
+    ports:
+      - "3001:3001"
+      - "3002:3002"
+    build: .
+    restart: always
+    links:
+      - api:api.reboo.local
+      - redis:keyval.local
+    extra_hosts:
+      - "app.reboo.local:127.0.0.1"
+    environment:
+      API_URL:                http://api.reboo.local:3000
+      HOST:                   app.reboo.local
+      APP_DOMAIN:             reboo.local:3001
+      AWS_ACCESS_KEY_ID:      AKIAIMEVG2LZDPPRECEA
+      AWS_SECRET_ACCESS_KEY:  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
+      GOOGLE_FONTS_API_KEY:   AIzaSyBcamsqE6nutNqMkB37TkJqOgqaAfKaM0o
+      NEW_RELIC_HOME:         ./src
+      NEW_RELIC_LICENSE_KEY:  ca5a3fbf581b4cad5cae8242e5493ebaf69bd3a7
+      NODE_ENV:               development
+      NODE_MODULES_CACHE:     'false'
+      NPM_CONFIG_PRODUCTION:  'false'
+      PAGARME_KEY:            ek_test_PYsS1XrZsCCF7wynC67YEi5RW3lSCV
+      PORT:                   3001 
+      REDIS_URL:              redis://keyval.local:6379
+      SENTRY_DSN:             https://64b0ceb9eb944320afb01397c78762fe:1a48bbc96c144c268601bbee62cfb100@sentry.io/121380
+      VALIDATE_REGION:        sa-east-1
+      WEB_CONCURRENCY:        1 
+      WEB_MEMORY:             512
+
