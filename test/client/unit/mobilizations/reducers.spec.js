@@ -1,10 +1,11 @@
 import { expect } from 'chai'
 
-import * as t from './action-types'
-import { createAction } from './action-creators/create-action'
-import reducers, { initialState } from './reducers'
+// Current module dependencies
+import * as t from '~mobilizations/action-types'
+import { createAction } from '~mobilizations/action-creators/create-action'
+import reducers, { initialState } from '~mobilizations/reducers'
 
-describe('app/modules/mobilizations/reducers', () => {
+describe('client/mobilizations/reducers', () => {
   let payload
   let nextState
 
@@ -107,7 +108,7 @@ describe('app/modules/mobilizations/reducers', () => {
   describe('t.ASYNC_FILTER_SUCCESS', () => {
     let currentInitialState
     let responsePayload
-    before(() => {
+    beforeAll(() => {
       currentInitialState = { ...initialState, loading: true, isLoaded: false }
       responsePayload = [{ id: 1 }]
     })
@@ -136,7 +137,7 @@ describe('app/modules/mobilizations/reducers', () => {
   describe('t.ASYNC_FILTER_FAILURE', () => {
     let currentInitialState
     let failurePayload
-    before(() => {
+    beforeAll(() => {
       currentInitialState = { ...initialState, loading: true, isLoaded: false }
       failurePayload = 'Form widget entry create request error message!'
     })
