@@ -7,7 +7,8 @@ import Editor from '~components/editor-draft-js'
 // Parent module dependencies
 import { actions as WidgetActions } from '~mobilizations/widgets'
 
-import './editor-new.scss'
+// Current module dependencies
+import './index.scss'
 
 class EditorNew extends React.Component {
   constructor (props, context) {

@@ -2,9 +2,9 @@ import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-import Content from './__content__'
+import Content from '~widget-plugins/content/components'
 
-describe('app/modules/widgets/__plugins__/content/components/__content__', () => {
+describe('client/mobilizations/widgets/__plugins__/content/components/__content__', () => {
   let contentWidget
   const stubContext = { store: {} }
   const props = {
