@@ -2,9 +2,10 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import Page from './page'
+// Current module dependencies
+import { Page } from '~widget-plugins/match/components'
 
-describe('app/modules/widgets/__plugins__/match/components/page', () => {
+describe('client/mobilizations/widgets/__plugins__/match/components/page', () => {
   let wrapper
   let props = {
     widget: {},

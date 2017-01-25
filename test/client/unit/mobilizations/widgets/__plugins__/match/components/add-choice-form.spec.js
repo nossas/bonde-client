@@ -2,9 +2,10 @@ import React from 'react'
 import { mount } from 'enzyme'
 import { expect } from 'chai'
 
-import AddChoiceForm from './add-choice-form'
+// Current module dependencies
+import { AddChoiceForm } from '~widget-plugins/match/components'
 
-describe('app/modules/widgets/__plugins__/match/components/add-choice-form', () => {
+describe('client/mobilizations/widgets/__plugins__/match/components/add-choice-form', () => {
   let wrapper
   let props = {
     title: undefined,

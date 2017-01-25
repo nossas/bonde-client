@@ -6,7 +6,7 @@ import { isValidEmail } from '~utils/validation-helper'
 import { Error, Input } from '~components/form-util'
 
 // Parent module dependencies
-import { WidgetOverlay, FinishMessageCustom } from '~mobilizations/components'
+import { WidgetOverlay, FinishMessageCustom } from '~mobilizations/widgets/components'
 
 // Current module dependencies
 import * as MatchActions from '../action-creators'
@@ -79,14 +79,10 @@ class Match extends Component {
   }
 
   renderChoices () {
-    const {
-      selectedChoice1, selectedChoiceA,
-      name, email,
-      numberSelected, letterSelected
-    } = this.state
+    const { selectedChoice1, selectedChoiceA } = this.state
     const { editable, loading } = this.props
     const { widget: { settings: {
-        title_text,
+        title_text: titleText,
         labelChoices1, labelChoicesA,
         choices1, choicesA
       }},
@@ -97,23 +93,22 @@ class Match extends Component {
 
     return (
       <WidgetOverlay editable={editable} onClick={::this.redirectTo}>
-        <div className="match-widget widget form-redux transparent p3 bg-darken-3 relative rounded">
-          <h2 className="mt0 mb3 center white" style={{ fontFamily: headerFont }}>
-            {title_text}
+        <div className='match-widget widget form-redux transparent p3 bg-darken-3 relative rounded'>
+          <h2 className='mt0 mb3 center white' style={{ fontFamily: headerFont }}>
+            {titleText}
           </h2>
           <Choices
-            className="form-group"
+            className='form-group mb2'
             title={labelChoices1}
             selected={this.state.numberSelected}
             options={optionsChoices1}
             onChange={(option) => {
               this.setState({ selectedChoice1: option.target.value })
             }}
-            className="form-group mb2"
           />
           <Choices
-            { ...this.props }
-            className="form-group"
+            {...this.props}
+            className='form-group mb2'
             title={labelChoicesA}
             selected={this.state.letterSelected}
             options={optionsChoicesA}
@@ -121,38 +116,37 @@ class Match extends Component {
             onChange={(option) => {
               this.setState({ selectedChoiceA: option.target.value })
             }}
-            className="form-group mb2"
           />
           <Input
-            uid="input-match-firstname"
-            type="text"
-            label="Nome"
-            placeholder="Insira aqui seu nome"
-            required={true}
+            uid='input-match-firstname'
+            type='text'
+            label='Nome'
+            placeholder='Insira aqui seu nome'
+            required
             onChange={e => { this.setState({ firstname: e.target.value }) }}
             show={!!selectedChoiceA}
           />
           <Input
-            uid="input-match-lastname"
-            type="text"
-            label="Sobrenome"
-            placeholder="Insira aqui seu sobrenome"
-            required={true}
+            uid='input-match-lastname'
+            type='text'
+            label='Sobrenome'
+            placeholder='Insira aqui seu sobrenome'
+            required
             onChange={e => { this.setState({ lastname: e.target.value }) }}
             show={!!selectedChoiceA}
           />
           <Input
-            uid="input-match-email"
-            type="email"
-            label="Email"
-            placeholder="Insira aqui seu email"
-            required={true}
+            uid='input-match-email'
+            type='email'
+            label='Email'
+            placeholder='Insira aqui seu email'
+            required
             onChange={e => { this.setState({ email: e.target.value }) }}
             show={!!selectedChoiceA}
           />
           {this.renderErrors()}
           <button
-            className="match caps btn bg-darken-4 p2 col-12 mt1 mb2 rounded white"
+            className='match caps btn bg-darken-4 p2 col-12 mt1 mb2 rounded white'
             onClick={::this.handleCombineClick}
             disabled={loading || !(this.enableMatchButton())}>
             {loading ? 'Combinando...' : 'Combinar' }
@@ -162,19 +156,19 @@ class Match extends Component {
     )
   }
 
-  findMatchItem() {
+  findMatchItem () {
     const { widget } = this.props
     const matchList = widget.match_list.filter(match => {
-      const { first_choice, second_choice } = match
+      const { first_choice: firstChoice, second_choice: secondChoice } = match
       const { selectedChoice1, selectedChoiceA } = this.state
-      return first_choice === selectedChoice1 && second_choice === selectedChoiceA
+      return firstChoice === selectedChoice1 && secondChoice === selectedChoiceA
     })
     if (matchList && matchList.length > 0) {
       return matchList[0]
     }
   }
 
-  renderShareButtons() {
+  renderShareButtons () {
     const { mobilization, widget } = this.props
     const { settings: { finish_message_type: finishMessageType } } = widget
     return finishMessageType === 'custom' ? (
@@ -187,11 +181,11 @@ class Match extends Component {
     )
   }
 
-  render() {
+  render () {
     const { combined } = this.state
     return (
       <div>
-        { combined ? this.renderShareButtons() : this.renderChoices() }
+        {combined ? this.renderShareButtons() : this.renderChoices()}
       </div>
     )
   }
@@ -207,7 +201,7 @@ Match.propTypes = {
 }
 
 Match.contextTypes = {
-  router: PropTypes.object.isRequired,
+  router: PropTypes.object.isRequired
 }
 
 export default Match

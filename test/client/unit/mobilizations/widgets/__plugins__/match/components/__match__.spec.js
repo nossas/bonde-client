@@ -7,14 +7,14 @@ import { expect } from 'chai'
 import * as paths from '~client/paths'
 
 // Current module dependencies
-import Match from './__match__'
+import Match from '~widget-plugins/match/components'
 
-describe('app/modules/widgets/__plugins__/match/components/__match__', () => {
+describe('client/mobilizations/widgets/__plugins__/match/components/__match__', () => {
   let wrapper
   let sandbox
   let spy = {}
 
-  let mockContext = {
+  let context = {
     router: { transitionTo: sinon.spy() }
   }
 
@@ -41,12 +41,12 @@ describe('app/modules/widgets/__plugins__/match/components/__match__', () => {
     dispatch: sinon.spy()
   }
 
-  before(() => {
+  beforeAll(() => {
     sandbox = sinon.sandbox.create()
   })
 
   beforeEach(() => {
-    wrapper = shallow(<Match {...props} />, { context: mockContext })
+    wrapper = shallow(<Match {...props} />, { context })
   })
 
   afterEach(() => {
@@ -71,7 +71,7 @@ describe('app/modules/widgets/__plugins__/match/components/__match__', () => {
   })
 
   describe('#renderChoices', () => {
-    context('when passing props', () => {
+    describe('when passing props', () => {
       it('should render two <Choices> component', () => {
         expect(wrapper.find('Choices').length).to.equal(2)
       })
@@ -147,19 +147,19 @@ describe('app/modules/widgets/__plugins__/match/components/__match__', () => {
   })
 
   describe('#redirectTo', () => {
-    context('when overlay widget was clicked and it is editable', () => {
-      before(() => {
+    describe('when overlay widget was clicked and it is editable', () => {
+      beforeAll(() => {
         wrapper.find('WidgetOverlay').simulate('click')
       })
 
       it('should call transitionTo', () => {
-        expect(mockContext.router.transitionTo.calledOnce).to.equal(true)
+        expect(context.router.transitionTo.calledOnce).to.equal(true)
       })
 
       it('should transitionTo called with correct params', () => {
         const { mobilization, widget } = props
         const path = paths.matchChoicesMobilizationWidget(mobilization.id, widget.id)
-        expect(mockContext.router.transitionTo.calledWith(path)).to.equal(true)
+        expect(context.router.transitionTo.calledWith(path)).to.equal(true)
       })
     })
   })

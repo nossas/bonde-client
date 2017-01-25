@@ -2,9 +2,10 @@ import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-import MatchTellAFriend from './match-tell-a-friend'
+// Current module dependencies
+import { MatchTellAFriend } from '~widget-plugins/match/components'
 
-describe('app/modules/widgets/__plugins__/match/components/match-tell-a-friend', () => {
+describe('client/mobilizations/widgets/__plugins__/match/components/match-tell-a-friend', () => {
   let wrapper
   const props = {
     mobilization: {},
@@ -15,7 +16,7 @@ describe('app/modules/widgets/__plugins__/match/components/match-tell-a-friend',
     }
   }
 
-  before(() => {
+  beforeAll(() => {
     wrapper = shallow(<MatchTellAFriend {...props} />)
   })
 

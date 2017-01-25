@@ -3,9 +3,10 @@ import sinon from 'sinon'
 import { mount } from 'enzyme'
 import { expect } from 'chai'
 
-import Choices from './choices'
+// Current module dependencies
+import { Choices } from '~widget-plugins/match/components'
 
-describe('app/modules/widgets/__plugins__/match/components/choices', () => {
+describe('client/mobilizations/widgets/__plugins__/match/components/choices', () => {
   let wrapper
   let sandbox
   const props = {
@@ -15,7 +16,7 @@ describe('app/modules/widgets/__plugins__/match/components/choices', () => {
     onChange: sinon.spy()
   }
 
-  before(() => {
+  beforeAll(() => {
     sandbox = sinon.sandbox.create()
     wrapper = mount(<Choices {...props} />)
   })

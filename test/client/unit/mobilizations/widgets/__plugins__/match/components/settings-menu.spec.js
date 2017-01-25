@@ -6,9 +6,9 @@ import { expect } from 'chai'
 import * as paths from '~client/paths'
 
 // Current module dependencies
-import SettingsMenu from './settings-menu'
+import { SettingsMenu } from '~widget-plugins/match/components'
 
-describe('app/modules/widgets/__plugins__/match/components/settings-menu', () => {
+describe('client/mobilizations/widgets/__plugins__/match/components/settings-menu', () => {
   let wrapper
 
   const props = {
@@ -25,7 +25,7 @@ describe('app/modules/widgets/__plugins__/match/components/settings-menu', () =>
   })
 
   describe('#render', () => {
-    context('Tabs', () => {
+    describe('Tabs', () => {
       it('should render one <Tabs /> component', () => {
         expect(wrapper.find('Tabs')).to.have.length(1)
       })
@@ -33,7 +33,7 @@ describe('app/modules/widgets/__plugins__/match/components/settings-menu', () =>
         expect(wrapper.find('Tab').length).to.equal(3)
       })
 
-      context('Choices Tab', () => {
+      describe('Choices Tab', () => {
         it('should render with choices path as path prop', () => {
           const expectedPath = paths.matchChoicesMobilizationWidget(1, 1)
           expect(wrapper.find('Tab').at(CHOICES_TAB).props().path).to.equal(expectedPath)
@@ -57,7 +57,7 @@ describe('app/modules/widgets/__plugins__/match/components/settings-menu', () =>
         })
       })
 
-      context('Goals Tab', () => {
+      describe('Goals Tab', () => {
         it('should render with goals path as path prop', () => {
           const expectedPath = paths.matchGoalsMobilizationWidget(1, 1)
           expect(wrapper.find('Tab').at(GOALS_TAB).props().path).to.equal(expectedPath)

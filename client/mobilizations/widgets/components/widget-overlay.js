@@ -3,26 +3,26 @@ import React, { Component, PropTypes } from 'react'
 import './widget-overlay.scss'
 
 class WidgetOverlay extends Component {
-  constructor(props, context) {
+  constructor (props, context) {
     super(props)
     this.context = context
     this.state = { hasMouseOver: false }
   }
 
-  handleMouseEnter(e) {
+  handleMouseEnter (e) {
     if (e) e.preventDefault()
     this.setState({ hasMouseOver: true })
   }
 
-  handleMouseLeave(e) {
+  handleMouseLeave (e) {
     if (e) e.preventDefault()
     this.setState({ hasMouseOver: false })
   }
 
-  render() {
+  render () {
     const { children, editable, onClick, text } = this.props
     return (
-      <div className="relative"
+      <div className='relative'
         style={editable ? { cursor: 'pointer' } : null}
         onMouseEnter={::this.handleMouseEnter}
         onMouseLeave={::this.handleMouseLeave}
@@ -31,9 +31,9 @@ class WidgetOverlay extends Component {
         {children}
         {
           !editable || !this.state.hasMouseOver ? null : (
-            <div className="widget-overlay h1 rounded z1 border border-pagenta px2">
-              <div className="table full-height col-12 center">
-                <div className="white table-cell align-middle">
+            <div className='widget-overlay h1 rounded z1 border border-pagenta px2'>
+              <div className='table full-height col-12 center'>
+                <div className='white table-cell align-middle'>
                   {text || 'Clique para editar'}
                 </div>
               </div>
@@ -56,7 +56,7 @@ WidgetOverlay.propTypes = {
 }
 
 WidgetOverlay.defaultProps = {
-  editable: false,
+  editable: false
 }
 
 export default WidgetOverlay
