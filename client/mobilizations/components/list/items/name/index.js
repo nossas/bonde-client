@@ -1,0 +1,28 @@
+import React, { PropTypes } from 'react'
+import classnames from 'classnames'
+
+// Current module dependencies
+import './index.scss'
+
+const Name = ({ name, goal, className, style, maxLength }) => (
+  <div className={classnames('name px3 py2 col col-5', className)} style={style}>
+    <b className='block mb1 truncate'>{name}</b>
+    <div className='truncate'>{goal}</div>
+  </div>
+)
+
+Name.propTypes = {
+  name: PropTypes.string.isRequired,
+  goal: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  style: PropTypes.object
+}
+
+export default Name
+
+const Header = () => (
+  <div className='name-header px3 col col-5'>
+    Nome <i className='fa fa-long-arrow-down ml1' />
+  </div>
+)
+Name.Header = Header

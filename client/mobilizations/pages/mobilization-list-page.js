@@ -16,26 +16,19 @@ import * as paths from '~client/paths'
 import * as TemplateActions from '~mobilizations/templates/action-creators'
 
 // Current module dependencies
-import MobilizationList from '~tmp-mobilizations/components/MobilizationList'
+import List from '../components/list'
 import {
-  MobilizationListItem,
-  MobilizationListItemAvatar,
-  MobilizationListItemName,
-  MobilizationListItemCreatedAt,
-  MobilizationListItemUsers,
-  MobilizationListItemFundRaising,
-  MobilizationListItemMore,
-  MobilizationListItemMoreMenu,
-  MobilizationListItemMoreMenuAction
-} from '~tmp-mobilizations/components/MobilizationList/MobilizationListItem'
-import {
-  MobilizationListItemHeader,
-  MobilizationListItemHeaderName,
-  MobilizationListItemHeaderCreatedAt,
-  MobilizationListItemHeaderUsers,
-  MobilizationListItemHeaderFundRaising
-} from '~tmp-mobilizations/components/MobilizationList/MobilizationListItemHeader'
-import { MobilizationsHeader } from '~tmp-mobilizations/components'
+  Item,
+  Avatar,
+  Name,
+  CreatedAt,
+  Users,
+  FundRaising,
+  More,
+  MoreMenu,
+  MoreMenuAction
+} from '../components/list/items'
+import { PageHeader } from '..//components'
 import { select, toggleMenu } from '../action-creators'
 import * as MobilizationSelectors from '../selectors'
 
@@ -69,52 +62,53 @@ export class MobilizationListPage extends Component {
     return (
       <SettingsPageLayout>
         <SettingsPageMenuLayout title='Suas Mobilizações'>
-          <MobilizationsHeader location={location} />
+          <PageHeader location={location} />
         </SettingsPageMenuLayout>
         <SettingsPageContentLayout containerClassName='lg-col-12'>
-          <MobilizationList>
-            <MobilizationListItemHeader>
-              <MobilizationListItemHeaderName />
-              <MobilizationListItemHeaderCreatedAt />
-              <MobilizationListItemHeaderUsers />
-              <MobilizationListItemHeaderFundRaising />
-            </MobilizationListItemHeader>
+          <List>
+            <Item.Header>
+              <Name.Header />
+              <CreatedAt.Header />
+              <Users.Header />
+              <FundRaising.Header />
+            </Item.Header>
 
             {mobilizations && mobilizations.map((mobilization, index) => (
-              <MobilizationListItem
-                key={`mobilization-${mobilization.id}`}
+              <Item
+                key={`item-${mobilization.id}`}
                 className={classnames({ 'z2': menuActiveIndex === index })}
               >
                 <div className='gray20' onClick={() => this.handleSelectItem(mobilization)}>
-                  <MobilizationListItemAvatar {...mobilization} />
+                  <Avatar {...mobilization} />
 
                   <div className='list-item-table-container overflow-hidden'>
-                    <MobilizationListItemName {...mobilization} />
-                    <MobilizationListItemCreatedAt {...mobilization} />
-                    <MobilizationListItemUsers {...mobilization} />
-                    <MobilizationListItemFundRaising {...mobilization} />
+                    <Name {...mobilization} />
+                    <CreatedAt {...mobilization} />
+                    <Users {...mobilization} />
+                    <FundRaising {...mobilization} />
                   </div>
                 </div>
-                <MobilizationListItemMore onClick={toggleMenu} index={index}>
-                  <MobilizationListItemMoreMenu active={menuActiveIndex === index}>
-                    <MobilizationListItemMoreMenuAction
+
+                <More onClick={toggleMenu} index={index}>
+                  <MoreMenu active={menuActiveIndex === index}>
+                    <MoreMenuAction
                       componentClass='a'
                       target='_blank'
                       text='Abrir página'
                       path={paths.mobilization(mobilization)}
                       icon='external-link'
                     />
-                    <MobilizationListItemMoreMenuAction
+                    <MoreMenuAction
                       componentClass='a'
                       text='Criar template'
                       onClick={() => this.handleCreateTemplate(mobilization)}
                       icon='star'
                     />
-                  </MobilizationListItemMoreMenu>
-                </MobilizationListItemMore>
-              </MobilizationListItem>
+                  </MoreMenu>
+                </More>
+              </Item>
             ))}
-          </MobilizationList>
+          </List>
         </SettingsPageContentLayout>
       </SettingsPageLayout>
     )
