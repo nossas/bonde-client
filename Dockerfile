@@ -3,9 +3,9 @@ MAINTAINER Nossas <tech@nossas.org>
 
 RUN apk add --no-cache make gcc g++ python git
 RUN mkdir /code
-VOLUME /code
 WORKDIR /code
 COPY . /code
-RUN npm install && npm run build
-EXPOSE 5000
+RUN npm install -g yarn
+RUN yarn
 CMD ["node", "./bin/server"]
+EXPOSE 5000

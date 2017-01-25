@@ -134,30 +134,15 @@ services:
     ports:
       - "3001:3001"
       - "3002:3002"
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+
     restart: always
     links:
       - api:api.reboo.local
       - redis:keyval.local
     extra_hosts:
       - "app.reboo.local:127.0.0.1"
-    environment:
-      API_URL:                http://api.reboo.local:3000
-      HOST:                   app.reboo.local
-      APP_DOMAIN:             reboo.local:3001
-      AWS_ACCESS_KEY_ID:      AKIAIMEVG2LZDPPRECEA
-      AWS_SECRET_ACCESS_KEY:  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
-      GOOGLE_FONTS_API_KEY:   AIzaSyBcamsqE6nutNqMkB37TkJqOgqaAfKaM0o
-      NEW_RELIC_HOME:         ./src
-      NEW_RELIC_LICENSE_KEY:  ca5a3fbf581b4cad5cae8242e5493ebaf69bd3a7
-      NODE_ENV:               development
-      NODE_MODULES_CACHE:     'false'
-      NPM_CONFIG_PRODUCTION:  'false'
-      PAGARME_KEY:            ek_test_PYsS1XrZsCCF7wynC67YEi5RW3lSCV
-      PORT:                   3001 
-      REDIS_URL:              redis://keyval.local:6379
-      SENTRY_DSN:             https://64b0ceb9eb944320afb01397c78762fe:1a48bbc96c144c268601bbee62cfb100@sentry.io/121380
-      VALIDATE_REGION:        sa-east-1
-      WEB_CONCURRENCY:        1 
-      WEB_MEMORY:             512
-
+    env_file:
+      - .env

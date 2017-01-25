@@ -17,7 +17,7 @@
   },
   "scripts": {
     "coverage": "nyc report -r=html",
-    "build": "webpack --verbose --colors --display-error-details --config webpack/prod.config.js",
+    "build": "./node_modules/.bin/webpack --verbose --colors --display-error-details --config webpack/prod.config.js",
     "watch-client": "NODE_ENV=development UV_THREADPOOL_SIZE=100 NODE_PATH='./src' API_URL='http://localhost:3000' APP_DOMAIN='localhost.dev:3001' PAGARME_KEY='ek_test_PYsS1XrZsCCF7wynC67YEi5RW3lSCV' node webpack/webpack-dev-server.js",
     "start-dev": "NODE_ENV=development NODE_PATH=./src API_URL=http://localhost:3000 APP_DOMAIN=localhost.dev:3001 PAGARME_KEY=ek_test_PYsS1XrZsCCF7wynC67YEi5RW3lSCV NEW_RELIC_HOME=./src node ./bin/server.js",
     "start-profiler": "NODE_ENV=development NODE_PATH=./src API_URL=http://localhost:3000 APP_DOMAIN=localhost.dev:3001 PAGARME_KEY=ek_test_PYsS1XrZsCCF7wynC67YEi5RW3lSCV NEW_RELIC_HOME=./src node --inspect ./bin/server.js",
