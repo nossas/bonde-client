@@ -10,9 +10,9 @@ import * as paths from '~client/paths'
 import { WidgetOverlay, FinishMessageCustom } from '~mobilizations/widgets/components'
 
 // Current module dependencies
-import * as DonationActions from '../action-creators'
-import { DonationTellAFriend } from '../components'
-import './__donation__.scss'
+import * as DonationActions from '../../action-creators'
+import { DonationTellAFriend } from '../../components'
+import './index.scss'
 
 @reactMixin.decorate(Navigation)
 class Donation extends React.Component {
@@ -79,7 +79,7 @@ class Donation extends React.Component {
         data.recurring_period = recurring_period
         data.mobilization_id = this.props.mobilization.id
         data.widget_id = this.props.widget.id
-        data.amount = widget.settings['donation_value' + selected_value] + "00"
+        data.amount = widget.settings['donation_value' + selected_value] + '00'
 
         that.setState({ success: true })
         dispatch(DonationActions.asyncDonationTransactionCreate(data))
@@ -98,7 +98,7 @@ class Donation extends React.Component {
     checkout.open(params)
   }
 
-  renderButton() {
+  renderButton () {
     const { configurable, widget, mobilization: { header_font: headerFont } } = this.props
     const { loading, success, selected_value, selected_payment_type } = this.state
 
@@ -115,19 +115,19 @@ class Donation extends React.Component {
     const payment_type = ((widget.settings && widget.settings.payment_type) ? widget.settings.payment_type : 'unique')
     const recurring_period = ((widget.settings && widget.settings.recurring_period) ? widget.settings.recurring_period : 30)
 
-    const periodLabelOptions = { 30:' mês', 180: ' semestre', 365: ' ano' }
+    const periodLabelOptions = { 30: ' mês', 180: ' semestre', 365: ' ano' }
     const periodLabelCurrent = periodLabelOptions[recurring_period]
     const periodLabel = (
       payment_type === 'unique' ||
       selected_payment_type === 'unique'
-        ? ''  : periodLabelCurrent
+        ? '' : periodLabelCurrent
     )
 
     if (!configurable) {
       return (
-        <div className="donation center clearfix">
+        <div className='donation center clearfix'>
           <h2
-            className="p2 m0 white rounded-top"
+            className='p2 m0 white rounded-top'
             style={{ fontFamily: headerFont, backgroundColor: main_color }}
           >
             {title_text}
@@ -137,105 +137,105 @@ class Donation extends React.Component {
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','https://assets.pagar.me/checkout/checkout.js','PagarMeCheckout');`}} />
-          <div className="p3 relative">
+          <div className='p3 relative'>
 
-            {payment_type === 'users_choice' ? <div className="mb2 clearfix">
-              <a href="#" onClick={::this.handleClickSetTypeDonation.bind(this, 'recurring')}
+            {payment_type === 'users_choice' ? <div className='mb2 clearfix'>
+              <a href='#' onClick={::this.handleClickSetTypeDonation.bind(this, 'recurring')}
                 style={selected_payment_type === 'recurring' ? {color: main_color} : {}}
                 className={selected_payment_type === 'recurring' ? 'payment-type bold py1 col col-6 active' : 'payment-type bold py1 col col-6'}>
-                <i className="icon-payment-recurring" />
+                <i className='icon-payment-recurring' />
                 {'Apoiar todo ' + periodLabelCurrent}
               </a>
-              <a href="#" onClick={::this.handleClickSetTypeDonation.bind(this, 'unique')}
+              <a href='#' onClick={::this.handleClickSetTypeDonation.bind(this, 'unique')}
                 style={selected_payment_type === 'unique' ? {color: main_color} : {}}
                 className={selected_payment_type === 'unique' ? 'payment-type bold py1 col col-6 active' : 'payment-type bold py1 col col-6'}>
-                <i className="icon-payment-unique" />
+                <i className='icon-payment-unique' />
                 Doação única
               </a>
             </div> : ''}
 
-          {donation_value1 <= 0 ? null : (
-            <a
-              href="#"
-              onClick={::this.handleClickSetValueDonation.bind(this, 1)}
-              style={selected_value !== 1 ? {} : { backgroundColor: this.convertHex(main_color, 35), color: main_color }}
-              className={classnames('value-option block mb1 py1 col-12 bold hover no-underscore', selected_value === 1 ? 'active' : 'bg-darken-1')}
+            {donation_value1 <= 0 ? null : (
+              <a
+                href='#'
+                onClick={::this.handleClickSetValueDonation.bind(this, 1)}
+                style={selected_value !== 1 ? {} : { backgroundColor: this.convertHex(main_color, 35), color: main_color }}
+                className={classnames('value-option block mb1 py1 col-12 bold hover no-underscore', selected_value === 1 ? 'active' : 'bg-darken-1')}
             >
-              {"R$ " + donation_value1 + (payment_type === 'recurring' || (selected_payment_type === 'recurring' && payment_type !== 'unique') ? ' /' : '') + periodLabel}
-            </a>
+                {'R$ ' + donation_value1 + (payment_type === 'recurring' || (selected_payment_type === 'recurring' && payment_type !== 'unique') ? ' /' : '') + periodLabel}
+              </a>
           )}
-          {donation_value2 <= 0 ? null : (
-            <a
-              href="#"
-              onClick={::this.handleClickSetValueDonation.bind(this, 2)}
-              style={selected_value !== 2 ? {} : { backgroundColor: this.convertHex(main_color, 35), color: main_color }}
-              className={classnames('value-option block mb1 py1 col-12 bold hover no-underscore', selected_value === 2 ? 'active' : 'bg-darken-1')}
+            {donation_value2 <= 0 ? null : (
+              <a
+                href='#'
+                onClick={::this.handleClickSetValueDonation.bind(this, 2)}
+                style={selected_value !== 2 ? {} : { backgroundColor: this.convertHex(main_color, 35), color: main_color }}
+                className={classnames('value-option block mb1 py1 col-12 bold hover no-underscore', selected_value === 2 ? 'active' : 'bg-darken-1')}
             >
-              {"R$ " + donation_value2 + (payment_type === 'recurring' || (selected_payment_type === 'recurring' && payment_type !== 'unique') ? ' /' : '') + periodLabel}
-            </a>
+                {'R$ ' + donation_value2 + (payment_type === 'recurring' || (selected_payment_type === 'recurring' && payment_type !== 'unique') ? ' /' : '') + periodLabel}
+              </a>
           )}
-          {donation_value3 <= 0 ? null : (
-            <a
-              href="#"
-              onClick={::this.handleClickSetValueDonation.bind(this, 3)}
-              style={selected_value !== 3 ? {} : { backgroundColor: this.convertHex(main_color, 35), color: main_color }}
-              className={classnames('value-option block mb1 py1 col-12 bold hover no-underscore', selected_value === 3 ? 'active' : 'bg-darken-1')}
+            {donation_value3 <= 0 ? null : (
+              <a
+                href='#'
+                onClick={::this.handleClickSetValueDonation.bind(this, 3)}
+                style={selected_value !== 3 ? {} : { backgroundColor: this.convertHex(main_color, 35), color: main_color }}
+                className={classnames('value-option block mb1 py1 col-12 bold hover no-underscore', selected_value === 3 ? 'active' : 'bg-darken-1')}
             >
-              {"R$ " + donation_value3 + (payment_type === 'recurring' || (selected_payment_type === 'recurring' && payment_type !== 'unique') ? ' /' : '') + periodLabel}
-            </a>
+                {'R$ ' + donation_value3 + (payment_type === 'recurring' || (selected_payment_type === 'recurring' && payment_type !== 'unique') ? ' /' : '') + periodLabel}
+              </a>
           )}
-          {donation_value4 <= 0 ? null : (
-            <a
-              href="#"
-              onClick={::this.handleClickSetValueDonation.bind(this, 4)}
-              style={selected_value !== 4 ? {} : { backgroundColor: this.convertHex(main_color, 35), color: main_color }}
-              className={classnames('value-option block mb1 py1 col-12 bold hover no-underscore', selected_value === 4 ? 'active' : 'bg-darken-1')}
+            {donation_value4 <= 0 ? null : (
+              <a
+                href='#'
+                onClick={::this.handleClickSetValueDonation.bind(this, 4)}
+                style={selected_value !== 4 ? {} : { backgroundColor: this.convertHex(main_color, 35), color: main_color }}
+                className={classnames('value-option block mb1 py1 col-12 bold hover no-underscore', selected_value === 4 ? 'active' : 'bg-darken-1')}
             >
-              {"R$ " + donation_value4 + (payment_type === 'recurring' || (selected_payment_type === 'recurring' && payment_type !== 'unique') ? ' /' : '') + periodLabel}
-            </a>
+                {'R$ ' + donation_value4 + (payment_type === 'recurring' || (selected_payment_type === 'recurring' && payment_type !== 'unique') ? ' /' : '') + periodLabel}
+              </a>
           )}
-          {donation_value5 <= 0 ? null : (
-            <a
-              href="#"
-              onClick={::this.handleClickSetValueDonation.bind(this, 5)}
-              style={selected_value !== 5 ? {} : { backgroundColor: this.convertHex(main_color, 35), color: main_color }}
-              className={classnames('value-option block mb1 py1 col-12 bold hover no-underscore', selected_value === 5 ? 'active' : 'bg-darken-1')}
+            {donation_value5 <= 0 ? null : (
+              <a
+                href='#'
+                onClick={::this.handleClickSetValueDonation.bind(this, 5)}
+                style={selected_value !== 5 ? {} : { backgroundColor: this.convertHex(main_color, 35), color: main_color }}
+                className={classnames('value-option block mb1 py1 col-12 bold hover no-underscore', selected_value === 5 ? 'active' : 'bg-darken-1')}
             >
-              {"R$ " + donation_value5 + (payment_type === 'recurring' || (selected_payment_type === 'recurring' && payment_type !== 'unique') ? ' /' : '') + periodLabel}
-            </a>
+                {'R$ ' + donation_value5 + (payment_type === 'recurring' || (selected_payment_type === 'recurring' && payment_type !== 'unique') ? ' /' : '') + periodLabel}
+              </a>
           )}
 
-          <a
-            href="#"
-            onClick={::this.handleClickDonate}
-            style={{ backgroundColor: main_color }}
-            className="btn white caps bg-darken-4 p2 mt1 col-12 rounded border-box"
+            <a
+              href='#'
+              onClick={::this.handleClickDonate}
+              style={{ backgroundColor: main_color }}
+              className='btn white caps bg-darken-4 p2 mt1 col-12 rounded border-box'
           >
-            {button_text}
-          </a>
+              {button_text}
+            </a>
           </div>
         </div>
       )
     }
   }
 
-  convertHex(hex,opacity){
-    hex = hex.replace('#','')
-    let r = parseInt(hex.substring(0,2), 16)
-    let g = parseInt(hex.substring(2,4), 16)
-    let b = parseInt(hex.substring(4,6), 16)
+  convertHex (hex, opacity) {
+    hex = hex.replace('#', '')
+    let r = parseInt(hex.substring(0, 2), 16)
+    let g = parseInt(hex.substring(2, 4), 16)
+    let b = parseInt(hex.substring(4, 6), 16)
 
-    let result = 'rgba('+r+','+g+','+b+','+opacity/100+')'
+    let result = 'rgba(' + r + ',' + g + ',' + b + ',' + opacity / 100 + ')'
     return result
   }
 
-  renderOverlay() {
+  renderOverlay () {
     const { editable, configurable } = this.props
     if (editable && !configurable && this.state.hasMouseOver) {
       return (
-        <div className="absolute top-0 right-0 bottom-0 left-0 bg-darken-4 h1 bold rounded z1">
-          <div className="table full-height col-12 center">
-            <div className="white table-cell align-middle">
+        <div className='absolute top-0 right-0 bottom-0 left-0 bg-darken-4 h1 bold rounded z1'>
+          <div className='table full-height col-12 center'>
+            <div className='white table-cell align-middle'>
               Clique para editar
             </div>
           </div>
@@ -244,7 +244,7 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     }
   }
 
-  renderForm() {
+  renderForm () {
     const { editable, configurable } = this.props
     const className = classnames({ 'relative': editable || !configurable })
 
@@ -255,8 +255,8 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     )
   }
 
-  renderThankyouText() {
-    const { mobilization, widget }  = this.props
+  renderThankyouText () {
+    const { mobilization, widget } = this.props
     const { settings: { finish_message_type: finishMessageType } } = widget
 
     return finishMessageType === 'custom' ? (
@@ -266,7 +266,7 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     )
   }
 
-  render() {
+  render () {
     const { editable } = this.props
     const { success } = this.state
 
@@ -274,9 +274,9 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       <WidgetOverlay
         editable={editable}
         onClick={::this.handleOverlayOnClick}
-        text="Clique para configurar o formulário de doação"
+        text='Clique para configurar o formulário de doação'
       >
-        <div className="bg-white widget rounded">
+        <div className='bg-white widget rounded'>
           {success ? this.renderThankyouText() : this.renderForm()}
         </div>
       </WidgetOverlay>
