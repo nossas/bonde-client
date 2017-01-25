@@ -3,7 +3,10 @@ import sinon from 'sinon'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import * as Paths from '../../../../../scripts/Paths'
+// Global module dependencies
+import * as paths from '~client/paths'
+
+// Current module dependencies
 import Match from './__match__'
 
 describe('app/modules/widgets/__plugins__/match/components/__match__', () => {
@@ -155,7 +158,7 @@ describe('app/modules/widgets/__plugins__/match/components/__match__', () => {
 
       it('should transitionTo called with correct params', () => {
         const { mobilization, widget } = props
-        const path = Paths.matchChoicesMobilizationWidget(mobilization.id, widget.id)
+        const path = paths.matchChoicesMobilizationWidget(mobilization.id, widget.id)
         expect(mockContext.router.transitionTo.calledWith(path)).to.equal(true)
       })
     })

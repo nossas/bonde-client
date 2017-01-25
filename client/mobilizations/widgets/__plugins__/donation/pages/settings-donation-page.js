@@ -11,12 +11,12 @@ import {
   RadioGroup,
   Radio,
   ColorPicker
-} from '../../../../../scripts/Dashboard/Forms'
-import { HorizontalLayout } from '../../../../../scripts/Dashboard/Grids'
-import { SettingsPageLayout, SettingsPageContentLayout } from '../../../../../components/Layout'
+} from '~tmp-dashboard/forms'
+import { HorizontalLayout } from '~tmp-dashboard/Grids'
+import { SettingsPageLayout, SettingsPageContentLayout } from '~components/layout'
 
 // Parent module dependencies
-import { actions as WidgetActions } from '../../../../../modules/widgets'
+import * as WidgetActions from '~mobilizations/widgets/action-creators'
 
 // Current module dependencies
 import { SettingsMenu } from '../components'

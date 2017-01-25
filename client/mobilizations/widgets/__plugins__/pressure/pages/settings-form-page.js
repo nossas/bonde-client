@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { reduxForm } from 'redux-form'
 
 // Global module dependencies
-import { SettingsPageContentLayout } from '../../../../../components/Layout'
+import { SettingsPageContentLayout } from '~components/layout'
 import {
   FormRedux,
   FormGroup,
@@ -11,10 +11,10 @@ import {
   ColorPicker,
   RadioGroup,
   Radio
-} from '../../../../../scripts/Dashboard/Forms'
+} from '~tmp-dashboard/forms'
 
 // Parent module dependencies
-import { actions as WidgetActions } from '../../../../../modules/widgets'
+import { actions as WidgetActions } from '~mobilizations/widgets'
 
 // Current module dependencies
 import { SettingsBase } from '../components'

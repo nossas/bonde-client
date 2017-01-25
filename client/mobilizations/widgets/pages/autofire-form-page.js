@@ -2,10 +2,10 @@ import React, { PropTypes } from 'react'
 import { reduxForm } from 'redux-form'
 
 // Global module dependencies
-import { Loading } from '../../../scripts/components'
-import * as validator from '../../../util/validation-helper'
-import { FormRedux, FormGroup, ControlLabel, FormControl } from '../../../scripts/Dashboard/Forms'
-import { SettingsPageContentLayout } from '../../../components/Layout'
+import { Loading } from '~components/await'
+import { SettingsPageContentLayout } from '~components/layout'
+import { FormRedux, FormGroup, ControlLabel, FormControl } from '~tmp-dashboard/forms'
+import * as validator from '~utils/validation-helper'
 
 // Children modules dependencies
 import { SettingsMenu as PressureSettingsMenu } from '../__plugins__/pressure/components'

@@ -2,7 +2,10 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import * as Paths from '../../../../../scripts/Paths'
+// Global module dependencies
+import * as paths from '~client/paths'
+
+// Current module dependencies
 import SettingsMenu from './settings-menu'
 
 describe('app/modules/widgets/__plugins__/match/components/settings-menu', () => {
@@ -11,7 +14,7 @@ describe('app/modules/widgets/__plugins__/match/components/settings-menu', () =>
   const props = {
     mobilization: { id: 1 },
     widget: { id: 1 },
-    location: { pathname: Paths.matchChoicesMobilizationWidget(1, 1) }
+    location: { pathname: paths.matchChoicesMobilizationWidget(1, 1) }
   }
 
   const CHOICES_TAB = 0
@@ -32,7 +35,7 @@ describe('app/modules/widgets/__plugins__/match/components/settings-menu', () =>
 
       context('Choices Tab', () => {
         it('should render with choices path as path prop', () => {
-          const expectedPath = Paths.matchChoicesMobilizationWidget(1, 1)
+          const expectedPath = paths.matchChoicesMobilizationWidget(1, 1)
           expect(wrapper.find('Tab').at(CHOICES_TAB).props().path).to.equal(expectedPath)
         })
         it('should render with expected text prop', () => {
@@ -41,14 +44,14 @@ describe('app/modules/widgets/__plugins__/match/components/settings-menu', () =>
         })
         it('should render isActive prop as true if current location is equal to choices tab path', () => {
           wrapper.setProps({
-            location: { pathname: Paths.matchChoicesMobilizationWidget(1, 1) }
+            location: { pathname: paths.matchChoicesMobilizationWidget(1, 1) }
           })
           expect(wrapper.find('Tab').at(CHOICES_TAB).props().isActive).to.be.true
         })
         it('should render isActive prop as false if current location is different to choices tab path', () => {
           wrapper.setProps({
             ...props,
-            location: { pathname: Paths.matchGoalsMobilizationWidget(1, 1) }
+            location: { pathname: paths.matchGoalsMobilizationWidget(1, 1) }
           })
           expect(wrapper.find('Tab').at(CHOICES_TAB).props().isActive).to.be.false
         })
@@ -56,7 +59,7 @@ describe('app/modules/widgets/__plugins__/match/components/settings-menu', () =>
 
       context('Goals Tab', () => {
         it('should render with goals path as path prop', () => {
-          const expectedPath = Paths.matchGoalsMobilizationWidget(1, 1)
+          const expectedPath = paths.matchGoalsMobilizationWidget(1, 1)
           expect(wrapper.find('Tab').at(GOALS_TAB).props().path).to.equal(expectedPath)
         })
         it('should render with expected text prop', () => {
@@ -65,13 +68,13 @@ describe('app/modules/widgets/__plugins__/match/components/settings-menu', () =>
         })
         it('should render isActive prop as true if current location is equal to choices tab path', () => {
           wrapper.setProps({
-            location: { pathname: Paths.matchGoalsMobilizationWidget(1, 1) }
+            location: { pathname: paths.matchGoalsMobilizationWidget(1, 1) }
           })
           expect(wrapper.find('Tab').at(GOALS_TAB).props().isActive).to.be.true
         })
         it('should render isActive prop as false if current location is different to choices tab path', () => {
           wrapper.setProps({
-            location: { pathname: Paths.matchChoicesMobilizationWidget(1, 1) }
+            location: { pathname: paths.matchChoicesMobilizationWidget(1, 1) }
           })
           expect(wrapper.find('Tab').at(GOALS_TAB).props().isActive).to.be.false
         })

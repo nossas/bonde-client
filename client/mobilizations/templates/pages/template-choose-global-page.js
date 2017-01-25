@@ -4,12 +4,12 @@ import { Navigation } from 'react-router'
 import reactMixin from 'react-mixin'
 
 // Global module dependencies
-import * as Paths from '../../../../scripts/Paths'
-import { actionCreators as SelectableActions } from '../../../../components/SelectableList'
+import * as paths from '~client/paths'
+import * as SelectableActions from '~components/selectable-list/actions'
 
 // Parent module dependencies
-import * as MobilizationActions from '../../action-creators'
-import * as MobilizationSelectors from '../../selectors'
+import * as MobilizationActions from '~mobilizations/action-creators'
+import * as MobilizationSelectors from '~mobilizations/selectors'
 
 // Current module dependencies
 import { TemplateSelectableList } from '../components'
@@ -17,7 +17,7 @@ import * as TemplateSelectors from '../selectors'
 
 @reactMixin.decorate(Navigation)
 class TemplateChooseGlobalPage extends Component {
-  render() {
+  render () {
     const { mobilization, createMobilizationFromTemplate, ...listableProps } = this.props
 
     return (
@@ -28,7 +28,7 @@ class TemplateChooseGlobalPage extends Component {
           handleSelectItem={({ id: template_mobilization_id }) => {
             createMobilizationFromTemplate({ id: mobilization.id, template_mobilization_id })
               .then(() => {
-                this.transitionTo(Paths.editMobilization(mobilization.id))
+                this.transitionTo(paths.editMobilization(mobilization.id))
                 return Promise.resolve()
               })
               .catch(error => console.error('CreateMobilizationFromTemplateAsyncError', error))
@@ -43,12 +43,12 @@ const mapStateToProps = (state) => ({
   mobilization: MobilizationSelectors.getCurrent(state),
   templates: TemplateSelectors.getGlobalTemplates(state),
   filterableTemplates: TemplateSelectors.getFilterableTemplates(state),
-  selectedIndex: TemplateSelectors.getSelectableIndex(state),
+  selectedIndex: TemplateSelectors.getSelectableIndex(state)
 })
 
 const mapActionCreatorsToProps = {
   setSelectedIndex: SelectableActions.setSelectedIndex,
-  createMobilizationFromTemplate: MobilizationActions.asyncUpdate,
+  createMobilizationFromTemplate: MobilizationActions.asyncUpdate
 }
 
 export default connect(mapStateToProps, mapActionCreatorsToProps)(TemplateChooseGlobalPage)

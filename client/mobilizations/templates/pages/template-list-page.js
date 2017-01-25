@@ -3,53 +3,46 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import classnames from 'classnames'
 
+// Global module dependencies
 import {
   SettingsPageLayout,
   SettingsPageMenuLayout,
   SettingsPageContentLayout
-} from '../../../../components/Layout'
-import MobilizationList from '../../../../scripts/Mobilization/components/MobilizationList'
-import {
-  MobilizationListItem,
-  MobilizationListItemAvatar,
-  MobilizationListItemName,
-  MobilizationListItemCreatedAt,
-  MobilizationListItemUsers,
-  MobilizationListItemFundRaising,
-  MobilizationListItemMore,
-  MobilizationListItemMoreMenu,
-  MobilizationListItemMoreMenuAction,
-  MobilizationListItemCopyNumber
-}  from '../../../../scripts/Mobilization/components/MobilizationList/MobilizationListItem'
-import {
-  MobilizationListItemHeader,
-  MobilizationListItemHeaderName,
-  MobilizationListItemHeaderCreatedAt,
-  MobilizationListItemHeaderUsers,
-  MobilizationListItemHeaderFundRaising,
-  MobilizationListItemHeaderCopyNumber
-}  from '../../../../scripts/Mobilization/components/MobilizationList/MobilizationListItemHeader'
-import { MobilizationsHeader } from '../../../../scripts/Mobilization/components'
-import EmptyList from '../../../../components/EmptyList'
-import * as Paths from '../../../../scripts/Paths'
+} from '~components/layout'
+import * as paths from '~client/paths'
+import EmptyList from '~components/empty-list'
 
+// Parent module dependencies
+import { PageHeader } from '~mobilizations/components'
+import List from '~mobilizations/components/list'
+import {
+  Item,
+  Avatar,
+  Name,
+  CreatedAt,
+  FundRaising,
+  More,
+  MoreMenu,
+  MoreMenuAction,
+  CopyNumber
+} from '~mobilizations/components/list/items'
+import * as MobilizationSelectors from '~mobilizations/selectors'
+
+// Current module dependencies
 import * as TemplateSelectors from '../selectors'
-import * as MobilizationSelectors from '../../selectors'
 import { asyncDestroyTemplate } from '../action-creators'
 import { toggleMenu } from '../../action-creators'
 
-
 export class TemplatesListPage extends Component {
 
-  componentDidMount() {
+  componentDidMount () {
     const { toggleMenu } = this.props
     toggleMenu(undefined)
   }
 
-  render() {
+  render () {
     const {
       toggleMenu,
-      loading,
       menuActiveIndex,
       mobilizationTemplates,
       asyncDestroyTemplate,
@@ -58,78 +51,78 @@ export class TemplatesListPage extends Component {
 
     return (
       <SettingsPageLayout>
-        <SettingsPageMenuLayout title="Seus templates">
-          <MobilizationsHeader location={location} />
+        <SettingsPageMenuLayout title='Seus templates'>
+          <PageHeader location={location} />
         </SettingsPageMenuLayout>
-        <SettingsPageContentLayout containerClassName="lg-col-12">
+        <SettingsPageContentLayout containerClassName='lg-col-12'>
           {
             !mobilizationTemplates.length ? (
               <EmptyList>
                 Nenhum template criado. <br />
                 Crie a partir de uma mobilização. <br />
                 <Link
-                  className="bg-pagenta btn caps h3 rounded white py2 px3 mt3"
-                  to={Paths.mobilizations()}
+                  className='bg-pagenta btn caps h3 rounded white py2 px3 mt3'
+                  to={paths.mobilizations()}
                 >
                   Lista de mobilizações
                 </Link>
               </EmptyList>
             ) : (
-              <MobilizationList>
-                <MobilizationListItemHeader>
-                  <MobilizationListItemHeaderName />
-                  <MobilizationListItemHeaderCreatedAt />
-                  <MobilizationListItemHeaderCopyNumber />
-                  <MobilizationListItemHeaderFundRaising />
-                </MobilizationListItemHeader>
+              <List>
+                <Item.Header>
+                  <Name.Header />
+                  <CreatedAt.Header />
+                  <CopyNumber.Header />
+                  <FundRaising.Header />
+                </Item.Header>
 
                 {
                   mobilizationTemplates &&
                   mobilizationTemplates.map((template, index) => (
-                    <MobilizationListItem
+                    <Item
                       key={`mobilization-${template.id}`}
                       className={classnames({ 'z2': menuActiveIndex === index })}
                     >
-                      <MobilizationListItemAvatar {...template} />
+                      <Avatar {...template} />
 
-                      <div className="list-item-table-container overflow-hidden">
-                        <MobilizationListItemName {...template} />
-                        <MobilizationListItemCreatedAt {...template} />
-                        <MobilizationListItemCopyNumber {...template} />
-                        <MobilizationListItemFundRaising {...template} />
+                      <div className='list-item-table-container overflow-hidden'>
+                        <Name {...template} />
+                        <CreatedAt {...template} />
+                        <CopyNumber {...template} />
+                        <FundRaising {...template} />
                       </div>
 
-                      <MobilizationListItemMore onClick={toggleMenu} index={index}>
-                        <MobilizationListItemMoreMenu active={menuActiveIndex === index}>
-                          {/*<MobilizationListItemMoreMenuAction
+                      <More onClick={toggleMenu} index={index}>
+                        <MoreMenu active={menuActiveIndex === index}>
+                          {/* <MoreMenuAction
                             componentClass="div"
                             text="Editar"
-                            path={Paths.mobilizationTemplatesUpdate(1)}
+                            path={paths.mobilizationTemplatesUpdate(1)}
                             icon="pencil-square-o"
-                          />*/}
-                          <MobilizationListItemMoreMenuAction
-                            componentClass="div"
-                            text="Remover"
-                            icon="trash-o"
+                          /> */}
+                          <MoreMenuAction
+                            componentClass='div'
+                            text='Remover'
+                            icon='trash-o'
                             onClick={() => {
-                              const confirmMessage = 'Tem certeza que deseja remover este template? Ao'
-                                + ' confirmar, não é possível desfazer esta ação.'
+                              const confirmMessage = 'Tem certeza que deseja remover este' +
+                                ' template? Ao confirmar, não é possível desfazer esta ação.'
                               if (window.confirm(confirmMessage)) asyncDestroyTemplate(template)
                             }}
                           />
-                        </MobilizationListItemMoreMenu>
-                      </MobilizationListItemMore>
-                    </MobilizationListItem>
+                        </MoreMenu>
+                      </More>
+                    </Item>
                   ))
                 }
-              </MobilizationList>
+              </List>
             )
           }
         </SettingsPageContentLayout>
         {
           menuActiveIndex && (
             <div
-              className="mobilization-list-more-menu-cancel-overlay z1"
+              className='mobilization-list-more-menu-cancel-overlay z1'
               style={{ position: 'fixed', top: 0, right: 0, bottom: 0, left: 0 }}
               onClick={() => toggleMenu(undefined)}
             />
@@ -141,13 +134,13 @@ export class TemplatesListPage extends Component {
 }
 
 TemplatesListPage.propTypes = {
-  asyncDestroyTemplate: PropTypes.func,
+  asyncDestroyTemplate: PropTypes.func
 }
 
 const mapStateToProps = state => ({
   loading: TemplateSelectors.isLoading(state),
   menuActiveIndex: MobilizationSelectors.getMenuActiveIndex(state),
-  mobilizationTemplates: TemplateSelectors.getCustomTemplates(state),
+  mobilizationTemplates: TemplateSelectors.getCustomTemplates(state)
 })
 
 const mapActionCreatorsToProps = { asyncDestroyTemplate, toggleMenu }

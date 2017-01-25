@@ -3,7 +3,10 @@ import sinon from 'sinon'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import * as Paths from '../../../../../scripts/Paths'
+// Global module dependencies
+import * as paths from '~client/paths'
+
+// Current module dependencies
 import ChoicesPage from './choices-page'
 
 describe('app/modules/widgets/__plugins__/match/pages/choices-page', () => {
@@ -15,7 +18,7 @@ describe('app/modules/widgets/__plugins__/match/pages/choices-page', () => {
     dispatch: () => {},
     mobilization: { id: 1 },
     widgets: [{ id: 1, settings: {} }],
-    location: { pathname: Paths.matchChoicesMobilizationWidget(1, 1) }
+    location: { pathname: paths.matchChoicesMobilizationWidget(1, 1) }
   }
 
   const _context = {

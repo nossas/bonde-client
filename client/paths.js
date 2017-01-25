@@ -38,4 +38,4 @@ export const editAccount = () => '/account/edit'
 //
 export * from '~mobilizations/widgets/paths'
 export * from '~mobilizations/blocks/paths'
-export * from '~tmp-mobilizations/plugins/Templates/MobilizationTemplatesPaths'
+export * from '~mobilizations/templates/paths'

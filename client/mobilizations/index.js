@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 
+import routes from './routes'
 import * as selectors from './selectors'
 import * as actionCreators from './action-creators'
 
@@ -12,5 +13,6 @@ export default {
     list: mobilizationReducers,
     templates: templateReducers
   }),
-  actionCreators
+  actionCreators,
+  routes
 }

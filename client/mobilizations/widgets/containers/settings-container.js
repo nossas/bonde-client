@@ -2,10 +2,10 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 
 // Global module dependencies
-import { SettingsPageLayout } from '../../../components/Layout'
+import { SettingsPageLayout } from '~components/layout'
 
 // Parent module dependencies
-import * as MobilizationSelectors from '../../mobilizations/selectors'
+import * as MobilizationSelectors from '~mobilizations/selectors'
 
 // Current module dependencies
 import * as WidgetSelectors from '../selectors'

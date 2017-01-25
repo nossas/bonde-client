@@ -3,7 +3,7 @@ import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
 // Global module dependencies
-import * as Paths from '../../../../../scripts/Paths'
+import * as paths from '~client/paths'
 
 // Current module dependencies
 import SettingsMenu from './settings-menu'
@@ -32,7 +32,7 @@ describe('app/modules/widgets/__plugins__/form/components/settings-menu', () => 
     props.widget.id = dummyId
 
     it('should active tab Campos do formulário (fields settings)', () => {
-      props.location.pathname = Paths.fieldsMobilizationWidget(dummyId, dummyId)
+      props.location.pathname = paths.fieldsMobilizationWidget(dummyId, dummyId)
 
       let wrapper = shallow(<SettingsMenu {...props} />)
       let node = wrapper.find('Tabs Tab').at(0)
@@ -40,7 +40,7 @@ describe('app/modules/widgets/__plugins__/form/components/settings-menu', () => 
     })
 
     it('should active tab Ajustes (form settings)', () => {
-      props.location.pathname = Paths.formMobilizationWidget(dummyId, dummyId)
+      props.location.pathname = paths.formMobilizationWidget(dummyId, dummyId)
 
       let wrapper = shallow(<SettingsMenu {...props} />)
       let node = wrapper.find('Tabs Tab').at(1)
@@ -48,7 +48,7 @@ describe('app/modules/widgets/__plugins__/form/components/settings-menu', () => 
     })
 
     it('should active tab Mensagem agradecimento (autofire)', () => {
-      props.location.pathname = Paths.autofireMobilizationWidget(dummyId, dummyId)
+      props.location.pathname = paths.autofireMobilizationWidget(dummyId, dummyId)
 
       let wrapper = shallow(<SettingsMenu {...props} />)
       let node = wrapper.find('Tabs Tab').at(2)

@@ -2,47 +2,46 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 
 // Global module dependencies
-import * as Paths from '../../../../../scripts/Paths'
-import { Loading } from '../../../../../scripts/components'
-import { SettingsPageLayout, SettingsPageContentLayout } from '../../../../../components/Layout'
+import { Loading } from '~components/await'
+import { SettingsPageLayout, SettingsPageContentLayout } from '~components/layout'
 
 // Parent module dependencies
 import {
   actions as WidgetActions,
   selectors as WidgetSelectors
-} from '../../../../../modules/widgets'
+} from '~mobilizations/widgets'
 import {
   selectors as MobilizationSelectors
-} from '../../../../../modules/mobilizations'
+} from '~mobilizations'
 
 // Current module dependencies
 import Form, { SettingsMenu } from '../components'
 
 class SettingsFieldsPage extends Component {
-  constructor(props, context) {
+  constructor (props, context) {
     super(props, context)
     this.state = { loading: false, hasNewField: false }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     const { widget } = this.props
-    if (this.state.loading && widget != nextProps.widget) {
+    if (this.state.loading && widget !== nextProps.widget) {
       this.setState({ loading: false, hasNewField: true })
     } else {
       this.setState({ hasNewField: false })
     }
   }
 
-  handleAddTextField() {
+  handleAddTextField () {
     this.addField('text')
   }
 
-  fields() {
+  fields () {
     const { widget: { settings } } = this.props
     return (settings && settings.fields ? settings.fields : [])
   }
 
-  addField(kind) {
+  addField (kind) {
     const { widget, asyncWidgetUpdate } = this.props
     const { settings } = widget
     const fields = this.fields()
@@ -59,20 +58,20 @@ class SettingsFieldsPage extends Component {
             kind: 'text',
             label: '',
             placeholder: '',
-            required: 'false',
+            required: 'false'
           }
         ]
       }
     })
   }
 
-  renderFields() {
+  renderFields () {
     const { widget, ...props } = this.props
     return (
       <SettingsPageLayout>
         <SettingsMenu widget={widget} {...props} />
         <button
-          className="btn white bg-pagenta caps p2 rounded"
+          className='btn white bg-pagenta caps p2 rounded'
           onClick={::this.handleAddTextField}
           style={{
             position: 'fixed',
@@ -88,37 +87,37 @@ class SettingsFieldsPage extends Component {
           Adicionar um campo
         </button>
         <SettingsPageContentLayout>
-          <p className="h5 mb3 darkengray">
+          <p className='h5 mb3 darkengray'>
             {
-              this.fields().length == 0 ?
-              'Seu formulário ainda não possui nenhum campo. Clique abaixo para começar a'
-                + ' adicionar campos.' :
-              'Adicione, remova, edite e ordene os campos do formulário de acordo com as'
-                + ' necessidades da sua ação.'
+              ~this.fields().length
+                ? 'Seu formulário ainda não possui nenhum campo. Clique abaixo para começar a' +
+                  ' adicionar campos.'
+                : 'Adicione, remova, edite e ordene os campos do formulário de acordo com as' +
+                  ' necessidades da sua ação.'
             }
           </p>
 
           <Form
             {...props}
             widget={widget}
-            configurable={true}
+            configurable
             hasNewField={this.state.hasNewField}
           />
-          </SettingsPageContentLayout>
+        </SettingsPageContentLayout>
         {this.renderLoading()}
       </SettingsPageLayout>
     )
   }
 
-  renderLoading(){
+  renderLoading () {
     const { loading } = this.state
     const { widget } = this.props
     return loading || widget === undefined ? <Loading /> : null
   }
 
-  render() {
-    const { widget, ...props } = this.props
-    return(widget !== undefined ? this.renderFields() : this.renderLoading())
+  render () {
+    const { widget } = this.props
+    return (widget !== undefined ? this.renderFields() : this.renderLoading())
   }
 }
 

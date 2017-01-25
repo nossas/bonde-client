@@ -2,14 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 // Global module dependencies
-import * as Paths from '../../../../scripts/Paths'
-import { BrowsableList, BrowsableListItem } from '../../../../components/Navigation/BrowsableList'
+import * as paths from '~client/paths'
+import { BrowsableList, BrowsableListItem } from '~components/navigation/browsable-list'
 
 // Parent module dependencies
-import * as MobilizationSelectors from '../../selectors'
-
-// Sibling module dependencies
-import { paths as BlockPaths } from '../../blocks'
+import * as MobilizationSelectors from '~mobilizations/selectors'
 
 // Current module dependencies
 import * as TemplateSelectors from '../selectors'
@@ -21,19 +18,19 @@ const TemplateChoosePage = ({ mobilization, templatesGlobalLength, templatesCust
       <BrowsableListItem
         leftIcon='plus-square-o'
         title='Criar mobilização do zero'
-        path={BlockPaths.createBlock(mobilization)}
+        path={paths.createBlock(mobilization)}
       />
       <BrowsableListItem
         leftIcon='columns'
         title='Meus templates'
         subtitle={templatesCustomLength}
-        path={Paths.mobilizationTemplatesChooseCustomList(mobilization)}
+        path={paths.mobilizationTemplatesChooseCustomList(mobilization)}
       />
       <BrowsableListItem
         leftIcon='globe'
         title='Templates globais'
         subtitle={templatesGlobalLength}
-        path={Paths.mobilizationTemplatesChooseGlobalList(mobilization)}
+        path={paths.mobilizationTemplatesChooseGlobalList(mobilization)}
       />
     </BrowsableList>
   </div>

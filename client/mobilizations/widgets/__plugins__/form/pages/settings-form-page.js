@@ -1,66 +1,71 @@
 import React, { PropTypes } from 'react'
 import { reduxForm } from 'redux-form'
-import classnames from 'classnames'
 
 // Global module dependencies
-import * as Paths from '../../../../../scripts/Paths'
-import { SettingsPageContentLayout } from '../../../../../components/Layout'
+import { SettingsPageContentLayout } from '~components/layout'
 import {
   FormRedux,
   FormGroup,
   ControlLabel,
   FormControl
-} from '../../../../../scripts/Dashboard/Forms'
+} from '~tmp-dashboard/forms'
 
 // Parent module dependencies
-import { actions as WidgetActions } from '../../../../../modules/widgets'
+import * as WidgetActions from '~mobilizations/widgets/action-creators'
 
 // Current module dependencies
 import { SettingsMenu } from '../components'
 
 class SettingsFormPage extends React.Component {
-  handleSubmit(values) {
+  handleSubmit (values) {
     const { widget, asyncWidgetUpdate } = this.props
     const settings = widget.settings || {}
 
     return asyncWidgetUpdate({
       ...widget,
-      settings: { ...settings, ...values },
+      settings: { ...settings, ...values }
     })
   }
 
-  render() {
-    const { fields: { call_to_action, button_text, count_text }, ...props } = this.props
+  render () {
+    const {
+      fields: {
+        call_to_action: callToAction,
+        button_text: buttonText,
+        count_text: countText
+      },
+      ...props
+    } = this.props
     return (
-      <div className="flex-auto flex flex-column bg-silver atomic relative">
+      <div className='flex-auto flex flex-column bg-silver atomic relative'>
         <SettingsMenu mobilization={props.mobilization} widget={props.widget} location={props.location} />
         <SettingsPageContentLayout>
           <FormRedux
             {...props}
             onSubmit={::this.handleSubmit}
-            className="transparent"
-            floatButton="Salvar"
-            successMessage="Formulário configurado com sucesso!"
+            className='transparent'
+            floatButton='Salvar'
+            successMessage='Formulário configurado com sucesso!'
           >
-            <FormGroup controlId="call-to-action-id" {...call_to_action}>
+            <FormGroup controlId='call-to-action-id' {...callToAction}>
               <ControlLabel>Título do formulário</ControlLabel>
               <FormControl
-                type="text"
-                placeholder="Ex: Preencha o formulário abaixo para assinar a petição."
+                type='text'
+                placeholder='Ex: Preencha o formulário abaixo para assinar a petição.'
               />
             </FormGroup>
-            <FormGroup controlId="button-text-id" {...button_text}>
+            <FormGroup controlId='button-text-id' {...buttonText}>
               <ControlLabel>Botão</ControlLabel>
               <FormControl
-                type="text"
-                placeholder="Defina o texto do botão de confirmação do formulário."
+                type='text'
+                placeholder='Defina o texto do botão de confirmação do formulário.'
               />
             </FormGroup>
-            <FormGroup controlId="count-text-id" {...count_text}>
+            <FormGroup controlId='count-text-id' {...countText}>
               <ControlLabel>Contador</ControlLabel>
               <FormControl
-                type="text"
-                placeholder="Defina o texto que ficará ao lado do número de pessoas que agiram."
+                type='text'
+                placeholder='Defina o texto que ficará ao lado do número de pessoas que agiram.'
               />
             </FormGroup>
           </FormRedux>
@@ -78,13 +83,13 @@ SettingsFormPage.propTypes = {
   mobilization: PropTypes.object.isRequired,
   widget: PropTypes.object.isRequired,
   // Actions
-  asyncWidgetUpdate: PropTypes.func.isRequired,
+  asyncWidgetUpdate: PropTypes.func.isRequired
 }
 
 const fields = ['call_to_action', 'button_text', 'count_text']
 
 const mapStateToProps = (state, props) => ({
-  initialValues: props.widget.settings || {},
+  initialValues: props.widget.settings || {}
 })
 
 export default reduxForm(
