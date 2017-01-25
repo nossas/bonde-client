@@ -2,9 +2,10 @@ import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-import { Pressure } from './__pressure__'
+// Current module dependencies
+import { Pressure } from '~widget-plugins/pressure/components/__pressure__'
 
-describe('app/modules/widgets/__plugins__/pressure/components/__pressure__', () => {
+describe('client/mobilizations/widgets/__plugins__/pressure/components/__pressure__', () => {
   let wrapper
   const props = {
     editable: false,

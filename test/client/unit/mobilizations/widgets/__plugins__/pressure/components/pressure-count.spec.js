@@ -2,9 +2,10 @@ import React from 'react'
 import { expect } from 'chai'
 import { mount } from 'enzyme'
 
-import PressureCount from './pressure-count'
+// Current module dependencies
+import { PressureCount } from '~widget-plugins/pressure/components'
 
-describe('app/modules/widgets/__plugins__/pressure/components/pressure-count', () => {
+describe('client/mobilizations/widgets/__plugins__/pressure/components/pressure-count', () => {
   let wrapper
 
   beforeEach(() => {

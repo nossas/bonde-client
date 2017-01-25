@@ -2,9 +2,10 @@ import React from 'react'
 import { expect } from 'chai'
 import { mount } from 'enzyme'
 
-import PressureForm from './pressure-form'
+// Current module dependencies
+import { PressureForm } from '~widget-plugins/pressure/components'
 
-describe('app/modules/widgets/__plugins__/pressure/components/pressure-form', () => {
+describe('client/mobilizations/widgets/__plugins__/pressure/components/pressure-form', () => {
   let wrapper
   const widget = { settings: {} }
 

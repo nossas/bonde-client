@@ -2,9 +2,10 @@ import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-import TargetList from './target-list'
+// Current module dependencies
+import { TargetList } from '~widget-plugins/pressure/components'
 
-describe('app/modules/widgets/__plugins__/pressure/components/target-list', () => {
+describe('client/mobilizations/widgets/__plugins__/pressure/components/target-list', () => {
   let wrapper
 
   beforeEach(() => {

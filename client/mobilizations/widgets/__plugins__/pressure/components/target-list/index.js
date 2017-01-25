@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 
-import './target-list.scss'
+// Current module dependencies
+import './index.scss'
 
 const parseTarget = target => {
   const targetSplit = target.split('<')
