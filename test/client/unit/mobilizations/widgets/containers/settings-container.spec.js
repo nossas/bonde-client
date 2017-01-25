@@ -1,17 +1,18 @@
 import React from 'react'
 import { expect } from 'chai'
-import { mount } from 'enzyme'
+import { shallow } from 'enzyme'
 
-import { SettingsContainer } from './settings-container'
+// Current module dependencies
+import { SettingsContainer } from '~mobilizations/widgets/containers/settings-container'
 
-describe('app/modules/widgets/containers/settings-container', () => {
+describe('client/mobilizations/widgets/containers/settings-container', () => {
   const props = {
     mobilization: { id: 1 },
     widget: { id: 1 }
   }
 
   it('should render children with props received', () => {
-    const wrapper = mount(
+    const wrapper = shallow(
       <SettingsContainer {...props}>
         <span>Hello World!</span>
       </SettingsContainer>
