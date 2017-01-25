@@ -16,7 +16,7 @@ import * as WidgetActions from '~mobilizations/widgets/action-creators'
 // Current module dependencies
 import { SettingsMenu } from '../components'
 
-class SettingsFormPage extends React.Component {
+export class SettingsFormPage extends React.Component {
   handleSubmit (values) {
     const { widget, asyncWidgetUpdate } = this.props
     const settings = widget.settings || {}

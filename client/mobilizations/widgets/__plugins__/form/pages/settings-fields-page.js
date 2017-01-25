@@ -17,7 +17,7 @@ import {
 // Current module dependencies
 import Form, { SettingsMenu } from '../components'
 
-class SettingsFieldsPage extends Component {
+export class SettingsFieldsPage extends Component {
   constructor (props, context) {
     super(props, context)
     this.state = { loading: false, hasNewField: false }
