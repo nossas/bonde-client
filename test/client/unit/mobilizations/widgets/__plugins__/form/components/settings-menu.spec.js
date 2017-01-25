@@ -6,9 +6,9 @@ import { shallow } from 'enzyme'
 import * as paths from '~client/paths'
 
 // Current module dependencies
-import SettingsMenu from './settings-menu'
+import { SettingsMenu } from '~widget-plugins/form/components'
 
-describe('app/modules/widgets/__plugins__/form/components/settings-menu', () => {
+describe('client/mobilizations/widgets/__plugins__/form/components/settings-menu', () => {
   let props = {
     mobilization: {},
     widget: {},
@@ -26,7 +26,7 @@ describe('app/modules/widgets/__plugins__/form/components/settings-menu', () => 
     })
   })
 
-  context('when active menu with pathname equals location', () => {
+  describe('when active menu with pathname equals location', () => {
     const dummyId = 1
     props.mobilization.id = dummyId
     props.widget.id = dummyId

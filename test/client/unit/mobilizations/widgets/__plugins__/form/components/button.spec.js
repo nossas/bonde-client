@@ -3,9 +3,10 @@ import sinon from 'sinon'
 import { expect } from 'chai'
 import { render, shallow } from 'enzyme'
 
-import Button from './button'
+// Current module dependencies
+import { Button } from '~widget-plugins/form/components'
 
-describe('app/modules/widgets/__plugins__/form/components/button', () => {
+describe('client/mobilizations/widgets/__plugins__/form/components/button', () => {
   let props = {
     success: false,
     buttonText: 'Salvar',
@@ -14,7 +15,7 @@ describe('app/modules/widgets/__plugins__/form/components/button', () => {
     mobilization: {}
   }
 
-  context('when it static', () => {
+  describe('when it static', () => {
     it('should render with buttonText label', () => {
       let wrapper = render(<Button {...props} />)
 
@@ -38,7 +39,7 @@ describe('app/modules/widgets/__plugins__/form/components/button', () => {
     })
   })
 
-  context('when it click', () => {
+  describe('when it click', () => {
     it('should call handleClick when clicked button', () => {
       props.handleClick = sinon.spy()
 

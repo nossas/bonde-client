@@ -3,10 +3,10 @@ import sinon from 'sinon'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-import { Input } from './../components'
+import { Input } from '~widget-plugins/form/components'
 
-describe('app/modules/widgets/__plugins__/form/components/input', () => {
-  context('when render form edit input settings', () => {
+describe('client/mobilizations/widgets/__plugins__/form/components/input', () => {
+  describe('when render form edit input settings', () => {
     let props = {
       uid: '',
       initializeEditing: true,
@@ -25,7 +25,7 @@ describe('app/modules/widgets/__plugins__/form/components/input', () => {
     })
   })
 
-  context('when render input form', () => {
+  describe('when render input form', () => {
     let props = {
       uid: '',
       initializeEditing: false,

@@ -6,7 +6,7 @@ import classnames from 'classnames'
 import { InputForm } from '../components'
 
 class Input extends Component {
-  constructor(props, context) {
+  constructor (props, context) {
     super(props, context)
     this.state = {
       hasMouseOver: false,
@@ -14,25 +14,25 @@ class Input extends Component {
     }
   }
 
-  handleMouseOver() {
+  handleMouseOver () {
     this.setState({hasMouseOver: true})
   }
 
-  handleMouseOut() {
+  handleMouseOut () {
     this.setState({hasMouseOver: false})
   }
 
-  handleClick() {
+  handleClick () {
     if (this.props.configurable) {
       this.setState({editing: true})
     }
   }
 
-  handleCloseForm() {
+  handleCloseForm () {
     this.setState({editing: false})
   }
 
-  renderForm() {
+  renderForm () {
     const { uid } = this.props
     return (
       <TransitionGroup>
@@ -41,25 +41,25 @@ class Input extends Component {
     )
   }
 
-  renderInstructions() {
+  renderInstructions () {
     const { configurable } = this.props
     if (configurable && this.state.hasMouseOver) {
       return (
-        <div className="right">
-          <i className="fa fa-pencil-square-o mr1" />
+        <div className='right'>
+          <i className='fa fa-pencil-square-o mr1' />
           Clique para editar
         </div>
       )
     }
   }
 
-  renderFieldKind() {
+  renderFieldKind () {
     const { field, uid, editable, configurable } = this.props
 
     if (field.kind === 'dropdown') {
       return (<select
         id={'input-' + uid}
-        className="select block border border-gray94"
+        className='select block border border-gray94'
         style={{
           cursor: editable || configurable ? 'pointer' : null,
           borderRadius: '2px',
@@ -68,9 +68,9 @@ class Input extends Component {
           height: 'inherit'
         }}
       >
-        <option value="">Selecione...</option>
+        <option value=''>Selecione...</option>
         {
-          field.placeholder.split(',').map(function(v, index) {
+          field.placeholder.split(',').map(function (v, index) {
             return <option key={`dropdown-option-${index}`}>{v}</option>
           })
         }
@@ -78,7 +78,7 @@ class Input extends Component {
     } else if (field.kind === 'greetings') {
       return (
         editable || configurable ? (
-          <p className="block full-width">
+          <p className='block full-width'>
             <strong>Mensagem de sucesso alterada para:</strong><br />
             {field.placeholder}
           </p>
@@ -89,11 +89,11 @@ class Input extends Component {
       return (
         <input
           id={`input-${uid}`}
-          className="input block border border-gray94"
+          className='input block border border-gray94'
           style={{
             cursor: editable || configurable ? 'pointer' : null,
             borderRadius: '2px',
-            padding: '1rem',
+            padding: '1rem'
           }}
           placeholder={field.placeholder}
           type='text'
@@ -102,7 +102,7 @@ class Input extends Component {
     }
   }
 
-  renderInput() {
+  renderInput () {
     const {
       field,
       editable,
@@ -114,7 +114,7 @@ class Input extends Component {
 
     return (
       <div
-        className="mb2"
+        className='mb2'
         onMouseEnter={::this.handleMouseOver}
         onMouseLeave={::this.handleMouseOut}
         style={{
@@ -142,7 +142,7 @@ class Input extends Component {
     )
   }
 
-  render() {
+  render () {
     return (this.state.editing ? this.renderForm() : this.renderInput())
   }
 }
