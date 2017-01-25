@@ -1,10 +1,11 @@
 import { expect } from 'chai'
 
-import * as t from './action-types'
-import { createAction } from './action-creators/create-action'
-import reducers, { initialState } from './reducers'
+// Current module dependencies
+import * as t from '~widget-plugins/match/action-types'
+import { createAction } from '~widget-plugins/match/action-creators/create-action'
+import reducers, { initialState } from '~widget-plugins/match/reducers'
 
-describe('app/modules/widgets/__plugins__/match/reducers', () => {
+describe('client/mobilizations/widgets/__plugins__/match/reducers', () => {
   describe('~ Default ~', () => {
     it('should returns the initial state if it not passing any arguments', () => {
       expect(reducers()).to.be.deep.equal(initialState)
