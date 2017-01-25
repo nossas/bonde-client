@@ -1,10 +1,11 @@
 import { expect } from 'chai'
 
-import reducers, { initialState } from './reducers'
-import { createAction } from './action-creators/create-action'
-import * as t from './action-types'
+// Current module dependencies
+import reducers, { initialState } from '~widget-plugins/pressure/reducers'
+import { createAction } from '~widget-plugins/pressure/action-creators/create-action'
+import * as t from '~widget-plugins/pressure/action-types'
 
-describe('app/modules/widgets/__plugins__/pressure/reducers', () => {
+describe('client/mobilizations/widgets/__plugins__/pressure/reducers', () => {
   it('should change saving state to true when requesting', () => {
     const action = { type: t.WIDGET_PRESSURE_FILL_REQUEST }
     const nextState = reducers(initialState, action)
