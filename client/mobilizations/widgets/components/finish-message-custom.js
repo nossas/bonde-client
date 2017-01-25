@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 
 // Global module dependencies
-import Editor from '~tmp-reboo-editor'
+import Editor from '~components/editor-draft-js'
 
 const FinishMessageCustom = ({
   readOnly,

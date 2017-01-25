@@ -11,7 +11,6 @@
     "^~mobilizations(.*)$": "<rootDir>/client/mobilizations$1",
     "^~utils(.*)$": "<rootDir>/client/utils$1",
 
-    "^~tmp-reboo-editor(.*)$": "<rootDir>/.old/app/scripts/RebooEditor$1",
     "^~tmp-dashboard(.*)$": "<rootDir>/client/dashboard$1",
 
     "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|wav|mp3|aac)$": "<rootDir>/test/mock-file.js",

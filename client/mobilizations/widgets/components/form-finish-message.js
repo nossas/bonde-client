@@ -10,7 +10,7 @@ import {
   ControlLabel
 } from '~tmp-dashboard/forms'
 import { SettingsPageLayout, SettingsPageContentLayout } from '~components/layout'
-import Editor from '~tmp-reboo-editor'
+import Editor from '~components/editor-draft-js'
 
 // Current module dependencies
 import * as styles from './form-finish-message.scss'

@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 
 // Global module dependencies
-import { createEditorContent } from '~tmp-reboo-editor'
+import { createEditorContent } from '~components/editor-draft-js'
 import { Loading } from '~components/await'
 
 // Parent module dependencies
