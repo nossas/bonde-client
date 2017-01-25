@@ -3,9 +3,10 @@ import sinon from 'sinon'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-import { Draft } from './__draft__'
+// Current module dependencies
+import Draft from '~widget-plugins/draft/components'
 
-describe('app/modules/widgets/__plugins__/draft/components/__draft__', () => {
+describe('client/mobilizations/widgets/__plugins__/draft/components/__draft__', () => {
   let wrapper
   let props = {
     dispatch: () => {},
@@ -16,8 +17,8 @@ describe('app/modules/widgets/__plugins__/draft/components/__draft__', () => {
     loading: false
   }
 
-  context('when it is editable', () => {
-    before(() => {
+  describe('when it is editable', () => {
+    beforeAll(() => {
       sinon.spy(Draft.prototype, 'updateKind')
     })
 
@@ -25,7 +26,7 @@ describe('app/modules/widgets/__plugins__/draft/components/__draft__', () => {
       wrapper = shallow(<Draft {...props} />)
     })
 
-    after(() => {
+    afterAll(() => {
       Draft.prototype.updateKind.restore()
     })
 
@@ -41,7 +42,7 @@ describe('app/modules/widgets/__plugins__/draft/components/__draft__', () => {
 
         describe('Content widget button', () => {
           let button
-          before(() => {
+          beforeAll(() => {
             button = wrapper.find('DraftWidgetButton').at(0)
           })
 
@@ -58,7 +59,7 @@ describe('app/modules/widgets/__plugins__/draft/components/__draft__', () => {
 
         describe('Form widget button', () => {
           let button
-          before(() => {
+          beforeAll(() => {
             button = wrapper.find('DraftWidgetButton').at(1)
           })
 
@@ -75,7 +76,7 @@ describe('app/modules/widgets/__plugins__/draft/components/__draft__', () => {
 
         describe('Donation widget button', () => {
           let button
-          before(() => {
+          beforeAll(() => {
             button = wrapper.find('DraftWidgetButton').at(2)
           })
 
@@ -92,7 +93,7 @@ describe('app/modules/widgets/__plugins__/draft/components/__draft__', () => {
 
         describe('Match widget button', () => {
           let button
-          before(() => {
+          beforeAll(() => {
             button = wrapper.find('DraftWidgetButton').at(3)
           })
 
@@ -109,7 +110,7 @@ describe('app/modules/widgets/__plugins__/draft/components/__draft__', () => {
 
         describe('Pressure widget button', () => {
           let button
-          before(() => {
+          beforeAll(() => {
             button = wrapper.find('DraftWidgetButton').at(4)
           })
 

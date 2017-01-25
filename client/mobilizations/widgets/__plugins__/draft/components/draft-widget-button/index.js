@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 
-import './draft-widget-button.scss'
+// Current module dependencies
+import './index.scss'
 
 const DraftWidgetButton = ({ label, icon, onClick }) => (
   <div className='draft-widget-button col col-4 p1'>

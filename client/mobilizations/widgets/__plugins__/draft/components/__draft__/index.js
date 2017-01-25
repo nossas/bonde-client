@@ -8,10 +8,10 @@ import { Loading } from '~components/await'
 import { actions as WidgetActions } from '~mobilizations/widgets'
 
 // Current module dependencies
-import { DraftWidgetButton } from '../components'
-import './__draft__.scss'
+import { DraftWidgetButton } from '../../components'
+import './index.scss'
 
-export class Draft extends Component {
+class Draft extends Component {
   constructor (props, context) {
     super(props, context)
     this.state = {
