@@ -16,7 +16,7 @@ import { SettingsBase } from '../components'
 // eslint-disable-next-line
 const patternTarget = /[\w]+[ ]*<(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))>/
 
-class SettingsEmailPage extends Component {
+export class SettingsEmailPage extends Component {
   constructor (props) {
     super(props)
     this.state = { targets: this.getTargetList() || [] }

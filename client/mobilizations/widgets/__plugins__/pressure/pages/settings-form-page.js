@@ -19,7 +19,7 @@ import { actions as WidgetActions } from '~mobilizations/widgets'
 // Current module dependencies
 import { SettingsBase } from '../components'
 
-const SettingsFormPage = ({
+export const SettingsFormPage = ({
   ...props,
   fields: {
     title_text: titleText,
