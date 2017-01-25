@@ -1,16 +1,22 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router'
 import classnames from 'classnames'
 import { Navigation } from 'react-router'
 import reactMixin from 'react-mixin'
 
+// Global module dependencies
 import {
   SettingsPageLayout,
   SettingsPageMenuLayout,
   SettingsPageContentLayout
-} from '../../../components/Layout'
-import MobilizationList from '../../../scripts/Mobilization/components/MobilizationList'
+} from '~components/layout'
+import * as paths from '~client/paths'
+
+// Children module dependencies
+import * as TemplateActions from '~mobilizations/templates/action-creators'
+
+// Current module dependencies
+import MobilizationList from '~tmp-mobilizations/components/MobilizationList'
 import {
   MobilizationListItem,
   MobilizationListItemAvatar,
@@ -21,43 +27,38 @@ import {
   MobilizationListItemMore,
   MobilizationListItemMoreMenu,
   MobilizationListItemMoreMenuAction
-}  from '../../../scripts/Mobilization/components/MobilizationList/MobilizationListItem'
+} from '~tmp-mobilizations/components/MobilizationList/MobilizationListItem'
 import {
   MobilizationListItemHeader,
   MobilizationListItemHeaderName,
   MobilizationListItemHeaderCreatedAt,
   MobilizationListItemHeaderUsers,
   MobilizationListItemHeaderFundRaising
-}  from '../../../scripts/Mobilization/components/MobilizationList/MobilizationListItemHeader'
-import { MobilizationsHeader } from '../../../scripts/Mobilization/components'
-import * as Paths from '../../../scripts/Paths'
-
-import { actionCreators as TemplateActions } from '../templates'
+} from '~tmp-mobilizations/components/MobilizationList/MobilizationListItemHeader'
+import { MobilizationsHeader } from '~tmp-mobilizations/components'
 import { select, toggleMenu } from '../action-creators'
 import * as MobilizationSelectors from '../selectors'
 
-
 @reactMixin.decorate(Navigation)
-export class ListMobilizationPage extends Component {
+export class MobilizationListPage extends Component {
 
-  componentWillMount() {
+  componentWillMount () {
     const { select, toggleMenu } = this.props
     select(undefined)
     toggleMenu(undefined)
   }
 
-  handleSelectItem(mobilization) {
+  handleSelectItem (mobilization) {
     this.props.select(mobilization.id)
-    this.transitionTo(Paths.editMobilization(mobilization.id))
+    this.transitionTo(paths.editMobilization(mobilization.id))
   }
 
-  handleCreateTemplate(mobilization) {
+  handleCreateTemplate (mobilization) {
     this.props.selectTemplate(mobilization.id)
-    this.transitionTo(Paths.mobilizationTemplatesCreate(mobilization))
+    this.transitionTo(paths.mobilizationTemplatesCreate(mobilization))
   }
 
-  render() {
-
+  render () {
     const {
       location,
       mobilizations,
@@ -67,10 +68,10 @@ export class ListMobilizationPage extends Component {
 
     return (
       <SettingsPageLayout>
-        <SettingsPageMenuLayout title="Suas Mobilizações">
+        <SettingsPageMenuLayout title='Suas Mobilizações'>
           <MobilizationsHeader location={location} />
         </SettingsPageMenuLayout>
-        <SettingsPageContentLayout containerClassName="lg-col-12">
+        <SettingsPageContentLayout containerClassName='lg-col-12'>
           <MobilizationList>
             <MobilizationListItemHeader>
               <MobilizationListItemHeaderName />
@@ -84,10 +85,10 @@ export class ListMobilizationPage extends Component {
                 key={`mobilization-${mobilization.id}`}
                 className={classnames({ 'z2': menuActiveIndex === index })}
               >
-                <div className="gray20" onClick={() => this.handleSelectItem(mobilization)}>
+                <div className='gray20' onClick={() => this.handleSelectItem(mobilization)}>
                   <MobilizationListItemAvatar {...mobilization} />
 
-                  <div className="list-item-table-container overflow-hidden">
+                  <div className='list-item-table-container overflow-hidden'>
                     <MobilizationListItemName {...mobilization} />
                     <MobilizationListItemCreatedAt {...mobilization} />
                     <MobilizationListItemUsers {...mobilization} />
@@ -97,17 +98,17 @@ export class ListMobilizationPage extends Component {
                 <MobilizationListItemMore onClick={toggleMenu} index={index}>
                   <MobilizationListItemMoreMenu active={menuActiveIndex === index}>
                     <MobilizationListItemMoreMenuAction
-                      componentClass="a"
-                      target="_blank"
-                      text="Abrir página"
-                      path={Paths.mobilization(mobilization)}
-                      icon="external-link"
+                      componentClass='a'
+                      target='_blank'
+                      text='Abrir página'
+                      path={paths.mobilization(mobilization)}
+                      icon='external-link'
                     />
                     <MobilizationListItemMoreMenuAction
-                      componentClass="a"
-                      text="Criar template"
+                      componentClass='a'
+                      text='Criar template'
                       onClick={() => this.handleCreateTemplate(mobilization)}
-                      icon="star"
+                      icon='star'
                     />
                   </MobilizationListItemMoreMenu>
                 </MobilizationListItemMore>
@@ -120,7 +121,7 @@ export class ListMobilizationPage extends Component {
   }
 }
 
-ListMobilizationPage.propTypes = {
+MobilizationListPage.propTypes = {
   mobilizations: PropTypes.array.isRequired,
   toggleMenu: PropTypes.func.isRequired,
   select: PropTypes.func.isRequired,
@@ -140,4 +141,4 @@ const mapActionCretorsToProps = {
   selectTemplate: TemplateActions.selectTemplate
 }
 
-export default connect(mapStateToProps, mapActionCretorsToProps)(ListMobilizationPage)
+export default connect(mapStateToProps, mapActionCretorsToProps)(MobilizationListPage)

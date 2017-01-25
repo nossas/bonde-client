@@ -1,18 +1,21 @@
 import React from 'react'
 import { reduxForm } from 'redux-form'
+
+// Global module dependencies
 import {
   FormGroup,
   ControlLabel,
   FormControl,
   UploadImageField
-} from '../../../../scripts/Dashboard/Forms'
+} from '~tmp-dashboard/forms'
+
+// Current module dependencies
 import iconFacebook from '../../images/facebook.svg'
 import iconTwitter from '../../images/twitter.svg'
-
 import { MobilizationSettingsForm } from '../../components'
 import { mapStateToProps, mapActionCreatorsToProps } from './map-to-props'
 
-const MobilizationSharingPage = props => {
+export const MobilizationSharingPage = props => {
   const {
     fields: {
       facebook_share_image: facebookShareImage,

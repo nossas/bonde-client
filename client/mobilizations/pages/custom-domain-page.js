@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 // Global module dependencies
 import { TechnicalIssues } from '~components/error'
 import { GoogleFontsLoader } from '~components/fonts'
-import * as arrayUtil from '~util/array'
+import * as arrayUtil from '~utils/array'
 
 // Children modules dependencies
 import {

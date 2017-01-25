@@ -1,11 +1,14 @@
 import React from 'react'
 import { expect } from 'chai'
-import { mount } from 'enzyme'
+import { shallow } from 'enzyme'
 
-import { CustomDomainPage } from './custom-domain-page'
-import * as arrayUtil from '../../../util/array'
+// Global module dependencies
+import * as arrayUtil from '~utils/array'
 
-describe('app/modules/mobilizations/pages/custom-domain-page', () => {
+// Current module dependencies
+import { CustomDomainPage } from '~mobilizations/pages/custom-domain-page'
+
+describe('client/mobilizations/pages/custom-domain-page', () => {
   let wrapper
   const props = {
     mobilization: {
@@ -17,7 +20,7 @@ describe('app/modules/mobilizations/pages/custom-domain-page', () => {
   }
 
   beforeEach(() => {
-    wrapper = mount(<CustomDomainPage {...props} />)
+    wrapper = shallow(<CustomDomainPage {...props} />)
   })
 
   it('render without crashed', () => {

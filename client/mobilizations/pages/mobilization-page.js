@@ -4,7 +4,7 @@ import reactMixin from 'react-mixin'
 import { connect } from 'react-redux'
 
 // Global module dependencies
-import * as Paths from '../../../.old/app/scripts/Mobilization/plugins/Templates/MobilizationTemplatesPaths'
+import * as Paths from '~tmp-mobilizations/plugins/Templates/MobilizationTemplatesPaths'
 
 // Children module dependencies
 import { selectors as BlockSelectors } from '~mobilizations/blocks'

@@ -1,9 +1,9 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import { MobilizationPage } from './mobilization-page'
+import { MobilizationPage } from '~mobilizations/pages/mobilization-page'
 
-describe('app/modules/mobilizations/pages/mobilization-page', () => {
+describe('client/mobilizations/pages/mobilization-page', () => {
   const defaultProps = { mobilization: {} }
   const context = { router: {} }
 

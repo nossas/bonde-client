@@ -1,19 +1,19 @@
 import React from 'react'
 import { reduxForm } from 'redux-form'
-import { isValidCodeGA } from '../../../../util/validation-helper'
-import { MobilizationSettingsForm } from '../../components'
 
+// Global module dependencies
+import { isValidCodeGA } from '~utils/validation-helper'
 import {
   FormGroup,
   FormControl,
   ControlLabel
-} from '../../../../scripts/Dashboard/Forms'
+} from '~tmp-dashboard/forms'
 
+// Current module dependencies
+import { MobilizationSettingsForm } from '~mobilizations/components'
 import { mapStateToProps, mapActionCreatorsToProps } from './map-to-props'
 
-
-const MobilizationAnalyticsPage = props => {
-
+export const MobilizationAnalyticsPage = props => {
   const { fields: { google_analytics_code }, ...formProps } = props
 
   return (

@@ -1,36 +1,37 @@
 import React from 'react'
 import { reduxForm } from 'redux-form'
 
+// Global module dependencies
 import {
   FormGroup,
   ControlLabel,
   FormControl
-} from '../../../../scripts/Dashboard/Forms'
-import { isValidDomain } from '../../../../util/validation-helper'
+} from '~tmp-dashboard/forms'
+import { isValidDomain } from '~utils/validation-helper'
+
+// Current module dependencies
 import { MobilizationSettingsForm } from '../../components'
 import { mapStateToProps, mapActionCreatorsToProps } from './map-to-props'
 
-
-const MobilizationDomainPage = props => {
-
+export const MobilizationDomainPage = props => {
   const { mobilization, fields: { custom_domain }, ...formProps } = props
 
   return (
     <MobilizationSettingsForm {...formProps}>
-      <p className="h5">
+      <p className='h5'>
         Você pode personalizar o endereço da sua mobilização caso já tenha um domínio. Preencha o
         campo abaixo e clique em Salvar.
       </p>
-        <FormGroup controlId="customDomain" {...custom_domain}>
-          <ControlLabel>Domínio personalizado</ControlLabel>
-          <FormControl type="text" placeholder="www.meudominio.com.br" />
-        </FormGroup>
+      <FormGroup controlId='customDomain' {...custom_domain}>
+        <ControlLabel>Domínio personalizado</ControlLabel>
+        <FormControl type='text' placeholder='www.meudominio.com.br' />
+      </FormGroup>
       <p>
         <strong>Atenção</strong>: você ainda precisa configurar o seu domínio no servidor de
         registro para que ele seja redirecionado para a página da sua mobilização. Para isso,
         utilize as informações abaixo.
       </p>
-      <table className="col-12 left-align">
+      <table className='col-12 left-align'>
         <tbody>
           <tr>
             <th>Nome</th>

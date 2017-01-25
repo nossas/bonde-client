@@ -5718,6 +5718,12 @@ react-dom@^15.4.2:
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
 
+react-ga@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/react-ga/-/react-ga-2.1.2.tgz#7af206c5e8761d7176e15773fe826acdb70ac653"
+  dependencies:
+    object-assign "^4.0.1"
+
 react-grid-system@^2.0.2:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/react-grid-system/-/react-grid-system-2.0.3.tgz#8bdc153066468cad42139f127ad7d07da369bcc1"

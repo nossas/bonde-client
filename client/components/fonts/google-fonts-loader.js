@@ -4,8 +4,8 @@ import { getGoogleFontsLoadURL, needsToLoadGoogleFonts } from '~utils/font-name-
 
 const GoogleFontsLoader = ({ fonts }) => (
   needsToLoadGoogleFonts(fonts)
-    ? <link href={getGoogleFontsLoadURL(fonts)} rel="stylesheet" />
-    : <no-script></no-script>
+    ? <link href={getGoogleFontsLoadURL(fonts)} rel='stylesheet' />
+    : <no-script />
 )
 
 GoogleFontsLoader.propTypes = {
@@ -13,3 +13,4 @@ GoogleFontsLoader.propTypes = {
 }
 
 export default GoogleFontsLoader
+GoogleFontsLoader.displayName = 'GoogleFontsLoader'
