@@ -69,19 +69,25 @@ export const logout = () => dispatch => {
   })
 }
 
-export const load = () => dispatch => {
-  // TODO: Change axios to proxy argument (dispatch, getState, { request, proxy })
-  dispatch({ type: t.FETCH })
-  return new Promise((resolve, reject) => {
-    superagent
-      .get('/auth/load')
-      .end((err, res) => {
-        dispatch({
-          type: t.FETCH_SUCCESS,
-          user: res.user,
-          credentials: res.credentials
-        })
-        return resolve()
-      })
-  })
-}
+export const load = () => ({
+  types: [t.LOAD, t.LOAD_SUCCESS, t.LOAD_FAIL],
+  promise: (client) => client.get('/load')
+})
+// export const load = () => dispatch => {
+//   // TODO: Change axios to proxy argument (dispatch, getState, { request, proxy })
+//   dispatch({ type: t.FETCH })
+//   return new Promise((resolve, reject) => {
+//     superagent
+//       .get('/auth/load')
+//       .end((err, res) => {
+//         if (res && res.user) {
+//           dispatch({
+//             type: t.FETCH_SUCCESS,
+//             user: res.user,
+//             credentials: res.credentials
+//           })
+//         }
+//         return resolve()
+//       })
+//   })
+// }

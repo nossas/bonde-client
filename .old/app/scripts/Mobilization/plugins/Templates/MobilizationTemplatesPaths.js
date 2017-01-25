@@ -14,7 +14,7 @@ export const mobilizationTemplatesChoose = mobilization =>
   `/mobilizations/${mobilization.id}/templates/choose`
 
 export const mobilizationTemplatesChooseCustomList = mobilization =>
-  `/mobilizations/${mobilization.id}/templates/choose/custom/list`
+  `/mobilizations/${mobilization.id}/templates/choose/custom`
 
 export const mobilizationTemplatesChooseGlobalList = mobilization =>
-  `/mobilizations/${mobilization.id}/templates/choose/global/list`
+  `/mobilizations/${mobilization.id}/templates/choose/global`

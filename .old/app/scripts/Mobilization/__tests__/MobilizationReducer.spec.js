@@ -1,8 +1,6 @@
-import { fromJS } from 'immutable'
 import { expect } from 'chai'
 
 import {
-  ADD_MOBILIZATION,
   EDIT_MOBILIZATION,
 
   PROGRESS_UPLOAD_FACEBOOK_IMAGE,
@@ -29,21 +27,6 @@ describe('MobilizationReducer', () => {
         data: [
           { id: 1 }
         ]
-      })
-    })
-  })
-
-  describe('#addMobilization', () => {
-    it('should add mobilization in data', () => {
-      const action = {
-        type: ADD_MOBILIZATION,
-        mobilization: { id: 1 }
-      }
-      const nextState = reducer(undefined, action)
-      expect(nextState).to.deep.equal({
-        loading: false,
-        loaded: false,
-        data: [ { id: 1 } ]
       })
     })
   })

@@ -1,0 +1,21 @@
+{
+  "testPathDirs": ["test"],
+  "moduleFileExtensions": ["js", "jsx"],
+  "moduleDirectories": ["node_modules"],
+  "moduleNameMapper": {
+    "^~client(.*)$": "<rootDir>/client$1",
+    "^~account(.*)$": "<rootDir>/client/account$1",
+    "^~components(.*)$": "<rootDir>/client/components$1",
+    "^~community(.*)$": "<rootDir>/client/community$1",
+    "^~dashboard(.*)$": "<rootDir>/client/dashboard$1",
+    "^~mobilizations(.*)$": "<rootDir>/client/mobilizations$1",
+    "^~utils(.*)$": "<rootDir>/client/utils$1",
+
+    "^~tmp-mobilizations(.*)$": "<rootDir>/.old/app/scripts/Mobilization$1",
+    "^~tmp-reboo-editor(.*)$": "<rootDir>/.old/app/scripts/RebooEditor$1",
+    "^~tmp-dashboard(.*)$": "<rootDir>/client/dashboard$1",
+
+    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|wav|mp3|aac)$": "<rootDir>/test/mock-file.js",
+    "\\.(css|scss)$": "<rootDir>/test/mock-style.js"
+  }
+}
