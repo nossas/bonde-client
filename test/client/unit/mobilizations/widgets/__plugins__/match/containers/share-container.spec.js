@@ -3,9 +3,10 @@ import sinon from 'sinon'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { ShareContainer } from './share-container'
+// Current module dependencies
+import { ShareContainer } from '~widget-plugins/match/containers/share-container'
 
-describe('app/modules/widgets/__plugins__/match/containers/share-container', () => {
+describe('client/mobilizations/widgets/__plugins__/match/containers/share-container', () => {
   let wrapper
   let sandbox
   let spy = {}
@@ -25,7 +26,7 @@ describe('app/modules/widgets/__plugins__/match/containers/share-container', () 
     dispatch: sinon.spy()
   }
 
-  before(() => {
+  beforeAll(() => {
     sandbox = sinon.sandbox.create()
     wrapper = shallow(<ShareContainer {...props} />)
   })
@@ -35,12 +36,12 @@ describe('app/modules/widgets/__plugins__/match/containers/share-container', () 
   })
 
   describe('#render', () => {
-    before(() => {
+    beforeAll(() => {
       spy.metaData = sandbox.spy(ShareContainer.prototype, 'metaData')
     })
 
     it('should render one empty <noscript> component', () => {
-      expect(wrapper.html()).to.equal('<noscript></noscript>')
+      expect(wrapper.html()).to.equal('')
     })
     it('should calls metaData method', () => {
       expect(spy.metaData).to.have.been.called
