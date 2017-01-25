@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import classnames from 'classnames'
 
+// Global module dependencies
 import SelectableList from '~components/selectable-list'
 import FilterableSearchBar from '~components/filterable-search-bar'
 

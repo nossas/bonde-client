@@ -4,21 +4,19 @@ import { connect } from 'react-redux'
 import { asyncFetch } from '../action-creators'
 import * as TemplateSelectors from '../selectors'
 
-
-class TemplateFetchContainer extends Component {
-
-  static getFetchData(store) {
+export class TemplateFetchContainer extends Component {
+  static getFetchData (store) {
     if (!TemplateSelectors.isLoaded(store.getState())) {
       store.dispatch(asyncFetch())
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     const { isLoaded, asyncFetch } = this.props
     !isLoaded && asyncFetch()
   }
 
-  render() {
+  render () {
     const { children } = this.props
 
     return (

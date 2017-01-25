@@ -11,7 +11,7 @@ import * as MobilizationSelectors from '~mobilizations/selectors'
 // Current module dependencies
 import * as TemplateSelectors from '../selectors'
 
-const TemplateChoosePage = ({ mobilization, templatesGlobalLength, templatesCustomLength }) => (
+export const TemplateChoosePage = ({ mobilization, templatesGlobalLength, templatesCustomLength }) => (
   <div className='choose-menu-page col-12'>
     <h3 className='h1 mt0 mb3 center'>Como você deseja começar?</h3>
     <BrowsableList>

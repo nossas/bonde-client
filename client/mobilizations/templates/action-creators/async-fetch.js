@@ -1,6 +1,6 @@
 import * as t from '../action-types'
 
-export default () => (dispatch, getState, axios) => {
+const AsyncFetch = () => (dispatch, getState, axios) => {
   const { auth: { credentials } } = getState()
 
   dispatch({ type: t.REQUEST_TEMPLATE_FETCH })
@@ -15,3 +15,5 @@ export default () => (dispatch, getState, axios) => {
       return Promise.reject({ _error: `Response ${error}` })
     })
 }
+
+export default AsyncFetch

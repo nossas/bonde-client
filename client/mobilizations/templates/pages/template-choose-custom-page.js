@@ -16,7 +16,7 @@ import { TemplateSelectableList } from '../components'
 import * as TemplateSelectors from '../selectors'
 
 @reactMixin.decorate(Navigation)
-class TemplateChooseCustomPage extends Component {
+export class TemplateChooseCustomPage extends Component {
   render () {
     const { mobilization, createMobilizationFromTemplate, ...listableProps } = this.props
 

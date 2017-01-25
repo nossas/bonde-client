@@ -8,7 +8,7 @@ import { Loading } from '~components/await'
 import { asyncFetch } from '../action-creators'
 import * as TemplateSelectors from '../selectors'
 
-class FetchTemplatesContainer extends Component {
+export class FetchTemplatesContainer extends Component {
   static getFetchData (store) {
     if (!TemplateSelectors.isLoaded(store.getState())) {
       store.dispatch(asyncFetch())

@@ -1,6 +1,6 @@
 import * as t from '../action-types'
 
-export default (template) => (dispatch, getState, axios) => {
+const AsyncCreateTemplate = template => (dispatch, getState, axios) => {
   dispatch({ type: t.REQUEST_TEMPLATE_CREATE })
 
   const { auth: { credentials } } = getState()
@@ -17,3 +17,5 @@ export default (template) => (dispatch, getState, axios) => {
     })
     .catch(error => console.error('CreateTemplateAsyncError', error))
 }
+
+export default AsyncCreateTemplate

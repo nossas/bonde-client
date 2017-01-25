@@ -33,8 +33,7 @@ import * as TemplateSelectors from '../selectors'
 import { asyncDestroyTemplate } from '../action-creators'
 import { toggleMenu } from '../../action-creators'
 
-export class TemplatesListPage extends Component {
-
+export class TemplateListPage extends Component {
   componentDidMount () {
     const { toggleMenu } = this.props
     toggleMenu(undefined)
@@ -133,7 +132,7 @@ export class TemplatesListPage extends Component {
   }
 }
 
-TemplatesListPage.propTypes = {
+TemplateListPage.propTypes = {
   asyncDestroyTemplate: PropTypes.func
 }
 
@@ -145,4 +144,4 @@ const mapStateToProps = state => ({
 
 const mapActionCreatorsToProps = { asyncDestroyTemplate, toggleMenu }
 
-export default connect(mapStateToProps, mapActionCreatorsToProps)(TemplatesListPage)
+export default connect(mapStateToProps, mapActionCreatorsToProps)(TemplateListPage)

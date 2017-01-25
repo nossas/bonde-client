@@ -20,8 +20,7 @@ import * as MobilizationSelectors from '~mobilizations/selectors'
 import { asyncCreateTemplate } from '../action-creators'
 
 @reactMixin.decorate(Navigation)
-class TemplateCreatePage extends Component {
-
+export class TemplateCreatePage extends Component {
   onFinishSubmit () {
     this.transitionTo(paths.mobilizations())
   }
