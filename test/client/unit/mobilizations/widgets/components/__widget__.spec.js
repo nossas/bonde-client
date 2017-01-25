@@ -2,11 +2,13 @@ import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-import Widget from './__widget__'
+// Global module dependencies
+import * as mock from '~utils/mock'
 
-const noop = () => {}
+// Current module dependencies
+import Widget from '~mobilizations/widgets/components'
 
-describe('app/modules/widgets/components/__widget__', () => {
+describe('client/mobilizations/widgets/components/__widget__', () => {
   let metamorphicProps
   let wrapper
   let props = {
@@ -50,7 +52,7 @@ describe('app/modules/widgets/components/__widget__', () => {
 
   it('should render Content widget component if widget kind it is "content"', () => {
     metamorphicProps = changeKind({ props, kind: 'content' })
-    wrapper.setProps({ ...metamorphicProps, onEdit: noop, onCancelEdit: noop })
+    wrapper.setProps({ ...metamorphicProps, onEdit: mock.noop, onCancelEdit: mock.noop })
     expect(wrapper.find('Content')).to.have.length(1)
   })
 

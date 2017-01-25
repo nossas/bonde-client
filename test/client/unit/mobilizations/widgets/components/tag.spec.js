@@ -2,9 +2,10 @@ import React from 'react'
 import { expect } from 'chai'
 import { mount } from 'enzyme'
 
-import { Tag } from '../components'
+// Current module dependencies
+import { Tag } from '~mobilizations/widgets/components'
 
-describe('app/modules/widgets/components/tag', () => {
+describe('client/mobilizations/widgets/components/tag', () => {
   let component
   const props = {
     value: 'Igor Santos <igor@nossascidades.org>'

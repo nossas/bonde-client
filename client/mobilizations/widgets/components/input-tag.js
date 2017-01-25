@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react'
-import ReactDOM from 'react-dom'
 
+// Current module dependencies
 import { BlockTag } from '../components'
 
 class InputTag extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       error: undefined,
@@ -12,11 +12,11 @@ class InputTag extends Component {
     }
   }
 
-  handleKeyPress(event) {
+  handleKeyPress (event) {
     // [Enter] should not submit the form when choosing an address.
     if (event.charCode === 13) {
       event.preventDefault()
-      const { values, onInsertTag, validate, name } = this.props
+      const { onInsertTag, validate } = this.props
       const value = event.target.value
       const errors = validate && validate(value)
 
@@ -29,13 +29,13 @@ class InputTag extends Component {
     }
   }
 
-  handleEdit(value) {
+  handleEdit (value) {
     const { onRemoveTag } = this.props
     onRemoveTag && onRemoveTag(value)
     this.setState({ value: value, error: undefined })
   }
 
-  render() {
+  render () {
     const { values, label, onRemoveTag } = this.props
 
     return (
@@ -82,7 +82,7 @@ InputTag.propTypes = {
   values: PropTypes.arrayOf(PropTypes.string).isRequired,
   validate: PropTypes.func,
   onInsertTag: PropTypes.func.isRequired,
-  onRemoveTag: PropTypes.func.isRequired,
+  onRemoveTag: PropTypes.func.isRequired
 }
 
 export default InputTag

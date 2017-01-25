@@ -2,19 +2,18 @@ import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-import { FormFinishMessage } from './form-finish-message'
+// Current module dependencies
+import { FormFinishMessage } from '~mobilizations/widgets/components/form-finish-message'
 
-// const TellAFriend = props => (
-//   <div className='tell-a-friend' />
-// )
 const TellAFriend = props => (
   <div className='tell-a-friend' />
 )
+
 const SettingsMenu = props => (
   <div className='settings-menu' />
 )
 
-describe('app/modules/widgets/components/form-finish-message', () => {
+describe('client/mobilizations/widgets/components/form-finish-message', () => {
   let wrapper
   const props = {
     mobilization: { id: 1, color_scheme: 'nossas-scheme' },
@@ -36,14 +35,14 @@ describe('app/modules/widgets/components/form-finish-message', () => {
     asyncWidgetUpdate: () => {}
   }
 
-  before(() => {
+  beforeAll(() => {
     wrapper = shallow(
       <FormFinishMessage {...props} />
     )
   })
 
   describe('render', () => {
-    after(() => {
+    afterAll(() => {
       wrapper.setProps(props)
     })
 
@@ -61,7 +60,7 @@ describe('app/modules/widgets/components/form-finish-message', () => {
     describe('finish_message_type', () => {
       const field = () => wrapper.instance().props.fields.finish_message_type
 
-      after(() => {
+      afterAll(() => {
         wrapper.setProps(props)
       })
 
@@ -84,7 +83,7 @@ describe('app/modules/widgets/components/form-finish-message', () => {
     describe('finish_message', () => {
       const field = () => wrapper.instance().props.fields.finish_message
 
-      after(() => {
+      afterAll(() => {
         wrapper.setProps(props)
       })
 

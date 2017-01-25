@@ -13,8 +13,8 @@ import { SettingsPageLayout, SettingsPageContentLayout } from '~components/layou
 import Editor from '~components/editor-draft-js'
 
 // Current module dependencies
-import * as styles from './form-finish-message.scss'
-import * as WidgetActions from '../action-creators'
+import * as styles from './index.scss'
+import * as WidgetActions from '../../action-creators'
 
 export const FormFinishMessage = props => {
   const { mobilization, widget, location, fields, successMessage, ...rest } = props

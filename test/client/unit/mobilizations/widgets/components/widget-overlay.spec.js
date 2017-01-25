@@ -1,22 +1,22 @@
 import React from 'react'
-
 import { mount } from 'enzyme'
 import { expect } from 'chai'
 
-import { WidgetOverlay } from '../components'
+// Current module dependencies
+import { WidgetOverlay } from '~mobilizations/widgets/components'
 
-describe('app/modules/widgets/components/widget-overlay', () => {
+describe('client/mobilizations/widgets/components/widget-overlay', () => {
   let component
   let props = {
     children: []
   }
 
-  before(() => {
+  beforeAll(() => {
     component = mount(<WidgetOverlay {...props} />)
   })
 
-  context('when editable is true', () => {
-    before(() => {
+  describe('when editable is true', () => {
+    beforeAll(() => {
       component.setProps({ editable: true })
     })
 
