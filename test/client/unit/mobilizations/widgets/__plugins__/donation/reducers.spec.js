@@ -1,10 +1,11 @@
 import { expect } from 'chai'
 
-import reducers, { initialState } from './reducers'
-import { createAction } from './action-creators/create-action'
-import * as t from './action-types'
+// Current module dependencies
+import reducers, { initialState } from '~widget-plugins/donation/reducers'
+import { createAction } from '~widget-plugins/donation/action-creators/create-action'
+import * as t from '~widget-plugins/donation/action-types'
 
-describe('app/modules/widgets/__plugins__/donation/reducers', () => {
+describe('client/mobilizations/widgets/__plugins__/donation/reducers', () => {
   it('should return the initial state by default', () => {
     expect(reducers()).to.deep.equal(initialState)
   })

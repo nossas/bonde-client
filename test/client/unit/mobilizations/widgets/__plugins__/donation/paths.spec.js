@@ -1,8 +1,9 @@
 import { expect } from 'chai'
 
-import * as paths from './paths'
+// Global module dependencies
+import * as paths from '~client/paths'
 
-describe('app/modules/widgets/__plugins__/donation/paths', () => {
+describe('client/mobilizations/widgets/__plugins__/donation/paths', () => {
   describe('#donation', () => {
     it('should return the donation path with params properly', () => {
       expect(paths.donation(1, 2)).to.equal('/mobilizations/1/widgets/2/donation')
