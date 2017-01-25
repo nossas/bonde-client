@@ -20,17 +20,13 @@ test:
   override:
     - yarn test:reporter
 
-
 deployment:
-  production:
-    branch: master
+  staging:
+    branch: /(hotfix|release)(-|\/).*/
     commands:
       - ./bin/deploy.sh
-  develop:
-    branch: develop
-    commands:
-      - ./bin/deploy.sh
-  feature:
-    branch: /(add|fix)(-|\/).*/
+  release:
+    tag: /v[0-9]+(\.[0-9]+)*/
+    owner: nossas 
     commands:
       - ./bin/deploy.sh

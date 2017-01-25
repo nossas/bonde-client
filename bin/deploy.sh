@@ -1,6 +1,6 @@
 #!/bin/bash -e
 REPO_URI="dokku@reboo-staging.org:0-client"
-if [[ "$CIRCLE_BRANCH" == "master" ]]; then
+if [ ! -z "$CIRCLE_TAG" ]; then
   REPO_URI="dokku@reboo.org:0-client"
 fi
 
