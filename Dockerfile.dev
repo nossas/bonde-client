@@ -6,6 +6,6 @@ RUN mkdir /code
 VOLUME /code
 WORKDIR /code
 COPY . /code
-RUN npm install && npm run build
-EXPOSE 5000
+RUN npm install 
 CMD ["node", "./bin/server"]
+EXPOSE 3001
