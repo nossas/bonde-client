@@ -1,29 +1,26 @@
 import React, { Component, PropTypes } from 'react'
+import { OrderedMap } from 'immutable'
 import {
   Editor,
   EditorState,
   ContentBlock,
   ContentState,
-  RichUtils,
   convertFromHTML,
   convertToRaw,
   convertFromRaw,
   genKey
 } from 'draft-js'
-import { OrderedMap } from 'immutable'
 
+// Current module dependencies
 import Toolbar, {
   toolbarEditorProps,
   decorator,
   getBlockAlignment
 } from './Toolbar'
-
 import './styles.scss'
 
-
 class RebooEditor extends Component {
-
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     let editorState = EditorState.createEmpty(decorator)
@@ -32,7 +29,7 @@ class RebooEditor extends Component {
       if (typeof this.props.value === 'string') {
         // initialValue is a string with syntax HTML, we need transform in contentState
         contentState = ContentState.createFromBlockArray(convertFromHTML(this.props.value))
-      } else if (typeof this.props.value === "object") {
+      } else if (typeof this.props.value === 'object') {
         contentState = convertFromRaw(this.props.value)
       } else {
         throw new Error('Value invalid')
@@ -44,57 +41,57 @@ class RebooEditor extends Component {
     this.state = { editorState, hasFocus: false }
   }
 
-  focus() {
+  focus () {
     this.setState({
-      hasFocus: true,
+      hasFocus: true
     }, () => setTimeout(() => this.refs.editor.focus()))
   }
 
-  onChangeEditorState(editorState) {
+  onChangeEditorState (editorState) {
     this.setState({ editorState })
   }
 
-  handleKeyCommand(command) {
-    const { editorState } = this.state;
+  handleKeyCommand (command) {
+    const { editorState } = this.state
     const currentBlock = editorState
       .getCurrentContent()
-      .getBlockForKey(editorState.getSelection().getStartKey());
+      .getBlockForKey(editorState.getSelection().getStartKey())
     // Modify behavior to insert new line
     if (command === 'split-block' && currentBlock.getType() === 'atomic') {
       // Create a contentBlock done to be insert
       const contentBlock = new ContentBlock({
         key: genKey(),
         type: 'unstyled'
-      });
+      })
       const contentBlockMap = new OrderedMap([
         [contentBlock.getKey(), contentBlock]
       ])
 
-      const currentContent = editorState.getCurrentContent();
-      const currentBlockMap = currentContent.getBlockMap();
+      const currentContent = editorState.getCurrentContent()
+      const currentBlockMap = currentContent.getBlockMap()
 
       // split blocks with current block
-      const skipCurrent = block => block === currentBlock;
-      const beforeBlocks = currentBlockMap.toSeq().takeUntil(skipCurrent);
+      const skipCurrent = block => block === currentBlock
+      const beforeBlocks = currentBlockMap.toSeq().takeUntil(skipCurrent)
       const afterBlocks = currentBlockMap
         .toSeq()
         .skipUntil(skipCurrent)
-        .rest();
+        .rest()
 
-      let blockMap;
+      let blockMap
       if (editorState.getSelection().getAnchorOffset() < editorState.getSelection().getFocusOffset()) {
         // mount block map with new block to insert in place of old block
         blockMap = beforeBlocks.concat(
           contentBlockMap.toSeq(),
           afterBlocks
-        ).toOrderedMap();
+        ).toOrderedMap()
       } else {
         // mount block map with new block to insert before
         blockMap = beforeBlocks.concat(
           new OrderedMap([[currentBlock.getKey(), currentBlock]]).toSeq(),
           contentBlockMap.toSeq(),
           afterBlocks
-        ).toOrderedMap();
+        ).toOrderedMap()
       }
 
       const content = currentContent.merge({ blockMap })
@@ -114,8 +111,7 @@ class RebooEditor extends Component {
     return false
   }
 
-
-  blockStyleFn(block) {
+  blockStyleFn (block) {
     // TODO: Move to control and receive like plugin
     const { editorState } = this.state
 
@@ -129,60 +125,60 @@ class RebooEditor extends Component {
     return `alignment--${alignment}`
   }
 
-  handleBeforeInput(chars) {
+  handleBeforeInput (chars) {
     const { editorState } = this.state
     const selection = editorState.getSelection()
     const block = editorState.getCurrentContent().getBlockForKey(selection.getStartKey())
-    if (chars === " " && block.getType() === 'atomic') {
+    if (chars === ' ' && block.getType() === 'atomic') {
       this.handleKeyCommand('split-block')
       return true
     }
     return false
   }
 
-  save() {
+  save () {
     this.props.handleSave(convertToRaw(this.state.editorState.getCurrentContent()))
     this.setState({ hasFocus: false })
   }
 
-  render() {
+  render () {
     // Injected root container props
     const { containerStyle } = this.props
     // Injected Toolbar props
     const { toolbarStyle, toolbarContainerStyle, theme } = this.props
     // Injected Editor props
-    const { editorStyle, focusStyle, blurStyle, readOnly } = this.props
+    const { editorStyle, focusStyle, readOnly } = this.props
 
     const hasFocusStyle = this.state.hasFocus && !readOnly
       ? focusStyle || { outline: '1px solid blue' }
       : {}
 
     return (
-      <div className="reboo-editor" style={containerStyle}>
+      <div className='reboo-editor' style={containerStyle}>
         {!readOnly ? (
           <div
-            className="toolbar-container"
+            className='toolbar-container'
             style={{ ...toolbarContainerStyle, display: this.state.hasFocus ? 'block' : 'none' }}
           >
             <Toolbar
               theme={theme}
-              buttonClassName="btn white p2"
-              popoverClassName="absolute white p2 bg-darken-4 rounded-bottom"
+              buttonClassName='btn white p2'
+              popoverClassName='absolute white p2 bg-darken-4 rounded-bottom'
               editorState={this.state.editorState}
               setEditorState={this.onChangeEditorState.bind(this)}
               focusEditor={this.focus.bind(this)}
               style={toolbarStyle}
             />
-            <div className="outside" onClick={::this.save} />
+            <div className='outside' onClick={::this.save} />
           </div>
         ) : null}
         <div
-          className="editor"
+          className='editor'
           style={{ ...editorStyle, ...hasFocusStyle }}
         >
           <div onClick={this.focus.bind(this)}>
             <Editor
-              ref="editor"
+              ref='editor'
               readOnly={readOnly}
               editorState={this.state.editorState}
               onChange={this.onChangeEditorState.bind(this)}
@@ -194,9 +190,9 @@ class RebooEditor extends Component {
             <div style={{ 'clear': 'both' }} />
           </div>
           {!readOnly ? (
-            <div className="right mt1" style={{ display: this.state.hasFocus ? 'block' : 'none' }}>
+            <div className='right mt1' style={{ display: this.state.hasFocus ? 'block' : 'none' }}>
               <button
-                className="btn caps bg-darken-4 white rounded"
+                className='btn caps bg-darken-4 white rounded'
                 onClick={::this.save}
               >
                 Salvar
@@ -209,7 +205,6 @@ class RebooEditor extends Component {
     )
   }
 }
-
 
 RebooEditor.propTypes = {
   handleSave: PropTypes.func,
@@ -224,4 +219,4 @@ RebooEditor.defaultProps = {
 
 export default RebooEditor
 
-export { default as createEditorContent } from './createEditorContent'
+export { default as createEditorContent } from './create-editor-content'
