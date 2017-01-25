@@ -1,11 +1,12 @@
 import React from 'react'
-import { mount } from 'enzyme'
+import { shallow } from 'enzyme'
 import { expect } from 'chai'
 import sinon from 'sinon'
 
-import GoalsPage from './goals-page'
+// Current module dependencies
+import { GoalsPage } from '~widget-plugins/match/pages'
 
-describe('app/modules/widgets/__plugins__/match/pages/goals-page', () => {
+describe('client/mobilizations/widgets/__plugins__/match/pages/goals-page', () => {
   let wrapper
   let matchList = [
     {
@@ -37,15 +38,15 @@ describe('app/modules/widgets/__plugins__/match/pages/goals-page', () => {
     dispatch: sinon.spy()
   }
 
-  const mockContext = {
+  const context = {
     router: {
       makeHref: sinon.stub(),
       isActive: sinon.stub()
     }
   }
 
-  before(() => {
-    wrapper = mount(<GoalsPage {...props} />, { context: mockContext })
+  beforeAll(() => {
+    wrapper = shallow(<GoalsPage {...props} />, { context })
   })
 
   it('should render ChoiceCombined itens equals possible match', () => {

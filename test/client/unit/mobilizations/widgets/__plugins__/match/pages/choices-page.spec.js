@@ -7,9 +7,9 @@ import { expect } from 'chai'
 import * as paths from '~client/paths'
 
 // Current module dependencies
-import ChoicesPage from './choices-page'
+import { ChoicesPage } from '~widget-plugins/match/pages'
 
-describe('app/modules/widgets/__plugins__/match/pages/choices-page', () => {
+describe('client/mobilizations/widgets/__plugins__/match/pages/choices-page', () => {
   let wrapper
 
   let props = {
@@ -21,7 +21,7 @@ describe('app/modules/widgets/__plugins__/match/pages/choices-page', () => {
     location: { pathname: paths.matchChoicesMobilizationWidget(1, 1) }
   }
 
-  const _context = {
+  const context = {
     router: {
       makeHref: sinon.stub(),
       isActive: sinon.stub()
@@ -29,7 +29,7 @@ describe('app/modules/widgets/__plugins__/match/pages/choices-page', () => {
   }
 
   beforeEach(() => {
-    wrapper = shallow(<ChoicesPage {...props} />, { context: _context })
+    wrapper = shallow(<ChoicesPage {...props} />, { context })
   })
 
   describe('#render', () => {
@@ -43,11 +43,11 @@ describe('app/modules/widgets/__plugins__/match/pages/choices-page', () => {
   })
 
   describe('#widget', () => {
-    before(() => {
+    beforeAll(() => {
       ChoicesPage.prototype.props = props
     })
 
-    after(() => {
+    afterAll(() => {
       ChoicesPage.prototype.props = undefined
     })
 
@@ -68,7 +68,7 @@ describe('app/modules/widgets/__plugins__/match/pages/choices-page', () => {
       props.widgets = [{
         id: 1, settings: { 'title_text': '', 'choices1': '1', 'choicesA': 'A' }
       }]
-      wrapper = shallow(<ChoicesPage {...props} />, { context: _context })
+      wrapper = shallow(<ChoicesPage {...props} />, { context })
       wrapper.find('form').simulate('submit')
       expect(wrapper.find('span.red').length).to.equal(1)
     })
@@ -78,7 +78,7 @@ describe('app/modules/widgets/__plugins__/match/pages/choices-page', () => {
         id: 1,
         settings: { 'title_text': 'lorem', 'choices1': '', 'choicesA': 'A' }
       }]
-      wrapper = shallow(<ChoicesPage {...props} />, { context: _context })
+      wrapper = shallow(<ChoicesPage {...props} />, { context })
       wrapper.find('form').simulate('submit')
       expect(wrapper.find('span.red').length).to.equal(1)
     })
@@ -88,14 +88,14 @@ describe('app/modules/widgets/__plugins__/match/pages/choices-page', () => {
         id: 1,
         settings: { 'title_text': 'lorem', 'choices1': '1', 'choicesA': '' }
       }]
-      wrapper = shallow(<ChoicesPage {...props} />, { context: _context })
+      wrapper = shallow(<ChoicesPage {...props} />, { context })
       wrapper.find('form').simulate('submit')
       expect(wrapper.find('span.red').length).to.equal(1)
     })
 
     it('should render all the errors when submit form and empty states', () => {
       props.widgets = [{ id: 1, settings: {} }]
-      wrapper = shallow(<ChoicesPage {...props} />, { context: _context })
+      wrapper = shallow(<ChoicesPage {...props} />, { context })
       wrapper.find('form').simulate('submit')
       expect(wrapper.find('span.red').length).to.equal(3)
     })
