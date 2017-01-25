@@ -2,24 +2,20 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 
 // Global module dependencies
-import { Loading } from '../../../scripts/Dashboard/components'
-import { GoogleFontsLoader } from '../../../components/Fonts'
-import * as arrayUtil from '../../../util/array'
+import { Loading } from '~tmp-dashboard/components'
+import { GoogleFontsLoader } from '~components/fonts'
+import * as arrayUtil from '~utils/array'
 
 // Children modules dependencies
-import {
-  actions as BlockActions,
-  selectors as BlockSelectors
-} from '../blocks'
-import {
-  actions as WidgetActions,
-  selectors as WidgetSelectors
-} from '../../widgets'
+import * as BlockActions from '~mobilizations/blocks/action-creators'
+import * as BlockSelectors from '~mobilizations/blocks/selectors'
+import * as WidgetActions from '~mobilizations/widgets/action-creators'
+import * as WidgetSelectors from '~mobilizations/widgets/selectors'
 
 // Current module dependencies
 import * as MobilizationSelectors from '../selectors'
 
-class MobilizationEditContainer extends Component {
+export class MobilizationEditContainer extends Component {
   static fetchData (store, params) {
     const promises = []
     if (!BlockSelectors.isLoaded(store.getState())) {

@@ -1,24 +1,25 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 
-import * as MobilizationSelectors from '../selectors'
-
+// Global module dependencies
 import {
   SettingsPageLayout,
   SettingsPageMenuLayout,
   SettingsPageContentLayout
-} from '../../../components/Layout'
-import { Tabs, Tab } from '../../../components/Navigation'
-import * as Paths from '../../../scripts/Paths'
+} from '~components/layout'
+import * as paths from '~client/paths'
+import { Tabs, Tab } from '~components/navigation/tabs'
 
+// Current module dependencies
+import * as MobilizationSelectors from '../selectors'
 
-const MobilizationSettingsContainer = (props) => {
+export const MobilizationSettingsContainer = props => {
   const { children, mobilization: { id }, location: { pathname } } = props
 
-  const basicsPath = Paths.basicsMobilization(id)
-  const sharingPath = Paths.sharingMobilization(id)
-  const analyticsPath = Paths.analyticsMobilization(id)
-  const customDomainPath = Paths.customDomainMobilization(id)
+  const basicsPath = paths.basicsMobilization(id)
+  const sharingPath = paths.sharingMobilization(id)
+  const analyticsPath = paths.analyticsMobilization(id)
+  const customDomainPath = paths.customDomainMobilization(id)
 
   return (
     <SettingsPageLayout>

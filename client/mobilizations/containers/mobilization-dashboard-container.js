@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Loading } from '../../../scripts/Dashboard/components'
-import { Sidebar, getSidebarProps } from '../../../scripts/Dashboard/Sidebar'
 
+// Global module dependencies
+import { Loading } from '~components/await'
+import { Sidebar, getSidebarProps } from '~tmp-dashboard/Sidebar'
+
+// Current module dependencies
 import * as MobilizationSelectors from '../selectors'
 import { asyncFetch } from '../action-creators'
 

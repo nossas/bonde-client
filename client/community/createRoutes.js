@@ -1,7 +1,10 @@
 import React from 'react'
 import { Route } from 'react-router'
-import { BackgroundContainer } from '~dashboard/containers'
 
+// Global module dependencies
+import { BackgroundContainer } from '~tmp-dashboard/containers'
+
+// Current module dependencies
 import { EditContainer } from './containers'
 import { AddPage, ListPage, InfoPage, MailchimpPage, RecipientPage } from './pages'
 
