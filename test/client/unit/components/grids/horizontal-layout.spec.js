@@ -2,17 +2,14 @@ import React from 'react'
 import { expect } from 'chai'
 import { mount } from 'enzyme'
 
-import { HorizontalLayout } from '../../Grids'
+// Current module dependencies
+import { HorizontalLayout } from '~components/grids'
 
+const Dummy = props => (
+  <span>Dummy</span>
+)
 
-const Dummy = (props) => {
-  return (
-    <span {...props}>Dummy</span>
-  )
-}
-
-
-describe('<HorizontalLayout />', () => {
+describe('client/components/grids/horizontal-layout', () => {
   let wrapper
 
   beforeEach(() => {
@@ -24,7 +21,7 @@ describe('<HorizontalLayout />', () => {
     )
   })
 
-  it('should render ok by defeault', () => {
+  it('should render ok by default', () => {
     expect(wrapper).to.be.ok
   })
 
