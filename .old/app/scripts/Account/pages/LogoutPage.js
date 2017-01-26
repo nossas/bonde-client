@@ -8,7 +8,7 @@ import { Loading } from '../../Dashboard/components'
 import * as Paths from '../../Paths'
 
 
-@reactMixin.decorate(Navigation)
+// @revert @reactMixin.decorate(Navigation)
 class LogoutPage extends Component {
 
   componentDidMount() {

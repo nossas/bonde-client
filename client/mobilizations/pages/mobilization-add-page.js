@@ -14,7 +14,7 @@ import { asyncAdd } from '../action-creators'
 import * as MobilizationSelectors from '../selectors'
 import MobilizationBasicsForm, { fields, validate } from '../components/mobilization-basics-form'
 
-@reactMixin.decorate(Navigation)
+// @revert @reactMixin.decorate(Navigation)
 export class MobilizationAddPage extends Component {
 
   onFinishSubmit () {

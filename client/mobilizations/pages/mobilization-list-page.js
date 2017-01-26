@@ -32,7 +32,7 @@ import { PageHeader } from '..//components'
 import { select, toggleMenu } from '../action-creators'
 import * as MobilizationSelectors from '../selectors'
 
-@reactMixin.decorate(Navigation)
+// @revert @reactMixin.decorate(Navigation)
 export class MobilizationListPage extends Component {
 
   componentWillMount () {

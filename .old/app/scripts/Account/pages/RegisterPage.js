@@ -9,7 +9,7 @@ import * as Paths from '../../Paths'
 import { isValidEmail } from '../../../util/validation-helper'
 
 
-@decorate(Navigation)
+// @revert @decorate(Navigation)
 class RegisterPage extends Component {
 
   componentWillReceiveProps(nextProps) {

@@ -17,7 +17,7 @@ import Toolbar, {
   decorator,
   getBlockAlignment
 } from './Toolbar'
-import './styles.scss'
+if (process.env.BROWSER) require('./styles.scss')
 
 class RebooEditor extends Component {
   constructor (props) {

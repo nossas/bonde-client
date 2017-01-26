@@ -2,8 +2,10 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import ga from 'react-ga'
 
-import '../node_modules/font-awesome/scss/font-awesome.scss'
-import './styles/main.scss'
+if (process.env.BROWSER) {
+  require('~node_modules/font-awesome/scss/font-awesome.scss')
+  require('~client/styles/main.scss')
+}
 import { GoogleFontsLoader } from '~components/fonts'
 import { actions as AccountActions, selectors as AccountSelectors } from '~account'
 

@@ -3,11 +3,11 @@ import { Link, Navigation } from 'react-router'
 import reactMixin from 'react-mixin'
 import classnames from 'classnames'
 
-import './tab.scss'
+if (process.env.BROWSER) require('./tab.scss')
 
-@reactMixin.decorate(Navigation)
+// @revert @reactMixin.decorate(Navigation)
 class Tab extends Component {
-  render() {
+  render () {
     const { text, index, path, isActive } = this.props
     if (path) {
       return (
@@ -23,7 +23,7 @@ class Tab extends Component {
       )
     }
     return (
-      <span className={classnames("tab inline-block mr2 py2", isActive ? 'bold black' : null)}>
+      <span className={classnames('tab inline-block mr2 py2', isActive ? 'bold black' : null)}>
         <i
           className={classnames('circle center inline-block mr2', isActive ? 'bg-pagenta' : 'bg-gray94')}
         >

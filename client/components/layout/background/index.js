@@ -1,7 +1,7 @@
 import React from 'react'
 
 // Current module dependencies
-import './index.scss'
+if (process.env.BROWSER) require('./index.scss')
 
 const Background = ({ children }) => (
   <div className='bg-cover bg-center bg-reboo absolute top-0 right-0 bottom-0 left-0'>

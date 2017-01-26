@@ -17,7 +17,7 @@ import {
   actions as BlockActions,
   selectors as BlockSelectors
 } from '~mobilizations/blocks'
-import './index.scss'
+if (process.env.BROWSER) require('./index.scss')
 
 export class BlockCreate extends Component {
   render () {

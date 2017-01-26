@@ -1,7 +1,9 @@
 import React, { PropTypes } from 'react'
 import classnames from 'classnames'
 
-import './browsable-list.scss'
+if (process.env.BROWSER) {
+  require('./browsable-list.scss')
+}
 
 const BrowsableList = ({ children, className, style }) => (
   <div className={classnames('browsable-list rounded', className)} style={style}>
@@ -12,7 +14,7 @@ const BrowsableList = ({ children, className, style }) => (
 BrowsableList.propTypes = {
   children: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   className: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
-  style: PropTypes.object,
+  style: PropTypes.object
 }
 
 export default BrowsableList

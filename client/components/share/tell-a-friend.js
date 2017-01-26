@@ -23,7 +23,7 @@ TellAFriend.propTypes = {
 }
 
 TellAFriend.defaultProps = {
-  imageUrl: require('./check-mark-image.png')
+  imageUrl: process.env.BROWSER ? require('./check-mark-image.png') : null
 }
 
 export default TellAFriend

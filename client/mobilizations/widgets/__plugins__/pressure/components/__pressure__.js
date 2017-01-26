@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 // Global module dependencies
 import * as paths from '~client/paths'
+import * as mock from '~utils/mock'
 
 // Parent module dependencies
 import { WidgetOverlay, FinishMessageCustom } from '~mobilizations/widgets/components'
@@ -159,9 +160,18 @@ Pressure.contextTypes = {
   router: PropTypes.object.isRequired
 }
 
-const mapStateToProps = ({ widgets: { plugins: { pressure } } }) => ({
-  saving: pressure.saving,
-  filled: pressure.filled
-})
+// const mapStateToProps = ({ widgets: { plugins: { pressure } } }) => ({
+//   saving: pressure.saving,
+//   filled: pressure.filled
+// })
+
+// @revert
+const mapStateToProps = () => {
+  const { widgets: { plugins: { pressure } } } = mock.state
+  return {
+    saving: pressure.saving,
+    filled: pressure.filled
+  }
+}
 
 export default connect(mapStateToProps, PressureActions)(Pressure)

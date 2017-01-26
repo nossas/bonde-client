@@ -5,7 +5,7 @@ import Footer from './global/footer'
 import { StyleSheet, css } from 'aphrodite'
 
 if (process.env.BROWSER) {
-  require('../../client/styles/main.scss')
+  // require('../../client/styles/main.scss')
 }
 
 const App = ({ children }) => (

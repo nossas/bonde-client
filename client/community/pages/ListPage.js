@@ -11,7 +11,7 @@ import { Loading } from '~components/await'
 import { fetch, select } from '../actions'
 import { ListItem } from '../components'
 
-@decorate(Navigation)
+// @revert @decorate(Navigation)
 class ListPage extends Component {
   componentDidMount () {
     const { isLoaded, fetch } = this.props

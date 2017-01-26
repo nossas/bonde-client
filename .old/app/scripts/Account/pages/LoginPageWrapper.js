@@ -13,7 +13,7 @@ import { isValidEmail } from '../../../util/validation-helper'
 
 export default redirectUrl => {
 
-  @decorate(Navigation)
+  // @revert @decorate(Navigation)
   class LoginPage extends Component {
 
     componentWillReceiveProps(nextProps) {

@@ -6,7 +6,7 @@ import List from '~mobilizations/components/list'
 import { Item, Avatar, Name, CreatedAt } from '~mobilizations/components/list/items'
 
 // Current module dependencies
-import './selectable-list.scss'
+if (process.env.BROWSER) require('./index.scss')
 
 export const SelectableList = ({
   list,

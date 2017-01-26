@@ -17,7 +17,7 @@ import {
 import * as actions from '../actions'
 import * as paths from '../paths'
 
-@decorate(Navigation)
+// @revert @decorate(Navigation)
 class AddPage extends Component {
   componentWillReceiveProps (nextProps) {
     const { submitting } = this.props

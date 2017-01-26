@@ -8,7 +8,7 @@ import Editor from '~components/editor-draft-js'
 import { actions as WidgetActions } from '~mobilizations/widgets'
 
 // Current module dependencies
-import './index.scss'
+if (process.env.BROWSER) require('./index.scss')
 
 class EditorNew extends React.Component {
   constructor (props, context) {

@@ -58,7 +58,10 @@ module.exports = {
           'sass-loader?sourceMap'
         ])
       },
-      { test: /\.(png)$/, loader: 'file?name=[path][sha512:hash:base64:7].[ext]' },
+      {
+        test: /\.(png|otf.*|eot.*|ttf.*|woff.*|woff2.*)$/,
+        loader: 'file?name=[path][sha512:hash:base64:7].[ext]'
+      },
       { test: /\.svg/, loader: 'svg-url' }
     ]
   },

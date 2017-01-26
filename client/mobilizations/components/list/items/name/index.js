@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import classnames from 'classnames'
 
 // Current module dependencies
-import './index.scss'
+if (process.env.BROWSER) require('./index.scss')
 
 const Name = ({ name, goal, className, style, maxLength }) => (
   <div className={classnames('name px3 py2 col col-5', className)} style={style}>

@@ -1,13 +1,15 @@
 // polyfill webpack require.ensure
 if (typeof require.ensure !== 'function') require.ensure = (d, c) => c(require)
 
-import App from '../components/app'
-import Home from '../components/home'
+// import App from '../components/app'
+// import Home from '../components/home'
+import Application from '~client/application'
+import { CustomDomainPage } from '~client/mobilizations/pages'
 
 export default function createRoutes (store) {
   const root = {
     path: '/',
-    component: App,
+    component: Application,
     getChildRoutes (location, cb) {
       require.ensure([], (require) => {
         cb(null, [
@@ -22,7 +24,7 @@ export default function createRoutes (store) {
     },
 
     indexRoute: {
-      component: Home
+      component: CustomDomainPage
     }
   }
 

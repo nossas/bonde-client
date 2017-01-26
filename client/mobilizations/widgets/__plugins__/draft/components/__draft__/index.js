@@ -9,7 +9,7 @@ import { actions as WidgetActions } from '~mobilizations/widgets'
 
 // Current module dependencies
 import { DraftWidgetButton } from '../../components'
-import './index.scss'
+if (process.env.BROWSER) require('./index.scss')
 
 class Draft extends Component {
   constructor (props, context) {

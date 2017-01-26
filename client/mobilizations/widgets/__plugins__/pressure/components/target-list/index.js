@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 
 // Current module dependencies
-import './index.scss'
+if (process.env.BROWSER) require('./index.scss')
 
 const parseTarget = target => {
   const targetSplit = target.split('<')

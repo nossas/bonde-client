@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 
 // Current module dependencies
-import './index.scss'
+if (process.env.BROWSER) require('./index.scss')
 
 const DraftWidgetButton = ({ label, icon, onClick }) => (
   <div className='draft-widget-button col col-4 p1'>

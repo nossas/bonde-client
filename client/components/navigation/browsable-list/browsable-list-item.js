@@ -2,14 +2,16 @@ import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import classnames from 'classnames'
 
-import './browsable-list-item.scss'
+if (process.env.BROWSER) {
+  require('./browsable-list-item.scss')
+}
 
 const BrowsableListItem = ({ className, style, leftIcon, title, subtitle, rightIcon, path }) => (
   <Link className={classnames('browsable-list-item', className)} style={style} to={path}>
     <i className={`bg-animation-icon fa fa-${rightIcon}`} />
     <i className={`icon left-icon fa fa-${leftIcon}`} />
-    <span className="title">{title}</span>
-    <span className="subtitle">{subtitle}</span>
+    <span className='title'>{title}</span>
+    <span className='subtitle'>{subtitle}</span>
     <i className={`icon right-icon fa fa-${rightIcon}`} />
   </Link>
 )
@@ -22,7 +24,7 @@ BrowsableListItem.propTypes = {
   rightIcon: PropTypes.string,
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  path: PropTypes.string,
+  path: PropTypes.string
 }
 
 BrowsableListItem.defaultProps = {

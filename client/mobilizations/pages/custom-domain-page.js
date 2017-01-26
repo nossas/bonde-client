@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import { TechnicalIssues } from '~components/error'
 import { GoogleFontsLoader } from '~components/fonts'
 import * as arrayUtil from '~utils/array'
+import * as mock from '~utils/mock'
 
 // Children modules dependencies
 import {
@@ -94,9 +95,10 @@ CustomDomainPage.propTypes = {
 }
 
 const mapStateToProps = (state, props) => ({
-  mobilization: MobilizationSelectors.getList(state)[0],
-  blocks: state.blocks.data,
-  widgets: state.widgets.list.data
+  // @revert
+  mobilization: MobilizationSelectors.getList(mock.state)[0],
+  blocks: mock.state.blocks.data,
+  widgets: mock.state.widgets.list.data
 })
 
 export default connect(mapStateToProps)(CustomDomainPage)

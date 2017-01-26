@@ -5,7 +5,7 @@ import classnames from 'classnames'
 import { InputCounter } from '~components/form-util'
 
 // Current module dependencies
-import Raise from './Raise'
+import { Raise } from '~components/forms'
 
 class ControlLabel extends Component {
   render () {

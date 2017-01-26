@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 
-import './technical-issues.scss'
+if (process.env.BROWSER) {
+  require('./technical-issues.scss')
+}
 
 class TechnicalIssues extends Component {
   render () {

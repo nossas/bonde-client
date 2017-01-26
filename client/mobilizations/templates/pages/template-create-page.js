@@ -19,7 +19,7 @@ import * as MobilizationSelectors from '~mobilizations/selectors'
 // Current module dependencies
 import { asyncCreateTemplate } from '../action-creators'
 
-@reactMixin.decorate(Navigation)
+// @revert @reactMixin.decorate(Navigation)
 export class TemplateCreatePage extends Component {
   onFinishSubmit () {
     this.transitionTo(paths.mobilizations())

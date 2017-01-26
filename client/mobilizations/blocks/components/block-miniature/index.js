@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import classnames from 'classnames'
 
 // Current module dependencies
-import './index.scss'
+if (process.env.BROWSER) require('./index.scss')
 
 const isActive = (selected, layout) => JSON.stringify(selected) === JSON.stringify(layout)
 const BlockMiniature = ({ selectedLayout, layout, onClick }) => (
