@@ -1,12 +1,12 @@
 const path = require('path')
 const webpack = require('webpack')
 const CONFIG = require('./webpack.base')
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-const inlinesvg = require('postcss-inline-svg');
-const autoprefixer = require('autoprefixer');
+const inlinesvg = require('postcss-inline-svg')
+const autoprefixer = require('autoprefixer')
 
-const { CLIENT_ENTRY, CLIENT_OUTPUT, PUBLIC_PATH } = CONFIG
+const { CLIENT_ENTRY, CLIENT_OUTPUT } = CONFIG
 
 module.exports = {
   devtool: 'eval',
@@ -47,17 +47,31 @@ module.exports = {
         exclude: /(node_modules|server)/,
         query: {
           cacheDirectory: true,
-          presets: ["es2015", "react", "stage-0"]
+          presets: ['es2015', 'react', 'stage-0']
         }
       },
       {
         test: /\.(scss|sass)$/,
-        loader: ExtractTextPlugin.extract('style-loader', ['css-loader?sourceMap', 'postcss-loader?parser=postcss-scss', 'sass-loader?sourceMap'])
-      }
+        loader: ExtractTextPlugin.extract('style-loader', [
+          'css-loader?sourceMap',
+          'postcss-loader?parser=postcss-scss',
+          'sass-loader?sourceMap'
+        ])
+      },
+      { test: /\.(png)$/, loader: 'file?name=[path][sha512:hash:base64:7].[ext]' },
+      { test: /\.svg/, loader: 'svg-url' }
     ]
   },
-  postcss: function() {
-    return [autoprefixer, inlinesvg];
+  node: {
+    fs: 'empty'
+  },
+  externals: [
+    {
+      './cptable': 'var cptable'
+    }
+  ],
+  postcss: function () {
+    return [autoprefixer, inlinesvg]
   },
   sassLoader: {
     includePaths: [path.join(__dirname, '.scss')]
@@ -77,5 +91,5 @@ module.exports = {
       allChunks: true
     }),
     new webpack.NoErrorsPlugin()
-  ],
+  ]
 }
