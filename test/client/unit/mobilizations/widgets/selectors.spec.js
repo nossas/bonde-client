@@ -1,9 +1,10 @@
 import { expect } from 'chai'
 
-import * as WidgetSelectors from './selectors'
+// Current module dependencies
+import * as WidgetSelectors from '~mobilizations/widgets/selectors'
 
-describe('app/modules/widgets/selectors', () => {
-  context('#getWidget', () => {
+describe('client/mobilizations/widgets/selectors', () => {
+  describe('#getWidget', () => {
     const state = {
       widgets: {
         list: {

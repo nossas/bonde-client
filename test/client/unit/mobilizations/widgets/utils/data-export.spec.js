@@ -1,28 +1,29 @@
 import sinon from 'sinon'
 import { expect } from 'chai'
 
-import { forceDownloadFile, makeExcelFile } from '../../../modules/widgets/utils/data-export'
+// Current module dependencies
+import { forceDownloadFile, makeExcelFile } from '~mobilizations/widgets/utils/data-export'
 
-describe.skip('app/modules/widgets/action-creators', () => {
+describe.skip('client/mobilizations/widgets/utils/data-export', () => {
   let sandbox
 
-  before(() => {
+  beforeAll(() => {
     sandbox = sinon.sandbox.create()
     global.download = sandbox.spy()
     global.XLSX = sandbox.spy()
   })
 
-  context('#forceDownloadFile', () => {
+  describe('#forceDownloadFile', () => {
     // TODO
     expect(forceDownloadFile)
   })
 
-  context('#makeExcelFile', () => {
+  describe('#makeExcelFile', () => {
     const data = [[1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4]]
     const sheetName = 'Foo Bar Sheet Name!'
     const XLSX = {}
 
-    before(() => {
+    beforeAll(() => {
       XLSX.write = sandbox.spy()
     })
 

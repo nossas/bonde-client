@@ -1,10 +1,11 @@
 import { expect } from 'chai'
 
-import * as t from '../action-types'
-import { createAction } from '../action-creators/create-action'
-import reducer from './data-export'
+// Current module dependencies
+import * as t from '~mobilizations/widgets/action-types'
+import { createAction } from '~mobilizations/widgets/action-creators/create-action'
+import reducer from '~mobilizations/widgets/reducers/data-export'
 
-describe('app/modules/widgets/reducers/data-export', () => {
+describe('client/mobilizations/widgets/reducers/data-export', () => {
   it('should update state with loading property as true', () => {
     const action = { type: t.EXPORT_DATACLIP_REQUEST }
     const nextState = reducer(undefined, action)

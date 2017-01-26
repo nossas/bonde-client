@@ -1,10 +1,11 @@
 import { expect } from 'chai'
 
-import * as t from '../action-types'
-import reducer from './list'
-import { createAction } from '../action-creators/create-action'
+// Current module dependencies
+import * as t from '~mobilizations/widgets/action-types'
+import { createAction } from '~mobilizations/widgets/action-creators/create-action'
+import reducer from '~mobilizations/widgets/reducers/list'
 
-describe('app/modules/widgets/reducers/list', () => {
+describe('client/mobilizations/widgets/reducers/list', () => {
   it('should update state widget.exported_at when download report', () => {
     const initialState = {
       data: [{ id: 1, kind: 'form_entry' }]
