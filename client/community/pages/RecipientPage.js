@@ -13,7 +13,7 @@ import {
   RadioGroup,
   Radio
 } from '~components/forms'
-import { FloatLayout } from '~tmp-dashboard/Grids'
+import { FloatLayout } from '~components/grids'
 
 // Current module dependencies
 import { getCodeBanks } from '../utils'

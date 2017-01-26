@@ -11,7 +11,7 @@ import {
   ControlLabel,
   SuccessMessage
 } from '~components/forms'
-import { FloatLayout } from '~tmp-dashboard/Grids'
+import { FloatLayout } from '~components/grids'
 
 const MailchimpPage = ({
   fields: {

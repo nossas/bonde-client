@@ -12,7 +12,7 @@ import {
   Radio,
   ColorPicker
 } from '~components/forms'
-import { HorizontalLayout } from '~tmp-dashboard/Grids'
+import { HorizontalLayout } from '~components/grids'
 import { SettingsPageLayout, SettingsPageContentLayout } from '~components/layout'
 
 // Parent module dependencies

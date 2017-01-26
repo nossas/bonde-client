@@ -11,7 +11,7 @@ import {
   UploadImageField,
   SuccessMessage
 } from '~components/forms'
-import { FloatLayout } from '../../Dashboard/Grids'
+import { FloatLayout } from '~components/grids'
 
 // Current module dependencies
 import { ForceDownloadViaAjax } from '../components'
