@@ -2,10 +2,10 @@ import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-import { ColorPicker } from '../../Forms'
+// Current module dependencies
+import { ColorPicker } from '~components/forms'
 
-
-describe('app/scripts/Dashboard/Forms/ColorPicker', () => {
+describe('client/components/forms/color-picker', () => {
   let wrapper
   const props = {
     dispatch: () => {}

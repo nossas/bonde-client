@@ -2,10 +2,10 @@ import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-import { FormDropdown } from '../../Forms'
+// Current module dependencies
+import { FormDropdown } from '~components/forms'
 
-
-describe('Dashboard/Forms/FormDropdown', () => {
+describe('client/components/forms/form-dropdown', () => {
   let wrapper
 
   beforeEach(() => {
@@ -40,11 +40,11 @@ describe('Dashboard/Forms/FormDropdown', () => {
     expect(wrapper.find('select').props().onBlur).to.equal(onBlur)
   })
 
-  context('with childrens', () => {
+  describe('with childrens', () => {
     it('should render with one <option> children', () => {
       wrapper = shallow(
         <FormDropdown>
-          <option value="foo">Foo</option>
+          <option value='foo'>Foo</option>
         </FormDropdown>
       )
       expect(wrapper.find('option')).to.have.lengthOf(1)
@@ -52,9 +52,9 @@ describe('Dashboard/Forms/FormDropdown', () => {
     it('should render with multiple <option> childrens', () => {
       wrapper = shallow(
         <FormDropdown>
-          <option value="foo">Foo</option>
-          <option value="bar">Bar</option>
-          <option value="baz">Baz</option>
+          <option value='foo'>Foo</option>
+          <option value='bar'>Bar</option>
+          <option value='baz'>Baz</option>
         </FormDropdown>
       )
       expect(wrapper.find('option')).to.have.lengthOf(3)

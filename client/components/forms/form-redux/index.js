@@ -1,17 +1,17 @@
 import React, { Component, PropTypes } from 'react'
 import classnames from 'classnames'
 
-import { ControlButtons } from './'
-
-import './scss/form-redux.scss'
+// Current module dependencies
+import { ControlButtons } from '../'
+import './index.scss'
 
 class FormRedux extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = { submitted: false }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     const { onFinishSubmit } = this.props
     if (this.props.submitting && !nextProps.submitting && !nextProps.submitFailed) {
       this.setState({ submitted: true })
@@ -19,7 +19,7 @@ class FormRedux extends Component {
     }
   }
 
-  getChildContext() {
+  getChildContext () {
     const { inline, floatButton, successMessage, ...rest } = this.props
     return {
       $formRedux: {
@@ -32,7 +32,7 @@ class FormRedux extends Component {
     }
   }
 
-  render() {
+  render () {
     const {
       children,
       onSubmit,

@@ -2,22 +2,21 @@ import React from 'react'
 import { expect } from 'chai'
 import { mount } from 'enzyme'
 
-import { RadioGroup } from '../../Forms'
+// Current module dependencies
+import { RadioGroup } from '~components/forms'
 
+const Radio = props => (
+  <input type='radio' />
+)
 
-const Radio = (props) => {
-  return <input type="radio" {...props} />
-}
-
-
-describe('<RadioGroup />', () => {
+describe('client/components/forms/radio-group', () => {
   let wrapper
 
   beforeEach(() => {
     wrapper = mount(
       <RadioGroup>
-        <Radio value="radio-group1" />
-        <Radio value="radio-group2" />
+        <Radio value='radio-group1' />
+        <Radio value='radio-group2' />
       </RadioGroup>,
       { context: {} }
     )

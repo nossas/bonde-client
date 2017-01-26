@@ -2,14 +2,14 @@ import React, { Component, PropTypes } from 'react'
 import classnames from 'classnames'
 
 class FormGroup extends Component {
-  getChildContext() {
+  getChildContext () {
     const { controlId, layout, value, onChange, onBlur, error, touched, valid } = this.props
     return {
       $formGroup: { controlId, layout, value, onChange, onBlur, error, touched, valid }
     }
   }
 
-  render() {
+  render () {
     const { children, className, layout, style } = this.props
     const styleGroup = layout === 'inline' ? { paddingRight: '1rem' } : {}
 

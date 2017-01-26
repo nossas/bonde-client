@@ -2,25 +2,23 @@ import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
 import ReactS3Uploader from 'react-s3-uploader'
 
-
 class UploadImageField extends Component {
-
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = { loading: false }
   }
 
-  onProgress() {
+  onProgress () {
     if (!this.state.loading) {
       this.setState({ loading: true })
     }
   }
 
-  onError(error) {
+  onError () {
     this.setState({ loading: false })
   }
 
-  onFinish(image) {
+  onFinish (image) {
     this.setState({ loading: false })
     const { $formGroup: { onChange } } = this.context
     const e = {
@@ -29,49 +27,49 @@ class UploadImageField extends Component {
     onChange(e)
   }
 
-  onClick() {
+  onClick () {
     ReactDOM.findDOMNode(this.refs.inputFile).click()
   }
 
-  render() {
+  render () {
     const { loading } = this.state
     const { className, signingUrl, theme } = this.props
     const { $formGroup: { value } } = this.context
 
-    let content = (<i className="fa fa-image" />)
+    let content = (<i className='fa fa-image' />)
     if (loading) {
-      content = <i className="fa fa-circle-o-notch fa-spin fa-w" />
+      content = <i className='fa fa-circle-o-notch fa-spin fa-w' />
     } else if (value) {
-      content = <img src={value} role="presentation" />
+      content = <img src={value} role='presentation' />
     }
 
     if (theme === 'icon') {
       return (
-        <div className="uploadImageFile">
-          <button type="button" disable={loading} className={className} onClick={this.onClick.bind(this)}>
+        <div className='uploadImageFile'>
+          <button type='button' disable={loading} className={className} onClick={this.onClick.bind(this)}>
             {content}
           </button>
           <ReactS3Uploader
             signingUrl={signingUrl}
-            accept="image/*"
+            accept='image/*'
             onProgress={this.onProgress.bind(this)}
             onError={this.onError.bind(this)}
             onFinish={this.onFinish.bind(this)}
-            ref="inputFile"
+            ref='inputFile'
           />
         </div>
       )
     }
     // if theme === 'classic'
-    return loading ? <i className="fa fa-spin fa-refresh" /> : (
+    return loading ? <i className='fa fa-spin fa-refresh' /> : (
       <ReactS3Uploader
         signingUrl={signingUrl}
-        accept="image/*"
+        accept='image/*'
         onProgress={this.onProgress.bind(this)}
         onError={this.onError.bind(this)}
         onFinish={this.onFinish.bind(this)}
-        ref="inputFile"
-        className="border-none bg-darken-4 rounded p1 white"
+        ref='inputFile'
+        className='border-none bg-darken-4 rounded p1 white'
         style={{
           position: 'absolute',
           left: '50%',

@@ -2,10 +2,10 @@ import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-import { Radio } from '../../Forms'
+// Current module dependencies
+import { Radio } from '~components/forms'
 
-
-describe('app/scripts/Dashboard/Forms/Radio', () => {
+describe('client/components/forms/radio', () => {
   let wrapper
 
   beforeEach(() => {

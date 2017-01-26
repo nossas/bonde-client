@@ -2,29 +2,30 @@ import React, { Component, PropTypes } from 'react'
 import { expect } from 'chai'
 import { mount } from 'enzyme'
 
-import { FormGroup } from '../../Forms'
+// Global module dependencies
+import * as mock from '~utils/mock'
 
+// Current module dependencies
+import { FormGroup } from '~components/forms'
+
+const Label = props => (<label />)
 
 class ControlLabel extends Component {
-
-  render() {
+  render () {
     const formGroup = this.context.$formGroup
-
-    return <label {...formGroup} />
+    return <Label {...formGroup} />
   }
 }
-
 ControlLabel.contextTypes = {
-  $formGroup: PropTypes.object.isRequired,
+  $formGroup: PropTypes.object.isRequired
 }
 
-
-describe('<FormGroup />', () => {
+describe('client/components/forms/form-group', () => {
   let wrapper
 
   beforeEach(() => {
     wrapper = mount(
-      <FormGroup controlId="form-group-id">
+      <FormGroup controlId='form-group-id'>
         <ControlLabel>Dummy</ControlLabel>
       </FormGroup>
     )
@@ -35,7 +36,7 @@ describe('<FormGroup />', () => {
   })
 
   it('should passed controlId by context', () => {
-    const label = wrapper.find('ControlLabel').find('label')
+    const label = wrapper.find('ControlLabel').find('Label')
     expect(label.props()).to.deep.equal({
       controlId: 'form-group-id',
       value: undefined,
@@ -49,18 +50,16 @@ describe('<FormGroup />', () => {
   })
 
   it('should pass to context child props redux-form field', () => {
-    const onChange = () => {}
-    const onBlur = () => {}
     wrapper.setProps({
       value: 'dummy',
-      onChange: onChange,
-      onBlur: onBlur
+      onChange: mock.noop,
+      onBlur: mock.noop
     })
-    const label = wrapper.find('ControlLabel').find('label')
+    const label = wrapper.find('ControlLabel').find('Label')
     expect(label.props().controlId).to.equal('form-group-id')
     expect(label.props().value).to.equal('dummy')
-    expect(label.props().onChange).to.equal(onChange)
-    expect(label.props().onBlur).to.equal(onBlur)
+    expect(label.props().onChange).to.equal(mock.noop)
+    expect(label.props().onBlur).to.equal(mock.noop)
   })
 
   it('should render with padding right if passed layout is inline', () => {

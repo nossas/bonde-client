@@ -2,9 +2,10 @@ import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-import { ControlButtons } from '../../Forms'
+// Current module dependencies
+import { ControlButtons } from '~components/forms'
 
-describe('Dashboard/Forms/ControlButtons', () => {
+describe('client/components/forms/control-buttons', () => {
   let wrapper
   const context = { $formRedux: { floatButton: '', successMessage: 'Foo Bar!' } }
   const props = {
@@ -15,7 +16,7 @@ describe('Dashboard/Forms/ControlButtons', () => {
   }
 
   describe('default', () => {
-    before(() => {
+    beforeAll(() => {
       wrapper = shallow(<ControlButtons {...props} />, { context })
     })
     it('should render buttons without form inline style', () => {
@@ -33,7 +34,7 @@ describe('Dashboard/Forms/ControlButtons', () => {
   })
 
   describe('without cancel button', () => {
-    before(() => {
+    beforeAll(() => {
       wrapper = shallow(<ControlButtons {...{ ...props, showCancel: false }} />, { context })
     })
     it('should not render cancel button', () => {
@@ -42,7 +43,7 @@ describe('Dashboard/Forms/ControlButtons', () => {
   })
 
   describe('with form inline style', () => {
-    before(() => {
+    beforeAll(() => {
       wrapper = shallow(<ControlButtons {...{ ...props, formInline: true }} />, { context })
     })
     it('should render buttons with form inline style', () => {
@@ -51,7 +52,7 @@ describe('Dashboard/Forms/ControlButtons', () => {
   })
 
   describe('with submitting status', () => {
-    before(() => {
+    beforeAll(() => {
       wrapper = shallow(<ControlButtons {...{ ...props, submitting: true }} />, { context })
     })
     it('should render submit button with its text as "Salvando..."', () => {
@@ -63,7 +64,7 @@ describe('Dashboard/Forms/ControlButtons', () => {
   })
 
   describe('with submitted status', () => {
-    before(() => {
+    beforeAll(() => {
       wrapper = shallow(<ControlButtons {...{ ...props, submitted: true }} />, { context })
     })
     it('should render form submit success message', () => {
@@ -78,7 +79,7 @@ describe('Dashboard/Forms/ControlButtons', () => {
   })
 
   describe('with dirty status', () => {
-    before(() => {
+    beforeAll(() => {
       wrapper = shallow(<ControlButtons {...{ ...props, dirty: true, valid: true }} />, { context })
     })
     it('should render submit button as enabled', () => {

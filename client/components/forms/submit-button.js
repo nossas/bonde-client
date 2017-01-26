@@ -1,18 +1,20 @@
 import React, { Component, PropTypes } from 'react'
 import classnames from 'classnames'
 
-
 class SubmitButton extends Component {
-
-  render() {
+  render () {
     const { $formRedux: { submitting } } = this.context
-    const { children, className, position } = this.props
+    const { children, className } = this.props
 
     return (
       <button
-        type="submit"
+        type='submit'
         disabled={submitting}
-        className={classnames("btn py2 caps white", className, submitting ? 'bg-gray95' : 'bg-pagenta')}
+        className={classnames(
+          'btn py2 caps white',
+          className,
+          submitting ? 'bg-gray95' : 'bg-pagenta'
+        )}
       >
         {children}
       </button>
@@ -21,7 +23,7 @@ class SubmitButton extends Component {
 }
 
 SubmitButton.contextTypes = {
-  $formRedux: PropTypes.object,
+  $formRedux: PropTypes.object
 }
 
 SubmitButton.propTypes = {

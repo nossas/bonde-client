@@ -2,9 +2,10 @@ import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-import { FormRedux } from '../../Forms'
+// Current module dependencies
+import { FormRedux } from '~components/forms'
 
-describe('Dashboard/Forms/FormRedux', () => {
+describe('client/components/forms/form-redux', () => {
   let wrapper
   const props = {
     onSubmit: (values, dispatch) => {},
@@ -39,7 +40,7 @@ describe('Dashboard/Forms/FormRedux', () => {
     const className = 'foo bar'
     const cloneProps = props
     const customProps = { className }
-    before(() => {
+    beforeAll(() => {
       wrapper = shallow(<FormRedux {...Object.assign(cloneProps, customProps)} />)
     })
   })

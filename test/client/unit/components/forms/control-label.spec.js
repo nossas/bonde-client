@@ -2,9 +2,10 @@ import React from 'react'
 import { expect } from 'chai'
 import { mount } from 'enzyme'
 
-import { ControlLabel } from '../../Forms'
+// Current module dependencies
+import { ControlLabel } from '~components/forms'
 
-describe('<ControlLabel />', () => {
+describe('client/components/forms/control-label', () => {
   let wrapper
   beforeEach(() => {
     wrapper = mount(<ControlLabel>label</ControlLabel>, { context: {} })
