@@ -12,7 +12,7 @@ import { SettingsMenu as DonationSettingsMenu } from '../__plugins__/donation/co
 // Current module dependencies
 import * as WidgetActions from '../action-creators'
 
-class DataExportPage extends Component {
+export class DataExportPage extends Component {
   componentDidMount () {
     const { dataExportMount } = this.props
     dataExportMount()
