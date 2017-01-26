@@ -11,7 +11,7 @@ import {
   SettingsPageContentLayout
 } from '~components/layout'
 import { Avatar, Name } from '~mobilizations/components/list/items'
-import { FormRedux, FormGroup, FormControl, ControlLabel } from '~tmp-dashboard/forms'
+import { FormRedux, FormGroup, FormControl, ControlLabel } from '~components/forms'
 
 // Parent module dependencies
 import * as MobilizationSelectors from '~mobilizations/selectors'

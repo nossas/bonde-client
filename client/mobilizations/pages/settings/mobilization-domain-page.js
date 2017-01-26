@@ -6,7 +6,7 @@ import {
   FormGroup,
   ControlLabel,
   FormControl
-} from '~tmp-dashboard/forms'
+} from '~components/forms'
 import { isValidDomain } from '~utils/validation-helper'
 
 // Current module dependencies

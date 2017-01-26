@@ -7,7 +7,7 @@ import {
   FormGroup,
   FormControl,
   ControlLabel
-} from '~tmp-dashboard/forms'
+} from '~components/forms'
 
 // Current module dependencies
 import { MobilizationSettingsForm } from '~mobilizations/components'

@@ -2,36 +2,42 @@ import React from 'react'
 import { reduxForm } from 'redux-form'
 import { edit } from '../actions'
 
+// Global module dependencies
 import {
   FormRedux,
   SubmitButton,
   FormGroup,
   FormControl,
   ControlLabel,
-  UploadImageField,
   SuccessMessage
-} from '../../Dashboard/Forms'
-import { FloatLayout } from '../../Dashboard/Grids'
+} from '~components/forms'
+import { FloatLayout } from '~tmp-dashboard/Grids'
 
-
-const MailchimpPage = ({ fields: { mailchimp_api_key, mailchimp_list_id, mailchimp_group_id }, ...formProps }) => (
+const MailchimpPage = ({
+  fields: {
+    mailchimp_api_key: mailchimpApiKey,
+    mailchimp_list_id: mailchimpListId,
+    mailchimp_group_id: mailchimpGroupId
+  },
+  ...formProps
+}) => (
   <FormRedux nosubmit {...formProps}>
-    <FormGroup controlId="apiKeyId" {...mailchimp_api_key}>
+    <FormGroup controlId='apiKeyId' {...mailchimpApiKey}>
       <ControlLabel>Mailchimp API Key</ControlLabel>
-      <FormControl type="text" />
+      <FormControl type='text' />
     </FormGroup>
-    <FormGroup controlId="listId" {...mailchimp_list_id}>
+    <FormGroup controlId='listId' {...mailchimpListId}>
       <ControlLabel>Mailchimp ID da lista</ControlLabel>
-      <FormControl type="text" />
+      <FormControl type='text' />
     </FormGroup>
-    <FormGroup controlId="groupId" {...mailchimp_group_id}>
+    <FormGroup controlId='groupId' {...mailchimpGroupId}>
       <ControlLabel>Mailchimp ID do grupo</ControlLabel>
-      <FormControl type="text" />
+      <FormControl type='text' />
     </FormGroup>
 
-    <FloatLayout position="floatTopRight">
+    <FloatLayout position='floatTopRight'>
       <SubmitButton>Salvar</SubmitButton>
-      <SuccessMessage text="Dados editados com sucesso." />
+      <SuccessMessage text='Dados editados com sucesso.' />
     </FloatLayout>
   </FormRedux>
 )

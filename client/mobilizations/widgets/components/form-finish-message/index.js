@@ -8,7 +8,7 @@ import {
   RadioGroup,
   Radio,
   ControlLabel
-} from '~tmp-dashboard/forms'
+} from '~components/forms'
 import { SettingsPageLayout, SettingsPageContentLayout } from '~components/layout'
 import Editor from '~components/editor-draft-js'
 

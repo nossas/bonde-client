@@ -8,7 +8,7 @@ import {
   FormGroup,
   ControlLabel,
   FormControl
-} from '~tmp-dashboard/forms'
+} from '~components/forms'
 
 // Parent module dependencies
 import * as WidgetActions from '~mobilizations/widgets/action-creators'

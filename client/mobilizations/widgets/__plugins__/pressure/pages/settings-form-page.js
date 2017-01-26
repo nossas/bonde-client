@@ -11,7 +11,7 @@ import {
   ColorPicker,
   RadioGroup,
   Radio
-} from '~tmp-dashboard/forms'
+} from '~components/forms'
 
 // Parent module dependencies
 import { actions as WidgetActions } from '~mobilizations/widgets'

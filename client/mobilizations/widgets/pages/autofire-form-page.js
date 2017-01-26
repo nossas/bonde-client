@@ -4,7 +4,7 @@ import { reduxForm } from 'redux-form'
 // Global module dependencies
 import { Loading } from '~components/await'
 import { SettingsPageContentLayout } from '~components/layout'
-import { FormRedux, FormGroup, ControlLabel, FormControl } from '~tmp-dashboard/forms'
+import { FormRedux, FormGroup, ControlLabel, FormControl } from '~components/forms'
 import * as validator from '~utils/validation-helper'
 
 // Children modules dependencies

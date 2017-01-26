@@ -7,7 +7,7 @@ import {
   ControlLabel,
   FormControl,
   UploadImageField
-} from '~tmp-dashboard/forms'
+} from '~components/forms'
 
 // Current module dependencies
 import iconFacebook from '../../images/facebook.svg'

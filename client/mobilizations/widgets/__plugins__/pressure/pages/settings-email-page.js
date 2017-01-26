@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { reduxForm } from 'redux-form'
 
 // Global module dependencies
-import { FormRedux, FormGroup, ControlLabel, FormControl } from '~tmp-dashboard/forms'
+import { FormRedux, FormGroup, ControlLabel, FormControl } from '~components/forms'
 import { SettingsPageContentLayout } from '~components/layout'
 
 // Parent module dependencies

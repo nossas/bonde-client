@@ -11,7 +11,7 @@ import {
   RadioGroup,
   Radio,
   ColorPicker
-} from '~tmp-dashboard/forms'
+} from '~components/forms'
 import { HorizontalLayout } from '~tmp-dashboard/Grids'
 import { SettingsPageLayout, SettingsPageContentLayout } from '~components/layout'
 

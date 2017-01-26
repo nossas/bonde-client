@@ -5,7 +5,7 @@ import {
   FormRedux,
   SubmitButton,
   SuccessMessage
-} from '~tmp-dashboard/forms'
+} from '~components/forms'
 import { FloatLayout } from '~tmp-dashboard/Grids'
 
 const MobilizationSettingsForm = ({ children, ...props }) => (
