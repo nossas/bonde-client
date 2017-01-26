@@ -2,7 +2,7 @@ import React from 'react'
 import { Route } from 'react-router'
 
 // Global module dependencies
-import { BackgroundContainer } from '~tmp-dashboard/containers'
+import { Background } from '~components/layout'
 
 // Current module dependencies
 import { EditContainer } from './containers'
@@ -11,7 +11,7 @@ import { AddPage, ListPage, InfoPage, MailchimpPage, RecipientPage } from './pag
 const namespace = '/community'
 
 export default requiredLogin => [
-  <Route component={BackgroundContainer} onEnter={requiredLogin}>
+  <Route component={Background} onEnter={requiredLogin}>
     <Route path={`${namespace}`} component={ListPage} />
     <Route path={`${namespace}/new`} component={AddPage} />
   </Route>,

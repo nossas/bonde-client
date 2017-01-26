@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react'
-import { Loading } from '../components'
+
+// Global module dependencies
+import { Loading } from '~components/await'
 import {
   Sidenav,
   SidenavList,

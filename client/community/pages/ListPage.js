@@ -2,34 +2,34 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { decorate } from 'react-mixin'
 import { Link, Navigation } from 'react-router'
-import { Loading } from '../../Dashboard/components'
 
+// Global module dependencies
 import * as paths from '../paths'
+import { Loading } from '~components/await'
+
+// Current module dependencies
 import { fetch, select } from '../actions'
 import { ListItem } from '../components'
 
-
 @decorate(Navigation)
 class ListPage extends Component {
-
-  componentDidMount() {
+  componentDidMount () {
     const { isLoaded, fetch } = this.props
     if (!isLoaded) fetch()
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     if (nextProps.isLoaded && nextProps.data.length === 0) {
       this.transitionTo(paths.add())
     }
   }
 
-  onClickItem(id) {
+  onClickItem (id) {
     this.props.select(id)
     this.transitionTo('/')
   }
 
-  render() {
-
+  render () {
     const { loading, isLoaded, data, user } = this.props
 
     return !loading ? (
@@ -37,7 +37,7 @@ class ListPage extends Component {
         <h1>Olá {user.first_name},</h1>
         <h2>Escolha uma das suas comunidades</h2>
         {isLoaded ? (
-          <div className="rounded bg-white">
+          <div className='rounded bg-white'>
             {data && data.map((community, key) => (
               <ListItem
                 key={`list-item-${key}`}
@@ -47,7 +47,7 @@ class ListPage extends Component {
             ))}
           </div>
         ) : null}
-        <p className="white center">ou <Link to={paths.add()}>Crie uma nova comunidade</Link></p>
+        <p className='white center'>ou <Link to={paths.add()}>Crie uma nova comunidade</Link></p>
       </div>
     ) : <Loading />
   }

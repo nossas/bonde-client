@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 
 // Global module dependencies
-import { Loading } from '~tmp-dashboard/components'
+import { Loading } from '~components/await'
 import { GoogleFontsLoader } from '~components/fonts'
 import * as arrayUtil from '~utils/array'
 
