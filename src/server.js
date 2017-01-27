@@ -33,7 +33,7 @@ app.use(require('serve-static')(path.join(__dirname, '..', 'static')))
 const host = process.env.HOST || 'localhost'
 
 app.use('/auth', proxy({
-  target: `http://${host}:${config.apiPort}`,
+  target: `http://0.0.0.0:${config.apiPort}`,
   pathRewrite: { '^/auth': '' }
 }))
 
