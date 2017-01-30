@@ -27,9 +27,11 @@ export function createTransitionHook(store, host) {
 }
 
 export default function universalRouter(location, history, store, host) {
+
   const routes = createRoutes(store, host)
   return new Promise((resolve, reject) => {
     Router.run(routes, location, [createTransitionHook(store, host)], (error, initialState, transition) => {
+console.log(routes, location, store, host, error, initialState, transition)
       if (error) {
         return reject(error);
       }

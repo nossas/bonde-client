@@ -30,8 +30,10 @@ app.use(helmet({
 app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')))
 app.use(require('serve-static')(path.join(__dirname, '..', 'static')))
 
+const host = process.env.HOST || 'localhost'
+
 app.use('/auth', proxy({
-  target: `http://localhost:${config.apiPort}`,
+  target: `http://0.0.0.0:${config.apiPort}`,
   pathRewrite: { '^/auth': '' }
 }))
 
