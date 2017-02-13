@@ -1,0 +1,24 @@
+{
+  "testPathDirs": ["test"],
+  "moduleFileExtensions": ["js", "jsx"],
+  "moduleDirectories": ["node_modules"],
+  "moduleNameMapper": {
+    "^~common(.*)$": "<rootDir>/common$1",
+    "^~server(.*)$": "<rootDir>/server$1",
+    "^~routes(.*)$": "<rootDir>/routes$1",
+    "^~tools(.*)$": "<rootDir>/tools$1",
+    "^~client(.*)$": "<rootDir>/client$1",
+    "^~account(.*)$": "<rootDir>/client/account$1",
+    "^~components(.*)$": "<rootDir>/client/components$1",
+    "^~community(.*)$": "<rootDir>/client/community$1",
+    "^~dashboard(.*)$": "<rootDir>/client/dashboard$1",
+    "^~mobilizations(.*)$": "<rootDir>/client/mobilizations$1",
+    "^~utils(.*)$": "<rootDir>/client/utils$1",
+    "^~widget-plugins(.*)$": "<rootDir>/client/mobilizations/widgets/__plugins__$1",
+
+    "^~tmp-dashboard(.*)$": "<rootDir>/client/dashboard$1",
+
+    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|wav|mp3|aac)$": "<rootDir>/test/mock-file.js",
+    "\\.(css|scss)$": "<rootDir>/test/mock-style.js"
+  }
+}

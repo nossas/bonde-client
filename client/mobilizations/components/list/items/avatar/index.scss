@@ -1,0 +1,10 @@
+@import '../_variables';
+
+.list {
+  .avatar-width  { width  : $avatarWidth; }
+  .avatar-height { height : $avatarHeight; }
+
+  .avatar {
+    .fa-picture-o { font-size: 3rem; }
+  }
+}

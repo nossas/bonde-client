@@ -11,8 +11,6 @@ volumes:
   # development image build process:
   app-gems:
     driver: local
-  node-modules:
-    driver: local
 
 services:
   # Our PostgreSQL service:
@@ -23,7 +21,14 @@ services:
       # our database IDEs with it:
       - 5432:5432
     volumes:
-      - ./bin/init.sql:/docker-entrypoint-initdb.d/init.sql
+      # Mount the DB dumps folder into the container, to be able to create & access database dumps:
+      - ./db/dumps:/db/dumps:Z
+      # Mount out tmp folder, we might want to have access to something there during development:
+      - ./tmp:/tmp:Z
+      # Mount our 'restoredb' script:
+      - ./bin/restoredb:/bin/restoredb:ro
+      # Mount our 'dumpdb' script:
+      - ./bin/dumpdb:/bin/dumpdb:ro
       # We'll mount the 'postgres-data' volume into the location Postgres stores it's data:
       - postgres-data:/var/lib/postgresql/data
     environment:
@@ -106,8 +111,7 @@ services:
     # command: rails server -p 3000 -b 0.0.0.0
     ports:
       - "3000:3000" # Bind our host's port 3000 to the app port 3000:
-    env_file:
-      - ../bonde-server/.env
+
   # App Guard: Keeps running tests on a separate process:
   test:
     # We'll copy from &app_base, and override:
@@ -124,17 +128,12 @@ services:
   client:
     depends_on:
       - api
-    #command: './node_modules/.bin/concurrently --kill-others "node webpack/webpack-dev-server.js" "node ./bin/server.js"'
-    command: npm run dev
+    command: ./node_modules/.bin/nodemon -r 'babel-register' ./server --watch ./server --watch ./tests/server 
     volumes:
       - ./:/code:Z
-      - node-modules:/code/node_modules
     ports:
       - "3001:3001"
-      - "3002:3002"
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
+    build: .
     restart: always
     links:
       - api:api.bonde.devel

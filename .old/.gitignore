@@ -1,0 +1,20 @@
+.env
+node_modules
+*.log
+.jshintrc
+
+=0.0.4
+*.sublime-project
+*.sublime-workspace
+webpack-assets.json
+webpack-stats.json
+static/dist
+.DS_Store
+.nyc_output
+coverage
+# floobits file
+.floo
+.flooignore
+
+.env.*
+.elasticbeanstalk/

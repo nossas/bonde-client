@@ -36,37 +36,27 @@ docker-compose version 1.10.0-rc1, build ecff6f1
 mkdir code/ && cd code/
 git clone git@github.com:nossas/bonde-client.git
 git clone git@github.com:nossas/bonde-server.git
-cd bonde-client
-docker-compose up -d && docker-compose restart
-sudo su
-echo '127.0.0.1 app.reboo.local reboo.local db.local keyval.local api.reboo.local' >> /etc/hosts
-exit
+cd bonde-server/ && git fetch origin && git checkout -b my-support-docker origin/add/support-docker
+cd ../bonde-client && git fetch origin && git checkout -b my-refactor-ssr origin/add/refactor-ssr
+docker-compose up -
 ```
 
-When container start from the first time, you need to run migrate and seed because database are not yet
-filed when database are created:
+When container start from the first time, you need to create database and run migrate, to do that, after docker-compose finish, run:
 
 ```
+docker-compose exec postgres psql -Upostgres -c 'create database reboo;'
+docker-compose exec postgres psql -Upostgres -c 'create database reboo_test;'
 docker-compose exec api ./bin/rake db:migrate
+docker-compose up --build
 ```
 
 ### Others Useful commands
 
 ```
-# Show logs from container nodejs
-docker-compose logs client
-
-# Open bash inside ruby container
-docker-compose exec client /bin/ash
-
-# Open bash inside ruby container
-docker-compose exec api /bin/bash
-
-# Force build from images
-docker-compose up --build
-
-# Force build without cache from images
-docker-compose build --no-cache
+docker-compose logs client # Show logs from container nodejs
+docker-compose exec client /bin/ash # Open bash inside ruby container
+docker-compose exec api /bin/bash # Open bash inside ruby container
+docker-compose up --build # Force build from images
 ```
 
 If you need to run npm or yarn do:
@@ -83,15 +73,9 @@ docker-compose exec client npm rebuild node-sass
 To cleanup all volumes, images and containers run:
 
 ```
-docker-compose down -v --rmi local --remove-orphans
-````
-
-or
-
-```
-docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q) &&
-docker volume rm $(docker volume ls -f dangling=true -q) &&
 docker rmi $(docker images -a -q)
+docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)
+docker volume rm $(docker volume ls -f dangling=true -q)
 ```
 
 And you are done!
@@ -129,7 +113,6 @@ Add staging and production environments into your list of remote repos:
 ```
 git remote add dokku dokku@server:0-client
 git remote add dokku-prod dokku@server:0-client
-git remote add dokku-prod-ssl dokku@server:0-client-ssl
 ```
 
 Commit your changes to the desired environment:
@@ -139,6 +122,8 @@ git push dokku-prod commithash:master
 ```
 
 ## Links
+- [Pivotal Tracker](https://www.pivotaltracker.com/n/projects/888220)
+- [Invision](https://projects.invisionapp.com/share/763UO3YDT#/screens)
 - [Zeplin](https://app.zeplin.io/project.html#pid=55d1d57e14a5317a0e909551)
 
 [circleimg]: https://img.shields.io/circleci/project/nossas/bonde-client.svg?style=flat-square

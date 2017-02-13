@@ -5,8 +5,6 @@ machine:
     - mkdir ~/.yarn-cache
   node:
     version: stable
-  environment:
-    MOCHA_FILE: $CIRCLE_TEST_REPORTS/junit/test-results.xml
 
 dependencies:
   pre:
@@ -18,15 +16,18 @@ dependencies:
 
 test:
   override:
-    - yarn test:reporter
+    - yarn test
 
 deployment:
-  staging:
-    branch: /(hotfix|release)(-|\/).*/
+  production:
+    branch: master
     commands:
-      - ./bin/deploy.sh
-  release:
-    tag: /v[0-9]+(\.[0-9]+)*/
-    owner: nossas 
+      - ./tools/deploy.sh
+  develop:
+    branch: develop
     commands:
-      - ./bin/deploy.sh
+      - ./tools/deploy.sh
+  feature:
+    branch: /(add|fix)(-|\/).*/
+    commands:
+      - ./tools/deploy.sh
