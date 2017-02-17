@@ -7,7 +7,7 @@ const asyncWidgetDataExport = params => (dispatch, getState, axios) => {
   const { mobilization, widget, filename } = params
 
   const endpoint = `/mobilizations/${mobilization.id}/form_entries`
-  const config = { headers: credentials, params }
+  const config = { headers: credentials, params: { widget_id: widget.id } }
 
   dispatch({ type: t.EXPORT_DATACLIP_REQUEST })
   return axios.get(endpoint, config)
