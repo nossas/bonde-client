@@ -2,12 +2,16 @@ import React, { PropTypes } from 'react'
 
 import { Loading } from '~components/await'
 import Sidebar from '~components/navigation/sidebar/sidebar'
+import { ZendeskWidget } from '~components/external-services'
 
 const ApplicationContainer = ({ children, loading, sidebarProps }) => {
   return loading ? <Loading /> : (
-    <Sidebar {...sidebarProps}>
-      {children && React.cloneElement(children)}
-    </Sidebar>
+    <div>
+      <ZendeskWidget />
+      <Sidebar {...sidebarProps}>
+        {children && React.cloneElement(children)}
+      </Sidebar>
+    </div>
   )
 }
 
