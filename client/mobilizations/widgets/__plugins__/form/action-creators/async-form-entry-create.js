@@ -1,7 +1,7 @@
 // Parent module dependencies
 import AnalyticsEvents from '~mobilizations/widgets/utils/analytics-events'
 import * as WidgetSelectors from '~mobilizations/widgets/selectors'
-import { actions as WidgetActions } from '~mobilizations/widgets'
+import * as WidgetActions from '~mobilizations/widgets/action-creators'
 
 // Current module dependencies
 import * as t from '../action-types'
