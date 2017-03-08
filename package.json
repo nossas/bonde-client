@@ -12,7 +12,8 @@
     "start": "cross-env NODE_ENV=development ./node_modules/.bin/nodemon -r 'babel-register' --delay 1 --watch ./server --watch ./tools ./server",
     "start:prod": "cross-env NODE_ENV=production node ./build/server.js",
     "heroku-postbuild": "./node_modules/.bin/webpack --progress --config ./tools/webpack.client.js && ./node_modules/.bin/webpack --progress --config ./tools/webpack.server.js",
-    "clean": "rm -rf build"
+    "clean": "rm -rf build",
+    "routes": "grep -rhe path: ./routes/$inner | sed -e \"s/path: '\\([a-zA-Z\\/:_]*\\)',/\\1/g\" | sort | uniq"
   },
   "repository": {
     "type": "git",

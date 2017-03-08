@@ -25,5 +25,16 @@ describe('client/components/navigation/sidebar/sidebar', () => {
     it('should render without crash', () => {
       expect(wrapper).to.be.ok
     })
+
+    describe('lanch', () => {
+      it('should render an item with "PUBLICAR BONDE" text by default', () => {
+        expect(wrapper.find('SidenavListItem').at(0).props().text).to.be.equal('PUBLICAR BONDE')
+      })
+      it('should render an item with "BONDE público" text if it already have a custom domain', () => {
+        const mobilization = { ...props.mobilization, custom_domain: 'foo.bar' }
+        wrapper.setProps({ ...props, mobilization })
+        expect(wrapper.find('SidenavListItem').at(0).props().text).to.be.equal('BONDE público')
+      })
+    })
   })
 })

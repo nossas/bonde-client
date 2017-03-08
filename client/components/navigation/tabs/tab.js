@@ -6,25 +6,33 @@ if (process.env.BROWSER) require('./tab.scss')
 
 class Tab extends Component {
   render () {
-    const { text, index, path, isActive } = this.props
+    const { text, index, path, isActive, className, style } = this.props
     if (path) {
       return (
         <Link
           to={path}
           className={classnames(
             'tab btn border-only-bottom px0 py2 mr3 inline-block',
-            isActive ? 'h4 is-active' : null
+            isActive ? 'h4 is-active' : null,
+            className
           )}
+          style={style}
         >
           {text}
         </Link>
       )
     }
     return (
-      <span className={classnames('tab inline-block mr2 py2', isActive ? 'bold black' : null)}>
-        <i
-          className={classnames('circle center inline-block mr2', isActive ? 'bg-pagenta' : 'bg-gray94')}
-        >
+      <span style={style} className={classnames(
+        'tab inline-block py2 mr2',
+        isActive ? 'bold black' : null,
+        className
+      )}>
+        <i className={classnames(
+          'circle center inline-block',
+          isActive ? 'bg-pagenta' : 'bg-gray94',
+        text ? 'mr2' : null
+        )}>
           {index}
         </i>
         {text}
@@ -34,7 +42,7 @@ class Tab extends Component {
 }
 
 Tab.propTypes = {
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
   isActive: PropTypes.bool,
   path: PropTypes.string,
   index: PropTypes.number

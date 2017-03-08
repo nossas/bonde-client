@@ -25,6 +25,7 @@ export default store => ({
         require('./community-settings-mailchimp').default(store),
         require('./community-settings-recipient').default(store),
         require('./mobilizations-edit').default(store),
+        require('./mobilizations-launch').default(store),
         require('./mobilizations-list').default(store),
         require('./mobilizations-new').default(store),
         require('./mobilizations-settings-analytics').default(store),

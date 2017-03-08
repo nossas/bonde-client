@@ -1,6 +1,8 @@
+export { default as FormCustomDomain } from './form-custom-domain'
 export { default as Mobilization } from './mobilization'
 export { default as MobilizationBasicsForm } from './mobilization-basics-form'
 export { default as MobilizationSettingsForm } from './mobilization-settings-form'
 export { default as SettingsMenu } from './settings-menu'
+export { default as PageCentralizedStepsLayout } from './page-centralized-steps-layout'
 export { default as PageHeader } from './page-header'
 export { default as PageTabLayout } from './page-tab-layout'

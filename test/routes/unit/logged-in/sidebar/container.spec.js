@@ -41,4 +41,9 @@ describe('routes/application/container', () => {
     const { wrapper } = setup()
     expect(wrapper.find('Sidebar').length).to.equal(1)
   })
+
+  it('should render a zendesk widget component', () => {
+    const { wrapper } = setup()
+    expect(wrapper.find('ZendeskWidget')).to.have.length(1)
+  })
 })

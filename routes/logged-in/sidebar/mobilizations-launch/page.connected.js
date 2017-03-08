@@ -34,6 +34,6 @@ const mapActionCreatorsToProps = {
 
 export default provideHooks(redial)(
   connect(mapStateToProps, mapActionCreatorsToProps)(
-    reduxForm({ form: 'mobilizationSettingsDomainForm', fields, validate })(Page)
+    reduxForm({ form: 'mobilizationLaunchDomainForm', fields, validate })(Page)
   )
 )

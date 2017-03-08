@@ -16,6 +16,11 @@
 
   &:hover {
     width: 280px;
+
+    .items .item.launch-button {
+      transition: border-radius .1s ease;
+      border-radius: 3px;
+    }
   }
 
   a.has-hover:hover {
@@ -37,6 +42,35 @@
       padding-top: .2rem;
       padding-bottom: .2rem;
 
+      &.launch-button {
+        background-color: $pagenta;
+        border-radius: 50%;
+        width: inherit;
+        margin: 0 1rem .75rem;
+        display: block;
+        transition: border-radius .5s ease;
+        &:hover { background-color: $pagenta; }
+        > a {
+          margin-left: -16px;
+          > .item-content { font-weight: bold; }
+        }
+      }
+
+      &.launched-item {
+        background-color: $yellowGreen;
+        border-radius: 50%;
+        width: 50px;
+        margin: 0 1rem .75rem;
+        display: block;
+        cursor: default;
+
+        &:hover { background-color: $yellowGreen; }
+        > a {
+          margin-left: -16px;
+          > .item-content { font-weight: bold; }
+        }
+      }
+
       &:hover {
         background-color: rgba(255,255,255,.05);
       }
@@ -48,6 +82,7 @@
         font-size: 1.3rem;
         text-align: center;
         width: 80px;
+        padding-left: 1px;
 
         i {
           width: 80px;
@@ -57,7 +92,7 @@
       .item-content {
         display: table-cell;
         white-space: nowrap;
-        padding: 10px 0 10px 0;
+        padding: 10px 0 10px 15px;
         font-weight: normal;
 
         .item-content-wrapper {
