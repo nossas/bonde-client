@@ -1,30 +1,28 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import promise from 'redux-promise'
-import createLogger from 'redux-logger'
 import axios from 'axios'
 import DefaultServerConfig from '../server/config'
 import createReducer from './createReducer'
+import DevTools from './../client/components/dev-tools'
 
-const logger = createLogger()
+const api = axios.create({ baseURL: DefaultServerConfig.apiUrl })
 
-const api = axios.create({
-  baseURL: DefaultServerConfig.apiUrl
-})
+const middlewares = [ promise ]
+
+if (process.env.NODE_ENV === `development`) {
+  const createLogger = require(`redux-logger`)
+  const logger = createLogger()
+  middlewares.push(logger)
+}
 
 export function configureStore (initialState, thunkExtraArgument) {
-  let store = createStore(createReducer(), initialState, compose(
-    applyMiddleware(
-      thunk.withExtraArgument({ axios, api, ...thunkExtraArgument }),
-      promise,
-      logger
-    ),
+  middlewares.push(thunk.withExtraArgument({ axios, api, ...thunkExtraArgument }))
 
-    process.env.NODE_ENV === 'development' &&
-    typeof window === 'object' &&
-    typeof window.devToolsExtension !== 'undefined'
-      ? window.devToolsExtension()
-      : f => f
+  let store = createStore(createReducer(), initialState, compose(
+    applyMiddleware(...middlewares),
+
+    process.env.NODE_ENV === 'development' ? DevTools.instrument() : f => f
   ))
 
   store.asyncReducers = {}
