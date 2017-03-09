@@ -44,7 +44,7 @@ export const createServer = (config) => {
     }
   } else {
     app.use(morgan('dev'))
-    const compiler = compileDev((webpack(webpackConfig('development'))), config.port)
+    const compiler = compileDev((webpack(webpackConfig)), config.port)
     app.use(webpackDevMiddleware(compiler))
     app.use(webpackHotMiddleware(compiler))
   }
