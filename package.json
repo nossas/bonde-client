@@ -9,7 +9,7 @@
     "test:a": "BABEL_DISABLE_CACHE=1 ./node_modules/.bin/jest --config ./tools/jest.config.json",
     "test:w": "yarn test:a -- --watch",
     "coverage": "nyc npm test",
-    "start": "cross-env NODE_ENV=development ./node_modules/.bin/nodemon -r 'babel-register' --delay 1 --watch ./server --watch ./tools ./server",
+    "start": "cross-env NODE_ENV=development nodemon -r 'babel-register' --delay 1 --watch ./server --watch ./tools ./server",
     "start:prod": "cross-env NODE_ENV=production node ./build/server.js",
     "heroku-postbuild": "./node_modules/.bin/webpack --progress --config ./tools/webpack.client.js && ./node_modules/.bin/webpack --progress --config ./tools/webpack.server.js",
     "clean": "rm -rf build",
@@ -116,6 +116,9 @@
     "nyc": "^8.1.0",
     "postcss-loader": "^1.2.1",
     "postcss-scss": "^0.4.0",
+    "redux-devtools": "^3.3.2",
+    "redux-devtools-dock-monitor": "^1.1.1",
+    "redux-devtools-log-monitor": "^1.2.0",
     "redux-mock-store": "^1.2.2",
     "sass-loader": "^6.0.2",
     "sinon": "^1.17.7",
@@ -128,7 +131,8 @@
     "webpack": "^2.2.1",
     "webpack-dashboard": "^0.3.0",
     "webpack-dev-middleware": "^1.10.1",
-    "webpack-hot-middleware": "^2.17.1"
+    "webpack-hot-middleware": "^2.17.1",
+    "webpack-visualizer-plugin": "^0.1.11"
   },
   "standard": {
     "parser": "babel-eslint"
