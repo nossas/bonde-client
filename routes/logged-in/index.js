@@ -7,8 +7,7 @@ export default store => ({
       cb(null, [
         require('./background').default(store),
         require('./sidebar').default(store),
-
-        require('~common/routes/not-found').default
+        require('~routes/not-found').default
       ])
     })
   }

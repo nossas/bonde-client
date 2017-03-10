@@ -1,6 +1,6 @@
 // polyfill webpack require.ensure
 if (typeof require.ensure !== 'function') require.ensure = (d, c) => c(require)
-import { injectAsyncReducer } from '~common/store'
+import { injectAsyncReducer } from '~client/store'
 
 export default store => ({
   path: '/',
@@ -41,7 +41,7 @@ export default store => ({
         require('./widgets-form-settings').default(store),
         require('./widgets-pressure-settings').default(store),
 
-        require('~common/routes/not-found').default
+        require('~routes/not-found').default
       ])
     })
   }
