@@ -3,9 +3,7 @@ import * as t from '~client/mobrender/redux/action-types'
 import reducer, { initialState } from '~client/mobrender/redux/reducers/widgets'
 
 describe('~client/mobrender/redux/reducers/widgets', () => {
-
   describe('doing fetch', () => {
-
     it('request', () => {
       const action = { type: t.FETCH_WIDGETS_REQUEST }
       const nextState = reducer(initialState, action)
@@ -33,7 +31,7 @@ describe('~client/mobrender/redux/reducers/widgets', () => {
     })
 
     it('failure', () => {
-      const  requestState = {...initialState,
+      const requestState = {...initialState,
         fetching: true
       }
       const error = '500 Internal Server Error'
@@ -48,7 +46,6 @@ describe('~client/mobrender/redux/reducers/widgets', () => {
   })
 
   describe('doing update', () => {
-
     const fetchState = {...initialState,
       isLoaded: true,
       data: [
@@ -92,7 +89,6 @@ describe('~client/mobrender/redux/reducers/widgets', () => {
   })
 
   describe('doing add widgets', () => {
-
     it('success', () => {
       const fetchState = {...initialState,
         isLoaded: true,

@@ -9,7 +9,6 @@ const state = fromJS({
 })
 
 describe('~client/mobrender/redux/selectors', () => {
-
   describe('#getMobilizations', () => {
     const data = [{ id: 1, name: 'Lorem' }, { id: 2, name: 'Ipsum' }]
     const nextState = state.mergeDeep(fromJS({
@@ -84,7 +83,6 @@ describe('~client/mobrender/redux/selectors', () => {
   })
 
   describe('#renderIsLoading', () => {
-
     it('should return false when loaded widgets and block', () => {
       const getState = () => state.mergeDeep(fromJS({
         mobilizations: {
@@ -120,7 +118,7 @@ describe('~client/mobrender/redux/selectors', () => {
       mobilizations: {
         hover: {
           'widget': widget.id
-       }
+        }
       }
     })).toJS()
 
@@ -151,7 +149,6 @@ describe('~client/mobrender/redux/selectors', () => {
     })).toJS()
 
     describe('#canMoveUp', () => {
-
       it('should be true if props.block isnt first of data', () => {
         const selectors = Selectors(nextState, { block: data[1] })
         expect(selectors.canMoveUp()).to.equal(true)
@@ -164,7 +161,6 @@ describe('~client/mobrender/redux/selectors', () => {
     })
 
     describe('#canMoveDown', () => {
-
       it('should be true if props.block isnt last of data', () => {
         const selectors = Selectors(nextState, { block: data[1] })
         expect(selectors.canMoveDown()).to.equal(true)
@@ -200,7 +196,6 @@ describe('~client/mobrender/redux/selectors', () => {
   })
 
   describe('#getUploadProgress(key)', () => {
-
     const nextState = state.mergeDeep(fromJS({
       mobilizations: {
         uploader: {
@@ -225,7 +220,6 @@ describe('~client/mobrender/redux/selectors', () => {
       mobilizations: { ...merge }
     })).toJS())
 
-
     it('#getEditing', () => {
       const s = getSelector({ edition: { isEditing: true, mode: 'background' } })
       expect(s.getEditing()).to.equal('background')
@@ -237,7 +231,6 @@ describe('~client/mobrender/redux/selectors', () => {
 
       s = getSelector({ blocks: { saving: false } })
       expect(s.getBlockSaving()).to.equal(false)
-
     })
   })
 

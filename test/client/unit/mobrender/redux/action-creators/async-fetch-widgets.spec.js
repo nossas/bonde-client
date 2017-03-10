@@ -23,9 +23,7 @@ const store = configureStore(
   [thunk.withExtraArgument({ api: axios })]
 )(rootReducer)
 
-
 describe('client/morender/async-creators/async-fetch-widget', () => {
-
   it('should dispatch actions to fetching widgets', () => {
     const expectedActions = [
       createAction(t.FETCH_WIDGETS_REQUEST),

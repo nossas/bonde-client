@@ -9,7 +9,7 @@ import Page from '~routes/logged-in/sidebar/mobilizations-edit/page'
 describe('routes/application/mobilizations-edit/page', () => {
   let page
   const defaultProps = {
-    mobilization: {},
+    mobilization: {}
   }
   const context = { router: {} }
 

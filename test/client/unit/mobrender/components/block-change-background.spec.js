@@ -4,9 +4,7 @@ import { mount } from 'enzyme'
 
 import BlockChangeBackground from '~client/mobrender/components/block-change-background'
 
-
 describe('~client/mobrender/components/block-change-background', () => {
-
   let changeBackground
   const props = {
     block: { id: 1, bg_class: 'bg-1', bg_image: 'tmp://bg.png' }
@@ -26,7 +24,6 @@ describe('~client/mobrender/components/block-change-background', () => {
   })
 
   describe('render color picker', () => {
-    
     it('should pass block.bg_class to selected in color-picker', () => {
       const colorPicker = changeBackground.find('BasicColorPicker')
       expect(colorPicker.props().selected).to.equal(props.block.bg_class)
@@ -44,7 +41,6 @@ describe('~client/mobrender/components/block-change-background', () => {
   })
 
   describe('render file uploader', () => {
-    
     it('should pass block.bg_image to file in file-uploader', () => {
       const uploader = changeBackground.find('FileUploader')
       expect(uploader.props().file).to.equal(props.block.bg_image)
@@ -89,7 +85,6 @@ describe('~client/mobrender/components/block-change-background', () => {
   })
 
   describe('render navbar', () => {
-    
     const saveClassName = 'btn caps bg-darken-4 white rounded mr1'
     const cancelClassName = 'btn caps bg-darken-4 white rounded'
 
@@ -110,12 +105,12 @@ describe('~client/mobrender/components/block-change-background', () => {
       wrapper.simulate('click')
       expect(result).to.deep.equal(props.block)
     })
-     
+
     it('should render buttons to save and cancel edition', () => {
       expect(changeBackground.find('.save-btn').length).to.equal(1)
       const saveButton = changeBackground.find('.save-btn')
       expect(saveButton.text()).to.equal('Salvar')
-      
+
       expect(changeBackground.find('.cancel-btn').length).to.equal(1)
       const cancelButton = changeBackground.find('.cancel-btn')
       expect(cancelButton.text()).to.equal('Cancelar')

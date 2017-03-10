@@ -16,7 +16,7 @@ describe('client/components/forms/input', () => {
   }
 
   beforeEach(() => {
-    field = mount(<Input {...formReduxProps} /> )
+    field = mount(<Input {...formReduxProps} />)
   })
 
   it('should render without crashed', () => {

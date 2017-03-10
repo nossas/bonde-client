@@ -24,7 +24,7 @@ const redial = {
 const mapStateToProps = (state, props) => {
   const { params: { widget_id } } = props
   const selectors = MobSelectors(state, props)
-  
+
   return {
     mobilization: selectors.getMobilization(),
     widget: selectors.getWidget(widget_id)

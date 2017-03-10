@@ -55,5 +55,4 @@ describe('client/components/form-util/input', () => {
       expect(unrenderedProps.classes).to.be.array
     })
   })
-
 })

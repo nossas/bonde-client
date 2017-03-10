@@ -5,7 +5,6 @@ import { mount } from 'enzyme'
 import { Button } from '~components/forms'
 
 describe('client/components/forms/submit-button', () => {
-
   it('should render without crashed', () => {
     const btn = mount(<Button />)
     expect(btn).to.be.ok
@@ -22,7 +21,6 @@ describe('client/components/forms/submit-button', () => {
   })
 
   describe('when button is submit type', () => {
-
     let btn
     beforeEach(() => {
       btn = mount(<Button type='submit' />)
@@ -37,6 +35,5 @@ describe('client/components/forms/submit-button', () => {
       btn.setProps({ pristine: true })
       expect(btn.find('button').props().disabled).to.equal(true)
     })
-
   })
 })

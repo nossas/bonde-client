@@ -8,10 +8,9 @@ import InsertScriptButton from './InsertScriptButton'
 
 if (process.env.BROWSER) require('./styles.scss')
 
-
 export default class MediaControls extends Component {
 
-  handleInsertMedia(mediaType, source) {
+  handleInsertMedia (mediaType, source) {
     const { editorState, setEditorState } = this.props
 
     const entityKey = Entity.create(mediaType, 'IMMUTABLE', { src: source })
@@ -21,12 +20,11 @@ export default class MediaControls extends Component {
     this.props.focusEditor()
   }
 
-  render() {
-
+  render () {
     const { buttonClassName, popoverClassName } = this.props
 
     return (
-      <div className="mediaControls">
+      <div className='mediaControls'>
         <InsertImageButton
           buttonClassName={buttonClassName}
           popoverClassName={popoverClassName}
@@ -49,7 +47,6 @@ MediaControls.propTypes = {
   buttonClassName: PropTypes.string,
   popoverClassName: PropTypes.string
 }
-
 
 export const blockRendererFn = (block) => {
   if (block.getType() === 'atomic') {

@@ -27,11 +27,10 @@ const store = configureStore(
 )(rootReducer)
 
 describe('~client/mobrender/redux/action-creators/async-fetch-blocks', () => {
-  
   it('should dispatch actions to move up block', () => {
     const expectedActions = [
       createAction(t.FETCH_BLOCKS_REQUEST),
-      createAction(t.FETCH_BLOCKS_SUCCESS, data),
+      createAction(t.FETCH_BLOCKS_SUCCESS, data)
     ]
     return store.dispatch(asyncFetchBlocks(mobilizationId))
       .then(() => {

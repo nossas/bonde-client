@@ -3,9 +3,7 @@ import * as t from '~client/mobrender/redux/action-types'
 import reducer, { initialState } from '~client/mobrender/redux/reducers/blocks'
 
 describe('~client/mobrender/redux/reducers/blocks', () => {
-
   describe('doing fetch', () => {
-
     it('request', () => {
       const action = { type: t.FETCH_BLOCKS_REQUEST }
       const nextState = reducer(initialState, action)
@@ -33,7 +31,7 @@ describe('~client/mobrender/redux/reducers/blocks', () => {
     })
 
     it('failure', () => {
-      const  requestState = {...initialState,
+      const requestState = {...initialState,
         fetching: true
       }
       const error = '500 Internal Server Error'
@@ -48,7 +46,6 @@ describe('~client/mobrender/redux/reducers/blocks', () => {
   })
 
   describe('doing update', () => {
-
     const fetchState = {...initialState,
       isLoaded: true,
       data: [
@@ -170,7 +167,6 @@ describe('~client/mobrender/redux/reducers/blocks', () => {
         error: payload
       })
     })
-
   })
 
   describe('doing destroy', () => {

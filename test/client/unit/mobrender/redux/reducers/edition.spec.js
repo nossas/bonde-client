@@ -2,11 +2,8 @@ import { expect } from 'chai'
 import * as t from '~client/mobrender/redux/action-types'
 import reducer, { initialState } from '~client/mobrender/redux/reducers/edition'
 
-
 describe('~client/mobrender/redux/reducers/edition', () => {
-  
   describe('TURN_ON_EDITION', () => {
-    
     it('should turn on edition mode', () => {
       const action = { type: t.TURN_ON_EDITION }
       const nextState = reducer(initialState, action)
@@ -26,7 +23,6 @@ describe('~client/mobrender/redux/reducers/edition', () => {
   })
 
   describe('TURN_OFF_EDITION', () => {
-    
     const turnOnState = {...initialState,
       isEditing: true,
       mode: 'background'

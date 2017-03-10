@@ -4,7 +4,6 @@ import { expect } from 'chai'
 import { BasicColorPicker } from '~components/basic-color-picker'
 
 describe('BasicColorPicker', () => {
-
   let colorPicker
   const props = {
     colors: ['bg-1', 'bg-2', 'bg-3'],

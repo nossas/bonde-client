@@ -5,17 +5,14 @@ import * as MobActions from '~client/mobrender/redux/action-creators'
 import * as t from '~client/mobrender/redux/action-types'
 import { createAction } from '~client/mobrender/redux/action-creators/create-action'
 
-
 describe('client/mobrender/redux/action-creators (non-async)', () => {
-
   let store
 
   beforeEach(() => {
-    store = configureStore([ thunk ])() 
+    store = configureStore([ thunk ])()
   })
 
   describe('doing hover', () => {
-  
     it('handleMouseOut', () => {
       const expected = createAction(t.MOUSE_OUT, { key: 'block' })
       store.dispatch(MobActions.handleMouseOut('block'))
@@ -32,7 +29,6 @@ describe('client/mobrender/redux/action-creators (non-async)', () => {
   })
 
   describe('doing edition', () => {
-    
     it('handleEdit', () => {
       const expected = createAction(t.TURN_ON_EDITION, 'background')
       store.dispatch(MobActions.handleEdit('background'))
@@ -49,7 +45,6 @@ describe('client/mobrender/redux/action-creators (non-async)', () => {
   })
 
   describe('doing upload (handleUploadFile)', () => {
-    
     it('should dispatch LOADING_FILE when passed key and progress', () => {
       const expected = createAction(t.LOADING_FILE, { key: 'bg', progress: 10 })
       store.dispatch(MobActions.handleUploadFile('bg', 10))
@@ -63,7 +58,6 @@ describe('client/mobrender/redux/action-creators (non-async)', () => {
       expect(store.getActions().length).to.equal(1)
       expect(store.getActions()[0]).to.deep.equal(expected)
     })
-
   })
 
   it('#selectMobilization(mobilizationId)', () => {

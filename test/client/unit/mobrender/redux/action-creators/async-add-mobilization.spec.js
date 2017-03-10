@@ -30,11 +30,10 @@ const store = configureStore(
 }).toJS())
 
 describe('~client/mobrender/redux/action-creators/async-add-mobilization', () => {
-
   it('should dispatch actions to add mobilization', () => {
     const expectedActions = [
       createAction(t.ADD_MOBILIZATION_REQUEST),
-      createAction(t.ADD_MOBILIZATION_SUCCESS, { ...mobilization, id: 2 }),
+      createAction(t.ADD_MOBILIZATION_SUCCESS, { ...mobilization, id: 2 })
     ]
     return store.dispatch(asyncAddMobilization(mobilization))
       .then(() => {

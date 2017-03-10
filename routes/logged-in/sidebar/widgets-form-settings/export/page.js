@@ -17,7 +17,7 @@ FormSettingsExportPage.propTypes = {
   error: PropTypes.object,
   // Injected by container
   widget: PropTypes.object.isRequired,
-  mobilization: PropTypes.object.isRequired,
+  mobilization: PropTypes.object.isRequired
 }
 
 export default FormSettingsExportPage

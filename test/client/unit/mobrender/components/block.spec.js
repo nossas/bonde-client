@@ -9,10 +9,9 @@ import BlockConfigMenu from '~client/mobrender/components/block-config-menu.conn
 import { EDIT_KEY } from '~client/mobrender/components/block-config-menu'
 
 describe('~client/mobrender/components/block', () => {
-
   let block
   const props = {
-    block: { id: 1, bg_class: 'bg-1', hidden: false },
+    block: { id: 1, bg_class: 'bg-1', hidden: false }
   }
   const blockSelector = `#block-${props.block.id}`
 
@@ -57,7 +56,6 @@ describe('~client/mobrender/components/block', () => {
   })
 
   describe('render change background', () => {
-
     it('should show when only editing is block-config-menu.EDIT_KEY', () => {
       expect(block.find(BlockChangeBackground).length).to.equal(0)
       block.setProps({ editing: EDIT_KEY })
@@ -71,7 +69,6 @@ describe('~client/mobrender/components/block', () => {
   })
 
   describe('render config menu', () => {
-
     it('should render config menu passing block', () => {
       expect(block.find(BlockConfigMenu).length).to.equal(1)
       expect(block.find(BlockConfigMenu).props().block).to.deep.equal(props.block)
@@ -97,7 +94,6 @@ describe('~client/mobrender/components/block', () => {
   })
 
   describe('render widgets', () => {
-
     const widgets = [
       { id: 1, kind: 'draft' },
       { id: 2, kind: 'draft' }

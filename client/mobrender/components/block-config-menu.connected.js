@@ -3,7 +3,6 @@ import Selectors from '../redux/selectors'
 import { asyncMoveUp, asyncMoveDown, asyncUpdateBlock, handleEdit, asyncDestroyBlock } from '../redux/action-creators'
 import BlockConfigMenu from './block-config-menu'
 
-
 const mapStateToProps = (state, props) => {
   const selectors = Selectors(state, props)
   return {

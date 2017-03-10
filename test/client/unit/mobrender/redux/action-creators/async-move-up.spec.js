@@ -36,7 +36,6 @@ const store = configureStore(
 }).toJS())
 
 describe('~client/mobrender/redux/action-creators/async-move-up', () => {
-  
   it('should dispatch actions to move up block', () => {
     const block = { ...data[1], position: 1 }
     const expectedActions = [
@@ -50,7 +49,6 @@ describe('~client/mobrender/redux/action-creators/async-move-up', () => {
         expect(store.getActions()[0]).to.deep.equal(expectedActions[0])
         expect(store.getActions()[1]).to.deep.equal(expectedActions[1])
         expect(store.getActions()[2]).to.deep.equal(expectedActions[2])
-
       })
   })
 })

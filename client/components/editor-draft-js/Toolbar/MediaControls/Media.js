@@ -1,10 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import { Entity } from 'draft-js'
 
-
 class Media extends Component {
 
-  render() {
+  render () {
     const { block } = this.props
 
     const entityKey = block.getEntityAt(0)
@@ -13,7 +12,7 @@ class Media extends Component {
     if (!entity) {
       // TODO: Remove behavior this code implemented because wasn't
       // control for media block
-      return <span className="remove-block" />
+      return <span className='remove-block' />
     }
 
     const {
@@ -29,25 +28,24 @@ class Media extends Component {
 
       if (href) {
         return (
-          <a href={href} target={target||'_blank'}>{media}</a>
+          <a href={href} target={target || '_blank'}>{media}</a>
         )
       }
       return media
-
     } else if (entity.getType() === 'iframe' || entity.getType() === 'script') {
       // insert script or iframe in div
       return (
-        <div className="noscript" dangerouslySetInnerHTML={{__html: mediaProps.src }} />
+        <div className='noscript' dangerouslySetInnerHTML={{__html: mediaProps.src }} />
       )
     } else {
-      throw "Sorry, media type not found."
+      throw 'Sorry, media type not found.'
     }
   }
 }
 
 Media.propTypes = {
   // Injected by draft-js in blockRendererFn
-  block: PropTypes.object.isRequired,
+  block: PropTypes.object.isRequired
 }
 
 export default Media

@@ -10,7 +10,6 @@ const initialState = {
 }
 
 describe('AuthReducer', () => {
-
   it('auth/LOAD_REQUEST', () => {
     const action = { type: t.LOAD_REQUEST }
     const nextState = authReducer(initialState, action)
@@ -117,5 +116,4 @@ describe('AuthReducer', () => {
       error: payload
     })
   })
-
 })

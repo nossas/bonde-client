@@ -39,7 +39,7 @@ describe('mobrender/components/widget-overlay', () => {
 
   it('should call onMouseOut passing ("widget") when mouse leave', () => {
     let result
-    over.setProps({ onMouseOut: key => result = [key, ] })
+    over.setProps({ onMouseOut: key => result = [key ] })
     over.find('div.relative').simulate('mouseleave')
     expect(result).to.deep.equal(['widget'])
   })

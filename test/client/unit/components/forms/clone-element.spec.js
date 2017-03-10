@@ -5,7 +5,6 @@ import { mount } from 'enzyme'
 import { cloneElement } from '~components/forms/clone-element'
 
 describe('client/components/forms/clone-element', () => {
-
   it('should clone array children with props', () => {
     const props = { title: 'Lorem' }
     const strong = mount(<strong />)

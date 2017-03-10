@@ -77,7 +77,7 @@ export default (state, props) => ({
   },
 
   mobilizationIsNeedReload: () => {
-    const { list : { reload } } = state.mobilizations
+    const { list: { reload } } = state.mobilizations
     return reload
   },
 

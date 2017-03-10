@@ -14,7 +14,6 @@ Button.propTypes = {
 }
 
 describe('client/components/forms/form', () => {
-
   it('should render without crashed', () => {
     const form = mount(<Form />)
     expect(form).to.be.ok
@@ -23,7 +22,7 @@ describe('client/components/forms/form', () => {
   it('should render children', () => {
     const form = mount(
       <Form>
-        <button type="button" />
+        <button type='button' />
       </Form>
     )
     expect(form.find('button').length).to.equal(1)
@@ -38,7 +37,7 @@ describe('client/components/forms/form', () => {
 
   it('should pass pristine and submitting to children', () => {
     const form = mount(
-      <Form pristine={false} submitting={true}>
+      <Form pristine={false} submitting>
         <Button />
       </Form>
     )

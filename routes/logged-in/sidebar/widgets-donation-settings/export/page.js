@@ -6,7 +6,7 @@ import { DataExport } from '~mobilizations/widgets/components'
 const DonationSettingsExportPage = props => !props.widget ? <Loading /> : <DataExport {...props} />
 
 DonationSettingsExportPage.propTypes = {
-  params: PropTypes.object.isRequired, 
+  params: PropTypes.object.isRequired,
   // Injected by container
   widget: PropTypes.object.isRequired,
   mobilization: PropTypes.object.isRequired,

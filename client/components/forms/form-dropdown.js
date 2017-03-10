@@ -1,9 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import classnames from 'classnames'
 
-
 class FormDropdown extends Component {
-  render() {
+  render () {
     const formGroup = this.context.$formGroup
     const { controlId, ...field } = formGroup || {}
     const { className, children, ...props } = this.props

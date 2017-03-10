@@ -3,9 +3,7 @@ import reducer from '~client/mobrender/redux/reducers/uploader'
 import * as t from '~client/mobrender/redux/action-types'
 
 describe('~client/mobrender/reducers/uploader', () => {
-
   describe('t.LOADING_FILE', () => {
-    
     it('should add key when not exists', () => {
       const action = { type: t.LOADING_FILE, payload: { key: 'bg', progress: 10 } }
       const nextState = reducer(undefined, action)
@@ -25,7 +23,6 @@ describe('~client/mobrender/reducers/uploader', () => {
   })
 
   describe('t.FINISH_LOADING_FILE', () => {
-    
     it('should remove key in state', () => {
       const initialState = { bg: 99 }
       const action = { type: t.FINISH_LOADING_FILE, payload: 'bg' }

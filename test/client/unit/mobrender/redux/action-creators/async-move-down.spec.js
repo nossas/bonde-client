@@ -36,7 +36,6 @@ const store = configureStore(
 }).toJS())
 
 describe('~client/mobrender/redux/action-creators/async-move-down', () => {
-  
   it('should dispatch actions to move up block', () => {
     const expectedActions = [
       createAction(t.UPDATE_BLOCK_REQUEST),

@@ -18,7 +18,7 @@ export class MobilizationsEditPage extends Component {
       const fonts = [mobilization.header_font, mobilization.body_font].filter(arrayUtil.distinct)
       return (
         <div className='flex flex-auto overflow-hidden'>
-          <Mobilization editable={true} />
+          <Mobilization editable />
           <GoogleFontsLoader fonts={fonts} />
         </div>
       )
