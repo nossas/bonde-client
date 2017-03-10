@@ -23,7 +23,7 @@ services:
       # our database IDEs with it:
       - 5432:5432
     volumes:
-      - ./bin/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./tools/init.sql:/docker-entrypoint-initdb.d/init.sql
       # We'll mount the 'postgres-data' volume into the location Postgres stores it's data:
       - postgres-data:/var/lib/postgresql/data
     environment:
