@@ -38,11 +38,10 @@ const store = configureStore(
 }).toJS())
 
 describe('~client/mobrender/redux/action-creators/async-destroy-block', () => {
-
   it('should dispatch actions to destroy block', () => {
     const expectedActions = [
       createAction(t.DESTROY_BLOCK_REQUEST),
-      createAction(t.DESTROY_BLOCK_SUCCESS, block),
+      createAction(t.DESTROY_BLOCK_SUCCESS, block)
     ]
     return store.dispatch(asyncDestroyBlock(block))
       .then(() => {

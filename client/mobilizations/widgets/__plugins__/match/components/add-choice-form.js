@@ -2,12 +2,12 @@ import React, { Component, PropTypes } from 'react'
 import classnames from 'classnames'
 
 class AddChoiceForm extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = { value: '' }
   }
 
-  handleUpdateChoices(e) {
+  handleUpdateChoices (e) {
     if (e) e.preventDefault()
 
     const { choices, updateChoices } = this.props
@@ -17,7 +17,7 @@ class AddChoiceForm extends Component {
     this.setState({ value: '' })
   }
 
-  onAddItem(e) {
+  onAddItem (e) {
     if (e) e.preventDefault()
 
     const { choices, handleAddItem } = this.props
@@ -29,7 +29,7 @@ class AddChoiceForm extends Component {
     }
   }
 
-  render() {
+  render () {
     const {
       title,
       choices,
@@ -42,31 +42,31 @@ class AddChoiceForm extends Component {
     } = this.props
     return (
       <div className={classnames('sm-col sm-col-6', className)}>
-        <div className="sm-col sm-col-12">
-          <label className="darkengray">{title}</label>
+        <div className='sm-col sm-col-12'>
+          <label className='darkengray'>{title}</label>
           <input
-            type="text"
-            placeholder="Label"
+            type='text'
+            placeholder='Label'
             value={label}
-            className="input block h3 col-12 mt1 mb3 h5"
+            className='input block h3 col-12 mt1 mb3 h5'
             onChange={e => { handleChangeLabel(e.target.value) }}
             tabIndex={tabindexTitle}
           />
         </div>
-        <div className="sm-col sm-col-10 pr2">
+        <div className='sm-col sm-col-10 pr2'>
           <input
             value={this.state.value}
             onChange={e => { this.setState({ value: e.target.value }) }}
-            type="text"
-            className="input block h3 col-12 mt1 mb3 h5"
-            placeholder="Escolha"
+            type='text'
+            className='input block h3 col-12 mt1 mb3 h5'
+            placeholder='Escolha'
             onKeyPress={e => e.key === 'Enter' ? this.onAddItem(e) : null}
             tabIndex={tabindex}
           />
         </div>
-        <div className="sm-col sm-col-2 right-align">
+        <div className='sm-col sm-col-2 right-align'>
           <button
-            className="btn caps py2 px1 rounded h5 bg-pagenta white"
+            className='btn caps py2 px1 rounded h5 bg-pagenta white'
             disabled={!this.state.value.length}
             style={{ marginTop: '8px' }}
             onClick={::this.onAddItem}
@@ -74,15 +74,15 @@ class AddChoiceForm extends Component {
             Adicionar
           </button>
         </div>
-        <div className="choices-block sm-col sm-col-12">
+        <div className='choices-block sm-col sm-col-12'>
           {
             choices.map((choice, index) => (
-              <div className="col-12 clearfix" key={index}>
-                <div className="col col-10 darkengray">{choice}</div>
-                <div className="col col-2 link center">
+              <div className='col-12 clearfix' key={index}>
+                <div className='col col-10 darkengray'>{choice}</div>
+                <div className='col col-2 link center'>
                   <a
-                    href="#"
-                    className="h6 caps"
+                    href='#'
+                    className='h6 caps'
                     onClick={e => { if (e) { e.preventDefault() } handleRemoveItem(choice) }}
                   >
                     Remover
@@ -110,7 +110,7 @@ AddChoiceForm.propTypes = {
 }
 
 AddChoiceForm.defaultProps = {
-  choices: [],
+  choices: []
 }
 
 export default AddChoiceForm

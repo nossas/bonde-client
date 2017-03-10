@@ -4,7 +4,6 @@ import { mount } from 'enzyme'
 import { DraftButton } from '~client/mobrender/widgets/draft/components'
 
 describe('mobrender/widgets/draft/components/draft-button', () => {
-  
   const props = {
     icon: 'text',
     label: 'Texto',

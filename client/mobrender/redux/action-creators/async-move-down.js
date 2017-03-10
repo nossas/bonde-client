@@ -8,7 +8,7 @@ export default block => (dispatch, getState, { api }) => {
   const headers = AuthSelectors(getState()).getCredentials()
   const mobilization = Selectors(getState()).getMobilization()
   const blocks = Selectors(getState()).getBlocks()
-  
+
   const body = {
     block: {
       ...block,
@@ -17,7 +17,7 @@ export default block => (dispatch, getState, { api }) => {
       )[0]) + 1].position
     }
   }
-  
+
   dispatch(createAction(t.UPDATE_BLOCK_REQUEST))
   return api
     .put(`/mobilizations/${mobilization.id}/blocks/${block.id}`, body, { headers })

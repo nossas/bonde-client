@@ -8,7 +8,7 @@ const BlockConfigMenu = ({ block, update, destroy, onEdit, canMoveUp, moveUp, ca
   <DropdownMenu
     wrapperClassName={classnames(
       'm1 absolute bottom-0 right-0 z2',
-      {'display-none' : !display}
+      {'display-none': !display}
     )}
     menuClassName='bg-darken-4 rounded white right-0 top-0 mr4'
     buttonClassName='btn bg-darken-4 white rounded'

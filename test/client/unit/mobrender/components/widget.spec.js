@@ -4,7 +4,6 @@ import { mount, shallow } from 'enzyme'
 import Widget from '~client/mobrender/components/widget'
 import WidgetOverlay from '~client/mobrender/components/widget-overlay.connected'
 
-
 describe('mobrender/components/widget', () => {
   const props = {
     mobilization: { id: 2 },
@@ -30,7 +29,7 @@ describe('mobrender/components/widget', () => {
   })
 
   it('should render component loading while saving widget', () => {
-    const widget = mount(<Widget {...props} saving={true} />)
+    const widget = mount(<Widget {...props} saving />)
     expect(widget.find('Loading').length).to.equal(1)
   })
 

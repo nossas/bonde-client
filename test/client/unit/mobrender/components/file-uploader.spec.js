@@ -6,9 +6,7 @@ import sinon from 'sinon'
 import ReactS3Uploader from 'react-s3-uploader'
 import FileUploader from '~client/mobrender/components/file-uploader'
 
-
 describe('~client/mobrender/components/file-uploader', () => {
-
   let confirmStub
   let uploader
   const props = {
@@ -42,23 +40,22 @@ describe('~client/mobrender/components/file-uploader', () => {
     expect(uploader.find('Progress').length).to.equal(1)
     expect(uploader.find('Progress').props().percent).to.equal(10)
   })
- 
-  describe('render remove button', () => {  
 
+  describe('render remove button', () => {
     it('should render trash icon', () => {
       expect(uploader.find('button > i.fa-trash').length).to.equal(1)
     })
-     
+
     it('should not render when onRemove not pass', () => {
       uploader.setProps({ onRemove: undefined })
       expect(uploader.find('button.remove').length).to.equal(0)
     })
-     
+
     it('should call window.confirm when clicked in remove button', () => {
       uploader.find('button.remove').simulate('click')
       expect(confirmStub.called).to.equal(true)
     })
-    
+
     it('shoulld call onRemove if clicked in button and confirm message', () => {
       let result
       confirmStub.returns(true)

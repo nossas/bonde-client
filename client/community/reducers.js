@@ -14,7 +14,7 @@ const initialState = {
       mailchimp_group_id: undefined,
       image: undefined,
       description: undefined,
-      recipient: undefined},
+      recipient: undefined}
   ],
   currentId: 15
 }

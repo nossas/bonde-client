@@ -4,9 +4,7 @@ import * as t from '~client/mobrender/redux/action-types'
 import reducer, { initialState } from '~client/mobrender/redux/reducers/mobilizations'
 
 describe('~client/mobrender/redux/reducers/mobilizations', () => {
-
   describe('doing add', () => {
-
     it('#ADD_MOBILIZATION_REQUEST', () => {
       const state = { ...initialState, isLoaded: true }
       const action = { type: t.ADD_MOBILIZATION_REQUEST }
@@ -41,7 +39,6 @@ describe('~client/mobrender/redux/reducers/mobilizations', () => {
   })
 
   describe('doing fetch', () => {
-
     it('#FETCH_MOBILIZATIONS_REQUEST', () => {
       const action = { type: t.FETCH_MOBILIZATIONS_REQUEST }
       const nextState = reducer(initialState, action)
@@ -79,7 +76,6 @@ describe('~client/mobrender/redux/reducers/mobilizations', () => {
   })
 
   describe('doing select', () => {
-
     it('#SELECT_MOBILIZATION', () => {
       const state = {
         ...initialState,
@@ -138,7 +134,6 @@ describe('~client/mobrender/redux/reducers/mobilizations', () => {
   })
 
   describe('doing toggle menu', () => {
-
     it('#TOGGLE_MOBILIZATION_MENU on', () => {
       const payload = 1
       const action = { type: t.TOGGLE_MOBILIZATION_MENU, payload }
@@ -159,7 +154,6 @@ describe('~client/mobrender/redux/reducers/mobilizations', () => {
   })
 
   describe('doing filter', () => {
-
     it('#FILTER_MOBILIZATIONS_REQUEST', () => {
       const action = { type: t.FILTER_MOBILIZATIONS_REQUEST }
       const nextState = reducer(initialState, action)
@@ -196,7 +190,6 @@ describe('~client/mobrender/redux/reducers/mobilizations', () => {
   })
 
   describe('finish fetch widgets and blocks', () => {
-
     const state = { ...initialState, reload: true }
 
     it('#FETCH_BLOCKS_SUCCESS', () => {

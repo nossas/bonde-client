@@ -35,7 +35,7 @@ describe('app/util/font-name-handler', () => {
 
   describe('#getGoogleFontsLoadURL', () => {
     it('should contains Google Web Fonts css API URL', () => {
-        expect(getGoogleFontsLoadURL('Ubuntu')).to.have.string(GOOGLE_FONTS_API_CSS_URL)
+      expect(getGoogleFontsLoadURL('Ubuntu')).to.have.string(GOOGLE_FONTS_API_CSS_URL)
     })
     it('should accepts one font name string as param', () => {
       const normalizedFontLink = normalizeFontsToLinkStyle(['Armata'])

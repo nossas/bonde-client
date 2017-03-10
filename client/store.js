@@ -4,7 +4,7 @@ import promise from 'redux-promise'
 import axios from 'axios'
 import DefaultServerConfig from '../server/config'
 import createReducer from './createReducer'
-import DevTools from './../client/components/dev-tools'
+import DevTools from './components/dev-tools'
 
 const api = axios.create({ baseURL: DefaultServerConfig.apiUrl })
 

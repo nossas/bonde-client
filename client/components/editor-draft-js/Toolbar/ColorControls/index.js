@@ -5,12 +5,12 @@ import EditorUtils from '../EditorUtils'
 import ColorPickerButton from './ColorPickerButton'
 
 export default class ColorControls extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = { color: null }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     const { editorState } = nextProps
     if (editorState !== this.props.editorState) {
       const currentStyle = editorState.getCurrentInlineStyle()
@@ -21,12 +21,12 @@ export default class ColorControls extends Component {
             .replace('color:')
             .replace(';', '')
             .trim()
-          })
+        })
       }
     }
   }
 
-  onChangeColor(color) {
+  onChangeColor (color) {
     const { editorState, setEditorState } = this.props
 
     const targetSelection = editorState.getSelection()
@@ -34,23 +34,22 @@ export default class ColorControls extends Component {
       const editorStateWithColor = EditorUtils.toggleInlineStyle(
         editorState,
         `color: rgba(${color.r},${color.g},${color.b},${color.a});`
-      );
+      )
       setEditorState(editorStateWithColor)
     }
   }
 
-  hasColorStyle() {
+  hasColorStyle () {
     const { editorState } = this.props
     const hasStyle = editorState.getCurrentInlineStyle().filter(style => style.startsWith('color'))
     return hasStyle.size > 0 ? 'active' : null
   }
 
-  render() {
-
+  render () {
     const { buttonClassName, theme } = this.props
 
     return (
-      <div className="colorControls">
+      <div className='colorControls'>
         <ColorPickerButton
           theme={theme}
           className={classnames(buttonClassName, this.hasColorStyle())}
@@ -69,9 +68,8 @@ ColorControls.propTypes = {
   setEditorState: PropTypes.func.isRequired,
   focusEditor: PropTypes.func.isRequired,
   buttonClassName: PropTypes.string,
-  theme: PropTypes.string,
+  theme: PropTypes.string
 }
-
 
 export const customStyleFn = (style) => {
   const output = {}

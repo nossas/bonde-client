@@ -8,7 +8,7 @@ describe('EditorDraftJS.createEditorContent', () => {
       const text = 'Clique aqui para editar...'
       const strResult = createEditorContent(text)
       const jsonResult = JSON.parse(strResult)
-      
+
       expect(jsonResult.blocks.length).to.equal(1)
       expect(jsonResult.blocks[0].text).to.equal(text)
     })

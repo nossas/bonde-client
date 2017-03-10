@@ -8,16 +8,14 @@ import linkStrategy from './linkStrategy'
 import EditorUtils from '../EditorUtils'
 import getSelectionEntities from '../getSelectionEntities'
 
-
 const getSelectionLink = (editorState) => {
   // Return entity when one and only one selected
   return getSelectionEntities(editorState, 'LINK').last()
 }
 
-
 export default class LinkControls extends Component {
 
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     const { defaultTarget } = this.props
@@ -25,7 +23,7 @@ export default class LinkControls extends Component {
     this.state = { showInput: false, href: '', target: '_self' }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     const { editorState } = nextProps
     if (editorState !== this.props.editorState) {
       const entityLink = getSelectionLink(this.props.editorState)
@@ -40,11 +38,11 @@ export default class LinkControls extends Component {
     }
   }
 
-  handleToggleInput() {
+  handleToggleInput () {
     this.setState({ showInput: !this.state.showInput })
   }
 
-  confirmLink() {
+  confirmLink () {
     const { editorState, setEditorState } = this.props
 
     if (this.state.href) {
@@ -58,56 +56,55 @@ export default class LinkControls extends Component {
     this.props.focusEditor()
   }
 
-  removeLink() {
+  removeLink () {
     const { editorState, setEditorState } = this.props
     setEditorState(EditorUtils.toggleLink(editorState, null))
     this.props.focusEditor()
   }
 
-  handleChangeTarget(e) {
+  handleChangeTarget (e) {
     this.setState({ target: e.target.checked ? '_blank' : '_self' })
   }
 
-  render() {
-
+  render () {
     const { buttonClassName, popoverClassName } = this.props
 
     return (
-      <div className="linkControls">
+      <div className='linkControls'>
         <button className={classnames(buttonClassName, this.state.hasLink ? 'active' : null)} onClick={this.handleToggleInput.bind(this)}>
-          <i className="fa fa-link" />
+          <i className='fa fa-link' />
         </button>
         {this.state.showInput && (
           <div className={popoverClassName}>
-            <div className="flex flex-wrap">
+            <div className='flex flex-wrap'>
               <input
-                type="text"
+                type='text'
                 value={this.state.href}
                 onChange={e => this.setState({ href: e.target.value })}
-                className="input col-8 m0"
+                className='input col-8 m0'
               />
               <button
-                className="btn btn-outline white mx1"
+                className='btn btn-outline white mx1'
                 onClick={this.confirmLink.bind(this)}
               >
-                <i className="fa fa-check" />
+                <i className='fa fa-check' />
               </button>
             </div>
-            <div className="flex flex-wrap mt1">
+            <div className='flex flex-wrap mt1'>
               <input
-                id="targetId"
-                type="checkbox"
-                onChange={this.handleChangeTarget.bind(this) }
+                id='targetId'
+                type='checkbox'
+                onChange={this.handleChangeTarget.bind(this)}
                 value={this.state.target}
                 checked={this.state.target === '_blank'}
-                data-wysihtml5-dialog-field="target"
+                data-wysihtml5-dialog-field='target'
               />
-              <label htmlFor="targetId" style={{ cursor: 'pointer', lineHeight: 'normal' }}>Abrir link em nova aba</label>
+              <label htmlFor='targetId' style={{ cursor: 'pointer', lineHeight: 'normal' }}>Abrir link em nova aba</label>
             </div>
           </div>
         )}
         <button className={buttonClassName} onClick={this.removeLink.bind(this)}>
-          <i className="fa fa-unlink" />
+          <i className='fa fa-unlink' />
         </button>
       </div>
     )

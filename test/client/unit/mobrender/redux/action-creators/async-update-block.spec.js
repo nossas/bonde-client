@@ -37,11 +37,10 @@ const store = configureStore(
 }).toJS())
 
 describe('~client/mobrender/redux/action-creators/async-update-block', () => {
-  
   it('should dispatch actions to move up block', () => {
     const expectedActions = [
       createAction(t.UPDATE_BLOCK_REQUEST),
-      createAction(t.UPDATE_BLOCK_SUCCESS, block),
+      createAction(t.UPDATE_BLOCK_SUCCESS, block)
     ]
     return store.dispatch(asyncUpdateBlock(block))
       .then(() => {

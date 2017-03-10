@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import classnames from 'classnames'
 
 class ControlButtons extends Component {
-  render() {
+  render () {
     const { $formRedux: { floatButton, successMessage } } = this.context
     const { submitting, submitted, dirty, formInline, valid, ...props } = this.props
     return (
@@ -11,7 +11,7 @@ class ControlButtons extends Component {
           formInline ? 'inline-block ml1' : 'flex flex-wrap mt1'
       )}>
         <input
-          type="submit"
+          type='submit'
           className={classnames(
             'btn h3 col-12 mt1 mb2 mx2 white p2 rounded',
             !valid ? 'bg-gray95' : 'bg-pagenta'
@@ -21,9 +21,9 @@ class ControlButtons extends Component {
         />
         {
           submitted && !!successMessage &&
-          <div className="success-message olive h4 px2 mt2">
+          <div className='success-message olive h4 px2 mt2'>
             {successMessage}
-            <i className="fa fa-check-circle olive" />
+            <i className='fa fa-check-circle olive' />
           </div>
         }
       </div>
@@ -32,7 +32,7 @@ class ControlButtons extends Component {
 }
 
 ControlButtons.contextTypes = {
-  $formRedux: PropTypes.object,
+  $formRedux: PropTypes.object
 }
 
 ControlButtons.propTypes = {

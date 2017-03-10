@@ -8,7 +8,7 @@ const SettingsPageMenuLayout = ({ children, title, className }) => (
       className
     )}
   >
-    <h1 className="h1 mt0 mb3">{title}</h1>
+    <h1 className='h1 mt0 mb3'>{title}</h1>
     {children}
   </div>
 )

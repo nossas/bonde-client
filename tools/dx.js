@@ -37,12 +37,12 @@ function formatMessage (message) {
 }
 
 export const compileDev = (compiler, port) => {
-  compiler.plugin('invalid', function() {
+  compiler.plugin('invalid', function () {
     clearConsole()
     console.log(chalk.yellow('Compiling...'))
     console.log()
   })
-  compiler.plugin('done', function(stats) {
+  compiler.plugin('done', function (stats) {
     clearConsole()
     const hasErrors = stats.hasErrors()
     const hasWarnings = stats.hasWarnings()
@@ -102,7 +102,6 @@ export const compileDev = (compiler, port) => {
 
   return compiler
 }
-
 
 function openBrowser (port) {
   if (process.platform === 'darwin') {

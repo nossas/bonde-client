@@ -26,13 +26,12 @@ const store = configureStore(
 )(rootReducer)
 
 describe('~client/mobrender/redux/action-creators/async-add-block', () => {
-
   it('should dispatch actions to add block', () => {
     const { widgets_attributes, ...data } = rdata
     const expectedActions = [
       createAction(t.ADD_BLOCK_REQUEST),
       createAction(t.ADD_BLOCK_SUCCESS, data),
-      createAction(t.ADD_WIDGETS_SUCCESS, widgets_attributes),
+      createAction(t.ADD_WIDGETS_SUCCESS, widgets_attributes)
     ]
     return store.dispatch(asyncAddBlock({ ...block, mobilization_id: 1 }))
       .then(res => {

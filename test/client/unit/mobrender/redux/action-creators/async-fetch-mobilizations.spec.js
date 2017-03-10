@@ -23,9 +23,7 @@ const store = configureStore(
   [thunk.withExtraArgument({ api: axios })]
 )(rootReducer)
 
-
 describe('client/morender/async-creators/async-fetch-mobilizations', () => {
-
   it('should dispatch actions to fetching mobilizations', () => {
     const expectedActions = [
       createAction(t.FETCH_MOBILIZATIONS_REQUEST),

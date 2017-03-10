@@ -5,22 +5,22 @@ import { setFilterableSearchBarList } from './actions'
 
 export class FilterableSearchBar extends Component {
 
-  componentDidMount() {
+  componentDidMount () {
     const { dispatch, list } = this.props
     dispatch(setFilterableSearchBarList(list))
   }
 
-  render() {
+  render () {
     const { list, dispatch } = this.props
     return (
       <div
-        className="bg-white rounded-top border-only-bottom border-whisper flex flex-wrap"
+        className='bg-white rounded-top border-only-bottom border-whisper flex flex-wrap'
         style={{ padding: '1.6rem 2rem' }}
       >
-        <i className="fa fa-search black pt1" style={{ fontSize: '1.1rem' }} />
+        <i className='fa fa-search black pt1' style={{ fontSize: '1.1rem' }} />
         <input
-          className="input border-none col-11 inline-block mb0"
-          placeholder="Busque um template"
+          className='input border-none col-11 inline-block mb0'
+          placeholder='Busque um template'
           style={{ fontSize: '1.2rem' }}
           onChange={input => {
             dispatch(setFilterableSearchBarList(

@@ -157,5 +157,16 @@
       "**/tools/**",
       "**/test/**"
     ]
+  },
+  "standard": {
+    "globals": [
+      "it",
+      "describe",
+      "expect",
+      "afterAll",
+      "beforeAll",
+      "beforeEach",
+      "before"
+    ]
   }
 }

@@ -6,7 +6,6 @@ import WidgetOverlay from './widget-overlay.connected'
 
 import widgets from '../widgets/config'
 
-
 const Widget = ({ editable, mobilization, widget, update, saving }) => {
   // Resize column widget
   const { sm_size, md_size, lg_size } = widget

@@ -9,7 +9,6 @@ import {
   Radio
 } from '~components/forms'
 
-
 const PressureSettingsPage = ({
   ...props,
   fields: {

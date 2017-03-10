@@ -142,7 +142,7 @@ class BlocksCreatePage extends Component {
                       `${paths.editMobilization(mobilization.id)}?newBlock=true`
                     )
                   })
-                /*dispatch(BlockActions.asyncBlockCreate({
+                /* dispatch(BlockActions.asyncBlockCreate({
                   mobilization,
                   block: {
                     bg_class: JSON.stringify(selectedColor),
@@ -155,7 +155,7 @@ class BlocksCreatePage extends Component {
                     )
                   }
                 }))
-                dispatch(BlockActions.setBackgroundImageUploaded(null))*/
+                dispatch(BlockActions.setBackgroundImageUploaded(null)) */
               }}
             >
               Adicionar

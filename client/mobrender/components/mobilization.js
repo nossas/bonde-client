@@ -64,22 +64,22 @@ class Mobilization extends React.Component {
               widgets={widgets.filter(w => w.block_id === block.id)}
             />
           ))}
-          <div className="col-10 mx-auto">
-            <div className="col col-10">
+          <div className='col-10 mx-auto'>
+            <div className='col col-10'>
               <a
-                href="http://www.bonde.org/"
+                href='http://www.bonde.org/'
                 style={{ 'color': '#000', 'textDecoration': 'none', 'lineHeight': '85px' }}
-                target="_blank">
+                target='_blank'>
                 Feito pra causar. Feito com
                 <strong> BONDE.</strong>
               </a>
             </div>
-            <div className="col col-2">
+            <div className='col col-2'>
               <a
-                href="http://www.bonde.org/"
-                className="right my2"
-                target="_blank">
-                <img src={logoIcon} alt="B"   style={{ width: '45px' }} />
+                href='http://www.bonde.org/'
+                className='right my2'
+                target='_blank'>
+                <img src={logoIcon} alt='B' style={{ width: '45px' }} />
               </a>
             </div>
           </div>

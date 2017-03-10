@@ -3,7 +3,6 @@ import Selectors from '../redux/selectors'
 import { handleMouseOver, handleMouseOut, handleCancelEdit } from '../redux/action-creators'
 import Block, { HOVER_MOUSE_KEY } from './block'
 
-
 const mapStateToProps = (state, props) => {
   const selectors = Selectors(state)
   return {

@@ -65,7 +65,7 @@ class PressureForm extends Component {
     return errors
   }
 
-  handleSubmit(e) {
+  handleSubmit (e) {
     e.preventDefault()
     const { onSubmit } = this.props
     const errors = this.validate()
@@ -80,49 +80,49 @@ class PressureForm extends Component {
     const { buttonColor, buttonText, children, widget } = this.props
     const { email, name, lastname, city, subject, body, errors } = this.state
     return (
-      <form className="pressure-form" onSubmit={::this.handleSubmit}>
-        <div className={classnames('activist-form bg-white', !children ? 'rounded-bottom': null)}>
-          <div className="form bg-white rounded-bottom">
+      <form className='pressure-form' onSubmit={::this.handleSubmit}>
+        <div className={classnames('activist-form bg-white', !children ? 'rounded-bottom' : null)}>
+          <div className='form bg-white rounded-bottom'>
             <div className={classnames('form-group', controlClassname)}>
-              <label className="py1 gray" htmlFor="pressure-sender-email-id">
+              <label className='py1 gray' htmlFor='pressure-sender-email-id'>
                 E-mail
-                {(errors && errors['email'] && <span className="error">{errors['email']}</span>)}
+                {(errors && errors['email'] && <span className='error'>{errors['email']}</span>)}
               </label>
               <input
-                id="pressure-sender-email-id"
-                className="col-12"
+                id='pressure-sender-email-id'
+                className='col-12'
                 style={inputReset}
                 onBlur={::AnalyticsEvents.pressureIsFilled}
-                type="email"
-                placeholder="Insira seu e-mail"
+                type='email'
+                placeholder='Insira seu e-mail'
                 value={email}
                 onChange={e => this.setState({ email: e.target.value })}
               />
             </div>
             <div className={classnames('form-group', controlClassname)}>
-              <label className="py1 gray" htmlFor="pressure-sender-email-id">
+              <label className='py1 gray' htmlFor='pressure-sender-email-id'>
                 Nome
-                {(errors && errors['name'] && <span className="error">{errors['name']}</span>)}
+                {(errors && errors['name'] && <span className='error'>{errors['name']}</span>)}
               </label>
               <input
-                className="col-12"
+                className='col-12'
                 style={inputReset}
-                type="text"
-                placeholder="Insira seu nome"
+                type='text'
+                placeholder='Insira seu nome'
                 value={name}
                 onChange={e => this.setState({ name: e.target.value })}
               />
             </div>
             <div className={classnames('form-group', controlClassname)}>
-              <label className="py1 gray" htmlFor="pressure-sender-email-id">
+              <label className='py1 gray' htmlFor='pressure-sender-email-id'>
                 Sobrenome
-                {(errors && errors['lastname'] && <span className="error">{errors['lastname']}</span>)}
+                {(errors && errors['lastname'] && <span className='error'>{errors['lastname']}</span>)}
               </label>
               <input
-                className="col-12"
+                className='col-12'
                 style={inputReset}
-                type="text"
-                placeholder="Insira seu sobrenome"
+                type='text'
+                placeholder='Insira seu sobrenome'
                 value={lastname}
                 onChange={e => this.setState({ lastname: e.target.value })}
               />
@@ -130,15 +130,15 @@ class PressureForm extends Component {
             {
               !widget.settings.show_city || widget.settings.show_city !== 'city-true' ? null : (
                 <div className={classnames('form-group', controlClassname)}>
-                  <label className="py1 gray" htmlFor="pressure-sender-city-id">
+                  <label className='py1 gray' htmlFor='pressure-sender-city-id'>
                     Cidade
-                    {(errors && errors['city'] && <span className="error">{errors['city']}</span>)}
+                    {(errors && errors['city'] && <span className='error'>{errors['city']}</span>)}
                   </label>
                   <input
-                    className="col-12"
+                    className='col-12'
                     style={inputReset}
-                    type="text"
-                    placeholder="Insira seu cidade"
+                    type='text'
+                    placeholder='Insira seu cidade'
                     value={city}
                     onChange={e => this.setState({ city: e.target.value })}
                   />
@@ -146,38 +146,38 @@ class PressureForm extends Component {
               )
             }
             <div className={classnames('form-group', controlClassname)}>
-              <label className="py1 gray" htmlFor="pressure-subject-id">
+              <label className='py1 gray' htmlFor='pressure-subject-id'>
                 Assunto
-                {(errors && errors['subject'] && <span className="error">{errors['subject']}</span>)}
+                {(errors && errors['subject'] && <span className='error'>{errors['subject']}</span>)}
               </label>
               <input
-                id="pressure-subject-id"
-                className="col-12"
+                id='pressure-subject-id'
+                className='col-12'
                 style={inputReset}
-                type="text"
+                type='text'
                 value={subject}
                 onChange={e => this.setState({ subject: e.target.value })}
               />
             </div>
             <div className={classnames('form-group', controlClassname)}>
-              <label className="py1 gray" htmlFor="pressure-body-id">
+              <label className='py1 gray' htmlFor='pressure-body-id'>
                 Corpo do e-mail
-                {(errors && errors['body'] && <span className="error">{errors['body']}</span>)}
+                {(errors && errors['body'] && <span className='error'>{errors['body']}</span>)}
               </label>
               <textarea
-                id="pressure-body-id"
-                className="col-12 mt1"
+                id='pressure-body-id'
+                className='col-12 mt1'
                 style={{...inputReset, height: '7rem'}}
                 value={body}
                 onChange={e => this.setState({ body: e.target.value })}
               />
             </div>
           </div>
-          <div className="pt1 pb3 px3">
+          <div className='pt1 pb3 px3'>
             <button
-              type="submit"
+              type='submit'
               onClick={::this.handleSubmit}
-              className="btn caps white col-12 py2 rounded"
+              className='btn caps white col-12 py2 rounded'
               style={{ backgroundColor: buttonColor }}
             >
               {buttonText}

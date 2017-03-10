@@ -21,7 +21,7 @@ import proxy from 'http-proxy-middleware' // used in authenticate
 import DefaultServerConfig from './config'
 import webpackConfig from '../tools/webpack.client'
 import { compileDev, startDev } from '../tools/dx'
-import { configureStore } from '../common/store'
+import { configureStore } from '../client/store'
 import createRoutes from '../routes'
 import { startServer as authStartServer } from '../authenticate'
 import AuthClient from '../authenticate/client'

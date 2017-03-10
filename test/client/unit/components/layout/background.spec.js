@@ -5,7 +5,6 @@ import { mount } from 'enzyme'
 import { Background } from '~components/layout'
 
 describe('client/components/layout/background', () => {
-
   it('should render without crashed', () => {
     const bg = mount(<Background />)
     expect(bg).to.be.ok
@@ -50,10 +49,9 @@ describe('client/components/layout/background', () => {
   it('should render image in background', () => {
     const style = {
       backgroundImage: "url('../assets/bg-login.png')",
-      overflow: "auto"
+      overflow: 'auto'
     }
     const bg = mount(<Background image='../assets/bg-login.png' />)
     expect(bg.find('.bg-cover').props().style).to.deep.equal(style)
   })
-
 })

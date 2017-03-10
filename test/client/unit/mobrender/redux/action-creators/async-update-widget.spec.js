@@ -38,11 +38,10 @@ const store = configureStore(
 }).toJS())
 
 describe('~client/mobrender/redux/action-creators/async-update-widget', () => {
-
   it('should dispatch actions to update widget', () => {
     const expectedActions = [
       createAction(t.UPDATE_WIDGET_REQUEST),
-      createAction(t.UPDATE_WIDGET_SUCCESS, widget),
+      createAction(t.UPDATE_WIDGET_SUCCESS, widget)
     ]
     return store.dispatch(asyncUpdateWidget(widget))
       .then(() => {

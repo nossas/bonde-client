@@ -5,7 +5,6 @@ import sinon from 'sinon'
 import BlockConfigMenu from '~client/mobrender/components/block-config-menu'
 
 describe('~client/mobrender/components/block-config-menu', () => {
-  
   const props = {
     block: { id: 1, hidden: false }
   }
@@ -29,12 +28,10 @@ describe('~client/mobrender/components/block-config-menu', () => {
     expect(menuConfig.find('DropdownMenu').props().wrapperClassName).to.not.contains('display-none')
   })
 
-  describe('should make menu item', () => { 
-    
+  describe('should make menu item', () => {
     let menu
-    
-    describe('the first: change background', () => { 
-      
+
+    describe('the first: change background', () => {
       beforeEach(() => {
         menu = menuConfig.find('DropdownMenuItem').at(0)
       })
@@ -54,7 +51,6 @@ describe('~client/mobrender/components/block-config-menu', () => {
     })
 
     describe('the second: show/hide block', () => {
-      
       beforeEach(() => {
         menu = menuConfig.find('DropdownMenuItem').at(1)
       })
@@ -86,7 +82,7 @@ describe('~client/mobrender/components/block-config-menu', () => {
 
     describe('the third: remove block', () => {
       let confirmStub
-      
+
       beforeEach(() => {
         confirmStub = sinon.stub(window, 'confirm')
         menu = menuConfig.find('DropdownMenuItem').at(2)
@@ -117,7 +113,6 @@ describe('~client/mobrender/components/block-config-menu', () => {
     })
 
     describe('the fourth: move up', () => {
-      
       beforeEach(() => {
         menu = menuConfig.find('DropdownMenuItem').at(3)
       })
@@ -146,7 +141,6 @@ describe('~client/mobrender/components/block-config-menu', () => {
     })
 
     describe('the fifth: move down', () => {
-      
       beforeEach(() => {
         menu = menuConfig.find('DropdownMenuItem').at(4)
       })
@@ -172,5 +166,5 @@ describe('~client/mobrender/components/block-config-menu', () => {
         expect(menu.find('i').props().className).to.equal('fa fa-chevron-down')
       })
     })
-  }) 
+  })
 })

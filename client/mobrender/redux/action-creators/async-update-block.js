@@ -12,7 +12,7 @@ export default block => (dispatch, getState, { api }) => {
   return api
     .put(`/mobilizations/${mobilization.id}/blocks/${block.id}`, { block }, { headers })
     .then(res => {
-      dispatch(createAction(t.UPDATE_BLOCK_SUCCESS, res.data)) 
+      dispatch(createAction(t.UPDATE_BLOCK_SUCCESS, res.data))
     })
     .catch(ex => {
       dispatch(createAction(t.UPDATE_BLOCK_FAILURE, ex))

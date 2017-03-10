@@ -19,7 +19,7 @@ const redial = {
 }
 
 const mapStateToProps = state => ({
-  mobilization: MobSelectors(state).getMobilization(),
+  mobilization: MobSelectors(state).getMobilization()
 })
 
 const mapActionsToProps = { onCreateBlock: asyncAddBlock }

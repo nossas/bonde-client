@@ -3,7 +3,6 @@ import { Field, reduxForm } from 'redux-form'
 import { Form, Input, Button } from '../forms'
 import { actions as authActions } from '../../../authenticate/redux'
 
-
 const FormLogin = (reduxFormProps) => {
   return (
     <Form {...reduxFormProps}>
