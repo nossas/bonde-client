@@ -1,9 +1,7 @@
 import React, { PropTypes } from 'react'
 import $ from 'jquery'
 import classnames from 'classnames'
-
-const wysihtml5 = require('wysihtml/src/wysihtml5')
-require('wysihtml/parser_rules/advanced_and_extended')
+import { wysihtml5, wysihtml5ParserRules } from './wysihtml-advanced'
 
 // Global module dependencies
 import { WYSIHTMLToolbar } from '~components/editor-wysihtml'
