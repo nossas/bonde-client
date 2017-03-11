@@ -80,6 +80,7 @@
     "throng": "^4.0.0",
     "url-loader": "^0.5.8",
     "uuid": "^3.0.1",
+    "wysihtml": "git+https://github.com/Voog/wysihtml.git#0.5.2",
     "xlsx": "^0.8.1",
     "xlsx.js": "^2.3.1"
   },
@@ -135,7 +136,15 @@
     "webpack-visualizer-plugin": "^0.1.11"
   },
   "standard": {
-    "parser": "babel-eslint"
+    "globals": [
+      "it",
+      "describe",
+      "expect",
+      "afterAll",
+      "beforeAll",
+      "beforeEach",
+      "before"
+    ]
   },
   "engines": {
     "node": "^7"
@@ -156,17 +165,6 @@
       "**/migrations/**",
       "**/tools/**",
       "**/test/**"
-    ]
-  },
-  "standard": {
-    "globals": [
-      "it",
-      "describe",
-      "expect",
-      "afterAll",
-      "beforeAll",
-      "beforeEach",
-      "before"
     ]
   }
 }

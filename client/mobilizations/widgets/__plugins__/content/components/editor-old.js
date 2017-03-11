@@ -2,6 +2,9 @@ import React, { PropTypes } from 'react'
 import $ from 'jquery'
 import classnames from 'classnames'
 
+require('wysihtml/src/wysihtml5')
+require('wysihtml/parser_rules/advanced_and_extended')
+
 // Global module dependencies
 import { WYSIHTMLToolbar } from '~components/editor-wysihtml'
 import { Loading } from '~components/await'
