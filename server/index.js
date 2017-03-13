@@ -25,8 +25,8 @@ import webpackConfig from '../tools/webpack.client'
 import { compileDev, startDev } from '../tools/dx'
 import { configureStore } from '../client/store'
 import createRoutes from '../routes'
-import { startServer as authStartServer } from '../authenticate'
-import AuthClient from '../authenticate/client'
+import { startServer as authStartServer } from './authenticate'
+import AuthClient from './authenticate/client'
 
 export const createServer = (config) => {
   const __PROD__ = config.nodeEnv === 'production'
