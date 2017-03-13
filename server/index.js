@@ -69,15 +69,24 @@ export const createServer = (config) => {
     const { dispatch, getState } = store
 
     match({ routes, history }, (err, redirectLocation, renderProps) => {
+      // in here we can make some decisions all at once
       if (err) {
         console.error(err)
         return res.status(500).send('Internal server error')
       }
 
+      if (redirectLocation) {
+         // we haven't talked about `onEnter` hooks on routes, but before a
+         // route is entered, it can redirect. Here we handle on the server.
+        res.redirect(302, redirectLocation.pathname + redirectLocation.search)
+      }
+
       if (!renderProps) {
+        // no errors, no redirect, we just didn't match anything
         return res.status(404).send('Not found')
       }
 
+      // if we got props then we matched a route and can render
       const { components } = renderProps
 
       // Define locals to be provided to all lifecycle hooks:
