@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { reducer as authReducer, actionTypes as t } from '../../../authenticate/redux'
+import { reducers as authReducer, actionTypes as t } from '../../../client/account'
 
 const initialState = {
   isLoaded: false,

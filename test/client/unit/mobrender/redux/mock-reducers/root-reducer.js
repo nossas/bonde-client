@@ -1,4 +1,4 @@
-import { reducer as authReducer } from '~authenticate/redux'
+import { reducers as authReducer } from '~client/account'
 
 export default {
   auth: authReducer
