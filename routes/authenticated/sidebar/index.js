@@ -1,22 +1,22 @@
 // polyfill webpack require.ensure
 if (typeof require.ensure !== 'function') require.ensure = (d, c) => c(require)
-import { injectAsyncReducer } from '~client/store'
+// import { injectAsyncReducer } from '~client/store'
 
 export default store => ({
-  path: '/',
-  getIndexRoute (location, cb) {
-    require.ensure([], (require) => {
-      cb(null, {
-        component: require('./mobilizations-list/page.connected').default
-      })
-    })
-  },
-  getComponent (nextState, callback) {
-    require.ensure([], function (require) {
-      injectAsyncReducer(store, 'mobilizations', require('~client/mobrender/redux/reducers').default)
-      callback(null, require('./container.connected').default)
-    })
-  },
+  // path: '/',
+  // getIndexRoute (location, cb) {
+  //   require.ensure([], (require) => {
+  //     cb(null, {
+  //       component: require('./mobilizations-list/page.connected').default
+  //     })
+  //   })
+  // },
+  // getComponent (nextState, callback) {
+  //   require.ensure([], function (require) {
+  //     injectAsyncReducer(store, 'mobilizations', require('~client/mobrender/redux/reducers').default)
+  //     callback(null, require('./container.connected').default)
+  //   })
+  // },
   getChildRoutes (location, cb) {
     require.ensure([], (require) => {
       cb(null, [
@@ -40,8 +40,6 @@ export default store => ({
         require('./widgets-donation-settings').default(store),
         require('./widgets-form-settings').default(store),
         require('./widgets-pressure-settings').default(store),
-
-        require('~routes/not-found').default
       ])
     })
   }
