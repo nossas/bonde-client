@@ -1,5 +1,11 @@
-import * as selectors from './selectors'
+import reducers from './reducers'
+import selectors from './selectors'
+import * as actionTypes from './action-types'
+import * as actions from './action-creators'
 
-export default {
+module.exports = {
+  actionTypes,
+  actions,
+  reducers,
   selectors
 }
