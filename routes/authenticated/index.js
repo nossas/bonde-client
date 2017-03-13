@@ -6,8 +6,7 @@ export default store => ({
     require.ensure([], (require) => {
       cb(null, [
         require('./background').default(store),
-        require('./sidebar').default(store),
-        require('~routes/not-found').default
+        require('./sidebar').default(store)
       ])
     })
   }

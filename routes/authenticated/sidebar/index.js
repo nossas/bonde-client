@@ -1,32 +1,25 @@
 // polyfill webpack require.ensure
 if (typeof require.ensure !== 'function') require.ensure = (d, c) => c(require)
-import { injectAsyncReducer } from '~client/store'
+// import { injectAsyncReducer } from '~client/store'
 
 import * as CommunitySelectors from '~client/community/selectors'
 import * as Paths from '~client/community/paths'
 
 export default store => ({
-  path: '/',
-  getIndexRoute (location, cb) {
-    require.ensure([], (require) => {
-      cb(null, {
-        component: require('./mobilizations-list/page.connected').default
-      })
-    })
-  },
-  onEnter (nextState, replace) {
-    const community = CommunitySelectors.getCurrent(store.getState())
-    if (!community) {
-      // Redirect for selection of community
-      replace(Paths.list())
-    }
-  },
-  getComponent (nextState, callback) {
-    require.ensure([], function (require) {
-      injectAsyncReducer(store, 'mobilizations', require('~client/mobrender/redux/reducers').default)
-      callback(null, require('./container.connected').default)
-    })
-  },
+  // path: '/',
+  // getIndexRoute (location, cb) {
+  //   require.ensure([], (require) => {
+  //     cb(null, {
+  //       component: require('./mobilizations-list/page.connected').default
+  //     })
+  //   })
+  // },
+  // getComponent (nextState, callback) {
+  //   require.ensure([], function (require) {
+  //     injectAsyncReducer(store, 'mobilizations', require('~client/mobrender/redux/reducers').default)
+  //     callback(null, require('./container.connected').default)
+  //   })
+  // },
   getChildRoutes (location, cb) {
     require.ensure([], (require) => {
       cb(null, [
@@ -50,8 +43,6 @@ export default store => ({
         require('./widgets-donation-settings').default(store),
         require('./widgets-form-settings').default(store),
         require('./widgets-pressure-settings').default(store),
-
-        require('~routes/not-found').default
       ])
     })
   }
