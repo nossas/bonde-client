@@ -1,6 +1,6 @@
 import * as t from '../action-types'
 import { createAction } from './create-action'
-import AuthSelectors from '~authenticate/redux/selectors'
+import AuthSelectors from '~client/account/selectors'
 
 export default values => (dispatch, getState, { api }) => {
   const credentials = AuthSelectors(getState()).getCredentials()

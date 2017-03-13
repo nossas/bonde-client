@@ -9,7 +9,7 @@ import browserHistory from 'react-router/lib/browserHistory'
 import { Provider } from 'react-redux'
 import { StyleSheet } from 'aphrodite'
 
-import AuthClient from '../authenticate/client'
+import AuthClient from '../server/authenticate/client'
 import { configureStore } from './store'
 const initialState = window.INITIAL_STATE || {}
 // Set up Redux (note: this API requires redux@>=3.1.0):

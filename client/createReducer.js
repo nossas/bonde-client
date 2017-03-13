@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 import { reducer as formReducer } from 'redux-form'
-import auth from '~authenticate/redux/reducer'
+import auth from '~client/account/reducers'
 import mobilizations from '~client/mobrender/redux/reducers'
 /*
 import mobilizations from '~mobilizations/reducers'
