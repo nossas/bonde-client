@@ -4,7 +4,7 @@ import { shallow } from 'enzyme'
 
 import Mobilization from '~client/mobrender/components/mobilization.connected'
 import { Loading } from '~components/await'
-import Page from '~routes/logged-in/sidebar/mobilizations-edit/page'
+import Page from '~routes/authenticated/sidebar/mobilizations-edit/page'
 
 describe('routes/application/mobilizations-edit/page', () => {
   let page

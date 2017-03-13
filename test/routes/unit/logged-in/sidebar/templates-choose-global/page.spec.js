@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import Page from '~routes/logged-in/sidebar/templates-choose-global/page'
+import Page from '~routes/authenticated/sidebar/templates-choose-global/page'
 
 describe('routes/application/templates-choose-global/page', () => {
   let wrapper
