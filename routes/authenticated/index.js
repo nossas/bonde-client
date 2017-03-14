@@ -7,6 +7,8 @@ import * as Paths from '~client/paths'
 // import { showMobilizationPublicView, getDomain } from '~routes/utils'
 
 export default store => ({
+  path: '/',
+
   getIndexRoute (location, cb) {
     require.ensure([], (require) => {
       cb(null, {
