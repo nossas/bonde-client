@@ -4,7 +4,7 @@ if (typeof require.ensure !== 'function') require.ensure = (d, c) => c(require)
 export default store => ({
   getComponent (nextState, callback) {
     require.ensure([], function (require) {
-      callback(null, require('./../../authenticated/background/container').default)
+      callback(null, require('./container').default)
     })
   },
   getChildRoutes (location, cb) {

@@ -2,9 +2,9 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import * as mock from '~utils/mock'
-import Page from '~routes/authenticated/background/community-new/page'
+import Page from '~routes/authenticated/external/community-new/page'
 
-describe('routes/authenticated/background/community-new/page', () => {
+describe('routes/authenticated/external/community-new/page', () => {
   const props = {
     fields: {
       name: {},
