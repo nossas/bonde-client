@@ -1,16 +1,10 @@
 import * as t from './action-types'
 
 const initialState = {
-  isLoaded: true,
+  isLoaded: false,
   isLoading: false,
-  user: { email: 'foo@bar.com', first_name: 'Foo Bar' },
-  credentials: {
-    'access-token': 'QFrr9zA1-wnGcvE624WUjg',
-    'client': '7Wb0PWycB1y8ac34I28PWg',
-    'expiry': ':1490213663',
-    'token-type': 'Bearer',
-    'uid': 'foo@bar.com'
-  },
+  user: undefined,
+  credentials: undefined,
   error: undefined
 }
 
