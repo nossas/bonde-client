@@ -2,9 +2,9 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import * as mock from '~utils/mock'
-import Page from '~routes/authenticated/background/community-list/page'
+import Page from '~routes/authenticated/external/community-list/page'
 
-describe('routes/authenticated/background/community-list/page', () => {
+describe('routes/authenticated/external/community-list/page', () => {
   const props = {
     isLoaded: true,
     isLoading: false,

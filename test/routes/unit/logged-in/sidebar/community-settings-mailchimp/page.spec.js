@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import * as mock from '~utils/mock'
-import Page from '~routes/authenticated/sidebar/community-settings-mailchimp/page'
+import Page from '~routes/authenticated/admin/community-settings-mailchimp/page'
 
 describe('routes/application/community-settings-mailchimp/page', () => {
   const props = {

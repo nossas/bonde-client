@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import Page from '~routes/authenticated/sidebar/templates-create/page'
+import Page from '~routes/authenticated/admin/templates-create/page'
 
 describe('routes/application/templates-create/page', () => {
   let wrapper
