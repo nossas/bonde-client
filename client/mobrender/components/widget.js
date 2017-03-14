@@ -6,18 +6,18 @@ import WidgetOverlay from './widget-overlay.connected'
 
 import widgets from '../widgets/config'
 
-const Widget = ({ editable, mobilization, widget, update, saving }) => {
+const Widget = ({ saving, mobilization, widget, update, editable }) => {
   // Resize column widget
-  const { sm_size, md_size, lg_size } = widget
+  const { sm_size: smSize, md_size: mdSize, lg_size: lgSize } = widget
   const className = classnames(
-    `px2 col mb4 md-mb0 col-${sm_size}`,
-    `sm-col-${sm_size} md-col-${md_size} lg-col-${lg_size}`
+    `px2 col mb4 md-mb0 col-${smSize}`,
+    `sm-col-${smSize} md-col-${mdSize} lg-col-${lgSize}`
   )
 
   const widgetConfig = widgets(mobilization, widget).filter(w => w.kind === widget.kind)[0]
   const { component: Component, redirect } = widgetConfig
 
-  const widgetComponent = <Component mobilization={mobilization} widget={widget} update={update} editable={editable} />
+  const widgetComponent = <Component {...{ mobilization, widget, update, editable }} />
   return (
     <div className={className}>
       {saving && <Loading />}

@@ -11,16 +11,19 @@ export const initialState = {
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case t.FETCH_WIDGETS_REQUEST:
+    case t.FILTER_WIDGETS_REQUEST:
       return {...state,
         fetching: true
       }
     case t.FETCH_WIDGETS_SUCCESS:
+    case t.FILTER_WIDGETS_SUCCESS:
       return {...state,
         isLoaded: true,
         fetching: false,
         data: action.payload
       }
     case t.FETCH_WIDGETS_FAILURE:
+    case t.FILTER_WIDGETS_FAILURE:
       return {...state,
         isLoaded: true,
         fetching: false,

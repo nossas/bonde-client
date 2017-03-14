@@ -135,27 +135,12 @@ class BlocksCreatePage extends Component {
                   widgets_attributes: this.state.selectedLayout.map(col => ({ kind: 'draft', ...col })),
                   mobilization_id: mobilization.id
                 }
-                console.log('//TODO: async create block', block)
                 onCreateBlock(block)
                   .then(() => {
                     browserHistory.push(
                       `${paths.editMobilization(mobilization.id)}?newBlock=true`
                     )
                   })
-                /* dispatch(BlockActions.asyncBlockCreate({
-                  mobilization,
-                  block: {
-                    bg_class: JSON.stringify(selectedColor),
-                    bg_image: uploadedBackgroundImage || bgImage,
-                    widgets_attributes: selectedLayout.map(column => ({ kind: 'draft', ...column }))
-                  },
-                  next: () => {
-                    browserHistory.push(
-                      `${paths.editMobilization(mobilization.id)}?newBlock=true`
-                    )
-                  }
-                }))
-                dispatch(BlockActions.setBackgroundImageUploaded(null)) */
               }}
             >
               Adicionar

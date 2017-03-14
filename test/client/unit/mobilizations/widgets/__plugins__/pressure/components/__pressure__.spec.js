@@ -12,10 +12,9 @@ describe('client/mobilizations/widgets/__plugins__/pressure/components/__pressur
     mobilization: { id: 1 },
     widget: { id: 1, settings: {} }
   }
-  const mockContext = { router: {} }
 
   beforeEach(() => {
-    wrapper = shallow(<Pressure {...props} />, { context: mockContext })
+    wrapper = shallow(<Pressure {...props} />)
   })
 
   it('should color with main_color, h2, a, PressureForm, PressureCount', () => {

@@ -248,4 +248,33 @@ describe('~client/mobrender/redux/selectors', () => {
     const selector = Selectors(getState())
     expect(selector.getWidgets()).to.deep.equal(widgets)
   })
+
+  describe('#mobilizationIsNeedReload', () => {
+
+    it('should return true when blocks or widgets isnt loaded', () => {
+      const getState = () => state.mergeDeep(fromJS({
+        mobilizations: {
+          blocks: { isLoaded: false },
+          widgets: { isLoaded: false },
+          list: { reload: false }
+        }
+      })).toJS()
+
+      const selector = Selectors(getState())
+      expect(selector.mobilizationIsNeedReload()).to.equal(true)
+    })
+
+    it('should return reload when blocks or widgets is loaded', () => {
+      const getState = () => state.mergeDeep(fromJS({
+        mobilizations: {
+          blocks: { isLoaded: true },
+          widgets: { isLoaded: true },
+          list: { reload: false }
+        }
+      })).toJS()
+
+      const selector = Selectors(getState())
+      expect(selector.mobilizationIsNeedReload()).to.equal(false)
+    })
+  })
 })

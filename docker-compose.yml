@@ -52,7 +52,7 @@ services:
     # The command this container will run - in this case, this container will run our sidekiq
     # process:
 
-    command: bundle exec rake environment resque:work
+    command: bundle exec sidekiq -c 5
 
     volumes:
       # Mount our app code directory (".") into our app containers at the

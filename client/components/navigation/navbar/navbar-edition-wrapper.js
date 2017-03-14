@@ -21,12 +21,9 @@ class NavbarEditionWrapper extends React.Component {
 
   handleHideButtonClick () {
     this.refs.hideButton.blur()
-    const { blockUpdate, mobilization, block } = this.props
+    const { blockUpdate, block } = this.props
 
-    blockUpdate({
-      mobilization,
-      block: { ...block, menu_hidden: !block.menu_hidden }
-    })
+    blockUpdate({ ...block, menu_hidden: !block.menu_hidden })
   }
 
   handleCloseForm () {

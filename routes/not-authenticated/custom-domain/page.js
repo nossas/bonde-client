@@ -4,7 +4,7 @@ import ReactGA from 'react-ga'
 import * as arrayUtil from '~utils/array'
 import { TechnicalIssues } from '~components/error'
 import { GoogleFontsLoader } from '~components/fonts'
-import { Mobilization } from '~mobilizations/components'
+import Mobilization from '~client/mobrender/components/mobilization.connected'
 
 if (process.env.BROWSER) {
   require('~client/styles/main.scss')
@@ -37,7 +37,7 @@ class CustomDomainPage extends Component {
 
       return (
         <div>
-          <Mobilization {...this.props} />
+          <Mobilization />
           <GoogleFontsLoader fonts={[headerFont, bodyFont].filter(arrayUtil.distinct)} />
         </div>
       )

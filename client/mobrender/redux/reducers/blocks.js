@@ -11,16 +11,19 @@ export const initialState = {
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case t.FETCH_BLOCKS_REQUEST:
+    case t.FILTER_BLOCK_REQUEST:
       return {...state,
         fetching: true
       }
     case t.FETCH_BLOCKS_SUCCESS:
+    case t.FILTER_BLOCKS_SUCCESS:
       return {...state,
         isLoaded: true,
         fetching: false,
         data: action.payload
       }
     case t.FETCH_BLOCKS_FAILURE:
+    case t.FILTER_BLOCKS_FAILURE:
       return {...state,
         isLoaded: true,
         fetching: false,

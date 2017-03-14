@@ -24,8 +24,8 @@ describe('routes/not-authenticated/custom-domain/page', () => {
     expect(wrapper).to.be.ok
   })
 
-  it('should render Mobilization with editable false', () => {
-    expect(wrapper.find('Mobilization').props().editable).to.equal(false)
+  it('should render Mobilization with editable prop as undefined', () => {
+    expect(wrapper.find('Connect(Mobilization)').props().editable).to.be.undefined
   })
 
   it('should render TechnicalIssues if mobilization undefined', () => {

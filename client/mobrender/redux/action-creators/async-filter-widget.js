@@ -1,0 +1,21 @@
+import * as t from '../action-types'
+import { createAction } from './create-action'
+
+export default where => (dispatch, getState, { api }) => {
+  const { auth: { credentials } } = getState()
+
+  const endpoint = '/widgets'
+  const config = { headers: credentials, params: where }
+
+  dispatch({ type: t.FILTER_WIDGETS_REQUEST })
+  return api
+    .get(endpoint, config)
+    .then(response => {
+      dispatch(createAction(t.FILTER_WIDGETS_SUCCESS, response.data))
+      return Promise.resolve()
+    })
+    .catch(failure => {
+      dispatch(createAction(t.FILTER_WIDGETS_FAILURE, failure))
+      Promise.reject({ _error: `Response ${failure}` })
+    })
+}

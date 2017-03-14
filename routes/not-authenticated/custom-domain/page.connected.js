@@ -2,10 +2,8 @@ import { provideHooks } from 'redial'
 import { connect } from 'react-redux'
 
 import DefaultServerConfig from '~server/config'
-import * as BlockActions from '~mobilizations/blocks/action-creators'
-import * as WidgetActions from '~mobilizations/widgets/action-creators'
-import * as MobilizationSelectors from '~mobilizations/selectors'
-import * as MobilizationActions from '~mobilizations/action-creators'
+import MobSelectors from '~client/mobrender/redux/selectors'
+import * as MobActions from '~client/mobrender/redux/action-creators'
 
 import Page from './page'
 
@@ -18,17 +16,15 @@ const redial = {
       : { custom_domain: host }
 
     return Promise.all([
-      dispatch(MobilizationActions.asyncFilter(where)),
-      dispatch(BlockActions.asyncBlockSelect(where)),
-      dispatch(WidgetActions.asyncWidgetSelect(where))
+      dispatch(MobActions.asyncFilterMobilization(where)),
+      dispatch(MobActions.asyncFilterBlock(where)),
+      dispatch(MobActions.asyncFilterWidget(where))
     ])
   }
 }
 
-const mapStateToProps = state => ({
-  mobilization: MobilizationSelectors.getList(state)[0],
-  blocks: state.blocks.data,
-  widgets: state.widgets.list.data
+const mapStateToProps = (state, props) => ({
+  mobilization: MobSelectors(state, props).getMobilizations()[0]
 })
 
 export default provideHooks(redial)(connect(mapStateToProps)(Page))

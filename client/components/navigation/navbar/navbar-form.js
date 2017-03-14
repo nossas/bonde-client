@@ -30,12 +30,9 @@ class NavbarForm extends React.Component {
 
   submit (e) {
     e.preventDefault()
-    const { mobilization, block, blockUpdate, handleCloseForm } = this.props
+    const { block, blockUpdate, handleCloseForm } = this.props
 
-    blockUpdate({
-      mobilization,
-      block: { ...block, menu_hidden: !block.menu_hidden }
-    })
+    blockUpdate({ ...block, name: this.state.name })
     handleCloseForm()
   }
 

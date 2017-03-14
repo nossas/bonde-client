@@ -13,20 +13,21 @@ const redial = {
   fetch: ({ dispatch, getState }) => {
     const state = getState()
     const promises = []
-    !MobSelectors(state).mobilizationsIsLoaded() && promises.push(
-      dispatch(MobActions.asyncFetchMobilizations(state.community.currentId))
-    )
-    // TODO: this fetch should be made a up level
-    !CommunitySelectors.getList(state).length && promises.push(
-      dispatch(CommunityActions.asyncFetch())
+    const selectors = MobSelectors(state)
+
+    const community = CommunitySelectors.getCurrent(state)
+    const shouldMakeFetch = community && !MobSelectors(state).mobilizationsIsLoaded() && !MobSelectors(state).mobilizationsIsLoading()
+
+    shouldMakeFetch && promises.push(
+      dispatch(MobActions.asyncFetchMobilizations(community.id))
     )
     return Promise.all(promises)
   }
 }
 
 const mapStateToProps = (state, props) => ({
+  community: CommunitySelectors.getCurrent(state),
   loading: MobSelectors(state, props).mobilizationsIsLoading(),
-  relationshipId: state.community.currentId,
   sidebarProps: Sidebar.getSidebarProps(state, props)
 })
 

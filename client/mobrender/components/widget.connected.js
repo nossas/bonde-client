@@ -7,7 +7,7 @@ const mapStateToProps = (state, props) => {
   const selectors = MobSelectors(state, props)
   return {
     saving: selectors.widgetsIsLoading(),
-    mobilization: selectors.getMobilization()
+    mobilization: selectors.getMobilization() || selectors.getMobilizations()[0]
   }
 }
 

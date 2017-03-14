@@ -9,7 +9,7 @@
     "test:a": "BABEL_DISABLE_CACHE=1 ./node_modules/.bin/jest --config ./tools/jest.config.json",
     "test:w": "yarn test:a -- --watch",
     "coverage": "nyc npm test",
-    "start": "cross-env NODE_ENV=development nodemon -r 'babel-register' --delay 1 --watch ./server --watch ./tools ./server",
+    "start": "cross-env NODE_ENV=development nodemon -r 'babel-register' --delay 1 --watch ./server --watch ./routes --watch ./tools ./server",
     "start:prod": "cross-env NODE_ENV=production node ./build/server.js",
     "heroku-postbuild": "./node_modules/.bin/webpack --progress --config ./tools/webpack.client.js && ./node_modules/.bin/webpack --progress --config ./tools/webpack.server.js",
     "clean": "rm -rf build",
@@ -56,7 +56,7 @@
     "react-addons-transition-group": "^15.4.2",
     "react-color": "^2.11.1",
     "react-colors-picker": "^2.3.1",
-    "react-cookie": "^1.0.3",
+    "react-cookie": "^1.0.4",
     "react-document-meta": "^2.1.1",
     "react-dom": "^15.4.2",
     "react-ga": "^2.1.2",
@@ -135,7 +135,15 @@
     "webpack-visualizer-plugin": "^0.1.11"
   },
   "standard": {
-    "parser": "babel-eslint"
+    "globals": [
+      "it",
+      "describe",
+      "expect",
+      "afterAll",
+      "beforeAll",
+      "beforeEach",
+      "before"
+    ]
   },
   "engines": {
     "node": "^7"
@@ -156,17 +164,6 @@
       "**/migrations/**",
       "**/tools/**",
       "**/test/**"
-    ]
-  },
-  "standard": {
-    "globals": [
-      "it",
-      "describe",
-      "expect",
-      "afterAll",
-      "beforeAll",
-      "beforeEach",
-      "before"
     ]
   }
 }

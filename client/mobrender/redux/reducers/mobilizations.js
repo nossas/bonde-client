@@ -1,4 +1,5 @@
 import * as t from '../action-types'
+import * as tc from '~client/community/action-types'
 
 export const initialState = {
   isLoaded: false,
@@ -8,7 +9,7 @@ export const initialState = {
   currentId: undefined,
   menuActiveIndex: undefined,
   error: undefined,
-  reload: false
+  communityId: undefined
 }
 
 export default (state = initialState, action) => {
@@ -68,6 +69,15 @@ export default (state = initialState, action) => {
       return {...state,
         menuActiveIndex: action.payload === state.menuActiveIndex ? undefined : action.payload
       }
+    // TODO: I think that is not correct, but i need more learning about this flux
+    case tc.SELECT:
+      if (state.communityId !== action.id) {
+        return {...state,
+          isLoaded: false,
+          communityId: action.id
+        }
+      }
+      return state
     default:
       return state
   }

@@ -1,22 +1,10 @@
+import reactCookie from 'react-cookie'
 import * as t from './action-types'
 
 const initialState = {
-  isLoaded: true,
+  isLoaded: false,
   data: [],
-  // @revert To undefined
-  data: [
-    {
-      id: 15,
-      name: 'BH 90º',
-      city: 'Belo Horizonte - MG',
-      mailchimp_api_key: undefined,
-      mailchimp_list_id: undefined,
-      mailchimp_group_id: undefined,
-      image: undefined,
-      description: undefined,
-      recipient: undefined}
-  ],
-  currentId: 15
+  currentId: undefined
 }
 
 export default (state = initialState, action = {}) => {
@@ -53,6 +41,10 @@ export default (state = initialState, action = {}) => {
         )
       }
     case t.SELECT:
+      if (state.currentId !== action.id) {
+        const persistedState = { community: {...state, currentId: action.id } }
+        reactCookie.save('state', persistedState)
+      }
       return {
         ...state,
         currentId: action.id
