@@ -46,3 +46,4 @@ static
 
 # Vim editor swap files
 *.swp
+jest
