@@ -7,6 +7,8 @@ import { injectAsyncReducer } from '~client/store'
 import * as Paths from '~client/paths'
 
 export default store => ({
+  path: '/',
+
   getIndexRoute (location, cb) {
     require.ensure([], (require) => {
       if (showMobilizationPublicView(getDomain(store, serverConfig))) {
