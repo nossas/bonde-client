@@ -1,5 +1,6 @@
 import { expect } from 'chai'
-import { reducers as authReducer, actionTypes as t } from '../../../client/account'
+import authReducer from '~client/account/redux/reducers'
+import * as t from '~client/account/redux/action-types'
 
 const initialState = {
   isLoaded: false,
@@ -10,41 +11,13 @@ const initialState = {
 }
 
 describe('AuthReducer', () => {
-  it('auth/LOAD_REQUEST', () => {
-    const action = { type: t.LOAD_REQUEST }
-    const nextState = authReducer(initialState, action)
-    expect(nextState).to.deep.equal({
-      ...initialState,
-      isLoading: true
-    })
-  })
-
   it('auth/LOAD_SUCCESS', () => {
-    const payload = {
-      user: { first_name: 'Lorem' },
-      credentials: { key: 'lorem-ipsum-dolor.org' }
-    }
-    const action = { type: t.LOAD_SUCCESS, payload }
+    const action = { type: t.LOAD_SUCCESS }
     const nextState = authReducer(initialState, action)
     expect(nextState).to.deep.equal({
       ...initialState,
       isLoaded: true,
-      isLoading: false,
-      ...payload
-    })
-  })
-
-  it('auth/LOAD_FAILURE', () => {
-    const payload = {
-      stack: 'Lorem ipsum'
-    }
-    const action = { type: t.LOAD_FAILURE, payload }
-    const nextState = authReducer(initialState, action)
-    expect(nextState).to.deep.equal({
-      ...initialState,
-      isLoaded: true,
-      isLoading: false,
-      error: payload
+      isLoading: false
     })
   })
 
@@ -84,15 +57,6 @@ describe('AuthReducer', () => {
     })
   })
 
-  it('auth/LOGOUT_REQUEST', () => {
-    const action = { type: t.LOGOUT_REQUEST }
-    const nextState = authReducer(initialState, action)
-    expect(nextState).to.deep.equal({
-      ...initialState,
-      isLoading: true
-    })
-  })
-
   it('auth/LOGOUT_SUCCESS', () => {
     const action = { type: t.LOGOUT_SUCCESS }
     const nextState = authReducer(initialState, action)
@@ -101,19 +65,6 @@ describe('AuthReducer', () => {
       isLoading: false,
       user: undefined,
       credentials: undefined
-    })
-  })
-
-  it('auth/LOGOUT_FAILURE', () => {
-    const payload = {
-      stack: 'Lorem ipsum'
-    }
-    const action = { type: t.LOGOUT_FAILURE, payload }
-    const nextState = authReducer(initialState, action)
-    expect(nextState).to.deep.equal({
-      ...initialState,
-      isLoading: false,
-      error: payload
     })
   })
 })
