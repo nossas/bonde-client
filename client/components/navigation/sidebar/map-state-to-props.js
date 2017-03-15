@@ -1,5 +1,5 @@
 import * as CommunitySelectors from '~community/selectors'
-import AuthSelectors from '~client/account/selectors'
+import AuthSelectors from '~client/account/redux/selectors'
 import MobSelectors from '~client/mobrender/redux/selectors'
 
 export default (state, ownProps) => {
