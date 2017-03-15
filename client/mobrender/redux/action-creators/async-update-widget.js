@@ -1,7 +1,7 @@
 import { createAction } from './create-action'
 import * as t from '../action-types'
 
-import AuthSelectors from '~client/account/selectors'
+import AuthSelectors from '~client/account/redux/selectors'
 import Selectors from '../selectors'
 
 export default widget => (dispatch, getState, { api }) => {
