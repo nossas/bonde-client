@@ -13,7 +13,7 @@ export default store => ({
   path: 'login',
   getComponent (nextState, callback) {
     require.ensure([], function (require) {
-      injectAsyncReducer(store, 'auth', require('~account/reducers').default)
+      injectAsyncReducer(store, 'auth', require('~client/account/redux/reducers').default)
       callback(null, require('./page.connected').default)
     })
   }
