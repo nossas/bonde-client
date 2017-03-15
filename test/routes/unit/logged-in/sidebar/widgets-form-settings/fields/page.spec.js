@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
 import * as mock from '~utils/mock'
-import Page from '~routes/logged-in/sidebar/widgets-form-settings/fields/page'
+import Page from '~routes/authenticated/admin/widgets-form-settings/fields/page'
 
 describe('routes/application/widgets-form-settings/fields/page', () => {
   let wrapper

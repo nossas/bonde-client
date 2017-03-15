@@ -8,20 +8,19 @@
     "transform-decorators-legacy",
     ["module-resolver", {
       "alias": {
-        "~common": "./common",
-        "~server": "./server",
-        "~routes": "./routes",
-        "~tools": "./tools",
-        "~authenticate": "./authenticate",
         "~client": "./client",
         "~account": "./client/account",
-        "~components": "./client/components",
         "~community": "./client/community",
-        "~dashboard": "./client/dashboard",
+        "~components": "./client/components",
+        "~images": "./client/images",
         "~mobilizations": "./client/mobilizations",
+        "~mobrender": "./client/mobrender",
+        "~styles": "./client/styles",
         "~utils": "./client/utils",
         "~widget-plugins": "./client/mobilizations/widgets/__plugins__",
-        "~tmp-dashboard": "./client/dashboard"
+        "~routes": "./routes",
+        "~server": "./server",
+        "~tools": "./tools"
       }
     }]
   ],

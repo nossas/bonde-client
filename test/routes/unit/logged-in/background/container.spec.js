@@ -2,7 +2,7 @@ import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-import BackgroundContainer from '~routes/logged-in/background/container'
+import BackgroundContainer from '~routes/authenticated/external/container'
 
 describe('routes/application/container', () => {
   let wrapper = shallow(

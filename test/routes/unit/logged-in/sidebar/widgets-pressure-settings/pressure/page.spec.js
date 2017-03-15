@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
 import * as mock from '~utils/mock'
-import Page from '~routes/logged-in/sidebar/widgets-pressure-settings/pressure/page'
+import Page from '~routes/authenticated/admin/widgets-pressure-settings/pressure/page'
 
 describe('routes/application/widgets-pressure-settings/preesure/page', () => {
   let wrapper
