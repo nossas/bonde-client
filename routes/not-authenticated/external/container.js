@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 
 import { Background } from '~client/components/layout'
-import { ZendeskWidget } from '~components/external-services'
+import { ZendeskWidget } from '~client/components/external-services'
 
 const BackgroundContainer = ({ children }) => (
   <div>

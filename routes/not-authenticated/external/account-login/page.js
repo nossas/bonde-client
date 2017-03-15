@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react'
 import { Link, browserHistory } from 'react-router'
 
 import * as Paths from '~client/paths'
-import { FormRedux, FormError, FormGroup, ControlLabel, FormControl, Button } from '~components/forms'
+import { FormRedux, FormError, FormGroup, ControlLabel, FormControl, Button } from '~client/components/forms'
 
 let logo
 if (process.env.BROWSER) {
