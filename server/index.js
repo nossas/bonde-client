@@ -16,7 +16,6 @@ import Helm from 'react-helmet'
 import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
-import proxy from 'http-proxy-middleware' // used in authenticate
 import cookieParser from 'cookie-parser'
 import reactCookie from 'react-cookie'
 
@@ -25,8 +24,6 @@ import webpackConfig from '../tools/webpack.client'
 import { compileDev, startDev } from '../tools/dx'
 import { configureStore } from '../client/store'
 import createRoutes from '../routes'
-import { startServer as authStartServer } from './authenticate'
-import AuthClient from './authenticate/client'
 
 export const createServer = (config) => {
   const __PROD__ = config.nodeEnv === 'production'
@@ -54,24 +51,20 @@ export const createServer = (config) => {
   app.use(express.static('public'))
   app.use(cookieParser())
 
-  // proxy for authentication server
-  app.use('/auth', proxy({
-    target: `http://localhost:${config.authPort}`,
-    pathRewrite: { '^/auth': '' }
-  }))
-
   app.get('*', (req, res) => {
     reactCookie.plugToRequest(req, res)
 
     const state = reactCookie.load('state') || {}
+    const auth = reactCookie.load('auth') || {}
 
     const store = configureStore({
       sourceRequest: {
         protocol: req.headers['x-forwarded-proto'] || req.protocol,
         host: req.headers.host
       },
-      ...state
-    }, { auth: new AuthClient(req) })
+      ...state,
+      auth
+    })
     const routes = createRoutes(store)
     const history = createMemoryHistory(req.originalUrl)
     const { dispatch, getState } = store
@@ -86,7 +79,7 @@ export const createServer = (config) => {
       if (redirectLocation) {
          // we haven't talked about `onEnter` hooks on routes, but before a
          // route is entered, it can redirect. Here we handle on the server.
-        res.redirect(302, redirectLocation.pathname + redirectLocation.search)
+        return res.redirect(302, redirectLocation.pathname + redirectLocation.search)
       }
 
       if (!renderProps) {
@@ -112,6 +105,7 @@ export const createServer = (config) => {
 
       trigger('fetch', components, locals)
         .then(() => {
+          console.log(components, locals, renderProps)
           const initialState = store.getState()
           const InitialView = (
             <Provider store={store}>
@@ -222,11 +216,6 @@ export const startServer = (serverConfig) => {
     } else {
       startDev(config.port, err)
     }
-
-    authStartServer(config)
-      .then(() => {
-        console.log(`authenticate listening on port ${config.authPort}`)
-      })
   })
 }
 

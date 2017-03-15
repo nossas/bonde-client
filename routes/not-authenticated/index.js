@@ -2,6 +2,7 @@
 if (typeof require.ensure !== 'function') require.ensure = (d, c) => c(require)
 
 import { showMobilizationPublicView, getDomain } from '~routes/utils'
+import AccountSelectors from '~account/selectors'
 import serverConfig from '~server/config'
 import { injectAsyncReducer } from '~client/store'
 import * as Paths from '~client/paths'
@@ -18,7 +19,15 @@ export default store => ({
         })
       } else {
         cb(null, {
-          onEnter: (nextState, replace) => replace(Paths.login())
+          component: require('./../authenticated/admin/mobilizations-list/page.connected').default,
+
+          onEnter: (nextState, replace) => {
+            const user = AccountSelectors(store.getState()).getUser()
+            if (!user) {
+              // Redirect for selection of community
+              replace(Paths.login())
+            }
+          }
         })
       }
     })

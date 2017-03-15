@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react'
-import { Link } from 'react-router'
+import { Link, browserHistory } from 'react-router'
 
 import * as Paths from '~client/paths'
 import { FormRedux, FormError, FormGroup, ControlLabel, FormControl, Button } from '~components/forms'
@@ -11,22 +11,28 @@ if (process.env.BROWSER) {
 
 class LoginPage extends Component {
 
-  // componentWillReceiveProps (nextProps) {
-  //   const { submitting } = this.props
-  //   if (submitting && (!nextProps.submitting && !nextProps.submitFailed) && nextProps.user) {
-  //     browserHistory.push(redirectUrl || '/')
-  //   }
-  // }
+  componentWillReceiveProps (nextProps) {
+    const { submitting } = this.props
+    if (submitting && (!nextProps.submitting && !nextProps.submitFailed) && nextProps.user) {
+      browserHistory.push('/')
+    }
+  }
 
   render () {
     const { login, fields: { email, password }, ...formProps } = this.props
+    // const submitSuccess = (values) => {
+    //   const redirectUrl = (params.redirect_to || '/')
+    //   login(values, () => {
+    //     browserHistory.push(redirectUrl)
+    //   }
+    // }
 
     return (
       <div>
         <div className='col-8 mb3 mx-auto'>
           <img src={logo} alt='Logo Bonde' />
         </div>
-        <FormRedux nosubmit className='bg-white rounded' onSubmit={login} {...formProps}>
+        <FormRedux nosubmit className='bg-white rounded' onSubmit={(values) => login(values)} {...formProps}>
           <FormGroup controlId='emailId' {...email}>
             <ControlLabel>E-mail</ControlLabel>
             <FormControl type='email' placeholder='exemplo@email.com' />
@@ -35,7 +41,7 @@ class LoginPage extends Component {
             <ControlLabel>Senha</ControlLabel>
             <FormControl type='password' placeholder='••••••••••' />
           </FormGroup>
-          <Button className='white col-12 rounded-bottom'>
+          <Button type='submit' className='white col-12 rounded-bottom'>
             {formProps.submitting ? 'Carregando...' : 'Entrar'}
           </Button>
           <FormError className='mt2' />
