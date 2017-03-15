@@ -6,7 +6,8 @@ export const createAccount = () => '/register'
 //
 // Interface to modules paths
 //
-export * from '~mobilizations/paths'
-export * from '~mobilizations/widgets/paths'
-export * from '~mobilizations/blocks/paths'
-export * from '~mobilizations/templates/paths'
+export * from '~client/mobilizations/paths'
+export * from '~client/mobilizations/widgets/paths'
+export * from '~client/mobilizations/blocks/paths'
+export * from '~client/mobilizations/templates/paths'
+export * from '~client/community/paths'
