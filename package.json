@@ -42,7 +42,7 @@
     "express-session": "^1.14.2",
     "express-winston": "^2.3.0",
     "font-awesome": "^4.7.0",
-    "helmet": "^2.0.0",
+    "helmet": "^2.3.0",
     "history": "^4.6.0",
     "hpp": "^0.2.0",
     "immutable": "^3.8.1",
@@ -83,8 +83,8 @@
     "throng": "^4.0.0",
     "url-loader": "^0.5.8",
     "uuid": "^3.0.1",
-    "wysihtml": "git+https://github.com/Voog/wysihtml.git#0.5.2",
     "winston": "^2.3.1",
+    "wysihtml": "git+https://github.com/Voog/wysihtml.git#0.5.2",
     "xlsx": "^0.8.1",
     "xlsx.js": "^2.3.1"
   },
