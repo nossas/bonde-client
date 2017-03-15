@@ -39,7 +39,7 @@ const entry = {
     'cpf_cnpj',
     'draft-js',
     'slate-editor',
-    'wysihtml',
+    // 'wysihtml',
     'jquery',
     'react-cookie',
     'react-document-meta',
