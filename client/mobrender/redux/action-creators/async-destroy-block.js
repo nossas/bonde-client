@@ -1,6 +1,6 @@
 import * as t from '../action-types'
 import { createAction } from './create-action'
-import AuthSelectors from '~client/account/selectors'
+import AuthSelectors from '~client/account/redux/selectors'
 import MobSelectors from '~client/mobrender/redux/selectors'
 
 export default (block) => (dispatch, getState, { api }) => {
