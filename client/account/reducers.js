@@ -1,3 +1,4 @@
+import reactCookie from 'react-cookie'
 import * as t from './action-types'
 
 const initialState = {
@@ -10,7 +11,6 @@ const initialState = {
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
-    case t.LOAD_REQUEST:
     case t.LOGIN_REQUEST:
     case t.LOGOUT_REQUEST:
       return {
@@ -18,13 +18,17 @@ export default (state = initialState, action = {}) => {
         isLoading: true
       }
     case t.LOAD_SUCCESS:
+      const auth = reactCookie.load('auth') || {}
+
       return {
         ...state,
         isLoaded: true,
         isLoading: false,
-        ...action.payload  // insert user and credentials
+        ...auth  // insert user and credentials
       }
     case t.LOGIN_SUCCESS:
+      reactCookie.save('auth', action.payload)
+
       return {
         ...state,
         isLoading: false,
@@ -37,13 +41,6 @@ export default (state = initialState, action = {}) => {
         isLoading: false,
         user: undefined,
         credentials: undefined
-      }
-    case t.LOAD_FAILURE:
-      return {
-        ...state,
-        isLoaded: true,
-        isLoading: false,
-        error: action.payload
       }
     case t.LOGOUT_FAILURE:
     case t.LOGIN_FAILURE:

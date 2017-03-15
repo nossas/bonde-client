@@ -9,11 +9,17 @@ import * as Paths from '~client/paths'
 export default store => ({
   path: '/',
 
-  getIndexRoute (location, cb) {
-    require.ensure([], (require) => {
-      cb(null, {
-        component: require('./admin/mobilizations-list/page.connected').default
-      })
+  // getIndexRoute (location, cb) {
+  //   require.ensure([], (require) => {
+  //     cb(null, {
+  //       component: require('./admin/mobilizations-list/page.connected').default
+  //     })
+  //   })
+  // },
+
+  getComponent (nextState, callback) {
+    require.ensure([], function (require) {
+      callback(null, require('./container').default)
     })
   },
 

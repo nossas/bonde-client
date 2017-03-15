@@ -1,6 +1,4 @@
-export const LOAD_REQUEST = 'authenticate/LOAD_REQUEST'
 export const LOAD_SUCCESS = 'authenticate/LOAD_SUCCESS'
-export const LOAD_FAILURE = 'authenticate/LOAD_FAILURE'
 
 export const LOGIN_REQUEST = 'authenticate/LOGIN_REQUEST'
 export const LOGIN_SUCCESS = 'authenticate/LOGIN_SUCCESS'
