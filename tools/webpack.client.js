@@ -10,6 +10,7 @@ const staticsPath = path.join(__dirname, './../public/')
 
 const nodeEnv = process.env.NODE_ENV !== undefined ? process.env.NODE_ENV : 'development'
 const isProd = nodeEnv === 'production'
+const s3BucketName = process.env.APP_DOMAIN === 'app.bonde.org' ? 'bonde-assets' : 'bonde-assets-dev'
 
 const plugins = [
   new webpack.optimize.CommonsChunkPlugin({
@@ -99,8 +100,7 @@ if (isProd) {
     }),
     new S3Plugin({
       // Only upload css and js
-      exclude: /.*\.html/,
-      directory: './public',
+      include: /.*public.*/,
       // s3Options are required
       s3Options: {
         accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -108,7 +108,7 @@ if (isProd) {
         region: 'sa-east-1'
       },
       s3UploadOptions: {
-        Bucket: process.env.APP_DOMAIN === 'app.bonde.org' ? 'bonde-assets' : 'bonde-assets-dev'
+        Bucket: s3BucketName
       },
       ContentEncoding (fileName) {
         if (/\.js$|\.css$|\.svg$/.test(fileName)) {
@@ -151,7 +151,7 @@ module.exports = {
   output: {
     path: staticsPath,
     filename: '[name].bundle.js',
-    publicPath: isProd ? 'https://s3-sa-east-1.amazonaws.com/bonde-assets/public/' : '/'
+    publicPath: isProd ? `https://s3-sa-east-1.amazonaws.com/${s3BucketName}/public/` : '/'
   },
   module: {
     rules: [
