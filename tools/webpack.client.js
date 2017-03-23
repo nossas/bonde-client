@@ -37,19 +37,13 @@ const entry = {
     './index.js'
   ],
   vendor: [
-    'react',
-    'axios',
-    'cpf_cnpj',
-    'draft-js',
-    'slate-editor',
-    // 'wysihtml',
     'jquery',
-    'react-cookie',
-    'react-document-meta',
+    'draft-js',
+    'moment',
+    'react',
     'react-dom',
     'react-ga',
     'react-grid-system',
-    'react-helmet',
     'react-redux',
     'react-router',
     'redial',
@@ -59,7 +53,7 @@ const entry = {
     'redux-logger',
     'redux-promise',
     'redux-thunk',
-    'superagent'
+    'slate-editor'
   ]
 }
 
@@ -168,9 +162,6 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        options: {
-          presets: ['es2015', 'react', 'stage-0', 'react-optimize']
-        },
         exclude: /(node_modules|server)/
       },
       {
