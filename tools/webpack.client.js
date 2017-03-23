@@ -10,7 +10,7 @@ const staticsPath = path.join(__dirname, './../public/')
 
 const nodeEnv = process.env.NODE_ENV !== undefined ? process.env.NODE_ENV : 'development'
 const isProd = nodeEnv === 'production'
-const s3BucketName = process.env.APP_DOMAIN === 'app.bonde.org' ? 'bonde-assets' : 'bonde-assets-dev'
+const s3BucketName = process.env.AWS_BUCKET || 'bonde-assets-dev'
 
 const plugins = [
   new webpack.optimize.CommonsChunkPlugin({
@@ -23,6 +23,7 @@ const plugins = [
     API_URL: JSON.stringify(process.env.API_URL),
     APP_DOMAIN: JSON.stringify(process.env.APP_DOMAIN),
     PAGARME_KEY: JSON.stringify(process.env.PAGARME_KEY),
+    AWS_BUCKET: JSON.stringify(s3BucketName),
     GOOGLE_FONTS_API_KEY: JSON.stringify(process.env.GOOGLE_FONTS_API_KEY),
     '__DEV__': true
 
@@ -91,7 +92,6 @@ if (isProd) {
       asset: '[path][query]',
       algorithm: 'gzip',
       test: /\.js$|\.css$|\.svg$/,
-      threshold: 10240,
       minRatio: 0.8
     }),
     new AssetsPlugin({ filename: 'assets.json' }),
@@ -100,7 +100,7 @@ if (isProd) {
     }),
     new S3Plugin({
       // Only upload css and js
-      include: /\.gz$|\.bundle\.js$|\.bundle\.css$|\.svg$|\.ttf$|\.eot$|\.png$|\.otf|woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      include: /\.js$|\.css$|\.svg$|\.ttf$|\.eot$|\.png$|\.otf|woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
       // s3Options are required
       s3Options: {
         accessKeyId: process.env.AWS_ACCESS_KEY_ID,
