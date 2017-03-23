@@ -110,11 +110,7 @@ if (isProd) {
       s3UploadOptions: {
         Bucket: s3BucketName
       },
-      ContentEncoding (fileName) {
-        if (/\.gz$|\.js$|\.css$|\.svg$/.test(fileName)) {
-          return 'gzip'
-        }
-      },
+      ContentEncoding: 'gzip',
       ContentType (fileName) {
         if (/\.js/.test(fileName)) {
           return 'application/javascript'
