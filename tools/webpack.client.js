@@ -108,10 +108,10 @@ if (isProd) {
         region: 'sa-east-1'
       },
       s3UploadOptions: {
-        Bucket: isProd ? 'bonde-assets' : 'bonde-assets-dev'
+        Bucket: process.env.APP_DOMAIN === 'app.bonde.org' ? 'bonde-assets' : 'bonde-assets-dev'
       },
       ContentEncoding (fileName) {
-        if (/\.gz/.test(fileName)) {
+        if (/\.js$|\.css$|\.svg$/.test(fileName)) {
           return 'gzip'
         }
       },
