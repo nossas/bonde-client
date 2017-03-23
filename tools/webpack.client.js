@@ -109,7 +109,24 @@ if (isProd) {
       },
       s3UploadOptions: {
         Bucket: s3BucketName,
-        ContentEncoding: 'gzip'
+        ContentEncoding (fileName) {
+          if (/\.gz$|\.js$|\.css$|\.svg$/.test(fileName)) {
+            return 'gzip'
+          }
+        },
+        ContentType (fileName) {
+          if (/\.js/.test(fileName)) {
+            return 'application/javascript'
+          } else if (/\.css/.test(fileName)) {
+            return 'text/css'
+          } else if (/\.png/.test(fileName)) {
+            return 'image/png'
+          } else if (/\.otf|woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/.test(fileName)) {
+            return 'application/font-woff'
+          } else {
+            return 'text/plain'
+          }
+        }
       }
     })
   )
