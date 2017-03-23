@@ -100,7 +100,7 @@ if (isProd) {
     }),
     new S3Plugin({
       // Only upload css and js
-      include: /\.gz$|\.bundle\.js$|\.bundle\.css$|\.svg$|\.otf|woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      include: /\.gz$|\.bundle\.js$|\.bundle\.css$|\.svg$|\.ttf$|\.eot$|\.png$|\.otf|woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
       // s3Options are required
       s3Options: {
         accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -108,17 +108,8 @@ if (isProd) {
         region: 'sa-east-1'
       },
       s3UploadOptions: {
-        Bucket: s3BucketName
-      },
-      ContentEncoding: 'gzip',
-      ContentType (fileName) {
-        if (/\.js/.test(fileName)) {
-          return 'application/javascript'
-        } else if (/\.otf|woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/.test(fileName)) {
-          return 'application/font-woff'
-        } else {
-          return 'text/plain'
-        }
+        Bucket: s3BucketName,
+        ContentEncoding: 'gzip'
       }
     })
   )
