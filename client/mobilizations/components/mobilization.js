@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import classnames from 'classnames'
-import DocumentMeta from 'react-document-meta'
-import { Link } from 'react-router'
+import Helmet from 'react-helmet'
+// import { Link } from 'react-router'
 
 // Children module dependencies
 import Block from '~mobilizations/blocks/components'
@@ -15,12 +15,13 @@ if (require('exenv').canUseDOM) {
 
 const Mobilization = props => {
   const {
+    host,
     mobilization: {
       name,
       goal,
-      facebook_share_title,
-      facebook_share_description,
-      facebook_share_image,
+      facebookShareTitle,
+      facebookShareDescription,
+      facebookShareImage,
       color_scheme: colorScheme,
       header_font: headerFont,
       body_font: bodyFont
@@ -81,17 +82,15 @@ const Mobilization = props => {
       </div>
       {/* render document met to show mobilzation */}
       {!editable ? (
-        <DocumentMeta
+        <Helmet
           title={name}
-          description={goal}
-          meta={{
-            name: {
-              'viewport': 'width=device-width, initial-scale=1',
-              'og:title': facebook_share_title,
-              'og:description': facebook_share_description,
-              'og:image': facebook_share_image
-            }
-          }}
+          meta={[
+            { name: 'description', content: goal },
+            { property: 'og:url', content: host },
+            { property: 'og:title', content: facebookShareTitle },
+            { property: 'og:description', content: facebookShareDescription },
+            { property: 'og:image', content: facebookShareImage }
+          ]}
         />
       ) : null}
     </div>
