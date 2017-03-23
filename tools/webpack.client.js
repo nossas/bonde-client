@@ -100,7 +100,7 @@ if (isProd) {
     }),
     new S3Plugin({
       // Only upload css and js
-      include: /.*public.*/,
+      include: /\.gz$|\.bundle\.js$|\.bundle\.css$|\.svg$|\.otf|woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
       // s3Options are required
       s3Options: {
         accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -111,7 +111,7 @@ if (isProd) {
         Bucket: s3BucketName
       },
       ContentEncoding (fileName) {
-        if (/\.js$|\.css$|\.svg$/.test(fileName)) {
+        if (/\.gz$|\.js$|\.css$|\.svg$/.test(fileName)) {
           return 'gzip'
         }
       },
@@ -151,7 +151,7 @@ module.exports = {
   output: {
     path: staticsPath,
     filename: '[name].bundle.js',
-    publicPath: isProd ? `https://s3-sa-east-1.amazonaws.com/${s3BucketName}/public/` : '/'
+    publicPath: isProd ? `https://s3-sa-east-1.amazonaws.com/${s3BucketName}/` : '/'
   },
   module: {
     rules: [
