@@ -1,6 +1,4 @@
 import newrelic from 'newrelic'
-import dotenv from 'dotenv'
-dotenv.config()
 
 import http from 'http'
 import express from 'express'
@@ -77,6 +75,25 @@ export const createServer = (config) => {
       new winston.transports.Console({ colorize: true })
     ]
   }))
+
+  app.use((req, res, next) => {
+    const host = req.headers.host
+    const isAppSubdomain = host.indexOf(`app.${process.env.APP_DOMAIN}`) !== -1
+    const www = host.match(/^www\.(.*)/)
+    const domains = require('fs').readFileSync('./server/redirect.blacklist')
+    const lines = domains.toString().split('\n')
+    const blacklist = lines.some(line => { if (line) return host.match(line) })
+
+    if (!isAppSubdomain && !www && !blacklist) {
+      res.redirect(301, `${req.protocol}://www.${host}`)
+      return
+    }
+    else if (!isAppSubdomain && www && blacklist) {
+      res.redirect(301, `${req.protocol}://${www[1]}`)
+      return
+    }
+    next()
+  })
 
   app.get('*', (req, res) => {
     reactCookie.plugToRequest(req, res)

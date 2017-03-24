@@ -10,6 +10,7 @@ const staticsPath = path.join(__dirname, './../public/')
 
 const nodeEnv = process.env.NODE_ENV !== undefined ? process.env.NODE_ENV : 'development'
 const isProd = nodeEnv === 'production'
+const s3BucketName = process.env.AWS_BUCKET || 'bonde-assets-dev'
 
 const plugins = [
   new webpack.optimize.CommonsChunkPlugin({
@@ -22,6 +23,7 @@ const plugins = [
     API_URL: JSON.stringify(process.env.API_URL),
     APP_DOMAIN: JSON.stringify(process.env.APP_DOMAIN),
     PAGARME_KEY: JSON.stringify(process.env.PAGARME_KEY),
+    AWS_BUCKET: JSON.stringify(s3BucketName),
     GOOGLE_FONTS_API_KEY: JSON.stringify(process.env.GOOGLE_FONTS_API_KEY),
     '__DEV__': true
 
@@ -35,19 +37,13 @@ const entry = {
     './index.js'
   ],
   vendor: [
-    'react',
-    'axios',
-    'cpf_cnpj',
-    'draft-js',
-    'slate-editor',
-    // 'wysihtml',
     'jquery',
-    'react-cookie',
-    'react-document-meta',
+    'draft-js',
+    'moment',
+    'react',
     'react-dom',
     'react-ga',
     'react-grid-system',
-    'react-helmet',
     'react-redux',
     'react-router',
     'redial',
@@ -57,7 +53,7 @@ const entry = {
     'redux-logger',
     'redux-promise',
     'redux-thunk',
-    'superagent'
+    'slate-editor'
   ]
 }
 
@@ -87,10 +83,9 @@ if (isProd) {
       }
     }),
     new CompressionPlugin({
-      asset: '[path].gz[query]',
+      asset: '[path][query]',
       algorithm: 'gzip',
       test: /\.js$|\.css$|\.svg$/,
-      threshold: 10240,
       minRatio: 0.8
     }),
     new AssetsPlugin({ filename: 'assets.json' }),
@@ -99,8 +94,7 @@ if (isProd) {
     }),
     new S3Plugin({
       // Only upload css and js
-      exclude: /.*\.html/,
-      directory: './public',
+      include: /\.js$|\.css$|\.svg$|\.ttf$|\.eot$|\.png$|\.otf|woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
       // s3Options are required
       s3Options: {
         accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -108,20 +102,11 @@ if (isProd) {
         region: 'sa-east-1'
       },
       s3UploadOptions: {
-        Bucket: isProd ? 'bonde-assets' : 'bonde-assets-dev'
-      },
-      ContentEncoding (fileName) {
-        if (/\.gz/.test(fileName)) {
-          return 'gzip'
-        }
-      },
-      ContentType (fileName) {
-        if (/\.js/.test(fileName)) {
-          return 'application/javascript'
-        } else if (/\.otf|woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/.test(fileName)) {
-          return 'application/font-woff'
-        } else {
-          return 'text/plain'
+        Bucket: s3BucketName,
+        ContentEncoding (fileName) {
+          if (/\.js$|\.css$|\.svg$/.test(fileName)) {
+            return 'gzip'
+          }
         }
       }
     })
@@ -151,7 +136,7 @@ module.exports = {
   output: {
     path: staticsPath,
     filename: '[name].bundle.js',
-    publicPath: isProd ? 'https://s3-sa-east-1.amazonaws.com/bonde-assets/public/' : '/'
+    publicPath: isProd ? `https://s3-sa-east-1.amazonaws.com/${s3BucketName}/` : '/'
   },
   module: {
     rules: [
@@ -177,9 +162,6 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        options: {
-          presets: ['es2015', 'react', 'stage-0', 'react-optimize']
-        },
         exclude: /(node_modules|server)/
       },
       {

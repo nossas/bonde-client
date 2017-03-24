@@ -5,7 +5,6 @@
     "stage-0"
   ],
   "plugins": [
-    "transform-decorators-legacy",
     ["module-resolver", {
       "alias": {
         "~client": "./client",
@@ -32,7 +31,6 @@
           "config": "./tools/webpack.test.config.js",
           "verbose": false
         }],
-        "transform-react-stateless-component-name",
         "istanbul",
       ]
     },
