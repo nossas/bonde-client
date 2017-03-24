@@ -128,7 +128,7 @@ class EditorOld extends React.Component {
             elementId={toolbarId}
             className='absolute col-12 top-0 bg-darken-4 z7'
             buttonClassName='btn white p2'
-            style={{ left: '80px' }}
+            style={{ left: 0 }}
           />
           <div
             className='fixed top-0 right-0 bottom-0 left-0 z5'
