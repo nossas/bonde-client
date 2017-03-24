@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { ColorSchemer } from '~client/components/editor-wysihtml'
+if (require('exenv').canUseDOM) require('./color-picker.scss')
 
 class WYSIHTMLToolbarColorPicker extends React.Component {
   constructor () {
