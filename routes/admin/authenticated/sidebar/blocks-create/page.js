@@ -9,7 +9,6 @@ import ColorPicker from '~client/components/color-picker'
 import { Tabs, Tab } from '~client/components/navigation'
 import { SettingsPageLayout, SettingsPageContentLayout, SettingsPageMenuLayout } from '~client/components/layout'
 import { DivFloat, Button } from '~client/ux/components'
-
 import BlockMiniature from '~client/mobilizations/blocks/components/block-miniature'
 import BLOCK_LAYOUTS from '~client/mobilizations/blocks/constants/block-layouts'
 

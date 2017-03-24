@@ -10,7 +10,7 @@ import {
   SettingsPageLayout,
   SettingsPageContentLayout
 } from '~client/components/layout'
-import SettingsForm from '~client/components/settings-form'
+import { SettingsForm } from '~client/ux/components'
 import { isValidDomain } from '~client/utils/validation-helper'
 
 

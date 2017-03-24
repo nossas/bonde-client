@@ -4,7 +4,6 @@ import { reduxForm } from 'redux-form'
 
 import MobSelectors from '~client/mobrender/redux/selectors'
 import * as MobActions from '~client/mobrender/redux/action-creators'
-
 import Page, { fields, validate } from './page'
 
 const redial = {
