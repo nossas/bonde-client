@@ -1,4 +1,6 @@
 import React from 'react'
+import { SettingsMenu } from '~client/mobilizations/components'
+
 import {
   FormGroup,
   ControlLabel,
@@ -8,16 +10,26 @@ import {
   SettingsPageLayout,
   SettingsPageContentLayout
 } from '~client/components/layout'
-import { SettingsMenu } from '~client/mobilizations/components'
 import SettingsForm from '~client/components/settings-form'
+import { isValidDomain } from '~client/utils/validation-helper'
 
 
-const MobilizationsSettingsDomainPage = props => {
-  const { mobilization, fields: { custom_domain: customDomain }, ...formProps } = props
+const MobilizationsSettingsDomainPage = ({
+  mobilization,
+  location,
+  fields: { custom_domain: customDomain },
+  ...formProps
+}) => {
+
+  if (!mobilization.custom_domain) {
+    formProps.buttonText = 'Lançar mobilização'
+  } else {
+    formProps.successMessage = `${mobilization.name} lançada com sucesso.`
+  }
 
   return (
     <SettingsPageLayout>
-      <SettingsMenu {...props} />
+      <SettingsMenu mobilization={mobilization} location={location} />
       <SettingsPageContentLayout>
         <SettingsForm {...formProps}>
           <p className='h5'>
@@ -64,6 +76,16 @@ const MobilizationsSettingsDomainPage = props => {
       </SettingsPageContentLayout>
     </SettingsPageLayout>
   )
+}
+
+export const fields = ['id', 'custom_domain']
+
+export const validate = values => {
+  const errors = {}
+  if (values.custom_domain && !isValidDomain(values.custom_domain)) {
+    errors.custom_domain = 'Informe um domínio válido'
+  }
+  return errors
 }
 
 export default MobilizationsSettingsDomainPage

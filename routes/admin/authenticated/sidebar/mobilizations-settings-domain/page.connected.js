@@ -4,9 +4,8 @@ import { reduxForm } from 'redux-form'
 
 import MobSelectors from '~client/mobrender/redux/selectors'
 import * as MobActions from '~client/mobrender/redux/action-creators'
-import { isValidDomain } from '~client/utils/validation-helper'
 
-import Page from './page'
+import Page, { fields, validate } from './page'
 
 const redial = {
   fetch: ({ dispatch, getState, params }) => {
@@ -18,16 +17,6 @@ const redial = {
     )
     return Promise.all(promises)
   }
-}
-
-export const fields = ['id', 'custom_domain']
-
-export const validate = values => {
-  const errors = {}
-  if (values.custom_domain && !isValidDomain(values.custom_domain)) {
-    errors.custom_domain = 'Informe um domínio válido'
-  }
-  return errors
 }
 
 const mapStateToProps = state => {
