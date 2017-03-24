@@ -3,16 +3,13 @@ import uuid from 'uuid'
 
 import { SettingsPageLayout, SettingsPageContentLayout } from '~client/components/layout'
 import {
-  FormRedux,
-  Button,
   FormGroup,
   FormControl,
   ControlLabel,
-  SuccessMessage,
   RadioGroup,
   Radio
 } from '~client/components/forms'
-import { FloatLayout } from '~client/components/grids'
+import SettingsForm from '~client/components/settings-form'
 import { getCodeBanks } from '~client/community/utils'
 import { SettingsMenu } from '~client/community/components'
 
@@ -31,7 +28,7 @@ const CommunitySettingsRecipientPage = ({
   <SettingsPageLayout>
     <SettingsMenu {...{ location }} />
     <SettingsPageContentLayout>
-      <FormRedux nosubmit {...formProps}>
+      <SettingsForm {...formProps}>
         <FormGroup controlId='transferIntervalId' {...transferInterval}>
           <ControlLabel>Intervalo</ControlLabel>
           <RadioGroup layout='horizontal'>
@@ -114,14 +111,7 @@ const CommunitySettingsRecipientPage = ({
             <FormControl type='text' />
           </FormGroup>
         </div>
-
-        <FloatLayout position='floatTopRight'>
-          <Button type='submit' className='btn bg-blacker rounded caps white'>
-            Salvar
-          </Button>
-          <SuccessMessage text='Dados editados com sucesso.' />
-        </FloatLayout>
-      </FormRedux>
+      </SettingsForm>
     </SettingsPageContentLayout>
   </SettingsPageLayout>
 )

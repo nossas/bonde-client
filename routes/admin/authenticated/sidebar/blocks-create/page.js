@@ -4,11 +4,15 @@ import ReactS3Uploader from 'react-s3-uploader'
 
 import DefaultServerConfig from '~server/config'
 import * as paths from '~client/paths'
-import { Tabs, Tab } from '~client/components/navigation'
+
 import ColorPicker from '~client/components/color-picker'
 
 import BlockMiniature from '~client/mobilizations/blocks/components/block-miniature'
 import BLOCK_LAYOUTS from '~client/mobilizations/blocks/constants/block-layouts'
+
+import { Tabs, Tab } from '~client/components/navigation'
+import { SettingsPageLayout, SettingsPageContentLayout, SettingsPageMenuLayout } from '~client/components/layout'
+import { Button, DivFloat } from '~client/ux/components'
 
 if (require('exenv').canUseDOM) require('./page.scss')
 
@@ -30,9 +34,9 @@ class BlocksCreatePage extends Component {
     const newBlockPath = paths.createBlock(mobilization)
 
     return (
-      <div className='block-create col-12 flex flex-column bg-silver gray relative'>
-        <div className='block-create-header bg-white pt3 pr4 pl3'>
-          <h1 className='h1 mt0 mb3'>Adicione um bloco de conteúdo</h1>
+      <SettingsPageLayout>
+        {/* Menu */}
+        <SettingsPageMenuLayout title='Adicione um bloco de conteúdo'>
           <Tabs>
             <Tab
               path={newBlockPath}
@@ -40,9 +44,8 @@ class BlocksCreatePage extends Component {
               isActive={newBlockPath === location.pathname}
             />
           </Tabs>
-        </div>
-
-        <div className='clearfix overflow-auto'>
+        </SettingsPageMenuLayout>
+        <SettingsPageContentLayout>
           <div className='col-12 clearfix py3 pr4 pl3'>
             <p className='lightgray mb2'>
               Os blocos serão adicionados ao fim da sua página, mas você pode trocá-los de ordem a
@@ -126,6 +129,7 @@ class BlocksCreatePage extends Component {
               </div>
             </div>
 
+<<<<<<< HEAD
             <button
               className='block-create-button btn float-btn-menu rounded'
               onClick={() => {
@@ -145,9 +149,31 @@ class BlocksCreatePage extends Component {
             >
               Adicionar
             </button>
+=======
+            <DivFloat>
+              <Button
+                onClick={() => {
+                  const block = {
+                    bg_class: this.state.color ? JSON.stringify(this.state.color) : undefined,
+                    bg_image: this.state.bgImage,
+                    widgets_attributes: this.state.selectedLayout.map(col => ({ kind: 'draft', ...col })),
+                    mobilization_id: mobilization.id
+                  }
+                  onCreateBlock(block)
+                    .then(() => {
+                      browserHistory.push(
+                        `${paths.editMobilization(mobilization.id)}?newBlock=true`
+                      )
+                    })
+                }}
+              >
+                Adicionar
+              </Button>
+            </DivFloat>
+>>>>>>> Use reusable components in pages of settings. Issue #497
           </div>
-        </div>
-      </div>
+        </SettingsPageContentLayout>
+      </SettingsPageLayout>
     )
   }
 }

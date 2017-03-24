@@ -2,14 +2,11 @@ import React, { PropTypes } from 'react'
 
 import { SettingsPageLayout, SettingsPageContentLayout } from '~client/components/layout'
 import {
-  FormRedux,
-  Button,
   FormGroup,
   FormControl,
-  ControlLabel,
-  SuccessMessage
+  ControlLabel
 } from '~client/components/forms'
-import { FloatLayout } from '~client/components/grids'
+import SettingsForm from '~client/components/settings-form'
 import { SettingsMenu } from '~client/community/components'
 
 const CommunitySettingsMailchimpPage = ({
@@ -24,7 +21,7 @@ const CommunitySettingsMailchimpPage = ({
   <SettingsPageLayout>
     <SettingsMenu {...{ location }} />
     <SettingsPageContentLayout>
-      <FormRedux nosubmit {...formProps}>
+      <SettingsForm {...formProps}>
         <FormGroup controlId='apiKeyId' {...mailchimpApiKey}>
           <ControlLabel>Mailchimp API Key</ControlLabel>
           <FormControl type='text' />
@@ -37,14 +34,7 @@ const CommunitySettingsMailchimpPage = ({
           <ControlLabel>Mailchimp ID do grupo</ControlLabel>
           <FormControl type='text' />
         </FormGroup>
-
-        <FloatLayout position='floatTopRight'>
-          <Button type='submit' className='btn bg-blacker rounded caps white'>
-            Salvar
-          </Button>
-          <SuccessMessage text='Dados editados com sucesso.' />
-        </FloatLayout>
-      </FormRedux>
+      </SettingsForm>
     </SettingsPageContentLayout>
   </SettingsPageLayout>
 )

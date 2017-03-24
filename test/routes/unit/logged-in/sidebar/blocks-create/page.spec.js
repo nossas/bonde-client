@@ -20,23 +20,20 @@ describe('routes/admin/authenticated/sidebar/blocks-create/page', () => {
       wrapper = shallow(<Page {...props} />)
     })
 
-    it('should render root .block-create <div>', () => {
-      expect(wrapper.find('div.block-create')).to.have.length(1)
+    it('should render root settings page layout', () => {
+      expect(wrapper.find('SettingsPageLayout')).to.have.length(1)
     })
 
     describe('new block header', () => {
-      it('should render one .block-create-header <div>', () => {
-        expect(wrapper.find('div.block-create-header')).to.have.length(1)
-      })
-      it('should render one <h1>', () => {
-        expect(wrapper.find('div.block-create-header h1')).to.have.length(1)
+      it('should render one settings page menu layout', () => {
+        expect(wrapper.find('SettingsPageMenuLayout')).to.have.length(1)
       })
       it('should render one <h1> with its content properly', () => {
         const text = 'Adicione um bloco de conteúdo'
-        expect(wrapper.find('div.block-create-header h1').text()).to.be.equal(text)
+        expect(wrapper.find('SettingsPageMenuLayout').props().title).to.be.equal(text)
       })
       it('should render one <Tabs> component', () => {
-        expect(wrapper.find('div.block-create-header Tabs')).to.have.length(1)
+        expect(wrapper.find('Tabs')).to.have.length(1)
       })
     })
 
@@ -48,7 +45,7 @@ describe('routes/admin/authenticated/sidebar/blocks-create/page', () => {
 
     describe('new block button', () => {
       it('should render one .block-create-button button', () => {
-        expect(wrapper.find('button.block-create-button')).to.have.length(1)
+        expect(wrapper.find('Button')).to.have.length(1)
       })
     })
   })

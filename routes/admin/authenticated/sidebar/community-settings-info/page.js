@@ -3,15 +3,14 @@ import React, { PropTypes } from 'react'
 import { SettingsPageLayout, SettingsPageContentLayout } from '~client/components/layout'
 import {
   FormRedux,
-  Button,
   FormGroup,
   FormControl,
   ControlLabel,
-  UploadImageField,
-  SuccessMessage
+  UploadImageField
 } from '~client/components/forms'
-import { FloatLayout } from '~client/components/grids'
 import { SettingsMenu } from '~client/community/components'
+import SettingsForm from '~client/components/settings-form'
+
 
 const CommunitySettingsInfoPage = ({
   fields: { image, name, city, description },
@@ -23,7 +22,7 @@ const CommunitySettingsInfoPage = ({
   <SettingsPageLayout>
     <SettingsMenu {...{ location }} />
     <SettingsPageContentLayout>
-      <FormRedux nosubmit {...formProps}>
+      <SettingsForm {...formProps}>
         <FormGroup controlId='imageId' {...image}>
           <UploadImageField signingUrl={`${process.env.API_URL}/uploads`} />
         </FormGroup>
@@ -39,13 +38,7 @@ const CommunitySettingsInfoPage = ({
           <ControlLabel>Cidade</ControlLabel>
           <FormControl type='text' />
         </FormGroup>
-        <FloatLayout position='floatTopRight'>
-          <Button type='submit' className='btn bg-blacker rounded caps white'>
-            Salvar
-          </Button>
-          <SuccessMessage text='Dados editados com sucesso.' />
-        </FloatLayout>
-      </FormRedux>
+      </SettingsForm>
     </SettingsPageContentLayout>
   </SettingsPageLayout>
 )

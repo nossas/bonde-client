@@ -6,15 +6,15 @@ import {
   FormGroup,
   ControlLabel,
   FormControl
-} from '~components/forms'
+} from '~client/components/forms'
 
 // Current module dependencies
-import { MobilizationSettingsForm } from '../components'
+import SettingsForm from '~client/components/settings-form'
 
 const MobilizationBasicsForm = props => {
   const { floatSubmit, fields: { name, goal }, ...formProps } = props
 
-  const ComponentForm = floatSubmit ? MobilizationSettingsForm : FormRedux
+  const ComponentForm = floatSubmit ? SettingsForm : FormRedux
 
   return (
     <ComponentForm {...formProps}>

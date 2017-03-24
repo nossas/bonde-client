@@ -28,11 +28,11 @@ describe('client/mobilizations/components/mobilization-basics-form', () => {
       expect(wrapper).to.be.ok
     })
     it('should FormRedux when floatSubmit prop is false', () => {
-      expect(wrapper.find('FormRedux')).to.have.length(1)
+      expect(wrapper.find('FormRedux').length).to.equal(1)
     })
-    it('should MobilizationSettingsForm when floatSubmit prop is true', () => {
+    it('should SettingsForm when floatSubmit prop is true', () => {
       wrapper = shallow(<MobilizationBasicsForm {...props} floatSubmit />)
-      expect(wrapper.find('MobilizationSettingsForm')).to.have.length(1)
+      expect(wrapper.find('SettingsForm').length).to.equal(1)
     })
   })
 })

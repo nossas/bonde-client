@@ -2,7 +2,8 @@ import React from 'react'
 
 import { SettingsPageLayout, SettingsPageContentLayout } from '~client/components/layout'
 import { FormGroup, FormControl, ControlLabel } from '~client/components/forms'
-import { SettingsMenu, MobilizationSettingsForm } from '~client/mobilizations/components'
+import { SettingsMenu } from '~client/mobilizations/components'
+import SettingsForm from '~client/components/settings-form'
 
 const MobilizationsSettingsAnalyticsPage = props => {
   const { fields: { google_analytics_code: googleAnalyticsCode }, ...formProps } = props
@@ -29,12 +30,12 @@ const MobilizationsSettingsAnalyticsPage = props => {
             </li>
             <li className='m0'>
               Copie a ID de acompanhamento e cole no campo abaixo:
-              <MobilizationSettingsForm {...formProps}>
+              <SettingsForm {...formProps}>
                 <FormGroup controlId='googleAnalyticsCodeId' {...googleAnalyticsCode}>
                   <ControlLabel>ID do Google Analytics</ControlLabel>
                   <FormControl type='text' placeholder='UA-00000000-0' />
                 </FormGroup>
-              </MobilizationSettingsForm>
+              </SettingsForm>
             </li>
             <li>
               Pronto! Você já pode acompanhar as estatísticas da sua mobilização

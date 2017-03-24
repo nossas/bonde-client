@@ -6,15 +6,12 @@ import {
   SettingsPageContentLayout
 } from '~client/components/layout'
 import {
-  FormRedux,
-  Button,
   FormGroup,
   FormControl,
   ControlLabel,
-  UploadImageField,
-  SuccessMessage
+  UploadImageField
 } from '~client/components/forms'
-import { FloatLayout } from '~client/components/grids'
+import SettingsForm from '~client/components/settings-form'
 import * as Paths from '~client/paths'
 
 const EditUserPage = ({
@@ -34,12 +31,7 @@ const EditUserPage = ({
     </SettingsPageMenuLayout>
     <SettingsPageContentLayout>
       {/* TODO: Change FormRedux to be transparent by default */}
-      <FormRedux
-        nosubmit
-        className='transparent'
-        successMessage='Dados atualizados com sucesso.'
-        {...formProps}
-      >
+      <SettingsForm {...formProps}>
         <FormGroup controlId='avatarId' {...avatar}>
           <UploadImageField signingUrl={`${process.env.API_URL}/uploads`} />
         </FormGroup>
@@ -55,12 +47,7 @@ const EditUserPage = ({
           <ControlLabel>E-mail</ControlLabel>
           <FormControl type='email' />
         </FormGroup>
-
-        <FloatLayout position='floatTopRight'>
-          <Button type='submit' className='btn white caps p2 bg-pagenta'>Salvar</Button>
-          <SuccessMessage text='Dados editados com sucesso.' />
-        </FloatLayout>
-      </FormRedux>
+      </SettingsForm>
     </SettingsPageContentLayout>
   </SettingsPageLayout>
 )

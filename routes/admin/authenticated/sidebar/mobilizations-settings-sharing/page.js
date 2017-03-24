@@ -7,7 +7,6 @@ import {
   FormControl,
   UploadImageField
 } from '~client/components/forms'
-import { SettingsPageLayout, SettingsPageContentLayout } from '~client/components/layout'
 import DefaultServerConfig from '~server/config'
 
 // Current module dependencies
@@ -17,7 +16,9 @@ if (require('exenv').canUseDOM) {
   iconFacebook = require('~client/mobilizations/images/facebook.svg')
   iconTwitter = require('~client/mobilizations/images/twitter.svg')
 }
-import { SettingsMenu, MobilizationSettingsForm } from '~client/mobilizations/components'
+import { SettingsMenu } from '~client/mobilizations/components'
+import { SettingsPageLayout, SettingsPageContentLayout } from '~client/components/layout'
+import SettingsForm from '~client/components/settings-form'
 
 const MobilizationsSettingsSharingPage = props => {
   const {
@@ -34,7 +35,7 @@ const MobilizationsSettingsSharingPage = props => {
     <SettingsPageLayout>
       <SettingsMenu {...props} />
       <SettingsPageContentLayout>
-        <MobilizationSettingsForm {...formProps}>
+        <SettingsForm {...formProps}>
           <div className='h5 caps bold mb2 inline'>
             <img className='align-middle' src={iconFacebook} width='32' height='32' />
             <span className='align-middle pl2 h6'>Share de Facebook</span>
@@ -124,7 +125,7 @@ const MobilizationsSettingsSharingPage = props => {
               />
             </FormGroup>
           </div>
-        </MobilizationSettingsForm>
+        </SettingsForm>
       </SettingsPageContentLayout>
     </SettingsPageLayout>
   )
