@@ -62,7 +62,7 @@ const render = () => {
           path: renderProps.location.pathname,
           query: renderProps.location.query,
           params: renderProps.params,
-          host: window.location.host,
+          host: window.location.host
         }
       }
 

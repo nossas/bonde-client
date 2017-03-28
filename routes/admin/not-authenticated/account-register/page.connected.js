@@ -5,7 +5,6 @@ import { isValidEmail } from '~client/utils/validation-helper'
 import { asyncAddUser } from '~client/account/redux/action-creators'
 import Page from './page'
 
-
 const fields = ['name', 'last_name', 'email', 'password', 'password2']
 
 const validate = values => {

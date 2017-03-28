@@ -45,7 +45,7 @@ export default class GoalsPage extends React.Component {
       <div key={index}>
         <h2>{a}</h2>
         <div className='clearfix'>
-          { this.renderSecondChoices(a) }
+          {this.renderSecondChoices(a)}
         </div>
       </div>
     ))

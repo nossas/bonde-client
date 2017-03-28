@@ -2,7 +2,6 @@ import { expect } from 'chai'
 import authReducer, { initialState } from '~client/account/redux/reducers'
 import * as t from '~client/account/redux/action-types'
 
-
 describe('AuthReducer', () => {
   it('auth/LOAD_SUCCESS', () => {
     const action = { type: t.LOAD_SUCCESS }
@@ -77,7 +76,7 @@ describe('AuthReducer', () => {
     const nextState = authReducer(requestState, action)
     expect(nextState).to.deep.equal({...requestState,
       saving: false,
-      user: payload,
+      user: payload
     })
   })
 

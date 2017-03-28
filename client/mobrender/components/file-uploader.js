@@ -3,11 +3,10 @@ import ReactS3Uploader from 'react-s3-uploader'
 import { Progress } from '~client/components/await'
 import DefaultServerConfig from '~server/config'
 
-
 const FileUploader = ({ file, onRemove, progress, onProgress, onFinish }) => (
   <div>
     {file && (
-      <div className="col col-1 p1">
+      <div className='col col-1 p1'>
         <img src={file} style={{ maxHeight: '36px' }} />
         {onRemove && (
           <button
@@ -23,7 +22,7 @@ const FileUploader = ({ file, onRemove, progress, onProgress, onFinish }) => (
           </button>)}
       </div>
     )}
-    <div className="col col-2 p1">
+    <div className='col col-2 p1'>
     {!progress ? (
       <ReactS3Uploader
         className='input border-none white m0 bg-darken-4'

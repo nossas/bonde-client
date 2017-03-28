@@ -4,15 +4,12 @@ import { mount } from 'enzyme'
 
 import Page from '~routes/admin/authenticated/sidebar/account-edit/page'
 
-
 const dummy_field = field => ({
   name: field,
   onChange: () => {}
 })
 
-
 describe('~routes/admin/authenticated/sidebar/account-edit/page', () => {
-
   const props = {
     auth: {},
     submit: () => {},
@@ -22,7 +19,7 @@ describe('~routes/admin/authenticated/sidebar/account-edit/page', () => {
       last_name: dummy_field('last_name'),
       email: dummy_field('email')
     },
-    handleSubmit: () => {},
+    handleSubmit: () => {}
   }
 
   it('should render without crashed', () => {

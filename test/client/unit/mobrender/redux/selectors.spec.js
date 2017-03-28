@@ -250,7 +250,6 @@ describe('~client/mobrender/redux/selectors', () => {
   })
 
   describe('#mobilizationIsNeedReload', () => {
-
     it('should return true when blocks or widgets isnt loaded', () => {
       const getState = () => state.mergeDeep(fromJS({
         mobilizations: {

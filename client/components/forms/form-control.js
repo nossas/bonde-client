@@ -3,7 +3,7 @@ import classnames from 'classnames'
 
 import { ControlButtons } from './'
 
-const tagsShouldCleanup =  ['input', 'textarea', 'select']
+const tagsShouldCleanup = ['input', 'textarea', 'select']
 
 class FormControl extends Component {
   render () {

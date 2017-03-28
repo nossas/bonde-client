@@ -10,7 +10,6 @@ const dummyField = field => ({
 })
 
 describe('~routes/admin/not-authenticated/account-register/page', () => {
-
   const props = {
     submit: () => {},
     fields: {
