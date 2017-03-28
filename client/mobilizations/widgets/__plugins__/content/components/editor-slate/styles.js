@@ -1,10 +1,7 @@
 export default {
-<<<<<<< HEAD
-=======
   button: {
     borderRight: '1px solid #fff'
   },
->>>>>>> Move EditorSlate component styles to a separated file #511
   dropdown: {
     position: 'relative',
     top: 1,
@@ -32,9 +29,6 @@ export default {
     top: 0,
     left: 0,
     width: '100%',
-<<<<<<< HEAD
-    zIndex: 5,
-=======
     zIndex: 4,
     display: 'none'
   },
@@ -51,7 +45,6 @@ export default {
     fontWeight: 300,
     fontSize: '2.15rem',
     cursor: 'pointer',
->>>>>>> Move EditorSlate component styles to a separated file #511
     display: 'none'
   }
 }
