@@ -2,6 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
+import * as mock from '~client/utils/mock'
 import { MobilizationBasicsForm } from '~mobilizations/components'
 
 describe('client/mobilizations/components/mobilization-basics-form', () => {
@@ -11,7 +12,11 @@ describe('client/mobilizations/components/mobilization-basics-form', () => {
     fields: {
       name: {},
       goal: {}
-    }
+    },
+    handleSubmit: mock.noop,
+    submitFailed: false,
+    dirty: false,
+    valid: false
   }
 
   beforeAll(() => {
@@ -23,11 +28,11 @@ describe('client/mobilizations/components/mobilization-basics-form', () => {
       expect(wrapper).to.be.ok
     })
     it('should FormRedux when floatSubmit prop is false', () => {
-      expect(wrapper.type().displayName).to.be.equal('FormRedux')
+      expect(wrapper.find('FormRedux')).to.have.length(1)
     })
     it('should MobilizationSettingsForm when floatSubmit prop is true', () => {
       wrapper = shallow(<MobilizationBasicsForm {...props} floatSubmit />)
-      expect(wrapper.type().displayName).to.be.equal('MobilizationSettingsForm')
+      expect(wrapper.find('MobilizationSettingsForm')).to.have.length(1)
     })
   })
 })

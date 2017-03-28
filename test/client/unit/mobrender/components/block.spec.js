@@ -89,7 +89,7 @@ describe('~client/mobrender/components/block', () => {
     })
 
     it('should show when hasMouseOver and editable', () => {
-      expect(block.find(BlockConfigMenu).props().display).to.equal(false)
+      expect(block.find(BlockConfigMenu).props().display).to.be.undefined
 
       block.setProps({ hasMouseOver: true, editable: true })
       expect(block.find(BlockConfigMenu).props().display).to.equal(true)
