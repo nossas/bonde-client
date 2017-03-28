@@ -92,7 +92,7 @@
     "assets-webpack-plugin": "^3.3.0",
     "axios-mock-adapter": "^1.7.1",
     "babel-core": "^6.9.1",
-    "babel-eslint": "^6.1.2",
+    "babel-eslint": "^7.2.1",
     "babel-jest": "^18.0.0",
     "babel-loader": "^6.2.10",
     "babel-plugin-istanbul": "^2.0.0",
@@ -148,8 +148,16 @@
       "afterAll",
       "beforeAll",
       "beforeEach",
-      "before"
-    ]
+      "before",
+      "after",
+      "afterEach",
+      "Blob",
+      "wysihtml5",
+      "wysihtml5ParserRules",
+      "PagarMeCheckout",
+      "confirm"
+    ],
+    "parser": "babel-eslint"
   },
   "engines": {
     "node": "^7"
