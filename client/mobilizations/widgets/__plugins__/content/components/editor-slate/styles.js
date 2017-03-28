@@ -29,7 +29,7 @@ export default {
     top: 0,
     left: 0,
     width: '100%',
-    zIndex: 5,
+    zIndex: 4,
     display: 'none'
   },
   overlay: {
