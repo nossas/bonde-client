@@ -1,5 +1,5 @@
 import React from 'react'
-import { browserHistory, Link } from 'react-router'
+import { browserHistory } from 'react-router'
 
 import * as paths from '~client/paths'
 import { PageTabLayout } from '~client/mobilizations/components'

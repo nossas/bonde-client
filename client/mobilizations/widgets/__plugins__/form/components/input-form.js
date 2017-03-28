@@ -25,7 +25,7 @@ export class InputForm extends Component {
 
   componentWillReceiveProps (nextProps) {
     const { uid } = this.props
-    if (this.state.loading && this.props.field != nextProps.field) {
+    if (this.state.loading && this.props.field !== nextProps.field) {
       this.setState({ loading: false })
       $('#form-' + uid).slideUp(200, () => {
         this.props.onClose && this.props.onClose()
@@ -35,10 +35,10 @@ export class InputForm extends Component {
 
   dirty () {
     const { field } = this.props
-    return field.kind != this.state.kind ||
-           field.label != this.state.label ||
-           field.placeholder != this.state.placeholder ||
-           field.required != this.state.required
+    return field.kind !== this.state.kind ||
+           field.label !== this.state.label ||
+           field.placeholder !== this.state.placeholder ||
+           field.required !== this.state.required
   }
 
   handleLabelChange (event) {
@@ -88,7 +88,7 @@ export class InputForm extends Component {
     event.stopPropagation()
     const { fields } = this.props.widget.settings
     const newFields = fields.map((field) => {
-      if (field.uid == this.props.field.uid) {
+      if (field.uid === this.props.field.uid) {
         return {
           uid: field.uid,
           kind: this.state.kind,
@@ -108,9 +108,9 @@ export class InputForm extends Component {
     event.stopPropagation()
     const { fields } = this.props.widget.settings
     const newFields = fields.map((field, index) => {
-      if (index + 1 < fields.length && fields[index + 1].uid == this.props.field.uid) {
+      if (index + 1 < fields.length && fields[index + 1].uid === this.props.field.uid) {
         return this.props.field
-      } else if (field.uid == this.props.field.uid) {
+      } else if (field.uid === this.props.field.uid) {
         return fields[index - 1]
       } else {
         return field
@@ -124,9 +124,9 @@ export class InputForm extends Component {
     event.stopPropagation()
     const { fields } = this.props.widget.settings
     const newFields = fields.map((field, index) => {
-      if (index > 0 && fields[index - 1].uid == this.props.field.uid) {
+      if (index > 0 && fields[index - 1].uid === this.props.field.uid) {
         return this.props.field
-      } else if (field.uid == this.props.field.uid) {
+      } else if (field.uid === this.props.field.uid) {
         return fields[index + 1]
       } else {
         return field
@@ -141,7 +141,7 @@ export class InputForm extends Component {
     if (confirm('Você tem certeza que quer remover este campo?')) {
       const { fields } = this.props.widget.settings
       const newFields = fields.filter(field =>
-        field.uid != this.props.field.uid
+        field.uid !== this.props.field.uid
       )
       this.updateSettings(newFields)
     }
@@ -231,7 +231,7 @@ export class InputForm extends Component {
                   type='radio'
                   name={`required-${uid}`}
                   value='true'
-                  checked={this.state.required == 'true'}
+                  checked={this.state.required === 'true'}
                   onChange={::this.handleRequiredChange}
                 />
                 <label className='ml1 mr2' htmlFor={`required-true-${uid}`}>Sim</label>
@@ -240,7 +240,7 @@ export class InputForm extends Component {
                   type='radio'
                   name={`required-${uid}`}
                   value='false'
-                  checked={this.state.required == 'false'}
+                  checked={this.state.required === 'false'}
                   onChange={::this.handleRequiredChange}
                 />
                 <label className='ml1' htmlFor={`required-false-${uid}`}>Não</label>

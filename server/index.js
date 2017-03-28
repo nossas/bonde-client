@@ -1,4 +1,4 @@
-import newrelic from 'newrelic'
+import 'newrelic'
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -30,7 +30,6 @@ import DefaultServerConfig from './config'
 import webpackConfig from '../tools/webpack.client'
 import { compileDev, startDev } from '../tools/dx'
 import { configureStore } from '../client/store'
-import createReducer from '../client/createReducer'
 import createRoutes from '../routes'
 import loadState from './load-state'
 
@@ -179,6 +178,7 @@ export const createServer = (config) => {
             () => ReactDOM.renderToString(InitialView)
           )
           const head = Helm.rewind()
+          /* eslint-disable no-useless-escape */
           res.status(200).send(`
             <!DOCTYPE html>
             <html lang="pt-br">
@@ -205,6 +205,7 @@ export const createServer = (config) => {
               </body>
             </html>
           `)
+          /* eslint-disable no-useless-escape */
         }).catch(e => console.log(e))
     })
   })

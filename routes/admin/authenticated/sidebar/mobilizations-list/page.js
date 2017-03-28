@@ -2,18 +2,12 @@ import React, { Component, PropTypes } from 'react'
 import classnames from 'classnames'
 import { browserHistory } from 'react-router'
 
-// Global module dependencies
 import {
   SettingsPageLayout,
   SettingsPageMenuLayout,
   SettingsPageContentLayout
 } from '~client/components/layout'
 import * as paths from '~client/paths'
-
-// Children module dependencies
-import * as TemplateActions from '~client/mobilizations/templates/action-creators'
-
-// Current module dependencies
 import List from '~client/mobilizations/components/list'
 import {
   Item,
@@ -27,7 +21,6 @@ import {
   MoreMenuAction
 } from '~client/mobilizations/components/list/items'
 import { PageHeader } from '~client/mobilizations/components'
-import * as MobilizationActions from '~client/mobilizations/action-creators'
 
 export class MobilizationsListPage extends Component {
 

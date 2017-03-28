@@ -40,8 +40,7 @@ class InputTag extends Component {
 
     return (
       <div className='input-tag'>
-        {
-          label &&
+        {label && (
           <label
             style={{ cursor: 'pointer' }}
             className='h5 bold caps'
@@ -50,7 +49,7 @@ class InputTag extends Component {
             {label}
             {(this.state.error && <span className='red'> - {this.state.error}</span>)}
           </label>
-        }
+        )}
         <p className='h5'>{'1. Informe nome e email. Ex.: Nome <email@provedor.com>'}</p>
         <p className='h5'>{'2. Pressione <Enter> para adicionar mais alvos.'}</p>
         <input

@@ -73,8 +73,7 @@ class Match extends Component {
 
   renderErrors () {
     const { errors } = this.state
-    return (
-      errors.length > 0 &&
+    return errors.length > 0 && (
       <div>{errors.map(error => <Error message={error} />)}</div>
     )
   }
@@ -150,7 +149,7 @@ class Match extends Component {
             className='match caps btn bg-darken-4 p2 col-12 mt1 mb2 rounded white'
             onClick={::this.handleCombineClick}
             disabled={loading || !(this.enableMatchButton())}>
-            {loading ? 'Combinando...' : 'Combinar' }
+            {loading ? 'Combinando...' : 'Combinar'}
           </button>
         </div>
       </WidgetOverlay>

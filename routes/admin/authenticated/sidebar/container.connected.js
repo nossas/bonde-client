@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import MobSelectors from '~client/mobrender/redux/selectors'
 import * as MobActions from '~client/mobrender/redux/action-creators'
 import * as CommunitySelectors from '~community/selectors'
-import * as CommunityActions from '~community/action-creators'
 import Sidebar from '~components/navigation/sidebar'
 
 import Container from './container'
@@ -16,7 +15,9 @@ const redial = {
     const selectors = MobSelectors(state)
 
     const community = CommunitySelectors.getCurrent(state)
-    const shouldMakeFetch = community && !MobSelectors(state).mobilizationsIsLoaded() && !MobSelectors(state).mobilizationsIsLoading()
+    const shouldMakeFetch = community &&
+      !selectors.mobilizationsIsLoaded() &&
+      !selectors.mobilizationsIsLoading()
 
     shouldMakeFetch && promises.push(
       dispatch(MobActions.asyncFetchMobilizations(community.id))

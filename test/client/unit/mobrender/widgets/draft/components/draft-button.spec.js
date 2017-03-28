@@ -21,7 +21,7 @@ describe('mobrender/widgets/draft/components/draft-button', () => {
     let widgetProps
     const draftButton = mount(
       <DraftButton {...props}
-        updateKind={wprops => widgetProps = wprops}
+        updateKind={wprops => { widgetProps = wprops }}
       />
     )
     draftButton.find('button').simulate('click')

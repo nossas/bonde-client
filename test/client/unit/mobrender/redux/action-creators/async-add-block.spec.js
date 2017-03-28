@@ -1,5 +1,4 @@
 import { expect } from 'chai'
-import { fromJS } from 'immutable'
 import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 import configureStore from 'redux-mock-store'

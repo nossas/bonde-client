@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { PropTypes } from 'react'
 
 const fonts = [
   'Abel', 'Anton', 'Archivo Narrow', 'Asap', 'Bree Serif',
@@ -17,20 +17,13 @@ const fonts = [
   'Slabo 27px', 'Source Sans Pro', 'Ubuntu'
 ]
 
-class SelectFontFamily extends Component {
-
-  render () {
-    const { value, onChange } = this.props
-
-    return (
-      <select {...this.props} className='font-controls-family select col col-8 h5'>
-        <option value=''>Selecione uma fonte</option>
-        {fonts.map(
-          font => <option key={font} value={font}>{font}</option>
-        )}
-      </select>
-    )
-  }
+const SelectFontFamily = props => {
+  <select {...props} className='font-controls-family select col col-8 h5'>
+    <option value=''>Selecione uma fonte</option>
+    {fonts.map(
+      font => <option key={font} value={font}>{font}</option>
+    )}
+  </select>
 }
 
 SelectFontFamily.propTypes = {

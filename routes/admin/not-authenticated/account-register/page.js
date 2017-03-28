@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import { reduxForm } from 'redux-form'
 import { browserHistory } from 'react-router'
 
 import {

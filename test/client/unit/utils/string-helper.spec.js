@@ -1,6 +1,4 @@
-import React from 'react'
 import { expect } from 'chai'
-
 import { sanitize } from '~utils/string-helper'
 
 describe('app/util/string-helper', () => {

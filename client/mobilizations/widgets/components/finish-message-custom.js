@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react'
-import { Raw } from 'slate'
 
 // Global module dependencies
 import EditorDraft from '~components/editor-draft-js'

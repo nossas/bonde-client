@@ -35,10 +35,10 @@ class Media extends Component {
     } else if (entity.getType() === 'iframe' || entity.getType() === 'script') {
       // insert script or iframe in div
       return (
-        <div className='noscript' dangerouslySetInnerHTML={{__html: mediaProps.src }} />
+        <div className='noscript' dangerouslySetInnerHTML={{ __html: mediaProps.src }} />
       )
     } else {
-      throw 'Sorry, media type not found.'
+      throw new Error('Sorry, media type not found.')
     }
   }
 }

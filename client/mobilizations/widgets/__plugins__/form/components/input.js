@@ -137,8 +137,8 @@ class Input extends Component {
         >
           {field.label}{field.required === 'true' ? '*' : null}
         </label>
-        { this.renderInstructions() }
-        { this.renderFieldKind() }
+        {this.renderInstructions()}
+        {this.renderFieldKind()}
       </div>
     )
   }

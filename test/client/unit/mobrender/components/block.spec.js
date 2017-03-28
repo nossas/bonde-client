@@ -29,42 +29,42 @@ describe('~client/mobrender/components/block', () => {
 
   it('should call onMouseOver passing key:block id:block.id only when is editable', () => {
     let result
-    block.setProps({ editable: true, onMouseOver: (key, id) => result = { key, id } })
+    block.setProps({ editable: true, onMouseOver: (key, id) => { result = { key, id } } })
     block.find(blockSelector).simulate('mouseenter')
     expect(result).to.deep.equal({ key: 'block', id: props.block.id })
   })
 
   it('should not call onMouseOver passing key:block id:block.id only when isnt editable', () => {
     let result
-    block.setProps({ editable: false, onMouseOver: (key, id) => result = { key, id } })
+    block.setProps({ editable: false, onMouseOver: (key, id) => { result = { key, id } } })
     block.find(blockSelector).simulate('mouseenter')
     expect(result).to.equal(undefined)
   })
 
   it('should call onMouseOut passing key:block only when is editable', () => {
     let result
-    block.setProps({ editable: true, onMouseOut: key => result = key })
+    block.setProps({ editable: true, onMouseOut: key => { result = key } })
     block.find(blockSelector).simulate('mouseleave')
     expect(result).to.equal('block')
   })
 
   it('should not call onMouseOut passing key:block only when isnt editable', () => {
     let result
-    block.setProps({ editable: false, onMouseOut: key => result = key })
+    block.setProps({ editable: false, onMouseOut: key => { result = key } })
     block.find(blockSelector).simulate('mouseleave')
     expect(result).to.equal(undefined)
   })
 
   it('should call onCancelEdit when press esc', () => {
     let result
-    block.setProps({ onCancelEdit: () => result = true })
+    block.setProps({ onCancelEdit: () => { result = true } })
     block.find(blockSelector).simulate('keyup', { keyCode: 27 })
     expect(result).to.equal(true)
   })
 
   it('should render hidden tag when block is hidden', () => {
     expect(block.find('div.hidden-tag').length).to.equal(0)
-    block.setProps({ block: {...props.block, hidden: true } })
+    block.setProps({ block: { ...props.block, hidden: true } })
     expect(block.find('div.hidden-tag').length).to.equal(1)
     expect(block.find('div.hidden-tag').text()).to.equal(' Escondido')
   })

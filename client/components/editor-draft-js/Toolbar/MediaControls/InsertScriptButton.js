@@ -13,7 +13,7 @@ class InsertScriptButton extends Component {
     } else if (script.startsWith('<script')) {
       return 'script'
     }
-    throw 'Sorry, script name not permitted'
+    throw new Error('Sorry, script name not permitted')
   }
 
   handleInsertScript () {
@@ -35,8 +35,8 @@ class InsertScriptButton extends Component {
         >
           <i className='fa fa-code' />
         </button>
-        {this.state.showInputDialog ?
-          (<div className={popoverClassName}>
+        {!this.state.showInputDialog ? null : (
+          <div className={popoverClassName}>
             <input
               type='text'
               value={this.state.script}
@@ -48,7 +48,8 @@ class InsertScriptButton extends Component {
             >
               <i className='fa fa-check' />
             </button>
-          </div>) : null}
+          </div>
+        )}
       </div>
     )
   }

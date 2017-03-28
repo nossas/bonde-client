@@ -41,8 +41,9 @@ export const fontsData = {
 
 const excludeLocalFonts = font => !['PF Din', 'Proxima Nova'].includes(font)
 
-export const normalizeFontsToLinkStyle = names => (!names.length ? [] :
-  names.filter(excludeLocalFonts).map(fontname => {
+export const normalizeFontsToLinkStyle = names => (!names.length
+  ? []
+  : names.filter(excludeLocalFonts).map(fontname => {
     const sanitizedFontName = fontname.replace(/\s/g, '').toLowerCase()
     const font = fontsData[sanitizedFontName]
     if (!font) return null

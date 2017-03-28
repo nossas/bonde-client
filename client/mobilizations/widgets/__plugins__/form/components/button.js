@@ -14,10 +14,9 @@ const Button = ({
       onClick={handleClick}>
       {loading ? 'Enviando...' : buttonText}
     </button>
-    {
-      success &&
+    {success && (
       <div className='center'>Sua ação foi registrada com sucesso!</div>
-    }
+    )}
   </div>
 )
 

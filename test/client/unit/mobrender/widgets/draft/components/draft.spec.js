@@ -30,7 +30,7 @@ describe('mobrender/widgets/draft/components/draft', () => {
   it('should pass to update method widget props when clicked button', () => {
     let widgetProps
     const draft = mount(
-      <Draft {...props} update={props => widgetProps = props} />
+      <Draft {...props} update={props => { widgetProps = props }} />
     )
     const button = draft.find('DraftButton').at(1)
     button.find('button').simulate('click')

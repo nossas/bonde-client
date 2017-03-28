@@ -55,7 +55,7 @@ const Block = ({ block, widgets, editable, hasMouseOver, onMouseOver, onMouseOut
       <div className='relative'>
         <BlockConfigMenu
           block={block}
-          display={editable && hasMouseOver && !editing && !saving ? true : false}
+          display={editable && hasMouseOver && !editing && !saving}
         />
       </div>
     </div>

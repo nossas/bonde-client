@@ -32,14 +32,14 @@ describe('mobrender/components/widget-overlay', () => {
 
   it('should call onMouseOver passing ("widget", widget.id) when mouse enter', () => {
     let result
-    over.setProps({ onMouseOver: (key, id) => result = [key, id] })
+    over.setProps({ onMouseOver: (key, id) => { result = [key, id] } })
     over.find('div.relative').simulate('mouseenter')
     expect(result).to.deep.equal(['widget', props.widget.id])
   })
 
   it('should call onMouseOut passing ("widget") when mouse leave', () => {
     let result
-    over.setProps({ onMouseOut: key => result = [key ] })
+    over.setProps({ onMouseOut: key => { result = [key] } })
     over.find('div.relative').simulate('mouseleave')
     expect(result).to.deep.equal(['widget'])
   })
@@ -53,7 +53,7 @@ describe('mobrender/components/widget-overlay', () => {
   it('should call onClick when click', () => {
     let result
     over.setProps({
-      onClick: () => result = true
+      onClick: () => { result = true }
     })
     over.find('div.relative').simulate('click')
     expect(result).to.equal(true)

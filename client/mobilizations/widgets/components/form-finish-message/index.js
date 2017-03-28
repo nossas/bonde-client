@@ -17,10 +17,9 @@ import EditorSlate, {
 
 // Current module dependencies
 import * as styles from './index-scss'
-import * as WidgetActions from '../../action-creators'
 
 export const FormFinishMessage = props => {
-  const { mobilization, widget, location, fields, successMessage, ...rest } = props
+  const { mobilization, fields, successMessage, ...rest } = props
   const { color_scheme: colorScheme } = mobilization
   const { TellAFriend } = props
 

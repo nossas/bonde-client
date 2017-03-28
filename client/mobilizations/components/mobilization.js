@@ -1,12 +1,8 @@
 import React, { PropTypes } from 'react'
 import classnames from 'classnames'
 import DocumentMeta from 'react-document-meta'
-import { Link } from 'react-router'
 
-// Children module dependencies
 import Block from '~mobilizations/blocks/components'
-
-// Current module dependencies
 import { Navbar } from './navbar'
 
 if (require('exenv').canUseDOM) {

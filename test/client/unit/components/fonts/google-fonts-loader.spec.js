@@ -23,8 +23,8 @@ describe('client/components/fonts/google-fonts-loader', () => {
       const wrapper = shallow(<GoogleFontsLoader fonts={googleWebFonts.concat(localFonts)} />)
       expect(wrapper.find('link')).to.have.length(1)
     })
-    it('should render a link tag without local font names when passed Google Web Fonts font and'
-      + ' local fonts', () => {
+    it('should render a link tag without local font names when passed Google Web Fonts font and' +
+      ' local fonts', () => {
       const wrapper = shallow(<GoogleFontsLoader fonts={googleWebFonts.concat(localFonts)} />)
       expect(wrapper.find('link').props().href).to.not.have.string('PF+Din')
       expect(wrapper.find('link').props().href).to.not.have.string('PF Din')

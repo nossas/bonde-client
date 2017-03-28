@@ -6,9 +6,9 @@ export const showMobilizationPublicView = ({ host, domain }) => {
   return (isSubdomain(host, domain) || !isDomain(host, domain))
 }
 
-// eslint-disable-next-line
 export const isSubdomain = (host, domain) => {
   if (host.indexOf('app.') !== -1) return false
+  // eslint-disable-next-line
   return host.match(`(.+)\.${domain}`)
 }
 export const isDomain = (host, domain) => host.match(domain)

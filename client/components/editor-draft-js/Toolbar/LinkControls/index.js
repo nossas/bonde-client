@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import classnames from 'classnames'
-import { Entity, RichUtils, SelectionState } from 'draft-js'
+import { Entity } from 'draft-js'
 
 import Link from './Link'
 import linkStrategy from './linkStrategy'
@@ -17,10 +17,11 @@ export default class LinkControls extends Component {
 
   constructor (props) {
     super(props)
-
-    const { defaultTarget } = this.props
-
-    this.state = { showInput: false, href: '', target: '_self' }
+    this.state = {
+      showInput: false,
+      href: '',
+      target: '_self'
+    }
   }
 
   componentWillReceiveProps (nextProps) {

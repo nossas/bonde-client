@@ -63,9 +63,9 @@ class DropdownMenu extends React.Component {
           )}
           style={menuStyle}
         >
-          { children.length > 0 && this.renderChildren() }
+          {children.length > 0 && this.renderChildren()}
         </div>
-        { this.renderOverlay() }
+        {this.renderOverlay()}
       </div>
     )
   }

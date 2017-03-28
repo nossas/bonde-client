@@ -1,15 +1,10 @@
-import {
-  SelectionState,
-  BlockMapBuilder,
-  EditorState,
-  Modifier
-} from 'draft-js'
+import { EditorState, Modifier } from 'draft-js'
 
-/**
-USAGE
-style = alignment you want (e.g. "left")
-removeStyles = alignments to remove (["center", "right"])
-**/
+//
+// USAGE
+// style = alignment you want (e.g. "left")
+// removeStyles = alignments to remove (["center", "right"])
+//
 
 export default (editorState, style, removeStyles = []) => {
   let currentContent = editorState.getCurrentContent()

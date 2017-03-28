@@ -35,10 +35,9 @@ class FormControl extends Component {
           )}
           style={style}
         />
-        {
-          formInline &&
+        {formInline && (
           <ControlButtons {...{ submitted, submitting, dirty, showCancel: false, formInline }} />
-        }
+        )}
       </div>
     )
   }

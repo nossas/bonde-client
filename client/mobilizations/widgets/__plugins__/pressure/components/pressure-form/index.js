@@ -32,7 +32,7 @@ class PressureForm extends Component {
   }
 
   validate () {
-    const { widget: { settings: { show_city } } } = this.props
+    const { widget: { settings: { show_city: showCity } } } = this.props
     const requiredMsg = 'Preenchimento obrigatório'
     const errors = { valid: true }
     if (!this.state.email) {
@@ -50,7 +50,7 @@ class PressureForm extends Component {
       errors.valid = false
       errors.lastname = requiredMsg
     }
-    if (show_city === 'city-true' && !this.state.city) {
+    if (showCity === 'city-true' && !this.state.city) {
       errors.valid = false
       errors.city = requiredMsg
     }

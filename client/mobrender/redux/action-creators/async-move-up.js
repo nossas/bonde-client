@@ -12,9 +12,7 @@ export default block => (dispatch, getState, { api }) => {
   const body = {
     block: {
       ...block,
-      position: blocks[blocks.indexOf(
-        blocks.filter(b => b.id === block.id
-      )[0]) - 1].position
+      position: blocks[blocks.indexOf(blocks.filter(b => b.id === block.id)[0]) - 1].position
     }
   }
 

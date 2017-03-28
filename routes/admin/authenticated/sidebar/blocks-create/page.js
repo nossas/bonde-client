@@ -8,7 +8,6 @@ import { Tabs, Tab } from '~client/components/navigation'
 import ColorPicker from '~client/components/color-picker'
 import { BlockMiniature } from '~client/mobilizations/blocks/components'
 import { BLOCK_LAYOUTS } from '~client/mobilizations/blocks/constants'
-import * as BlockActions from '~client/mobilizations/blocks/action-creators'
 
 if (require('exenv').canUseDOM) require('./page.scss')
 
@@ -133,7 +132,7 @@ class BlocksCreatePage extends Component {
                   bg_class: this.state.color ? JSON.stringify(this.state.color) : undefined,
                   bg_image: this.state.bgImage,
                   widgets_attributes: this.state.selectedLayout.map(col => ({ kind: 'draft', ...col })),
-                  mobilization_id: mobilization.id
+                  mobilizationId: mobilization.id
                 }
                 onCreateBlock(block)
                   .then(() => {

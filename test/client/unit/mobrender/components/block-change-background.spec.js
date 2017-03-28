@@ -32,7 +32,7 @@ describe('~client/mobrender/components/block-change-background', () => {
 
     it('should call onChangeBackground with block updated when click color-picker', () => {
       let result
-      changeBackground.setProps({ onChangeBackground: block => result = block })
+      changeBackground.setProps({ onChangeBackground: block => { result = block } })
       const item = changeBackground.find('BasicColorPickerItem').at(1)
       item.props().onSelectColor(item.props().color)
       expect(result).to.deep.equal({...props.block,
@@ -49,7 +49,7 @@ describe('~client/mobrender/components/block-change-background', () => {
 
     it('should call onChangeBackground when onRemove is called', () => {
       let result
-      changeBackground.setProps({ onChangeBackground: block => result = block })
+      changeBackground.setProps({ onChangeBackground: block => { result = block } })
       changeBackground.find('FileUploader').props().onRemove()
       expect(result).to.deep.equal({...props.block,
         bg_image: undefined
@@ -60,8 +60,8 @@ describe('~client/mobrender/components/block-change-background', () => {
       let result
       let resultProgress
       changeBackground.setProps({
-        onChangeBackground: block => result = block,
-        onUploadFile: key => resultProgress = key
+        onChangeBackground: block => { result = block },
+        onUploadFile: key => { resultProgress = key }
       })
       const newBgFile = 'tmp://new-bg.png'
       changeBackground.find('FileUploader').props().onFinish(newBgFile)
@@ -79,16 +79,13 @@ describe('~client/mobrender/components/block-change-background', () => {
 
     it('should call onUploadFile("bgBlock", progres) while loading', () => {
       let result
-      changeBackground.setProps({ onUploadFile: (key, progress) => result = {key, progress} })
+      changeBackground.setProps({ onUploadFile: (key, progress) => { result = { key, progress } } })
       changeBackground.find('FileUploader').props().onProgress(59)
       expect(result).to.deep.equal({ key: 'bgBlock', progress: 59 })
     })
   })
 
   describe('render navbar', () => {
-    const saveClassName = 'btn caps bg-darken-4 white rounded mr1'
-    const cancelClassName = 'btn caps bg-darken-4 white rounded'
-
     it('should has custom style for render to top', () => {
       const main = changeBackground.find('div').at(0)
       expect(main.props().className).to.contains('absolute col-12 top-0 left-0 bg-darken-4 z5')
@@ -101,7 +98,7 @@ describe('~client/mobrender/components/block-change-background', () => {
 
     it('should call onCancelEdit when clicked in wrapper', () => {
       let result
-      changeBackground.setProps({ onCancelEdit: block => result = block })
+      changeBackground.setProps({ onCancelEdit: block => { result = block } })
       const wrapper = changeBackground.find('div.fixed')
       wrapper.simulate('click')
       expect(result).to.deep.equal(props.block)
@@ -119,14 +116,14 @@ describe('~client/mobrender/components/block-change-background', () => {
 
     it('should call update when click in save button', () => {
       let result
-      changeBackground.setProps({ update: block => result = block })
+      changeBackground.setProps({ update: block => { result = block } })
       changeBackground.find('.save-btn').simulate('click')
       expect(result).to.deep.equal(props.block)
     })
 
     it('should call onCancelEdit when click in cancel button', () => {
       let result
-      changeBackground.setProps({ onCancelEdit: block => result = block })
+      changeBackground.setProps({ onCancelEdit: block => { result = block } })
       changeBackground.find('.cancel-btn').simulate('click')
       expect(result).to.deep.equal(props.block)
     })

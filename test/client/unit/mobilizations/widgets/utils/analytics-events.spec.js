@@ -11,7 +11,7 @@ describe.skip('client/mobilizations/widgets/utils/analytics-events', () => {
     sandbox.spy(AnalyticsEvents, 'sendEvent')
   })
 
-  context('#formIsFilled', () => {
+  describe('#formIsFilled', () => {
     it('should return true when form is filled', () => {
       expect(AnalyticsEvents.formIsFilled()).to.be.true
     })

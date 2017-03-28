@@ -31,7 +31,7 @@ describe('client/components/basic-color-picker/basic-color-picker-item', () => {
 
   it('should call onSelectColor when click with color passed by props', () => {
     let result
-    pickerItem.setProps({ onSelectColor: color => result = color })
+    pickerItem.setProps({ onSelectColor: color => { result = color } })
     pickerItem.find('div').at(1).simulate('click')
     expect(result).to.equal(props.color)
   })

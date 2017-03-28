@@ -1,6 +1,4 @@
-import { CharacterMetadata } from 'draft-js'
-
-export default (block) => {
+export default block => {
   let style = 'left'
   block.findStyleRanges(e => {
     if (e.hasStyle('center')) style = 'center'

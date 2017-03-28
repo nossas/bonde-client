@@ -34,7 +34,7 @@ class InsertImageButton extends Component {
   }
 
   render () {
-    const { buttonClassName, popoverClassName } = this.props
+    const { buttonClassName } = this.props
 
     return (
       <div>
@@ -47,7 +47,7 @@ class InsertImageButton extends Component {
           onProgress={::this.handleUploadProgress}
           onError={::this.handleUploadError}
           onFinish={::this.handleUploadFinish}
-          ref={input => this.inputFile = input}
+          ref={input => { this.inputFile = input }}
           style={{
             position: 'absolute',
             visibility: 'hidden'

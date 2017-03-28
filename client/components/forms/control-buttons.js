@@ -4,7 +4,7 @@ import classnames from 'classnames'
 class ControlButtons extends Component {
   render () {
     const { $formRedux: { floatButton, successMessage } } = this.context
-    const { submitting, submitted, dirty, formInline, valid, ...props } = this.props
+    const { submitting, submitted, dirty, formInline, valid } = this.props
     return (
       <div className={classnames(
           'control-buttons',
@@ -19,13 +19,12 @@ class ControlButtons extends Component {
           disabled={!valid || submitting || !dirty}
           value={(submitting ? 'Salvando...' : (floatButton || 'Continuar'))}
         />
-        {
-          submitted && !!successMessage &&
+        {submitted && !!successMessage && (
           <div className='success-message olive h4 px2 mt2'>
             {successMessage}
             <i className='fa fa-check-circle olive' />
           </div>
-        }
+        )}
       </div>
     )
   }

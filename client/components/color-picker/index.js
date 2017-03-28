@@ -15,7 +15,7 @@ export const ColorPicker = ({
   color
 }) => {
   const hasTheme = theme && themes[theme]
-  const colorStrategy = selectedColor ? selectedColor : (hasTheme ? themes[theme][0] : '#333')
+  const colorStrategy = selectedColor || (hasTheme ? themes[theme][0] : '#333')
 
   return !showColorPicker ? null : (
     <div className={classnames('color-picker-container', className)}>

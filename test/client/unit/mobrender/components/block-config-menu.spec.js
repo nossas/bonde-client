@@ -38,7 +38,7 @@ describe('~client/mobrender/components/block-config-menu', () => {
 
       it('should call onEdit("background-{block_id}") when clicked', () => {
         let result
-        menuConfig.setProps({ onEdit: turn => result = turn })
+        menuConfig.setProps({ onEdit: turn => { result = turn } })
         menu.simulate('click')
         expect(result).to.equal(`background-${props.block.id}`)
       })
@@ -57,7 +57,7 @@ describe('~client/mobrender/components/block-config-menu', () => {
 
       it('should call update with block.hidden updated', () => {
         let result
-        menuConfig.setProps({ update: block => result = block })
+        menuConfig.setProps({ update: block => { result = block } })
         menu.simulate('click')
         expect(result).to.deep.equal({...props.block,
           hidden: !props.block.hidden
@@ -99,7 +99,7 @@ describe('~client/mobrender/components/block-config-menu', () => {
 
       it('should call destroy(block) when window.confirm is true', () => {
         let result
-        menuConfig.setProps({ destroy: block => result = block })
+        menuConfig.setProps({ destroy: block => { result = block } })
         confirmStub.returns(true)
         menu.simulate('click')
         expect(result).to.deep.equal(props.block)
@@ -120,7 +120,7 @@ describe('~client/mobrender/components/block-config-menu', () => {
       it('should call moveUp(block) when click and canMoveUp', () => {
         let result
         menuConfig.setProps({
-          moveUp: block => result = block,
+          moveUp: block => { result = block },
           canMoveUp: true
         })
         menu.simulate('click')
@@ -148,7 +148,7 @@ describe('~client/mobrender/components/block-config-menu', () => {
       it('should call moveDown(block) when click and canMoveDown', () => {
         let result
         menuConfig.setProps({
-          moveDown: block => result = block,
+          moveDown: block => { result = block },
           canMoveDown: true
         })
         menu.simulate('click')
