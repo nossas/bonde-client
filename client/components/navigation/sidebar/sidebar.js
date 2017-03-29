@@ -4,7 +4,6 @@ import * as paths from '~client/paths'
 import { Loading } from '~components/await'
 import { Sidenav, SidenavList, SidenavListItem } from '~components/navigation/sidenav'
 
-
 const Sidebar = ({ children, loading, mobilization, user, community }) => loading ? <Loading /> : (
   <div className='top-0 right-0 bottom-0 left-0 flex flex-column absolute'>
     <Sidenav community={community}>
