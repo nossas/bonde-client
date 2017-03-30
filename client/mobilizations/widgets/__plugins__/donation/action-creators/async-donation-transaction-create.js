@@ -1,3 +1,5 @@
+import { addNotification } from 'reapop'
+import * as notifications from '~client/utils/notifications'
 import { createAction } from './create-action'
 import * as t from '../action-types'
 import AnalyticsEvents from '~mobilizations/widgets/utils/analytics-events'
@@ -17,6 +19,7 @@ const asyncDonationTransactionCreate = params => (dispatch, getState, { api }) =
     })
     .catch(failure => {
       dispatch(createAction(t.ASYNC_DONATION_TRANSACTION_CREATE_FAILURE, failure))
+      dispatch(addNotification(notifications.genericRequestError()))
       return Promise.reject({ _error: `Response ${failure}` })
     })
 }

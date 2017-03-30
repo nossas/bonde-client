@@ -78,8 +78,8 @@ class Donation extends React.Component {
         data.widget_id = this.props.widget.id
         data.amount = widget.settings['donation_value' + selectedValue] + '00'
 
-        that.setState({ success: true })
         handleDonationTransactionCreate(data)
+          .then(() => that.setState({ success: true }))
       },
       error: err => { console.error(err) }
     })
