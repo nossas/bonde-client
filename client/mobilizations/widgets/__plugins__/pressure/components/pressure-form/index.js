@@ -138,7 +138,7 @@ class PressureForm extends Component {
                     className='col-12'
                     style={inputReset}
                     type='text'
-                    placeholder='Insira seu cidade'
+                    placeholder='Insira sua cidade'
                     value={city}
                     onChange={e => this.setState({ city: e.target.value })}
                   />
