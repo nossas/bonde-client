@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 import { reducer as formReducer } from 'redux-form'
+import { reducer as notificationsReducer } from 'reapop'
 import auth from '~client/account/redux/reducers'
 import mobilizations from '~client/mobrender/redux/reducers'
 /*
@@ -23,6 +24,7 @@ export default function createReducer (asyncReducers) {
   return combineReducers({
     sourceRequest,
     form: formReducer,
+    notifications: notificationsReducer(),
     auth,
     mobilizations,
     community,
