@@ -6,13 +6,12 @@ import DefaultServerConfig from '~server/config'
 import * as paths from '~client/paths'
 
 import ColorPicker from '~client/components/color-picker'
+import { Tabs, Tab } from '~client/components/navigation'
+import { SettingsPageLayout, SettingsPageContentLayout, SettingsPageMenuLayout } from '~client/components/layout'
+import { DivFloat, Button } from '~client/ux/components'
 
 import BlockMiniature from '~client/mobilizations/blocks/components/block-miniature'
 import BLOCK_LAYOUTS from '~client/mobilizations/blocks/constants/block-layouts'
-
-import { Tabs, Tab } from '~client/components/navigation'
-import { SettingsPageLayout, SettingsPageContentLayout, SettingsPageMenuLayout } from '~client/components/layout'
-import { Button, DivFloat } from '~client/ux/components'
 
 if (require('exenv').canUseDOM) require('./page.scss')
 
@@ -128,28 +127,6 @@ class BlocksCreatePage extends Component {
                 </div>
               </div>
             </div>
-
-<<<<<<< HEAD
-            <button
-              className='block-create-button btn float-btn-menu rounded'
-              onClick={() => {
-                const block = {
-                  bg_class: this.state.color ? JSON.stringify(this.state.color) : undefined,
-                  bg_image: this.state.bgImage,
-                  widgets_attributes: this.state.selectedLayout.map(col => ({ kind: 'draft', ...col })),
-                  mobilizationId: mobilization.id
-                }
-                onCreateBlock(block)
-                  .then(() => {
-                    browserHistory.push(
-                      `${paths.editMobilization(mobilization.id)}?newBlock=true`
-                    )
-                  })
-              }}
-            >
-              Adicionar
-            </button>
-=======
             <DivFloat>
               <Button
                 onClick={() => {
@@ -170,7 +147,6 @@ class BlocksCreatePage extends Component {
                 Adicionar
               </Button>
             </DivFloat>
->>>>>>> Use reusable components in pages of settings. Issue #497
           </div>
         </SettingsPageContentLayout>
       </SettingsPageLayout>
