@@ -13,7 +13,7 @@ const Navbar = props => {
   return (
     <div className='absolute col-12 z3'>
       <Menu {...menuProps} />
-      <Menu {...menuProps} mobile={true} />
+      <Menu {...menuProps} mobile />
     </div>
   )
 }
