@@ -6,22 +6,29 @@ const TellAFriend = ({
   preview,
   href,
   message,
-  mobilization: { twitter_share_text: twitterShareText },
+  mobilization: {
+    twitter_share_text: twitterShareText
+  },
   imageUrl,
   imageWidth,
-  widget: { settings: { whatsapp_text: whatsappText } }
-}) => (
-  <div className='center p3 bg-white darkengray rounded'>
-    <div className='m0 h3 bold'>{message}</div>
-    <div className='py2'>
-      <img src={imageUrl} style={{ width: imageWidth || 100 }} />
+  widget
+}) => {
+
+  const settings = widget.settings || {}
+
+  return (
+    <div className='center p3 bg-white darkengray rounded'>
+      <div className='m0 h3 bold'>{message}</div>
+      <div className='py2'>
+        <img src={imageUrl} style={{ width: imageWidth || 100 }} />
+      </div>
+      <p>Agora, compartilhe com seus amigos!</p>
+      <p><FacebookShareButton href={href} /></p>
+      <p><TwitterShareButton href={href} text={twitterShareText} /></p>
+      <p><WhatsAppShareButton whatsappText={settings.whatsapp_text || href} preview={preview} /></p>
     </div>
-    <p>Agora, compartilhe com seus amigos!</p>
-    <p><FacebookShareButton href={href} /></p>
-    <p><TwitterShareButton href={href} text={twitterShareText} /></p>
-    <p><WhatsAppShareButton whatsappText={whatsappText || href} preview={preview} /></p>
-  </div>
-)
+  )
+}
 
 TellAFriend.propTypes = {
   preview: PropTypes.bool,
