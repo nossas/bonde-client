@@ -3,7 +3,7 @@ import React from 'react'
 import { SettingsPageLayout, SettingsPageContentLayout } from '~client/components/layout'
 import { FormGroup, FormControl, ControlLabel } from '~client/components/forms'
 import { SettingsMenu } from '~client/mobilizations/components'
-import SettingsForm from '~client/components/settings-form'
+import { SettingsForm } from '~client/ux/components'
 
 const MobilizationsSettingsAnalyticsPage = props => {
   const { fields: { google_analytics_code: googleAnalyticsCode }, ...formProps } = props

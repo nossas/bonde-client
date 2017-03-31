@@ -6,8 +6,8 @@ import {
   FormControl,
   ControlLabel
 } from '~client/components/forms'
-import SettingsForm from '~client/components/settings-form'
 import { SettingsMenu } from '~client/community/components'
+import { SettingsForm } from '~client/ux/components'
 
 const CommunitySettingsMailchimpPage = ({
   fields: {

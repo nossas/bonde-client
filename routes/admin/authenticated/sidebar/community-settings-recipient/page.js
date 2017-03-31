@@ -9,7 +9,7 @@ import {
   RadioGroup,
   Radio
 } from '~client/components/forms'
-import SettingsForm from '~client/components/settings-form'
+import { SettingsForm } from '~client/ux/components'
 import { getCodeBanks } from '~client/community/utils'
 import { SettingsMenu } from '~client/community/components'
 

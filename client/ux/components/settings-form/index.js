@@ -1,15 +1,22 @@
 import React, { PropTypes } from 'react'
 
+import DivFloat from '../div-float'
+import Button from '../button'
+
+// Dependency module
 import { FormRedux, SuccessMessage } from '~client/components/forms'
-import Button from '~client/components/button'
-import DivFloat from '~client/components/div-float'
 
 
 const SettingsForm = ({ children, buttonText, successMessage, ...formProps }) => (
   <FormRedux nosubmit {...formProps}>
     {children}
     <DivFloat>
-      <Button type='submit' disabled={formProps.submitting} >{buttonText}</Button>
+      <Button
+        type='submit'
+        disabled={formProps.submitting}
+      >
+        {buttonText}
+      </Button>
       <SuccessMessage text={successMessage} />
     </DivFloat>
   </FormRedux>

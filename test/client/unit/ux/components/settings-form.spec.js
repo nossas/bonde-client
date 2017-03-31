@@ -2,9 +2,9 @@ import React from 'react'
 import { expect } from 'chai'
 import { mount } from 'enzyme'
 
-import SettingsForm from '~client/components/settings-form'
+import SettingsForm from '~client/ux/components/settings-form'
 
-describe('~client/components/settings-form', () => {
+describe('ux/components/settings-form', () => {
 
   let form
   const props = {

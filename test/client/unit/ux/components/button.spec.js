@@ -1,22 +1,16 @@
 import React from 'react'
 import { expect } from 'chai'
 import { mount } from 'enzyme'
-import { StyleSheetTestUtils } from 'aphrodite'
 
-import Button from '~client/components/button'
+import Button from '~client/ux/components/button'
 
 
-describe('~client/components/button', () => {
+describe('ux/components/button', () => {
 
   let button
 
   beforeEach(() => {
-    StyleSheetTestUtils.suppressStyleInjection()
     button = mount(<Button />)
-  })
-
-  afterEach(() => {
-    StyleSheetTestUtils.clearBufferAndResumeStyleInjection()
   })
 
   it('should render a button style by default', () => {

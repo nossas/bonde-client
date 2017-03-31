@@ -9,7 +9,7 @@ import {
 } from '~client/components/forms'
 
 // Current module dependencies
-import SettingsForm from '~client/components/settings-form'
+import { SettingsForm } from '~client/ux/components'
 
 const MobilizationBasicsForm = props => {
   const { floatSubmit, fields: { name, goal }, ...formProps } = props

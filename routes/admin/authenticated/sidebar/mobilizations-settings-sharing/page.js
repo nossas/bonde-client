@@ -18,7 +18,7 @@ if (require('exenv').canUseDOM) {
 }
 import { SettingsMenu } from '~client/mobilizations/components'
 import { SettingsPageLayout, SettingsPageContentLayout } from '~client/components/layout'
-import SettingsForm from '~client/components/settings-form'
+import { SettingsForm } from '~client/ux/components'
 
 const MobilizationsSettingsSharingPage = props => {
   const {

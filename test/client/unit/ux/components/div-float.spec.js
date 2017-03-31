@@ -1,22 +1,16 @@
 import React from 'react'
 import { expect } from 'chai'
 import { mount } from 'enzyme'
-import { StyleSheetTestUtils } from 'aphrodite'
 
-import DivFloat from '~client/components/div-float'
+import DivFloat from '~client/ux/components/div-float'
 
 
-describe('~client/components/float-up-layout', () => {
+describe('ux/components/div-float', () => {
 
   let floatLayout
 
   beforeEach(() => {
-    StyleSheetTestUtils.suppressStyleInjection()
     floatLayout = mount(<DivFloat />)
-  })
-
-  afterEach(() => {
-    StyleSheetTestUtils.clearBufferAndResumeStyleInjection()
   })
 
   it('should render children', () => {

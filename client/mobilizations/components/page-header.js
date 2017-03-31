@@ -2,10 +2,8 @@ import React, { PropTypes } from 'react'
 
 // Global module dependencies
 import * as paths from '~client/paths'
-import { Tabs, Tab } from '~components/navigation/tabs'
-
-import Button from '~client/components/button'
-import DivFloat from '~client/components/div-float'
+import { Tabs, Tab } from '~client/components/navigation/tabs'
+import { DivFloat, Button } from '~client/ux/components'
 
 const PageHeader = ({ location }) => {
   const activeMobilizationsListPath = paths.mobilizations()

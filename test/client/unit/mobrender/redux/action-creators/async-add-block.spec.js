@@ -16,7 +16,7 @@ const values = { bg_class: 'bg-1', bg_image: 'tmp://bgimage.png' }
 const widget = { kind: 'draft', lg_size: 12, md_size: 12, sm_size: 12 }
 
 const block = { ...values, widgets_attributes: [widget] }
-const rdata = { ...values, mobilizationId: 1, id: 1, widgets_attributes: [{ ...widget, id: 3 }] }
+const rdata = { ...values, mobilization_id: 1, id: 1, widgets_attributes: [{ ...widget, id: 3 }] }
 mockAxios.onPost(`/mobilizations/1/blocks`, { block }).reply(201, rdata)
 
 // Mock store
@@ -32,7 +32,7 @@ describe('~client/mobrender/redux/action-creators/async-add-block', () => {
       createAction(t.ADD_BLOCK_SUCCESS, data),
       createAction(t.ADD_WIDGETS_SUCCESS, widgets_attributes)
     ]
-    return store.dispatch(asyncAddBlock({ ...block, mobilizationId: 1 }))
+    return store.dispatch(asyncAddBlock({ ...block, mobilization_id: 1 }))
       .then(res => {
         expect(store.getActions().length).to.equal(3)
         expect(store.getActions()[0]).to.deep.equal(expectedActions[0])

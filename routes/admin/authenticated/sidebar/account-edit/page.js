@@ -11,7 +11,7 @@ import {
   ControlLabel,
   UploadImageField
 } from '~client/components/forms'
-import SettingsForm from '~client/components/settings-form'
+import { SettingsForm } from '~client/ux/components'
 import * as Paths from '~client/paths'
 
 const EditUserPage = ({

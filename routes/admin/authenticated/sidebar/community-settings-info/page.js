@@ -9,8 +9,7 @@ import {
   UploadImageField
 } from '~client/components/forms'
 import { SettingsMenu } from '~client/community/components'
-import SettingsForm from '~client/components/settings-form'
-
+import { SettingsForm } from '~client/ux/components'
 
 const CommunitySettingsInfoPage = ({
   fields: { image, name, city, description },
