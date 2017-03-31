@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 
-import { FormRedux, FormGroup, ControlLabel, FormControl } from '~client/components/forms'
+import { FormGroup, ControlLabel, FormControl } from '~client/components/forms'
+import { SettingsForm } from '~client/ux/components'
 import { InputTag } from '~client/mobilizations/widgets/components'
 
 // Regex to validate Target (Ex.: Igor Santos <igor@nossascidades.org>)
@@ -43,11 +44,9 @@ class PressureSettingsEmailPage extends Component {
       ...props
     } = this.props
     return (
-      <FormRedux
+      <SettingsForm
         {...props}
         onSubmit={::this.handleSubmit}
-        className='transparent'
-        floatButton='Salvar'
         successMessage='Email para alvo configurado com sucesso!'
       >
         <div className='form-group'>
@@ -83,7 +82,7 @@ class PressureSettingsEmailPage extends Component {
           <ControlLabel>Corpo do email que será enviado</ControlLabel>
           <FormControl type='text' componentClass='textarea' />
         </FormGroup>
-      </FormRedux>
+      </SettingsForm>
     )
   }
 }

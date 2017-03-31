@@ -4,13 +4,13 @@ import { Raw } from 'slate'
 
 // Global module dependencies
 import {
-  FormRedux,
   FormGroup,
   RadioGroup,
   Radio,
   ControlLabel,
   FormControl
-} from '~components/forms'
+} from '~client/components/forms'
+import { SettingsForm } from '~client/ux/components'
 import Editor from '~client/components/editor-draft-js'
 import EditorSlate, {
   createEditorContent
@@ -20,7 +20,7 @@ import EditorSlate, {
 import * as styles from './index-scss'
 
 export const FormFinishMessage = props => {
-  const { mobilization, fields, successMessage, widget, ...rest } = props
+  const { mobilization, fields, successMessage, widget, ...formProps } = props
   const { color_scheme: colorScheme } = mobilization
   const { TellAFriend } = props
 
@@ -30,14 +30,22 @@ export const FormFinishMessage = props => {
     whatsapp_text: whatsappText
   } = fields
 
-  const parsedFinishMessage = editorValue(finishMessage.value)
+  let parsedFinishMessage
+  try {
+    parsedFinishMessage = JSON.parse(finishMessage.value)
+  } catch (e) {
+    parsedFinishMessage = finishMessage.value
+  }
 
   return (
-    <FormRedux
-      {...rest}
-      className='transparent'
-      floatButton='Salvar'
-      onSubmit={onSubmit(props)}
+    <SettingsForm
+      {...formProps}
+      onSubmit={values => {
+        return props.asyncWidgetUpdate({
+          ...widget,
+          settings: { ...widget.settings, ...values }
+        })
+      }}
       successMessage={successMessage || 'Formulário salvo com sucesso!'}
     >
       <FormGroup controlId='payment-type-id' {...finishMessageType}>
@@ -99,32 +107,11 @@ export const FormFinishMessage = props => {
           </div>
         </div>
       )}
-    </FormRedux>
+    </SettingsForm>
   )
 }
 
-//
-// Helper functions
-//
-const onSubmit = props => values => {
-  const { asyncWidgetUpdate, widget } = props
-  return asyncWidgetUpdate({
-    ...widget,
-    settings: { ...widget.settings, ...values }
-  })
-}
-
-const editorValue = message => {
-  try {
-    return JSON.parse(message)
-  } catch (e) {
-    return message
-  }
-}
-
-//
 // Redux Form configurations
-//
 const fields = [
   'finish_message_type',
   'finish_message',
@@ -140,14 +127,17 @@ const validate = values => {
   return errors
 }
 
-const mapStateToProps = (state, { widget: { settings } }) => ({
-  initialValues: {
-    finish_message_type: settings.finish_message_type || 'share',
-    finish_message: settings.finish_message || createEditorContent('Clique aqui para editar...'),
-    finish_message_background: settings.finish_message_background || '255,255,255,1',
-    whatsapp_text: settings.whatsapp_text || ''
+const mapStateToProps = (state, props) => {
+  const settings = props.widget.settings || {}
+  return {
+    initialValues: {
+      finish_message_type: settings.finish_message_type || 'share',
+      finish_message: settings.finish_message || createEditorContent('Clique aqui para editar...'),
+      finish_message_background: settings.finish_message_background || '255,255,255,1',
+      whatsapp_text: settings.whatsapp_text || ''
+    }
   }
-})
+}
 
 //
 // PropTypes

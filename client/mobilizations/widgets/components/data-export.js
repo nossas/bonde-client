@@ -1,7 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 import exenv from 'exenv'
 
+import { Button } from '~client/ux/components'
+
+
 class DataExport extends Component {
+
   componentDidMount () {
     const { dataExportMount } = this.props
     dataExportMount()
@@ -95,16 +99,15 @@ class DataExport extends Component {
         </p>
 
         <p className='mb2'>
-          <button
+          <Button
             disabled={loading}
-            className='btn bg-pagenta white caps p2 rounded'
             onClick={() => asyncWidgetDataExport({ mobilization, widget, filename })}
           >
             {adownloadSupport
               ? 'Clique para baixar a planilha completa.'
               : 'Clique para processar a planilha completa.'
             }
-          </button>
+          </Button>
         </p>
 
         <div className='mb3'>

@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
-import { FormRedux, FormGroup, ControlLabel, FormControl } from '~components/forms'
+import { FormGroup, ControlLabel, FormControl } from '~client/components/forms'
+import { SettingsForm } from '~client/ux/components'
 
 const FormSettingsPage = ({
   fields: {
@@ -11,7 +12,7 @@ const FormSettingsPage = ({
   asyncWidgetUpdate,
   ...formProps
 }) => (
-  <FormRedux
+  <SettingsForm
     {...formProps}
     onSubmit={values => {
       const settings = widget.settings || {}
@@ -21,8 +22,6 @@ const FormSettingsPage = ({
         settings: { ...settings, ...values }
       })
     }}
-    className='transparent'
-    floatButton='Salvar'
     successMessage='Formulário configurado com sucesso!'
   >
     <FormGroup controlId='call-to-action-id' {...callToAction}>
@@ -46,7 +45,7 @@ const FormSettingsPage = ({
         placeholder='Defina o texto que ficará ao lado do número de pessoas que agiram.'
       />
     </FormGroup>
-  </FormRedux>
+  </SettingsForm>
 )
 
 FormSettingsPage.propTypes = {

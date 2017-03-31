@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react'
 
-import { FormRedux, FormGroup, ControlLabel, FormControl } from '~components/forms'
-import * as validator from '~utils/validation-helper'
+import { FormGroup, ControlLabel, FormControl } from '~client/components/forms'
+import { SettingsForm } from '~client/ux/components'
+import * as validator from '~client/utils/validation-helper'
 
 const FormAutofire = props => {
   const {
@@ -17,10 +18,9 @@ const FormAutofire = props => {
   } = props
 
   return (
-    <FormRedux
+    <SettingsForm
       {...rest}
-      className='transparent'
-      floatButton='Salvar'
+      buttonText='Salvar'
       onSubmit={values => {
         const settings = widget.settings || {}
         return asyncWidgetUpdate({ ...widget, settings: { ...settings, ...values } })
@@ -59,7 +59,7 @@ const FormAutofire = props => {
             ' dos links abaixo. Um abraço.'}
         />
       </FormGroup>
-    </FormRedux>
+    </SettingsForm>
   )
 }
 

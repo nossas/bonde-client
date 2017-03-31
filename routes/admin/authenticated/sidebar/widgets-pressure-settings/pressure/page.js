@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react'
 import {
-  FormRedux,
   FormGroup,
   ControlLabel,
   FormControl,
@@ -8,6 +7,7 @@ import {
   RadioGroup,
   Radio
 } from '~client/components/forms'
+import { SettingsForm } from '~client/ux/components'
 
 const PressureSettingsPage = ({
   ...props,
@@ -36,11 +36,9 @@ const PressureSettingsPage = ({
   } = props
 
   return (
-    <FormRedux
+    <SettingsForm
       {...props}
       onSubmit={handleSubmit}
-      className='transparent'
-      floatButton='Salvar'
       successMessage='Formulário de pressão configurado com sucesso!'
     >
       <FormGroup controlId='title-text-id' {...titleText}>
@@ -81,7 +79,7 @@ const PressureSettingsPage = ({
           <Radio value='city-false'>Não</Radio>
         </RadioGroup>
       </FormGroup>
-    </FormRedux>
+    </SettingsForm>
   )
 }
 

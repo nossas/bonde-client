@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 
 import { Loading } from '~client/components/await'
+import { Button, DivFloat } from '~client/ux/components'
 import Form from '~client/mobilizations/widgets/__plugins__/form/components'
 
 class FormSettingsFieldsPage extends Component {
@@ -55,26 +56,14 @@ class FormSettingsFieldsPage extends Component {
     const { widget, ...props } = this.props
     return (
       <div>
-        <button
-          className='btn white bg-pagenta caps p2 rounded'
-          onClick={::this.handleAddTextField}
-          style={{
-            position: 'fixed',
-            top: '2rem',
-            right: '4rem',
-            width: 'inherit',
-            textTransform: 'uppercase',
-            margin: '0',
-            fontSize: '1.1rem',
-            padding: '.7rem 1.6rem'
-          }}
-        >
-          Adicionar um campo
-        </button>
-
+        <DivFloat>
+          <Button onClick={::this.handleAddTextField}>
+            Adicionar um campo
+          </Button>
+        </DivFloat>
         <p className='h5 mb3 darkengray'>
           {
-            ~this.fields().length
+            this.fields().length
               ? 'Seu formulário ainda não possui nenhum campo. Clique abaixo para começar a' +
                 ' adicionar campos.'
               : 'Adicione, remova, edite e ordene os campos do formulário de acordo com as' +

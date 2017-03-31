@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react'
 
 import {
-  FormRedux,
   FormGroup,
   ControlLabel,
   HelpBlock,
@@ -10,6 +9,7 @@ import {
   Radio,
   ColorPicker
 } from '~client/components/forms'
+import { SettingsForm } from '~client/ux/components'
 import { HorizontalLayout } from '~client/components/grids'
 
 const DonationSettingsPage = props => {
@@ -35,10 +35,9 @@ const DonationSettingsPage = props => {
   const donationValueTitle = 'Clique para definir este valor como padrão.'
 
   return (
-    <FormRedux
+    <SettingsForm
       {...formProps}
-      className='transparent'
-      floatButton='Salvar'
+      buttonText='Salvar'
       onSubmit={values => {
         const { widget, asyncWidgetUpdate } = props
         const settings = widget.settings || {}
@@ -143,7 +142,7 @@ const DonationSettingsPage = props => {
           Este bloco de doação está associado à conta correspondente da cidade no Pagar.me.
         </HelpBlock>
       </FormGroup>
-    </FormRedux>
+    </SettingsForm>
   )
 }
 
