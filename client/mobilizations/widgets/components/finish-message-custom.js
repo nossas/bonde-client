@@ -26,6 +26,7 @@ const FinishMessageCustom = ({ readOnly, widget }) => {
     <EditorSlate
       content={finishMessage}
       readOnly={readOnly}
+      contentStyles={{ backgroundColor: '#fff', color: '#666', padding: 10 }}
     />
   )
 }
