@@ -17,14 +17,14 @@ const fonts = [
   'Slabo 27px', 'Source Sans Pro', 'Ubuntu'
 ]
 
-const SelectFontFamily = props => {
+const SelectFontFamily = props => (
   <select {...props} className='font-controls-family select col col-8 h5'>
     <option value=''>Selecione uma fonte</option>
     {fonts.map(
       font => <option key={font} value={font}>{font}</option>
     )}
   </select>
-}
+)
 
 SelectFontFamily.propTypes = {
   value: PropTypes.string.isRequired,
