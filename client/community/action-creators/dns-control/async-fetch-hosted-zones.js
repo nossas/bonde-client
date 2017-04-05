@@ -5,7 +5,7 @@ import * as CommunitySelectors from '../../selectors'
 // Dependency module
 import AuthSelectors from '~client/account/redux/selectors'
 
-export default dnsHostedZone => (dispatch, getState, { api }) => {
+export default () => (dispatch, getState, { api }) => {
   const credentials = AuthSelectors(getState()).getCredentials()
   const community = CommunitySelectors.getCurrent(getState())
 
