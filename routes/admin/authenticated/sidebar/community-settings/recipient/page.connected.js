@@ -8,21 +8,6 @@ import * as CommunitySelectors from '~community/selectors'
 
 import Page from './page'
 
-const redial = {
-  fetch: ({ dispatch, getState }) => {
-    const state = getState()
-    const promises = []
-
-    !CommunitySelectors.isLoaded(state) && promises.push(
-      dispatch(CommunityActions.asyncFetch())
-    )
-    !CommunitySelectors.getCurrentId(state) && promises.push(
-      dispatch(CommunityActions.select(1))
-    )
-    return Promise.all(promises)
-  }
-}
-
 const mapStateToProps = (state, ownProps) => {
   const { id, recipient } = CommunitySelectors.getCurrent(state)
   const values = recipient || {}
@@ -128,12 +113,10 @@ const validate = values => {
   return errors
 }
 
-export default provideHooks(redial)(
-  connect(mapStateToProps, mapDispatchToProps)(
-    reduxForm({
-      form: 'mailchimpForm',
-      fields,
-      validate
-    })(Page)
-  )
+export default connect(mapStateToProps, mapDispatchToProps)(
+  reduxForm({
+    form: 'mailchimpForm',
+    fields,
+    validate
+  })(Page)
 )

@@ -2,9 +2,9 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import * as mock from '~client/utils/mock'
-import Page from '~routes/admin/authenticated/sidebar/community-settings-recipient/page'
+import Page from '~routes/admin/authenticated/sidebar/community-settings/recipient/page'
 
-describe('routes/admin/authenticated/sidebar/community-settings-recipient/page', () => {
+describe('routes/admin/authenticated/sidebar/community-settings/recipient/page', () => {
   const props = {
     fields: {
       recipient: {

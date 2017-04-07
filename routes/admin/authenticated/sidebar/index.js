@@ -18,10 +18,7 @@ export default store => ({
       cb(null, [
         require('./account-edit').default(store),
         require('./blocks-create').default(store),
-        require('./community-settings-info').default(store),
-        require('./community-settings-mailchimp').default(store),
-        require('./community-settings-recipient').default(store),
-        require('./community-settings-report').default(store),
+        require('./community-settings').default(store),
         require('./mobilizations-edit').default(store),
         require('./mobilizations-launch').default(store),
         require('./mobilizations-launch-end').default(store),
