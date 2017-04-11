@@ -22,7 +22,8 @@ export default store => ({
         require('./report').default(store),
 
         require('./domain').default(store),
-        require('./domain-create').default(store)
+        require('./domain-create').default(store),
+        require('./domain-edit').default(store)
       ])
     })
   }

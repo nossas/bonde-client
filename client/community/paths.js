@@ -9,3 +9,4 @@ export const communityReport = () => `${namespace}/report`
 
 export const communityDomain = () => `${namespace}/domain`
 export const communityDomainCreate = () => `${namespace}/domain/add`
+export const communityDomainEdit = domain => `${namespace}/domain/${domain.id}/edit`

@@ -9,10 +9,6 @@ import * as Paths from '~client/paths'
 
 class Page extends Component {
 
-  handleEditDomain (domain) {
-    console.log('Redirect to edit domain', domain)
-  }
-
   handleClickSubdomain (data) {
     if (data) {
       console.log('Redirect to edit subdomain', data)
@@ -30,7 +26,7 @@ class Page extends Component {
         <div className='domain-section'>
           <h2>Domínio da comunidade</h2>
           {domain_list && domain_list.map(data => (
-            <RedirectComponent onClick={() => this.handleEditDomain(data)}>
+            <RedirectComponent path={Paths.communityDomainEdit(data)}>
               <DomainPreview domain={data} />
             </RedirectComponent>
           ))}
