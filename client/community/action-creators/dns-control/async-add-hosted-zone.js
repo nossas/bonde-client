@@ -15,6 +15,7 @@ export default dnsHostedZone => (dispatch, getState, { api }) => {
           { headers: credentials })
     .then(resp => {
       dispatch(createAction(t.ADD_DNS_HOSTED_ZONE_SUCCESS, resp.data))
+      return Promise.resolve(resp.data)
     })
     .catch(ex => {
       dispatch(createAction(t.ADD_DNS_HOSTED_ZONE_FAILURE, ex))
