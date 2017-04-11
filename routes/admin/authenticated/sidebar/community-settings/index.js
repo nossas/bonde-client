@@ -19,7 +19,10 @@ export default store => ({
         require('./info').default(store),
         require('./mailchimp').default(store),
         require('./recipient').default(store),
-        require('./report').default(store)
+        require('./report').default(store),
+
+        require('./domain').default(store),
+        require('./domain-create').default(store)
       ])
     })
   }

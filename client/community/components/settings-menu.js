@@ -10,6 +10,10 @@ const SettingsMenu = ({ location: { pathname } }) => {
   const recipientPath = paths.communityRecipient()
   const reportPath = paths.communityReport()
 
+  // Check domain page
+  const domainPaths = [paths.communityDomain(), paths.communityDomainCreate()]
+  const domainPageIsActive = domainPaths.indexOf(pathname) !== -1
+
   return (
     <SettingsPageMenuLayout title='Configurações da comunidade'>
       <Tabs>
@@ -17,6 +21,11 @@ const SettingsMenu = ({ location: { pathname } }) => {
         <Tab text='Mailchimp' path={mailchimpPath} isActive={mailchimpPath === pathname} />
         <Tab text='Recebedor' path={recipientPath} isActive={recipientPath === pathname} />
         <Tab text='Relatório' path={reportPath} isActive={reportPath === pathname} />
+        <Tab
+          text='Domínios'
+          path={domainPageIsActive ? pathname : paths.communityDomain()}
+          isActive={domainPageIsActive}
+        />
       </Tabs>
     </SettingsPageMenuLayout>
   )
