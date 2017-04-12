@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
 
-import * as DNSControlSelectors from '~client/community/dns-control-selectors'
+import DNSControlSelectors from '~client/community/dns-control-selectors'
 import { asyncAddHostedZone } from '~client/community/action-creators/dns-control'
 import { isValidDomain } from '~client/utils/validation-helper'
 
@@ -20,7 +20,7 @@ const validate = values => {
 }
 
 const mapStateToProps = state => ({
-  saving: DNSControlSelectors.isSaving(state)
+  saving: DNSControlSelectors(state).dnsHostedZones().isSaving()
 })
 
 const mapActionsToProps = {

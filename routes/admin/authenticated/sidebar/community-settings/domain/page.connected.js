@@ -1,7 +1,7 @@
 import { provideHooks } from 'redial'
 import { connect } from 'react-redux'
 
-import * as DNSControlSelectors from '~client/community/dns-control-selectors'
+import DNSControlSelectors from '~client/community/dns-control-selectors'
 import { asyncFetchHostedZones } from '~client/community/action-creators/dns-control'
 
 import Page from './page'
@@ -11,7 +11,7 @@ const redial = {
     const state = getState()
     const promises = []
 
-    !DNSControlSelectors.isLoaded(state) && promises.push(
+    !DNSControlSelectors(state).dnsHostedZones().isLoaded() && promises.push(
       dispatch(asyncFetchHostedZones())
     )
     return Promise.all(promises)
@@ -19,8 +19,8 @@ const redial = {
 }
 
 const mapStateToProps = (state, props) => ({
-  loading: DNSControlSelectors.isLoading(state),
-  domain_list: DNSControlSelectors.getDomains(state)
+  loading: DNSControlSelectors(state).dnsHostedZones().isLoading(),
+  domain_list: DNSControlSelectors(state).dnsHostedZones().getList()
 })
 
 export default provideHooks(redial)(
