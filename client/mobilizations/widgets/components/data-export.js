@@ -3,7 +3,6 @@ import exenv from 'exenv'
 
 import { Button } from '~client/ux/components'
 
-
 class DataExport extends Component {
 
   componentDidMount () {
@@ -60,7 +59,7 @@ class DataExport extends Component {
           a opção <span className='bold'>"Transferir Arquivo Vinculado Como..."</span>
         </li>
         <li>
-          Salve o arquivo com o nome desejado e a extensão <span className='bold'>.xlsx</span>
+          Salve o arquivo com o nome desejado e a extensão <span className='bold'>.csv</span>
         </li>
       </ul>
     </div>
@@ -81,7 +80,7 @@ class DataExport extends Component {
       asyncWidgetDataExport
     } = this.props
 
-    const filename = mobilization.name + '.xlsx'
+    const filename = mobilization.name
     const adownloadSupport = exenv.canUseDOM
       ? ('download' in document.createElement('a'))
       : false
