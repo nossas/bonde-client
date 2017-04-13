@@ -7,15 +7,15 @@ export default dnsHostedZone => (dispatch, getState, { api }) => {
   const credentials = AuthSelectors(getState()).getCredentials()
   const community = CommunitySelectors.getCurrent(getState())
 
-  dispatch(createAction(t.FETCH_DNS_RECORDS_REQUEST))
+  dispatch(createAction(t.DELETE_DNS_HOSTED_ZONE_REQUEST))
   return api
-    .get(`/communities/${community.id}/dns_hosted_zones/${dnsHostedZone.id}/dns_records`, { headers: credentials })
+    .delete(`/communities/${community.id}/dns_hosted_zones/${dnsHostedZone.id}`, { headers: credentials })
     .then(resp => {
-      dispatch(createAction(t.FETCH_DNS_RECORDS_SUCCESS, resp.data))
-      return Promise.resolve(resp.data)
+      dispatch(createAction(t.DELETE_DNS_HOSTED_ZONE_SUCCESS, dnsHostedZone))
+      return Promise.resolve(dnsHostedZone)
     })
     .catch(ex => {
-      dispatch(createAction(t.FETCH_DNS_RECORDS_FAILURE, ex))
+      dispatch(createAction(t.DELETE_DNS_HOSTED_ZONE_FAILURE, ex))
       return Promise.reject(ex)
     })
 }

@@ -10,7 +10,6 @@ export default (state, props) => ({
   }),
 
   dnsRecords: (dnsRecords = state.community.dnsRecords) => ({
-    isLoaded: () => dnsRecords.isLoaded,
     isLoading: () => dnsRecords.fetching,
     getList: () => dnsRecords.data
   })

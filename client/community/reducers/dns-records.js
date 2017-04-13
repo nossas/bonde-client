@@ -1,7 +1,6 @@
 import * as t from '../action-types'
 
 const initialState = {
-  isLoaded: false,
   fetching: false,
   saving: false,
   data: [],
@@ -16,7 +15,6 @@ export default (state = initialState, action = {}) => {
       }
     case t.FETCH_DNS_RECORDS_SUCCESS:
       return {...state,
-        isLoaded: true,
         fetching: false,
         data: action.payload
       }
