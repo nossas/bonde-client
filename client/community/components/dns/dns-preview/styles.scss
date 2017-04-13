@@ -2,7 +2,6 @@
   position: relative;
   background-color: #fff;
   padding: 25px 30px;
-  cursor: pointer;
   margin: 0 0 10px;
 
   &.active {
@@ -23,9 +22,10 @@
   }
   .menu--preview {
     position: absolute;
-    right: 20px;
+    right: 40px;
     font-size: 23px;
     margin-top: 10px;
+    cursor: pointer;
 
     .dropdown--menu {
       position: relative;
