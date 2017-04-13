@@ -13,14 +13,28 @@ export default (state = initialState, action = {}) => {
       return {...state,
         fetching: true
       }
+    case t.ADD_DNS_RECORD_REQUEST:
+      return {...state,
+        saving: true
+      }
     case t.FETCH_DNS_RECORDS_SUCCESS:
       return {...state,
         fetching: false,
         data: action.payload
       }
+    case t.ADD_DNS_RECORD_SUCCESS:
+      return {...state,
+        saving: false,
+        data: [...state.data, action.payload]
+      }
     case t.FETCH_DNS_RECORDS_FAILURE:
       return {...state,
         fetching: false,
+        error: action.payload
+      }
+    case t.ADD_DNS_RECORD_FAILURE:
+      return {...state,
+        saving: false,
         error: action.payload
       }
     default:
