@@ -7,6 +7,11 @@ class FormDropdown extends Component {
     const { controlId, ...field } = formGroup || {}
     const { className, children, ...props } = this.props
 
+    delete field.layout
+    delete field.error
+    delete field.touched
+    delete field.valid
+
     return (
       <select
         id={controlId}
