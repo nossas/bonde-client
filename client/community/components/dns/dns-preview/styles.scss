@@ -1,0 +1,79 @@
+.domain--preview {
+  position: relative;
+  background-color: #fff;
+  padding: 25px 30px;
+  cursor: pointer;
+  margin: 0 0 10px;
+
+  &.active {
+    border: 1px solid green;
+  }
+
+  .circle {
+    width: 37px;
+    height: 37px;
+    background-color: #7ed321;
+    color: #fff;
+    font-size: 19px;
+    margin-right: 20px;
+
+    i {
+      padding: 10px;
+    }
+  }
+  .menu--preview {
+    position: absolute;
+    right: 20px;
+    font-size: 23px;
+    margin-top: 10px;
+
+    .dropdown--menu {
+      position: relative;
+      display: inline-block;
+
+      .dropdown--content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        right: 0;
+
+        .dropdown--item {
+          padding: 12px 16px;
+          font-size: 16px;
+
+          &:hover {
+            background-color: #c7c7c7;
+          }
+          span {
+            margin-left: 10px;
+          }
+        }
+      }
+      &:hover {
+        .dropdown--content {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+.data--preview {
+  font-family: 'Source Sans Pro', 'Proxima Nova', sans-serif;
+
+  label {
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #aaa;
+  }
+  p {
+    font-size: 16px;
+    margin: 5px 0 0;
+    color: #000;
+    line-height: 23px;
+  }
+}

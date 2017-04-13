@@ -2,8 +2,8 @@ import React, { PropTypes } from 'react'
 
 if (require('exenv').canUseDOM) require('./styles.scss')
 
-const ButtonPreview = ({ text }) => (
-  <div className='button-preview flex flex-wrap'>
+const ButtonPreview = ({ text, onClick }) => (
+  <div className='button-preview flex flex-wrap' onClick={onClick}>
     <div className='circle bg-pagenta'>
       <i className='fa fa-plus' />
     </div>
@@ -12,7 +12,8 @@ const ButtonPreview = ({ text }) => (
 )
 
 ButtonPreview.propTypes = {
-  text: PropTypes.string.isRequired
+  text: PropTypes.string.isRequired,
+  onClick: PropTypes.func
 }
 
 export default ButtonPreview

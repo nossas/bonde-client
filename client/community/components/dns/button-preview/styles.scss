@@ -1,6 +1,10 @@
 .button-preview {
   font-family: 'Source Sans Pro', 'Proxima Nova', sans-serif;
   position: relative;
+  background-color: #fff;
+  padding: 25px 30px;
+  cursor: pointer;
+  margin: 0 0 10px;
 
   .circle {
     width: 37px;
@@ -12,6 +16,9 @@
     i {
       padding: 10px;
     }
+  }
+  &:hover > p {
+    text-decoration: underline;
   }
   & > p {
     font-size: 16px;

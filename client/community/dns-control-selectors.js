@@ -8,4 +8,10 @@ export default (state, props) => ({
     isSaving: () => dnsHostedZones.saving,
     get: (id) => dnsHostedZones.data.filter(d => d.id === parseInt(id))[0]
   }),
+
+  dnsRecords: (dnsRecords = state.community.dnsRecords) => ({
+    isLoaded: () => dnsRecords.isLoaded,
+    isLoading: () => dnsRecords.fetching,
+    getList: () => dnsRecords.data
+  })
 })

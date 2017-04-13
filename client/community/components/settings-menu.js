@@ -21,11 +21,7 @@ const SettingsMenu = ({ location: { pathname } }) => {
         <Tab text='Mailchimp' path={mailchimpPath} isActive={mailchimpPath === pathname} />
         <Tab text='Recebedor' path={recipientPath} isActive={recipientPath === pathname} />
         <Tab text='Relatório' path={reportPath} isActive={reportPath === pathname} />
-        <Tab
-          text='Domínios'
-          path={domainPageIsActive ? pathname : paths.communityDomain()}
-          isActive={domainPageIsActive}
-        />
+        <Tab text='Domínios' path={paths.communityDomain()} isActive={domainPageIsActive} />
       </Tabs>
     </SettingsPageMenuLayout>
   )

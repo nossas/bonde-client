@@ -1,52 +1,76 @@
 import React, { Component, PropTypes } from 'react'
+import { browserHistory } from 'react-router'
 import { Loading } from '~client/components/await'
-import { RedirectComponent } from '~client/components/redirect'
-import { ButtonPreview, DomainPreview } from '~client/community/components/dns'
+import { ButtonPreview, DomainPreview, SubdomainPreview } from '~client/community/components/dns'
 
 import * as Paths from '~client/paths'
 
-// Page.js
-
 class Page extends Component {
 
-  handleClickSubdomain (data) {
-    if (data) {
-      console.log('Redirect to edit subdomain', data)
+  constructor (props) {
+    super(props)
+    this.state = {
+      dnsHostedZone: undefined,
+      dnsRecords: undefined
+    }
+  }
+
+  toggleDNSRecords (dnsHostedZone) {
+    if (dnsHostedZone !== this.state.dnsHostedZone) {
+      this.props.fetchDNSRecords(dnsHostedZone)
+        .then(dnsRecords => {
+          this.setState({ dnsHostedZone, dnsRecords })
+        })
     } else {
-      console.log('Redirect to add subdomain')
+      this.setState({ dnsHostedZone: undefined, dnsRecords: undefined })
     }
   }
 
   render () {
 
-    const { loading, domain_list } = this.props
+    const { dnsHostedZoneIsLoading, dnsHostedZones, dnsRecordsIsLoading } = this.props
 
-    return loading ? <Loading /> : (
+    return dnsHostedZoneIsLoading ? <Loading /> : (
       <div className='domain-page'>
-        <div className='domain-section'>
-          <h2>Domínio da comunidade</h2>
-          {domain_list && domain_list.map(data => (
-            <RedirectComponent path={Paths.communityDomainEdit(data)}>
-              <DomainPreview domain={data} />
-            </RedirectComponent>
+        <div className='dns-hosted-zones'>
+          <h2>Domínios da comunidade</h2>
+          {dnsHostedZones && dnsHostedZones.map(dnsHostedZone => (
+            <DomainPreview
+              domain={dnsHostedZone}
+              isActive={this.state.dnsHostedZone === dnsHostedZone}
+              onClick={() => this.toggleDNSRecords(dnsHostedZone)}
+              onDelete={() => console.log('delete domain')}
+            />
           ))}
-          <RedirectComponent path={Paths.communityDomainCreate()}>
-            <ButtonPreview text='Adicionar domínio principal (ex. minhacomunidade.org)' />
-          </RedirectComponent>
+          <ButtonPreview
+            text='Adicionar novo domínio'
+            onClick={() => browserHistory.push(Paths.communityDomainCreate())}
+          />
         </div>
-        <div className='subdomain-section'>
-          <h2>Subdomínios externos</h2>
-          <RedirectComponent onClick={this.handleClickSubdomain.bind(this)}>
-            <ButtonPreview text='Adicionar subdomínios externos' />
-          </RedirectComponent>
-        </div>
+        {dnsRecordsIsLoading ? <Loading /> :
+          this.state.dnsHostedZone ? (
+            <div className='dns-records'>
+              <h2>Subdomínios externos</h2>
+              {this.state.dnsRecords.map(dnsRecord => (
+                <SubdomainPreview
+                  subdomain={dnsRecord}
+                  onDelete={() => console.log('delete subdomain')}
+                />
+              ))}
+              <ButtonPreview text='Adicionar novo subdomínio externo' />
+            </div>
+          ) : null
+        }
       </div>
     )
   }
 }
 
 Page.propTypes = {
-  domain_list: PropTypes.array,
+  dnsHostedZoneIsLoading: PropTypes.bool,
+  dnsRecordsIsLoading: PropTypes.bool,
+  dnsHostedZones: PropTypes.array,
+  fetchDNSRecords: PropTypes.func
 }
 
 export default Page
