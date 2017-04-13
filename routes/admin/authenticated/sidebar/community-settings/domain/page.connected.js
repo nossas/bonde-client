@@ -7,7 +7,8 @@ import {
   asyncFetchHostedZones,
   asyncFetchDNSRecords,
   asyncDeleteHostedZone,
-  asyncAddDNSRecord
+  asyncAddDNSRecord,
+  asyncDeleteDNSRecord
 } from '~client/community/action-creators/dns-control'
 
 import Page from './page'
@@ -47,9 +48,14 @@ const mapStateToProps = (state, props) => {
     || selectors.dnsHostedZones().isSaving()
   )
 
+  const dnsRecordsIsLoading = (
+    selectors.dnsRecords().isLoading()
+    || selectors.dnsRecords().isSaving()
+  )
+
   return {
     dnsHostedZoneIsLoading,
-    dnsRecordsIsLoading: selectors.dnsRecords().isLoading(),
+    dnsRecordsIsLoading,
     dnsHostedZones: selectors.dnsHostedZones().getList()
   }
 }
@@ -57,7 +63,8 @@ const mapStateToProps = (state, props) => {
 const mapActionsToProps = {
   fetchDNSRecords: asyncFetchDNSRecords,
   deleteHostedZone: asyncDeleteHostedZone,
-  createDNSRecord: asyncAddDNSRecord
+  createDNSRecord: asyncAddDNSRecord,
+  deleteDNSRecord: asyncDeleteDNSRecord
 }
 
 export default provideHooks(redial)(

@@ -44,6 +44,18 @@ class Page extends Component {
     }
   }
 
+  confirmDeleteSubdomain () {
+    const { deleteDNSRecord } = this.props
+    if (deleteDNSRecord && this.state.deletedDNSRecord) {
+
+      this.setState({ deletedDNSRecord: undefined })
+      deleteDNSRecord(this.state.deletedDNSRecord)
+        .then(dnsRecord => {
+          this.setState({ dnsRecords: this.state.dnsRecords.filter(d => d.id !== dnsRecord.id) })
+        })
+    }
+  }
+
   render () {
 
     const { createDNSRecord, dnsHostedZoneIsLoading, dnsHostedZones, dnsRecordsIsLoading, ...formProps } = this.props
@@ -75,44 +87,51 @@ class Page extends Component {
             </Dialog>
           )}
         </div>
-        {dnsRecordsIsLoading ? <Loading /> :
-          this.state.dnsHostedZone ? (
-            <div className='dns-records'>
-              <h2>Subdomínios externos</h2>
-              {this.state.dnsRecords.map((dnsRecord, index) => (
-                <SubdomainPreview
-                  key={`dns-record-${index}`}
-                  subdomain={dnsRecord}
-                  onDelete={() => console.log('delete subdomain')}
-                />
-              ))}
-              {this.state.showSubdomainForm ? (
-                <SubdomainForm
-                  dnsHostedZone={this.state.dnsHostedZone}
-                  onSubmit={values => {
-                    const name = `${values.name}.${this.state.dnsHostedZone.domain_name}`
-                    return createDNSRecord({
-                      ...values,
-                      name,
-                      ttl: 3600,
-                      dns_hosted_zone_id: this.state.dnsHostedZone.id
-                    })
-                    .then(dnsRecord => {
-                      this.setState({ dnsRecords: [...this.state.dnsRecords, dnsRecord], showSubdomainForm: false })
-                      return Promise.resolve()
-                    })
-                  }}
-                  {...formProps}
-                />
-              ) : (
-                <ButtonPreview
-                  text='Adicionar novo subdomínio externo'
-                  onClick={() => this.setState({ showSubdomainForm: true })}
-                />
-              )}
-            </div>
-          ) : null
-        }
+        {this.state.dnsHostedZone ? (
+          <div className='dns-records'>
+            <h2>Subdomínios externos</h2>
+            {dnsRecordsIsLoading && <Loading />}
+            {this.state.dnsRecords.map((dnsRecord, index) => (
+              <SubdomainPreview
+                key={`dns-record-${index}`}
+                subdomain={dnsRecord}
+                onDelete={() => this.setState({ deletedDNSRecord: dnsRecord })}
+              />
+            ))}
+            {this.state.showSubdomainForm ? (
+              <SubdomainForm
+                dnsHostedZone={this.state.dnsHostedZone}
+                onSubmit={values => {
+                  const name = `${values.name}.${this.state.dnsHostedZone.domain_name}`
+                  return createDNSRecord({
+                    ...values,
+                    name,
+                    ttl: 3600,
+                    dns_hosted_zone_id: this.state.dnsHostedZone.id
+                  })
+                  .then(dnsRecord => {
+                    this.setState({ dnsRecords: [...this.state.dnsRecords, dnsRecord], showSubdomainForm: false })
+                    return Promise.resolve()
+                  })
+                }}
+                {...formProps}
+              />
+            ) : (
+              <ButtonPreview
+                text='Adicionar novo subdomínio externo'
+                onClick={() => this.setState({ showSubdomainForm: true })}
+              />
+            )}
+            {this.state.deletedDNSRecord && (
+              <Dialog
+                onConfirm={() => this.confirmDeleteSubdomain()}
+                onCancel={() => this.setState({ deletedDNSRecord: undefined })}
+              >
+                <p>Tem certeza que deseja remover o subdomínio <b>{this.state.deletedDNSRecord.value}</b>?</p>
+              </Dialog>
+            )}
+          </div>
+        ) : null}
       </div>
     )
   }
