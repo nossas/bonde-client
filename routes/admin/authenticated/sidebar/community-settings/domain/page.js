@@ -2,7 +2,12 @@ import React, { Component, PropTypes } from 'react'
 import { browserHistory } from 'react-router'
 import { Loading } from '~client/components/await'
 import { Dialog } from '~client/ux/components'
-import { ButtonPreview, DomainPreview, SubdomainPreview } from '~client/community/components/dns'
+import {
+  ButtonPreview,
+  DomainPreview,
+  SubdomainPreview,
+  SubdomainForm
+} from '~client/community/components/dns'
 
 import * as Paths from '~client/paths'
 
@@ -13,8 +18,9 @@ class Page extends Component {
     this.state = {
       dnsHostedZone: undefined,
       dnsRecords: undefined,
-      deleteHostedZone: undefined,
-      deleteDNSRecord: undefined
+      deletedHostedZone: undefined,
+      deletedDNSRecord: undefined,
+      showSubdomainForm: false
     }
   }
 
@@ -31,15 +37,16 @@ class Page extends Component {
 
   confirmDeleteDomain () {
     const { deleteHostedZone } = this.props
-    if (deleteHostedZone && this.state.deleteHostedZone) {
-      this.setState({ deleteHostedZone: undefined })
-      deleteHostedZone(this.state.deleteHostedZone)
+    if (deleteHostedZone && this.state.deletedHostedZone) {
+
+      this.setState({ deletedHostedZone: undefined })
+      deleteHostedZone(this.state.deletedHostedZone)
     }
   }
 
   render () {
 
-    const { dnsHostedZoneIsLoading, dnsHostedZones, dnsRecordsIsLoading } = this.props
+    const { createDNSRecord, dnsHostedZoneIsLoading, dnsHostedZones, dnsRecordsIsLoading, ...formProps } = this.props
 
     return (
       <div className='domain-page'>
@@ -52,19 +59,19 @@ class Page extends Component {
               domain={dnsHostedZone}
               isActive={this.state.dnsHostedZone === dnsHostedZone}
               onClick={() => this.toggleDNSRecords(dnsHostedZone)}
-              onDelete={() => this.setState({ deleteHostedZone: dnsHostedZone })}
+              onDelete={() => this.setState({ deletedHostedZone: dnsHostedZone })}
             />
           ))}
           <ButtonPreview
             text='Adicionar novo domínio'
             onClick={() => browserHistory.push(Paths.communityDomainCreate())}
           />
-          {this.state.deleteHostedZone && (
+          {this.state.deletedHostedZone && (
             <Dialog
               onConfirm={() => this.confirmDeleteDomain()}
-              onCancel={() => this.setState({ deleteHostedZone: undefined })}
+              onCancel={() => this.setState({ deletedHostedZone: undefined })}
             >
-              <p>Tem certeza que deseja remover o domínio <b>{this.state.deleteHostedZone.domain_name}</b>?</p>
+              <p>Tem certeza que deseja remover o domínio <b>{this.state.deletedHostedZone.domain_name}</b>?</p>
             </Dialog>
           )}
         </div>
@@ -79,7 +86,30 @@ class Page extends Component {
                   onDelete={() => console.log('delete subdomain')}
                 />
               ))}
-              <ButtonPreview text='Adicionar novo subdomínio externo' />
+              {this.state.showSubdomainForm ? (
+                <SubdomainForm
+                  dnsHostedZone={this.state.dnsHostedZone}
+                  onSubmit={values => {
+                    const name = `${values.name}.${this.state.dnsHostedZone.domain_name}`
+                    return createDNSRecord({
+                      ...values,
+                      name,
+                      ttl: 3600,
+                      dns_hosted_zone_id: this.state.dnsHostedZone.id
+                    })
+                    .then(dnsRecord => {
+                      this.setState({ dnsRecords: [...this.state.dnsRecords, dnsRecord], showSubdomainForm: false })
+                      return Promise.resolve()
+                    })
+                  }}
+                  {...formProps}
+                />
+              ) : (
+                <ButtonPreview
+                  text='Adicionar novo subdomínio externo'
+                  onClick={() => this.setState({ showSubdomainForm: true })}
+                />
+              )}
             </div>
           ) : null
         }
@@ -93,7 +123,8 @@ Page.propTypes = {
   dnsRecordsIsLoading: PropTypes.bool,
   dnsHostedZones: PropTypes.array,
   fetchDNSRecords: PropTypes.func,
-  deleteHostedZone: PropTypes.func
+  deleteHostedZone: PropTypes.func,
+  createDNSRecord: PropTypes.func
 }
 
 export default Page

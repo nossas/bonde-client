@@ -1,14 +1,31 @@
 import { provideHooks } from 'redial'
 import { connect } from 'react-redux'
+import { reduxForm } from 'redux-form'
 
 import DNSControlSelectors from '~client/community/dns-control-selectors'
 import {
   asyncFetchHostedZones,
   asyncFetchDNSRecords,
-  asyncDeleteHostedZone
+  asyncDeleteHostedZone,
+  asyncAddDNSRecord
 } from '~client/community/action-creators/dns-control'
 
 import Page from './page'
+
+const fields = ['name', 'record_type', 'value']
+
+const validate = values => {
+  const errors = {}
+  if (!values.name) {
+    errors.name = 'Preenchimento obrigatório'
+  }
+  if (!values.record_type) {
+    errors.record_type = 'Preenchimento obrigatório'
+  }
+  if (!values.value) {
+    errors.value = 'Preenchimento obrigatório'
+  }
+}
 
 const redial = {
   fetch: ({ dispatch, getState }) => {
@@ -39,9 +56,12 @@ const mapStateToProps = (state, props) => {
 
 const mapActionsToProps = {
   fetchDNSRecords: asyncFetchDNSRecords,
-  deleteHostedZone: asyncDeleteHostedZone
+  deleteHostedZone: asyncDeleteHostedZone,
+  createDNSRecord: asyncAddDNSRecord
 }
 
 export default provideHooks(redial)(
-  connect(mapStateToProps, mapActionsToProps)(Page)
+  reduxForm({ form: 'createDNSRecordForm', fields, validate })(
+    connect(mapStateToProps, mapActionsToProps)(Page)
+  )
 )

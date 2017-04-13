@@ -1,4 +1,3 @@
-export const isLoaded = state => state.community.dnsHostedZones.isLoaded
 export default (state, props) => ({
 
   dnsHostedZones: (dnsHostedZones = state.community.dnsHostedZones) => ({
@@ -11,6 +10,7 @@ export default (state, props) => ({
 
   dnsRecords: (dnsRecords = state.community.dnsRecords) => ({
     isLoading: () => dnsRecords.fetching,
+    isSaving: () => dnsRecords.saving,
     getList: () => dnsRecords.data
   })
 })
