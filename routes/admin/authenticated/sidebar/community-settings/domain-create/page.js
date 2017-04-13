@@ -23,7 +23,7 @@ class Page extends Component {
 
   render () {
 
-    const { saving, save, fields: { domain_name }, ...formProps } = this.props
+    const { saving, save, fields: { domain_name: domainName }, ...formProps } = this.props
     return (
       <div className='page'>
         <h2>Domínio da comunidade</h2>
@@ -48,7 +48,7 @@ class Page extends Component {
                   })
               }}
             >
-              <FormGroup {...domain_name}>
+              <FormGroup {...domainName}>
                 <ControlLabel>Domínio da sua comunidade</ControlLabel>
                 <FormControl type='text' placeholder='Ex. minhacomunidade.org' />
               </FormGroup>
@@ -59,7 +59,7 @@ class Page extends Component {
             <p>1. Faça login no seu provedor de DNS (onde seu domínio está registrado, por exemplo GoDaddy, Locaweb, RegistroBR)</p>
             <p>2. Encontre a página de <b>gerenciador de DNS</b>, e altere os <b>nomes de servidor</b> para os servidores do Bonde:</p>
             <br />
-            {this.state.dns && this.state.dns.delegation_set_servers.map(server => <p>{server}</p>)}
+            {this.state.dns && this.state.dns.delegation_set_servers.map((server, index) => <p key={`server-${index}`}>{server}</p>)}
             <Button onClick={() => this.setState({ renderTestConnection: true })}>Continuar</Button>
           </Step>
           <Step title='Teste a conexão' stepComponent={DomainStep}>
