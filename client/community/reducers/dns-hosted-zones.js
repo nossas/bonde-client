@@ -27,6 +27,7 @@ export default (state = initialState, action = {}) => {
       }
     case t.ADD_DNS_HOSTED_ZONE_REQUEST:
     case t.DELETE_DNS_HOSTED_ZONE_REQUEST:
+    case t.CHECK_DNS_HOSTED_ZONE_REQUEST:
       return {...state,
         saving: true
       }
@@ -35,6 +36,11 @@ export default (state = initialState, action = {}) => {
         saving: false,
         data: [action.payload, ...state.data]
       }
+    case t.CHECK_DNS_HOSTED_ZONE_SUCCESS:
+      return {...state,
+        saving: false,
+        data: state.data.map(d => d.id === action.payload.id ? action.payload : d)
+      }
     case t.DELETE_DNS_HOSTED_ZONE_SUCCESS:
       return {...state,
         saving: false,
@@ -42,6 +48,7 @@ export default (state = initialState, action = {}) => {
       }
     case t.ADD_DNS_HOSTED_ZONE_FAILURE:
     case t.DELETE_DNS_HOSTED_ZONE_FAILURE:
+    case t.CHECK_DNS_HOSTED_ZONE_FAILURE:
       return {...state,
         saving: false,
         error: action.payload
