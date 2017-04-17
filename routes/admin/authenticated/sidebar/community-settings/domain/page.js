@@ -6,7 +6,8 @@ import {
   ButtonPreview,
   DomainPreview,
   SubdomainPreview,
-  SubdomainForm
+  SubdomainForm,
+  DropdownMenu
 } from '~client/community/components/dns'
 
 import * as Paths from '~client/paths'
@@ -56,6 +57,27 @@ class Page extends Component {
     }
   }
 
+  dnsHostedZoneMenu (dnsHostedZone) {
+    return (
+      <DropdownMenu
+        items={[
+          { icon: 'fa fa-bars', text: 'Subdomínios', onClick: () => this.toggleDNSRecords(dnsHostedZone) },
+          { icon: 'fa fa-trash', text: 'Remover', onClick: () => this.setState({ deletedHostedZone: dnsHostedZone }) },
+        ]}
+      />
+    )
+  }
+
+  dnsRecordMenu (dnsRecord) {
+    return (
+      <DropdownMenu
+        items={[
+          { icon: 'fa fa-trash', text: 'Remover', onClick: () => this.setState({ deletedDNSRecord: dnsRecord }) },
+        ]}
+      />
+    )
+  }
+
   render () {
 
     const { createDNSRecord, dnsHostedZoneIsLoading, dnsHostedZones, dnsRecordsIsLoading, ...formProps } = this.props
@@ -70,8 +92,7 @@ class Page extends Component {
               key={`dns-hosted-zone-${index}`}
               domain={dnsHostedZone}
               isActive={this.state.dnsHostedZone === dnsHostedZone}
-              onClick={() => this.toggleDNSRecords(dnsHostedZone)}
-              onDelete={() => this.setState({ deletedHostedZone: dnsHostedZone })}
+              menuComponent={this.dnsHostedZoneMenu(dnsHostedZone)}
             />
           ))}
           <ButtonPreview
@@ -95,7 +116,7 @@ class Page extends Component {
               <SubdomainPreview
                 key={`dns-record-${index}`}
                 subdomain={dnsRecord}
-                onDelete={() => this.setState({ deletedDNSRecord: dnsRecord })}
+                menuComponent={this.dnsRecordMenu(dnsRecord)}
               />
             ))}
             {this.state.showSubdomainForm ? (
