@@ -42,6 +42,7 @@ class Steps extends Component {
           const position = index + 1
           if (renderRule(position, this.state.current)) {
             return React.cloneElement(stepComponent, {
+              key: `step-${position}`,
               step: position,
               isValid: position < this.state.current
             })
