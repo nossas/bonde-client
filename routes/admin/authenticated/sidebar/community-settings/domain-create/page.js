@@ -12,13 +12,15 @@ class Page extends Component {
     super(props)
     this.state = {
       dns: undefined,
-      renderTestConnection: false,
-      hasConnection: true
+      renderTestConnection: false
     }
   }
 
   handleTestConnection () {
-    this.setState({ hasConnection: true })
+    this.props.checkHostedZone(this.state.dns)
+      .then(dns => {
+        this.setState({ dns })
+      })
   }
 
   render () {
@@ -33,7 +35,7 @@ class Page extends Component {
           progressValidations={[
             () => this.state.dns !== undefined,
             () => this.state.renderTestConnection,
-            () => this.state.hasConnection
+            () => this.state.dns && this.state.dns.ns_ok
           ]}
         >
           <Step title='Insira o domínio desejado' stepComponent={DomainStep}>

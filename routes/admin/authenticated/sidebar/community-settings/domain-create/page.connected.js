@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
 
 import DNSControlSelectors from '~client/community/dns-control-selectors'
-import { asyncAddHostedZone } from '~client/community/action-creators/dns-control'
+import { asyncAddHostedZone, asyncCheckHostedZone } from '~client/community/action-creators/dns-control'
 import { isValidDomain } from '~client/utils/validation-helper'
 
 import Page from './page'
@@ -24,7 +24,8 @@ const mapStateToProps = state => ({
 })
 
 const mapActionsToProps = {
-  save: asyncAddHostedZone
+  save: asyncAddHostedZone,
+  checkHostedZone: asyncCheckHostedZone
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(
