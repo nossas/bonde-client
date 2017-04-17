@@ -9,7 +9,7 @@ const Step = ({ children, stepComponent: StepComponent, ...props }) => (
 Step.propTypes = {
   step: PropTypes.number,
   isValid: PropTypes.bool,
-  stepComponent: PropTypes.node.isRequired
+  stepComponent: PropTypes.any.isRequired
 }
 
 export default Step
