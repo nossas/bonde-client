@@ -69,7 +69,6 @@ class Page extends Component {
             </div>
             <Button onClick={() => this.handleTestConnection()}>Testar</Button>
           </Step>
-        )}
         </Steps>
       </div>
     )
