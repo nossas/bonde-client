@@ -1,17 +1,20 @@
 import * as t from '../../action-types'
 import { createAction } from '../create-action'
+import AuthSelectors from '~client/account/redux/selectors'
+import * as CommunitySelectors from '../../selectors'
 
-/*CHECK_DNS_HOSTED_ZONE_FAILURE*/
-
-// TODO: Call API method
 export default dnsHostedZone => (dispatch, getState, { api }) => {
-
+  const credentials = AuthSelectors(getState()).getCredentials()
+  const community = CommunitySelectors.getCurrent(getState())
   dispatch(createAction(t.CHECK_DNS_HOSTED_ZONE_REQUEST))
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const updated = { ...dnsHostedZone, ns_ok: true }
-      dispatch(createAction(t.CHECK_DNS_HOSTED_ZONE_SUCCESS, updated))
-      return resolve(updated)
-    }, 500)
-  })
+  return api
+    .get(`/communities/${community.id}/dns_hosted_zones/${dnsHostedZone.id}/check`, { headers: credentials })
+    .then(resp => {
+      dispatch(createAction(t.CHECK_DNS_HOSTED_ZONE_SUCCESS, resp.data))
+      return Promise.resolve(resp.data)
+    })
+    .catch(ex => {
+      dispatch(createAction(t.CHECK_DNS_HOSTED_ZONE_FAILURE, ex))
+      return Promise.reject(ex)
+    })
 }
