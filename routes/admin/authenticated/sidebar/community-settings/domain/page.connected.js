@@ -8,7 +8,8 @@ import {
   asyncFetchDNSRecords,
   asyncDeleteHostedZone,
   asyncAddDNSRecord,
-  asyncDeleteDNSRecord
+  asyncDeleteDNSRecord,
+  asyncCheckHostedZone
 } from '~client/community/action-creators/dns-control'
 
 import Page from './page'
@@ -64,7 +65,8 @@ const mapActionsToProps = {
   fetchDNSRecords: asyncFetchDNSRecords,
   deleteHostedZone: asyncDeleteHostedZone,
   createDNSRecord: asyncAddDNSRecord,
-  deleteDNSRecord: asyncDeleteDNSRecord
+  deleteDNSRecord: asyncDeleteDNSRecord,
+  checkHostedZone: asyncCheckHostedZone
 }
 
 export default provideHooks(redial)(

@@ -11,13 +11,17 @@
   .circle {
     width: 37px;
     height: 37px;
-    background-color: #7ed321;
     color: #fff;
     font-size: 19px;
     margin-right: 20px;
+    background-color: red;
 
     i {
       padding: 10px;
+    }
+
+    &.checked {
+      background-color: #7ed321;
     }
   }
   .menu--preview {
