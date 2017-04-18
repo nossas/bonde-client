@@ -68,6 +68,7 @@ if (isProd) {
       debug: false
     }),
     new webpack.optimize.UglifyJsPlugin({
+      sourceMap: false,
       compress: {
         warnings: false,
         screw_ie8: true,
