@@ -41,7 +41,7 @@ pipeline:
     username: lpirola
     password: ${DOCKER_PASSWORD}
     tags:
-      - ${DRONE_BRANCH}
+      - ${DRONE_TAG##v}
     build_args:
       - NODE_ENV=production
       - PAGARME_KEY=${PROD_PAGARME_KEY}
@@ -62,8 +62,8 @@ pipeline:
     command_timeout: 120
     port: 22
     script:
-      - sudo docker pull nossas/bonde-client:${DRONE_BRANCH}
-      - sudo docker tag nossas/bonde-client:${DRONE_BRANCH} dokku/client:latest
+      - sudo docker pull nossas/bonde-client:${DRONE_TAG##v}
+      - sudo docker tag nossas/bonde-client:${DRONE_TAG##v} dokku/client:latest
       - dokku tags:deploy client latest
     when:
       status: success
