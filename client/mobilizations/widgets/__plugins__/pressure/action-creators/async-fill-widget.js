@@ -18,11 +18,12 @@ const asyncFillWidget = ({ payload: fill, widget }) => (dispatch, getState, { ap
 
   dispatch({ type: t.WIDGET_PRESSURE_FILL_REQUEST })
   return api.post(endpoint, body)
-    .then(response => {
+    .then(({ data }) => {
       dispatch({ type: t.WIDGET_PRESSURE_FILL_SUCCESS })
+      dispatch(createAction(t.WIDGET_PRESSURE_FILL_SUCCESS, widget.id))
       dispatch(createAction(
         MobActionTypes.UPDATE_WIDGET_SUCCESS,
-        updateWidget(state, response.data)
+        updateWidget(state, data)
       ))
 
       AnalyticsEvents.pressureSavedData()

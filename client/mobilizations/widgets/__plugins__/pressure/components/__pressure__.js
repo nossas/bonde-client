@@ -72,7 +72,7 @@ export class Pressure extends Component {
       widget,
       editable,
       saving,
-      filled,
+      filledPressureWidgets,
       mobilization
     } = this.props
     const { header_font: headerFont } = mobilization
@@ -99,7 +99,7 @@ export class Pressure extends Component {
         onClick={::this.handleOverlayOnClick}
         text='Clique para configurar o formulário de pressão direta'
       >
-        {filled ? (
+        {filledPressureWidgets.includes(widget.id) ? (
           finishMessageType === 'custom' ? (
             <FinishMessageCustom widget={widget} />
           ) : (
@@ -149,17 +149,15 @@ Pressure.propTypes = {
     }).isRequired
   }).isRequired,
   saving: PropTypes.bool,
-  filled: PropTypes.bool,
+  filledPressureWidgets: PropTypes.array,
   // Actions
   asyncFillWidget: PropTypes.func
 }
 
 const mapStateToProps = (state, props) => {
   const pressure = MobSelectors(state, props).getPlugin('pressure')
-  return {
-    saving: pressure.saving,
-    filled: pressure.filled
-  }
+  const { saving, filledPressureWidgets } = pressure
+  return { saving, filledPressureWidgets }
 }
 
 export default connect(mapStateToProps, PressureActions)(Pressure)

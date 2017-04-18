@@ -12,15 +12,21 @@ describe('client/mobilizations/widgets/__plugins__/pressure/reducers', () => {
 
     expect(nextState).to.have.property('saving', true)
   })
-  it('should change saving state to false and filled state to true when succeeded', () => {
-    // state while requesting
-    const currentInitialState = { ...initialState, saving: true, filled: false }
-    const action = { type: t.WIDGET_PRESSURE_FILL_SUCCESS }
-    const nextState = reducers(currentInitialState, action)
+  it(
+    'should change saving state to false and filledPressureWidgets state' +
+    ' with widget id when succeeded',
+    () => {
+      // state while requesting
+      const currentInitialState = { ...initialState, saving: true, filledPressureWidgets: [] }
+      const action = createAction(t.WIDGET_PRESSURE_FILL_SUCCESS, 1)
+      const nextState = reducers(currentInitialState, action)
 
-    expect(nextState).to.have.property('saving', false)
-    expect(nextState).to.have.property('filled', true)
-  })
+      expect(nextState).to.have.property('saving', false)
+      expect(nextState)
+        .to.have.property('filledPressureWidgets')
+        .that.deep.equals([1])
+    }
+  )
   it('should change saving state to false and error state with message when failed', () => {
     // state while requesting
     const currentInitialState = { ...initialState, saving: true, filled: false }

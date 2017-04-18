@@ -10,7 +10,8 @@ describe('client/mobilizations/widgets/__plugins__/pressure/components/__pressur
   const props = {
     editable: false,
     mobilization: { id: 1 },
-    widget: { id: 1, settings: {} }
+    widget: { id: 1, settings: {} },
+    filledPressureWidgets: []
   }
 
   beforeEach(() => {
@@ -96,8 +97,8 @@ describe('client/mobilizations/widgets/__plugins__/pressure/components/__pressur
       ])
   })
 
-  it('should render PressureTellAFriend when filled prop is true', () => {
-    wrapper.setProps({ widget: { ...props.widget }, filled: true })
+  it('should render PressureTellAFriend when filledPressureWidgets includes the id 1', () => {
+    wrapper.setProps({ widget: { ...props.widget }, filledPressureWidgets: [1] })
     expect(wrapper.find('PressureTellAFriend').length).to.equal(1)
   })
 })
