@@ -17,7 +17,7 @@
     background-color: red;
 
     i {
-      padding: 10px;
+      padding: 9px 11px;
     }
 
     &.checked {
@@ -36,16 +36,44 @@
 .data--preview {
   font-family: 'Source Sans Pro', 'Proxima Nova', sans-serif;
 
-  label {
+  .header {
     font-size: 12px;
     font-weight: 400;
     text-transform: uppercase;
     color: #aaa;
   }
-  p {
+  .body {
     font-size: 16px;
     margin: 5px 0 0;
     color: #000;
     line-height: 23px;
+
+    p {
+      margin: 0;
+    }
+
+    &.ns {
+      ul {
+        padding: 0;
+      }
+      li {
+        list-style-type: none;
+      }
+    }
+    &.soa {
+      max-width: 350px;
+    }
+  }
+
+  .ul--table {
+    margin: 0;
+    padding: 0;
+    margin-left: -15px;
+  }
+  .li--table {
+    display: inline-block;
+    list-style-type: none;
+    padding-left: 15px;
+    vertical-align: top;
   }
 }

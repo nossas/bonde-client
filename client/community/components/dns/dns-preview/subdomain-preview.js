@@ -3,19 +3,25 @@ import Preview from './preview'
 
 export default ({ subdomain, ...props }) => (
   <Preview {...props}>
-    <div className='row'>
-      <div className='col col-6'>
-        <label>Subdomínio</label>
-        <p>{subdomain.name}</p>
-      </div>
-      <div className='col col-2'>
-        <label>Tipo</label>
-        <p>{subdomain.record_type}</p>
-      </div>
-      <div className='col col-4'>
-        <label>Redirecionar para</label>
-        <p>{subdomain.value}</p>
-      </div>
-    </div>
+    <ul className='ul--table'>
+      <li className='li--table'>
+        <label className='header'>Subdomínio</label>
+        <p className='body'>{subdomain.name.replace('\\052', '*')}</p>
+      </li>
+      <li className='li--table'>
+        <label className='header'>Tipo</label>
+        <p className='body'>{subdomain.record_type}</p>
+      </li>
+      <li className='li--table'>
+        <label className='header'>Redirecionar para</label>
+        <div className={`body ${subdomain.record_type.toLowerCase()}`}>
+        {subdomain.record_type === 'NS' ? (
+          <ul>
+            {subdomain.value.split('\n').map((ns, index) => <li key={`ns-${index}`}>{ns}</li>)}
+          </ul>
+        ) : <p>{subdomain.value}</p>}
+        </div>
+      </li>
+    </ul>
   </Preview>
 )
