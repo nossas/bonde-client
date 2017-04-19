@@ -134,6 +134,7 @@ class Page extends Component {
                   })
                   .then(dnsRecord => {
                     this.setState({ dnsRecords: [...this.state.dnsRecords, dnsRecord], showSubdomainForm: false })
+                    this.props.resetForm()
                     return Promise.resolve()
                   })
                 }}
