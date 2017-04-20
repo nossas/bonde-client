@@ -5,12 +5,12 @@ import { isValidEmail } from '~client/utils/validation-helper'
 import { asyncAddUser } from '~client/account/redux/action-creators'
 import Page from './page'
 
-const fields = ['name', 'last_name', 'email', 'password', 'password2']
+const fields = ['first_name', 'last_name', 'email', 'password', 'password2']
 
 const validate = values => {
   const errors = {}
-  if (!values.name) {
-    errors.name = 'Informe seu nome'
+  if (!values.first_name) {
+    errors.first_name = 'Informe seu nome'
   }
   if (!values.email) {
     errors.email = 'Informe seu e-mail'

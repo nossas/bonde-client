@@ -22,7 +22,7 @@ class RegisterPage extends Component {
   render () {
     const {
       fields: {
-        name,
+        first_name: firstName,
         last_name: lastName,
         email,
         password,
@@ -38,7 +38,7 @@ class RegisterPage extends Component {
           {...formProps}
         >
           <div className='flex'>
-            <FormGroup className='col-6' controlId='nameId' {...name}>
+            <FormGroup className='col-6' controlId='nameId' {...firstName}>
               <ControlLabel>Nome</ControlLabel>
               <FormControl type='text' placeholder='Seu nome' />
             </FormGroup>
