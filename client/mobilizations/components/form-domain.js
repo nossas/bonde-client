@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import { reduxForm } from 'redux-form'
+import ServerConfig from '~server/config'
 import { FormGroup, ControlLabel, FormControl } from '~client/components/forms'
 
 const FormDomain = ({
@@ -40,7 +41,7 @@ const FormDomain = ({
           <tr>
             <td><code>{customDomain ? customDomain.value : ''}</code></td>
             <td><code>CNAME</code></td>
-            <td><code>{mobilization.slug}.reboo.org</code></td>
+            <td><code>{mobilization.slug}.{ServerConfig.appDomain}</code></td>
           </tr>
         </tbody>
       </table>
