@@ -1,11 +1,9 @@
 import React, { PropTypes } from 'react'
 import { reduxForm } from 'redux-form'
-
-import { isValidDomain } from '~client/utils/validation-helper'
 import { FormGroup, ControlLabel, FormControl } from '~client/components/forms'
 
 const FormDomain = ({
-  FormComponent,
+  formComponent: FormComponent,
   fields: { custom_domain: customDomain },
   mobilization,
   ...formProps
@@ -57,33 +55,11 @@ const FormDomain = ({
 )
 
 FormDomain.propTypes = {
-  FormComponent: PropTypes.node.isRequired,
+  formComponent: PropTypes.any.isRequired,
   fields: PropTypes.shape({
     custom_domain: PropTypes.object.isRequired
   }).isRequired,
   mobilization: PropTypes.object.isRequired
 }
 
-export const fields = ['id', 'custom_domain']
-
-export const abstractValidate = values => {
-  const errors = {}
-  if (values.custom_domain && !isValidDomain(values.custom_domain)) {
-    errors.custom_domain = 'Informe um domínio válido'
-  }
-  return errors
-}
-
-export default ({ customValidate, mapStateToProps, mapActionCreatorsToProps }) => reduxForm({
-  form: 'mobilizationLaunchForm',
-  fields,
-  validate: values => {
-    // Default validation
-    let errors = abstractValidate(values)
-    if (Object.keys(errors).length) return errors
-
-    // Custom injected validation
-    errors = customValidate ? customValidate(values) : {}
-    return errors
-  }
-}, mapStateToProps, mapActionCreatorsToProps)(FormDomain)
+export default FormDomain

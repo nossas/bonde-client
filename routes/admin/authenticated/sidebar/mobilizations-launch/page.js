@@ -8,6 +8,7 @@ import MobSelectors from '~client/mobrender/redux/selectors'
 import { PageCentralizedLayout, PageCentralizedLayoutTitle } from '~client/components/layout'
 import { Tabs, Tab } from '~client/components/navigation/tabs'
 import { FlatForm } from '~client/ux/components'
+import { isValidDomain } from '~client/utils/validation-helper'
 import { StepsContainerStack, StepContent } from '~client/components/steps'
 import { FormDomain, FormShare } from '~client/mobilizations/components'
 
@@ -15,20 +16,15 @@ if (require('exenv').canUseDOM) {
   require('./form-share.scss')
 }
 
-const FormDomainImplementation = FormDomain({
-  customValidate: values => {
-    const errors = {}
-    if (!values.custom_domain) {
-      errors.custom_domain = 'Obrigatório'
-    }
-    return errors
-  },
-  mapStateToProps: state => {
-    const mobilization = MobSelectors(state).getMobilization()
-    return { initialValues: mobilization, mobilization }
-  },
-  mapActionCreatorsToProps: { submit: MobActions.asyncUpdateMobilization }
-})
+const validateDomainForm = values => {
+  const errors = {}
+  if (!values.custom_domain) {
+    errors.custom_domain = 'Obrigatório'
+  } else if (!isValidDomain(values.custom_domain)) {
+    errors.custom_domain = 'Informe um domínio válido'
+  }
+  return errors
+}
 
 const FormShareImplementation = FormShare(
   state => ({ initialValues: MobSelectors(state).getMobilization() }),
@@ -81,9 +77,11 @@ const MobilizationsLaunchPage = ({ mobilization, isSaving, ...formProps }) => {
         progressValidations={[stepDomainValidation, stepShareValidation]}
       >
         <StepContent>
-          <FormDomainImplementation
+          <FormDomain
             {...formProps}
-            FormComponent={FlatForm}
+            validate={validateDomainForm}
+            mobilization={mobilization}
+            formComponent={FlatForm}
             titleText='Configure seu domínio'
             buttonText={buttonText}
           />
