@@ -1,6 +1,17 @@
 import React, { PropTypes } from 'react'
+import classnames from 'classnames'
 import ServerConfig from '~server/config'
 import { FormGroup, ControlLabel, FormControl, FormDropdown } from '~client/components/forms'
+
+const HeaderToggle = ({ children, show, onToggle }) => (
+  <h3 onClick={onToggle} style={{ cursor: 'pointer' }}>
+    <i
+      className={classnames('fa', !show ? 'fa-arrow-right' : 'fa-arrow-down')}
+      style={{ marginRight: '5px' }}
+    />
+    {children}
+  </h3>
+)
 
 const FormDomain = ({
   formComponent: FormComponent,
@@ -11,7 +22,12 @@ const FormDomain = ({
 }) => (
   <FormComponent {...formProps}>
     <div className='basic-config' style={{ marginBottom: '1rem' }}>
-      <h3 onClick={() => advancedConfig.onChange(false)} style={{ cursor: 'pointer' }}>Opções de domínio</h3>
+      <HeaderToggle
+        onToggle={() => advancedConfig.onChange(false)}
+        show={!advancedConfig.value}
+      >
+        Opções de domínio
+      </HeaderToggle>
       {!advancedConfig.value && (
         <div>
           <p className='h5'>
@@ -41,7 +57,12 @@ const FormDomain = ({
       )}
     </div>
     <div className='advanced-config'>
-      <h3 onClick={() => advancedConfig.onChange(true)} style={{ cursor: 'pointer' }}>Opções avançadas de domínio</h3>
+      <HeaderToggle
+        onToggle={() => advancedConfig.onChange(true)}
+        show={advancedConfig.value}
+      >
+        Opções avançadas de domínio
+      </HeaderToggle>
       {advancedConfig.value && (
         <div>
           <p className='h5'>
