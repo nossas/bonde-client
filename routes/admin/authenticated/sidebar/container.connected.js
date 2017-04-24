@@ -3,7 +3,9 @@ import { connect } from 'react-redux'
 
 import MobSelectors from '~client/mobrender/redux/selectors'
 import * as MobActions from '~client/mobrender/redux/action-creators'
-import * as CommunitySelectors from '~community/selectors'
+import * as CommunitySelectors from '~client/community/selectors'
+import DNSControlSelectors from '~client/community/dns-control-selectors'
+import { asyncFetchHostedZones } from '~client/community/action-creators/dns-control'
 import Sidebar from '~components/navigation/sidebar'
 
 import Container from './container'
@@ -21,6 +23,10 @@ const redial = {
 
     shouldMakeFetch && promises.push(
       dispatch(MobActions.asyncFetchMobilizations(community.id))
+    )
+
+    !DNSControlSelectors(state).dnsHostedZones().isLoaded() && promises.push(
+      dispatch(asyncFetchHostedZones())
     )
     return Promise.all(promises)
   }

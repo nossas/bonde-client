@@ -2,6 +2,7 @@ import { provideHooks } from 'redial'
 import { connect } from 'react-redux'
 
 import MobSelectors from '~client/mobrender/redux/selectors'
+import DNSControlSelectors from '~client/community/dns-control-selectors'
 import * as MobActions from '~client/mobrender/redux/action-creators'
 import Page from './page'
 
@@ -18,7 +19,10 @@ const redial = {
 }
 
 const mapStateToProps = state => ({
-  mobilization: MobSelectors(state).getMobilization()
+  mobilization: MobSelectors(state).getMobilization(),
+  hostedZones: DNSControlSelectors(state)
+    .dnsHostedZones()
+    .getList()
 })
 
 export default provideHooks(redial)(

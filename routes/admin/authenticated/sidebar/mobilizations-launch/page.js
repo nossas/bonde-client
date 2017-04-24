@@ -16,16 +16,6 @@ if (require('exenv').canUseDOM) {
   require('./form-share.scss')
 }
 
-const validateDomainForm = values => {
-  const errors = {}
-  if (!values.custom_domain) {
-    errors.custom_domain = 'Obrigatório'
-  } else if (!isValidDomain(values.custom_domain)) {
-    errors.custom_domain = 'Informe um domínio válido'
-  }
-  return errors
-}
-
 const FormShareImplementation = FormShare(
   state => ({ initialValues: MobSelectors(state).getMobilization() }),
   {
@@ -54,7 +44,7 @@ const FormShareImplementation = FormShare(
   }
 )
 
-const MobilizationsLaunchPage = ({ mobilization, isSaving, ...formProps }) => {
+const MobilizationsLaunchPage = ({ hostedZones, mobilization, isSaving, ...formProps }) => {
   const buttonText = isSaving ? 'Salvando...' : 'Continuar'
   const stepDomainValidation = () => !!mobilization.custom_domain
   const stepShareValidation = () => (
@@ -79,11 +69,12 @@ const MobilizationsLaunchPage = ({ mobilization, isSaving, ...formProps }) => {
         <StepContent>
           <FormDomain
             {...formProps}
-            validate={validateDomainForm}
-            mobilization={mobilization}
             formComponent={FlatForm}
             titleText='Configure seu domínio'
             buttonText={buttonText}
+            requiredField={true}
+            mobilization={mobilization}
+            hostedZones={hostedZones}
           />
         </StepContent>
 
