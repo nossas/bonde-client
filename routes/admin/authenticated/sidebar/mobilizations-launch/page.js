@@ -18,14 +18,7 @@ if (require('exenv').canUseDOM) {
 
 const FormShareImplementation = FormShare(
   state => ({ initialValues: MobSelectors(state).getMobilization() }),
-  {
-    submit: values => MobActions.asyncUpdateMobilization({
-      ...values,
-      next: () => browserHistory.push(
-        paths.mobilizationLaunchEnd(values.id)
-      )
-    })
-  },
+  { submit: MobActions.asyncUpdateMobilization },
   values => {
     const errors = {}
     if (!values.facebook_share_image) {
@@ -85,6 +78,7 @@ const MobilizationsLaunchPage = ({ hostedZones, mobilization, isSaving, ...formP
             formClassNames='mobilization-launch--form-share'
             titleText='Configure as informações de compartilhamento'
             buttonText={buttonText}
+            onFinishSubmit={() => browserHistory.push(paths.mobilizationLaunchEnd(mobilization.id))}
           />
         </StepContent>
       </StepsContainerStack>
