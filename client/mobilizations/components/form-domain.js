@@ -18,6 +18,7 @@ const FormDomain = ({
   fields: { domain, subdomain, advancedConfig, externalDomain },
   mobilization,
   hostedZones,
+  redirectToCreateDNS,
   ...formProps
 }) => (
   <FormComponent {...formProps}>
@@ -29,31 +30,46 @@ const FormDomain = ({
         Opções de domínio
       </HeaderToggle>
       {!advancedConfig.value && (
-        <div>
-          <p className='h5'>
-            Escolha abaixo o subdomínio que deseja para sua mobilização,
-            e o domínio principal no qual ele deve viver.
-          </p>
-          <div className='flex flex-wrap'>
-            <FormGroup controlId='subdomain' className='col col-6' {...subdomain}>
-              <ControlLabel>Subdomínio</ControlLabel>
-              <FormControl
-                type='text'
-                placeholder='nomedamob'
-              />
-            </FormGroup>
-            <FormGroup controlId='domain' className='col col-6' {...domain}>
-              <ControlLabel>Domínio Principal</ControlLabel>
-              <FormDropdown>
-                {hostedZones.map((hz, i) => (
-                  <option key={`hostedZone-${i}`} value={hz.domain_name}>
-                    {hz.domain_name}
-                  </option>
-                ))}
-              </FormDropdown>
-            </FormGroup>
+        hostedZones.length > 0 ? (
+          <div>
+            <p className='h5'>
+              Escolha abaixo o subdomínio que deseja para sua mobilização,
+              e o domínio principal no qual ele deve viver.
+            </p>
+            <div className='flex flex-wrap'>
+              <FormGroup controlId='subdomain' className='col col-6' {...subdomain}>
+                <ControlLabel>Subdomínio</ControlLabel>
+                <FormControl
+                  type='text'
+                  placeholder='nomedamob'
+                />
+              </FormGroup>
+              <FormGroup controlId='domain' className='col col-6' {...domain}>
+                <ControlLabel>Domínio Principal</ControlLabel>
+                <FormDropdown>
+                  {hostedZones.map((obj, i) => (
+                    <option key={`hostedZone-${i}`} value={obj.domain_name}>
+                      {obj.domain_name}
+                    </option>
+                  ))}
+                </FormDropdown>
+              </FormGroup>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div>
+            <p className='h5'>
+              Visando agilizar a propagação de domínio, você pode <a
+                href='#'
+                onClick={(e) => {
+                  e.preventDefault()
+                  redirectToCreateDNS && redirectToCreateDNS()
+                }}
+              >criar um domínio principal</a> para sua comunidade
+              e registrar um subdomínio para sua mobilização.
+            </p>
+          </div>
+        )
       )}
     </div>
     <div className='advanced-config'>
@@ -121,7 +137,8 @@ FormDomain.propTypes = {
     domain: PropTypes.object.isRequired
   }).isRequired,
   mobilization: PropTypes.object.isRequired,
-  hostedZones: PropTypes.array.isRequired
+  hostedZones: PropTypes.array.isRequired,
+  redirectToCreateDNS: PropTypes.func
 }
 
 export default FormDomain

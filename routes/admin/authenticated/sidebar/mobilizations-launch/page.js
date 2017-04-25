@@ -68,6 +68,7 @@ const MobilizationsLaunchPage = ({ hostedZones, mobilization, isSaving, ...formP
             requiredField={true}
             mobilization={mobilization}
             hostedZones={hostedZones}
+            redirectToCreateDNS={() => browserHistory.push(paths.communityDomainCreate())}
           />
         </StepContent>
 

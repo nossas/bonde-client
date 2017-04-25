@@ -1,10 +1,10 @@
 import React from 'react'
+import { browserHistory } from 'react-router'
 
 import { SettingsPageLayout, SettingsPageContentLayout } from '~client/components/layout'
-import MobSelectors from '~client/mobrender/redux/selectors'
-import * as MobActions from '~client/mobrender/redux/action-creators'
 import { SettingsForm } from '~client/ux/components'
 import { FormDomain, SettingsMenu } from '~client/mobilizations/components'
+import * as paths from '~client/paths'
 
 const MobilizationsSettingsDomainPage = ({ location, mobilization, ...formProps }) => {
   return (
@@ -16,6 +16,7 @@ const MobilizationsSettingsDomainPage = ({ location, mobilization, ...formProps 
           mobilization={mobilization}
           formComponent={SettingsForm}
           successMessage='Dados de domínio salvos com sucesso'
+          redirectToCreateDNS={() => browserHistory.push(paths.communityDomainCreate())}
         />
       </SettingsPageContentLayout>
     </SettingsPageLayout>
