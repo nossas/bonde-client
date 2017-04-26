@@ -10,12 +10,13 @@ if (require('exenv').canUseDOM) require('./styles.scss')
 // TODO: Change to style component
 const basscss = 'ux--button btn white bg-pagenta caps p2 rounded h4'
 
-const Button = ({ children, type, disabled, to, onClick }) => {
+const Button = ({ children, type, disabled, to, href, onClick }) => {
   const className = classnames(
     basscss,
     disabled ? 'disabled' : null
   )
 
+  if (href) return <a href={href} className={className} target='_blank'>{children}</a>
   if (to) return <Link to={to} className={className}>{children}</Link>
 
   return (
@@ -35,7 +36,8 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   // Navigation
   to: PropTypes.string,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  href: PropTypes.string
 }
 
 Button.defaultProps = {

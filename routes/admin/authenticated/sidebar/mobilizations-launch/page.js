@@ -10,6 +10,7 @@ import { Tabs, Tab } from '~client/components/navigation/tabs'
 import { FlatForm } from '~client/ux/components'
 import { isValidDomain } from '~client/utils/validation-helper'
 import { StepsContainerStack, StepContent } from '~client/components/steps'
+import { Button } from '~client/ux/components'
 import { FormDomain, FormShare } from '~client/mobilizations/components'
 
 if (require('exenv').canUseDOM) {
@@ -38,13 +39,19 @@ const FormShareImplementation = FormShare(
 )
 
 const MobilizationsLaunchPage = ({ hostedZones, mobilization, isSaving, ...formProps }) => {
-  const buttonText = isSaving ? 'Salvando...' : 'Continuar'
   const stepDomainValidation = () => !!mobilization.custom_domain
   const stepShareValidation = () => (
     !!mobilization.facebook_share_image &&
     !!mobilization.facebook_share_title &&
     !!mobilization.facebook_share_description &&
     !!mobilization.twitter_share_text
+  )
+  const stepFinishValidation = () => (
+    mobilization.custom_domain &&
+    mobilization.facebook_share_image &&
+    mobilization.facebook_share_title &&
+    mobilization.facebook_share_description &&
+    mobilization.twitter_share_text
   )
 
   return (
@@ -57,18 +64,20 @@ const MobilizationsLaunchPage = ({ hostedZones, mobilization, isSaving, ...formP
         ComponentPointerContainer={Tabs}
         ComponentPointerChildren={Tab}
         pointerChildrenProps={({ index, step }) => ({ isActive: index === step, index })}
-        progressValidations={[stepDomainValidation, stepShareValidation]}
+        progressValidations={[stepDomainValidation, stepShareValidation, stepFinishValidation]}
       >
         <StepContent>
           <FormDomain
             {...formProps}
             formComponent={FlatForm}
-            titleText='Configure seu domínio'
-            buttonText={buttonText}
+            titleText='Configure o endereço da mobilização'
+            buttonText={isSaving ? 'Salvando...' : stepShareValidation() ? 'Lançar mobilização' : 'Continuar'}
             requiredField={true}
             mobilization={mobilization}
             hostedZones={hostedZones}
-            redirectToCreateDNS={() => browserHistory.push(paths.communityDomainCreate())}
+            redirectToCreateDNS={() => {
+              browserHistory.push(paths.communityDomainCreate())
+            }}
           />
         </StepContent>
 
@@ -78,9 +87,21 @@ const MobilizationsLaunchPage = ({ hostedZones, mobilization, isSaving, ...formP
             FormComponent={FlatForm}
             formClassNames='mobilization-launch--form-share'
             titleText='Configure as informações de compartilhamento'
-            buttonText={buttonText}
-            onFinishSubmit={() => browserHistory.push(paths.mobilizationLaunchEnd(mobilization.id))}
+            buttonText={isSaving ? 'Salvando...' : 'Lançar mobilização'}
           />
+        </StepContent>
+
+        <StepContent>
+          <div className='ux--flat-form'>
+            <h1>Seu BONDE está pronto!</h1>
+            <p className='h5'>
+            Em uma nova aba, digite o endereço que cadastrou na mobilização
+            para se certificar de que ela já está no ar. Se ainda não estiver,
+            cheque se cadastrou os domínios corretamente. Está tudo certo? Então
+            é só esperar ele propagar pela internet!
+            </p>
+            <Button href={`http://${mobilization.custom_domain}`} target='_blank'>Visualizar mobilização</Button>
+          </div>
         </StepContent>
       </StepsContainerStack>
 
