@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { browserHistory } from 'react-router'
 import { FormRedux, ControlLabel, FormControl, FormGroup } from '~client/components/forms'
 import { Button } from '~client/ux/components'
 
@@ -24,8 +25,8 @@ class Page extends Component {
   }
 
   render () {
-
     const { saving, save, fields: { domain_name: domainName }, ...formProps } = this.props
+
     return (
       <div className='page'>
         <h2>Domínio da comunidade</h2>
@@ -62,7 +63,18 @@ class Page extends Component {
             <p>2. Encontre a página de <b>gerenciador de DNS</b>, e altere os <b>nomes de servidor</b> para os servidores do Bonde:</p>
             <br />
             {this.state.dns && this.state.dns.delegation_set_servers.map((server, index) => <p key={`server-${index}`}>{server}</p>)}
-            <Button onClick={() => this.setState({ renderTestConnection: true })}>Continuar</Button>
+            <Button
+              onClick={() => {
+                const { location: { query } } = this.props
+                if (query && query.next) {
+                  browserHistory.push(query.next)
+                } else {
+                  this.setState({ renderTestConnection: true })
+                }
+              }}
+            >
+              Continuar
+            </Button>
           </Step>
           <Step title='Teste a conexão' stepComponent={DomainStep}>
             <div>

@@ -100,7 +100,7 @@ class FormDomain extends Component {
               <div>
                 <p className='h5'>
                   Ops, você ainda não tem um domínio configurado na sua comunidade. Se quiser
-                  cadastar, <a onClick={this.clickHere.bind(this)} target='_self'>clique aqui</a>.
+                  cadastar, <a href="#" onClick={this.clickHere.bind(this)} target='_self'>clique aqui</a>.
                   Senão você pode, abaixo, usar um domínio externo para configurar o endereço
                   da sua mobilização.
                 </p>

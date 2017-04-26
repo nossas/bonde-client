@@ -76,7 +76,9 @@ const MobilizationsLaunchPage = ({ hostedZones, mobilization, isSaving, ...formP
             mobilization={mobilization}
             hostedZones={hostedZones}
             redirectToCreateDNS={() => {
-              browserHistory.push(paths.communityDomainCreate())
+              browserHistory.push(
+                paths.communityDomainCreate(`?next=${paths.mobilizationLaunch(mobilization.id)}`)
+              )
             }}
           />
         </StepContent>
