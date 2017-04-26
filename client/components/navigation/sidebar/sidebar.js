@@ -35,6 +35,11 @@ const Sidebar = ({ children, loading, mobilization, user, community }) => loadin
             icon='file-excel-o'
             href={paths.communityReport()}
           />
+          <SidenavListItem
+            text='Domínios'
+            icon='cogs'
+            href={paths.communityDomain()}
+          />
         </SidenavList>
       ) : (
         <SidenavList className='bg-lighten-2'>
