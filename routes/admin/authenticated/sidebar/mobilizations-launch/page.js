@@ -7,10 +7,8 @@ import { Loading } from '~client/components/await'
 import MobSelectors from '~client/mobrender/redux/selectors'
 import { PageCentralizedLayout, PageCentralizedLayoutTitle } from '~client/components/layout'
 import { Tabs, Tab } from '~client/components/navigation/tabs'
-import { FlatForm } from '~client/ux/components'
-import { isValidDomain } from '~client/utils/validation-helper'
+import { Button, FlatForm } from '~client/ux/components'
 import { StepsContainerStack, StepContent } from '~client/components/steps'
-import { Button } from '~client/ux/components'
 import { FormDomain, FormShare } from '~client/mobilizations/components'
 
 if (require('exenv').canUseDOM) {

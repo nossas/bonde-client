@@ -1,7 +1,7 @@
 import { reduxForm } from 'redux-form'
 import Page from './page'
 
-const fields = ['domain' ]
+const fields = ['domain']
 
 const validate = values => {
   const errors = {}

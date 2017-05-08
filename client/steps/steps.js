@@ -35,7 +35,7 @@ class Steps extends Component {
   render () {
     const { children, className, renderRule } = this.props
 
-    const steps = children && children.length === 1 ? [children ] : children
+    const steps = children && children.length === 1 ? [children] : children
 
     return (
       <div className={`steps ${className}`}>

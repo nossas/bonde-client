@@ -1,5 +1,4 @@
 import { reduxForm } from 'redux-form'
-import { connect } from 'react-redux'
 
 import * as AccountActions from '~client/account/redux/action-creators'
 import AccountSelectors from '~client/account/redux/selectors'

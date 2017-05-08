@@ -45,13 +45,13 @@ const mapStateToProps = (state, props) => {
   const selectors = DNSControlSelectors(state)
 
   const dnsHostedZoneIsLoading = (
-    selectors.dnsHostedZones().isLoading()
-    || selectors.dnsHostedZones().isSaving()
+    selectors.dnsHostedZones().isLoading() ||
+    selectors.dnsHostedZones().isSaving()
   )
 
   const dnsRecordsIsLoading = (
-    selectors.dnsRecords().isLoading()
-    || selectors.dnsRecords().isSaving()
+    selectors.dnsRecords().isLoading() ||
+    selectors.dnsRecords().isSaving()
   )
 
   return {

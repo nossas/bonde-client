@@ -1,4 +1,3 @@
-import React from 'react'
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
 
@@ -33,6 +32,7 @@ export const validate = (values, props) => {
 const mapStateToProps = (state, props) => {
   const { custom_domain: customDomain } = props.mobilization
   if (customDomain) {
+    // eslint-disable-next-line
     const domain = customDomain.replace(/^[\w\-]+\./, '')
     const subdomain = customDomain.replace(`.${domain}`, '')
 

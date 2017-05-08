@@ -33,14 +33,14 @@ describe('ux/components/button', () => {
 
   it('should call onClick when click on button', () => {
     let called = false
-    button.setProps({ onClick: () => called = true })
+    button.setProps({ onClick: () => { called = true } })
     button.find('button').simulate('click')
     expect(called).to.equal(true)
   })
 
   it('should call onClick only when type not equals submit', () => {
     let called = false
-    button.setProps({ type: 'submit', onClick: () => called = true })
+    button.setProps({ type: 'submit', onClick: () => { called = true } })
     button.find('button').simulate('click')
     expect(called).to.equal(false)
   })
