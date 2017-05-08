@@ -5,7 +5,7 @@ import { shallow } from 'enzyme'
 import * as arrayUtil from '~client/utils/array'
 import CustomDomainPage from '~routes/public/custom-domain/page'
 
-describe('routes/custom-domain/page', () => {
+describe('routes/public/custom-domain/page', () => {
   let wrapper
   const props = {
     mobilization: {
