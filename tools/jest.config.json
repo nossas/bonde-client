@@ -1,5 +1,5 @@
 {
-  "testPathDirs": ["test", "client"],
+  "testPathDirs": ["test", "client", "routes"],
   "moduleFileExtensions": ["js", "jsx"],
   "moduleDirectories": ["node_modules"],
   "moduleNameMapper": {
