@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { MoreMenu } from '~mobilizations/components/list/items'
+import { MoreMenu } from '~client/mobilizations/components/list/items'
 
 describe('client/mobilizations/components/list/items/more/menu', () => {
   let wrapper

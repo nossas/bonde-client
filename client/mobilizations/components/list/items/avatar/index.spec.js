@@ -2,17 +2,18 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { PageTabLayout } from '~mobilizations/components'
+import { Avatar } from '~client/mobilizations/components/list/items'
 
-describe('client/mobilizations/components/page-tab-layout', () => {
+describe('client/mobilizations/components/list/items/avatar', () => {
   let wrapper
   const props = {
-    mobilization: { id: 1 },
-    location: { pathname: 'foo/bar' }
+    image: 'image',
+    facebook_share_image: 'facebook_share_image',
+    imageSize: 100
   }
 
   beforeAll(() => {
-    wrapper = shallow(<PageTabLayout {...props} />)
+    wrapper = shallow(<Avatar {...props} />)
   })
 
   describe('#render', () => {

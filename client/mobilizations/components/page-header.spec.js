@@ -2,8 +2,7 @@ import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-// Current module dependencies
-import { PageHeader } from '~mobilizations/components'
+import { PageHeader } from '~client/mobilizations/components'
 
 describe('client/mobilizations/components/page-header', () => {
   const context = { router: {} }

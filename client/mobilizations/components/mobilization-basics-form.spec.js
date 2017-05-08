@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
 import * as mock from '~client/utils/mock'
-import { MobilizationBasicsForm } from '~mobilizations/components'
+import { MobilizationBasicsForm } from '~client/mobilizations/components'
 
 describe('client/mobilizations/components/mobilization-basics-form', () => {
   let wrapper
