@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import ReactS3Uploader from 'react-s3-uploader'
 

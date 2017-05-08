@@ -3,7 +3,6 @@ import { StepsContainer, StepContent, StepForm, StepButton } from '~client/compo
 import { ControlLabel, FormControl, FormGroup } from '~client/components/forms'
 import { Button } from '~client/ux/components'
 
-
 class Page extends Component {
 
   constructor (props) {
@@ -20,8 +19,7 @@ class Page extends Component {
     })
   }
 
-  render() {
-
+  render () {
     const { fields: { domain }, ...formProps } = this.props
 
     return (

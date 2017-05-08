@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 /*
  * Component: Button
  */
-import React from 'react';
+import React from 'react'
 import classnames from 'classnames'
 import { Link } from 'react-router'
 

@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types'
+import React from 'react'
 
 const CreatedAt = ({ created_at }) => (
   <div className='created-at px3 col col-3'>

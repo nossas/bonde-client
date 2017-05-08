@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types'
+import React from 'react'
 import DevTools from '~client/components/dev-tools'
 import { ZendeskWidget } from '~client/components/external-services'
 import ga from 'react-ga'

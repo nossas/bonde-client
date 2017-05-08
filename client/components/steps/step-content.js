@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 import uuid from 'uuid'
 import StepButton from './step-button'
 import StepForm from './step-form'

@@ -4,9 +4,7 @@ import { mount } from 'enzyme'
 
 import DivFloat from '~client/ux/components/div-float'
 
-
 describe('ux/components/div-float', () => {
-
   let floatLayout
 
   beforeEach(() => {
@@ -14,7 +12,7 @@ describe('ux/components/div-float', () => {
   })
 
   it('should render children', () => {
-    const floatLayout = mount(<DivFloat><a href='http://localhost'></a></DivFloat>)
+    const floatLayout = mount(<DivFloat><a href='http://localhost' /></DivFloat>)
     expect(floatLayout.find('a').length).to.equal(1)
   })
 

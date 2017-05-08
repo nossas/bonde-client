@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types'
+import React from 'react'
 
 import { Loading } from '~components/await'
 import Editor from '~components/editor-draft-js'

@@ -6,7 +6,6 @@ import { Button } from '~client/ux/components'
 import { Steps, Step } from '~client/steps'
 import { DomainStep } from '~client/community/components/dns'
 
-
 class Page extends Component {
 
   constructor (props) {

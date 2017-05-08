@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
 import { Loading } from '~client/components/await'
 import { Dialog } from '~client/ux/components'
@@ -40,7 +40,6 @@ class Page extends Component {
   confirmDeleteDomain () {
     const { deleteHostedZone } = this.props
     if (deleteHostedZone && this.state.deletedHostedZone) {
-
       this.setState({ deletedHostedZone: undefined })
       deleteHostedZone(this.state.deletedHostedZone)
     }
@@ -49,7 +48,6 @@ class Page extends Component {
   confirmDeleteSubdomain () {
     const { deleteDNSRecord } = this.props
     if (deleteDNSRecord && this.state.deletedDNSRecord) {
-
       this.setState({ deletedDNSRecord: undefined })
       deleteDNSRecord(this.state.deletedDNSRecord)
         .then(dnsRecord => {
@@ -62,7 +60,7 @@ class Page extends Component {
     const { checkHostedZone } = this.props
     const items = [
       { icon: 'fa fa-bars', text: 'Subdomínios', onClick: () => this.toggleDNSRecords(dnsHostedZone) },
-      { icon: 'fa fa-trash', text: 'Remover', onClick: () => this.setState({ deletedHostedZone: dnsHostedZone }) },
+      { icon: 'fa fa-trash', text: 'Remover', onClick: () => this.setState({ deletedHostedZone: dnsHostedZone }) }
     ]
     if (!dnsHostedZone.ns_ok) {
       items.splice(0, 0, { icon: 'fa fa-refresh', text: 'Verificar DNS', onClick: () => checkHostedZone(dnsHostedZone) })
@@ -74,14 +72,13 @@ class Page extends Component {
     return (
       <DropdownMenu
         items={[
-          { icon: 'fa fa-trash', text: 'Remover', onClick: () => this.setState({ deletedDNSRecord: dnsRecord }) },
+          { icon: 'fa fa-trash', text: 'Remover', onClick: () => this.setState({ deletedDNSRecord: dnsRecord }) }
         ]}
       />
     )
   }
 
   render () {
-
     const { createDNSRecord, dnsHostedZoneIsLoading, dnsHostedZones, dnsRecordsIsLoading, ...formProps } = this.props
 
     return (

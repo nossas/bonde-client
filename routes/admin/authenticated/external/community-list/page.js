@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 import { Link, browserHistory } from 'react-router'
 import * as paths from '~client/paths'
 import { Loading } from '~components/await'

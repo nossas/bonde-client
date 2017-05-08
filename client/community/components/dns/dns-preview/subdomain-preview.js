@@ -15,10 +15,10 @@ export default ({ subdomain, ...props }) => (
       <li className='li--table'>
         <label className='header'>Redirecionar para</label>
         <div className={`body ${subdomain.record_type.toLowerCase()}`}>
-        {subdomain.record_type === 'NS' ? (
-          <ul>
-            {subdomain.value.split('\n').map((ns, index) => <li key={`ns-${index}`}>{ns}</li>)}
-          </ul>
+          {subdomain.record_type === 'NS' ? (
+            <ul>
+              {subdomain.value.split('\n').map((ns, index) => <li key={`ns-${index}`}>{ns}</li>)}
+            </ul>
         ) : <p>{subdomain.value}</p>}
         </div>
       </li>

@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types'
+import React from 'react'
 import classnames from 'classnames'
 import { DropdownMenu, DropdownMenuItem } from '~client/components/dropdown-menu'
 

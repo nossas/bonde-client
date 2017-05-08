@@ -12,7 +12,6 @@ export const validate = (values, props) => {
   const errors = {}
 
   if (props.requiredField) {
-
     if (values.advancedConfig === true && !values.externalDomain) {
       errors.externalDomain = 'Obrigatório'
     }

@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types'
+import React from 'react'
 
 const CopyNumber = ({ uses_number: usesNumber }) => (
   <div className='users px3 col col-2'>

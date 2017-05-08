@@ -3,9 +3,7 @@ import { expect } from 'chai'
 import { mount } from 'enzyme'
 import { StepButton } from '~client/components/steps'
 
-
 describe('~client/components/steps/step-button', () => {
-
   it('should render without crashed', () => {
     const button = mount(<StepButton />)
     expect(button).to.be.ok

@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types'
+import React from 'react'
 
 if (require('exenv').canUseDOM) require('./styles.scss')
 
@@ -22,7 +22,7 @@ DropdownMenu.propTypes = {
     icon: PropTypes.string,
     text: PropTypes.text,
     onClick: PropTypes.func
-  })).isRequired,
+  })).isRequired
 }
 
 export default DropdownMenu

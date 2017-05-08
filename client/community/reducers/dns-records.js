@@ -7,7 +7,6 @@ const initialState = {
   error: undefined
 }
 
-
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case t.FETCH_DNS_RECORDS_REQUEST:

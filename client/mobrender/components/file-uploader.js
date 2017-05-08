@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types'
+import React from 'react'
 import ReactS3Uploader from 'react-s3-uploader'
 import { Progress } from '~client/components/await'
 import DefaultServerConfig from '~server/config'
@@ -24,16 +24,16 @@ const FileUploader = ({ file, onRemove, progress, onProgress, onFinish }) => (
       </div>
     )}
     <div className='col col-2 p1'>
-    {!progress ? (
-      <ReactS3Uploader
-        className='input border-none white m0 bg-darken-4'
-        accept='image/*'
-        signingUrl={`${DefaultServerConfig.apiUrl}/uploads`}
-        onProgress={percent => onProgress(percent)}
-        onFinish={image => {
-          const url = image.signedUrl.substring(0, image.signedUrl.indexOf('?'))
-          onFinish(url)
-        }}
+      {!progress ? (
+        <ReactS3Uploader
+          className='input border-none white m0 bg-darken-4'
+          accept='image/*'
+          signingUrl={`${DefaultServerConfig.apiUrl}/uploads`}
+          onProgress={percent => onProgress(percent)}
+          onFinish={image => {
+            const url = image.signedUrl.substring(0, image.signedUrl.indexOf('?'))
+            onFinish(url)
+          }}
       />
     ) : (
       <Progress

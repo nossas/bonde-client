@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types'
+import React from 'react'
 import { Loading } from '~client/components/await'
 
 const NotificationsSystem = require('exenv').canUseDOM

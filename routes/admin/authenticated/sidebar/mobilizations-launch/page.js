@@ -72,7 +72,7 @@ const MobilizationsLaunchPage = ({ hostedZones, mobilization, isSaving, ...formP
             formComponent={FlatForm}
             titleText='Configure o endereço da mobilização'
             buttonText={isSaving ? 'Salvando...' : stepShareValidation() ? 'Lançar mobilização' : 'Continuar'}
-            requiredField={true}
+            requiredField
             mobilization={mobilization}
             hostedZones={hostedZones}
             redirectToCreateDNS={() => {

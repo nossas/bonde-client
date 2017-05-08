@@ -5,12 +5,11 @@ import { mount } from 'enzyme'
 import SettingsForm from '~client/ux/components/settings-form'
 
 describe('ux/components/settings-form', () => {
-
   let form
   const props = {
     submit: () => {},
     handleSubmit: () => {},
-    submitting: false,
+    submitting: false
   }
 
   beforeEach(() => {
@@ -18,7 +17,6 @@ describe('ux/components/settings-form', () => {
   })
 
   describe('by default', () => {
-
     it('should render DivFloat on top and right', () => {
       expect(form.find('DivFloat').props().horizontal).to.equal('right')
       expect(form.find('DivFloat').props().vertical).to.equal('top')

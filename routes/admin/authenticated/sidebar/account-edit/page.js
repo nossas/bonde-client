@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types'
+import React from 'react'
 import { Tabs, Tab } from '~client/components/navigation'
 import {
   SettingsPageLayout,

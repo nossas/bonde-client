@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types'
+import React from 'react'
 import { reduxForm } from 'redux-form'
 import { FormGroup, ControlLabel, FormControl } from '~client/components/forms'
 import { Pagarme } from '~client/components/external-services'

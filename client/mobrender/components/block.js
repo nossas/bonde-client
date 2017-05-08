@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types'
+import React from 'react'
 import Widget from './widget.connected'
 import BlockConfigMenu from './block-config-menu.connected'
 import { EDIT_KEY } from './block-config-menu'

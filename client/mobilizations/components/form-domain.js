@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 import classnames from 'classnames'
 import ServerConfig from '~server/config'
 import { FormGroup, ControlLabel, FormControl, FormDropdown } from '~client/components/forms'
@@ -101,7 +101,7 @@ class FormDomain extends Component {
               <div>
                 <p className='h5'>
                   Ops, você ainda não tem um domínio configurado na sua comunidade. Se quiser
-                  cadastar, <a href="#" onClick={this.clickHere.bind(this)} target='_self'>clique aqui</a>.
+                  cadastar, <a href='#' onClick={this.clickHere.bind(this)} target='_self'>clique aqui</a>.
                   Senão você pode, abaixo, usar um domínio externo para configurar o endereço
                   da sua mobilização.
                 </p>

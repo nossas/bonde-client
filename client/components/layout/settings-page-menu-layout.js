@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types'
+import React from 'react'
 import classnames from 'classnames'
 
 const SettingsPageMenuLayout = ({ children, title, className }) => (
