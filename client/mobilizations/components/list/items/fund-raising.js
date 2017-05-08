@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const FundRaising = ({ total_fund_raising: totalFundRaising }) => (
   <div className='fund-raising px3 col col-2'>

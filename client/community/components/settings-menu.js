@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import PropTypes from 'prop-types';
+import React from 'react';
 import { Tabs, Tab } from '~components/navigation'
 import { SettingsPageMenuLayout } from '~components/layout'
 

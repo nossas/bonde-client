@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const HorizontalLayout = ({ children, className, cols, ...props }) => {
   const size = parseInt(12 / cols)

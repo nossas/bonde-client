@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import classnames from 'classnames'
 import ServerConfig from '~server/config'
 import { FormGroup, ControlLabel, FormControl, FormDropdown } from '~client/components/forms'

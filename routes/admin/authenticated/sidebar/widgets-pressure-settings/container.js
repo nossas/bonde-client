@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import PropTypes from 'prop-types';
+import React from 'react';
 import { SettingsPageContentLayout } from '~client/components/layout'
 import { SettingsBase } from '~client/mobilizations/widgets/__plugins__/pressure/components'
 

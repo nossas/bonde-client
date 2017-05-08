@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import PropTypes from 'prop-types';
+import React from 'react';
 
 // Current module dependencies
 if (require('exenv').canUseDOM) require('./index.scss')

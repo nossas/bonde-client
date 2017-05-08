@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import PropTypes from 'prop-types';
+import React from 'react';
 
 import * as paths from '~client/paths'
 import * as mobilizationUtils from '~client/mobilizations/utils'

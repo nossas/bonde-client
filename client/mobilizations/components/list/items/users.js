@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const Users = ({ users_count: usersCount }) => (
   <div className='users px3 col col-2'>

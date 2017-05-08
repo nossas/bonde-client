@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import PropTypes from 'prop-types';
+import React from 'react';
 import { browserHistory } from 'react-router'
 
 import * as paths from '~client/paths'

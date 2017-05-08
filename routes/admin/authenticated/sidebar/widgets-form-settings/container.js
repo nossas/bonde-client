@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import PropTypes from 'prop-types';
+import React from 'react';
 import { SettingsPageContentLayout } from '~client/components/layout'
 import { SettingsMenu } from '~client/mobilizations/widgets/__plugins__/form/components'
 

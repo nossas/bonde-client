@@ -1,8 +1,9 @@
+import PropTypes from 'prop-types';
 /*
  * Component: DivFloat
  * Description: Become children floatable, by default float in top and right.
  */
-import React, { PropTypes } from 'react'
+import React from 'react';
 import classnames from 'classnames'
 
 if (require('exenv').canUseDOM) require('./styles.scss')

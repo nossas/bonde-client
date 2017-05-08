@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const ListItem = ({ onClick, community: { id, name, image } }) => (
   <div className='ListItem' onClick={() => onClick(id)} style={{ cursor: 'pointer' }}>

@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import PropTypes from 'prop-types';
+import React from 'react';
 import ReactS3Uploader from 'react-s3-uploader'
 import { Progress } from '~client/components/await'
 import DefaultServerConfig from '~server/config'

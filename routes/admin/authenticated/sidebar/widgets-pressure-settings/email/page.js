@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
 import { FormGroup, ControlLabel, FormControl } from '~client/components/forms'
 import { SettingsForm } from '~client/ux/components'

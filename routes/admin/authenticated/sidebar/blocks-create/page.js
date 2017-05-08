@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { browserHistory } from 'react-router'
 import ReactS3Uploader from 'react-s3-uploader'
 
@@ -154,7 +155,7 @@ class BlocksCreatePage extends Component {
 }
 
 BlocksCreatePage.contextTypes = {
-  router: React.PropTypes.object
+  router: PropTypes.object
 }
 
 BlocksCreatePage.propTypes = {

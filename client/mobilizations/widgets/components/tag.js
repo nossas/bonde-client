@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const Tag = ({ value, onClick, onRemove }) => {
   const clickable = onClick && typeof onClick === 'function'
