@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import SettingsMenu from '~community/components/settings-menu'
+import SettingsMenu from '~client/community/components/settings-menu'
 
 describe('client/community/components/settings-menu', () => {
   let wrapper

@@ -3,17 +3,17 @@ import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
 import * as mock from '~utils/mock'
-import ForceDownloadViaAjax from '~community/components/force-download-via-ajax'
+import ListItem from '~client/community/components/list-item'
 
-describe('client/community/components/force-download-via-ajax', () => {
+describe('client/community/components/list-item', () => {
   let wrapper
   const props = {
     onClick: mock.noop,
-    title: 'Foo bar'
+    community: { id: 1, name: 'foo', image: 'bar.png' }
   }
 
   beforeAll(() => {
-    wrapper = shallow(<ForceDownloadViaAjax {...props} />)
+    wrapper = shallow(<ListItem {...props} />)
   })
 
   describe('#render', () => {
