@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { TemplateSelectableList } from '~mobilizations/templates/components'
+import { TemplateSelectableList } from '~client/mobilizations/templates/components'
 
 describe('client/mobilizations/templates/components/template-selectable-list', () => {
   let wrapper
