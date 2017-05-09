@@ -4,7 +4,7 @@ import { mount } from 'enzyme'
 
 import SettingsForm from '~client/ux/components/settings-form'
 
-describe('ux/components/settings-form', () => {
+describe('client/ux/components/settings-form', () => {
   let form
   const props = {
     submit: () => {},

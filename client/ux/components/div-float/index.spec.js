@@ -4,7 +4,7 @@ import { mount } from 'enzyme'
 
 import DivFloat from '~client/ux/components/div-float'
 
-describe('ux/components/div-float', () => {
+describe('client/ux/components/div-float', () => {
   let floatLayout
 
   beforeEach(() => {

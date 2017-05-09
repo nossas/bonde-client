@@ -4,7 +4,7 @@ import { mount } from 'enzyme'
 
 import Button from '~client/ux/components/button'
 
-describe('ux/components/button', () => {
+describe('client/ux/components/button', () => {
   let button
 
   beforeEach(() => {
