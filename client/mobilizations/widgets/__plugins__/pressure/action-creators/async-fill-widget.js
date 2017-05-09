@@ -1,4 +1,4 @@
-import AnalyticsEvents from '~mobilizations/widgets/utils/analytics-events'
+import AnalyticsEvents from '~client/mobilizations/widgets/utils/analytics-events'
 import MobSelectors from '~client/mobrender/redux/selectors'
 import * as t from '../action-types'
 import * as MobActionTypes from '~client/mobrender/redux/action-types'

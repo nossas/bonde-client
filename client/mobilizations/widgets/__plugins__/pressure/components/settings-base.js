@@ -5,7 +5,7 @@ import React from 'react'
 import { SettingsPageLayout } from '~client/components/layout'
 
 // Current module dependencies
-import { SettingsMenu } from '~mobilizations/widgets/__plugins__/pressure/components'
+import { SettingsMenu } from '~client/mobilizations/widgets/__plugins__/pressure/components'
 
 const SettingsBase = ({ children, location, mobilization, widget }) => (
   <SettingsPageLayout>

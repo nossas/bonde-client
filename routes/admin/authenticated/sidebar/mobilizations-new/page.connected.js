@@ -1,7 +1,7 @@
 import { reduxForm } from 'redux-form'
 
 import * as CommunitySelectors from '~client/community/selectors'
-import { fields, validate } from '~mobilizations/components/mobilization-basics-form'
+import { fields, validate } from '~client/mobilizations/components/mobilization-basics-form'
 import MobSelectors from '~client/mobrender/redux/selectors'
 import { asyncAddMobilization } from '~client/mobrender/redux/action-creators'
 

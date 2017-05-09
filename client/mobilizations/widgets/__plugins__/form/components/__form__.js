@@ -10,8 +10,8 @@ import { Error } from '~client/components/form-util'
 import { isValidEmail } from '~utils/validation-helper'
 
 // Parent module dependencies
-import { WidgetOverlay, FinishMessageCustom } from '~mobilizations/widgets/components'
-import AnalyticsEvents from '~mobilizations/widgets/utils/analytics-events'
+import { WidgetOverlay, FinishMessageCustom } from '~client/mobilizations/widgets/components'
+import AnalyticsEvents from '~client/mobilizations/widgets/utils/analytics-events'
 
 // Current module dependencies
 import { Button, Input, FormTellAFriend } from '../components'

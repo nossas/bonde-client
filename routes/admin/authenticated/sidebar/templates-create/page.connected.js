@@ -4,7 +4,7 @@ import { reduxForm } from 'redux-form'
 
 import { selectMobilization } from '~client/mobrender/redux/action-creators'
 import MobSelectors from '~client/mobrender/redux/selectors'
-import * as TemplateActions from '~mobilizations/templates/action-creators'
+import * as TemplateActions from '~client/mobilizations/templates/action-creators'
 
 import Page from './page'
 

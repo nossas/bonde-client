@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
-import { fields, validate } from '~mobilizations/widgets/components/form-autofire'
+import { fields, validate } from '~client/mobilizations/widgets/components/form-autofire'
 
 import Page from './page'
 

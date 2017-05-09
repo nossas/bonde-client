@@ -2,7 +2,7 @@ import { addNotification } from 'reapop'
 import * as notifications from '~client/utils/notifications'
 import { createAction } from './create-action'
 import * as t from '../action-types'
-import AnalyticsEvents from '~mobilizations/widgets/utils/analytics-events'
+import AnalyticsEvents from '~client/mobilizations/widgets/utils/analytics-events'
 
 const asyncDonationTransactionCreate = params => (dispatch, getState, { api }) => {
   const endpoint = `/mobilizations/${params.mobilization_id}/donations`

@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 
 import MobSelectors from '~client/mobrender/redux/selectors'
 import { toggleMobilizationMenu } from '~client/mobrender/redux/action-creators'
-import * as TemplateActions from '~mobilizations/templates/action-creators'
-import * as TemplateSelectors from '~mobilizations/templates/selectors'
+import * as TemplateActions from '~client/mobilizations/templates/action-creators'
+import * as TemplateSelectors from '~client/mobilizations/templates/selectors'
 
 import Page from './page'
 

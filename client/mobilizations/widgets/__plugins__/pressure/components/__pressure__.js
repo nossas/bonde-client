@@ -6,7 +6,7 @@ import { browserHistory } from 'react-router'
 import * as paths from '~client/paths'
 import MobSelectors from '~client/mobrender/redux/selectors'
 import * as PressureActions from '../action-creators'
-import { WidgetOverlay, FinishMessageCustom } from '~mobilizations/widgets/components'
+import { WidgetOverlay, FinishMessageCustom } from '~client/mobilizations/widgets/components'
 
 // Current module dependencies
 import {

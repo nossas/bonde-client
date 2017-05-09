@@ -10,8 +10,6 @@
     ["module-resolver", {
       "alias": {
         "~client": "./client",
-        "~images": "./client/images",
-        "~mobilizations": "./client/mobilizations",
         "~mobrender": "./client/mobrender",
         "~styles": "./client/styles",
         "~utils": "./client/utils",
