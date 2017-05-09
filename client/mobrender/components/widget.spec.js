@@ -4,7 +4,7 @@ import { shallow } from 'enzyme'
 import Widget from '~client/mobrender/components/widget'
 import WidgetOverlay from '~client/mobrender/components/widget-overlay.connected'
 
-describe('mobrender/components/widget', () => {
+describe('client/mobrender/components/widget', () => {
   const props = {
     mobilization: { id: 2 },
     widget: { id: 1, kind: 'draft', sm_size: 3, md_size: 3, lg_size: 3 },

@@ -1,11 +1,9 @@
 import { expect } from 'chai'
-
-// Current module dependencies
 import * as t from '~client/mobrender/redux/action-types'
 import { createAction } from '~client/mobrender/redux/action-creators/create-action'
 import reducer from '~client/mobrender/redux/reducers/data-export'
 
-describe('client/mobilizations/widgets/reducers/data-export', () => {
+describe('client/mobrender/redux/reducers/data-export', () => {
   it('should update state with loading property as true', () => {
     const action = { type: t.EXPORT_DATACLIP_REQUEST }
     const nextState = reducer(undefined, action)

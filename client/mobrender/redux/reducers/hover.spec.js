@@ -2,7 +2,7 @@ import { expect } from 'chai'
 import reducer, { initialState } from '~client/mobrender/redux/reducers/hover'
 import * as t from '~client/mobrender/redux/action-types'
 
-describe('~client/morender/redux/reducers/hover', () => {
+describe('~client/mobrender/redux/reducers/hover', () => {
   describe('doing MOUSE_OVER', () => {
     it('should add payload when not exists payload.key', () => {
       const action = { type: t.MOUSE_OVER, payload: { key: 'block', id: 2 } }

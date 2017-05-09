@@ -5,7 +5,7 @@ import { mount } from 'enzyme'
 import Navbar from '~client/mobrender/components/navbar'
 import MenuItems from '~client/mobrender/components/navbar/menu-items'
 
-describe('mobrender/navbar', () => {
+describe('client/mobrender/components/navbar', () => {
   let wrapper
   const props = {
     editable: false,

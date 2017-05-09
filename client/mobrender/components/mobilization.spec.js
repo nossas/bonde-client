@@ -6,7 +6,7 @@ import * as mock from '~utils/mock'
 import Mobilization from '~client/mobrender/components/mobilization'
 import Block from '~client/mobrender/components/block.connected'
 
-describe('client/]mobilizations/components/mobilization', () => {
+describe('client/mobrender/components/mobilization', () => {
   let wrapper
   const props = {
     mobilization: {

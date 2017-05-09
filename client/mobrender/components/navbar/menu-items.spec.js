@@ -4,7 +4,7 @@ import { shallow } from 'enzyme'
 
 import MenuItems from '~client/mobrender/components/navbar/menu-items'
 
-describe('client/mobilizations/components/navbar/menu-items', () => {
+describe('client/mobrender/components/navbar/menu-items', () => {
   let wrapper
   const props = {
     blocks: [{ id: 1 }, { id: 2 }],

@@ -4,11 +4,11 @@ import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 import configureStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
-import { asyncMoveDown } from '~client/mobrender/redux/action-creators'
+import { asyncMoveUp } from '~client/mobrender/redux/action-creators'
 import { createAction } from '~client/mobrender/redux/action-creators/create-action'
 import * as t from '~client/mobrender/redux/action-types'
 
-import rootReducer from '../mock-reducers/root-reducer'
+import rootReducer from './mock-reducers/root-reducer'
 
 // Mock axios
 const mockAxios = new MockAdapter(axios)
@@ -17,10 +17,10 @@ const data = [
   { id: 2, name: 'Ipsum', position: 2 },
   { id: 3, name: 'Dolor', position: 3 }
 ]
-const block = {...data[1], position: 3}
 mockAxios.onPut(
-  `/mobilizations/1/blocks/2`, { block }
-).reply(200, block)
+  `/mobilizations/1/blocks/2`,
+  { block: {...data[1], position: 1} }
+).reply(200, {...data[1], position: 1})
 
 // Mock store
 const store = configureStore(
@@ -35,14 +35,15 @@ const store = configureStore(
   }
 }).toJS())
 
-describe('~client/mobrender/redux/action-creators/async-move-down', () => {
+describe('~client/mobrender/redux/action-creators/async-move-up', () => {
   it('should dispatch actions to move up block', () => {
+    const block = { ...data[1], position: 1 }
     const expectedActions = [
       createAction(t.UPDATE_BLOCK_REQUEST),
       createAction(t.UPDATE_BLOCK_SUCCESS, block),
-      createAction(t.MOVE_BLOCK_DOWN, block)
+      createAction(t.MOVE_BLOCK_UP, block)
     ]
-    return store.dispatch(asyncMoveDown(data[1]))
+    return store.dispatch(asyncMoveUp(data[1]))
       .then(() => {
         expect(store.getActions().length).to.equal(3)
         expect(store.getActions()[0]).to.deep.equal(expectedActions[0])

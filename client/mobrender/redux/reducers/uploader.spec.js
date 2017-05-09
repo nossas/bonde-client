@@ -2,7 +2,7 @@ import { expect } from 'chai'
 import reducer from '~client/mobrender/redux/reducers/uploader'
 import * as t from '~client/mobrender/redux/action-types'
 
-describe('~client/mobrender/reducers/uploader', () => {
+describe('~client/mobrender/redux/reducers/uploader', () => {
   describe('t.LOADING_FILE', () => {
     it('should add key when not exists', () => {
       const action = { type: t.LOADING_FILE, payload: { key: 'bg', progress: 10 } }

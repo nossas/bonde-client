@@ -4,7 +4,7 @@ import { mount } from 'enzyme'
 import { Draft } from '~client/mobrender/widgets/draft/components'
 import widgetsConfig from '~client/mobrender/widgets/config'
 
-describe('mobrender/widgets/draft/components/draft', () => {
+describe('client/mobrender/widgets/draft/components/draft', () => {
   const props = {
     mobilization: { id: 1 },
     widget: {

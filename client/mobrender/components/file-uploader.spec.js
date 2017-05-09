@@ -2,7 +2,6 @@ import React from 'react'
 import { expect } from 'chai'
 import { mount } from 'enzyme'
 import sinon from 'sinon'
-
 import ReactS3Uploader from 'react-s3-uploader'
 import FileUploader from '~client/mobrender/components/file-uploader'
 

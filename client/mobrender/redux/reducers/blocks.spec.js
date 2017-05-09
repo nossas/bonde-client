@@ -2,7 +2,7 @@ import { expect } from 'chai'
 import * as t from '~client/mobrender/redux/action-types'
 import reducer, { initialState } from '~client/mobrender/redux/reducers/blocks'
 
-describe('~client/mobrender/redux/reducers/blocks', () => {
+describe('client/mobrender/redux/reducers/blocks', () => {
   describe('doing fetch', () => {
     it('request', () => {
       const action = { type: t.FETCH_BLOCKS_REQUEST }

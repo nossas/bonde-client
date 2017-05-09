@@ -3,7 +3,7 @@ import { expect } from 'chai'
 import { mount } from 'enzyme'
 import WidgetOverlay from '~client/mobrender/components/widget-overlay'
 
-describe('mobrender/components/widget-overlay', () => {
+describe('client/mobrender/components/widget-overlay', () => {
   const props = {
     widget: { id: 1, kind: 'content' },
     hasMouseOver: false,

@@ -7,7 +7,7 @@ import { asyncAddBlock } from '~client/mobrender/redux/action-creators'
 import { createAction } from '~client/mobrender/redux/action-creators/create-action'
 import * as t from '~client/mobrender/redux/action-types'
 
-import rootReducer from '../mock-reducers/root-reducer'
+import rootReducer from './mock-reducers/root-reducer'
 
 // Mock axios
 const mockAxios = new MockAdapter(axios)
