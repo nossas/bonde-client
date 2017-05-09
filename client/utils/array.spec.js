@@ -1,8 +1,8 @@
 import { expect } from 'chai'
 
-import * as array from '~utils/array'
+import * as array from '~client/utils/array'
 
-describe('app/util/array', () => {
+describe('client/utils/array', () => {
   describe('#distinct', () => {
     it('should return distinct values in totally different array', () => {
       const dummyArray = ['a', 1, 2, 'b', 'c']

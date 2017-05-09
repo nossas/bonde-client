@@ -1,8 +1,8 @@
 import { expect } from 'chai'
 
-import * as validator from '~utils/validation-helper'
+import * as validator from '~client/utils/validation-helper'
 
-describe('util/validation-helper', () => {
+describe('client/utils/validation-helper', () => {
   describe('isValidEmail(email[:string:required])', () => {
     it('should validate is false e-mail name@provedor.com@', () => {
       expect(validator.isValidEmail('name@provedor.com@')).to.be.false

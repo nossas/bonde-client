@@ -6,9 +6,9 @@ import {
   normalizeFontsToLinkStyle,
   getGoogleFontsLoadURL,
   needsToLoadGoogleFonts
-} from '~utils/font-name-handler'
+} from '~client/utils/font-name-handler'
 
-describe('app/util/font-name-handler', () => {
+describe('client/utils/font-name-handler', () => {
   describe('#normalizeFontsToLinkStyle', () => {
     it('should return empty string if passed font name that does not exists', () => {
       expect(normalizeFontsToLinkStyle(['foo'])).to.be.empty

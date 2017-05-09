@@ -1,7 +1,7 @@
 import { expect } from 'chai'
-import { sanitize } from '~utils/string-helper'
+import { sanitize } from '~client/utils/string-helper'
 
-describe('app/util/string-helper', () => {
+describe('client/utils/string-helper', () => {
   describe('#sanitize', () => {
     it('should return a lowercase string that contains uppercase', () => {
       expect(sanitize('Foo')).to.be.equal('foo')
