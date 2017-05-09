@@ -4,17 +4,10 @@
   "moduleDirectories": ["node_modules"],
   "moduleNameMapper": {
     "^~(.*)$": "<rootDir>$1",
-    "^~common(.*)$": "<rootDir>/common$1",
-    "^~server(.*)$": "<rootDir>/server$1",
-    "^~routes(.*)$": "<rootDir>/routes$1",
-    "^~tools(.*)$": "<rootDir>/tools$1",
-    "^~authenticate(.*)$": "<rootDir>/authenticate$1",
     "^~client(.*)$": "<rootDir>/client$1",
-    "^~dashboard(.*)$": "<rootDir>/client/dashboard$1",
-    "^~widget-plugins(.*)$": "<rootDir>/client/mobilizations/widgets/__plugins__$1",
-
-    "^~tmp-dashboard(.*)$": "<rootDir>/client/dashboard$1",
-
+    "^~routes(.*)$": "<rootDir>/routes$1",
+    "^~server(.*)$": "<rootDir>/server$1",
+    "^~tools(.*)$": "<rootDir>/tools$1",
     "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|wav|mp3|aac)$": "<rootDir>/tools/jest/mock-file.js",
     "\\.(css|scss)$": "<rootDir>/tools/jest/mock-style.js"
   }
