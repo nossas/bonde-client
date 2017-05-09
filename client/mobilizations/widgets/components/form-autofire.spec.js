@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import * as mock from '~utils/mock'
+import * as mock from '~client/utils/mock'
 import { FormAutofire } from '~client/mobilizations/widgets/components'
 
 describe('client/mobilizations/widgets/components/form-autofire', () => {

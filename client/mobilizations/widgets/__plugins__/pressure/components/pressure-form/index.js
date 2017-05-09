@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import classnames from 'classnames'
 
 // Global module dependencies
-import { isValidEmail } from '~utils/validation-helper'
+import { isValidEmail } from '~client/utils/validation-helper'
 
 // Current module dependencies
 if (require('exenv').canUseDOM) require('./index.scss')

@@ -7,7 +7,7 @@ import classnames from 'classnames'
 // Global module dependencies
 import * as paths from '~client/paths'
 import { Error } from '~client/components/form-util'
-import { isValidEmail } from '~utils/validation-helper'
+import { isValidEmail } from '~client/utils/validation-helper'
 
 // Parent module dependencies
 import { WidgetOverlay, FinishMessageCustom } from '~client/mobilizations/widgets/components'

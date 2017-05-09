@@ -2,7 +2,7 @@ import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-import * as mock from '~utils/mock'
+import * as mock from '~client/utils/mock'
 import Mobilization from '~client/mobrender/components/mobilization'
 import Block from '~client/mobrender/components/block.connected'
 

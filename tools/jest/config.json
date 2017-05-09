@@ -11,7 +11,6 @@
     "^~authenticate(.*)$": "<rootDir>/authenticate$1",
     "^~client(.*)$": "<rootDir>/client$1",
     "^~dashboard(.*)$": "<rootDir>/client/dashboard$1",
-    "^~utils(.*)$": "<rootDir>/client/utils$1",
     "^~widget-plugins(.*)$": "<rootDir>/client/mobilizations/widgets/__plugins__$1",
 
     "^~tmp-dashboard(.*)$": "<rootDir>/client/dashboard$1",

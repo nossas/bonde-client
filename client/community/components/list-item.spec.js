@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import * as mock from '~utils/mock'
+import * as mock from '~client/utils/mock'
 import ListItem from '~client/community/components/list-item'
 
 describe('client/community/components/list-item', () => {

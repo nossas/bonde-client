@@ -4,7 +4,7 @@ import { reduxForm } from 'redux-form'
 
 import MobSelectors from '~client/mobrender/redux/selectors'
 import * as MobActions from '~client/mobrender/redux/action-creators'
-import { isValidCodeGA } from '~utils/validation-helper'
+import { isValidCodeGA } from '~client/utils/validation-helper'
 
 import Page from './page'
 
