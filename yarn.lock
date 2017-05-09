@@ -6093,7 +6093,7 @@ promise@^7.0.3, promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.7, prop-types@^15.5.8:
+prop-types@^15.5.6, prop-types@^15.5.7, prop-types@^15.5.8:
   version "15.5.8"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.8.tgz#6b7b2e141083be38c8595aa51fc55775c7199394"
   dependencies:
@@ -6325,9 +6325,11 @@ react-draggable@^2.2.3:
   dependencies:
     classnames "^2.2.5"
 
-react-fontawesome@^1.4.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/react-fontawesome/-/react-fontawesome-1.5.0.tgz#879d1b2aa5c48bba551e9237f84993217b5645c4"
+react-fontawesome@^1.6.1:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/react-fontawesome/-/react-fontawesome-1.6.1.tgz#eddce17e7dc731aa09fd4a186688a61793a16c5c"
+  dependencies:
+    prop-types "^15.5.6"
 
 react-ga@^2.1.2:
   version "2.1.2"
@@ -7023,9 +7025,9 @@ slash@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/slash/-/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
 
-slate-editor@2.2.8:
-  version "2.2.8"
-  resolved "https://registry.yarnpkg.com/slate-editor/-/slate-editor-2.2.8.tgz#0941c3a2c6c6d1aad9ee77fb22f91edfebb88b25"
+slate-editor@2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/slate-editor/-/slate-editor-2.3.1.tgz#bf2d5d97ea4746ed34fbba621e37306a557f6349"
   dependencies:
     classnames "^2.2.5"
     exenv "^1.2.1"
@@ -7033,7 +7035,7 @@ slate-editor@2.2.8:
     keycode "^2.1.7"
     react-color "^2.10.0"
     react-draggable "^2.2.3"
-    react-fontawesome "^1.4.0"
+    react-fontawesome "^1.6.1"
     react-s3-uploader "^4.0.1"
     slate "^0.19.3"
 
