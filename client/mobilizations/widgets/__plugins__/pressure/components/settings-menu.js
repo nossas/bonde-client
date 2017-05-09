@@ -3,8 +3,8 @@ import React from 'react'
 
 // Global module dependencies
 import * as paths from '~client/paths'
-import { Tabs, Tab } from '~components/navigation/tabs'
-import { SettingsPageMenuLayout } from '~components/layout'
+import { Tabs, Tab } from '~client/components/navigation/tabs'
+import { SettingsPageMenuLayout } from '~client/components/layout'
 
 const SettingsMenu = ({ location, mobilization, widget }) => {
   const pressurePath = paths.pressure(mobilization.id, widget.id)

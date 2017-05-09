@@ -2,8 +2,8 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 import * as paths from '~client/paths'
-import { Tabs, Tab } from '~components/navigation/tabs'
-import { SettingsPageMenuLayout } from '~components/layout'
+import { Tabs, Tab } from '~client/components/navigation/tabs'
+import { SettingsPageMenuLayout } from '~client/components/layout'
 
 const SettingsMenu = ({ mobilization, location }) => {
   const basicsMobilizationPath = paths.basicsMobilization(mobilization.id)

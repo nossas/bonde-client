@@ -6,7 +6,7 @@ import * as MobActions from '~client/mobrender/redux/action-creators'
 import * as CommunitySelectors from '~client/community/selectors'
 import DNSControlSelectors from '~client/community/dns-control-selectors'
 import { asyncFetchHostedZones } from '~client/community/action-creators/dns-control'
-import Sidebar from '~components/navigation/sidebar'
+import Sidebar from '~client/components/navigation/sidebar'
 
 import Container from './container'
 

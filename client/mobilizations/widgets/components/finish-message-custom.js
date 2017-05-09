@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 // Global module dependencies
-import EditorDraft from '~components/editor-draft-js'
+import EditorDraft from '~client/components/editor-draft-js'
 import { EditorSlate } from '~client/mobilizations/widgets/__plugins__/content/components'
 
 const FinishMessageCustom = ({ readOnly, widget }) => {

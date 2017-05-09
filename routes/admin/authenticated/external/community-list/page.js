@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Link, browserHistory } from 'react-router'
 import * as paths from '~client/paths'
-import { Loading } from '~components/await'
+import { Loading } from '~client/components/await'
 import { ListItem } from '~client/community/components'
 
 class CommunityListPage extends Component {

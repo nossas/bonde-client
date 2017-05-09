@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import { BasicColorPicker } from '~components/basic-color-picker'
+import { BasicColorPicker } from '~client/components/basic-color-picker'
 import FileUploader from './file-uploader'
 
 export const BLOCK_UPLOAD_KEY = 'bgBlock'

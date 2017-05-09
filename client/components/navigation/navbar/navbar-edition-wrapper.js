@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import classnames from 'classnames'
 
-import { NavbarButton, NavbarForm } from '~components/navigation/navbar'
+import { NavbarButton, NavbarForm } from '~client/components/navigation/navbar'
 
 class NavbarEditionWrapper extends React.Component {
   constructor (props, context) {

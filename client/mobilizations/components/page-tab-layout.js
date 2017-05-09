@@ -4,9 +4,9 @@ import {
   SettingsPageLayout,
   SettingsPageMenuLayout,
   SettingsPageContentLayout
-} from '~components/layout'
+} from '~client/components/layout'
 import * as paths from '~client/paths'
-import { Tabs, Tab } from '~components/navigation/tabs'
+import { Tabs, Tab } from '~client/components/navigation/tabs'
 
 const PageTabLayout = ({ children, location }) => {
   const goalIsActive = location && location.pathname === paths.newMobilization()

@@ -10,7 +10,6 @@
     "^~tools(.*)$": "<rootDir>/tools$1",
     "^~authenticate(.*)$": "<rootDir>/authenticate$1",
     "^~client(.*)$": "<rootDir>/client$1",
-    "^~components(.*)$": "<rootDir>/client/components$1",
     "^~dashboard(.*)$": "<rootDir>/client/dashboard$1",
     "^~mobilizations(.*)$": "<rootDir>/client/mobilizations$1",
     "^~utils(.*)$": "<rootDir>/client/utils$1",

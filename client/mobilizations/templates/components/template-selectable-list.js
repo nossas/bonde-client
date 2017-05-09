@@ -3,8 +3,8 @@ import React from 'react'
 import classnames from 'classnames'
 
 // Global module dependencies
-import SelectableList from '~components/selectable-list'
-import FilterableSearchBar from '~components/filterable-search-bar'
+import SelectableList from '~client/components/selectable-list'
+import FilterableSearchBar from '~client/components/filterable-search-bar'
 
 const btnStyle = {
   width: '100%'

@@ -16,7 +16,7 @@ export default store => ({
 // import { Route } from 'react-router'
 //
 // import { BackgroundContainer } from '../Dashboard/containers'
-// import { SidebarContainer } from '~components/navigation/sidebar'
+// import { SidebarContainer } from '~client/components/navigation/sidebar'
 //
 // import {
 //   EditUserPage,

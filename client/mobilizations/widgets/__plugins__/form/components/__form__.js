@@ -6,7 +6,7 @@ import classnames from 'classnames'
 
 // Global module dependencies
 import * as paths from '~client/paths'
-import { Error } from '~components/form-util'
+import { Error } from '~client/components/form-util'
 import { isValidEmail } from '~utils/validation-helper'
 
 // Parent module dependencies

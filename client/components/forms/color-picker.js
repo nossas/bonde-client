@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import classnames from 'classnames'
 
-import ColorPickerTheme from '~components/color-picker'
+import ColorPickerTheme from '~client/components/color-picker'
 
 class ColorPicker extends Component {
   render () {

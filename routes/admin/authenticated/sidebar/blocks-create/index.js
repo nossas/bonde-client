@@ -7,7 +7,7 @@ export default store => ({
   getComponent (nextState, callback) {
     require.ensure([], function (require) {
       injectAsyncReducer(store, 'mobilizations', require('~client/mobrender/redux/reducers').default)
-      injectAsyncReducer(store, 'colorPicker', require('~components/color-picker/reducers').default)
+      injectAsyncReducer(store, 'colorPicker', require('~client/components/color-picker/reducers').default)
       callback(null, require('./page.connected').default)
     })
   }

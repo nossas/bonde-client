@@ -3,8 +3,8 @@ import React from 'react'
 
 // Global module dependencies
 import * as paths from '~client/paths'
-import { Tabs, Tab } from '~components/navigation/tabs'
-import { SettingsPageMenuLayout } from '~components/layout'
+import { Tabs, Tab } from '~client/components/navigation/tabs'
+import { SettingsPageMenuLayout } from '~client/components/layout'
 
 const SettingsMenu = ({ mobilization, widget, location }) => {
   const donationPath = paths.donation(mobilization.id, widget.id)

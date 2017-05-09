@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { TellAFriend } from '~components/share'
+import { TellAFriend } from '~client/components/share'
 
 const PressureTellAFriend = ({ preview, mobilization, widget }) => (
   <TellAFriend

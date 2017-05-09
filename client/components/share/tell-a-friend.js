@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { FacebookShareButton, TwitterShareButton, WhatsAppShareButton } from '~components/share'
+import { FacebookShareButton, TwitterShareButton, WhatsAppShareButton } from '~client/components/share'
 
 const TellAFriend = ({
   preview,

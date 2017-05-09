@@ -3,7 +3,7 @@ import React from 'react'
 
 // Global module dependencies
 import * as paths from '~client/paths'
-import { TellAFriend } from '~components/share'
+import { TellAFriend } from '~client/components/share'
 
 const DonationTellAFriend = ({ preview, mobilization, widget }) => {
   return (
