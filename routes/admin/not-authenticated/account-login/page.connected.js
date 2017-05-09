@@ -1,4 +1,5 @@
 import { reduxForm } from 'redux-form'
+import { injectIntl } from 'react-intl'
 
 import * as AccountActions from '~client/account/redux/action-creators'
 import AccountSelectors from '~client/account/redux/selectors'
@@ -36,4 +37,4 @@ export default reduxForm(
   { form: 'loginForm', fields, validate },
   mapStateToProps,
   AccountActions
-)(FormLogin)
+)(injectIntl(FormLogin))

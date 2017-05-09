@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Link, browserHistory } from 'react-router'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, intlShape } from 'react-intl'
 
 import * as paths from '~client/paths'
 import {
@@ -25,6 +25,7 @@ class LoginPage extends Component {
       fields: { email, password },
       login,
       errorMessage,
+      intl,
       ...formProps
     } = this.props
 
@@ -44,15 +45,43 @@ class LoginPage extends Component {
           {...formProps}
         >
           <FormGroup controlId='emailId' {...email}>
-            <ControlLabel>E-mail</ControlLabel>
-            <FormControl type='email' placeholder='exemplo@email.com' />
+            <ControlLabel>
+              <FormattedMessage
+                id='page--account-login.label.email'
+                defaultMessage='E-mail'
+              />
+            </ControlLabel>
+            <FormControl
+              type='email'
+              placeholder={
+                intl.formatMessage({
+                  id: 'page--account-login.placeholder.email',
+                  defaultMessage: 'exemplo@email.com'
+                })
+              }
+            />
           </FormGroup>
           <FormGroup controlId='passwordId' {...password}>
-            <ControlLabel>Senha</ControlLabel>
+            <ControlLabel>
+              <FormattedMessage
+                id='page--account-login.label.password'
+                defaultMessage='Senha'
+              />
+            </ControlLabel>
             <FormControl type='password' placeholder='••••••••••' />
           </FormGroup>
           <Button type='submit' className='btn py2 caps white col-12 rounded-bottom bg-pagenta'>
-            {formProps.submitting ? 'Carregando...' : 'Entrar'}
+            {formProps.submitting ? (
+              <FormattedMessage
+                id='page--account-login.loading'
+                defaultMessage='Carregando...'
+              />
+            ) : (
+              <FormattedMessage
+                id='page--account-login.signin'
+                defaultMessage='Entrar'
+              />
+            )}
           </Button>
         </FormRedux>
 
@@ -69,7 +98,10 @@ class LoginPage extends Component {
           />
           <br />
           <Link to={paths.createAccount()}>
-            Clique para criar uma conta.
+            <FormattedMessage
+              id='page--account-login.cta-signup'
+              defaultMessage='Clique para criar uma conta.'
+            />
           </Link>
         </p>
       </div>
@@ -81,7 +113,9 @@ LoginPage.propTypes = {
   // Injected by redux
   login: PropTypes.func.isRequired,
   // Injected by redux-form
-  fields: PropTypes.object.isRequired
+  fields: PropTypes.object.isRequired,
+  // Intl shape
+  intl: intlShape.isRequired
 }
 
 export default LoginPage
