@@ -1,4 +1,4 @@
-import * as CommunitySelectors from '~community/selectors'
+import * as CommunitySelectors from '~client/community/selectors'
 import AuthSelectors from '~client/account/redux/selectors'
 import MobSelectors from '~client/mobrender/redux/selectors'
 

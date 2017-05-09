@@ -1,6 +1,6 @@
 import { reduxForm } from 'redux-form'
 
-import * as CommunityActions from '~community/action-creators'
+import * as CommunityActions from '~client/community/action-creators'
 
 import Page from './page'
 

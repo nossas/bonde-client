@@ -6,7 +6,7 @@ export default store => ({
   path: 'community',
   getComponent (nextState, callback) {
     require.ensure([], function (require) {
-      injectAsyncReducer(store, 'community', require('~community/reducers').default)
+      injectAsyncReducer(store, 'community', require('~client/community/reducers').default)
       callback(null, require('./page.connected').default)
     })
   }

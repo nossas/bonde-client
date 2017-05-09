@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { Link, browserHistory } from 'react-router'
 import * as paths from '~client/paths'
 import { Loading } from '~components/await'
-import { ListItem } from '~community/components'
+import { ListItem } from '~client/community/components'
 
 class CommunityListPage extends Component {
   componentWillReceiveProps (nextProps) {

@@ -2,8 +2,8 @@ import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
 import { CPF, CNPJ } from 'cpf_cnpj'
 
-import * as CommunityActions from '~community/action-creators'
-import * as CommunitySelectors from '~community/selectors'
+import * as CommunityActions from '~client/community/action-creators'
+import * as CommunitySelectors from '~client/community/selectors'
 
 import Page from './page'
 

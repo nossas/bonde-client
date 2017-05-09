@@ -1,4 +1,4 @@
-import * as t from '~community/action-types'
+import * as t from '~client/community/action-types'
 
 const asyncFetch = () => (dispatch, getState, { api }) => {
   const { auth: { credentials } } = getState()

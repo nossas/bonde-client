@@ -12,7 +12,7 @@ import { reducer as notificationsReducer } from 'reapop'
 import auth from '~client/account/redux/reducers'
 import wait from '~client/components/await/redux/reducers'
 import mobilizations from '~client/mobrender/redux/reducers'
-import community from '~community/reducers'
+import community from '~client/community/reducers'
 import colorPicker from '~components/color-picker/reducers'
 import subscriptions from '~client/subscriptions/redux/reducers'
 

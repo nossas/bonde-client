@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { ForceDownloadViaAjax } from '~community/components'
+import { ForceDownloadViaAjax } from '~client/community/components'
 
 const SectionButton = ({ sectionTitle, helperText, buttonTitle, onClick, wrapperStyle }) => (
   <div className='col md-col-12 lg-col-4 px2'>
