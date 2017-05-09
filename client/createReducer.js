@@ -15,6 +15,7 @@ import mobilizations from '~client/mobrender/redux/reducers'
 import community from '~community/reducers'
 import colorPicker from '~components/color-picker/reducers'
 import subscriptions from '~client/subscriptions/redux/reducers'
+import intl from '../intl/redux/reducers'
 
 const initialState = {
   host: '',
@@ -39,6 +40,7 @@ export default function createReducer (asyncReducers) {
     community,
     colorPicker,
     subscriptions,
+    intl,
     ...asyncReducers
   })
 }

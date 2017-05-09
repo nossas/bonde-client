@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Link, browserHistory } from 'react-router'
+import { FormattedMessage } from 'react-intl'
 
 import * as paths from '~client/paths'
 import {
@@ -62,7 +63,11 @@ class LoginPage extends Component {
         )}
 
         <p className='white center'>
-          Ainda não é cadastrado?<br />
+          <FormattedMessage
+            id='page--account-login.ask-register'
+            defaultMessage='Ainda não é cadastrado?'
+          />
+          <br />
           <Link to={paths.createAccount()}>
             Clique para criar uma conta.
           </Link>

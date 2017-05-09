@@ -7,6 +7,12 @@ import Router from 'react-router/lib/Router'
 import match from 'react-router/lib/match'
 import browserHistory from 'react-router/lib/browserHistory'
 import { Provider } from 'react-redux'
+import { IntlProvider, addLocaleData } from 'react-intl'
+import pt from 'react-intl/locale-data/pt'
+import es from 'react-intl/locale-data/es'
+import en from 'react-intl/locale-data/en'
+
+addLocaleData([...pt, ...es, ...en])
 
 import { configureStore } from './store'
 const initialState = window.INITIAL_STATE || {}
@@ -27,13 +33,18 @@ const render = () => {
   // Pull child routes using match. Adjust Router for vanilla webpack HMR,
   // in development using a new key every time there is an edit.
   match({ routes, location }, () => {
+    // Intl
+    const { intl: { currentLocale, messages } } = getState()
+
     // Render app with Redux and router context to container element.
     // We need to have a random in development because of `match`'s dependency on
     // `routes.` Normally, we would want just one file from which we require `routes` from.
     ReactDOM.render(
-      <Provider store={store}>
-        <Router routes={routes} history={browserHistory} key={Math.random()} />
-      </Provider>,
+      <IntlProvider locale={currentLocale} messages={messages[currentLocale]}>
+        <Provider store={store}>
+          <Router routes={routes} history={browserHistory} key={Math.random()} />
+        </Provider>
+      </IntlProvider>,
       container
     )
   })

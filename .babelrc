@@ -23,7 +23,11 @@
         "~server": "./server",
         "~tools": "./tools"
       }
-    }]
+    }],
+    ["react-intl", {
+      "messagesDir": "./build/intl/messages",
+      "enforceDescriptions": false
+    }],
   ],
   "env": {
     "test": {

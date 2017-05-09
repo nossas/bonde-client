@@ -18,6 +18,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/server'
 import { createMemoryHistory, RouterContext, match } from 'react-router'
 import { Provider } from 'react-redux'
+import { IntlProvider } from 'react-intl'
 import { trigger } from 'redial'
 import Helm from 'react-helmet'
 import webpack from 'webpack'
@@ -33,6 +34,7 @@ import webpackConfig from '../tools/webpack.client'
 import { configureStore } from '../client/store'
 import createRoutes from '../routes'
 import loadState from './load-state'
+import localeData from '../intl/locale-data'
 
 export const createServer = (config) => {
   const __PROD__ = config.nodeEnv === 'production' || config.nodeEnv === 'staging'
@@ -110,8 +112,17 @@ export const createServer = (config) => {
   })
 
   app.get('*', (req, res) => {
-    reactCookie.plugToRequest(req, res)
+    // Intl
+    const currentLocale = req.acceptsLanguages(config.locales) || config.defaultLocale
+    const languageWithoutRegionCode = currentLocale.toLowerCase().split(/[_-]+/)[0]
+    const currentLocaleMessages = (
+      localeData[currentLocale] ||
+      localeData[languageWithoutRegionCode] ||
+      localeData[config.defaultLocale]
+    )
 
+    // React Cookie
+    reactCookie.plugToRequest(req, res)
     const community = reactCookie.load('community') || {}
     const auth = reactCookie.load('auth') || {}
 
@@ -126,6 +137,12 @@ export const createServer = (config) => {
         protocol: req.headers['x-forwarded-proto'] || req.protocol,
         host: req.headers.host,
         url: url.parse(req.url)
+      },
+      intl: {
+        defaultLocale: config.defaultLocale,
+        locales: config.locales,
+        messages: localeData,
+        currentLocale
       }
     })
     const routes = createRoutes(store)
@@ -171,9 +188,11 @@ export const createServer = (config) => {
           console.log(components, locals, renderProps)
           const initialState = store.getState()
           const InitialView = (
-            <Provider store={store}>
-              <RouterContext {...renderProps} />
-            </Provider>
+            <IntlProvider locale={currentLocale} messages={currentLocaleMessages}>
+              <Provider store={store}>
+                <RouterContext {...renderProps} />
+              </Provider>
+            </IntlProvider>
           )
 
           // just call html = ReactDOM.renderToString(InitialView)
