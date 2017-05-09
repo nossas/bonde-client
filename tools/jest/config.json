@@ -20,7 +20,7 @@
 
     "^~tmp-dashboard(.*)$": "<rootDir>/client/dashboard$1",
 
-    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|wav|mp3|aac)$": "<rootDir>/test/mock-file.js",
-    "\\.(css|scss)$": "<rootDir>/test/mock-style.js"
+    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|wav|mp3|aac)$": "<rootDir>/tools/jest/mock-file.js",
+    "\\.(css|scss)$": "<rootDir>/tools/jest/mock-style.js"
   }
 }

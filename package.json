@@ -5,9 +5,8 @@
   "author": "Nossas <tech@nosssas.org>",
   "homepage": "http://bonde.org",
   "scripts": {
-    "test": "node --max_old_space_size=3584 ./node_modules/.bin/jest --config ./tools/jest.config.json --maxWorkers=2",
-    "test:a": "./node_modules/.bin/jest --config ./tools/jest.config.json",
-    "test:w": "yarn test:a -- --watch",
+    "test": "node --max_old_space_size=3584 ./node_modules/.bin/jest --config ./tools/jest/config.json --maxWorkers=2",
+    "test:w": "yarn test -- --watch",
     "coverage": "nyc npm test",
     "start": "nodemon -r 'babel-register' --delay 1 --watch ./server --watch ./tools ./server",
     "start:prod": "node ./build/server.js",
