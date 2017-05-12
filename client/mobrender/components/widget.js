@@ -25,8 +25,15 @@ const Widget = ({ saving, mobilization, widget, update, editable }) => {
       {editable && redirect ? (
         <WidgetOverlay
           widget={widget}
-          onClick={() => {
+          onEdit={() => {
             browserHistory.push(redirect)
+          }}
+          onDelete={() => {
+            update({
+              ...widget,
+              settings: undefined,
+              kind: 'draft'
+            })
           }}
         >
           {widgetComponent}

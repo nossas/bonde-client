@@ -14,6 +14,14 @@ class Content extends Component {
     this.setState({ forceRenderNewEditor: true })
   }
 
+  deleteWidget() {
+    this.props.update({
+      ...this.props.widget,
+      settings: undefined,
+      kind: 'draft'
+    })
+  }
+
   render () {
     const { widget: { settings }, editable } = this.props
 
@@ -21,7 +29,10 @@ class Content extends Component {
       // If parse content is RebooEditor
       const content = JSON.parse(settings.content)
       return content.entityMap ? (
-        <EditorNew {...this.props} />
+        <EditorNew
+          {...this.props}
+          handleDelete={this.deleteWidget.bind(this)}
+        />
       ) : (
         <EditorSlate
           {...this.props}
@@ -35,12 +46,18 @@ class Content extends Component {
               update({ ...widget, settings: { content: raw } })
             }
           }}
+          handleDelete={this.deleteWidget.bind(this)}
         />
       )
     } catch (e) {
       // Else is old editor
       if (this.state.forceRenderNewEditor) {
-        return <EditorNew {...this.props} />
+        return (
+          <EditorNew
+            {...this.props}
+            handleDelete={this.deleteWidget.bind(this)}
+          />
+        )
       } else {
         return (
           <EditorOld
