@@ -191,12 +191,29 @@ class RebooEditor extends Component {
             <div style={{ 'clear': 'both' }} />
           </div>
           {!readOnly ? (
-            <div className='right mt1' style={{ display: this.state.hasFocus ? 'block' : 'none' }}>
+            <div
+              className='right mt1'
+              style={{
+                display: this.state.hasFocus ? 'block' : 'none',
+                width: '100%',
+                position: 'relative'
+              }}
+            >
               <button
                 className='btn caps bg-darken-4 white rounded'
                 onClick={::this.save}
               >
                 Salvar
+              </button>
+              <button
+                className='btn bg-darken-4 white rounded'
+                style={{
+                  position: 'absolute',
+                  right: '0'
+                }}
+                onClick={this.props.handleDelete}
+              >
+                <i className='fa fa-trash' />
               </button>
             </div>
           ) : null}

@@ -19,7 +19,7 @@ import {
 
 import DefaultServerConfig from '~server/config'
 import { Loading } from '~client/components/await'
-import { ActionButton, Layer } from '~client/mobilizations/widgets/__plugins__/content/components'
+import { ActionButton, FooterEditor, Layer } from '~client/mobilizations/widgets/__plugins__/content/components'
 
 if (require('exenv').canUseDOM) require('./index.scss')
 import styles from './styles'
@@ -60,7 +60,7 @@ class EditorSlate extends Component {
   }
 
   render () {
-    const { content, handleSave, readOnly, toolbarStyles, contentStyles } = this.props
+    const { content, handleSave, handleDelete, readOnly, toolbarStyles, contentStyles } = this.props
     const initialState = Raw.deserialize(JSON.parse(content), { terse: true })
     return (
       <div className='widgets--content-plugin'>
@@ -94,17 +94,34 @@ class EditorSlate extends Component {
             className={!readOnly ? 'editable' : ''}
             readOnly={readOnly}
           />
-
-          <ActionButton
-            editing={this.state.editing}
-            className='mt2 right-align'
-            onClick={state => {
-              this.setState({ editing: false })
-              handleSave(state)
-            }}
-          >
-            Salvar
-          </ActionButton>
+          
+          <FooterEditor>
+            <ActionButton
+              editing={this.state.editing}
+              title='Remover'
+              style={{
+                position: 'absolute',
+                right: 0,
+                bottom: 0
+              }}
+              className='mt2'
+              onClick={() => {
+                handleDelete()
+              }} 
+            >
+              <i className='fa fa-trash' />
+            </ActionButton>
+            <ActionButton
+              editing={this.state.editing}
+              className='mt2 right-align'
+              onClick={state => {
+                this.setState({ editing: false })
+                handleSave(state)
+              }}
+            >
+              Salvar
+            </ActionButton>
+          </FooterEditor>
           <Layer
             editing={this.state.editing}
             onClick={state => {

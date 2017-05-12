@@ -67,6 +67,7 @@ class EditorNew extends React.Component {
           theme={theme}
           readOnly={!editable}
           handleSave={this.handleSave.bind(this)}
+          handleDelete={this.props.handleDelete}
         />
       </div>
     )
@@ -79,7 +80,8 @@ EditorNew.propTypes = {
   editable: PropTypes.bool.isRequired,
   onEdit: PropTypes.func.isRequired,
   onCancelEdit: PropTypes.func.isRequired,
-  update: PropTypes.func
+  update: PropTypes.func,
+  handleDelete: PropTypes.func
 }
 
 export default EditorNew
