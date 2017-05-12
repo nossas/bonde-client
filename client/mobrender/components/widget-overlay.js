@@ -14,20 +14,40 @@ const overlayStyle = {
   fontSize: '1.8rem'
 }
 
-const WidgetOverlay = ({ children, widget, onClick, onMouseOver, onMouseOut, hasMouseOver }) => (
+const WidgetOverlay = ({
+  children,
+  widget,
+  onEdit,
+  onDelete,
+  onMouseOver,
+  onMouseOut,
+  hasMouseOver
+}) => (
   <div
     className='relative overlay'
     style={{ cursor: 'pointer' }}
     onMouseEnter={() => onMouseOver('widget', widget.id)}
     onMouseLeave={() => onMouseOut('widget')}
-    onClick={() => onClick()}
   >
     {children}
     {hasMouseOver ? (
       <div className='h1 rounded z1 border border-pagenta px2' style={overlayStyle}>
         <div className='table full-height col-12 center'>
           <div className='white table-cell align-middle'>
-            {'Clique para editar'}
+            <button
+              className='btn m1'
+              onClick={onEdit}
+              title='Editar'
+            >
+              <i className='fa fa-edit' />
+            </button>
+            <button
+              className='btn m1'
+              onClick={onDelete}
+              title='Remover'
+            >
+              <i className='fa fa-trash' />
+            </button>
           </div>
         </div>
       </div>
