@@ -35,14 +35,14 @@ const WidgetOverlay = ({
         <div className='table full-height col-12 center'>
           <div className='white table-cell align-middle'>
             <button
-              className='btn m1'
+              className='btn m1 btn-edit'
               onClick={onEdit}
               title='Editar'
             >
               <i className='fa fa-edit' />
             </button>
             <button
-              className='btn m1'
+              className='btn m1 btn-remove'
               onClick={onDelete}
               title='Remover'
             >

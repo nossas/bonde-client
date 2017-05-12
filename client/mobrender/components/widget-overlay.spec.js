@@ -7,7 +7,8 @@ describe('client/mobrender/components/widget-overlay', () => {
   const props = {
     widget: { id: 1, kind: 'content' },
     hasMouseOver: false,
-    onClick: () => {},
+    onEdit: () => {},
+    onDelete: () => {},
     onMouseEnter: () => {},
     onMouseLeave: () => {}
   }
@@ -50,12 +51,23 @@ describe('client/mobrender/components/widget-overlay', () => {
     })
   })
 
-  it('should call onClick when click', () => {
+  it('should call onEdit when click edit button', () => {
     let result
     over.setProps({
-      onClick: () => { result = true }
+      hasMouseOver: true,
+      onEdit: () => { result = true }
     })
-    over.find('div.relative').simulate('click')
+    over.find('button.btn-edit').simulate('click')
+    expect(result).to.equal(true)
+  })
+  
+  it('should call onDelete when click remove button', () => {
+    let result
+    over.setProps({
+      hasMouseOver: true,
+      onDelete: () => { result = true }
+    })
+    over.find('button.btn-remove').simulate('click')
     expect(result).to.equal(true)
   })
 
