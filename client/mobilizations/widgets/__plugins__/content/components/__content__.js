@@ -15,11 +15,13 @@ class Content extends Component {
   }
 
   deleteWidget() {
-    this.props.update({
-      ...this.props.widget,
-      settings: undefined,
-      kind: 'draft'
-    })
+    if (window.confirm('Deseja remover o widget?')) {
+      this.props.update({
+        ...this.props.widget,
+        settings: undefined,
+        kind: 'draft'
+      })
+    }
   }
 
   render () {

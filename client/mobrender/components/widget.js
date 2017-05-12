@@ -29,11 +29,13 @@ const Widget = ({ saving, mobilization, widget, update, editable }) => {
             browserHistory.push(redirect)
           }}
           onDelete={() => {
-            update({
-              ...widget,
-              settings: undefined,
-              kind: 'draft'
-            })
+            if (window.confirm('Deseja remover o widget?')) {
+              update({
+                ...widget,
+                settings: undefined,
+                kind: 'draft'
+              })
+            }
           }}
         >
           {widgetComponent}
