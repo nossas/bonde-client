@@ -13,3 +13,13 @@ const regexDDMMYYYY = /^\d{2}\/\d{2}\/\d{4}$/ // 00/00/0000
 export const date = value => ({
   ddmmyyyy: regexDDMMYYYY.test(value)
 })
+
+// Validate email from
+export const isValidFromEmail = value => {
+  const regex = /^[\w ]+\<(.*)\>$/
+  if (regex.test(value)) {
+    const email = value.match(regex)[1]
+    return isValidEmail(email)
+  }
+  return false
+}

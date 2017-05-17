@@ -5,12 +5,15 @@ import {
   FormGroup,
   FormControl,
   ControlLabel,
-  UploadImageField
+  UploadImageField,
+  HelpBlock
 } from '~client/components/forms'
 import { SettingsForm } from '~client/ux/components'
 
 const CommunitySettingsInfoPage = ({
-  fields: { image, name, city, description },
+  fields: {
+    image, name, city, description, custom_from_email: customFromEmail
+  },
   location,
   community,
   downloadActivists,
@@ -20,16 +23,24 @@ const CommunitySettingsInfoPage = ({
     <FormGroup controlId='imageId' {...image}>
       <UploadImageField signingUrl={`${process.env.API_URL}/uploads`} />
     </FormGroup>
-    <FormGroup controlId='nameId' {...name}>
+    <FormGroup controlId='nametId' {...name}>
       <ControlLabel>Nome</ControlLabel>
       <FormControl type='text' />
     </FormGroup>
     <FormGroup controlId='descriptionId' {...description}>
       <ControlLabel>Descrição</ControlLabel>
-      <FormControl componentClass='textarea' />
+      <FormControl componentusClass='textarea' />
     </FormGroup>
     <FormGroup controlId='cityId' {...city}>
       <ControlLabel>Cidade</ControlLabel>
+      <FormControl type='text' />
+    </FormGroup>
+    <FormGroup controlId='customFromEmail' {...customFromEmail}>
+      <ControlLabel>E-mail de resposta para notificações</ControlLabel>
+      <HelpBlock>
+        {`Você deve preencher seguindo o formato padrão:
+          Nome do contato <contato@provedor.com>`}
+      </HelpBlock>
       <FormControl type='text' />
     </FormGroup>
   </SettingsForm>

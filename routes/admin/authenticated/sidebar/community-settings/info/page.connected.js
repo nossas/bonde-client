@@ -3,6 +3,7 @@ import { reduxForm } from 'redux-form'
 
 import { asyncEdit } from '~client/community/action-creators'
 import * as CommunitySelectors from '~client/community/selectors'
+import { isValidFromEmail } from '~client/utils/validation-helper'
 
 import Page from './page'
 
@@ -16,16 +17,21 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = { submit: asyncEdit }
 
-const fields = ['id', 'image', 'name', 'city', 'description']
+const fields = [
+  'id', 'image', 'name', 'city', 'description', 'custom_from_email'
+]
 
-const validate = values => {
+const validate = ({ name, city, custom_from_email: customFromEmail }) => {
   const errors = {}
 
-  if (!values.name) {
+  if (!name) {
     errors.name = 'Informe o nome da comunidade'
   }
-  if (!values.city) {
+  if (!city) {
     errors.city = 'Informe em qual cidade sua comunidade atua'
+  }
+  if (customFromEmail && !isValidFromEmail(customFromEmail)) {
+    errors.custom_from_email = 'E-mail de resposta fora do formato padrão'
   }
   return errors
 }

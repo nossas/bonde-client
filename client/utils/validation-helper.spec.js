@@ -47,4 +47,42 @@ describe('client/utils/validation-helper', () => {
       expect(validator.isValidCodeGA('MO-87654321-0123123123')).to.be.true
     })
   })
+
+  describe('isValidFromEmail', () => {
+    it('should return false for " <>"', () => {
+      expect(validator.isValidFromEmail(' <>')).to.equal(false)
+    })
+
+    it('should return false for "I9 <>"', () => {
+       expect(validator.isValidFromEmail('I9 <>')).to.equal(false)
+    })
+
+    it('should return false for "I9"', () => {
+      expect(validator.isValidFromEmail('I9')).to.equal(false)
+    })
+
+    it('should return false for "I9 <contact@i9.org"', () => {
+      expect(validator.isValidFromEmail('I9 <contact@i9.org')).to.equal(false) 
+    })
+
+    it('should return false for "I9 contact@i9.org>"', () => {
+      expect(validator.isValidFromEmail('I9 contact@i9.org>')).to.equal(false) 
+    })
+
+    it('should return false for "I9 <contact@org>"', () => {
+      expect(validator.isValidFromEmail('I9 <contact@org>')).to.equal(false) 
+    })
+
+    it('should return false for "I9 <@i9.org>"', () => {
+      expect(validator.isValidFromEmail('I9 <@i9.org>')).to.equal(false) 
+    })
+
+    it('should return false for "I9 <contacti9.org>"', () => {
+      expect(validator.isValidFromEmail('I9 <contacti9.org>')).to.equal(false) 
+    })
+
+    it('should return true for "I9 <contact@i9.org>"', () => {
+      expect(validator.isValidFromEmail('I9 <contact@i9.org>')).to.equal(true) 
+    })
+  })
 })
