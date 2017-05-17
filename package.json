@@ -12,7 +12,8 @@
     "start:prod": "node ./build/server.js",
     "heroku-postbuild": "./node_modules/.bin/webpack --verbose --config ./tools/webpack.client.js && ./node_modules/.bin/webpack --verbose -p --config ./tools/webpack.server.js",
     "clean": "rm -rf build",
-    "routes": "grep -rhe path: ./routes/$inner | sed -e \"s/path: '\\([a-zA-Z\\/:_]*\\)',/\\1/g\" | sort | uniq"
+    "routes": "grep -rhe path: ./routes/$inner | sed -e \"s/path: '\\([a-zA-Z\\/:_]*\\)',/\\1/g\" | sort | uniq",
+    "release": "./node_modules/.bin/standard-version"
   },
   "repository": {
     "type": "git",
@@ -121,6 +122,7 @@
     "source-map-support": "^0.4.0",
     "standard": "^8.0.0",
     "standard-loader": "^5.0.0",
+    "standard-version": "^4.0.0",
     "style-loader": "^0.13.1",
     "svg-url-loader": "^2.0.2",
     "webpack": "^2.2.1",
