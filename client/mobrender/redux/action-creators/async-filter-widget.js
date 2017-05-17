@@ -2,10 +2,10 @@ import * as t from '../action-types'
 import { createAction } from './create-action'
 
 export default where => (dispatch, getState, { api }) => {
-  const { auth: { credentials } } = getState()
+  // const { auth: { credentials } } = getState()
 
   const endpoint = '/widgets'
-  const config = { headers: credentials, params: where }
+  const config = { params: where }
 
   dispatch({ type: t.FILTER_WIDGETS_REQUEST })
   return api
