@@ -7,7 +7,6 @@ const ActionButton = ({ children, editing, setState, onClick, title, style, clas
     onClick={() => onClick(state)}
     style={{
       position: 'relative',
-      zIndex: editing ? 4 : 'inherit',
       display: editing ? 'inline-block' : 'none',
       ...style
     }}

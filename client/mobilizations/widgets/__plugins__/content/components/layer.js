@@ -10,7 +10,7 @@ const Layer = ({ editing, onClick, state }) => (
       bottom: 0,
       right: 0,
       backgroundColor: 'rgba(0,0,0,.3)',
-      zIndex: 3
+      zIndex: 1
     }}
     onClick={() => onClick(state)}
   />

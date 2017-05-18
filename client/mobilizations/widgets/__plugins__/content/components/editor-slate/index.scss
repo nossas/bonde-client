@@ -1,4 +1,7 @@
 @import '~slate-editor/lib/plugins/slate-color-plugin/DraggableColorPicker.css';
+@import '~slate-editor/lib/plugins/slate-image-plugin/ImageDataModal.css';
+@import '~slate-editor/lib/plugins/slate-image-plugin/ImageEditLayer.css';
+@import '~slate-editor/lib/plugins/slate-image-plugin/ImageNode.css';
 
 .editor--content > div {
   min-height: 370px;
