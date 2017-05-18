@@ -35,7 +35,7 @@
       />
     </a>
     <br />
-    <a href="https://img.shields.io/github/license/nossas/bonde-client/blob/master/LICENSE">
+    <a href="https://github.com/nossas/bonde-client/blob/master/LICENSE">
       <img
         alt="Licence"
         src="https://img.shields.io/github/license/nossas/bonde-client.svg"
