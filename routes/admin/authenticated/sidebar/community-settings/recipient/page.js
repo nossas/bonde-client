@@ -32,16 +32,29 @@ const CommunitySettingsRecipientPage = ({
         <Radio value='monthly'>Mensalmente</Radio>
       </RadioGroup>
     </FormGroup>
-
+    
     <FormGroup controlId='transferDayId' {...transferDay}>
       <ControlLabel>Dia de transferência</ControlLabel>
-      <FormControl type='number' />
+      {transferInterval.value === 'weekly' ? (
+        <FormControl componentClass='select'>
+          <option value='1'>Segunda</option>
+          <option value='2'>Terça</option>
+          <option value='3'>Quarta</option>
+          <option value='4'>Quinta</option>
+          <option value='5'>Sexta</option>
+        </FormControl> 
+      ) : (
+        <FormControl componentClass='select'>
+          <option value='1'>1</option>
+          <option value='6'>6</option>
+          <option value='11'>11</option>
+          <option value='16'>16</option>
+          <option value='21'>21</option>
+          <option value='26'>26</option>
+        </FormControl> 
+      )}
+      
     </FormGroup>
-
-    {/* <FormGroup controlId="transferEnabledId" {...transferEnabled}>
-      <ControlLabel>Habilitar transferência</ControlLabel>
-      <FormControl type="checkbox" />
-    </FormGroup> */}
 
     <div className='section'>
       <h3>Conta bancaria</h3>
