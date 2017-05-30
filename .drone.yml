@@ -4,6 +4,8 @@ pipeline:
     commands:
       - yarn
       - yarn test
+    when:
+      event: [push, tag]
 
   publish-staging:
     image: plugins/docker
@@ -17,6 +19,7 @@ pipeline:
       - GOOGLE_FONTS_API_KEY=${STAG_GOOGLE_FONTS_API_KEY}
       - AWS_ACCESS_KEY_ID=${STAG_AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${STAG_AWS_SECRET_ACCESS_KEY}
+      - SENTRY_DSN_PUBLIC=${STAG_SENTRY_DSN_PUBLIC}
     when:
       status: success
       branch: [hotfix-*, release-*, feature-*, develop]
@@ -52,6 +55,7 @@ pipeline:
       - AWS_BUCKET=bonde-assets
       - AWS_ACCESS_KEY_ID=${PROD_AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${PROD_AWS_SECRET_ACCESS_KEY}
+      - SENTRY_DSN_PUBLIC=${PROD_SENTRY_DSN_PUBLIC}
     when:
       status: success
       event: tag
