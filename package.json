@@ -71,7 +71,7 @@
     "redux-logger": "^2.7.4",
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.1.0",
-    "slate-editor": "2.6.0",
+    "slate-editor": "2.6.1",
     "superagent": "^3.3.2",
     "throng": "^4.0.0",
     "url-loader": "^0.5.8",

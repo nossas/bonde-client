@@ -7339,9 +7339,9 @@ slash@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/slash/-/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
 
-slate-editor@2.6.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/slate-editor/-/slate-editor-2.6.0.tgz#68413e0d5f38bba1258c63015a7fc3cee4e15978"
+slate-editor@2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/slate-editor/-/slate-editor-2.6.1.tgz#edf2b5c95cd16be4010347673c7caadc24870ccb"
   dependencies:
     classnames "^2.2.5"
     exenv "^1.2.1"
