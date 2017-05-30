@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 import uuid from 'uuid'
 
 import {
@@ -25,6 +26,19 @@ const CommunitySettingsRecipientPage = ({
   ...formProps
 }) => (
   <SettingsForm {...formProps}>
+    <p style={{ color: '#FF9500' }}>
+      <FormattedMessage
+        id='page--community-recipient.pagarme-warning'
+        defaultMessage={
+          'Atenção: As doações só ficam disponíveis 31 dias após a transação de cartão de ' +
+          'crédito ter sido criada (29 dias corridos + 2 dias úteis) no caso de transações ' +
+          'com uma parcela e 2 dias úteis após o pagamento do boleto bancário. Caso a ' +
+          'transação tenha de 2 a 12 parcelas, o recebimento normal será da seguinte ' +
+          'forma: primeira parcela em 31 dias, segunda em 61, terceira em 91, ' +
+          'e assim por diante.'
+        }
+      />
+    </p>
     <FormGroup controlId='transferIntervalId' {...transferInterval}>
       <ControlLabel>Intervalo</ControlLabel>
       <RadioGroup layout='horizontal'>
