@@ -1,7 +1,12 @@
 @import '~slate-editor/lib/plugins/slate-color-plugin/DraggableColorPicker.css';
-@import '~slate-editor/lib/plugins/slate-image-plugin/ImageDataModal.css';
+@import '~slate-editor/lib/components/modal/Modal.css';
+@import '~slate-editor/lib/components/modal/ModalButton.css';
+@import '~slate-editor/lib/components/modal/ModalContent.css';
+@import '~slate-editor/lib/components/modal/ModalForm.css';
+@import '~slate-editor/lib/components/tooltip/Tooltip.css';
 @import '~slate-editor/lib/plugins/slate-image-plugin/ImageEditLayer.css';
 @import '~slate-editor/lib/plugins/slate-image-plugin/ImageNode.css';
+@import '~slate-editor/lib/plugins/slate-link-plugin/LinkNode.css';
 
 .editor--content > div {
   min-height: 370px;

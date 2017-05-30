@@ -6491,6 +6491,10 @@ range-parser@^1.0.3, range-parser@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.0.tgz#f49be6b487894ddc40dcc94a322f611092e00d5e"
 
+raven-js@^3.15.0:
+  version "3.15.0"
+  resolved "https://registry.yarnpkg.com/raven-js/-/raven-js-3.15.0.tgz#ebf95466b7d40fbbc3d6a5085af7c1431607926c"
+
 raven@^1.1.4:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/raven/-/raven-1.2.0.tgz#0f0d4463362e03f04793b3aab47619cbaf39da75"
@@ -7335,9 +7339,9 @@ slash@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/slash/-/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
 
-slate-editor@2.4.1:
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/slate-editor/-/slate-editor-2.4.1.tgz#68773634328a27163785185f5c60a4d9f9d7f20f"
+slate-editor@2.6.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/slate-editor/-/slate-editor-2.6.0.tgz#68413e0d5f38bba1258c63015a7fc3cee4e15978"
   dependencies:
     classnames "^2.2.5"
     exenv "^1.2.1"
