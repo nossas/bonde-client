@@ -10,8 +10,7 @@ import * as Paths from '../../Paths'
 class LogoutPage extends Component {
 
   componentDidMount () {
-    const { logout } = this.props
-    logout().then(() => browserHistory.push(Paths.login()))
+    this.props.logout()
   }
 
   render () {
