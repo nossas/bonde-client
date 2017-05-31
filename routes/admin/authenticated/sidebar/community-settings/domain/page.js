@@ -110,49 +110,65 @@ class Page extends Component {
           )}
         </div>
         {this.state.dnsHostedZone ? (
-          <div className='dns-records'>
-            <h2>Subdomínios externos</h2>
-            {dnsRecordsIsLoading && <Loading />}
-            {this.state.dnsRecords.map((dnsRecord, index) => (
-              <SubdomainPreview
-                key={`dns-record-${index}`}
-                subdomain={dnsRecord}
-                menuComponent={this.dnsRecordMenu(dnsRecord)}
-              />
-            ))}
-            {this.state.showSubdomainForm ? (
-              <SubdomainForm
-                dnsHostedZone={this.state.dnsHostedZone}
-                onSubmit={values => {
-                  const name = `${values.name}.${this.state.dnsHostedZone.domain_name}`
-                  return createDNSRecord({
-                    ...values,
-                    name,
-                    ttl: 3600,
-                    dns_hosted_zone_id: this.state.dnsHostedZone.id
-                  })
-                  .then(dnsRecord => {
-                    this.setState({ dnsRecords: [...this.state.dnsRecords, dnsRecord], showSubdomainForm: false })
-                    this.props.resetForm()
-                    return Promise.resolve()
-                  })
-                }}
-                {...formProps}
-              />
-            ) : (
-              <ButtonPreview
-                text='Adicionar novo subdomínio externo'
-                onClick={() => this.setState({ showSubdomainForm: true })}
-              />
-            )}
-            {this.state.deletedDNSRecord && (
-              <Dialog
-                onConfirm={() => this.confirmDeleteSubdomain()}
-                onCancel={() => this.setState({ deletedDNSRecord: undefined })}
-              >
-                <p>Tem certeza que deseja remover o subdomínio <b>{this.state.deletedDNSRecord.value}</b>?</p>
-              </Dialog>
-            )}
+          <div className='dns-detail'>
+            <div className='dns-records'>
+              <h3>Subdomínios externos</h3>
+              {dnsRecordsIsLoading && <Loading />} 
+              {this.state.dnsRecords.map((dnsRecord, index) => (
+                <SubdomainPreview
+                  key={`dns-record-${index}`}
+                  subdomain={dnsRecord}
+                  menuComponent={this.dnsRecordMenu(dnsRecord)}
+                />
+              ))}
+              {this.state.showSubdomainForm ? (
+                <SubdomainForm
+                  dnsHostedZone={this.state.dnsHostedZone}
+                  onSubmit={values => {
+                    const name = `${values.name}.${this.state.dnsHostedZone.domain_name}`
+                    return createDNSRecord({
+                      ...values,
+                      name,
+                      ttl: 3600,
+                      dns_hosted_zone_id: this.state.dnsHostedZone.id
+                    })
+                    .then(dnsRecord => {
+                      this.setState({ dnsRecords: [...this.state.dnsRecords, dnsRecord], showSubdomainForm: false })
+                      this.props.resetForm()
+                      return Promise.resolve()
+                    })
+                  }}
+                  {...formProps}
+                />
+              ) : (
+                <ButtonPreview
+                  text='Adicionar novo subdomínio externo'
+                  onClick={() => this.setState({ showSubdomainForm: true })}
+                />
+              )}
+              {this.state.deletedDNSRecord && (
+                <Dialog
+                  onConfirm={() => this.confirmDeleteSubdomain()}
+                  onCancel={() => this.setState({ deletedDNSRecord: undefined })}
+                >
+                  <p>Tem certeza que deseja remover o subdomínio <b>{this.state.deletedDNSRecord.value}</b>?</p>
+                </Dialog>
+              )}
+            </div>
+            <div className='dns-server'>
+              <h3>Servidor DNS</h3>
+              <p>
+              Os Servidores DNS são endereços utilizados pelas organizações de
+              registro de domínios como <a href='http://registro.br' target='_blank'>registro.br</a> ou <a href='http://godaddy.com' target='_blank'>godaddy.com</a>, para identificarem
+              em qual servidor se encontra as informações sobre o domínio registrado.
+              Tire suas dúvidas <a href='https://trilho.bonde.org/' title='Ajuda' target='_blank'>no site de ajuda</a>.
+              </p>
+              <ul>
+                {this.state.dnsHostedZone.delegation_set_servers.map(
+                  (server, index) => <li key={index}>{server}</li>
+                )}
+              </ul>
+            </div>
           </div>
         ) : null}
       </div>
