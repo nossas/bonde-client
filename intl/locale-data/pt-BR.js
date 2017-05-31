@@ -590,16 +590,19 @@ export default {
   // routepath:
   //   - /mobilizations/:mobilization_id/customDomain
   //   - /mobilizations/:mobilization_id/launch
-  'mobilizations.components--form-domain.basic.header-toggle.use-existing-domain': 'Quero usar o domínio principal da minha comunidade',
-  'mobilizations.components--form-domain.basic.header-toggle.create-domain': 'Quero cadastrar um domínio principal na minha comunidade',
+  'mobilizations.components--form-domain.create-domain-text.first-line': 'Ops, você ainda não tem um domínio configurado na sua comunidade. Se quiser cadastar, {link}.',
+  'mobilizations.components--form-domain.create-domain-text.first-line.link': 'clique aqui',
+  'mobilizations.components--form-domain.create-domain-text.second-line': 'Senão você pode, abaixo, usar um domínio externo para configurar o endereço da sua mobilização.',
+
+  'mobilizations.components--form-domain.basic.header-toggle.use-existing-domain': 'Quero usar um novo sub-domínio',
   'mobilizations.components--form-domain.basic.helper-text': 'Preencha abaixo o subdomínio e escolha o domínio que deseja configurar como endereço da sua mobilização',
   'mobilizations.components--form-domain.basic.form.subdomain.label': 'Subdomínio',
   'mobilizations.components--form-domain.basic.form.subdomain.placeholder': 'nomedamob',
   'mobilizations.components--form-domain.basic.form.domain.label': 'Domínio Principal',
-  'mobilizations.components--form-domain.basic.create-domain.helper-text': 'Ops, você ainda não tem um domínio configurado na sua comunidade. Se quiser cadastar, {link}. Senão você pode, abaixo, usar um domínio externo para configurar o endereço da sua mobilização.',
-  'mobilizations.components--form-domain.basic.create-domain.helper-text.link': 'clique aqui',
 
-  'mobilizations.components--form-domain.advanced.header-toggle': 'Quero usar um domínio externo',
+  'mobilizations.components--form-domain.root.header-toggle.use-root-domain': 'Quero usar um domínio principal cadastrado na comunidade',
+
+  'mobilizations.components--form-domain.advanced.header-toggle': 'Quero direcionar para um domínio externo',
   'mobilizations.components--form-domain.advanced.helper-text': 'Se você quer usar um domínio que comprou mas não está cadastrado na sua comunidade aqui, pode fazer isso. Por exemplo, se você já comprou www.meudominio.com.br você pode usá-lo para este BONDE. Demais, né? Preencha o campo abaixo e siga as orientações:',
   'mobilizations.components--form-domain.advanced.form.external-domain.label': 'Domínio personalizado',
   'mobilizations.components--form-domain.advanced.form.external-domain.placeholder': 'meudominio.com.br',
