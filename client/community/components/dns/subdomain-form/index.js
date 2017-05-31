@@ -17,11 +17,10 @@ const Form = ({ dnsHostedZone, fields: { name, record_type: recordType, value },
   <FormRedux nosubmit {...formProps}>
     <div className='form--dns-record'>
       <div className='fields--dns-record'>
-        <div className='col col-6'>
+        <div className='col col-6'> 
           <FormGroup {...name}>
-            <ControlLabel>Subdomínio</ControlLabel>
-            <FormControl type='text' />
-            <HelpBlock>{`.${dnsHostedZone.domain_name}`}</HelpBlock>
+            <ControlLabel>Nome</ControlLabel>
+            <FormControl type='text' addonText={`.${dnsHostedZone.domain_name}`} />
           </FormGroup>
         </div>
         <div className='col col-2'>
@@ -34,8 +33,8 @@ const Form = ({ dnsHostedZone, fields: { name, record_type: recordType, value },
         </div>
         <div className='col col-4'>
           <FormGroup {...value}>
-            <ControlLabel>Redirecionar para</ControlLabel>
-            <FormControl type='text' />
+            <ControlLabel>Valor</ControlLabel>
+            <FormControl componentClass='textarea' type='text' />
           </FormGroup>
         </div>
         <div className='clearfix' />

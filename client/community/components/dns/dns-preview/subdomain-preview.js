@@ -5,7 +5,7 @@ export default ({ subdomain, ...props }) => (
   <Preview {...props}>
     <ul className='ul--table'>
       <li className='li--table'>
-        <label className='header'>Subdomínio</label>
+        <label className='header'>Nome</label>
         <p className='body'>{subdomain.name.replace('\\052', '*')}</p>
       </li>
       <li className='li--table'>
@@ -13,7 +13,7 @@ export default ({ subdomain, ...props }) => (
         <p className='body'>{subdomain.record_type}</p>
       </li>
       <li className='li--table'>
-        <label className='header'>Redirecionar para</label>
+        <label className='header'>Valor</label>
         <div className={`body ${subdomain.record_type.toLowerCase()}`}>
           {subdomain.record_type === 'NS' ? (
             <ul>

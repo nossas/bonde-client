@@ -127,6 +127,7 @@ class Page extends Component {
               ))}
               {this.state.showSubdomainForm ? (
                 <SubdomainForm
+                  style={{ marginBottom: '70px' }}
                   dnsHostedZone={this.state.dnsHostedZone}
                   onSubmit={values => {
                     const name = `${values.name}.${this.state.dnsHostedZone.domain_name}`
