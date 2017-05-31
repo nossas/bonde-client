@@ -27,18 +27,24 @@ const CreateDomainText = ({ onClickLink }) => (
 )
 
 class FormDomain extends Component {
-
   constructor (props) {
     super(props)
-    this.state = { showSubdomain: false, showExternalDomain: false }
-  }
 
-  componentDidMount () {
-    const { fields: { subdomain, externalDomain } } = this.props
-    if (subdomain.value) {
-      this.toggle('showSubdomain', true)
-    } else if (externalDomain.value) {
-      this.toggle('showExternalDomain', true)
+    const { hostedZones, mobilization: { custom_domain: customDomain } } = props
+
+    /* eslint-disable no-useless-escape */
+    const subdomainRegex = zone => new RegExp(`^www\..+\.${zone.domain_name}$`).test(customDomain)
+    const rootDdomainRegex = zone => new RegExp(`^www\.${zone.domain_name}$`).test(customDomain)
+    /* eslint-disable no-useless-escape */
+
+    const hasCustomDomain = !!customDomain
+    const isSubdomain = hostedZones.some(subdomainRegex)
+    const isRootDomain = hostedZones.some(rootDdomainRegex)
+
+    this.state = {
+      showSubdomain: !hasCustomDomain || isSubdomain,
+      showExternalDomain: hasCustomDomain && !isSubdomain && !isRootDomain,
+      showRootDomain: isRootDomain
     }
   }
 
@@ -188,29 +194,6 @@ class FormDomain extends Component {
                     Preencha abaixo o subdomínio e escolha o domínio que deseja
                     configurar como endereço da sua mobilização
                   </p>
-                  <div className='form-groups-container flex flex-wrap'>
-                    <div className='prefix'>www.</div>
-                    <FormGroup controlId='subdomain' {...subdomain}>
-                      <ControlLabel>Subdomínio</ControlLabel>
-                      <FormControl
-                        type='text'
-                        placeholder='nomedamob'
-                      />
-                    </FormGroup>
-                    <div className='delimiter'>
-                      <strong>.</strong>
-                    </div>
-                    <FormGroup controlId='domain' {...domain}>
-                      <ControlLabel>Domínio Principal</ControlLabel>
-                      <FormDropdown>
-                        {hostedZones.map((obj, i) => (
-                          <option key={`hostedZone-${i}`} value={obj.domain_name}>
-                            {obj.domain_name}
-                          </option>
-                        ))}
-                      </FormDropdown>
-                    </FormGroup>
-                  </div>
                 </div>
               ) : (
                 <div>
