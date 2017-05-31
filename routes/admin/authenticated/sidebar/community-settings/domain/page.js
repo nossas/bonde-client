@@ -112,8 +112,12 @@ class Page extends Component {
         {this.state.dnsHostedZone ? (
           <div className='dns-detail'>
             <div className='dns-records'>
-              <h3>Subdomínios externos</h3>
-              {dnsRecordsIsLoading && <Loading />} 
+              <h3>Registros DNS</h3>
+              {dnsRecordsIsLoading && <Loading />}
+              <p>
+              Os registros DNS são configurações especiais que alteram a forma como o seu domínio trabalha.
+              Com esses registros, você se conecta a serviços de terceiros como provedores de email. <a href='https://trilho.bonde.org' title='Saiba mais' target='_blank'>Saiba mais</a>.
+              </p>
               {this.state.dnsRecords.map((dnsRecord, index) => (
                 <SubdomainPreview
                   key={`dns-record-${index}`}
