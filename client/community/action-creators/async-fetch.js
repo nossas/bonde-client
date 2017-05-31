@@ -1,4 +1,5 @@
 import * as t from '~client/community/action-types'
+import { logout } from '~client/account/redux/action-creators'
 
 const asyncFetch = () => (dispatch, getState, { api }) => {
   const { auth: { credentials } } = getState()
@@ -16,6 +17,13 @@ const asyncFetch = () => (dispatch, getState, { api }) => {
       } else if (status === 200) {
         dispatch({ type: t.FETCH_SUCCESS, data })
         return Promise.resolve()
+      }
+    })
+    .catch(({ response, ...error }) => {
+      if (response.status === 401) {
+        dispatch(logout())
+      } else {
+        return Promise.reject({ error, response })
       }
     })
 }

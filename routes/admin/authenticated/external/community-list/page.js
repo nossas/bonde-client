@@ -20,7 +20,7 @@ class CommunityListPage extends Component {
   render () {
     const { isLoading, isLoaded, communities, user } = this.props
 
-    return isLoading ? <Loading /> : (
+    return isLoading || user === undefined ? <Loading /> : (
       <div>
         <h1>Olá {user.first_name},</h1>
         <h2>Escolha uma das suas comunidades</h2>
@@ -49,7 +49,7 @@ CommunityListPage.propTypes = {
   communities: PropTypes.array,
   user: PropTypes.shape({
     first_name: PropTypes.string.isRequired
-  }).isRequired,
+  }),
   // Actions
   select: PropTypes.func.isRequired
 }
