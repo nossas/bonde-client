@@ -46,12 +46,14 @@ class FormRedux extends Component {
       inline,
       className,
       floatButton,
-      nosubmit
+      nosubmit,
+      style
     } = this.props
     const { submitted } = this.state
 
     return (
       <form
+        style={style}
         onSubmit={handleSubmit(submit || onSubmit)}
         className={classnames(
           'form-redux form',
