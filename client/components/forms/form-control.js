@@ -14,6 +14,7 @@ class FormControl extends Component {
       className,
       style,
       submitted,
+      addonText,
       ...props
     } = this.props
     const {
@@ -30,7 +31,10 @@ class FormControl extends Component {
     }
 
     return (
-      <div className={containerClassName}>
+      <div className={classnames(
+        containerClassName,
+        addonText !== undefined ? 'input-group' : ''
+      )}>
         <Component
           {...props}
           {...fieldProps}
@@ -39,10 +43,12 @@ class FormControl extends Component {
             'form-control-input block lightestgray',
             Component,
             formInline ? 'inline-block' : '',
+            addonText !== undefined ? 'form-control-input-addon' : '',
             className
           )}
           style={style}
         />
+        {addonText && <span className='text-addon'>{addonText}</span>}
         {formInline && (
           <ControlButtons {...{ submitted, submitting, dirty, showCancel: false, formInline }} />
         )}
