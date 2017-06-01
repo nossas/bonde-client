@@ -130,7 +130,7 @@ export default {
   'community.page--domain-list.dialog.domain-confirm-message': 'Tem certeza que deseja remover o domínio',
   'community.page--domain-list.dns-record-description': 'Os registros DNS são configurações especiais que alteram a forma como o seu domínio trabalha. Com esses registros, você se conecta a serviços de terceiros como provedores de email. {link}.',
   'community.page--domain-list.dns-record-description.link': 'Saiba mais',
-  'community.page--domain-list.dns-server-description': 'Os Servidores DNS são endereços utilizados pelas organizações de registro de domínios como {registrobr} ou {godaddy}, para identificarem em qual servidor se encontra as informações sobre o domínio registrado. Tire suas dúvidas {trilho}.',
+  'community.page--domain-list.dns-server-description': 'Os Servidores DNS são endereços utilizados pelas organizações de registro de domínios como {registrobr} ou {godaddy}, para identificarem em qual servidor se encontram as informações sobre o domínio registrado. Tire suas dúvidas {trilho}.',
   'community.page--domain-list.dns-server-description.trilho.link': 'no site de ajuda',
 
   // component community subdomain form
