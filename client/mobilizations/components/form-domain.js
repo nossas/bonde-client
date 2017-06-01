@@ -147,17 +147,17 @@ class FormDomain extends Component {
 
     return (
       <div className='components--form-domain'>
-        <p className='h5 mb3'>
-          Estamos quase lá, agora você precisa escolher qual endereço será utilizado.
-          <br />
-          Se você já cadastrou um domínio na comunidade, pode selecionar abaixo qual das
-          opções melhor se encaixa!
-          <br />
-          Para fazer o cadastro de um novo
-          domínio, <a href='#' onClick={this.clickHere.bind(this)} target='_self'>clique aqui</a>.
-        </p>
-
         <FormComponent {...formProps}>
+          <p className='h5 mb3'>
+            Estamos quase lá, agora você precisa escolher qual endereço será utilizado.
+            <br />
+            Se você já cadastrou um domínio na comunidade, pode selecionar abaixo qual das
+            opções melhor se encaixa!
+            <br />
+            Para fazer o cadastro de um novo
+            domínio, <a href='#' onClick={this.clickHere.bind(this)} target='_self'>clique aqui</a>.
+          </p>
+
           <div className='basic-config' style={{ marginBottom: '1rem' }}>
             <HeaderToggle
               onToggle={() => this.toggle('showSubdomain', !this.state.showSubdomain)}
