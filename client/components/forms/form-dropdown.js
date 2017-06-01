@@ -17,8 +17,8 @@ class FormDropdown extends Component {
       <select
         id={controlId}
         className={classnames('select col-12', className)}
-        {...props}
         {...field}
+        {...props}
       >
         {!!children && children}
       </select>

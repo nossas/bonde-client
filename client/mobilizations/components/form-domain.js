@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import classnames from 'classnames'
 import ServerConfig from '~server/config'
 import { FormGroup, ControlLabel, FormControl, FormDropdown } from '~client/components/forms'
+import { isBoolean } from '~client/utils/type-checker'
 
 if (require('exenv').canUseDOM) require('./form-domain.scss')
 
@@ -30,21 +31,31 @@ class FormDomain extends Component {
   constructor (props) {
     super(props)
 
-    const { hostedZones, mobilization: { custom_domain: customDomain } } = props
+    this.state = {
+      showSubdomain: false,
+      showExternalDomain: false,
+      showRootDomain: false
+    }
+  }
+
+  componentDidMount () {
+    const { hostedZones, mobilization: { custom_domain: customDomain } } = this.props
 
     /* eslint-disable no-useless-escape */
     const subdomainRegex = zone => new RegExp(`^www\..+\.${zone.domain_name}$`).test(customDomain)
-    const rootDdomainRegex = zone => new RegExp(`^www\.${zone.domain_name}$`).test(customDomain)
+    const rootDomainRegex = zone => new RegExp(`^www\.${zone.domain_name}$`).test(customDomain)
     /* eslint-disable no-useless-escape */
 
     const hasCustomDomain = !!customDomain
     const isSubdomain = hostedZones.some(subdomainRegex)
-    const isRootDomain = hostedZones.some(rootDdomainRegex)
+    const isRootDomain = hostedZones.some(rootDomainRegex)
 
-    this.state = {
-      showSubdomain: !hasCustomDomain || isSubdomain,
-      showExternalDomain: hasCustomDomain && !isSubdomain && !isRootDomain,
-      showRootDomain: isRootDomain
+    if (!hasCustomDomain || isSubdomain) {
+      this.toggle('showSubdomain', !this.state.showSubdomain)
+    } else if (hasCustomDomain && !isSubdomain && !isRootDomain) {
+      this.toggle('showExternalDomain', !this.state.showExternalDomain)
+    } else if (isRootDomain) {
+      this.toggle('showRootDomain', !this.state.showRootDomain)
     }
   }
 
@@ -60,6 +71,7 @@ class FormDomain extends Component {
       if (value === true) {
         state.showSubdomain = false
         state.showRootDomain = false
+        this.props.fields.rootDomainConfig.onChange(false)
       }
       this.setState(state)
     } else if (key === 'showSubdomain') {
@@ -68,9 +80,11 @@ class FormDomain extends Component {
         state.showExternalDomain = false
         state.showRootDomain = false
         this.props.fields.advancedConfig.onChange(false)
+        this.props.fields.rootDomainConfig.onChange(false)
       }
       this.setState(state)
     } else if (key === 'showRootDomain') {
+      this.props.fields.rootDomainConfig.onChange(value)
       const state = { [key]: value }
       if (value === true) {
         state.showSubdomain = false
@@ -126,10 +140,11 @@ class FormDomain extends Component {
   render () {
     const {
       formComponent: FormComponent,
-      fields: { domain, subdomain, externalDomain },
+      fields: { domain, subdomain, externalDomain, rootDomain },
       hostedZones,
       ...formProps
     } = this.props
+
     return (
       <div className='components--form-domain'>
         <FormComponent {...formProps}>
@@ -161,7 +176,14 @@ class FormDomain extends Component {
                     </div>
                     <FormGroup controlId='domain' {...domain}>
                       <ControlLabel>Domínio Principal</ControlLabel>
-                      <FormDropdown>
+                      <FormDropdown
+                        onChange={e => domain.onChange(e.target.value)}
+                        value={
+                          (isBoolean(domain.value) ? false : domain.value) ||
+                          domain.initialValue || ''
+                        }
+                      >
+                        <option value='' disabled>Escolha...</option>
                         {hostedZones.map((obj, i) => (
                           <option key={`hostedZone-${i}`} value={obj.domain_name}>
                             {obj.domain_name}
@@ -180,7 +202,8 @@ class FormDomain extends Component {
               )
             )}
           </div>
-          <div className='root-domain-config' style={{ marginBottom: '1rem' }}>
+
+          <div className='root-domain-config basic-config' style={{ marginBottom: '1rem' }}>
             <HeaderToggle
               onToggle={() => this.toggle('showRootDomain', !this.state.showRootDomain)}
               show={this.state.showRootDomain}
@@ -191,9 +214,31 @@ class FormDomain extends Component {
               hostedZones.length > 0 ? (
                 <div>
                   <p className='h5'>
-                    Preencha abaixo o subdomínio e escolha o domínio que deseja
-                    configurar como endereço da sua mobilização
+                    Escolha o domínio que deseja configurar como endereço da sua mobilização
                   </p>
+                  <div className='form-groups-container flex flex-wrap'>
+                    <div className='prefix'>www.</div>
+                    <FormGroup controlId='rootDomain' {...rootDomain}>
+                      <ControlLabel>Domínio Principal</ControlLabel>
+                      <FormDropdown
+                        onChange={e => rootDomain.onChange(e.target.value)}
+                        value={
+                          (isBoolean(rootDomain.value) ? false : rootDomain.value) ||
+                          rootDomain.initialValue || ''
+                        }
+                      >
+                        <option value='' disabled>Escolha...</option>
+                        {hostedZones.map((obj, i) => (
+                          <option
+                            key={`hostedZone-${i}`}
+                            value={obj.domain_name}
+                          >
+                            {obj.domain_name}
+                          </option>
+                        ))}
+                      </FormDropdown>
+                    </FormGroup>
+                  </div>
                 </div>
               ) : (
                 <div>
@@ -204,6 +249,7 @@ class FormDomain extends Component {
               )
             )}
           </div>
+
           <div className='advanced-config'>
             <HeaderToggle
               onToggle={() => this.toggle('showExternalDomain', !this.state.showExternalDomain)}
