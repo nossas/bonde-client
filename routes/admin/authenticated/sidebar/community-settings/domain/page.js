@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
+import { FormattedMessage, FormattedHTMLMessage, intlShape } from 'react-intl'
 import { Loading } from '~client/components/await'
 import { Dialog } from '~client/ux/components'
 import {
@@ -80,12 +81,24 @@ class Page extends Component {
   }
 
   render () {
-    const { createDNSRecord, dnsHostedZoneIsLoading, dnsHostedZones, dnsRecordsIsLoading, ...formProps } = this.props
+    const {
+      createDNSRecord,
+      dnsHostedZoneIsLoading,
+      dnsHostedZones,
+      dnsRecordsIsLoading,
+      intl,
+      ...formProps
+    } = this.props
 
     return (
       <div className='domain-page'>
         <div className='dns-hosted-zones'>
-          <h2>Domínios da comunidade</h2>
+          <h2>
+            <FormattedMessage
+              id='community.page--domain-list.header.dns-hosted-zone'
+              defaultMessage='Domínios da comunidade'
+            />
+          </h2>
           {dnsHostedZoneIsLoading && <Loading />}
           {dnsHostedZones && dnsHostedZones.map((dnsHostedZone, index) => (
             <DomainPreview
@@ -97,7 +110,12 @@ class Page extends Component {
             />
           ))}
           <ButtonPreview
-            text='Adicionar novo domínio'
+            text={
+              intl.formatMessage({
+                id: 'community.page--domain-list.button.add-new-domain',
+                defaultMessage: 'Adicionar novo domínio'
+              })
+            }
             onClick={() => browserHistory.push(Paths.communityDomainCreate())}
           />
           {this.state.deletedHostedZone && (
@@ -105,18 +123,35 @@ class Page extends Component {
               onConfirm={() => this.confirmDeleteDomain()}
               onCancel={() => this.setState({ deletedHostedZone: undefined })}
             >
-              <p>Tem certeza que deseja remover o domínio <b>{this.state.deletedHostedZone.domain_name}</b>?</p>
+              <p>
+                <FormattedMessage
+                  id='community.page--domain-list.dialog.domain-confirm-message'
+                  defaultMessage='Tem certeza que deseja remover o domínio'
+                />
+                <b> {this.state.deletedHostedZone.domain_name}</b>?</p>
             </Dialog>
           )}
         </div>
         {this.state.dnsHostedZone ? (
           <div className='dns-detail'>
             <div className='dns-records'>
-              <h3>Registros DNS</h3>
+              <h3>
+                <FormattedMessage
+                  id='community.page--domain-list.header.dns-records'
+                  defaultMessage='Registros DNS'
+                />
+              </h3>
               {dnsRecordsIsLoading && <Loading />}
               <p>
-              Os registros DNS são configurações especiais que alteram a forma como o seu domínio trabalha.
-              Com esses registros, você se conecta a serviços de terceiros como provedores de email. <a href='https://trilho.bonde.org' title='Saiba mais' target='_blank'>Saiba mais</a>.
+                <FormattedHTMLMessage
+                  id="community.page--domain-list.dns-record-description"
+                  defaultMessage={`
+                    Os registros DNS são configurações especiais que alteram a
+                    forma como o seu domínio trabalha. Com esses registros, você
+                    se conecta a serviços de terceiros como provedores de email.
+                    <a href='https://trilho.bonde.org' title='Saiba mais' target='_blank'>Saiba mais</a>.
+                  `}
+                />
               </p>
               {this.state.dnsRecords.map((dnsRecord, index) => (
                 <SubdomainPreview
@@ -147,7 +182,12 @@ class Page extends Component {
                 />
               ) : (
                 <ButtonPreview
-                  text='Adicionar novo subdomínio externo'
+                  text={
+                    intl.formatMessage({
+                      id: 'community.page--domain-list.button.add-new-record',
+                      defaultMessage: 'Adicionar novo registro'
+                    })
+                  }
                   onClick={() => this.setState({ showSubdomainForm: true })}
                 />
               )}
@@ -156,17 +196,37 @@ class Page extends Component {
                   onConfirm={() => this.confirmDeleteSubdomain()}
                   onCancel={() => this.setState({ deletedDNSRecord: undefined })}
                 >
-                  <p>Tem certeza que deseja remover o subdomínio <b>{this.state.deletedDNSRecord.value}</b>?</p>
+                  <p>
+                    <FormattedMessage
+                      id='community.page--domain-list.dialog.record-confirm-message'
+                      defaultMessage='Tem certeza que deseja remover o subdomínio'
+                    />
+                    <b> {this.state.deletedDNSRecord.value}</b>?
+                  </p>
                 </Dialog>
               )}
             </div>
             <div className='dns-server'>
-              <h3>Servidor DNS</h3>
+              <h3>
+                <FormattedMessage
+                  id='community.page--domain-list.header.dns-server'
+                  defaultMessage='Servidor DNS'
+                />
+              </h3>
               <p>
-              Os Servidores DNS são endereços utilizados pelas organizações de
-              registro de domínios como <a href='http://registro.br' target='_blank'>registro.br</a> ou <a href='http://godaddy.com' target='_blank'>godaddy.com</a>, para identificarem
-              em qual servidor se encontra as informações sobre o domínio registrado.
-              Tire suas dúvidas <a href='https://trilho.bonde.org/' title='Ajuda' target='_blank'>no site de ajuda</a>.
+                <FormattedHTMLMessage
+                  id='community.page--domain-list.dns-server-description'
+                  defaultMessage={`
+                    Os Servidores DNS são endereços utilizados pelas organizações
+                    de registro de domínios como <a href='http://registro.br' target='_blank'>registro.br</a>
+                    ou <a href='http://godaddy.com' target='_blank'>godaddy.com</a>,
+                    para identificarem em qual servidor se encontra as informações
+                    sobre o domínio registrado.
+
+                    Tire suas dúvidas <a href='https://trilho.bonde.org/' title='Ajuda' target='_blank'>
+                    no site de ajuda</a>.
+                  `}
+                />
               </p>
               <ul>
                 {this.state.dnsHostedZone.delegation_set_servers.map(
@@ -187,7 +247,8 @@ Page.propTypes = {
   dnsHostedZones: PropTypes.array,
   fetchDNSRecords: PropTypes.func,
   deleteHostedZone: PropTypes.func,
-  createDNSRecord: PropTypes.func
+  createDNSRecord: PropTypes.func,
+  intl: intlShape.isRequired
 }
 
 export default Page

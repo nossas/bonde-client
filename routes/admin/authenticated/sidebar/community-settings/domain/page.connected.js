@@ -1,6 +1,7 @@
 import { provideHooks } from 'redial'
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
+import { injectIntl } from 'react-intl'
 
 import DNSControlSelectors from '~client/community/dns-control-selectors'
 import {
@@ -71,6 +72,6 @@ const mapActionsToProps = {
 
 export default provideHooks(redial)(
   reduxForm({ form: 'createDNSRecordForm', fields, validate })(
-    connect(mapStateToProps, mapActionsToProps)(Page)
+    connect(mapStateToProps, mapActionsToProps)(injectIntl(Page))
   )
 )
