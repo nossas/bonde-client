@@ -601,6 +601,7 @@ export default {
   'mobilizations.components--form-domain.basic.form.domain.label': 'Domínio Principal',
 
   'mobilizations.components--form-domain.root.header-toggle.use-root-domain': 'Quero usar um domínio principal cadastrado na comunidade',
+  'mobilizations.components--form-domain.root.helper-text': 'Escolha o domínio que deseja configurar como endereço da sua mobilização',
 
   'mobilizations.components--form-domain.advanced.header-toggle': 'Quero direcionar para um domínio externo',
   'mobilizations.components--form-domain.advanced.helper-text': 'Se você quer usar um domínio que comprou mas não está cadastrado na sua comunidade aqui, pode fazer isso. Por exemplo, se você já comprou www.meudominio.com.br você pode usá-lo para este BONDE. Demais, né? Preencha o campo abaixo e siga as orientações:',
