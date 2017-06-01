@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.4"></a>
+## [0.5.4](https://github.com/nossas/bonde-client/compare/v0.5.3...v0.5.4) (2017-05-31)
+
+
+### Bug Fixes
+
+* **community-recipient:** change style of pagarme warning ([0721e34](https://github.com/nossas/bonde-client/commit/0721e34))
+* **packages:** upgrade slate-editor to v2.6.3 ([134145f](https://github.com/nossas/bonde-client/commit/134145f))
+
+
+
 <a name="0.5.3"></a>
 ## [0.5.3](https://github.com/nossas/bonde-client/compare/v0.5.2...v0.5.3) (2017-05-31)
 

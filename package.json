@@ -1,6 +1,6 @@
 {
   "name": "bonde-client",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "Bonde Client - Node.js Server and React + Redux Progressive Web App",
   "author": "Nossas <tech@nosssas.org>",
   "homepage": "http://bonde.org",
@@ -71,7 +71,7 @@
     "redux-logger": "^2.7.4",
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.1.0",
-    "slate-editor": "2.6.3",
+    "slate-editor": "2.6.4",
     "superagent": "^3.3.2",
     "throng": "^4.0.0",
     "url-loader": "^0.5.8",
