@@ -590,10 +590,10 @@ export default {
   // routepath:
   //   - /mobilizations/:mobilization_id/customDomain
   //   - /mobilizations/:mobilization_id/launch
-  'mobilizations.components--form-domain.helper-text-first-line': 'Estamos quase lá, agora você precisa escolher qual endereço será utilizado.',
-  'mobilizations.components--form-domain.helper-text-second-line': 'Se você já cadastrou um domínio na comunidade, pode selecionar abaixo qual das opções melhor se encaixa!',
-  'mobilizations.components--form-domain.helper-text-third-line': 'Para fazer o cadastro de um novo domínio, {link}.',
-  'mobilizations.components--form-domain.helper-text-third-line.link': 'clique aqui',
+  'mobilizations.components--form-domain.helper-text-first-line': 'Estamos quase lá, antes de publicar sua mobilização é preciso escolher a url que será usada para publicação.',
+  'mobilizations.components--form-domain.helper-text-second-line': 'Já cadastrou um domínio na comunidade? Selecione abaixo qual das opções melhor se encaixa.',
+  'mobilizations.components--form-domain.helper-text-third-line': 'Quer cadastrar um novo domínio? {link}.',
+  'mobilizations.components--form-domain.helper-text-third-line.link': 'Clique aqui',
 
   'mobilizations.components--form-domain.create-domain-text.first-line': 'Ops, você ainda não tem um domínio configurado na sua comunidade. Se quiser cadastar, {link}.',
   'mobilizations.components--form-domain.create-domain-text.first-line.link': 'clique aqui',

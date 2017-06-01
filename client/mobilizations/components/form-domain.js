@@ -149,13 +149,14 @@ class FormDomain extends Component {
       <div className='components--form-domain'>
         <FormComponent {...formProps}>
           <p className='h5 mb3'>
-            Estamos quase lá, agora você precisa escolher qual endereço será utilizado.
+            Estamos quase lá, antes de publicar sua mobilização é preciso
+            escolher a url que será usada para publicação.
             <br />
-            Se você já cadastrou um domínio na comunidade, pode selecionar abaixo qual das
-            opções melhor se encaixa!
+            Já cadastrou um domínio na comunidade? Selecione abaixo qual
+            das opções melhor se encaixa.
             <br />
-            Para fazer o cadastro de um novo
-            domínio, <a href='#' onClick={this.clickHere.bind(this)} target='_self'>clique aqui</a>.
+            Quer cadastrar um novo
+            domínio? <a href='#' onClick={this.clickHere.bind(this)} target='_self'>Clique aqui</a>.
           </p>
 
           <div className='basic-config' style={{ marginBottom: '1rem' }}>
