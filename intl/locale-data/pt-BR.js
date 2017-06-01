@@ -114,19 +114,43 @@ export default {
   // routepath: /community/domain/add
   'community.components--domain-preview.li.domain.header': 'Domínio da comunidade',
 
-  // component community subdomain preview
-  // filepath: /client/community/components/dns/dns-preview/subdomain-preview.js
+  // component community subdomain preview and form
   // routepath: /community/domain
-  'community.components--subdomain-preview.li.subdomain.header': 'Subdomínio',
-  'community.components--subdomain-preview.li.record-type.header': 'Tipo',
-  'community.components--subdomain-preview.li.redirect-to.header': 'Redirecionar para',
+  'community.components--subdomain.label.name': 'Nome',
+  'community.components--subdomain.label.record-type': 'Tipo',
+  'community.components--subdomain.label.value': 'Valor',
+  'community.components--subdomain.form.submit-button': 'Adicionar',
+  'community.components--domain.preview.label.domain': 'Domínio da comunidade',
+  'community.page--domain-list.header.dns-hosted-zone': 'Domínios da comunidade',
+  'community.page--domain-list.header.dns-records': 'Registros DNS',
+  'community.page--domain-list.header.dns-server': 'Servidor DNS',
+  'community.page--domain-list.button.add-new-record': 'Adicionar novo registro',
+  'community.page--domain-list.button.add-new-domain': 'Adicionar novo domínio',
+  'community.page--domain-list.dialog.record-confirm-message': 'Tem certeza que deseja remover o registro',
+  'community.page--domain-list.dialog.domain-confirm-message': 'Tem certeza que deseja remover o domínio',
+  'community.page--domain-list.dns-record-description': `
+    Os registros DNS são configurações especiais que alteram a
+    forma como o seu domínio trabalha. Com esses registros, você
+    se conecta a serviços de terceiros como provedores de email.
+    <a href='https://trilho.bonde.org' title='Saiba mais' target='_blank'>Saiba mais</a>.
+  `,
+  'community.page--domain-list.dns-server-description': `
+    Os Servidores DNS são endereços utilizados pelas organizações
+    de registro de domínios como <a href='http://registro.br' target='_blank'>registro.br</a>
+    ou <a href='http://godaddy.com' target='_blank'>godaddy.com</a>,
+    para identificarem em qual servidor se encontra as informações
+    sobre o domínio registrado.
+
+    Tire suas dúvidas <a href='https://trilho.bonde.org/' title='Ajuda' target='_blank'>
+    no site de ajuda</a>.
+  `,
 
   // component community subdomain form
   // filepath: /client/community/components/dns/subdomain-form/index.js
   // routepath: /community/domain
-  'community.components--subdomain-form.subdomain.label': 'Subdomínio',
-  'community.components--subdomain-form.record-type.label': 'Tipo',
-  'community.components--subdomain-form.redirect-to.label': 'Redirecionar para',
+  //'community.components--subdomain-form.subdomain.label': 'Subdomínio',
+  //'community.components--subdomain-form.record-type.label': 'Tipo',
+  //'community.components--subdomain-form.redirect-to.label': 'Redirecionar para',
   'community.components--subdomain-form.button.text': 'Adicionar',
 
   // page community domain
