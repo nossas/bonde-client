@@ -146,8 +146,8 @@ class Page extends Component {
                 <FormattedMessage
                   id="community.page--domain-list.dns-record-description"
                   defaultMessage={
-                    'Os registros DNS são configurações especiais que alteram a' +
-                    'forma como o seu domínio trabalha. Com esses registros, você' +
+                    'Os registros DNS são configurações especiais que alteram a ' +
+                    'forma como o seu domínio trabalha. Com esses registros, você ' +
                     'se conecta a serviços de terceiros como provedores de email. {link}.'
                   }
                   values={{
