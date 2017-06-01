@@ -21,17 +21,8 @@ export default {
   'community.page--domain-list.button.add-new-domain': 'Add new domain',
   'community.page--domain-list.dialog.record-confirm-message': 'Are you sure you want to remove the dns record',
   'community.page--domain-list.dialog.domain-confirm-message': 'Are you sure you want to remove the domain',
-	'community.page--domain-list.dns-server-description': `
-    DNS Servers are addresses used by domain registrar organizations such as
-    <a href='http://registro.br' target='_blank'>registro.br</a> or
-    <a href ='http://godaddy.com' target='_blank'>godaddy.com</a>, to identify
-    on which server the information about the registered domain is located.
-
-    Ask your questions <a href='https://trilho.bonde.org/' title='Help' target='_blank'>on the help site</a>.
-  `,
-  'community.page--domain-list.dns-record-description': `
-		DNS records are special settings that change how your domain works.
-    With these records, you connect to third-party services as e-mail providers.
-    <a href='https://trilho.bonde.org' title='Learn more 'target='_blank'> Learn more </a>.
-  `,
+  'community.page--domain-list.dns-record-description': 'DNS records are special settings that change how your domain works. With these records, you connect to third-party services as e-mail providers. {link}.',
+  'community.page--domain-list.dns-record-description.link': 'Learn more',
+  'community.page--domain-list.dns-server-description': 'DNS Servers are addresses used by domain registrar organizations such as {registrobr} or {godaddy}, to identify on which server the information about the registered domain is located. Ask your questions {trilho}.',
+  'community.page--domain-list.dns-server-description.trilho.link': 'on the help site',
 }

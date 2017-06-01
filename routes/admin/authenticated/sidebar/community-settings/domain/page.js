@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
-import { FormattedMessage, FormattedHTMLMessage, intlShape } from 'react-intl'
+import { FormattedMessage, intlShape } from 'react-intl'
 import { Loading } from '~client/components/await'
 import { Dialog } from '~client/ux/components'
 import {
@@ -143,14 +143,23 @@ class Page extends Component {
               </h3>
               {dnsRecordsIsLoading && <Loading />}
               <p>
-                <FormattedHTMLMessage
+                <FormattedMessage
                   id="community.page--domain-list.dns-record-description"
-                  defaultMessage={`
-                    Os registros DNS são configurações especiais que alteram a
-                    forma como o seu domínio trabalha. Com esses registros, você
-                    se conecta a serviços de terceiros como provedores de email.
-                    <a href='https://trilho.bonde.org' title='Saiba mais' target='_blank'>Saiba mais</a>.
-                  `}
+                  defaultMessage={
+                    'Os registros DNS são configurações especiais que alteram a' +
+                    'forma como o seu domínio trabalha. Com esses registros, você' +
+                    'se conecta a serviços de terceiros como provedores de email. {link}.'
+                  }
+                  values={{
+                    link: (
+                      <a href='https://trilho.bonde.org' title='Saiba mais' target='_blank'>
+                        <FormattedMessage
+                          id="community.page--domain-list.dns-record-description.link"
+                          defaultMessage="Saiba mais"
+                        />
+                      </a>
+                    )
+                  }}
                 />
               </p>
               {this.state.dnsRecords.map((dnsRecord, index) => (
@@ -214,18 +223,26 @@ class Page extends Component {
                 />
               </h3>
               <p>
-                <FormattedHTMLMessage
+                <FormattedMessage
                   id='community.page--domain-list.dns-server-description'
-                  defaultMessage={`
-                    Os Servidores DNS são endereços utilizados pelas organizações
-                    de registro de domínios como <a href='http://registro.br' target='_blank'>registro.br</a>
-                    ou <a href='http://godaddy.com' target='_blank'>godaddy.com</a>,
-                    para identificarem em qual servidor se encontra as informações
-                    sobre o domínio registrado.
-
-                    Tire suas dúvidas <a href='https://trilho.bonde.org/' title='Ajuda' target='_blank'>
-                    no site de ajuda</a>.
-                  `}
+                  defaultMessage={
+                    'Os Servidores DNS são endereços utilizados pelas organizações de registro ' +
+                    'de domínios como {registrobr} ou {godaddy}, para identificarem em qual ' +
+                    'servidor se encontra as informações sobre o domínio registrado. Tire ' +
+                    'suas dúvidas {trilho}.'
+                  }
+                  values={{
+                    registrobr: <a href='http://registro.br' target='_blank'>registro.br</a>,
+                    godaddy: <a href='http://godaddy.com' target='_blank'>godaddy.com</a>,
+                    trilho: (
+                      <a href='https://trilho.bonde.org/' title='Ajuda' target='_blank'>
+                        <FormattedMessage
+                          id="community.page--domain-list.dns-server-description.trilho.link"
+                          defaultMessage="no site de ajuda"
+                        />
+                      </a>
+                    )
+                  }}
                 />
               </p>
               <ul>
