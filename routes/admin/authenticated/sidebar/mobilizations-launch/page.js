@@ -12,6 +12,7 @@ import { StepsContainerStack, StepContent } from '~client/components/steps'
 import { FormDomain, FormShare } from '~client/mobilizations/components'
 
 if (require('exenv').canUseDOM) {
+  require('./form-domain.scss')
   require('./form-share.scss')
 }
 
