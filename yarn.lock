@@ -2304,6 +2304,10 @@ cosmiconfig@^2.1.0, cosmiconfig@^2.1.1:
     parse-json "^2.2.0"
     require-from-string "^1.1.0"
 
+countup.js@^1.8.5:
+  version "1.8.5"
+  resolved "https://registry.yarnpkg.com/countup.js/-/countup.js-1.8.5.tgz#0941f62c605835c601478b45e8c096b16d7e9881"
+
 cpf_cnpj@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/cpf_cnpj/-/cpf_cnpj-0.2.0.tgz#a032c19242a38e8363edce4e78bb1fbe9d664aa5"
@@ -6604,6 +6608,12 @@ react-cookie@^1.0.4:
   dependencies:
     cookie "^0.3.1"
     object-assign "^4.1.0"
+
+react-countup@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/react-countup/-/react-countup-2.1.1.tgz#0fccacfd6d2d9045d347d07e4c0e18b1c1fcd33f"
+  dependencies:
+    countup.js "^1.8.5"
 
 react-dock@^0.2.1:
   version "0.2.3"
