@@ -59,7 +59,6 @@ class Mobilization extends React.Component {
 
           if (scrollPassed && !block.scrollTopReached) {
             this.updateBlock(block, { scrollTopReached: true })
-            console.log(block.id, 'was reached')
           }
         })
 
@@ -72,10 +71,8 @@ class Mobilization extends React.Component {
         const isBottom = viewportBottom >= blocksTotalHeight
         const lastBlock = this.state.blocks.slice(-1)[0]
 
-        console.log('lastBlock', lastBlock.scrollTopReached)
         if (isBottom && !lastBlock.scrollTopReached) {
           this.updateBlock( lastBlock, { scrollTopReached: true })
-          console.log('the bottom was reached')
         }
       }
     }
