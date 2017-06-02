@@ -43,7 +43,12 @@ const Block = ({ block, widgets, editable, hasMouseOver, onMouseOver, onMouseOut
       {editing === `${EDIT_KEY}-${block.id}` ? <BlockChangeBackground block={block} /> : null}
       <div className='clearfix widgets' style={{ padding: '5em 0' }}>
         {widgets && widgets.map(widget => (
-          <Widget key={`widget-${widget.id}`} widget={widget} editable={editable} />
+          <Widget
+            key={`widget-${widget.id}`}
+            widget={widget}
+            block={block}
+            editable={editable}
+          />
         ))}
       </div>
       {block.hidden && (
