@@ -8,12 +8,90 @@ import Navbar from './navbar'
 import * as paths from '~client/paths'
 
 class Mobilization extends React.Component {
+  constructor (props) {
+    super(props)
+
+    const { editable, blocks } = props
+
+    this.state = {
+      blocks: blocks.filter(block => !editable ? !block.hidden : true),
+    }
+  }
+
+  componentWillReceiveProps(props) {
+    if (this.props.blocks !== props.blocks) {
+      const { editable, blocks } = props
+
+      this.setState({
+        blocks: blocks.filter(block => !editable ? !block.hidden : true)
+      })
+    }
+  }
 
   componentDidMount () {
     const { editable, mobilization, blocks, blocksIsLoaded } = this.props
     if (editable && blocksIsLoaded && blocks.length === 0) {
       browserHistory.push(paths.mobilizationTemplatesChoose(mobilization))
     }
+
+    if (require('exenv').canUseDOM) {
+      let blocksTotalHeight = 0
+      const blocksWithOffsetTop = []
+
+      // get the offsetTop of each block and put it on state
+      this.state.blocks.map((block, index) => {
+        const { offsetTop, offsetHeight } = document.querySelector(`#block-${block.id}`)
+        const scrollTopReached = index === 0
+
+        blocksWithOffsetTop.push({ ...block, offsetTop, scrollTopReached })
+        blocksTotalHeight += offsetHeight
+      })
+      this.setState({ blocks: blocksWithOffsetTop })
+
+      // watch the scroll event
+      document.querySelector('#blocks-list').onscroll = ({ target }) => {
+        //
+        // check if the current scroll position is greater or equals
+        // than one of the blocks offsetTop
+        //
+        this.state.blocks.map(block => {
+          const scrollPassed = target.scrollTop >= block.offsetTop
+
+          if (scrollPassed && !block.scrollTopReached) {
+            this.updateBlock(block, { scrollTopReached: true })
+            console.log(block.id, 'was reached')
+          }
+        })
+
+        //
+        // small fix if the last block is small than viewport
+        // if the scroll position is greater or equals than
+        // sum of all blocks height, sinalyze that the last block was reached
+        //
+        const viewportBottom = target.scrollTop + target.offsetHeight
+        const isBottom = viewportBottom >= blocksTotalHeight
+        const lastBlock = this.state.blocks.slice(-1)[0]
+
+        console.log('lastBlock', lastBlock.scrollTopReached)
+        if (isBottom && !lastBlock.scrollTopReached) {
+          this.updateBlock( lastBlock, { scrollTopReached: true })
+          console.log('the bottom was reached')
+        }
+      }
+    }
+  }
+
+  updateBlock (block, newProps) {
+    const { blocks } = this.state
+    const index = blocks.findIndex(currentBlock => currentBlock.id === block.id)
+
+    this.setState({
+      blocks: [
+        ...blocks.slice(0, index),
+        { ...blocks[index], ...newProps },
+        ...this.state.blocks.slice(index + 1)
+      ]
+    })
   }
 
   render () {
@@ -34,8 +112,6 @@ class Mobilization extends React.Component {
     const layoutClassName = editable ? 'flex-auto relative' : 'absolute'
     const layoutStyle = !editable ? { top: 0, bottom: 0, left: 0, right: 0 } : undefined
 
-    const visibleBlocks = blocks.filter(block => !editable ? !block.hidden : true)
-
     return (
       <div className={classnames('flex flex-column', themeClassName, layoutClassName)} style={layoutStyle}>
         {!blockEditionMode && (
@@ -48,7 +124,7 @@ class Mobilization extends React.Component {
         )}
         {/* render blocks */}
         <div id='blocks-list' className='flex-auto' style={{ overflowY: 'scroll' }}>
-          {visibleBlocks.map((block, index) => (
+          {this.state.blocks.map((block, index) => (
             <Block
               key={`block-${block.id}`}
               editable={editable}

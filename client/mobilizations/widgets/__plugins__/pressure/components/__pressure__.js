@@ -70,6 +70,7 @@ export class Pressure extends Component {
 
   render () {
     const {
+      block,
       widget,
       editable,
       saving,
