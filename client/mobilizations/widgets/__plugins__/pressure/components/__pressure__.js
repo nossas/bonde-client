@@ -130,6 +130,7 @@ export class Pressure extends Component {
                   value={widget.count || 0}
                   color={mainColor}
                   text={countText}
+                  startCounting={block.scrollTopReached}
                 />
               )}
             </PressureForm>
