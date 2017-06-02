@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
+import CountUp from 'react-countup'
 import $ from 'jquery'
 import classnames from 'classnames'
 
@@ -103,7 +104,8 @@ class Form extends Component {
           canMoveUp={index !== 0}
           canMoveDown={index !== fields.length - 1}
           initializeEditing={this.props.hasNewField && index === fields.length - 1}
-          field={field} />
+          field={field}
+        />
       )
     })
   }
@@ -130,13 +132,23 @@ class Form extends Component {
   }
 
   renderCount () {
-    const { configurable, widget, mobilization: { body_font: bodyFont } } = this.props
+    const { configurable } = this.props
     if (!configurable) {
+      const {
+        block: { scrollTopReached: startCounting },
+        widget: { settings, form_entries_count: count },
+        mobilization: { body_font: bodyFont }
+      } = this.props
+
       return (
         <div className='mt2 h3 center white' style={{ fontFamily: bodyFont }}>
-          {widget.form_entries_count}
+          <CountUp
+            start={0}
+            end={!isNaN(count) && startCounting ? Number(count) : 0}
+            duration={5}
+          />
           &nbsp;
-          {widget.settings && widget.settings.count_text ? widget.settings.count_text : 'assinaturas'}
+          {settings && settings.count_text ? settings.count_text : 'assinaturas'}
         </div>
       )
     }
