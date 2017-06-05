@@ -31,4 +31,13 @@ const mapStateToProps = (state, props) => ({
   protocol: state.sourceRequest.protocol
 })
 
-export default provideHooks(redial)(connect(mapStateToProps)(Page))
+const mapDispatchToProps = {
+  asyncFilterWidget: MobActions.asyncFilterWidget
+}
+
+export default provideHooks(redial)(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Page)
+)

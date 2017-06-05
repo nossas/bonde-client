@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import ReactGA from 'react-ga'
 import Helmet from 'react-helmet'
 
+import DefaultServerConfig from '~server/config'
 import * as arrayUtil from '~client/utils/array'
 import { TechnicalIssues } from '~client/components/error'
 import { GoogleFontsLoader } from '~client/components/fonts'
@@ -33,6 +34,17 @@ class CustomDomainPage extends Component {
         const propagateScroll = target => { target.scrollTop = window.scrollPosition }
         blocksList && propagateScroll(blocksList)
       }
+
+      //
+      // nossas/bonde-cache widgets counter fix
+      //
+      // eslint-disable-next-line
+      const { host, asyncFilterWidget, dispatch } = this.props
+      const regex = host.match(`(.+)\.${DefaultServerConfig.appDomain}`)
+      const where = regex
+        ? { slug: regex[1].replace(/^www\./, '') }
+        : { custom_domain: host }
+      asyncFilterWidget(where)
     }
 
     const isTest = process.env.NODE_ENV === undefined || process.env.NODE_ENV === 'test'
