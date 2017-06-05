@@ -106,6 +106,7 @@ class Page extends Component {
               domain={dnsHostedZone}
               isActive={this.state.dnsHostedZone === dnsHostedZone}
               checked={dnsHostedZone.ns_ok}
+              onToggle={() => this.toggleDNSRecords(dnsHostedZone)}
               menuComponent={this.dnsHostedZoneMenu(dnsHostedZone)}
             />
           ))}

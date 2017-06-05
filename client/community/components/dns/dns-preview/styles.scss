@@ -6,6 +6,10 @@
 
   &.active {
     border: 1px solid green;
+
+    .body {
+      text-decoration: underline;
+    }
   }
 
   .circle {
@@ -30,6 +34,14 @@
     font-size: 23px;
     margin-top: 10px;
     cursor: pointer;
+  }
+  
+  .body {
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 

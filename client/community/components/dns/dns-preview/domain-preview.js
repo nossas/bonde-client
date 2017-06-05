@@ -2,7 +2,7 @@ import React from 'react'
 import { FormattedMessage } from 'react-intl'
 import Preview from './preview'
 
-export default ({ domain, ...props }) => (
+export default ({ domain, onToggle, ...props }) => (
   <Preview {...props}>
     <ul className='ul--table'>
       <li className='li--table'>
@@ -12,7 +12,13 @@ export default ({ domain, ...props }) => (
             defaultMessage='Domínio da comunidade'
           />
         </label>
-        <p className='body'>{domain.domain_name}</p>
+        <p
+          className='body'
+          onClick={onToggle}
+          style={{ cursor: 'pointer' }}
+        >
+          {domain.domain_name}
+        </p>
       </li>
     </ul>
   </Preview>
