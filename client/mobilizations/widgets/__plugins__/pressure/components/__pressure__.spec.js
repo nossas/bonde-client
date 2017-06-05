@@ -10,7 +10,8 @@ describe('client/mobilizations/widgets/__plugins__/pressure/components/__pressur
     editable: false,
     mobilization: { id: 1 },
     widget: { id: 1, settings: {} },
-    filledPressureWidgets: []
+    filledPressureWidgets: [],
+    block: { scrollTopReached: false }
   }
 
   beforeEach(() => {

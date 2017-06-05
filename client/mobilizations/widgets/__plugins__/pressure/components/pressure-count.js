@@ -30,12 +30,14 @@ const PressureCount = ({ value, color, text, startCounting }) => {
 PressureCount.propTypes = {
   value: PropTypes.number,
   color: PropTypes.string,
-  text: PropTypes.string
+  text: PropTypes.string,
+  startCounting: PropTypes.bool
 }
 
 PressureCount.defaultProps = {
   value: 0,
-  text: 'pressões feitas'
+  text: 'pressões feitas',
+  startCounting: false
 }
 
 export default PressureCount

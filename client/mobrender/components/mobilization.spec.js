@@ -51,31 +51,35 @@ describe('client/mobrender/components/mobilization', () => {
   })
 
   it('should pass widgets filter by block to block component', () => {
+    // jump the scroll offset handling
+    wrapper.setState({ blocks: props.blocks })
+
     let expected = props.widgets.filter(w => w.block_id === props.blocks[0].id)
     expect(wrapper.find(Block).at(0).props().widgets).to.deep.equal(expected)
 
     expected = props.widgets.filter(w => w.block_id === props.blocks[1].id)
-    expect(wrapper.find(Block).at(1).props().widgets).to.deep.equal()
+    expect(wrapper.find(Block).at(1).props().widgets).to.deep.equal(expected)
   })
 
   describe('when is editable', () => {
-    beforeEach(() => {
-      wrapper.setProps({ editable: true })
-    })
+    const editableWrapper = shallow(
+      <Mobilization {...props} editable={true} />
+    )
 
     it('should renders relative layout classNames', () => {
       const layoutClassName = '.flex-auto.relative'
-      const main = wrapper.find(`div${layoutClassName}`)
+      const main = editableWrapper.find(`div${layoutClassName}`)
       expect(main.length).to.equal(1)
       expect(main.props().style).to.equal(undefined)
     })
 
     it('should not render DocumentMeta', () => {
-      expect(wrapper.find('DocumentMeta').length).to.equal(0)
+      expect(editableWrapper.find('DocumentMeta').length).to.equal(0)
     })
 
     it('should render all blocks', () => {
-      expect(wrapper.find(Block).length).to.equal(props.blocks.length)
+      editableWrapper.setProps({ editable: true })
+      expect(editableWrapper.find(Block).length).to.equal(props.blocks.length)
     })
   })
 
