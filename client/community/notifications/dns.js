@@ -13,8 +13,9 @@ export const checkDNSSuccess = () => ({
 export const checkDNSFailure = () => ({
   title: 'Ooops!',
   status: 'error',
-  message: 'A sincronização ainda está pendente, ' +
-  'você pode tentar de novo em alguns minutos.',
+  message: 'A sincronização ainda está pendente. ' +
+  'Verifique se os Servidores DNS estão corretos. ' +
+  'A atualização pode demorar até 24 horas.',
   dismissAfter: 0,
   dismissable: true,
   closeButton: false
