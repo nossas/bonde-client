@@ -55,7 +55,7 @@ class Mobilization extends React.Component {
         // than one of the blocks offsetTop
         //
         this.state.blocks.map(block => {
-          const scrollPassed = target.scrollTop >= block.offsetTop
+          const scrollPassed = (target.scrollTop + 120) >= block.offsetTop
 
           if (scrollPassed && !block.scrollTopReached) {
             this.updateBlock(block, { scrollTopReached: true })
