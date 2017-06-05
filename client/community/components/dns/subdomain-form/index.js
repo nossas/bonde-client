@@ -1,12 +1,11 @@
 import React from 'react'
-import { FormattedMessage, intlShape } from 'react-intl'
+import { FormattedMessage } from 'react-intl'
 import {
   FormRedux,
   FormGroup,
   FormControl,
   ControlLabel,
-  FormDropdown,
-  HelpBlock
+  FormDropdown
 } from '~client/components/forms'
 import { Button } from '~client/ux/components'
 
@@ -18,7 +17,7 @@ const Form = ({ dnsHostedZone, fields: { name, record_type: recordType, value },
   <FormRedux nosubmit {...formProps}>
     <div className='form--dns-record'>
       <div className='fields--dns-record'>
-        <div className='col col-6'> 
+        <div className='col col-6'>
           <FormGroup {...name}>
             <ControlLabel>
               <FormattedMessage

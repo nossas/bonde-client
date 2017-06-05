@@ -160,7 +160,7 @@ class Page extends Component {
               {dnsRecordsIsLoading && <Loading />}
               <p>
                 <FormattedMessage
-                  id="community.page--domain-list.dns-record-description"
+                  id='community.page--domain-list.dns-record-description'
                   defaultMessage={
                     'Os registros DNS são configurações especiais que alteram a ' +
                     'forma como o seu domínio trabalha. Com esses registros, você ' +
@@ -170,8 +170,8 @@ class Page extends Component {
                     link: (
                       <a href='https://trilho.bonde.org' title='Saiba mais' target='_blank'>
                         <FormattedMessage
-                          id="community.page--domain-list.dns-record-description.link"
-                          defaultMessage="Saiba mais"
+                          id='community.page--domain-list.dns-record-description.link'
+                          defaultMessage='Saiba mais'
                         />
                       </a>
                     )
@@ -253,8 +253,8 @@ class Page extends Component {
                     trilho: (
                       <a href='https://trilho.bonde.org/' title='Ajuda' target='_blank'>
                         <FormattedMessage
-                          id="community.page--domain-list.dns-server-description.trilho.link"
-                          defaultMessage="no site de ajuda"
+                          id='community.page--domain-list.dns-server-description.trilho.link'
+                          defaultMessage='no site de ajuda'
                         />
                       </a>
                     )
