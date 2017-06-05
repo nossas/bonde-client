@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
+import { addNotification as notify } from 'reapop'
 
 import DNSControlSelectors from '~client/community/dns-control-selectors'
 import { asyncAddHostedZone, asyncCheckHostedZone } from '~client/community/action-creators/dns-control'
@@ -25,7 +26,8 @@ const mapStateToProps = state => ({
 
 const mapActionsToProps = {
   save: asyncAddHostedZone,
-  checkHostedZone: asyncCheckHostedZone
+  checkHostedZone: asyncCheckHostedZone,
+  notify
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(

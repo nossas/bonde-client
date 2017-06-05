@@ -6,7 +6,13 @@ import ga from 'react-ga'
 
 if (require('exenv').canUseDOM) {
   require('~client/styles/main.scss')
+  var theme = require('reapop-theme-wybo')
 }
+
+const NotificationsSystem = require('exenv').canUseDOM
+  ? require('reapop').default
+  : () => <div />
+
 import { GoogleFontsLoader } from '~client/components/fonts'
 
 class Application extends React.Component {
@@ -28,6 +34,7 @@ class Application extends React.Component {
         <ZendeskWidget />
         {process.env.NODE_ENV === 'development' ? <DevTools /> : ''}
         {children}
+        <NotificationsSystem {...{ theme }} />
         <GoogleFontsLoader fonts='Source Sans Pro' />
       </div>
     )

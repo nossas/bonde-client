@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
 import { FormRedux, ControlLabel, FormControl, FormGroup } from '~client/components/forms'
 import { Button } from '~client/ux/components'
-
+import * as dnsMessages from '~client/community/notifications/dns'
 import { Steps, Step } from '~client/steps'
 import { DomainStep } from '~client/community/components/dns'
 
@@ -20,6 +20,11 @@ class Page extends Component {
     this.props.checkHostedZone(this.state.dns)
       .then(dns => {
         this.setState({ dns })
+        if (!dns.ns_ok) {
+          this.props.notify(dnsMessages.checkDNSFailure())
+        } else {
+          this.props.notify(dnsMessages.checkDNSSuccess())
+        }
       })
   }
 

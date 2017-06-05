@@ -11,6 +11,7 @@ import {
   SubdomainForm,
   DropdownMenu
 } from '~client/community/components/dns'
+import * as dnsMessages from '~client/community/notifications/dns'
 
 import * as Paths from '~client/paths'
 
@@ -64,7 +65,21 @@ class Page extends Component {
       { icon: 'fa fa-trash', text: 'Remover domínio', onClick: () => this.setState({ deletedHostedZone: dnsHostedZone }) }
     ]
     if (!dnsHostedZone.ns_ok) {
-      items.splice(0, 0, { icon: 'fa fa-refresh', text: 'Verificar DNS', onClick: () => checkHostedZone(dnsHostedZone) })
+      items.splice(0, 0, {
+        icon: 'fa fa-refresh',
+        text: 'Verificar DNS',
+        onClick: () => {
+          checkHostedZone(dnsHostedZone)
+            .then(resp => {
+              const { notify } = this.props
+              if (!resp.ns_ok) {
+                notify(dnsMessages.checkDNSFailure())
+              } else {
+                notify(dnsMessages.checkDNSSuccess())
+              }
+            })
+        }
+      })
     }
     return <DropdownMenu inline items={items} />
   }
