@@ -1,6 +1,7 @@
 import React from 'react'
 
 // Global module dependencies
+import { slugify } from '~client/utils/string-helper'
 import {
   FormRedux,
   FormGroup,
@@ -12,18 +13,35 @@ import {
 import { SettingsForm } from '~client/ux/components'
 
 const MobilizationBasicsForm = props => {
-  const { floatSubmit, fields: { name, goal }, ...formProps } = props
+  const { floatSubmit, fields: { name, slug, goal }, ...formProps } = props
 
   const ComponentForm = floatSubmit ? SettingsForm : FormRedux
 
+  const nameInputProps = {
+    ...name,
+    onBlur: evt => {
+      if (!slug.value) {
+        slug.onChange(slugify(name.value))
+      }
+      name.onBlur(evt)
+    }  
+  }
+
   return (
     <ComponentForm {...formProps}>
-      <FormGroup controlId='name' {...name}>
+      <FormGroup controlId='name' {...nameInputProps}>
         <ControlLabel maxLength={100}>Nome</ControlLabel>
         <FormControl
           type='text'
           placeholder='Ex: Pela criação de uma delegacia de desaparecidos'
           maxLength={100}
+        />
+      </FormGroup>
+      <FormGroup controlId='slug' {...slug}>
+        <ControlLabel maxLength={63}>Slug</ControlLabel>
+        <FormControl
+          type='text'
+          maxLength={63}
         />
       </FormGroup>
       <FormGroup controlId='goal' {...goal}>
@@ -40,7 +58,7 @@ const MobilizationBasicsForm = props => {
   )
 }
 
-export const fields = ['name', 'goal', 'community_id']
+export const fields = ['name', 'slug', 'goal', 'community_id']
 
 export const validate = values => {
   const errors = {}
@@ -55,6 +73,13 @@ export const validate = values => {
   } else if (values.goal.length > 500) {
     errors.goal = 'O limite de caracteres foi atingido.'
   }
+
+  if (!values.slug) {
+    errors.slug = 'Insira o slug da mobilização'
+  } else if (values.slug.length > 63) {
+    errors.slug = 'Seu slug está muito longo!'
+  }
+
   return errors
 }
 
