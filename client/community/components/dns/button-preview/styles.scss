@@ -2,19 +2,26 @@
   font-family: 'Source Sans Pro', 'Proxima Nova', sans-serif;
   position: relative;
   background-color: #fff;
-  padding: 25px 30px;
+  padding: 10px 15px;
   cursor: pointer;
   margin: 0 0 10px;
+  display: flex;
+  align-items: center;
 
   .circle {
-    width: 37px;
-    height: 37px;
+    width: 28px;
+    height: 28px;
+    font-size: 18px;
     color: #fff;
-    font-size: 19px;
     margin-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    i {
-      padding: 9px 11px;
+    i:before {
+      vertical-align: middle;
+      position: relative;
+      top: 1px;
     }
   }
   &:hover > p {

@@ -9,11 +9,24 @@ import {
   DomainPreview,
   SubdomainPreview,
   SubdomainForm,
-  DropdownMenu
+  DropdownMenu,
+  Preview
 } from '~client/community/components/dns'
 import * as dnsMessages from '~client/community/notifications/dns'
 
 import * as Paths from '~client/paths'
+
+if (require('exenv').canUseDOM) require('./styles.scss')
+
+
+const DnsRecordMenu = ({ dnsRecord, onClick }) => {
+  return (
+    <DropdownMenu
+      inline
+      items={[{ icon: 'fa fa-trash', text: 'Remover subdomínio', onClick }]}
+    />
+  )
+}
 
 class Page extends Component {
 
@@ -121,16 +134,35 @@ class Page extends Component {
             />
           </h2>
           {dnsHostedZoneIsLoading && <Loading />}
-          {dnsHostedZones && dnsHostedZones.map((dnsHostedZone, index) => (
-            <DomainPreview
-              key={`dns-hosted-zone-${index}`}
-              domain={dnsHostedZone}
-              isActive={this.state.dnsHostedZone === dnsHostedZone}
-              checked={dnsHostedZone.ns_ok}
-              onToggle={() => this.toggleDNSRecords(dnsHostedZone)}
-              menuComponent={this.dnsHostedZoneMenu(dnsHostedZone)}
-            />
-          ))}
+          {dnsHostedZones && (
+            <Preview
+              header={
+                <div className='table-row header'>
+                  <div className='wrapper'>
+                    <div className='text' style={{ width: 35 }} />
+                    <div className='text' style={{ flex: 10 }}>
+                      <FormattedMessage
+                        id='community.components--domain.preview.label.domain'
+                        defaultMessage='Domínio da comunidade'
+                      />
+                    </div>
+                    <div className='text' />
+                  </div>
+                </div>
+              }
+            >
+              {dnsHostedZones.map((dnsHostedZone, index) => (
+                <DomainPreview
+                  key={`dns-hosted-zone-${index}`}
+                  domain={dnsHostedZone}
+                  isActive={this.state.dnsHostedZone === dnsHostedZone}
+                  checked={dnsHostedZone.ns_ok}
+                  onToggle={() => this.toggleDNSRecords(dnsHostedZone)}
+                  menuComponent={this.dnsHostedZoneMenu(dnsHostedZone)}
+                />
+              ))}
+            </Preview>
+          )}
           <ButtonPreview
             text={
               intl.formatMessage({
@@ -184,13 +216,48 @@ class Page extends Component {
                   }}
                 />
               </p>
-              {this.state.dnsRecords.map((dnsRecord, index) => (
-                <SubdomainPreview
-                  key={`dns-record-${index}`}
-                  subdomain={dnsRecord}
-                  menuComponent={this.dnsRecordMenu(dnsRecord)}
-                />
-              ))}
+              <Preview
+                header={
+                  <div className='table-row header'>
+                    <div className='wrapper' style={{ width: 50 }}>
+                      <div className='text' />
+                    </div>
+                    <div className='wrapper' style={{ flex: '12' }}>
+                      <div className='text'>
+                        <FormattedMessage
+                          id='community.components--subdomain.label.name'
+                          defaultMessage='Nome'
+                        />
+                      </div>
+                    </div>
+                    <div className='wrapper'>
+                      <div className='text'>
+                        <FormattedMessage
+                          id='community.components--subdomain.label.record-type'
+                          defaultMessage='Tipo'
+                        />
+                      </div>
+                    </div>
+                    <div className='wrapper' style={{ flex: '12' }}>
+                      <div className='text'>
+                        <FormattedMessage
+                          id='community.components--subdomain.label.value'
+                          defaultMessage='Valor'
+                        />
+                      </div>
+                      <div className='text' />
+                    </div>
+                  </div>
+                }
+              >
+                {this.state.dnsRecords.map((dnsRecord, index) => (
+                  <SubdomainPreview
+                    key={`dns-record-${index}`}
+                    subdomain={dnsRecord}
+                    menuComponent={this.dnsRecordMenu(dnsRecord)}
+                  />
+                ))}
+              </Preview>
               {this.state.showSubdomainForm ? (
                 <SubdomainForm
                   style={{ marginBottom: '70px' }}
