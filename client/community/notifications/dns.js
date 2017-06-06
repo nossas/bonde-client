@@ -1,4 +1,6 @@
+
 export const checkDNSSuccess = () => ({
+  id: 'notify.community.check--dns--success',
   title: 'Uhuu!',
   status: 'success',
   message: 'Os servidores DNS foram sincronizados, ' +
@@ -11,6 +13,7 @@ export const checkDNSSuccess = () => ({
 })
 
 export const checkDNSFailure = () => ({
+  id: 'notify.community.check--dns--failure',
   title: 'Ooops!',
   status: 'error',
   message: 'A sincronização ainda está pendente. ' +

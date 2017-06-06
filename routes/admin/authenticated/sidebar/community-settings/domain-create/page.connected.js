@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
+import { injectIntl } from 'react-intl'
 import { addNotification as notify } from 'reapop'
 
 import DNSControlSelectors from '~client/community/dns-control-selectors'
@@ -31,5 +32,5 @@ const mapActionsToProps = {
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(
-  reduxForm({ form: 'createDomainForm', fields, validate })(Page)
+  reduxForm({ form: 'createDomainForm', fields, validate })(injectIntl(Page))
 )

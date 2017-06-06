@@ -86,6 +86,9 @@ export default {
   'notification--generic-save-success.title': 'Oba!',
   'notification--generic-save-success.message': 'A requisição foi feita com sucesso e, os seus dados estão salvos em segurança.',
 
+  'notify.community.check--dns--success': 'Os servidores DNS estão sincronizados, agora você pode configurar seu e-mail e outros serviços, assim como escolher o domínio da sua mobilização.',
+  'notify.community.check--dns--failure': 'A sincronização ainda está pendente, você pode tentar de novo em alguns minutos.',
+
   // page community list
   // filepath: /routes/admin/authenticated/external/community-list/page.js
   // routepath: /community

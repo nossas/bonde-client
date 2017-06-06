@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
+import { intlShape } from 'react-intl'
 import { FormRedux, ControlLabel, FormControl, FormGroup } from '~client/components/forms'
 import { Button } from '~client/ux/components'
 import * as dnsMessages from '~client/community/notifications/dns'
@@ -17,14 +18,21 @@ class Page extends Component {
   }
 
   handleTestConnection () {
-    this.props.checkHostedZone(this.state.dns)
+    const { checkHostedZone, notify, intl } = this.props
+    checkHostedZone(this.state.dns)
       .then(dns => {
         this.setState({ dns })
-        if (!dns.ns_ok) {
-          this.props.notify(dnsMessages.checkDNSFailure())
-        } else {
-          this.props.notify(dnsMessages.checkDNSSuccess())
+
+        const handleNotify = event => {
+          const { id, message: defaultMessage, ...n } = event()
+          notify({
+            ...n,
+            message: intl.formatMessage({ id, defaultMessage })
+          })
         }
+
+        if (!dns.ns_ok) handleNotify(dnsMessages.checkDNSFailure)
+        else handleNotify(dnsMessages.checkDNSSuccess)
       })
   }
 
@@ -91,6 +99,10 @@ class Page extends Component {
       </div>
     )
   }
+}
+
+Page.propTypes = {
+  intl: intlShape.isRequired
 }
 
 export default Page

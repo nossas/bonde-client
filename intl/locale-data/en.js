@@ -25,4 +25,7 @@ export default {
   'community.page--domain-list.dns-record-description.link': 'Learn more',
   'community.page--domain-list.dns-server-description': 'DNS Servers are addresses used by domain registrar organizations such as {registrobr} or {godaddy}, to identify on which server the information about the registered domain is located. Ask your questions {trilho}.',
   'community.page--domain-list.dns-server-description.trilho.link': 'on the help site',
+
+  'notify.community.check--dns--success': 'DNS servers are synchronized, you can now configure your email and other services, as well as choose the domain of your mobilization.',
+  'notify.community.check--dns--failure': 'The sync is still pending, you can try again in a few minutes.',
 }

@@ -71,12 +71,18 @@ class Page extends Component {
         onClick: () => {
           checkHostedZone(dnsHostedZone)
             .then(resp => {
-              const { notify } = this.props
-              if (!resp.ns_ok) {
-                notify(dnsMessages.checkDNSFailure())
-              } else {
-                notify(dnsMessages.checkDNSSuccess())
+              const { notify, intl } = this.props
+
+              const handleNotify = event => {
+                const { id, message: defaultMessage, ...n } = event()
+                notify({
+                  ...n,
+                  message: intl.formatMessage({ id, defaultMessage })
+                })
               }
+
+              if (!resp.ns_ok) handleNotify(dnsMessages.checkDNSFailure)
+              else handleNotify(dnsMessages.checkDNSSuccess)
             })
         }
       })
