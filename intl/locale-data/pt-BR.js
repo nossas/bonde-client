@@ -661,6 +661,8 @@ export default {
   //   - /mobilizations/:mobilization_id/sharing
   'mobilizations.components--form-share.facebook.title': 'Share de Facebook',
   'mobilizations.components--form-share.facebook.helper-text': 'Configure o post que será publicado no Facebook sempre que alguém compartilhar a ação. É importante que esses textos sejam cativantes e curtos para não aparecerem cortados. :)',
+  'mobilizations.components--form-share.facebook.fb.image.helper-text': 'Use imagens com pelo menos 1200x630 pixels para a melhor exibição em dispositivos de alta resolução. No mínimo, você deve usar imagens que tenham 600x315 pixels para exibir publicações na página com link com imagens maiores. O tamanho máximo das imagens é de 8 MB.',
+  'mobilizations.components--form-share.facebook.fb.image.link': 'Saiba mais',
   'mobilizations.components--form-share.facebook.form.share-image.label': 'Imagem',
   'mobilizations.components--form-share.facebook.form.share-title.label': 'Título do post',
   'mobilizations.components--form-share.facebook.form.share-title.placeholder': 'Um título direto que passe a ideia da sua mobilização',
