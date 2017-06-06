@@ -1,7 +1,8 @@
 import { expect } from 'chai'
-import { sanitize } from '~client/utils/string-helper'
+import { sanitize, slugify } from '~client/utils/string-helper'
 
 describe('client/utils/string-helper', () => {
+  
   describe('#sanitize', () => {
     it('should return a lowercase string that contains uppercase', () => {
       expect(sanitize('Foo')).to.be.equal('foo')
@@ -35,6 +36,18 @@ describe('client/utils/string-helper', () => {
     })
     it('should return sanitized that contains white space, dots, dashes and underscores', () => {
       expect(sanitize('foo bar  Hello.world--baz_Foo')).to.be.equal('foobarhelloworldbazfoo')
+    })
+  })
+
+  describe('slugify', () => {
+    it('should return slug of "Hello World"', () => {
+      expect(slugify('Hello World')).to.be.equal('hello-world') 
+    })
+    it('should return slug of "àlo brasil -"', () => {
+      expect(slugify('àlo brasil -')).to.be.equal('alo-brasil')
+    })
+    it('should return slug of "hello -- world_dummy"', () => {
+      expect(slugify('hello -- world_dummy')).to.be.equal('hello-world-dummy')
     })
   })
 })
