@@ -1,43 +1,73 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 import Preview from './preview'
 
-export default ({ subdomain, ...props }) => (
-  <Preview {...props}>
-    <ul className='ul--table'>
-      <li className='li--table'>
-        <label className='header'>
-          <FormattedMessage
-            id='community.components--subdomain.label.name'
-            defaultMessage='Nome'
-          />
-        </label>
-        <p className='body'>{subdomain.name.replace('\\052', '*')}</p>
-      </li>
-      <li className='li--table'>
-        <label className='header'>
-          <FormattedMessage
-            id='community.components--subdomain.label.record-type'
-            defaultMessage='Tipo'
-          />
-        </label>
-        <p className='body'>{subdomain.record_type}</p>
-      </li>
-      <li className='li--table'>
-        <label className='header'>
-          <FormattedMessage
-            id='community.components--subdomain.label.value'
-            defaultMessage='Valor'
-          />
-        </label>
+const SubdomainPreview = ({ subdomain, menuComponent: MenuComponent, checked }) => (
+  <div className='table-row'>
+    <div className='wrapper'>
+      <div className='text' style={{ width: 30 }}>
+        <span className={`circle${checked ? ' checked' : ''}`}>
+          {checked ? <i className='fa fa-check' /> : <i className='fa fa-close' />}
+        </span>
+      </div>
+    </div>
+
+    <div className='wrapper' style={{ flex: 1 }}>
+      <div className='text'>
+        {subdomain.name.replace('\\052', '*')}
+      </div>
+    </div>
+
+    <div className='wrapper' style={{ width: 100 }}>
+      <div className='text'>
+        {subdomain.record_type}
+      </div>
+    </div>
+
+    <div className='wrapper' style={{ flex: 1 }}>
+      <div className='text'>
         <div className={`body ${subdomain.record_type.toLowerCase()}`}>
-          {subdomain.record_type === 'NS' ? (
+          {subdomain.record_type === 'NS' || subdomain.record_type === 'MX' ? (
             <ul>
-              {subdomain.value.split('\n').map((ns, index) => <li key={`ns-${index}`}>{ns}</li>)}
+              {subdomain.value.split('\n').map((ns, index) => (
+                <li
+                  key={`ns-${index}`}
+                  style={{ whiteSpace: 'pre-wrap', wordWrap: 'break-word' }}
+                >
+                  {ns}
+                </li>
+              ))}
             </ul>
-        ) : <p>{subdomain.value}</p>}
+          ) : (
+            <p style={{ whiteSpace: 'pre-wrap', wordWrap: 'break-word' }}>
+              {subdomain.value}
+            </p>
+          )}
         </div>
-      </li>
-    </ul>
-  </Preview>
+      </div>
+    </div>
+
+    <div className='wrapper' style={{ width: 60 }}>
+      <div className='text'>
+        {MenuComponent && (
+          <div className='menu--preview'>
+            {MenuComponent}
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
 )
+
+SubdomainPreview.propTypes = {
+  subdomain: PropTypes.object,
+  checked: PropTypes.bool,
+  menuComponent: PropTypes.element
+}
+
+SubdomainPreview.defaultProps = {
+  checked: true
+}
+
+export default SubdomainPreview
