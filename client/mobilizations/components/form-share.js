@@ -20,9 +20,21 @@ const FormShare = ({
       <i className='fa fa-facebook-square align-middle' style={{ color: '#3b5998' }} />
       <span className='align-middle pl2'>Share de Facebook</span>
     </div>
-    <p className='mb2 lightgray'>
+    <p className='mb1 lightgray'>
       Configure o post que será publicado no Facebook sempre que alguém compartilhar a ação.
       É importante que esses textos sejam cativantes e curtos para não aparecerem cortados. :)
+    </p>
+    <p className='mb3 lightgray'>
+      Use imagens com pelo menos 1200x630 pixels para a melhor exibição em dispositivos de
+      alta resolução. No mínimo, você deve usar imagens que tenham 600x315 pixels para exibir
+      publicações na página com link com imagens maiores. O tamanho máximo das imagens é de 8 MB.
+      &nbsp;
+      <a
+        href='https://developers.facebook.com/docs/sharing/best-practices#images'
+        target='_blank'
+      >
+        Saiba mais <i className='fa fa-external-link' style={{ fontSize: 12 }} />
+      </a>.
     </p>
 
     <div className='clearfix col-12'>
