@@ -18,10 +18,10 @@ const mapStateToProps = state => {
 const mapDispatchToProps = { submit: asyncEdit }
 
 const fields = [
-  'id', 'image', 'name', 'city', 'description', 'custom_from_email'
+  'id', 'image', 'name', 'city', 'description', 'email_template_from'
 ]
 
-const validate = ({ name, city, custom_from_email: customFromEmail }) => {
+const validate = ({ name, city, email_template_from: customFromEmail }) => {
   const errors = {}
 
   if (!name) {
@@ -31,7 +31,7 @@ const validate = ({ name, city, custom_from_email: customFromEmail }) => {
     errors.city = 'Informe em qual cidade sua comunidade atua'
   }
   if (customFromEmail && !isValidFromEmail(customFromEmail)) {
-    errors.custom_from_email = 'E-mail de resposta fora do formato padrão'
+    errors.email_template_from = 'E-mail de resposta fora do formato padrão'
   }
   return errors
 }

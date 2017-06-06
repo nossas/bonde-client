@@ -12,7 +12,7 @@ import { SettingsForm } from '~client/ux/components'
 
 const CommunitySettingsInfoPage = ({
   fields: {
-    image, name, city, description, custom_from_email: customFromEmail
+    image, name, city, description, email_template_from: customFromEmail
   },
   location,
   community,
@@ -29,7 +29,7 @@ const CommunitySettingsInfoPage = ({
     </FormGroup>
     <FormGroup controlId='descriptionId' {...description}>
       <ControlLabel>Descrição</ControlLabel>
-      <FormControl componentusClass='textarea' />
+      <FormControl componentClass='textarea' />
     </FormGroup>
     <FormGroup controlId='cityId' {...city}>
       <ControlLabel>Cidade</ControlLabel>
@@ -51,7 +51,8 @@ CommunitySettingsInfoPage.propTypes = {
     image: PropTypes.object.isRequired,
     name: PropTypes.object.isRequired,
     city: PropTypes.object.isRequired,
-    description: PropTypes.object.isRequired
+    description: PropTypes.object.isRequired,
+    email_template_from: PropTypes.object
   }),
   community: PropTypes.object.isRequired
 }
