@@ -17,3 +17,20 @@ export const genericSaveSuccess = () => ({
   dismissible: true,
   closeButton: false
 })
+
+export const slugUpdatedMessage = intl => ({
+  title: intl.formatMessage({
+    id: 'notification--slug-updated-message.title',
+    defaultMessage: 'Importante'
+  }),
+  status: 'warning',
+  message: intl.formatMessage({
+  id: 'notification--slug-updated-message.message',
+  defaultMessage: 'O slug da sua mobilização foi alterado. ' +
+    'Se você faz algum redirecionamento de DNS via ' +
+    'CNAME, não se esqueça de atualizá-lo.'
+  }),
+  dismissAfter: 0,
+  dismissible: true,
+  closeButton: false
+})
