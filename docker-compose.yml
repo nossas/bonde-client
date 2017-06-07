@@ -48,6 +48,7 @@ services:
     build:
       context: ./../bonde-server/
       dockerfile: Dockerfile
+    restart: always
     # entrypoint: ./development-entrypoint
 
     # The command this container will run - in this case, this container will run our sidekiq
@@ -58,7 +59,7 @@ services:
     volumes:
       # Mount our app code directory (".") into our app containers at the
       # "/usr/src/app" folder:
-      - ./../bonde-server:/usr/src/app:Z
+      - ./../bonde-server:/usr/app:Z
 
       # Mount the 'gems' volume on the folder that stores bundled gems:
       - app-gems:/usr/local/bundle
