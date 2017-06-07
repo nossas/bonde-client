@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import classnames from 'classnames'
 import ServerConfig from '~server/config'
-import { FormGroup, ControlLabel, FormControl, FormDropdown } from '~client/components/forms'
+import { FormGroup, ControlLabel, FormControl, FormDropdown, Raise } from '~client/components/forms'
 import { isBoolean } from '~client/utils/type-checker'
 
 if (require('exenv').canUseDOM) require('./form-domain.scss')
@@ -26,6 +26,10 @@ const CreateDomainText = ({ onClickLink }) => (
     da sua mobilização.
   </p>
 )
+
+const InputError = (field) => field.error && field.touched ? (
+  <Raise error={field.error} componentClass='p' />
+) : undefined
 
 class FormDomain extends Component {
   constructor (props) {
@@ -140,6 +144,7 @@ class FormDomain extends Component {
   render () {
     const {
       formComponent: FormComponent,
+      error,
       fields: { domain, subdomain, externalDomain, rootDomain },
       hostedZones,
       ...formProps
@@ -158,6 +163,8 @@ class FormDomain extends Component {
             Quer cadastrar um novo
             domínio? <a href='#' onClick={this.clickHere.bind(this)} target='_self'>Clique aqui</a>.
           </p>
+          
+          {error && <p>{error}</p>}
 
           <div className='basic-config' style={{ marginBottom: '1rem' }}>
             <HeaderToggle
@@ -176,7 +183,7 @@ class FormDomain extends Component {
                   <div className='form-groups-container flex flex-wrap'>
                     <div className='prefix'>www.</div>
                     <FormGroup controlId='subdomain' {...subdomain}>
-                      <ControlLabel>Subdomínio</ControlLabel>
+                      <ControlLabel hideError={true}>Subdomínio</ControlLabel>
                       <FormControl
                         type='text'
                         placeholder='nomedamob'
@@ -186,7 +193,7 @@ class FormDomain extends Component {
                       <strong>.</strong>
                     </div>
                     <FormGroup controlId='domain' {...domain}>
-                      <ControlLabel>Domínio Principal</ControlLabel>
+                      <ControlLabel hideError={true}>Domínio Principal</ControlLabel>
                       <FormDropdown
                         onChange={e => domain.onChange(e.target.value)}
                         value={
@@ -203,6 +210,7 @@ class FormDomain extends Component {
                       </FormDropdown>
                     </FormGroup>
                   </div>
+                  {InputError(subdomain)}
                 </div>
               ) : (
                 <div>
@@ -230,7 +238,7 @@ class FormDomain extends Component {
                   <div className='form-groups-container flex flex-wrap'>
                     <div className='prefix'>www.</div>
                     <FormGroup controlId='rootDomain' {...rootDomain}>
-                      <ControlLabel>Domínio Principal</ControlLabel>
+                      <ControlLabel hideError={true}>Domínio Principal</ControlLabel>
                       <FormDropdown
                         onChange={e => rootDomain.onChange(e.target.value)}
                         value={
@@ -250,6 +258,7 @@ class FormDomain extends Component {
                       </FormDropdown>
                     </FormGroup>
                   </div>
+                  {InputError(rootDomain)}
                 </div>
               ) : (
                 <div>
@@ -277,7 +286,7 @@ class FormDomain extends Component {
                   pode usá-lo para este BONDE. Demais, né? Preencha o campo abaixo e siga as orientações:
                 </p>
                 <FormGroup controlId='externalDomain' {...externalDomain}>
-                  <ControlLabel>Domínio personalizado</ControlLabel>
+                  <ControlLabel hideError={true}>Domínio personalizado</ControlLabel>
                   <div className='form-control-container--external-domain'>
                     <div className='prefix'>www.</div>
                     <FormControl
@@ -286,6 +295,7 @@ class FormDomain extends Component {
                       placeholder='meudominio.com.br'
                     />
                   </div>
+                  {InputError(externalDomain)}
                 </FormGroup>
 
                 <div className='separator' />

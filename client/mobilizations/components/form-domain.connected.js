@@ -19,23 +19,23 @@ export const validate = (values, props) => {
 
   if (props.requiredField) {
     if (values.advancedConfig === true && !values.externalDomain) {
-      errors.externalDomain = 'Obrigatório'
+      errors.externalDomain = 'Preenchimento obrigatório'
     }
     if (!values.rootDomainConfig) {
       if (!values.advancedConfig && !values.subdomain) {
-        errors.subdomain = 'Obrigatório'
+        errors.subdomain = 'Obrigatório preencher subdomínio'
       }
       if (!values.advancedConfig && !values.domain) {
-        errors.domain = 'Obrigatório'
+        errors.subdomain = 'Obrigatório preencher o domínio principal'
       }
     }
   }
 
   if (!values.rootDomainConfig && !values.advancedConfig && !values.domain) {
-    errors.domain = 'Obrigatório'
+    errors.subdomain = 'Obrigatório preencher o domínio principal'
   }
   if (values.rootDomainConfig && !values.rootDomain) {
-    errors.rootDomain = 'Obrigatório'
+    errors.rootDomain = 'Preenchimento obrigatório'
   }
   if (values.externalDomain && !isValidDomain(values.externalDomain)) {
     errors.externalDomain = 'Informe um domínio válido'
@@ -100,17 +100,24 @@ const mapActionsToProps = (dispatch, props) => ({
     const isRoot = rootDomainConfig && rootDomain
     const isExternal = advancedConfig && externalDomain
     const isSubdomain = !advancedConfig && subdomain
-
-    if (isRoot) customDomain = rootDomain
-    else if (isExternal) customDomain = externalDomain
-    else if (isSubdomain) customDomain = `${subdomain}.${domain}`
+    let fieldName
+    if (isRoot) {
+      fieldName = 'rootDomain'
+      customDomain = rootDomain
+    } else if (isExternal) {
+      fieldName = 'externalDomain'
+      customDomain = externalDomain
+    } else if (isSubdomain) {
+      fieldName = 'subdomain'
+      customDomain = `${subdomain}.${domain}`
+    }
 
     if (customDomain) {
       const www = customDomain.startsWith('www.')
       mobilization.custom_domain = www ? customDomain : `www.${customDomain}`
     }
 
-    return dispatch(asyncUpdateMobilization(mobilization))
+    return dispatch(asyncUpdateMobilization({...mobilization, fieldName }))
   }
 })
 
