@@ -83,8 +83,12 @@ export default {
   // routepath: /subscriptions/:id/edit
   'notification--generic-request-error.title': 'Ops!',
   'notification--generic-request-error.message': 'Parece que teve algum problema técnico nessa última requisição. Pedimos que tente de novo daqui a pouco.',
+
   'notification--generic-save-success.title': 'Oba!',
   'notification--generic-save-success.message': 'A requisição foi feita com sucesso e, os seus dados estão salvos em segurança.',
+
+  'notification--slug-updated-message.title': 'Importante',
+  'notification--slug-updated-message.message': 'O slug da sua mobilização foi alterado. Se você faz algum redirecionamento de DNS via CNAME, não se esqueça de atualizá-lo.',
 
   'notify.community.check--dns--success': 'Os servidores DNS estão sincronizados, agora você pode configurar seu e-mail e outros serviços, assim como escolher o domínio da sua mobilização.',
   'notify.community.check--dns--failure': 'A sincronização ainda está pendente, você pode tentar de novo em alguns minutos.',

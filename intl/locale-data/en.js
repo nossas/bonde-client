@@ -28,4 +28,7 @@ export default {
 
   'notify.community.check--dns--success': 'DNS servers are synchronized, you can now configure your email and other services, as well as choose the domain of your mobilization.',
   'notify.community.check--dns--failure': 'The sync is still pending, you can try again in a few minutes.',
+
+  'notification--slug-updated-message.title': 'Important',
+  'notification--slug-updated-message.message': 'The slug of his mobilization was changed. If you do some DNS redirection via CNAME, be sure to update it.',
 }
