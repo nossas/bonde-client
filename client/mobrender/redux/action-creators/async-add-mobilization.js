@@ -9,9 +9,14 @@ export default values => (dispatch, getState, { api }) => {
     .post('/mobilizations', { mobilization: values }, { headers: credentials })
     .then(res => {
       dispatch(createAction(t.ADD_MOBILIZATION_SUCCESS, res.data))
+      return Promise.resolve(res.data)
     })
-    .catch(ex => {
-      dispatch(createAction(t.ADD_MOBILIZATION_FAILURE, ex))
-      return Promise.reject(ex)
+    .catch(({ response, ...errors }) => {
+      if (response.status === 422 && response.data.errors) {
+        return Promise.reject({ ...response.data.errors })
+      } else {
+        dispatch(createAction(t.ADD_MOBILIZATION_FAILURE, errors))
+        return Promise.reject(errors)
+      }
     })
 }
