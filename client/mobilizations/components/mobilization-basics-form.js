@@ -99,6 +99,9 @@ const mapActionsCreators = (dispatch, props) => ({
           dispatch(notify(slugUpdatedMessage(props.intl)))
         }
       })
+      .catch(errors => {
+        dispatch({ errors, type: 'redux-form/STOP_SUBMIT', form: 'mobilizationBasicsForm' })
+      })
   }
 })
 
