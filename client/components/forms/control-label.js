@@ -15,7 +15,7 @@ class ControlLabel extends Component {
     const error = formGroup && formGroup.error
     const touched = formGroup && formGroup.touched
 
-    const { children, htmlFor = controlId, className, maxLength, ...props } = this.props
+    const { children, htmlFor = controlId, className, maxLength, hideError, ...props } = this.props
 
     return (
       <label style={{ cursor: 'pointer' }} htmlFor={htmlFor} {...props}>
@@ -27,7 +27,7 @@ class ControlLabel extends Component {
             length={formGroup.value ? formGroup.value.length : 0}
           />
         )}
-        {error && touched && <Raise error={error} />}
+        {error && touched && !hideError && <Raise error={error} />}
       </label>
     )
   }
