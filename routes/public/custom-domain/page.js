@@ -78,7 +78,7 @@ class CustomDomainPage extends Component {
         body_font: bodyFont
       } = mobilization
 
-      const url = `${protocol}//${mobilization.custom_domain}` || host
+      const url = `${protocol}://${mobilization.custom_domain}` || host
 
       return (
         <div>
