@@ -28,7 +28,7 @@ import webpackHotMiddleware from 'webpack-hot-middleware'
 const DashboardPlugin = require('webpack-dashboard/plugin')
 
 import cookieParser from 'cookie-parser'
-import reactCookie from 'react-cookie'
+import cookie from 'react-cookie'
 
 import DefaultServerConfig from './config'
 import webpackConfig from '../tools/webpack.client'
@@ -117,9 +117,9 @@ export const createServer = (config) => {
     )
 
     // React Cookie
-    reactCookie.plugToRequest(req, res)
-    const community = reactCookie.load('community') || {}
-    const auth = reactCookie.load('auth') || {}
+    cookie.plugToRequest(req, res)
+    const community = cookie.load('community') || {}
+    const auth = cookie.load('auth') || {}
 
     const state = loadState()
       .mergeDeep(community)
@@ -180,7 +180,7 @@ export const createServer = (config) => {
 
       trigger('fetch', components, locals)
         .then(() => {
-          console.log(components, locals, renderProps)
+          // console.log(components, locals, renderProps)
           const initialState = store.getState()
           const InitialView = (
             <IntlProvider locale={currentLocale} messages={currentLocaleMessages}>
@@ -231,7 +231,15 @@ export const createServer = (config) => {
             </html>
           `)
           /* eslint-disable no-useless-escape */
-        }).catch(e => console.log(e))
+        }).catch(e => {
+          // Unautorized request
+          if (e.response && e.response.status === 401) {
+            cookie.remove('auth')
+            cookie.remove('community')
+            res.redirect(302, '/login')
+          }
+          console.log(e)
+        })
     })
   })
 
