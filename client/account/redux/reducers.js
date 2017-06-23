@@ -1,4 +1,4 @@
-import reactCookie from 'react-cookie'
+import cookie from 'react-cookie'
 import * as t from './action-types'
 
 export const initialState = {
@@ -21,7 +21,7 @@ export default (state = initialState, action = {}) => {
     case t.LOGIN_SUCCESS:
       const { credentials, user } = action.payload
 
-      reactCookie.save('auth',
+      cookie.save('auth',
         { auth: { credentials, user } },
         // { expires: new Date(credentials.Expiry * UNIX_TIMESTAMP_MILLISECONDS_FIX) }  // todo expiry JWT token
       )
@@ -30,8 +30,8 @@ export default (state = initialState, action = {}) => {
       return { ...state, isLoading: false, error: action.payload }
 
     case t.LOGOUT_SUCCESS:
-      reactCookie.remove('auth')
-      reactCookie.remove('community')
+      cookie.remove('auth')
+      cookie.remove('community')
       return {
         ...state,
         isLoaded: false,
@@ -43,7 +43,7 @@ export default (state = initialState, action = {}) => {
     case t.UPDATE_USER_REQUEST:
       return { ...state, saving: true }
     case t.UPDATE_USER_SUCCESS:
-      reactCookie.save('auth', {
+      cookie.save('auth', {
         auth: {
           credentials: state.credentials,
           user: action.payload
