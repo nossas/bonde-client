@@ -37,6 +37,9 @@ export const validate = (values, props) => {
   if (values.rootDomainConfig && !values.rootDomain) {
     errors.rootDomain = 'Preenchimento obrigatório'
   }
+  if (values.subdomain && !/^[\w\-]+$/.test(values.subdomain)) {
+    errors.subdomain = 'Informe um subdomínio válido'
+  }
   if (values.externalDomain && !isValidDomain(values.externalDomain)) {
     errors.externalDomain = 'Informe um domínio válido'
   }
@@ -46,6 +49,7 @@ export const validate = (values, props) => {
 
 const mapStateToProps = (state, props) => {
   const { custom_domain: customDomain } = props.mobilization
+
   if (customDomain) {
     const hasWWW = customDomain.startsWith('www.')
     /* eslint-disable no-useless-escape */
