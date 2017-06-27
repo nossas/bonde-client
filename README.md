@@ -47,13 +47,15 @@
         src="https://img.shields.io/badge/Conventional%20Commits-1.0.0--beta.1-brightgreen.svg"
       />
     </a>
+    <br />
+    <a href="https://greenkeeper.io/">
+      <img
+        alt="Greenkeeper badge"
+        src="https://badges.greenkeeper.io/nossas/bonde-client.svg"
+      />
+    </a>
   </p>
 </p>
-
-
-##
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/nossas/bonde-client.svg)](https://greenkeeper.io/)
 
 ## Configuration
 Bonde Client app depends on the host name to decide how to behave, considering this you should [setup a wildcard DNS domain](http://asciithoughts.com/posts/2014/02/23/setting-up-a-wildcard-dns-domain-on-mac-os-x/) on the development environment.
@@ -106,8 +108,8 @@ docker-compose up --build
 ### Others Useful commands
 
 ```
-docker-compose logs client # Show logs from container nodejs
-docker-compose exec client /bin/ash # Open bash inside ruby container
+docker-compose logs client # Show logs from nodejs container
+docker-compose exec client /bin/ash # Open bash inside nodejs container
 docker-compose exec api /bin/bash # Open bash inside ruby container
 docker-compose up --build # Force build from images
 ```
@@ -149,15 +151,16 @@ And you are done!
 ### Tests
 As simples as:
 ```
-npm run test
+npm test
 ```
 Now sit and relax.
 
-If you want to test a single file you can temporarily change the first line of `webpack.test.config.js` to:
 
+To run a single test file, you can specify it as argument on the previous command e.g.
 ```
-var context = require.context('./app/scripts/tests', true, /MyComponentTest\.jsx/);
+npm test client/utils/array.spec.js
 ```
+
 
 ### Deploy
 We have now two environments, staging and production, hosted by Heroku. All you have to do is to push changes to the master branch of these Heroku repositories, and it will be automatically deployed.
