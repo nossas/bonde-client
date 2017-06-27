@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
-
+import { injectIntl } from 'react-intl'
 import * as CommunityActions from '~client/community/action-creators'
 import * as CommunitySelectors from '~client/community/selectors'
 
@@ -15,8 +15,8 @@ const mapDispatchToProps = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  reduxForm({
+  injectIntl(reduxForm({
     form: 'mailchimpForm',
-    fields: ['id', 'mailchimp_api_key', 'mailchimp_list_id', 'mailchimp_group_id']
-  })(Page)
+    fields: ['id', 'mailchimp_api_key', 'mailchimp_list_id']
+  })(Page))
 )

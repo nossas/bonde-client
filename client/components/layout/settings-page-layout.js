@@ -5,7 +5,7 @@ import classnames from 'classnames'
 const SettingsPageLayout = ({ children, className }) => (
   <div
     className={classnames(
-      'settings-page-layout flex-auto flex flex-column bg-silver gray relative',
+      'settings-page-layout flex-auto flex flex-column bg-silver relative',
       className
     )}
   >

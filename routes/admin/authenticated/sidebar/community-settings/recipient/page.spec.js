@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { shallowWithIntl } from '~root/intl/helpers'
 
 import * as mock from '~client/utils/mock'
 import Page from '~routes/admin/authenticated/sidebar/community-settings/recipient/page'
@@ -20,6 +20,6 @@ describe('routes/admin/authenticated/sidebar/community-settings/recipient/page',
   }
 
   it('should render without crashed', () => {
-    shallow(<Page {...props} />)
+    shallowWithIntl(<Page {...props} />)
   })
 })

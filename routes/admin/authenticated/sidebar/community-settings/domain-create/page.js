@@ -1,14 +1,18 @@
 import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
-import { intlShape } from 'react-intl'
+import { FormattedMessage, intlShape } from 'react-intl'
 import { FormRedux, ControlLabel, FormControl, FormGroup } from '~client/components/forms'
 import { Button } from '~client/ux/components'
 import * as dnsMessages from '~client/community/notifications/dns'
 import { Steps, Step } from '~client/steps'
 import { DomainStep } from '~client/community/components/dns'
+import { Preformatted } from '~client/components/markdown'
+import { Title, Subtitle } from '~client/components/title'
+import * as paths from '~client/paths'
+
+var styles = require('exenv').canUseDOM ? require('./page.scss') : {}
 
 class Page extends Component {
-
   constructor (props) {
     super(props)
     this.state = {
@@ -18,8 +22,8 @@ class Page extends Component {
   }
 
   handleTestConnection () {
-    const { checkHostedZone, notify, intl } = this.props
-    checkHostedZone(this.state.dns)
+    const { asyncCheckHostedZone, notify, intl } = this.props
+    asyncCheckHostedZone(this.state.dns)
       .then(dns => {
         this.setState({ dns })
 
@@ -37,7 +41,14 @@ class Page extends Component {
   }
 
   render () {
-    const { saving, save, fields: { domain_name: domainName }, ...formProps } = this.props
+    const {
+      saving,
+      asyncAddHostedZone,
+      asyncDeleteHostedZone,
+      fields: { domain_name: domainName },
+      intl,
+      ...formProps
+    } = this.props
 
     return (
       <div className='page'>
@@ -49,49 +60,180 @@ class Page extends Component {
             () => this.state.dns && this.state.dns.ns_ok
           ]}
         >
-          <Step title='Insira o domínio desejado' stepComponent={DomainStep}>
+          <Step
+            stepComponent={DomainStep}
+            title={intl.formatMessage({
+              id: 'page--community-domain-create.step-add.title',
+              defaultMessage: 'Insira o domínio desejado'
+            })}
+          >
             <FormRedux
               nosubmit
               {...formProps}
-              onSubmit={values => {
-                return save(values)
+              onSubmit={values =>
+                asyncAddHostedZone(values)
                   .then(dns => {
                     this.setState({ dns })
                     return Promise.resolve()
                   })
-              }}
+              }
             >
               <FormGroup {...domainName}>
-                <ControlLabel>Domínio da sua comunidade</ControlLabel>
-                <FormControl type='text' placeholder='Ex. minhacomunidade.org' />
+                <ControlLabel>
+                  <FormattedMessage
+                    id='page--community-domain-create.step-add.form.domain-name.label'
+                    defaultMessage='Domínio da sua comunidade'
+                  />
+                </ControlLabel>
+                <FormControl
+                  type='text'
+                  placeholder={intl.formatMessage({
+                    id: 'page--community-domain-create.step-add.form.domain-name.placeholder',
+                    defaultMessage: 'Ex. minhacomunidade.org'
+                  })}
+                  disabled={this.state.dns !== undefined}
+                />
               </FormGroup>
-              <Button disabled={saving} type='submit'>Adicionar</Button>
+              <div className={styles.actionButtons}>
+                <span style={{ marginRight: '1rem' }}>
+                  <Button
+                    type='button'
+                    disabled={saving || this.state.dns !== undefined}
+                    onClick={() => browserHistory.push(paths.communityDomain())}
+                  >
+                  <FormattedMessage
+                    id='page--community-domain-create.step-add.form.cancel-button.text'
+                    defaultMessage='Cancelar'
+                  />
+                  </Button>
+                </span>
+                <Button disabled={saving || this.state.dns !== undefined} type='submit'>
+                  <FormattedMessage
+                    id='page--community-domain-create.step-add.form.button.text'
+                    defaultMessage='Adicionar'
+                  />
+                </Button>
+              </div>
             </FormRedux>
           </Step>
-          <Step title='Altere os servidores do seu provedor DNS' stepComponent={DomainStep}>
-            <p>1. Faça login no seu provedor de DNS (onde seu domínio está registrado, por exemplo GoDaddy, Locaweb, RegistroBR)</p>
-            <p>2. Encontre a página de <b>gerenciador de DNS</b>, e altere os <b>nomes de servidor</b> para os servidores do Bonde:</p>
-            <br />
-            {this.state.dns && this.state.dns.delegation_set_servers.map((server, index) => <p key={`server-${index}`}>{server}</p>)}
-            <Button
-              onClick={() => {
-                const { location: { query } } = this.props
-                if (query && query.next) {
-                  browserHistory.push(query.next)
-                } else {
-                  this.setState({ renderTestConnection: true })
+
+          <Step
+            stepComponent={DomainStep}
+            title={intl.formatMessage({
+              id: 'page--community-domain-create.step-dns-servers.step-title',
+              defaultMessage: 'Altere os servidores do seu provedor DNS'
+            })}
+          >
+            <Title size='2'>
+              <FormattedMessage
+                id='page--community-domain-create.step-dns-servers.title'
+                defaultMessage='O que são servidores DNS?'
+              />
+            </Title>
+            <Subtitle>
+              <FormattedMessage
+                id='page--community-domain-create.step-dns-servers.subtitle.first-paragraph'
+                defaultMessage={
+                  'Os Servidores DNS são endereços utilizados pelas organizações de registro de ' +
+                  'domínios como {registroBr} ou {goDaddy}, para identificarem em qual ' +
+                  'servidor se encontram as informações sobre o domínio registrado.'
                 }
-              }}
-            >
-              Continuar
-            </Button>
-          </Step>
-          <Step title='Teste a conexão' stepComponent={DomainStep}>
-            <div>
-              <p>Clique no botão abaixo para verificar se tudo está certo.</p>
-              <p>Atenção: a mudança de DNS pode demorar até 48 horas para ser propagada pela internet.</p>
+                values={{
+                  registroBr: <a href='https://registro.br'>registro.br</a>,
+                  goDaddy: <a href='https://br.godaddy.com'>godaddy.com</a>
+                }}
+              />
+              <br /><br />
+              <FormattedMessage
+                id='page--community-domain-create.step-dns-servers.subtitle.second-paragraph'
+                defaultMessage={
+                  'Complete a ativação do domínio alterando os servidores DNS, onde o domínio ' +
+                  'foi registrado, para os endereços abaixo:'
+                }
+              />
+            </Subtitle>
+            {
+              this.state.dns &&
+              this.state.dns.delegation_set_servers && (
+                <Preformatted>
+                  {this.state.dns.delegation_set_servers.map(
+                    (server, index) => !index ? server : `\n${server}`
+                  )}
+                </Preformatted>
+            )}
+            <div className={styles.actionButtons}>
+              <span style={{ marginRight: '1rem' }}>
+                <Button
+                  type='button'
+                  onClick={() => browserHistory.push(paths.communityDomain())}
+                >
+                  <FormattedMessage
+                    id='page--community-domain-create.step-dns-servers.change-later-button.text'
+                    defaultMessage='Trocar depois'
+                  />
+                </Button>
+              </span>
+              <Button
+                onClick={() => {
+                  const { location: { query } } = this.props
+                  if (query && query.next) {
+                    browserHistory.push(query.next)
+                  } else {
+                    this.setState({ renderTestConnection: true })
+                  }
+                }}
+              >
+                <FormattedMessage
+                  id='page--community-domain-create.step-dns-servers.button.text'
+                  defaultMessage='Continuar'
+                />
+              </Button>
             </div>
-            <Button onClick={() => this.handleTestConnection()}>Testar</Button>
+          </Step>
+
+          <Step
+            stepComponent={DomainStep}
+            title={intl.formatMessage({
+              id: 'page--community-domain-create.step-check.title',
+              defaultMessage: 'Teste a conexão'
+            })}
+          >
+            <div>
+              <p>
+                <FormattedMessage
+                  id='page--community-domain-create.step-check.first-paragraph'
+                  defaultMessage='Clique no botão abaixo para verificar se tudo está certo.'
+                />
+              </p>
+              <p>
+                <FormattedMessage
+                  id='page--community-domain-create.step-check.second-paragraph'
+                  defaultMessage={
+                    'Atenção: a mudança de DNS pode demorar até 48 horas para ' +
+                    'ser propagada pela internet.'
+                  }
+                />
+              </p>
+            </div>
+            <div className={styles.actionButtons}>
+              <span style={{ marginRight: '1rem' }}>
+                <Button
+                  type='button'
+                  onClick={() => browserHistory.push(paths.communityDomain())}
+                >
+                  <FormattedMessage
+                    id='page--community-domain-create.step-check.test-later-button.text'
+                    defaultMessage='Testar depois'
+                  />
+                </Button>
+              </span>
+              <Button onClick={() => this.handleTestConnection()}>
+                <FormattedMessage
+                  id='page--community-domain-create.step-check.button.text'
+                  defaultMessage='Testar'
+                />
+              </Button>
+            </div>
           </Step>
         </Steps>
       </div>

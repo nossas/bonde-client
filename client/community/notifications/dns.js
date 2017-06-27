@@ -16,9 +16,9 @@ export const checkDNSFailure = () => ({
   id: 'notify.community.check--dns--failure',
   title: 'Ooops!',
   status: 'error',
-  message: 'A sincronização ainda está pendente. ' +
-  'Verifique se os Servidores DNS estão corretos. ' +
-  'A atualização pode demorar até 24 horas.',
+  message: 'A alteração de servidores DNS ' +
+    'ainda está pendente. Você pode tentar ' +
+    'de novo em alguns minutos.',
   dismissAfter: 0,
   dismissable: true,
   closeButton: false

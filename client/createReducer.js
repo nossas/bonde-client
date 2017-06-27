@@ -4,9 +4,14 @@ import { combineReducers } from 'redux'
 import { reducer as form } from 'redux-form'
 import { normalizer as creditCardForm } from '~client/subscriptions/forms/credit-card-form'
 import { normalizer as recurringForm } from '~client/subscriptions/forms/recurring-form'
+import { normalizer as communityRecipientForm }
+from '~routes/admin/authenticated/sidebar/community-settings/recipient/page'
 
 // Reapop
 import { reducer as notificationsReducer } from 'reapop'
+
+// Apollo
+import { client } from './store'
 
 // Application
 import auth from '~client/account/redux/reducers'
@@ -31,8 +36,10 @@ export default function createReducer (asyncReducers) {
     sourceRequest,
     form: form.normalize({
       creditCardForm,
-      recurringForm
+      recurringForm,
+      communityRecipientForm
     }),
+    apollo: client.reducer(),
     notifications: notificationsReducer(),
     auth,
     wait,

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-import { Link, browserHistory } from 'react-router'
+import { Link } from 'react-router'
 import { FormattedMessage, intlShape } from 'react-intl'
 
 import * as paths from '~client/paths'

@@ -12,33 +12,18 @@ const Sidebar = ({ children, loading, mobilization, user, community }) => loadin
       {!mobilization ? (
         <SidenavList className='bg-lighten-2'>
           <SidenavListItem
-            text='Minhas Mobilizações'
+            text='Mobilizações'
             icon='list'
             href={paths.mobilizations()}
           />
           <SidenavListItem
-            text='Informações'
+            text='Comunidade'
             icon='info-circle'
             href={paths.communityInfo()}
           />
           <SidenavListItem
-            text='Membros'
-            icon='users'
-            href={paths.communityInvite()}
-          />
-          <SidenavListItem
-            text='Mailchimp'
-            icon='envelope-o'
-            href={paths.communityMailchimp()}
-          />
-          <SidenavListItem
-            text='Recebedor'
-            icon='money'
-            href={paths.communityRecipient()}
-          />
-          <SidenavListItem
-            text='Relatório'
-            icon='file-excel-o'
+            text='Métricas'
+            icon='line-chart'
             href={paths.communityReport()}
           />
           <SidenavListItem

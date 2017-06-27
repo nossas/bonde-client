@@ -6,7 +6,6 @@ const asyncFetch = () => (dispatch, getState, { api }) => {
 
   const endpoint = '/communities'
   const config = { headers: credentials }
-
   dispatch({ type: t.FETCH })
   return api
     .get(endpoint, config)
@@ -20,11 +19,7 @@ const asyncFetch = () => (dispatch, getState, { api }) => {
       }
     })
     .catch(({ response, ...error }) => {
-      if (response.status === 401) {
-        dispatch(logout())
-      } else {
-        return Promise.reject({ error, response })
-      }
+      return Promise.reject({ error, response })
     })
 }
 

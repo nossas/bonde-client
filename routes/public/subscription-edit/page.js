@@ -1,9 +1,9 @@
 import React from 'react'
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
+import { FormattedMessage, intlShape } from 'react-intl'
 import query from 'querystring'
 import classnames from 'classnames'
 import uuid from 'uuid'
-import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
-import { FormattedMessage } from 'react-intl'
 import { Background } from '~client/components/layout'
 import { CreditCardForm, RecurringForm } from '~client/subscriptions/forms'
 import { FlatForm } from '~client/ux/components'
@@ -79,9 +79,11 @@ const SubscriptionEditPage = props => {
     url,
     modificationType,
     animationStack,
+    asyncSubscriptionDelete,
     setModificationType,
     appendAnimationStack,
-    removeAnimationStack
+    removeAnimationStack,
+    intl
   } = props
 
   const displayForm = (form, type) => {
@@ -163,10 +165,35 @@ const SubscriptionEditPage = props => {
               </div>
             ))}
           </CSSTransitionGroup>
+          <p className='link--cancel center mt3 lightgray link'>
+            <a
+              onClick={() => {
+                const message = intl.formatMessage({
+                  id: 'page--subscription-edit.cancel-subscription.confirm',
+                  defaultMessage: 'Você está prestes a cancelar sua assinatura. ' +
+                    'Tem certeza que quer continuar?'
+                })
+
+                if (window.confirm(message)) {
+                  animationStack.length && removeAnimationStack(0)
+                  asyncSubscriptionDelete(initialValues)
+                }
+              }}
+            >
+              <FormattedMessage
+                id='page--subscription-edit.link.cancel-subscription'
+                defaultMessage='Quero cancelar a minha assinatura.'
+              />
+            </a>
+          </p>
         </section>
       </Background>
     </div>
   )
+}
+
+SubscriptionEditPage.propTypes = {
+  intl: intlShape.isRequired
 }
 
 export default SubscriptionEditPage

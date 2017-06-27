@@ -3,12 +3,10 @@ import { injectIntl } from 'react-intl'
 import { graphql } from 'react-apollo'
 import { browserHistory } from 'react-router'
 
-import * as AccountActions from '~client/account/redux/action-creators'
-import * as AccountActionTypes from '~client/account/redux/action-types'
-import AccountSelectors from '~client/account/redux/selectors'
 import { createAction } from '~client/utils/redux'
 import { isValidEmail } from '~client/utils/validation-helper'
 
+import AccountSelectors from '~client/account/redux/selectors'
 import authenticate from '~client/account/queries/authenticate'
 import * as authType from '~client/account/redux/action-types'
 
@@ -62,7 +60,7 @@ const mapActionsToProps = (dispatch, props) => ({...props,
         }
       })
   },
-  resetErrorMessage: () => createAction(AccountActionTypes.LOGIN_FAILURE, undefined),
+  resetErrorMessage: () => createAction(authType.LOGIN_FAILURE, undefined),
 })
 
 const FormLoginWithMutation = injectIntl(graphql(authenticate)(reduxForm(

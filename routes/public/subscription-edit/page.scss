@@ -1,3 +1,16 @@
+.routes--subscription-edit-page .link--cancel {
+  margin-bottom: -.5rem;
+}
+
+.routes--subscription-edit-page .link a {
+  font-weight: normal;
+  text-decoration: none;
+  cursor: pointer;
+}
+.routes--subscription-edit-page .link a::after {
+  height: 1px;
+}
+
 .routes--subscription-edit-page {}
 
 .routes--subscription-edit-page .section--choose-type {

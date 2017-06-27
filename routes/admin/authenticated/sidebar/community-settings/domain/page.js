@@ -3,7 +3,10 @@ import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
 import { FormattedMessage, intlShape } from 'react-intl'
 import { Loading } from '~client/components/await'
+import { Info } from '~client/components/notify'
 import { Dialog } from '~client/ux/components'
+import { Title, Subtitle } from '~client/components/title'
+import { Preformatted } from '~client/components/markdown'
 import {
   ButtonPreview,
   DomainPreview,
@@ -18,7 +21,6 @@ import * as Paths from '~client/paths'
 if (require('exenv').canUseDOM) require('./styles.scss')
 
 class Page extends Component {
-
   constructor (props) {
     super(props)
     this.state = {
@@ -61,15 +63,32 @@ class Page extends Component {
   }
 
   dnsHostedZoneMenu (dnsHostedZone) {
-    const { checkHostedZone } = this.props
+    const { checkHostedZone, intl } = this.props
     const items = [
-      { icon: 'fa fa-bars', text: 'Subdomínios', onClick: () => this.toggleDNSRecords(dnsHostedZone) },
-      { icon: 'fa fa-trash', text: 'Remover domínio', onClick: () => this.setState({ deletedHostedZone: dnsHostedZone }) }
+      {
+        icon: 'fa fa-bars',
+        text: intl.formatMessage({
+          id: 'page--community-domain.section--dns-hosted-zone.menu.subdomains',
+          defaultMessage: 'Subdomínios'
+        }),
+        onClick: () => this.toggleDNSRecords(dnsHostedZone)
+      }, {
+        icon: 'fa fa-trash',
+        text: intl.formatMessage({
+          id: 'page--community-domain.section--dns-hosted-zone.menu.remove',
+          defaultMessage: 'Remover domínio'
+        }),
+        onClick: () => this.setState({ deletedHostedZone: dnsHostedZone })
+      }
     ]
+
     if (!dnsHostedZone.ns_ok) {
       items.splice(0, 0, {
         icon: 'fa fa-refresh',
-        text: 'Verificar DNS',
+        text: intl.formatMessage({
+          id: 'page--community-domain.section--dns-hosted-zone.menu.check-dns',
+          defaultMessage: 'Testar a conexão'
+        }),
         onClick: () => {
           checkHostedZone(dnsHostedZone)
             .then(resp => {
@@ -93,12 +112,18 @@ class Page extends Component {
   }
 
   dnsRecordMenu (dnsRecord) {
+    const { intl } = this.props
     return (
       <DropdownMenu
         inline
-        items={[
-          { icon: 'fa fa-trash', text: 'Remover subdomínio', onClick: () => this.setState({ deletedDNSRecord: dnsRecord }) }
-        ]}
+        items={[{
+          icon: 'fa fa-trash',
+          text: intl.formatMessage({
+            id: 'page--community-domain.section--dns-records.menu.remove',
+            defaultMessage: 'Remover subdomínio'
+          }),
+          onClick: () => this.setState({ deletedDNSRecord: dnsRecord })
+        }]}
       />
     )
   }
@@ -115,29 +140,25 @@ class Page extends Component {
 
     return (
       <div className='domain-page'>
+        <Info
+          title={intl.formatMessage({
+            id: 'page--community-domain.header.info.title',
+            defaultMessage: 'Informação'
+          })}
+        >
+          <FormattedMessage
+            id='page--community-domain.header.info.text'
+            defaultMessage={
+              'Abaixo, encontra-se a lista de domínios já cadastrados. Após alteração e ativação' +
+              'dos servidores DNS, torna-se possível publicar uma mobilização muito mais rápido,' +
+              'além de gerenciar os subdomínios externos cadastrados.'
+            }
+          />
+        </Info>
         <div className='dns-hosted-zones'>
           {dnsHostedZoneIsLoading && <Loading />}
           {dnsHostedZones && (
-            <Preview
-              header={
-                <div className='table-row header'>
-                  <div className='wrapper' style={{ width: 50 }}>
-                    <div className='text' />
-                  </div>
-                  <div className='wrapper' style={{ flex: 10 }}>
-                    <div className='text'>
-                      <FormattedMessage
-                        id='community.components--domain.preview.label.domain'
-                        defaultMessage='Domínio da comunidade'
-                      />
-                    </div>
-                  </div>
-                  <div className='wrapper'>
-                    <div className='text' />
-                  </div>
-                </div>
-              }
-            >
+            <Preview>
               {dnsHostedZones.map((dnsHostedZone, index) => (
                 <DomainPreview
                   key={`dns-hosted-zone-${index}`}
@@ -146,6 +167,14 @@ class Page extends Component {
                   checked={dnsHostedZone.ns_ok}
                   onToggle={() => this.toggleDNSRecords(dnsHostedZone)}
                   menuComponent={this.dnsHostedZoneMenu(dnsHostedZone)}
+                  successIconTitle={intl.formatMessage({
+                    id: 'page--community-domain.domain-preview.success-icon.title',
+                    defaultMessage: 'Servidores DNS ativos'
+                  })}
+                  failureIconTitle={intl.formatMessage({
+                    id: 'page--community-domain.domain-preview.failure-icon.title',
+                    defaultMessage: 'Aguardando alteração dos servidores DNS'
+                  })}
                 />
               ))}
             </Preview>
@@ -177,33 +206,32 @@ class Page extends Component {
         {this.state.dnsHostedZone ? (
           <div className='dns-detail'>
             <div className='dns-records'>
-              <h3>
+              <Title size='2'>
                 <FormattedMessage
                   id='community.page--domain-list.header.dns-records'
                   defaultMessage='Registros DNS'
                 />
-              </h3>
+              </Title>
               {dnsRecordsIsLoading && <Loading />}
-              <p>
+              <Subtitle>
                 <FormattedMessage
-                  id='community.page--domain-list.dns-record-description'
+                  id='community.page--domain-list.dns-record-description.first-paragraph'
                   defaultMessage={
-                    'Os registros DNS são configurações especiais que alteram a ' +
-                    'forma como o seu domínio trabalha. Com esses registros, você ' +
-                    'se conecta a serviços de terceiros como provedores de email. {link}.'
+                    'Os Servidores DNS são endereços utilizados pelas organizações de ' +
+                    'registro de domínios como registro.br ou godaddy.com, para ' +
+                    'identificarem em qual servidor se encontram as informações ' +
+                    'sobre o domínio registrado.'
                   }
-                  values={{
-                    link: (
-                      <a href='https://trilho.bonde.org' title='Saiba mais' target='_blank'>
-                        <FormattedMessage
-                          id='community.page--domain-list.dns-record-description.link'
-                          defaultMessage='Saiba mais'
-                        />
-                      </a>
-                    )
-                  }}
                 />
-              </p>
+                <br /><br />
+                <FormattedMessage
+                  id='community.page--domain-list.dns-record-description.second-paragraph'
+                  defaultMessage={
+                    'Complete a ativação do domínio alterando os servidores DNS, ' +
+                    'onde o domínio foi registrado, para os endereços abaixo:'
+                  }
+                />
+              </Subtitle>
               <Preview
                 header={
                   <div className='table-row header'>
@@ -213,7 +241,7 @@ class Page extends Component {
                     <div className='wrapper' style={{ flex: 15 }}>
                       <div className='text'>
                         <FormattedMessage
-                          id='community.components--subdomain.label.name'
+                          id='community.components--subdomain-preview-header.name'
                           defaultMessage='Nome'
                         />
                       </div>
@@ -221,7 +249,7 @@ class Page extends Component {
                     <div className='wrapper' style={{ width: 100, textAlign: 'center' }}>
                       <div className='text'>
                         <FormattedMessage
-                          id='community.components--subdomain.label.record-type'
+                          id='community.components--subdomain-preview-header.record-type'
                           defaultMessage='Tipo'
                         />
                       </div>
@@ -229,7 +257,7 @@ class Page extends Component {
                     <div className='wrapper' style={{ flex: 17 }}>
                       <div className='text'>
                         <FormattedMessage
-                          id='community.components--subdomain.label.value'
+                          id='community.components--subdomain-preview-header.value'
                           defaultMessage='Valor'
                         />
                       </div>
@@ -284,22 +312,24 @@ class Page extends Component {
                 >
                   <div className='mb2'>
                     <FormattedMessage
-                      id='community.page--domain-list.dialog.record-confirm-message'
-                      defaultMessage='Tem certeza que deseja remover o subdomínio'
+                      id='page--community-domain.section--dns-records.menu.remove.dialog.text'
+                      defaultMessage='Tem certeza que deseja remover o registro {recordName}?'
+                      values={{
+                        recordName: <b>{this.state.deletedDNSRecord.value}</b>
+                      }}
                     />
-                    <b> {this.state.deletedDNSRecord.value}</b>?
                   </div>
                 </Dialog>
               )}
             </div>
             <div className='dns-server'>
-              <h3>
+              <Title size='2'>
                 <FormattedMessage
                   id='community.page--domain-list.header.dns-server'
-                  defaultMessage='Servidor DNS'
+                  defaultMessage='Servidores DNS'
                 />
-              </h3>
-              <p>
+              </Title>
+              <Subtitle>
                 <FormattedMessage
                   id='community.page--domain-list.dns-server-description'
                   defaultMessage={
@@ -321,12 +351,14 @@ class Page extends Component {
                     )
                   }}
                 />
-              </p>
-              <ul>
-                {this.state.dnsHostedZone.delegation_set_servers.map(
-                  (server, index) => <li key={index}>{server}</li>
-                )}
-              </ul>
+              </Subtitle>
+              {this.state.dnsHostedZone.delegation_set_servers && (
+                <Preformatted backgroundColor='#ffffff'>
+                  {this.state.dnsHostedZone.delegation_set_servers.map(
+                    (server, index) => !index ? server : `\n${server}`
+                  )}
+                </Preformatted>
+              )}
             </div>
           </div>
         ) : null}

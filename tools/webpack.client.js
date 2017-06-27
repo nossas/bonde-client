@@ -201,8 +201,11 @@ module.exports = {
       {
         test: /\.(png|jpg)$/,
         use: [{
-          loader: 'url-loader',
-          options: { limit: 10000 } // Convert images < 10k to base64 strings
+          loader: 'file-loader',
+          options: {
+            limit: 10000, // Convert images < 10k to base64 strings
+            name: 'assets/images/[name].[ext]'
+          }
         }]
       }
     ]

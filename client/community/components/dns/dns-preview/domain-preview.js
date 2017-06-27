@@ -7,7 +7,9 @@ const DomainPreview = ({
   menuComponent: MenuComponent,
   checked,
   isActive,
-  onToggle
+  onToggle,
+  successIconTitle,
+  failureIconTitle
 }) => (
   <div
     className={classnames('table-row', { active: isActive })}
@@ -16,7 +18,10 @@ const DomainPreview = ({
     <div className='wrapper'>
       <div className='text' style={{ width: 30 }}>
         <span className={`circle${checked ? ' checked' : ''}`}>
-          {checked ? <i className='fa fa-check' /> : <i className='fa fa-close' />}
+          {checked
+            ? <i className='fa fa-check' title={successIconTitle} />
+            : <i className='fa fa-close' title={failureIconTitle} />
+          }
         </span>
       </div>
     </div>
@@ -44,7 +49,9 @@ DomainPreview.propTypes = {
   isActive: PropTypes.bool,
   checked: PropTypes.bool,
   menuComponent: PropTypes.element,
-  onToggle: PropTypes.func
+  onToggle: PropTypes.func,
+  successIconTitle: PropTypes.string,
+  failureIconTitle: PropTypes.string
 }
 
 export default DomainPreview

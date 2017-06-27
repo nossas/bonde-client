@@ -85,3 +85,19 @@ export const communityInviteSuccess = (intl, email) => ({
   dismissible: true,
   closeButton: false
 })
+
+export const subscriptionCancelSuccess = intl => ({
+  title: intl.formatMessage({
+    id: 'notification--subscription-cancel-success.title',
+    defaultMessage: 'Assinatura cancelada'
+  }),
+  status: 'success',
+  message: intl.formatMessage({
+    id: 'notification--subscription-cancel-success.message',
+    defaultMessage: 'Sua assinatura foi cancelada e, o valor da sua ' +
+      'doação não será debitado até que você faça uma nova doação recorrente.',
+  }),
+  dismissAfter: 15000,
+  dismissible: true,
+  closeButton: false
+})

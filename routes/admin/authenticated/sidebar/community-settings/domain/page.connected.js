@@ -18,16 +18,25 @@ import Page from './page'
 
 const fields = ['name', 'record_type', 'value']
 
-const validate = values => {
+const validate = (values, { intl }) => {
   const errors = {}
   if (!values.name) {
-    errors.name = 'Preenchimento obrigatório'
+    errors.name = intl.formatMessage({
+      id: 'page--community-domain.form.validation.required',
+      defaultMessage: 'Preenchimento obrigatório'
+    })
   }
   if (!values.record_type) {
-    errors.record_type = 'Preenchimento obrigatório'
+    errors.record_type = intl.formatMessage({
+      id: 'page--community-domain.form.validation.required',
+      defaultMessage: 'Preenchimento obrigatório'
+    })
   }
   if (!values.value) {
-    errors.value = 'Preenchimento obrigatório'
+    errors.value = intl.formatMessage({
+      id: 'page--community-domain.form.validation.required',
+      defaultMessage: 'Preenchimento obrigatório'
+    })
   }
 }
 
@@ -72,8 +81,8 @@ const mapActionsToProps = {
   notify
 }
 
-export default provideHooks(redial)(
+export default injectIntl(provideHooks(redial)(
   reduxForm({ form: 'createDNSRecordForm', fields, validate })(
-    connect(mapStateToProps, mapActionsToProps)(injectIntl(Page))
+    connect(mapStateToProps, mapActionsToProps)(Page)
   )
-)
+))

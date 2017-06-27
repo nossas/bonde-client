@@ -1,5 +1,5 @@
 import React from 'react'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, injectIntl } from 'react-intl'
 import {
   FormRedux,
   FormGroup,
@@ -13,7 +13,16 @@ if (require('exenv').canUseDOM) require('./styles.scss')
 
 const recordTypeList = ['A', 'AAAA', 'CNAME', 'MX', 'NAPTR', 'NS', 'PTR', 'SOA', 'SPF', 'SRV', 'TXT']
 
-const Form = ({ dnsHostedZone, fields: { name, record_type: recordType, value }, ...formProps }) => (
+const Form = ({
+  dnsHostedZone,
+  fields: {
+    name, record_type:
+    recordType,
+    value
+  },
+  intl,
+  ...formProps
+}) => (
   <FormRedux nosubmit {...formProps}>
     <div className='form--dns-record'>
       <div className='fields--dns-record'>
@@ -21,18 +30,25 @@ const Form = ({ dnsHostedZone, fields: { name, record_type: recordType, value },
           <FormGroup {...name}>
             <ControlLabel>
               <FormattedMessage
-                id='community.components--subdomain.label.name'
+                id='community.components--subdomain.name.label'
                 defaultMessage='Nome'
               />
             </ControlLabel>
-            <FormControl type='text' addonText={`.${dnsHostedZone.domain_name}`} />
+            <FormControl
+              type='text'
+              placeholder={intl.formatMessage({
+                id: 'community.components--subdomain.name.placeholder',
+                defaultMessage: 'subdominio'
+              })}
+              addonText={`.${dnsHostedZone.domain_name}`}
+            />
           </FormGroup>
         </div>
         <div className='col col-2'>
           <FormGroup {...recordType}>
             <ControlLabel>
               <FormattedMessage
-                id='community.components--subdomain.label.record-type'
+                id='community.components--subdomain.record-type.label'
                 defaultMessage='Tipo'
               />
             </ControlLabel>
@@ -45,18 +61,31 @@ const Form = ({ dnsHostedZone, fields: { name, record_type: recordType, value },
           <FormGroup {...value}>
             <ControlLabel>
               <FormattedMessage
-                id='community.components--subdomain.label.value'
+                id='community.components--subdomain.value.label'
                 defaultMessage='Valor'
               />
             </ControlLabel>
-            <FormControl componentClass='textarea' type='text' rows='5' />
+            <FormControl
+              componentClass='textarea'
+              type='text'
+              rows='5'
+              placeholder={intl.formatMessage({
+                id: 'community.components--subdomain.value.placeholder',
+                defaultMessage:
+`redirecionamento.dominio.com
+ou
+servidor-01.dominio.com
+servidor-02.dominio.com
+servidor-03.dominio.com`
+              })}
+            />
           </FormGroup>
         </div>
         <div className='clearfix' />
       </div>
       <Button type='submit'>
         <FormattedMessage
-          id='community.components--subdomain.form.submit--button'
+          id='community.components--subdomain.form.submit-button'
           defaultMessage='Adicionar'
         />
       </Button>
@@ -64,4 +93,4 @@ const Form = ({ dnsHostedZone, fields: { name, record_type: recordType, value },
   </FormRedux>
 )
 
-export default Form
+export default injectIntl(Form)

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
+import { injectIntl } from 'react-intl'
 import { CPF, CNPJ } from 'cpf_cnpj'
-
 import * as CommunityActions from '~client/community/action-creators'
 import * as CommunitySelectors from '~client/community/selectors'
 
@@ -43,7 +43,7 @@ const fields = [
   'recipient.bank_account.document_number'
 ]
 
-const validate = values => {
+const validate = (values, { intl }) => {
   const errors = { recipient: { bank_account: {} } }
   const {
     recipient: {
@@ -61,61 +61,94 @@ const validate = values => {
     }
   } = values
 
+  const requiredMessage = intl.formatMessage({
+    id: 'page--community-recipient.form.validation.required',
+    defaultMessage: 'Campo obrigatório'
+  })
+
   if (!transferDay) {
-    errors.recipient.transfer_day = 'Campo obrigatório'
+    errors.recipient.transfer_day = requiredMessage
   }
 
   if (!bankCode) {
-    errors.recipient.bank_account.bank_code = 'Campo obrigatório'
+    errors.recipient.bank_account.bank_code = requiredMessage
   }
 
   if (!agency) {
-    errors.recipient.bank_account.agency = 'Campo obrigatório'
+    errors.recipient.bank_account.agency = requiredMessage
   } else if (agency.length > 5) {
-    errors.recipient.bank_account.agency = 'Deve conter no máximo 5 digitos'
+    errors.recipient.bank_account.agency = intl.formatMessage({
+      id: 'page--community-recipient.form.bank-agency.validation.max-length',
+      defaultMessage: 'Deve conter no máximo 5 digitos'
+    })
   }
   if (agencyDig && agencyDig.length > 1) {
-    errors.recipient.bank_account.agency_dig = 'Deve conter apenas 1 digito'
+    errors.recipient.bank_account.agency_dig = intl.formatMessage({
+      id: 'page--community-recipient.form.bank-agency-dv.validation.length',
+      defaultMessage: 'Deve conter apenas 1 digito'
+    })
   }
 
   if (!account) {
-    errors.recipient.bank_account.account = 'Campo obrigatório'
+    errors.recipient.bank_account.account = requiredMessage
   } else if (account.length > 13) {
-    errors.recipient.bank_account.account = 'Deve conter no máximo 13 digitos'
+    errors.recipient.bank_account.account = intl.formatMessage({
+      id: 'page--community-recipient.form.bank-account.validation.max-length',
+      defaultMessage: 'Deve conter no máximo 13 digitos'
+    })
   }
   if (!accountDig) {
-    errors.recipient.bank_account.account_dig = 'Campo obrigatório'
+    errors.recipient.bank_account.account_dig = requiredMessage
   } else if (accountDig.length > 2) {
-    errors.recipient.bank_account.account_dig = 'Deve conter no máximo 2 caracteres'
+    errors.recipient.bank_account.account_dig = intl.formatMessage({
+      id: 'page--community-recipient.form.bank-account-dv.validation.max-length',
+      defaultMessage: 'Deve conter no máximo 2 caracteres'
+    })
   }
 
   if (!type) {
-    errors.recipient.bank_account.type = 'Campo obrigatório'
+    errors.recipient.bank_account.type = requiredMessage
   }
 
   if (!legalName) {
-    errors.recipient.bank_account.legal_name = 'Campo obrigatório'
+    errors.recipient.bank_account.legal_name = requiredMessage
   }
 
+
   if (!documentNumber) {
-    errors.recipient.bank_account.document_number = 'Campo obrigatório'
-  } else if (documentNumber.length > 11 && documentNumber.length !== 14) {
-    errors.recipient.bank_account.document_number = 'CNPJ deve conter 14 digitos'
-  } else if (documentNumber.length < 11) {
-    errors.recipient.bank_account.document_number = 'CPF deve conter 11 digitos'
-  } else if (documentNumber.length === 11 && !CPF.isValid(documentNumber)) {
-    errors.recipient.bank_account.document_number = 'CPF inválido'
-  } else if (documentNumber.length === 14 && !CNPJ.isValid(documentNumber)) {
-    errors.recipient.bank_account.document_number = 'CNPJ inválido'
+    errors.recipient.bank_account.document_number = requiredMessage
+  } else {
+    const docOnlyNum = documentNumber.replace(/[^\d]/g, '')
+    if (docOnlyNum.length > 11 && docOnlyNum.length !== 14) {
+      errors.recipient.bank_account.document_number = intl.formatMessage({
+        id: 'page--community-recipient.form.bank-document-number.validation.cnpj-length',
+        defaultMessage: 'CNPJ deve conter 14 digitos'
+      })
+    } else if (docOnlyNum.length < 11) {
+      errors.recipient.bank_account.document_number = intl.formatMessage({
+        id: 'page--community-recipient.form.bank-document-number.validation.cpf-length',
+        defaultMessage: 'CPF deve conter 11 digitos'
+      })
+    } else if (docOnlyNum.length === 11 && !CPF.isValid(docOnlyNum)) {
+      errors.recipient.bank_account.document_number = intl.formatMessage({
+        id: 'page--community-recipient.form.bank-document-number.validation.invalid-cpf-format',
+        defaultMessage: 'CPF inválido'
+      })
+    } else if (docOnlyNum.length === 14 && !CNPJ.isValid(docOnlyNum)) {
+      errors.recipient.bank_account.document_number = intl.formatMessage({
+        id: 'page--community-recipient.form.bank-document-number.validation.invalid-cnpj-format',
+        defaultMessage: 'CNPJ inválido'
+      })
+    }
   }
 
   return errors
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  reduxForm({
-    form: 'mailchimpForm',
+  injectIntl(reduxForm({
+    form: 'communityRecipientForm',
     fields,
     validate
-  })(Page)
+  })(Page))
 )

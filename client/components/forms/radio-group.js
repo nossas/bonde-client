@@ -6,10 +6,10 @@ class RadioGroup extends Component {
   render () {
     const formGroup = this.context.$formGroup
     const { value, ...field } = formGroup || {}
-    const { children, className, layout } = this.props
+    const { children, className, layout, style } = this.props
 
     return (
-      <p className={classnames('mt1', className)}>
+      <p className={classnames('mt1', className)} style={style}>
         {children && children.map((child, index) => {
           return React.cloneElement(child, {
             key: `radio-${index}`,
@@ -28,7 +28,8 @@ RadioGroup.contextTypes = {
 }
 
 RadioGroup.propTypes = {
-  layout: PropTypes.oneOf(['horizontal', 'vertical'])
+  layout: PropTypes.oneOf(['horizontal', 'vertical']),
+  style: PropTypes.object
 }
 
 RadioGroup.defaultProps = {

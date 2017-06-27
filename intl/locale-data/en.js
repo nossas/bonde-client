@@ -11,9 +11,9 @@ export default {
 
   // component community subdomain preview and form
   // routepath: /community/domain
-  'community.components--subdomain.label.name': 'Name',
-  'community.components--subdomain.label.record-type': 'Record type',
-  'community.components--subdomain.label.value': 'Value',
+  'community.components--subdomain-preview-header.name': 'Name',
+  'community.components--subdomain-preview-header.record-type': 'Record type',
+  'community.components--subdomain-preview-header.value': 'Value',
   'community.components--subdomain.form.submit-button': 'Add',
   'community.components--domain.preview.label.domain': 'Domain',
   'community.page--domain-list.header.dns-records': 'DNS records',
@@ -22,8 +22,7 @@ export default {
   'community.page--domain-list.button.add-new-domain': 'Add new domain',
   'community.page--domain-list.dialog.record-confirm-message': 'Are you sure you want to remove the dns record',
   'community.page--domain-list.dialog.domain-confirm-message': 'Are you sure you want to remove the domain',
-  'community.page--domain-list.dns-record-description': 'DNS records are special settings that change how your domain works. With these records, you connect to third-party services as e-mail providers. {link}.',
-  'community.page--domain-list.dns-record-description.link': 'Learn more',
+  'community.page--domain-list.dns-record-description': 'DNS records are special settings that change how your domain works. With these records, you connect to third-party services as e-mail providers.',
   'community.page--domain-list.dns-server-description': 'DNS Servers are addresses used by domain registrar organizations such as {registrobr} or {godaddy}, to identify on which server the information about the registered domain is located. Ask your questions {trilho}.',
   'community.page--domain-list.dns-server-description.trilho.link': 'on the help site',
 

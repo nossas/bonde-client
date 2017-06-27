@@ -7,6 +7,7 @@ import cookie from 'react-cookie'
 import DefaultServerConfig from '~server/config'
 import createReducer from './createReducer'
 import DevTools from './components/dev-tools'
+import { logout } from '~client/account/redux/action-creators'
 
 const api = axios.create({ baseURL: DefaultServerConfig.apiUrl })
 
@@ -38,7 +39,10 @@ networkInterface.use([{
   }
 }])
 
-export const client = new ApolloClient({ networkInterface })
+export const client = new ApolloClient({
+  ssrMode: true,
+  networkInterface
+})
 
 export function configureStore (initialState, thunkExtraArgument) {
   middlewares.push(
@@ -48,6 +52,8 @@ export function configureStore (initialState, thunkExtraArgument) {
       ...thunkExtraArgument
     })
   )
+
+  middlewares.push(client.middleware())
 
   let store = createStore(
     createReducer(),
@@ -61,6 +67,18 @@ export function configureStore (initialState, thunkExtraArgument) {
   )
 
   store.asyncReducers = {}
+
+  api.interceptors.response.use(
+    (response) => {
+      return response
+    },
+    ({ response, ...error }) => {
+      if (response.status === 401) {
+        store.dispatch(logout())
+      }
+      return Promise.reject({ response, ...error })
+    }
+  )
 
   if (process.env.NODE_ENV === 'development') {
     if (module.hot) {

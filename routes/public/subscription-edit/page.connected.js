@@ -1,12 +1,19 @@
 import { provideHooks } from 'redial'
 import { connect } from 'react-redux'
-import * as SubscriptionActions from '~client/subscriptions/redux/action-creators'
+import { injectIntl } from 'react-intl'
+import {
+  asyncSubscriptionDelete,
+  asyncSubscriptionFetch,
+  setModificationType,
+  appendAnimationStack,
+  removeAnimationStack
+} from '~client/subscriptions/redux/action-creators'
 import SubscriptionEditSelectors from '~client/subscriptions/redux/selectors/edit'
 import Page from './page'
 
 const redial = {
   fetch: ({ dispatch, params, query }) => {
-    return dispatch(SubscriptionActions.asyncSubscriptionFetch({
+    return dispatch(asyncSubscriptionFetch({
       id: params.id,
       token: query.token
     }))
@@ -23,8 +30,13 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = SubscriptionActions
+const mapDispatchToProps = {
+  asyncSubscriptionDelete,
+  setModificationType,
+  appendAnimationStack,
+  removeAnimationStack
+}
 
-export default provideHooks(redial)(
+export default injectIntl(provideHooks(redial)(
   connect(mapStateToProps, mapDispatchToProps)(Page)
-)
+))

@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 import { Tabs, Tab } from '~client/components/navigation'
 import { SettingsPageMenuLayout } from '~client/components/layout'
 
@@ -17,14 +18,75 @@ const SettingsMenu = ({ location: { pathname } }) => {
   const domainPageIsActive = domainPaths.indexOf(pathname) !== -1
 
   return (
-    <SettingsPageMenuLayout title='Configurações da comunidade'>
+    <SettingsPageMenuLayout
+      title={
+        <FormattedMessage
+          id='community.components--settings-menu.title'
+          defaultMessage='Configurações da comunidade'
+        />
+      }
+    >
       <Tabs>
-        <Tab text='Informações' path={infoPath} isActive={infoPath === pathname} />
-        <Tab text='Membros' path={invitePath} isActive={invitePath === pathname} />
-        <Tab text='Mailchimp' path={mailchimpPath} isActive={mailchimpPath === pathname} />
-        <Tab text='Recebedor' path={recipientPath} isActive={recipientPath === pathname} />
-        <Tab text='Relatório' path={reportPath} isActive={reportPath === pathname} />
-        <Tab text='Domínios' path={paths.communityDomain()} isActive={domainPageIsActive} />
+        <Tab
+          isActive={infoPath === pathname}
+          path={infoPath}
+          text={
+            <FormattedMessage
+              id='community.components--settings-menu.tabs.info'
+              defaultMessage='Informações'
+            />
+          }
+        />
+        <Tab
+          isActive={invitePath === pathname}
+          path={invitePath}
+          text={
+            <FormattedMessage
+              id='community.components--settings-menu.tabs.mobilizers'
+              defaultMessage='Mobilizadores'
+            />
+          }
+        />
+        <Tab
+          isActive={mailchimpPath === pathname}
+          path={mailchimpPath}
+          text={
+            <FormattedMessage
+              id='community.components--settings-menu.tabs.mailchimp'
+              defaultMessage='Mailchimp'
+            />
+          }
+        />
+        <Tab
+          isActive={recipientPath === pathname}
+          path={recipientPath}
+          text={
+            <FormattedMessage
+              id='community.components--settings-menu.tabs.recipient'
+              defaultMessage='Recebedor'
+            />
+          }
+        />
+        <Tab
+          isActive={reportPath === pathname}
+          path={reportPath}
+          text={
+            <FormattedMessage
+              id='community.components--settings-menu.tabs.metrics'
+              defaultMessage='Métricas'
+            />
+          }
+        />
+        <Tab
+          isActive={domainPageIsActive}
+          path={paths.communityDomain()}
+          text={
+            <FormattedMessage
+              id='community.components--settings-menu.tabs.domains'
+              defaultMessage='Domínios'
+            />
+          }
+        />
       </Tabs>
     </SettingsPageMenuLayout>
   )

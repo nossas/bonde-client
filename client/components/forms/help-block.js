@@ -3,11 +3,11 @@ import React from 'react'
 import classnames from 'classnames'
 
 const HelpBlock = ({ children, className }) => (
-  <p className={classnames('darkengray', className)}>
-    <small className='muted'>
-      <em>{children}</em>
+  <div className={classnames('muted my2', className)}>
+    <small className='block'>
+      <dfn>{children}</dfn>
     </small>
-  </p>
+  </div>
 )
 
 HelpBlock.propTypes = {

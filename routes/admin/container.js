@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import ga from 'react-ga'
+import Helmet from 'react-helmet'
 import DevTools from '~client/components/dev-tools'
 import { Loading } from '~client/components/await'
 import { ZendeskWidget } from '~client/components/external-services'
@@ -24,6 +25,23 @@ class Application extends React.Component {
     const { children, loading } = this.props
     return (
       <div>
+        <Helmet
+          title='BONDE - Feito pra causar'
+          link={[
+            {
+              rel: 'icon',
+              type: 'image/png',
+              sizes: '32x32',
+              href: require('exenv').canUseDOM ? require('~client/images/icon/favicon-32.png') : ''
+            },
+            {
+              rel: 'icon',
+              type: 'image/png',
+              sizes: '16x16',
+              href: require('exenv').canUseDOM ? require('~client/images/icon/favicon-16.png') : ''
+            }
+          ]}
+        />
         <ZendeskWidget />
         {process.env.NODE_ENV === 'development' ? <DevTools /> : ''}
         {children}

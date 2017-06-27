@@ -4,11 +4,17 @@ import * as t from '~client/community/action-types'
 import * as AwaitActions from '~client/components/await/redux/action-creators'
 import { genericRequestError, communityInviteSuccess } from '~client/utils/notifications'
 
+const COMMUNITY_USER_ROLES = {
+  owner: 1,
+  admin: 2,
+  participant: 3
+}
+
 export default (communityId, invitation) => (dispatch, getState, { api, intl }) => {
   const { auth: { credentials } } = getState()
 
   const endpoint = `/communities/${communityId}/invitation`
-  const body = { invitation }
+  const body = { invitation: { ...invitation, role: COMMUNITY_USER_ROLES.admin } }
   const options = { headers: credentials }
 
   dispatch(AwaitActions.setLoading(true))

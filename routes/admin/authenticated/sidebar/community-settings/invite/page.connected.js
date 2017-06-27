@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
+import { injectIntl } from 'react-intl'
 
 import { asyncInvite } from '~client/community/action-creators'
 import * as CommunitySelectors from '~client/community/selectors'
@@ -29,5 +30,5 @@ const validate = ({ email }) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(
-  reduxForm({ form: 'communityInviteForm', fields, validate })(Page)
+  reduxForm({ form: 'communityInviteForm', fields, validate })(injectIntl(Page))
 )

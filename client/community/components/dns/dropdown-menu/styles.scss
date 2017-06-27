@@ -17,7 +17,7 @@
       box-shadow: none;
       background-color: #fff;
       min-width: initial;
-      
+
       .dropdown--item {
         display: inline-block;
         margin-left: 10px;
@@ -31,9 +31,10 @@
     .dropdown--item {
       padding: 12px 16px;
       font-size: 16px;
+      transition: background-color .2s;
 
       &:hover {
-        background-color: #c7c7c7;
+        background-color: #efefef;
       }
       span {
         margin-left: 10px;

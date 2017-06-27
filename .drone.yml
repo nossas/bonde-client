@@ -1,6 +1,6 @@
 pipeline:
   build:
-    image: gabrielrtakeda/node-yarn:8.1.0
+    image: node:latest
     commands:
       - yarn
       - yarn test
@@ -34,6 +34,7 @@ pipeline:
     script:
       - sudo docker pull nossas/bonde-client:${DRONE_BRANCH}
       - sudo docker tag nossas/bonde-client:${DRONE_BRANCH} dokku/0-client:latest
+      - sudo docker tag nossas/bonde-client:${DRONE_BRANCH} dokku/app-client:latest
       - dokku tags:deploy 0-client latest
       - dokku tags:deploy app-client latest
     when:

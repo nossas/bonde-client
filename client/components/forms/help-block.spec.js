@@ -19,11 +19,11 @@ describe('client/components/forms/help-block', () => {
     it('should render without crash', () => {
       expect(wrapper).to.be.ok
     })
-    it('should render <em> tag', () => {
-      expect(wrapper.find('em')).to.have.length(1)
+    it('should render <dfn> tag', () => {
+      expect(wrapper.find('dfn')).to.have.length(1)
     })
-    it('should render <em> tag with its text properly', () => {
-      expect(wrapper.find('em').text()).to.be.equal('Foo bar')
+    it('should render <dfn> tag with its text properly', () => {
+      expect(wrapper.find('dfn').text()).to.be.equal('Foo bar')
     })
   })
 })

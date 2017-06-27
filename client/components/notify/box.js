@@ -24,4 +24,9 @@ Box.propTypes = {
   children: PropTypes.any.isRequired
 }
 
+Box.defaultProps = {
+  styles: require('exenv').canUseDOM ? require('./box.scss') : {},
+  icon: 'info-circle'
+}
+
 export default Box

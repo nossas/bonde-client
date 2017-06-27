@@ -59,6 +59,8 @@ export default {
   'page--subscription-edit.helper-text': 'Selecione abaixo qual informação da sua doação quer alterar:',
   'page--subscription-edit.button.creditcard': 'Cartão de crédito',
   'page--subscription-edit.button.recurring': 'Data da doação',
+  'page--subscription-edit.cancel-subscription.confirm': 'Você está prestes a cancelar sua assinatura. Tem certeza que quer continuar?',
+  'page--subscription-edit.link.cancel-subscription': 'Quero cancelar a minha assinatura.',
 
   // form subscription credit card
   // filepath: /client/subscriptions/forms/credit-card-form.js
@@ -116,8 +118,14 @@ export default {
   'notification--community-invite-success.title': 'Oba!',
   'notification--community-invite-success.message': 'O convite para {email} foi enviado com sucesso! Mais um passo foi dado pra sua comunidade crescer ainda mais (:',
 
+  'notification--subscription-cancel-success.title': 'Assinatura cancelada',
+  'notification--subscription-cancel-success.message': 'Sua assinatura foi cancelada e, o valor da sua doação não será debitado até que você faça uma nova doação recorrente.',
+
+  // community dns notifications
+  // filepath: /client/community/notifications/dns.js
+  // routepath: /community/domain
   'notify.community.check--dns--success': 'Os servidores DNS estão sincronizados, agora você pode configurar seu e-mail e outros serviços, assim como escolher o domínio da sua mobilização.',
-  'notify.community.check--dns--failure': 'A sincronização ainda está pendente, você pode tentar de novo em alguns minutos.',
+  'notify.community.check--dns--failure': 'A alteração de servidores DNS ainda está pendente. Você pode tentar de novo em alguns minutos.',
 
   // page community list
   // filepath: /routes/admin/authenticated/external/community-list/page.js
@@ -137,9 +145,10 @@ export default {
   //   - /community/report
   'community.components--settings-menu.title': 'Configurações da comunidade',
   'community.components--settings-menu.tabs.info': 'Informações',
+  'community.components--settings-menu.tabs.mobilizers': 'Mobilizadores',
   'community.components--settings-menu.tabs.mailchimp': 'Mailchimp',
   'community.components--settings-menu.tabs.recipient': 'Recebedor',
-  'community.components--settings-menu.tabs.report': 'Relatório',
+  'community.components--settings-menu.tabs.metrics': 'Métricas',
   'community.components--settings-menu.tabs.domains': 'Domínios',
 
   // component community domain preview
@@ -148,47 +157,56 @@ export default {
   'community.components--domain-preview.li.domain.header': 'Domínio da comunidade',
 
   // component community subdomain preview and form
+  // filepath: /routes/admin/authenticated/sidebar/community-settings/domain/page.js
   // routepath: /community/domain
-  'community.components--subdomain.label.name': 'Nome',
-  'community.components--subdomain.label.record-type': 'Tipo',
-  'community.components--subdomain.label.value': 'Valor',
-  'community.components--subdomain.form.submit-button': 'Adicionar',
+  'community.components--subdomain-preview-header.name': 'Nome',
+  'community.components--subdomain-preview-header.record-type': 'Tipo',
+  'community.components--subdomain-preview-header.value': 'Valor',
   'community.components--domain.preview.label.domain': 'Domínio da comunidade',
   'community.page--domain-list.header.dns-records': 'Registros DNS',
-  'community.page--domain-list.header.dns-server': 'Servidor DNS',
+  'community.page--domain-list.header.dns-server': 'Servidores DNS',
   'community.page--domain-list.button.add-new-record': 'Adicionar novo registro',
   'community.page--domain-list.button.add-new-domain': 'Adicionar novo domínio',
-  'community.page--domain-list.dialog.record-confirm-message': 'Tem certeza que deseja remover o registro',
   'community.page--domain-list.dialog.domain-confirm-message': 'Tem certeza que deseja remover o domínio',
-  'community.page--domain-list.dns-record-description': 'Os registros DNS são configurações especiais que alteram a forma como o seu domínio trabalha. Com esses registros, você se conecta a serviços de terceiros como provedores de email. {link}.',
-  'community.page--domain-list.dns-record-description.link': 'Saiba mais',
-  'community.page--domain-list.dns-server-description': 'Os Servidores DNS são endereços utilizados pelas organizações de registro de domínios como {registrobr} ou {godaddy}, para identificarem em qual servidor se encontram as informações sobre o domínio registrado. Tire suas dúvidas {trilho}.',
+  'community.page--domain-list.dns-record-description.first-paragraph': 'Os Servidores DNS são endereços utilizados pelas organizações de registro de domínios como registro.br ou godaddy.com, para identificarem em qual servidor se encontram as informações sobre o domínio registrado.',
+  'community.page--domain-list.dns-record-description.second-paragraph': 'Complete a ativação do domínio alterando os servidores DNS, onde o domínio foi registrado, para os endereços abaixo:',
+  'community.page--domain-list.dns-server-description': 'Os Servidores DNS são endereços utilizados pelas organizações de registro de domínios como {registrobr} ou {godaddy}, para identificarem em qual servidor se encontra as informações sobre o domínio registrado. Tire suas dúvidas {trilho}.',
   'community.page--domain-list.dns-server-description.trilho.link': 'no site de ajuda',
 
   // component community subdomain form
   // filepath: /client/community/components/dns/subdomain-form/index.js
   // routepath: /community/domain
-  // 'community.components--subdomain-form.subdomain.label': 'Subdomínio',
-  // 'community.components--subdomain-form.record-type.label': 'Tipo',
-  // 'community.components--subdomain-form.redirect-to.label': 'Redirecionar para',
-  'community.components--subdomain-form.button.text': 'Adicionar',
+  'community.components--subdomain.name.label': 'Nome',
+  'community.components--subdomain.name.placeholder': 'subdominio',
+  'community.components--subdomain.record-type.label': 'Tipo',
+  'community.components--subdomain.value.label': 'Valor',
+  'community.components--subdomain.value.placeholder':
+`redirecionamento.dominio.com
+ou
+servidor-01.dominio.com
+servidor-02.dominio.com
+servidor-03.dominio.com`,
+  'community.components--subdomain.form.submit-button': 'Adicionar',
 
   // page community domain
   // filepath: /routes/admin/authenticated/sidebar/community-settings/domain/page.js
   // routepath: /community/domain
   'page--community-domain.form.validation.required': 'Preenchimento obrigatório',
 
-  'page--community-domain.section--dns-hosted-zone.title': 'Domínios da comunidade',
+  'page--community-domain.header.info.title': 'Informação',
+  'page--community-domain.header.info.text': 'Abaixo, encontra-se a lista de domínios já cadastrados. Após alteração e ativação dos servidores DNS, torna-se possível publicar uma mobilização muito mais rápido, além de gerenciar os subdomínios externos cadastrados.',
+
+  'page--community-domain.domain-preview.success-icon.title': 'Servidores DNS ativos',
+  'page--community-domain.domain-preview.failure-icon.title': 'Aguardando alteração dos servidores DNS',
+
   'page--community-domain.section--dns-hosted-zone.add': 'Adicionar novo domínio',
   'page--community-domain.section--dns-hosted-zone.menu.subdomains': 'Subdomínios',
   'page--community-domain.section--dns-hosted-zone.menu.remove': 'Remover domínio',
   'page--community-domain.section--dns-hosted-zone.menu.remove.dialog.text': 'Tem certeza que deseja remover o domínio {domainName}?',
-  'page--community-domain.section--dns-hosted-zone.menu.check-dns': 'Verificar DNS',
+  'page--community-domain.section--dns-hosted-zone.menu.check-dns': 'Testar a conexão',
 
-  'page--community-domain.section--dns-records.title': 'Subdomínios externos',
-  'page--community-domain.section--dns-records.add': 'Adicionar novo subdomínio externo',
   'page--community-domain.section--dns-records.menu.remove': 'Remover subdomínio',
-  'page--community-domain.section--dns-records.menu.remove.dialog.text': 'Tem certeza que deseja remover o subdomínio {subdomainName}?',
+  'page--community-domain.section--dns-records.menu.remove.dialog.text': 'Tem certeza que deseja remover o registro {recordName}?',
 
   // component dialog
   // filepath: /client/ux/components/dialog/index.js
@@ -199,38 +217,52 @@ export default {
   // page community domain create
   // filepath: /routes/admin/authenticated/sidebar/community-settings/domain-create/page.js
   // routepath: /community/domain/add
-  'page--community-domain-create.title': 'Domínio da comunidade',
-
   'page--community-domain-create.step-add.title': 'Insira o domínio desejado',
   'page--community-domain-create.step-add.form.domain-name.label': 'Domínio da sua comunidade',
   'page--community-domain-create.step-add.form.domain-name.placeholder': 'Ex. minhacomunidade.org',
   'page--community-domain-create.step-add.form.domain-name.validation.required': 'Domínio é obrigatório.',
   'page--community-domain-create.step-add.form.domain-name.validation.invalid-domain-format': 'Domínio inválido',
+  'page--community-domain-create.step-add.form.cancel-button.text': 'Cancelar',
   'page--community-domain-create.step-add.form.button.text': 'Adicionar',
 
-  'page--community-domain-create.step-dns-servers.title': 'Altere os servidores do seu provedor DNS',
-  'page--community-domain-create.step-dns-servers.first-paragraph': '1. Faça login no seu provedor de DNS (onde seu domínio está registrado, por exemplo GoDaddy, Locaweb, RegistroBR)',
-  'page--community-domain-create.step-dns-servers.second-paragraph': '2. Encontre a página de {dnsManager}, e altere os {serversName} para os servidores do Bonde:',
-  'page--community-domain-create.step-dns-servers.second-paragraph.dns-manager': 'gerenciador de DNS',
-  'page--community-domain-create.step-dns-servers.second-paragraph.servers-name': 'nomes de servidor',
+  'page--community-domain-create.step-dns-servers.step-title': 'Altere os servidores do seu provedor DNS',
+  'page--community-domain-create.step-dns-servers.title': 'O que são servidores DNS?',
+  'page--community-domain-create.step-dns-servers.subtitle.first-paragraph': 'Os Servidores DNS são endereços utilizados pelas organizações de registro de domínios como {registroBr} ou {goDaddy}, para identificarem em qual servidor se encontram as informações sobre o domínio registrado.',
+  'page--community-domain-create.step-dns-servers.subtitle.second-paragraph': 'Complete a ativação do domínio alterando os servidores DNS, onde o domínio foi registrado, para os endereços abaixo:',
+  'page--community-domain-create.step-dns-servers.change-later-button.text': 'Trocar depois',
   'page--community-domain-create.step-dns-servers.button.text': 'Continuar',
 
   'page--community-domain-create.step-check.title': 'Teste a conexão',
   'page--community-domain-create.step-check.first-paragraph': 'Clique no botão abaixo para verificar se tudo está certo.',
   'page--community-domain-create.step-check.second-paragraph': 'Atenção: a mudança de DNS pode demorar até 48 horas para ser propagada pela internet.',
+  'page--community-domain-create.step-check.test-later-button.text': 'Testar depois',
   'page--community-domain-create.step-check.button.text': 'Testar',
 
   // page community info
   // filepath: /routes/admin/authenticated/sidebar/community-settings/info/page.js
   // routepath: /community/info
+  'page--community-info.form.logo.label': 'Logo',
   'page--community-info.form.name.label': 'Nome',
+  'page--community-info.form.name.placeholder': 'Insira o nome da sua comunidade',
   'page--community-info.form.name.validation.required': 'Informe o nome da comunidade',
   'page--community-info.form.description.label': 'Descrição',
+  'page--community-info.form.description.placeholder': 'Insira uma descrição para a sua comunidade',
   'page--community-info.form.city.label': 'Cidade',
   'page--community-info.form.city.validation.required': 'Informe em qual cidade sua comunidade atua',
   'page--community-info.form.custom-from-email.label': 'E-mail de resposta para notificações',
-  'page--community-info.form.custom-from-email.helper-text': 'Você deve preencher seguindo o formato padrão: Nome do contato <contato@provedor.com>',
+  'page--community-info.form.custom-from-email.helper-text': 'Esse email é utilizado como remetente padrão das notificações.',
+  'page--community-info.form.custom-from-email.placeholder': 'Ex: Nome do remetente <remetente@provedor.com>',
   'page--community-info.form.custom-from-email.validation.invalid-email-format': 'E-mail de resposta fora do formato padrão',
+
+  // page community invite
+  // filepath: /routes/admin/authenticated/sidebar/community-settings/invite/page.js
+  // routepath: /community/invite
+  'page--community-invite.info.title': 'Informação',
+  'page--community-invite.info.content.first-line': 'Convide novos usuários para fazerem parte da sua comunidade, eles terão acesso as mesmas informações que o você possui.',
+  'page--community-invite.info.content.second-line': 'Utilizando o formulário abaixo, você envia o convite por e-mail.',
+  'page--community-invite.form.email.label': 'Email',
+  'page--community-invite.form.email.placeholder': 'Insira um email para convidar. Ex: mobilizador@email.com',
+  'page--community-invite.form.submit-button.default': 'Convidar',
 
   // component settings form
   // filepath: /client/ux/components/settings-form/index.js
@@ -259,9 +291,21 @@ export default {
   // page community mailchimp
   // filepath: /routes/admin/authenticated/sidebar/community-settings/mailchimp/page.js
   // routepath: /community/mailchimp
+  'page--community-mailchimp.warning.title': 'Atenção',
+  'page--community-mailchimp.warning.content.first-line': 'Configure a integração com o mailchimp para que seja possível a criação de segmentos dos usuários que interagiram com o sua mobilização nele.',
+  'page--community-mailchimp.warning.content.second-line': 'Adotamos o seguinte padrão no nome dos segmentos: M999P000, M999F000, M999D000 (M=Mobilização, P=Pressão, F=Formulário, D=Doação)',
   'page--community-mailchimp.form.api-key.label': 'Mailchimp API Key',
+  'page--community-mailchimp.form.api-key.helper-text.title': 'Onde buscar essa informação?',
+  'page--community-mailchimp.form.api-key.helper-text.step-01': 'Após fazer o login como administrador no mailchimp, clique no seu nome de usuário. Surgirá um menu, clique na opção {accountStrong}.',
+  'page--community-mailchimp.form.api-key.helper-text.step-02': 'Siga os passos: {extrasStrong} > {apiKeysStrong} > {yourApiKeysStrong} > {createKeyStrong}',
+  'page--community-mailchimp.form.api-key.helper-text.step-03': 'Agora é só colar no campo abaixo o conteúdo de {apiKeyStrong}.',
+  'page--community-mailchimp.form.api-key.placeholder': 'Insira aqui o conteúdo de "API key"',
   'page--community-mailchimp.form.list-id.label': 'Mailchimp ID da lista',
-  'page--community-mailchimp.form.group-id.label': 'Mailchimp ID do grupo',
+  'page--community-mailchimp.form.list-id.helper-text.title': 'Onde buscar essa informação?',
+  'page--community-mailchimp.form.list-id.helper-text.step-01': 'Após fazer o login como administrador no mailchimp, clique no seu nome de usuário. Surgirá um menu, clique na opção {listStrong}.',
+  'page--community-mailchimp.form.list-id.helper-text.step-02': 'Selecione a lista correspondente e siga os passos: {settingsStrong} > {listAndDefaultsStrong}',
+  'page--community-mailchimp.form.list-id.helper-text.step-03': 'Agora é só colar no campo abaixo o conteúdo da coluna a direita, abaixo do título {listIdStrong}',
+  'page--community-mailchimp.form.list-id.placeholder': 'Insira aqui o "ID da lista"',
 
   // page community new
   // filepath: /routes/admin/authenticated/external/community-new/page.js
@@ -285,26 +329,40 @@ export default {
   // page community recipient
   // filepath: /routes/admin/authenticated/sidebar/community-settings/recipient/page.js
   // routepath: /community/recipient
-  'page--community-recipient.pagarme-warning.title': 'Importante',
-  'page--community-recipient.pagarme-warning.message': 'Atenção: As doações só ficam disponíveis 31 dias após a transação de cartão de crédito ter sido criada (29 dias corridos + 2 dias úteis) no caso de transações com uma parcela e 2 dias úteis após o pagamento do boleto bancário. Caso a transação tenha de 2 a 12 parcelas, o recebimento normal será da seguinte forma: primeira parcela em 31 dias, segunda em 61, terceira em 91, e assim por diante.',
+  'page--community-recipient.warning.title': 'Importante',
+  'page--community-recipient.warning.content.list.li-01': 'Informe: Preencha sua conta bancária abaixo para trasferirmos automaticamente as doações recebidas por sua comunidade.',
+  'page--community-recipient.warning.content.list.li-02': 'Atenção 1: Não é possível fazer a transferência de uma doação já recebida para uma nova conta bancária, sempre será utilizada a conta bancária ativa no momento da doação.',
+  'page--community-recipient.warning.content.list.li-03': 'Atenção 2: As doações só ficam disponíveis 31 dias após a transação de cartão de crédito ter sido criada (29 dias corridos + 2 dias úteis) no caso de transações com uma parcela e 2 dias úteis após o pagamento do boleto bancário. Caso a transação tenha de 2 a 12 parcelas, o recebimento normal será da seguinte forma: primeira parcela em 31 dias, segunda em 61, terceira em 91, e assim por diante.',
 
-  'page--community-recipient.form.transfer-interval.label': 'Intervalo',
-  'page--community-recipient.form.transfer-interval.value.weekly': 'Semanalmente',
-  'page--community-recipient.form.transfer-interval.value.monthly': 'Mensalmente',
-  'page--community-recipient.form.transfer-day.label': 'Dia de transferência',
+  'page--community-recipient.title': 'Agendamento dos Saques',
+  'page--community-recipient.form.transfer-interval.label': 'Recorrência',
+  'page--community-recipient.form.transfer-interval.value.weekly': 'Semanal',
+  'page--community-recipient.form.transfer-interval.value.monthly': 'Mensal',
+  'page--community-recipient.form.transfer-day.label': 'Dia de execução',
+  'page--community-recipient.form.transfer-day.weekly.mon': 'Segunda',
+  'page--community-recipient.form.transfer-day.weekly.tue': 'Terça',
+  'page--community-recipient.form.transfer-day.weekly.wed': 'Quarta',
+  'page--community-recipient.form.transfer-day.weekly.thu': 'Quinta',
+  'page--community-recipient.form.transfer-day.weekly.fri': 'Sexta',
 
-  'page--community-recipient.section--account.header': 'Conta bancária',
-  'page--community-recipient.form.bank-code.label': 'Banco',
-  'page--community-recipient.form.bank-code.value.default': 'Selecione o banco',
+  'page--community-recipient.section--account.title': 'Conta bancária',
   'page--community-recipient.form.bank-account-type.label': 'Tipo de conta',
   'page--community-recipient.form.bank-account-type.value.checking-account': 'Corrente',
   'page--community-recipient.form.bank-account-type.value.savings-account': 'Poupança',
+  'page--community-recipient.form.bank-code.label': 'Banco',
+  'page--community-recipient.form.bank-code.value.default': 'Selecione o banco',
   'page--community-recipient.form.bank-agency.label': 'Agência',
+  'page--community-recipient.form.bank-agency.placeholder': 'Digite apenas números',
   'page--community-recipient.form.bank-agency-dv.label': 'Dígito',
+  'page--community-recipient.form.bank-agency-dv.placeholder': 'Ex: 0',
   'page--community-recipient.form.bank-account.label': 'Conta',
+  'page--community-recipient.form.bank-account.plcaeholder': 'Digite apenas números',
   'page--community-recipient.form.bank-account-dv.label': 'Dígito',
+  'page--community-recipient.form.bank-account-dv.plcaeholder': 'Ex: 00',
   'page--community-recipient.form.bank-legal-name.label': 'Nome / Razão Social',
+  'page--community-recipient.form.bank-legal-name.placeholder': 'Ex: Minha Sampa',
   'page--community-recipient.form.bank-document-number.label': 'CPF / CNPJ',
+  'page--community-recipient.form.bank-document-number.placeholder': 'Digite apenas números',
 
   // page community recipient (connected)
   // filepath: /routes/admin/authenticated/sidebar/community-settings/recipient/page.connected.js
@@ -372,11 +430,9 @@ export default {
   //   - /mobilizations/:mobilization_id/widgets/:widget_id/pressure/finish
   //   - /mobilizations/new
   //   - /mobilizations/templates/list
-  'components.navigation--sidebar.community-settings.item.mobilizations': 'Minhas Mobilizações',
-  'components.navigation--sidebar.community-settings.item.info': 'Informações',
-  'components.navigation--sidebar.community-settings.item.mailchimp': 'Mailchimp',
-  'components.navigation--sidebar.community-settings.item.recipient': 'Recebedor',
-  'components.navigation--sidebar.community-settings.item.report': 'Relatório',
+  'components.navigation--sidebar.community-settings.item.mobilizations': 'Mobilizações',
+  'components.navigation--sidebar.community-settings.item.info': 'Comunidade',
+  'components.navigation--sidebar.community-settings.item.metrics': 'Métricas',
   'components.navigation--sidebar.community-settings.item.domains': 'Domínios',
 
   'components.navigation--sidebar.mobilization-settings.item.launch': 'PUBLICAR BONDE',

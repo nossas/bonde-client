@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 
+const INITIAL_STEP_PROGRESS = 1
+
 class Steps extends Component {
 
   constructor (props) {
     super(props)
-    this.state = { current: 1 }
+    this.state = { current: INITIAL_STEP_PROGRESS }
   }
 
   refreshStepsProgress (props) {
@@ -15,12 +17,9 @@ class Steps extends Component {
     // If it pass, jump to the next step.
     // If not, define it as current.
     //
-    validations && validations.length && validations.map((validate, index) => {
-      const position = index + 1
-      const isCurrent = this.state.current === position
-      if (isCurrent && (this.state.current <= validations.length) && validate()) {
-        this.setState({ current: this.state.current + 1 })
-      }
+    validations && validations.length && validations.some((validate, index) => {
+      this.setState({ current: ++index })
+      return !validate()
     })
   }
 
