@@ -26,8 +26,8 @@ class InputTag extends Component {
     // Linux    : ctrl + enter
     //
     const mac = os.isMac() && keycode(e) === 'enter' && e.nativeEvent.metaKey
-    const windows = os.isWindows() && keycode(e) === 'enter' && e.nativeEvent.ctrlKey
-    const linux = os.isLinux() && keycode(e) === 'enter' && e.nativeEvent.ctrlKey
+    const windows = os.isWindows() && keycode(e) === 'enter' && e.ctrlKey
+    const linux = (os.isLinux() || os.isUnix()) && keycode(e) === 'enter' && e.ctrlKey
 
     if (mac || windows || linux) {
       e.preventDefault()

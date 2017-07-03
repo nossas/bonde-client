@@ -57,7 +57,7 @@ describe('client/mobilizations/widgets/components/input-tag', () => {
       confirmStub.returns(true)
       wrapper.find('textarea').simulate('keyDown', {
         charCode: 13,
-        nativeEvent: { ctrlKey: true }
+        ctrlKey: true
       })
       expect(wrapper.find('.red').text()).to.have.string('Dismatch error')
     }
@@ -68,7 +68,7 @@ describe('client/mobilizations/widgets/components/input-tag', () => {
     confirmStub.returns(true)
     wrapper.find('textarea').simulate('keyDown', {
       charCode: 13,
-      nativeEvent: { ctrlKey: true }
+      ctrlKey: true
     })
     expect(wrapper.find('.red').text()).to.have.string('Dismatch error')
   })
