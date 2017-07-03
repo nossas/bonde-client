@@ -51,10 +51,8 @@ describe('client/mobilizations/widgets/components/input-tag', () => {
     expect(wrapper.find('.red').text()).to.have.string('Dismatch error')
   })
 
-  it('should render error when keyDown `ctrl` + `enter` on Windows and validade returns false',
+  it('should render error when keyDown `ctrl` + `enter` and validade returns false',
     () => {
-      let confirmStub = sinon.stub(os, 'isWindows')
-      confirmStub.returns(true)
       wrapper.find('textarea').simulate('keyDown', {
         charCode: 13,
         ctrlKey: true
@@ -62,16 +60,6 @@ describe('client/mobilizations/widgets/components/input-tag', () => {
       expect(wrapper.find('.red').text()).to.have.string('Dismatch error')
     }
   )
-
-  it('should render error when keyDown `ctrl` + `enter` on Linux and validade returns false', () => {
-    let confirmStub = sinon.stub(os, 'isLinux')
-    confirmStub.returns(true)
-    wrapper.find('textarea').simulate('keyDown', {
-      charCode: 13,
-      ctrlKey: true
-    })
-    expect(wrapper.find('.red').text()).to.have.string('Dismatch error')
-  })
 
   it('should clean and call onInsertTag when keyDown `cmd` + `enter` and validade return is true',
     () => {
