@@ -37,7 +37,7 @@ class PressureForm extends Component {
       errors.email = requiredMsg
     } else if (!isValidEmail(this.state.email)) {
       errors.email = 'E-mail inválido'
-    } else if (targetList.some(target => target.match(`<${this.state.email}>`))) {
+    } else if (targetList && targetList.some(target => target.match(`<${this.state.email}>`))) {
       errors.email = 'O email que você está tentando usar é de um dos alvos da mobilização.'
     }
     if (!this.state.name) {
