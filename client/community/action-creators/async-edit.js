@@ -4,11 +4,13 @@ const asyncEdit = ({ id, ...community }) => (dispatch, getState, { api }) => {
   const { auth: { credentials } } = getState()
 
   // ensure that the document number value have only numbers
-  const { bank_account: bankAccount } = community.recipient
-  const { document_number: documentNumber } = bankAccount
-  community.recipient.bank_account = {
-    ...bankAccount,
-    document_number: String(documentNumber).replace(/\D/g, '')
+  if (community.recipient) {
+    const { bank_account: bankAccount } = community.recipient
+    const { document_number: documentNumber } = bankAccount
+    community.recipient.bank_account = {
+      ...bankAccount,
+      document_number: String(documentNumber).replace(/\D/g, '')
+    }
   }
 
   return api
