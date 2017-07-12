@@ -15,7 +15,7 @@ describe('~client/mobrender/components/block-config-menu', () => {
 
   it('should render dropdown menu with options to action', () => {
     expect(menuConfig.find('DropdownMenu').length).to.equal(1)
-    expect(menuConfig.find('DropdownMenu').find('DropdownMenuItem').length).to.equal(5)
+    expect(menuConfig.find('DropdownMenu').find('DropdownMenuItem').length).to.equal(6)
   })
 
   it('should hide dropdown menu when display is false', () => {
@@ -31,9 +31,22 @@ describe('~client/mobrender/components/block-config-menu', () => {
   describe('should make menu item', () => {
     let menu
 
-    describe('the first: change background', () => {
+    describe('0: duplicate', () => {
       beforeEach(() => {
         menu = menuConfig.find('DropdownMenuItem').at(0)
+      })
+
+      it('should call duplicate when clicked', () => {
+        let expected
+        menuConfig.setProps({ duplicate: (block) => expected = block })
+        menu.simulate('click')
+        expect(expected).to.deep.equal(props.block)
+      })
+    })
+    
+    describe('1: change background', () => {
+      beforeEach(() => {
+        menu = menuConfig.find('DropdownMenuItem').at(1)
       })
 
       it('should call onEdit("background-{block_id}") when clicked', () => {
@@ -50,9 +63,9 @@ describe('~client/mobrender/components/block-config-menu', () => {
       })
     })
 
-    describe('the second: show/hide block', () => {
+    describe('2: show/hide block', () => {
       beforeEach(() => {
-        menu = menuConfig.find('DropdownMenuItem').at(1)
+        menu = menuConfig.find('DropdownMenuItem').at(2)
       })
 
       it('should call update with block.hidden updated', () => {
@@ -80,12 +93,12 @@ describe('~client/mobrender/components/block-config-menu', () => {
       })
     })
 
-    describe('the third: remove block', () => {
+    describe('3: remove block', () => {
       let confirmStub
 
       beforeEach(() => {
         confirmStub = sinon.stub(window, 'confirm')
-        menu = menuConfig.find('DropdownMenuItem').at(2)
+        menu = menuConfig.find('DropdownMenuItem').at(3)
       })
 
       afterEach(() => {
@@ -112,9 +125,9 @@ describe('~client/mobrender/components/block-config-menu', () => {
       })
     })
 
-    describe('the fourth: move up', () => {
+    describe('4: move up', () => {
       beforeEach(() => {
-        menu = menuConfig.find('DropdownMenuItem').at(3)
+        menu = menuConfig.find('DropdownMenuItem').at(4)
       })
 
       it('should call moveUp(block) when click and canMoveUp', () => {
@@ -140,9 +153,9 @@ describe('~client/mobrender/components/block-config-menu', () => {
       })
     })
 
-    describe('the fifth: move down', () => {
+    describe('5: move down', () => {
       beforeEach(() => {
-        menu = menuConfig.find('DropdownMenuItem').at(4)
+        menu = menuConfig.find('DropdownMenuItem').at(5)
       })
 
       it('should call moveDown(block) when click and canMoveDown', () => {

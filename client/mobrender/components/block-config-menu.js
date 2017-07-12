@@ -5,7 +5,7 @@ import { DropdownMenu, DropdownMenuItem } from '~client/components/dropdown-menu
 
 export const EDIT_KEY = 'background'
 
-const BlockConfigMenu = ({ block, update, destroy, onEdit, canMoveUp, moveUp, canMoveDown, moveDown, display }) => (
+const BlockConfigMenu = ({ block, update, duplicate, destroy, onEdit, canMoveUp, moveUp, canMoveDown, moveDown, display }) => (
   <DropdownMenu
     wrapperClassName={classnames(
       'm1 absolute bottom-0 right-0 z2',
@@ -15,6 +15,11 @@ const BlockConfigMenu = ({ block, update, destroy, onEdit, canMoveUp, moveUp, ca
     buttonClassName='btn bg-darken-4 white rounded'
     icon='cog'
   >
+    <DropdownMenuItem className='btn' onClick={() => duplicate(block)}>
+      <span>
+        <i className='fa fa-clone' /> Duplicar bloco
+      </span>
+    </DropdownMenuItem>
     <DropdownMenuItem
       className='btn'
       onClick={() => onEdit(`${EDIT_KEY}-${block.id}`)}
