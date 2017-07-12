@@ -7,6 +7,8 @@ import Block from './block.connected'
 import Navbar from './navbar'
 import * as paths from '~client/paths'
 
+if (require('exenv').canUseDOM) require('./add-new-block.scss')
+
 class Mobilization extends React.Component {
   constructor (props) {
     super(props)
@@ -129,6 +131,18 @@ class Mobilization extends React.Component {
               widgets={widgets.filter(w => w.block_id === block.id)}
             />
           ))}
+          {editable && (
+            <div
+              className='add-new-block'
+              onClick={() => {
+                browserHistory.push(
+                  paths.createBlock(this.props.mobilization)
+                )
+              }}
+            >
+              <i className='fa fa-plus' /> Adicionar bloco de conteúdo
+            </div>
+          )}
           <div className='col-10 mx-auto'>
             <div className='col col-10'>
               <a
