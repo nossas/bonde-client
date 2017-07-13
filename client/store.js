@@ -25,17 +25,20 @@ const networkInterface = createNetworkInterface({
 })
 
 networkInterface.use([{
-  applyMiddleware(req, next) {
+  applyMiddleware (req, next) {
     if (!req.options.headers) {
       req.options.headers = {}
     }
+    // Non-use auth for authenticate mutation to make a new JWT Token
+    const requiredAuth = req.request.operationName !== 'authenticate'
+    
     cookie.plugToRequest(req)
     const state = cookie.load('auth') || {}
-    if (state.auth && state.auth.credentials) {
+    if (state.auth && state.auth.credentials && requiredAuth) {
       const token = state.auth.credentials['access-token']
       req.options.headers.authorization = `Bearer ${token}`
     }
-    next();
+    next()
   }
 }])
 
