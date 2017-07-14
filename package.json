@@ -64,7 +64,7 @@
     "react-redux": "^4.4.0",
     "react-router": "^2.8.1",
     "react-s3-uploader": "^3.4.0",
-    "react-transition-group": "^1.1.1",
+    "react-transition-group": "^2.1.0",
     "reapop": "^1.0.0",
     "reapop-theme-wybo": "^0.4.1",
     "redial": "^0.4.1",
