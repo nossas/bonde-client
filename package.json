@@ -106,7 +106,7 @@
     "chai": "^3.5.0",
     "chai-as-promised": "^6.0.0",
     "chai-http": "^3.0.0",
-    "compression-webpack-plugin": "^0.3.2",
+    "compression-webpack-plugin": "^1.0.0",
     "css-loader": "^0.26.1",
     "enzyme": "^2.6.0",
     "extract-text-webpack-plugin": "^2.0.0-rc.3",
