@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 import { browserHistory } from 'react-router'
 import classnames from 'classnames'
 
@@ -140,7 +141,11 @@ class Mobilization extends React.Component {
                 )
               }}
             >
-              <i className='fa fa-plus' /> Adicionar bloco de conteúdo
+              <i className='fa fa-plus' />
+                <FormattedMessage
+                  id='mobrender.components--mobilization.add-block-content'
+                  defaultMessage='Adicionar bloco de conteúdo'
+                />
             </div>
           )}
           <div className='col-10 mx-auto'>
@@ -148,8 +153,12 @@ class Mobilization extends React.Component {
               <a
                 href='http://www.bonde.org/?utm_source=footer-logo'
                 style={{ 'color': '#000', 'textDecoration': 'none', 'lineHeight': '85px' }}
-                target='_blank'>
-                Feito pra causar. Feito com
+                target='_blank'
+              >
+                <FormattedMessage
+                  id='mobrender.components--mobilization.footer.slogan'
+                  defaultMessage='Feito pra causar. Feito com'
+                />
                 <strong> BONDE.</strong>
               </a>
             </div>
