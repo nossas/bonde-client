@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 import { connect } from 'react-redux'
 import { addNotification as notify } from 'reapop'
-import { injectIntl, intlShape } from 'react-intl'
+import { FormattedMessage, intlShape } from 'react-intl'
 import DefaultServerConfig from '~server/config'
 import { slugUpdatedMessage } from '~client/utils/notifications'
 import { slugify } from '~client/utils/string-helper'
@@ -21,6 +21,7 @@ import * as paths from '~client/paths'
 export const MobilizationBasicsForm = ({
   fields: { name, slug, goal, favicon },
   floatSubmit,
+  intl,
   ...formProps
 }) => {
   const ComponentForm = floatSubmit ? SettingsForm : FormRedux
@@ -37,19 +38,38 @@ export const MobilizationBasicsForm = ({
           name.onBlur(event)
         }}
       >
-        <ControlLabel maxLength={100}>Nome</ControlLabel>
+        <ControlLabel maxLength={100}>
+          <FormattedMessage
+            id='mobilizations.components--basics-form.name.label'
+            defaultMessage='Nome'
+          />
+        </ControlLabel>
         <FormControl
           type='text'
-          placeholder='Ex: Pela criação de uma delegacia de desaparecidos'
+          placeholder={
+            intl.formatMessage({
+              id: 'mobilizations.components--basics-form.name.placeholder',
+              defaultMessage: 'Ex: Pela criação de uma delegacia de desaparecidos'
+            })
+          }
           maxLength={100}
         />
       </FormGroup>
       <FormGroup controlId='goal' {...goal}>
-        <ControlLabel maxLength={500}>Objetivo</ControlLabel>
+        <ControlLabel maxLength={500}>
+          <FormattedMessage
+            id='mobilizations.components--basics-form.goal.label'
+            defaultMessage='Objetivo'
+          />
+        </ControlLabel>
         <FormControl
           componentClass='textarea'
-          placeholder={'Faça um texto curto, capaz de motivar outras pessoas a se unirem à' +
-            ' sua mobilização. Você poderá alterar este texto depois.'}
+          placeholder={
+            intl.formatMessage({
+              id: 'mobilizations.components--basics-form.goal.placeholder',
+              defaultMessage: 'Faça um texto curto, capaz de motivar outras pessoas a se unirem à sua mobilização. Você poderá alterar este texto depois.'
+            })
+          }
           maxLength={500}
           rows='4'
         />
@@ -59,15 +79,31 @@ export const MobilizationBasicsForm = ({
         controlId='slug'
         className={classnames({ hide: isNewMobilizationPath })}
       >
-        <ControlLabel maxLength={63}>Identificador Único</ControlLabel>
+        <ControlLabel maxLength={63}>
+          <FormattedMessage
+            id='mobilizations.components--basics-form.slug.label'
+            defaultMessage='Identificador Único'
+          />
+        </ControlLabel>
         <HelpBlock>
-          O valor desse campo é utilizado para referenciar a mobilização no domínio do BONDE,
-          por exemplo: <Code bordered>www.123-nome-da-mob.bonde.org</Code>
+          <FormattedMessage
+            id='mobilizations.components--basics-form.slug.helper-text'
+            defaultMessage={
+              'O valor desse campo é utilizado para referenciar a mobilização no domínio do BONDE, ' +
+              'por exemplo: {example}'
+            }
+            values={{ example: <Code bordered>www.123-nome-da-mob.bonde.org</Code> }}
+          />
         </HelpBlock>
         <FormControl
           type={isNewMobilizationPath ? 'hidden' : 'text'}
           maxLength={63}
-          placeholder='Ex: 123-nome-da-mob'
+          placeholder={
+            intl.formatMessage({
+              id: 'mobilizations.components--basics-form.slug.helper-example',
+              defaultMessage: 'Ex: 123-nome-da-mob'
+            })
+          }
         />
       </FormGroup>
       <FormGroup
@@ -87,22 +123,34 @@ export const MobilizationBasicsForm = ({
 
 export const fields = ['name', 'slug', 'goal', 'favicon', 'community_id']
 
-export const validate = values => {
+export const validate = (values, { intl }) => {
   const errors = {}
   if (!values.name) {
-    errors.name = 'Insira o nome da mobilização'
+    errors.name = intl.formatMessage({
+      id: 'mobilizations.components--basics-form.name.validation.required',
+      defaultMessage: 'Insira o nome da mobilização'
+    })
   } else if (values.name.length > 100) {
-    errors.name = 'Seu título está muito longo!'
+    errors.name = intl.formatMessage({
+      id: 'mobilizations.components--basics-form.name.validation.max-length',
+      defaultMessage: 'Seu título está muito longo!'
+    })
   }
 
   if (!values.goal) {
     errors.goal = 'Insira o objetivo da mobilização'
   } else if (values.goal.length > 500) {
-    errors.goal = 'O limite de caracteres foi atingido.'
+    errors.goal = intl.formatMessage({
+      id: 'mobilizations.components--basics-form.goal.validation.max-length',
+      defaultMessage: 'O limite de caracteres foi atingido.'
+    })
   }
 
   if (values.slug && values.slug.length > 63) {
-    errors.slug = 'Seu identificador único está muito longo!'
+    errors.slug = intl.formatMessage({
+      id: 'mobilizations.components--basics-form.slug.validation.max-length',
+      defaultMessage: 'Seu identificador único está muito longo!'
+    })
   }
 
   return errors
@@ -130,6 +178,4 @@ MobilizationBasicsForm.propTypes = {
   intl: intlShape.isRequired
 }
 
-export default injectIntl(
-  connect(undefined, mapActionsCreators)(MobilizationBasicsForm)
-)
+export default connect(undefined, mapActionsCreators)(MobilizationBasicsForm)

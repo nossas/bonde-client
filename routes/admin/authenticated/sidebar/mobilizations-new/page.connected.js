@@ -1,5 +1,5 @@
 import { reduxForm } from 'redux-form'
-
+import { injectIntl } from 'react-intl'
 import * as CommunitySelectors from '~client/community/selectors'
 import { fields, validate } from '~client/mobilizations/components/mobilization-basics-form'
 import MobSelectors from '~client/mobrender/redux/selectors'
@@ -26,8 +26,8 @@ const mapActionCreatorsToProps = {
   submit: asyncAddMobilization
 }
 
-export default reduxForm(
+export default injectIntl(reduxForm(
   { form, fields, validate },
   mapStateToProps,
   mapActionCreatorsToProps
-)(Page)
+)(Page))

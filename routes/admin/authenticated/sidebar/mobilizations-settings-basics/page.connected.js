@@ -1,7 +1,7 @@
 import { provideHooks } from 'redial'
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
-
+import { injectIntl } from 'react-intl'
 import MobSelectors from '~client/mobrender/redux/selectors'
 import * as MobActions from '~client/mobrender/redux/action-creators'
 import { fields, validate } from '~client/mobilizations/components/mobilization-basics-form'
@@ -37,6 +37,6 @@ const mapActionCreatorsToProps = {
 
 export default provideHooks(redial)(
   connect(mapStateToProps, mapActionCreatorsToProps)(
-    reduxForm({ form, fields: [...fields, 'id'], validate })(Page)
+    injectIntl(reduxForm({ form, fields: [...fields, 'id'], validate })(Page))
   )
 )

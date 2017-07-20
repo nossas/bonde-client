@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 import { browserHistory } from 'react-router'
 
 import * as paths from '~client/paths'
@@ -9,7 +10,12 @@ import MobilizationBasicsForm from '~client/mobilizations/components/mobilizatio
 const MobilizationsNewPage = props => (
   <PageTabLayout location={props.location}>
     <div className='page-add'>
-      <h2 className='h1 mt0 mb3 center'>Qual o objetivo da sua mobilização?</h2>
+      <h2 className='h1 mt0 mb3 center'>
+        <FormattedMessage
+          id='page--mobilizations-new.title'
+          defaultMessage='Qual o objetivo da sua mobilização?'
+        />
+      </h2>
       <MobilizationBasicsForm
         className='bg-white'
         onFinishSubmit={mobilization => {
@@ -20,7 +26,10 @@ const MobilizationsNewPage = props => (
         {...props}
       />
       <p className='lightgray center' style={{ fontSize: '.9rem', marginTop: '1.5rem' }}>
-        Fique tranquil@ vc poderá editar depois se achar necessário.
+        <FormattedMessage
+          id='page--mobilizations-new.footer'
+          defaultMessage='Fique tranquil@ vc poderá editar depois se achar necessário.'
+        />
       </p>
     </div>
   </PageTabLayout>

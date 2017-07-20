@@ -591,6 +591,7 @@ servidor-03.dominio.com`,
   'mobilizations.components--basics-form.name.validation.max-length': 'Seu título está muito longo!',
   'mobilizations.components--basics-form.slug.label': 'Identificador Único',
   'mobilizations.components--basics-form.slug.helper-text': 'O valor desse campo é utilizado para referenciar a mobilização no domínio do BONDE, por exemplo: {example}',
+  'mobilizations.components--basics-form.slug.helper-example': 'Ex: 123-nome-da-mob',
   'mobilizations.components--basics-form.slug.validation.required': 'Insira o identificador único da mobilização',
   'mobilizations.components--basics-form.slug.validation.max-length': 'Seu identificador único está muito longo!',
   'mobilizations.components--basics-form.goal.label': 'Objetivo',
@@ -746,6 +747,7 @@ servidor-03.dominio.com`,
   //   - /mobilizations/:mobilization_id/edit
   //   - (public) /
   'mobrender.components--mobilization.footer.slogan': 'Feito pra causar. Feito com',
+  'mobrender.components--mobilization.add-block-content': 'Adicionar bloco de conteúdo',
 
   // component mobrender block config menu
   // filepath: /client/mobrender/components/block-config-menu.js
