@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
+import { FormattedMessage, intlShape } from 'react-intl'
 import { reduxForm } from 'redux-form'
 
 import serverConfig from '~server/config'
@@ -13,27 +14,40 @@ const FormShare = ({
     facebook_share_description: facebookShareDescription,
     twitter_share_text: twitterShareText
   },
+  intl,
   ...formProps
 }) => (
   <FormComponent {...formProps}>
     <div className='h6 caps bold mb2 inline'>
       <i className='fa fa-facebook-square align-middle' style={{ color: '#3b5998' }} />
-      <span className='align-middle pl2'>Share de Facebook</span>
+      <span className='align-middle pl2'>
+        <FormattedMessage
+          id='mobilizations.components--form-share.facebook.title'
+          defaultMessage='Share de Facebook'
+        />
+      </span>
     </div>
     <p className='mb1 lightgray'>
-      Configure o post que será publicado no Facebook sempre que alguém compartilhar a ação.
-      É importante que esses textos sejam cativantes e curtos para não aparecerem cortados. :)
+      <FormattedMessage
+        id='mobilizations.components--form-share.facebook.helper-text'
+        defaultMessage='Configure o post que será publicado no Facebook sempre que alguém compartilhar a ação. É importante que esses textos sejam cativantes e curtos para não aparecerem cortados. :)'
+      />
     </p>
     <p className='mb3 lightgray'>
-      Use imagens com pelo menos 1200x630 pixels para a melhor exibição em dispositivos de
-      alta resolução. No mínimo, você deve usar imagens que tenham 600x315 pixels para exibir
-      publicações na página com link com imagens maiores. O tamanho máximo das imagens é de 8 MB.
+      <FormattedMessage
+        id='mobilizations.components--form-share.facebook.fb.image.helper-text'
+        defaultMessage='Use imagens com pelo menos 1200x630 pixels para a melhor exibição em dispositivos de alta resolução. No mínimo, você deve usar imagens que tenham 600x315 pixels para exibir publicações na página com link com imagens maiores. O tamanho máximo das imagens é de 8 MB.'
+      />
       &nbsp;
       <a
         href='https://developers.facebook.com/docs/sharing/best-practices#images'
         target='_blank'
       >
-        Saiba mais <i className='fa fa-external-link' style={{ fontSize: 12 }} />
+        <FormattedMessage
+          id='mobilizations.components--form-share.facebook.fb.image.link'
+          defaultMessage='Saiba mais'
+        />
+        <i className='fa fa-external-link' style={{ fontSize: 12 }} />
       </a>.
     </p>
 
@@ -43,7 +57,12 @@ const FormShare = ({
         className='facebook-share-image col col-5'
         {...facebookShareImage}
       >
-        <ControlLabel>Imagem</ControlLabel>
+        <ControlLabel>
+          <FormattedMessage
+            id='mobilizations.components--form-share.facebook.form.share-image.label'
+            defaultMessage='Imagem'
+          />
+        </ControlLabel>
         <UploadImageField signingUrl={`${serverConfig.apiUrl}/uploads`} />
       </FormGroup>
 
@@ -54,12 +73,22 @@ const FormShare = ({
           className='facebook-share-title'
           style={{ paddingLeft: '0' }}
         >
-          <ControlLabel className='ml1' maxLength={70}>Título do post</ControlLabel>
+          <ControlLabel className='ml1' maxLength={70}>
+            <FormattedMessage
+              id='mobilizations.components--form-share.facebook.form.share-title.label'
+              defaultMessage='Título do post'
+            />
+          </ControlLabel>
           <FormControl
             componentClass='textarea'
             rows={2}
             maxLength={70}
-            placeholder='Um título direto que passe a ideia da sua mobilização'
+            placeholder={
+              intl.formatMessage({
+                id: 'mobilizations.components--form-share.facebook.form.share-title.placeholder',
+                defaultMessage: 'Um título direto que passe a ideia da sua mobilização'
+              })
+            }
           />
         </FormGroup>
 
@@ -69,12 +98,22 @@ const FormShare = ({
           style={{ paddingLeft: '0' }}
           {...facebookShareDescription}
         >
-          <ControlLabel className='ml1' maxLength={90}>Subtítulo do post</ControlLabel>
+          <ControlLabel className='ml1' maxLength={90}>
+            <FormattedMessage
+              id='mobilizations.components--form-share.facebook.form.share-description.label'
+              defaultMessage='Subtítulo do post'
+            />
+          </ControlLabel>
           <FormControl
             componentClass='textarea'
             rows={4}
             maxLength={90}
-            placeholder='Complete a informação do título e chame o leitor para a mobilização'
+            placeholder={
+              intl.formatMessage({
+                id: 'mobilizations.components--form-share.facebook.form.share-description.placeholder',
+                defaultMessage: 'Complete a informação do título e chame o leitor para a mobilização'
+              })
+            }
           />
         </FormGroup>
       </div>
@@ -85,23 +124,40 @@ const FormShare = ({
     <div className='clearfix col col-12'>
       <div className='h6 caps bold mb2 inline'>
         <i className='fa fa-twitter align-middle' style={{ color: '#1da1f2' }} />
-        <span className='align-middle pl2'>Share de Twitter</span>
+        <span className='align-middle pl2'>
+          <FormattedMessage
+            id='mobilizations.components--form-share.twitter.title'
+            defaultMessage='Share de Twitter'
+          />
+        </span>
       </div>
       <p className='mb2 lightgray'>
-        Configure a mensagem que será publicada no Twitter
-        sempre que alguém compartilhar sua mobilização.
+        <FormattedMessage
+          id='mobilizations.components--form-share.twitter.helper-text'
+          defaultMessage='Configure a mensagem que será publicada no Twitter sempre que alguém compartilhar sua mobilização.'
+        />
       </p>
 
       <FormGroup
         controlId='twitterShareText' {...twitterShareText}
         className='twitter-share-text'
       >
-        <ControlLabel maxLength={140}>Texto do Tweet</ControlLabel>
+        <ControlLabel maxLength={140}>
+          <FormattedMessage
+            id='mobilizations.components--form-share.twitter.form.share-text.label'
+            defaultMessage='Texto do Tweet'
+          />
+        </ControlLabel>
         <FormControl
           componentClass='textarea'
           rows={5}
           maxLength={140}
-          placeholder='Insira uma frase e chame o leitor para a mobilização'
+          placeholder={
+            intl.formatMessage({
+              id: 'mobilizations.components--form-share.twitter.form.share-text.placeholder',
+              defaultMessage: 'Insira uma frase e chame o leitor para a mobilização'
+            })
+          }
         />
       </FormGroup>
     </div>
@@ -115,7 +171,9 @@ FormShare.propTypes = {
     facebook_share_title: PropTypes.object.isRequired,
     facebook_share_description: PropTypes.object.isRequired,
     twitter_share_text: PropTypes.object.isRequired
-  }).isRequired
+  }).isRequired,
+  // translation
+  intl: intlShape.isRequired
 }
 
 const fields = [

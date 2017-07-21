@@ -1,7 +1,7 @@
 import { provideHooks } from 'redial'
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
-
+import { injectIntl } from 'react-intl'
 import MobSelectors from '~client/mobrender/redux/selectors'
 import * as MobActions from '~client/mobrender/redux/action-creators'
 import { isValidCodeGA } from '~client/utils/validation-helper'
@@ -32,20 +32,23 @@ const mapActionCreatorsToProps = {
   submit: MobActions.asyncUpdateMobilization
 }
 
-const validate = values => {
+const validate = (values, { intl }) => {
   const errors = {}
   if (values.google_analytics_code && !isValidCodeGA(values.google_analytics_code)) {
-    errors.google_analytics_code = 'Informe uma ID válida'
+    errors.google_analytics_code = intl.formatMessage({
+      id: 'page--mobilizations-analytics.ol.form.ga-code.validation.invalid.ga-code.format',
+      defaultMessage: 'Informe uma ID válida'
+    })
   }
   return errors
 }
 
 export default provideHooks(redial)(
   connect(mapStateToProps, mapActionCreatorsToProps)(
-    reduxForm({
+    injectIntl(reduxForm({
       form: 'mobilizationAnalyticsForm',
       fields: ['id', 'google_analytics_code'],
       validate
-    })(Page)
+    })(Page))
   )
 )
