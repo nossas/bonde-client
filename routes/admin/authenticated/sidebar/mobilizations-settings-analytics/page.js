@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { FormattedMessage } from 'react-intl'
 import { SettingsPageLayout, SettingsPageContentLayout } from '~client/components/layout'
 import { FormGroup, FormControl, ControlLabel } from '~client/components/forms'
 import { SettingsMenu } from '~client/mobilizations/components'
@@ -13,33 +14,62 @@ const MobilizationsSettingsAnalyticsPage = props => {
       <SettingsPageContentLayout>
         <div className='mobilization-analytics-page darkengray'>
           <p className='h5'>
-            Para acompanhar os resultados da sua mobilização, você precisa configurar
-            uma conta no Google Analytics.
+            <FormattedMessage
+              id='page--mobilizations-analytics.first-paragraph'
+              defaultMessage='Para acompanhar os resultados da sua mobilização, você precisa configurar uma conta no Google Analytics.'
+            />
           </p>
-          <p className='h5'>Siga os passos abaixo:</p>
+          <p className='h5'>
+            <FormattedMessage
+              id='page--mobilizations-analytics.second-paragraph'
+              defaultMessage='Siga os passos abaixo:'
+            />
+          </p>
           <ol className='h5'>
             <li className='link'>
-              Crie uma conta no Google
-              Analytics <a href='http://www.google.com/analytics/' target='_blank'>
-                clicando aqui
-              </a>
+              <FormattedMessage
+                id='page--mobilizations-analytics.ol.create-analytics-account'
+                defaultMessage='Crie uma conta no Google Analytics {analyticsLink}'
+                values={{
+                  analyticsLink: (
+                    <a href='http://www.google.com/analytics/' target='_blank'>
+                      <FormattedMessage
+                        id='page--mobilizations-analytics.ol.create-analytics-account.link'
+                        defaultMessage='clicando aqui'
+                      />
+                    </a>
+                  )
+                }}
+              />
             </li>
             <li>
-              Obtenha sua ID de acompanhamento no Google Analytics. É um código
-              que começa sempre com as letras UA, que você verá após criar sua conta lá.
+              <FormattedMessage
+                id='page--mobilizations-analytics.ol.keep-up-with'
+                defaultMessage='Obtenha sua ID de acompanhamento no Google Analytics. É um código que começa sempre com as letras UA, que você verá após criar sua conta lá.'
+              />
             </li>
             <li className='m0'>
-              Copie a ID de acompanhamento e cole no campo abaixo:
+              <FormattedMessage
+                id='page--mobilizations-analytics.ol.paste-ga-code'
+                defaultMessage='Copie a ID de acompanhamento e cole no campo abaixo:'
+              />
               <SettingsForm {...formProps}>
                 <FormGroup controlId='googleAnalyticsCodeId' {...googleAnalyticsCode}>
-                  <ControlLabel>ID do Google Analytics</ControlLabel>
+                  <ControlLabel>
+                    <FormattedMessage
+                      id='page--mobilizations-analytics.ol.form.ga-code.label'
+                      defaultMessage='ID do Google Analytics'
+                    />
+                  </ControlLabel>
                   <FormControl type='text' placeholder='UA-00000000-0' />
                 </FormGroup>
               </SettingsForm>
             </li>
             <li>
-              Pronto! Você já pode acompanhar as estatísticas da sua mobilização
-              no Google Analytics!
+              <FormattedMessage
+                id='page--mobilizations-analytics.ol.done'
+                defaultMessage='Pronto! Você já pode acompanhar as estatísticas da sua mobilização no Google Analytics!'
+              />
             </li>
           </ol>
         </div>

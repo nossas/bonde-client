@@ -678,7 +678,7 @@ servidor-03.dominio.com`,
   // routepath: /mobilizations/:mobilization_id/analytics
   'page--mobilizations-analytics.first-paragraph': 'Para acompanhar os resultados da sua mobilização, você precisa configurar uma conta no Google Analytics.',
   'page--mobilizations-analytics.second-paragraph': 'Siga os passos abaixo:',
-  'page--mobilizations-analytics.ol.create-analytics-account': ' Crie uma conta no Google Analytics {link}',
+  'page--mobilizations-analytics.ol.create-analytics-account': 'Crie uma conta no Google Analytics {analyticsLink}',
   'page--mobilizations-analytics.ol.create-analytics-account.link': 'clicando aqui',
   'page--mobilizations-analytics.ol.keep-up-with': 'Obtenha sua ID de acompanhamento no Google Analytics. É um código que começa sempre com as letras UA, que você verá após criar sua conta lá.',
   'page--mobilizations-analytics.ol.paste-ga-code': 'Copie a ID de acompanhamento e cole no campo abaixo:',

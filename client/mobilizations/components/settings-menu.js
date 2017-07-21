@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-
+import { FormattedMessage } from 'react-intl'
 import * as paths from '~client/paths'
 import { Tabs, Tab } from '~client/components/navigation/tabs'
 import { SettingsPageMenuLayout } from '~client/components/layout'
@@ -13,15 +13,32 @@ const SettingsMenu = ({ mobilization, location }) => {
   const customDomainMobilizationPath = paths.customDomainMobilization(mobilization.id)
 
   return (
-    <SettingsPageMenuLayout title='Configure sua mobilização'>
+    <SettingsPageMenuLayout
+      title={
+        <FormattedMessage
+          id='mobilizations.components--settings-menu.title'
+          defaultMessage='Configure sua mobilização'
+        />
+      }
+    >
       <Tabs>
         <Tab
-          text='Informações básicas'
+          text={
+            <FormattedMessage
+              id='mobilizations.components--settings-menu.tabs.info'
+              defaultMessage='Informações básicas'
+            />
+          }
           path={basicsMobilizationPath}
           isActive={basicsMobilizationPath === location.pathname}
         />
         <Tab
-          text='Compartilhamento'
+          text={
+            <FormattedMessage
+              id='mobilizations.components--settings-menu.tabs.sharing'
+              defaultMessage='Compartilhamento'
+            />
+          }
           path={sharingMobilizationPath}
           isActive={sharingMobilizationPath === location.pathname}
         />
@@ -31,12 +48,22 @@ const SettingsMenu = ({ mobilization, location }) => {
           isActive={analyticsMobilizationPath === location.pathname}
         />
         <Tab
-          text='Métricas'
+          text={
+            <FormattedMessage
+              id='mobilizations.components--settings-menu.tabs.metrics'
+              defaultMessage='Métricas'
+            />
+          }
           path={metricsMobilizationPath}
           isActive={metricsMobilizationPath === location.pathname}
         />
         <Tab
-          text='Domínio'
+          text={
+            <FormattedMessage
+              id='mobilizations.components--settings-menu.tabs.domain'
+              defaultMessage='Domínio'
+            />
+          }
           path={customDomainMobilizationPath}
           isActive={customDomainMobilizationPath === location.pathname}
         />
