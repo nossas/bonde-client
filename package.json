@@ -45,7 +45,7 @@
     "jquery": "^3.1.1",
     "keycode": "^2.1.8",
     "morgan": "^1.6.1",
-    "newrelic": "^1.37.2",
+    "newrelic": "^2.0.1",
     "opn": "^4.0.2",
     "prop-types": "^15.5.8",
     "raven": "^1.1.4",
