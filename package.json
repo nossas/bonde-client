@@ -115,7 +115,7 @@
     "mocha": "^3.0.2",
     "node-sass": "^4.1.1",
     "nodemon": "^1.11.0",
-    "nyc": "^8.1.0",
+    "nyc": "^11.1.0",
     "postcss-loader": "^2.0.6",
     "postcss-scss": "^0.4.0",
     "redux-devtools": "^3.3.2",
