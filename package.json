@@ -118,7 +118,7 @@
     "redux-thunk": "^2.1.0",
     "sass-loader": "^6.0",
     "sinon": "^3.2.0",
-    "slate": "^0.19",
+    "slate": "^0.21.3",
     "slate-editor": "2.6.7",
     "slug": "^0.9.1",
     "socket.io-client": "^2.0.3",
