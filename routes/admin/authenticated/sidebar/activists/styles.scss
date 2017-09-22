@@ -1,34 +1,3 @@
-.query-form {
-  width: 100%;
-  background-color: #eee;
-  
-  .form-group {
-    position: relative;
-
-    input[type='text'] {
-      width: 100%;
-      height: 20px;
-      margin: 23px 0 25px 35px;
-      background: none;
-      border: none;
-      font-size: 16px;
-      font-family: 'Source Sans Pro', 'Proxima Nova', sans-serif;
-      color: #333;
-    }
-
-    ::-webkit-input-placeholder, :-moz-placeholder, ::-moz-placeholder, :-ms-input-placeholder, ::-ms-input-placeholder {
-      color: #333;
-    }
-
-    i {
-      font-size: 25px;
-      position: absolute;
-      margin: 12px 0;
-      color: #4a4a4a;
-    }
-  }
-}
-
 .title {
   position: relative;
   font-family: 'Source Sans Pro', 'Proxima Nova', sans-serif;
@@ -83,7 +52,7 @@
 }
 
 .detail {
-    
+
   h3 {
     font-family: 'Source Sans Pro', 'Proxima Nova', sans-serif;
     font-size: 22px;
@@ -94,15 +63,12 @@
 
 // Autocomplete
 .Select {
-  position: relative;
-  margin-left: 30px;
-
   div, input, span {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
   }
-  
+
   .Select-control {
     color: #333;
     cursor: default;
@@ -114,23 +80,6 @@
     overflow: hidden;
     position: relative;
     width: 100%;
-  }
-
-  .Select-placeholder,
-  &.Select--single > .Select-control .Select-value {
-    bottom: 0;
-    color: #333333;
-    left: 0;
-    line-height: 20px;
-    padding: 15px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-family: 'Source Sans Pro', 'Proxima Nova', sans-serif;
   }
 
   .Select-input {
@@ -161,7 +110,7 @@
     z-index: 1;
     -webkit-overflow-scrolling: touch;
   }
- 
+
   .Select-option-group-label {
     box-sizing: border-box;
     color: #4a4a4a;
@@ -180,7 +129,7 @@
     max-height: 198px;
     overflow-y: auto;
   }
-  
+
   .Select-option {
     box-sizing: border-box;
     background-color: #fff;
@@ -193,26 +142,26 @@
     border-bottom-right-radius: 4px;
     border-bottom-left-radius: 4px;
   }
-  
+
   .Select-option.is-selected {
     background-color: #FF0099;
     /* Fallback color for IE 8 */
     background-color: rgba(255, 0, 153, 0.05);
     color: #333;
   }
-  
+
   .Select-option.is-focused {
     background-color: #FF0099;
     /* Fallback color for IE 8 */
     background-color: rgba(255, 0, 153, 0.05);
     color: #333;
   }
-  
+
   .Select-option.is-disabled {
     color: #cccccc;
     cursor: default;
   }
-  
+
   .Select-noresults {
     box-sizing: border-box;
     color: #999999;
@@ -225,22 +174,3 @@
   }
 }
 
-.Select-value-label, .tags li {
-  font-family: 'Source Sans Pro', 'Proxima Nova', sans-serif;
-  font-weight: bold;
-  line-height: 23px;
-  padding: 5px 10px;
-  border-radius: 2px;
-  background-color: #ff0099;
-  color: #fff;
-}
-.tags {
-  margin: 0;
-  padding: 10px 0;
-  
-  li {
-    list-style: none;
-    display: inline-block;
-    margin: 5px;
-  }
-}

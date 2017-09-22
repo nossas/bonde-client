@@ -1,0 +1,86 @@
+@mixin tag() {
+  font-family: 'Source Sans Pro', 'Proxima Nova', sans-serif;
+  font-weight: bold;
+  line-height: 1;
+  padding: 7px 21px;
+  border-radius: 2px;
+  background-color: #ff0099;
+  color: #fff;
+}
+
+:local {
+  .pageMenu {
+    min-height: 180px;
+    box-sizing: border-box;
+    padding: 2rem 3rem 0 7.5rem;
+    font-family: sans-serif;
+  }
+
+  .queryForm {
+    padding-left: 7.5rem;
+    padding-right: 3rem;
+    align-items: center;
+    min-height: 68px;
+    background-color: #eeeeee;
+  }
+
+  .formGroup {
+    display: flex;
+    align-items: center;
+  }
+
+  .icon {
+    font-size: 25px;
+    color: #4a4a4a;
+    margin-right: .3rem;
+    opacity: .48;
+  }
+
+  .select {
+    width: 100%;
+    position: relative;
+
+    :global .Select-placeholder,
+    :global .Select-value {
+      bottom: 0;
+      color: #333333;
+      left: 0;
+      line-height: 18px;
+      padding: 15px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-family: 'Source Sans Pro', 'Proxima Nova', sans-serif;
+    }
+    :global .Select-placeholder { opacity: .5; }
+  }
+
+  .selectWithTag { :global .Select-value-label { @include tag(); } }
+  .selectWithArrow {
+    :global .Select-value:after {
+      content: '';
+      position: absolute;
+      border: 5px solid transparent;
+      border-top: 5px solid #4a4a4a;
+      right: 2rem;
+      top: 50%;
+      margin-top: -2.5px;
+    }
+  }
+
+  .tags {
+    margin: 0;
+    padding: 10px 0;
+  }
+
+  .tag {
+    @include tag();
+    list-style: none;
+    display: inline-block;
+    margin: 5px;
+  }
+}

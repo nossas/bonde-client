@@ -8,9 +8,10 @@ import { Loading } from '~client/components/await'
 import Select from 'react-select-plus'
 
 import FilterForm from './component/filter-form'
-import ActivistDetailHOC from './component/detail'  
+import ActivistDetailHOC from './component/detail'
 
 if (require('exenv').canUseDOM) require('./styles.scss')
+var styles = require('exenv').canUseDOM ? require('./container.scss') : {}
 
 
 const QueryForm = ({
@@ -25,26 +26,28 @@ const QueryForm = ({
   communityId
 }) => (
   <form
-    className='query-form pr4 pl3 border-box flex flex-wrap'
+    className={`${styles.queryForm} pr4 pl3 border-box flex flex-wrap`}
     onSubmit={e => {
       e.preventDefault()
       onSubmit()
     }}
   >
-    <div className='form-group col-9'>
-      <i className='fa fa-search' aria-hidden='true' />
+    <div className={`${styles.formGroup} col-10`}>
+      <i className={`fa fa-search ${styles.icon}`} aria-hidden='true' />
       <FilterForm
         name={name}
+        className={`${styles.select} ${styles.selectWithTag}`}
         communityId={communityId}
         query={query}
         placeholder={label}
         onChange={onQueryChange}
       />
     </div>
-    <div className='form-group col-3'>
-      <i className='fa fa-calendar-o' aria-hidden='true' />
+    <div className={`${styles.formGroup} col-2`}>
+      <i className={`fa fa-calendar-o ${styles.icon}`} aria-hidden='true' />
       <Select
         simplevalue
+        className={`${styles.select} ${styles.selectWithArrow}`}
         onChange={({ value }) => onChangeDaysAgo(value)}
         value={daysAgo}
         options={[
@@ -144,9 +147,9 @@ const Detail = ActivistDetailHOC(
           </div>
           <div>
             <label>Etiquetas</label>
-            <ul className='tags'>
+            <ul className={styles.tags}>
               {tags.map((tag, i) => (
-                <li key={`tag${i}`}>{tag.tagCompleteName}</li>
+                <li className={styles.tag} key={`tag${i}`}>{tag.tagCompleteName}</li>
               ))}
             </ul>
           </div>
@@ -185,7 +188,7 @@ class Container extends Component {
 
     return (
       <SettingsPageLayout>
-        <SettingsPageMenuLayout title='Base de usuários' />
+        <SettingsPageMenuLayout title='Base de usuários' className={styles.pageMenu} />
         <QueryForm
           name='q'
           label='Filtre por mobilizações ou formulários'
@@ -206,6 +209,7 @@ class Container extends Component {
           }}
           communityId={communityId}
         />
+
         <SettingsPageContentLayout>
           <div className={(
             this.state.item ? 'col col-8' : ''

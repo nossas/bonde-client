@@ -23,9 +23,9 @@ const groupBy = (array , f) => {
   array.forEach((o) => {
     let group = JSON.stringify(f(o));
     groups[group] = groups[group] || [];
-    groups[group].push( o );  
+    groups[group].push( o );
   })
-  
+
   return Object.keys(groups).map((group) => {
     return groups[group]
   })
@@ -51,7 +51,8 @@ const FilterForm = ({
   placeholder,
   onChange,
   communityId,
-  client
+  client,
+  className
 }) => {
   const getOptions = (input) => {
     return client.query({
@@ -84,6 +85,7 @@ const FilterForm = ({
       placeholder={placeholder}
       value={query}
       loadOptions={getOptions}
+      className={className}
       onChange={({ value }) => onChange(value)}
     />
   )
