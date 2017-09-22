@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
+import { FormattedMessage } from 'react-intl'
 import { browserHistory } from 'react-router'
 import ReactS3Uploader from 'react-s3-uploader'
 
@@ -34,11 +35,22 @@ class BlocksCreatePage extends Component {
     return (
       <SettingsPageLayout>
         {/* Menu */}
-        <SettingsPageMenuLayout title='Adicione um bloco de conteúdo'>
+        <SettingsPageMenuLayout title={
+          <FormattedMessage
+            id='page--block-create.title'
+            defaultMessage='Adicione um bloco de conteúdo'
+          />
+        }
+        >
           <Tabs>
             <Tab
               path={newBlockPath}
-              text='Blocos em branco'
+              text={
+                <FormattedMessage
+                  id='page--block-create.tabs.blank-blocks'
+                  defaultMessage='Blocos em branco'
+                />
+              }
               isActive={newBlockPath === location.pathname}
             />
           </Tabs>
@@ -46,12 +58,17 @@ class BlocksCreatePage extends Component {
         <SettingsPageContentLayout>
           <div className='col-12 clearfix py3 pr4 pl3'>
             <p className='lightgray mb2'>
-              Os blocos serão adicionados ao fim da sua página, mas você pode trocá-los de ordem a
-              qualquer momento
+              <FormattedMessage
+                id='page--block-create.helper-text'
+                defaultMessage='Os blocos serão adicionados ao fim da sua página, mas você pode trocá-los de ordem a qualquer momento'
+              />
             </p>
 
             <label className='block-type bold mb1 block gray20'>
-              Tipo de bloco
+              <FormattedMessage
+                id='page--block-create.type.label'
+                defaultMessage='Tipo de bloco'
+              />
             </label>
             <div className='mxn1 clearfix'>
               {BLOCK_LAYOUTS.map((layout, index) => (
@@ -65,7 +82,10 @@ class BlocksCreatePage extends Component {
             </div>
 
             <label className='block-type bold mb1 block gray20'>
-              Fundo
+              <FormattedMessage
+                id='page--block-create.background.label'
+                defaultMessage='Fundo'
+              />
             </label>
             <div className='col-12'>
               <ColorPicker
@@ -95,7 +115,12 @@ class BlocksCreatePage extends Component {
                     </div>
                   )}
                   <div className={this.state.bgImage ? 'hide' : null}>
-                    <div className='mb1 gray'>Selecione a imagem de fundo</div>
+                    <div className='mb1 gray'>
+                      <FormattedMessage
+                        id='page--block-create.background.image.placeholder.text'
+                        defaultMessage='Selecione a imagem de fundo'
+                      />
+                    </div>
                   </div>
                   <div className='overflow-hidden'>
                     {
@@ -143,7 +168,10 @@ class BlocksCreatePage extends Component {
                     })
                 }}
               >
-                Adicionar
+                <FormattedMessage
+                  id='page--block-create.button-add.text'
+                  defaultMessage='Adicionar'
+                />
               </Button>
             </DivFloat>
           </div>
