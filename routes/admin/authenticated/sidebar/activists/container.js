@@ -32,22 +32,22 @@ const QueryForm = ({
       onSubmit()
     }}
   >
-    <div className={`${styles.formGroup} col-10`}>
+    <div className={`${styles.formGroup} ${styles.groupTag} col-10`}>
       <i className={`fa fa-search ${styles.icon}`} aria-hidden='true' />
       <FilterForm
         name={name}
-        className={`${styles.select} ${styles.selectWithTag}`}
+        className={styles.select}
         communityId={communityId}
         query={query}
         placeholder={label}
         onChange={onQueryChange}
       />
     </div>
-    <div className={`${styles.formGroup} col-2`}>
+    <div className={`${styles.formGroup} ${styles.groupDate} col-2`}>
       <i className={`fa fa-calendar-o ${styles.icon}`} aria-hidden='true' />
       <Select
         simplevalue
-        className={`${styles.select} ${styles.selectWithArrow}`}
+        className={styles.select}
         onChange={({ value }) => onChangeDaysAgo(value)}
         value={daysAgo}
         options={[

@@ -8,6 +8,24 @@
   color: #fff;
 }
 
+@mixin selectMenuOuter() {
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+  max-height: calc(100vh - 249px - 10vh);
+  position: absolute;
+  z-index: 1;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+}
+
+@mixin selectMenu() {
+  max-height: calc(100vh - 249px - 10vh);
+  overflow-y: auto;
+}
+
 :local {
   .pageMenu {
     min-height: 180px;
@@ -56,11 +74,37 @@
       white-space: nowrap;
       font-family: 'Source Sans Pro', 'Proxima Nova', sans-serif;
     }
+
     :global .Select-placeholder { opacity: .5; }
   }
 
-  .selectWithTag { :global .Select-value-label { @include tag(); } }
-  .selectWithArrow {
+  .groupTag {
+    flex-basis: calc(100% - 250px);
+
+    :global .Select-menu-outer {
+      @include selectMenuOuter();
+      width: calc(100vw - 240px);
+      position: fixed;
+      top: 248px;
+      left: 180px;
+    }
+
+    :global .Select-menu { @include selectMenu(); }
+    :global .Select-value-label { @include tag(); }
+  }
+
+  .groupDate {
+    flex-basis: 250px;
+
+    :global .Select-menu-outer {
+      @include selectMenuOuter();
+      width: 250px;
+      left: -45px;
+      top: 47px;
+    }
+
+    :global .Select-menu { @include selectMenu(); }
+
     :global .Select-value:after {
       content: '';
       position: absolute;
