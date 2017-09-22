@@ -12,7 +12,6 @@ import ActivistDetailHOC from './component/detail'
 
 if (require('exenv').canUseDOM) require('./styles.scss')
 var styles = require('exenv').canUseDOM ? require('./container.scss') : {}
-console.log('styles', styles)
 
 
 const QueryForm = ({
@@ -100,8 +99,8 @@ const Pagination = ({
   )
 }
 
-const Row = ({ obj, onSelectRow, onClickRow, isSelected, isActived }) => (
-  <div className={`${styles.row} clearfix mx-auto px2${isActived ? ' active' : ''}`}>
+const Row = ({ obj, onSelectRow, onClickRow, isSelected, isActive }) => (
+  <div className={`${styles.row} ${isActive ? styles.active : ''}`}>
     <input
       type='checkbox'
       checked={isSelected}
@@ -236,7 +235,7 @@ class Container extends Component {
                       key={`row-${d.id}`}
                       obj={d}
                       isSelected={selected.indexOf(d.id) !== -1}
-                      isActived={this.state.item === d}
+                      isActive={this.state.item === d}
                       onSelectRow={this.props.onSelectRow}
                       onClickRow={this.onClickRow.bind(this)}
                     />

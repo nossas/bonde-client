@@ -55,6 +55,14 @@ $fontStack: 'Source Sans Pro', 'Proxima Nova', sans-serif;
   transform: rotate($rotate)
 }
 
+@mixin rowActive($zIndex) {
+  border-top: solid 1px #efefef;
+  border-bottom: solid 1px #efefef;
+  margin: -1px 0;
+  position: relative;
+  z-index: $zIndex;
+}
+
 :local {
   .pageMenu {
     min-height: 180px;
@@ -236,14 +244,14 @@ $fontStack: 'Source Sans Pro', 'Proxima Nova', sans-serif;
     display: flex;
     width: 100%;
     padding: 0 1.5rem;
+    cursor: pointer;
 
-    &:hover, &.active {
-      cursor: pointer;
-      border-top: solid 1px #efefef;
-      border-bottom: solid 1px #efefef;
-      z-index: 1;
-      margin: -1px 0;
-      position: relative;
+    &:hover { @include rowActive(1); }
+
+    &.active {
+      @include rowActive(2);
+      border-left: 3px solid #ff0099;
+      padding-left: calc(1.5rem - 3px);
     }
 
     :global input[type="checkbox"] {
