@@ -75,26 +75,20 @@ const Pagination = ({
     handle()
   }
   return (
-    <div className='pagination clearfix mx-auto'>
-      <div className='col col-1'>
-        <button
-          disabled={indexPage < 2}
-          onClick={handleClick(onPreviousPage)}
-        >
-          <i className='fa fa-arrow-left' aria-hidden='true' />
-        </button>
+    <div className={styles.pagination}>
+      <button
+        className={styles.buttonLeft}
+        disabled={indexPage < 2}
+        onClick={handleClick(onPreviousPage)}
+      />
+      <div className={styles.paginationCount}>
+        {indexPage} de {lastPage}
       </div>
-      <div className='col col-10'>
-        <p>{indexPage} / {lastPage}</p>
-      </div>
-      <div className='col col-1'>
-        <button
-          disabled={indexPage === lastPage}
-          onClick={handleClick(onNextPage)}
-        >
-          <i className='fa fa-arrow-right' aria-hidden='true' />
-        </button>
-      </div>
+      <button
+        className={styles.buttonRight}
+        disabled={indexPage === lastPage}
+        onClick={handleClick(onNextPage)}
+      />
     </div>
   )
 }

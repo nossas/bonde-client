@@ -63,6 +63,35 @@ $fontStack: 'Source Sans Pro', 'Proxima Nova', sans-serif;
   z-index: $zIndex;
 }
 
+@mixin arrow($color, $rotate) {
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -2px;
+    margin-top: -11px;
+    width: 1px;
+    height: 13px;
+    background-color: $color;
+    transform: rotate($rotate);
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -2px;
+    margin-top: -2px;
+    width: 1px;
+    height: 13px;
+    background-color: $color;
+    transform: rotate(-$rotate);
+  }
+}
+
 :local {
   .pageMenu {
     min-height: 180px;
@@ -326,6 +355,49 @@ $fontStack: 'Source Sans Pro', 'Proxima Nova', sans-serif;
       padding: 0;
       font-size: .875rem;
       list-style: none;
+    }
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+
+    .button {
+      width: 60px;
+      height: 40px;
+      background: none;
+      font-size: 20px;
+      border: 1px solid #C3C4C3;
+      cursor: pointer;
+      border-radius: 4px;
+      outline: none;
+    }
+
+    .paginationCount {
+      font-family: $fontStack;
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+
+    .buttonLeft {
+      @extend .button;
+      @include arrow(#C3C4C3, 45deg);
+    }
+
+    .buttonRight {
+      @extend .button;
+      @include arrow(#C3C4C3, -45deg);
+    }
+
+    :global button[disabled] {
+      border: 1px solid #E3E4E3;
+      cursor: default;
+
+      &:before, &:after {
+        background-color: #E3E4E3;
+      }
     }
   }
 }
