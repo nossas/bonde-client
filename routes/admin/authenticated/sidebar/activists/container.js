@@ -100,20 +100,16 @@ const Pagination = ({
 }
 
 const Row = ({ obj, onSelectRow, onClickRow, isSelected, isActived }) => (
-  <div
-    className={`row clearfix mx-auto px2${isActived ? ' active' : ''}`}
-  >
-    <div className='col col-1 py2'>
-      <input
-        type='checkbox'
-        checked={isSelected}
-        onChange={() => onSelectRow(obj.id)}
-      />
-    </div>
-    <div className='col col-6 py2' onClick={() => onClickRow(obj)}>
+  <div className={`${styles.row} clearfix mx-auto px2${isActived ? ' active' : ''}`}>
+    <input
+      type='checkbox'
+      checked={isSelected}
+      onChange={() => onSelectRow(obj.id)}
+    />
+    <div className={`${styles.cell} ${styles.cellName} py2`} onClick={() => onClickRow(obj)}>
       {obj.name}
     </div>
-    <div className='col col-5 py2' onClick={() => onClickRow(obj)}>
+    <div className={`${styles.cell} py2`} onClick={() => onClickRow(obj)}>
       {obj.email}
     </div>
   </div>
@@ -121,9 +117,9 @@ const Row = ({ obj, onSelectRow, onClickRow, isSelected, isActived }) => (
 
 const Detail = ActivistDetailHOC(
   ({ obj, onClose, mobilizations, tags }) => (
-    <div className='detail col col-4 pl2'>
+    <div className='detail col col-4 pl3' style={{ width: 'calc(100vw - 866px - 2rem)' }}>
       <div className='col col-12 title py2'>
-        <span>Perfil</span>
+        <span className={styles.h1}>Perfil selecionado</span>
         <i
           className='fa fa-close'
           aria-hidden='true'
@@ -210,44 +206,47 @@ class Container extends Component {
           communityId={communityId}
         />
 
-        <SettingsPageContentLayout>
-          <div className={(
-            this.state.item ? 'col col-8' : ''
-          )}>
-            <div className='title clearfix p2'>
-              <div className='col col-1'>
-                <input
-                  id='selectAllId'
-                  type='checkbox'
-                  disabled={totalCount === 0}
-                  checked={isSelectedAll}
-                  onClick={(evt) => {
-                    if (isSelectedAll) {
-                      onRemoveAll()
-                    } else {
-                      onSelectAll()
-                    }
-                  }}
-                />
-              </div>
-              <div className='col col-11'>
-                {totalCount} pessoas
-              </div>
-            </div>
-            {(selecting || loading) && <Loading />}
-            <div>
-              <div>
-                {data.map(d => (
-                  <Row
-                    key={`row-${d.id}`}
-                    obj={d}
-                    isSelected={selected.indexOf(d.id) !== -1}
-                    isActived={this.state.item === d}
-                    onSelectRow={this.props.onSelectRow}
-                    onClickRow={this.onClickRow.bind(this)}
+        <SettingsPageContentLayout className={styles.pageContent} wrapClassName='col-12'>
+          <div className={`${styles.contentContainer} clearfix`}>
+            <div className='col'>
+              <div className='title clearfix p2'>
+                <div className='col col-1'>
+                  <input
+                    id='selectAllId'
+                    type='checkbox'
+                    disabled={totalCount === 0}
+                    checked={isSelectedAll}
+                    onClick={(evt) => {
+                      if (isSelectedAll) {
+                        onRemoveAll()
+                      } else {
+                        onSelectAll()
+                      }
+                    }}
                   />
-                ))}
+                </div>
+                <div className={styles.h1}>
+                  {totalCount} pessoas
+                </div>
               </div>
+
+              {(selecting || loading) && <Loading />}
+
+              <div className={styles.tableContainer}>
+                <div className={styles.table}>
+                  {data.map(d => (
+                    <Row
+                      key={`row-${d.id}`}
+                      obj={d}
+                      isSelected={selected.indexOf(d.id) !== -1}
+                      isActived={this.state.item === d}
+                      onSelectRow={this.props.onSelectRow}
+                      onClickRow={this.onClickRow.bind(this)}
+                    />
+                  ))}
+                </div>
+              </div>
+
               <Pagination
                 indexPage={this.props.indexPage}
                 lastPage={this.props.lastPage}
@@ -255,15 +254,16 @@ class Container extends Component {
                 onNextPage={this.props.onNextPage}
               />
             </div>
+
+            {this.state.item && (
+              <Detail
+                communityId={this.props.communityId}
+                activistId={this.state.item.id}
+                obj={this.state.item}
+                onClose={this.onClickRow.bind(this)}
+              />
+            )}
           </div>
-          {this.state.item && (
-            <Detail
-              communityId={this.props.communityId}
-              activistId={this.state.item.id}
-              obj={this.state.item}
-              onClose={this.onClickRow.bind(this)}
-            />
-          )}
         </SettingsPageContentLayout>
       </SettingsPageLayout>
     )

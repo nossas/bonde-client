@@ -1,5 +1,6 @@
+$fontStack: 'Source Sans Pro', 'Proxima Nova', sans-serif;
+
 @mixin tag() {
-  font-family: 'Source Sans Pro', 'Proxima Nova', sans-serif;
   font-weight: bold;
   line-height: 1;
   padding: 7px 21px;
@@ -26,12 +27,28 @@
   overflow-y: auto;
 }
 
+@mixin h1() {
+  font-size: 2.25rem;
+  font-family: $fontStack;
+  font-weight: 300;
+}
+
 :local {
   .pageMenu {
     min-height: 180px;
     box-sizing: border-box;
     padding: 2rem 3rem 0 7.5rem;
-    font-family: sans-serif;
+
+    :global .h1 { @include h1(); }
+  }
+
+  .h1 { @include h1() }
+
+  .pageContent { padding: 0 3rem 2rem 7.5rem; }
+
+  .contentContainer {
+    display: flex;
+    justify-content: center;
   }
 
   .queryForm {
@@ -72,14 +89,14 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      font-family: 'Source Sans Pro', 'Proxima Nova', sans-serif;
+      font-family: $fontStack;
     }
 
     :global .Select-placeholder { opacity: .5; }
   }
 
   .groupTag {
-    flex-basis: calc(100% - 250px);
+    flex-basis: calc(100% - 220px);
 
     :global .Select-menu-outer {
       @include selectMenuOuter();
@@ -94,7 +111,7 @@
   }
 
   .groupDate {
-    flex-basis: 250px;
+    flex-basis: 220px;
 
     :global .Select-menu-outer {
       @include selectMenuOuter();
@@ -110,7 +127,7 @@
       position: absolute;
       border: 5px solid transparent;
       border-top: 5px solid #4a4a4a;
-      right: 2rem;
+      right: 0;
       top: 50%;
       margin-top: -2.5px;
     }
@@ -126,5 +143,88 @@
     list-style: none;
     display: inline-block;
     margin: 5px;
+  }
+
+  .tableContainer {
+    display: flex;
+    justify-content: center;
+  }
+
+  .table {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 650px;
+  }
+
+  .row {
+    font-family: $fontStack;
+    font-size: 14px;
+    color: #333;
+    background-color: #fff;
+    height: 50px;
+    line-height: 18px;
+    position: relative;
+    display: flex;
+    width: 100%;
+
+    &:hover, &.active {
+      cursor: pointer;
+      border-top: solid 1px #efefef;
+      border-bottom: solid 1px #efefef;
+      z-index: 1;
+      margin: -1px 0;
+      position: relative;
+    }
+
+    :global input[type="checkbox"] {
+      position: absolute;
+      top: 50%;
+      margin-top: -11px;
+    }
+
+    .cell {
+      box-sizing: border-box;
+      flex-grow: 1;
+      width: 100%;
+      overflow: hidden;
+      padding: 1rem .5rem;
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+    .cellName {
+      margin-left: 42px;
+    }
+    .cellEmail {
+      word-break: break-all;
+    }
+  }
+}
+
+:global input[type="checkbox"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  opacity: 0.26;
+  border-radius: 4px;
+  border: solid 1px #979797;
+  position: relative;
+
+  &:checked {
+    border: none;
+    background-color: #FF00A8;
+    opacity: 1;
+
+    &:before {content: '';
+      width: 4px;
+      height: 8px;
+      border: solid #FFFFFF;
+      border-width: 0 4px 4px 0;
+      transform: rotate(45deg);
+      position: absolute;
+      left: 6px;
+      top: 3px;
+    }
   }
 }

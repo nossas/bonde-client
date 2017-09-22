@@ -12,20 +12,6 @@
   }
 }
 
-.row {
-  font-family: 'Source Sans Pro', 'Proxima Nova', sans-serif;
-  font-size: 14px;
-  color: #333;
-  background-color: #fff;
-  border-bottom: solid 1px #efefef;
-
-  &:hover, &.active {
-    cursor: pointer;
-    border-left: solid 3px #ff0099;
-    padding-left: 14px;
-  }
-}
-
 .pagination {
   margin-top: 20px;
   p {
