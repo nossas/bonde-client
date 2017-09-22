@@ -33,6 +33,28 @@ $fontStack: 'Source Sans Pro', 'Proxima Nova', sans-serif;
   font-weight: 300;
 }
 
+@mixin closeButtonLine() {
+  content: '';
+  position: absolute;
+  right: 8px;
+  top: -3px;
+  width: 1px;
+  height: 24px;
+  background: #979797;
+}
+
+@mixin tagDeletableLine($rotate) {
+  content: '';
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  margin-top: -2px;
+  background-color: #a1a1a1;
+  width: 1px;
+  height: 6px;
+  transform: rotate($rotate)
+}
+
 :local {
   .pageMenu {
     min-height: 180px;
@@ -42,11 +64,43 @@ $fontStack: 'Source Sans Pro', 'Proxima Nova', sans-serif;
     :global .h1 { @include h1(); }
   }
 
-  .h1 { @include h1() }
+  .h1 {
+    @include h1();
+    padding: 1rem 0;
+  }
+
+  .title {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    :global input[type="checkbox"] { margin: 0 1.5rem; }
+  }
+
+  .closeButton {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -9px;
+    width: 18px;
+    height: 18px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:before {
+      @include closeButtonLine();
+      transform: rotate(45deg);
+    }
+    &:after {
+      @include closeButtonLine();
+      transform: rotate(-45deg);
+    }
+  }
 
   .pageContent { padding: 0 3rem 2rem 7.5rem; }
 
-  .contentContainer {
+  .contentContainerCenter {
     display: flex;
     justify-content: center;
   }
@@ -145,6 +199,20 @@ $fontStack: 'Source Sans Pro', 'Proxima Nova', sans-serif;
     margin: 5px;
   }
 
+  .tagDeletable {
+    @extend .tag;
+    font-size: 1rem;
+    font-weight: normal;
+    background-color: #e6e6e6;
+    border: solid 1px #cbcbcb;
+    color: #a1a1a1;
+    padding: 7px 43px 7px 12px;
+    position: relative;
+
+    &:before { @include tagDeletableLine(-45deg) }
+    &:after { @include tagDeletableLine(45deg) }
+  }
+
   .tableContainer {
     display: flex;
     justify-content: center;
@@ -167,6 +235,7 @@ $fontStack: 'Source Sans Pro', 'Proxima Nova', sans-serif;
     position: relative;
     display: flex;
     width: 100%;
+    padding: 0 1.5rem;
 
     &:hover, &.active {
       cursor: pointer;
@@ -193,11 +262,62 @@ $fontStack: 'Source Sans Pro', 'Proxima Nova', sans-serif;
       display: flex;
       align-items: center;
     }
+
     .cellName {
-      margin-left: 42px;
+      margin-left: 36px;
     }
+
     .cellEmail {
       word-break: break-all;
+    }
+  }
+
+  .detail {
+    width: calc(100vw - 866px - 4rem);
+    position: fixed;
+    top: 248px;
+    right: 3rem;
+
+    :global .h3 {
+      font-family: $fontStack;
+      font-size: 22px;
+      font-weight: bold;
+      color: #222222;
+      margin: 0 0 2rem;
+    }
+  }
+
+  .detailContent {
+    background-color: #FFFFFF;
+    padding: 29px 40px;
+    overflow: auto;
+    max-height: calc(100vh - 334px);
+    box-sizing: border-box;
+  }
+
+  .detailGroup {
+    margin-bottom: 1.5rem;
+
+    :global label {
+      font-family: $fontStack;
+      font-size: .75rem;
+      font-weight: bold;
+      color: #4a4a4a;
+      text-transform: uppercase;
+    }
+
+    .detailValue {
+      font-size: .875rem;
+      color: #333333;
+    }
+
+    .detailValueList {
+      font-size: .875rem;
+      color: #333333;
+      margin: .7rem 0 0;
+      padding: 0;
+      font-size: .875rem;
+      list-style: none;
     }
   }
 }
@@ -210,6 +330,7 @@ $fontStack: 'Source Sans Pro', 'Proxima Nova', sans-serif;
   border-radius: 4px;
   border: solid 1px #979797;
   position: relative;
+  margin: 0;
 
   &:checked {
     border: none;

@@ -12,6 +12,7 @@ import ActivistDetailHOC from './component/detail'
 
 if (require('exenv').canUseDOM) require('./styles.scss')
 var styles = require('exenv').canUseDOM ? require('./container.scss') : {}
+console.log('styles', styles)
 
 
 const QueryForm = ({
@@ -117,38 +118,39 @@ const Row = ({ obj, onSelectRow, onClickRow, isSelected, isActived }) => (
 
 const Detail = ActivistDetailHOC(
   ({ obj, onClose, mobilizations, tags }) => (
-    <div className='detail col col-4 pl3' style={{ width: 'calc(100vw - 866px - 2rem)' }}>
-      <div className='col col-12 title py2'>
+    <div className={styles.detail}>
+      <div className={styles.title}>
         <span className={styles.h1}>Perfil selecionado</span>
         <i
-          className='fa fa-close'
+          className={`${styles.closeButton}`}
           aria-hidden='true'
           onClick={() => onClose(obj)}
         />
       </div>
-      <div className='col col-12 bg-white py1 px2'>
-        <h3>{obj.name}</h3>
-        <div>
-          <div>
-            <label>E-mail</label>
-            <p>{obj.email}</p>
-          </div>
-          <div>
-            <label>Mobilizações</label>
-            <ul>
-              {mobilizations.map((mob, i) => (
-                <li key={`mob${i}`}>{mob.name}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <label>Etiquetas</label>
-            <ul className={styles.tags}>
-              {tags.map((tag, i) => (
-                <li className={styles.tag} key={`tag${i}`}>{tag.tagCompleteName}</li>
-              ))}
-            </ul>
-          </div>
+      <div className={styles.detailContent}>
+        <h3 className='h3'>{obj.name}</h3>
+
+        <div className={styles.detailGroup}>
+          <label>Email</label>
+          <div className={styles.detailValue}>{obj.email}</div>
+        </div>
+
+        <div className={styles.detailGroup}>
+          <label>Mobilizações</label>
+          <ul className={styles.detailValueList}>
+            {mobilizations.map((mob, i) => (
+              <li key={`mob${i}`}>{mob.name}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div className={styles.detailGroup}>
+          <label>Etiquetas</label>
+          <ul className={styles.detailValueList}>
+            {tags.map((tag, i) => (
+              <li className={styles.tagDeletable} key={`tag${i}`}>{tag.tagCompleteName}</li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>
@@ -207,24 +209,19 @@ class Container extends Component {
         />
 
         <SettingsPageContentLayout className={styles.pageContent} wrapClassName='col-12'>
-          <div className={`${styles.contentContainer} clearfix`}>
+          <div className={`clearfix ${!this.state.item ? styles.contentContainerCenter : ''}`}>
             <div className='col'>
-              <div className='title clearfix p2'>
-                <div className='col col-1'>
-                  <input
-                    id='selectAllId'
-                    type='checkbox'
-                    disabled={totalCount === 0}
-                    checked={isSelectedAll}
-                    onClick={(evt) => {
-                      if (isSelectedAll) {
-                        onRemoveAll()
-                      } else {
-                        onSelectAll()
-                      }
-                    }}
-                  />
-                </div>
+              <div className={`${styles.title} clearfix`}>
+                <input
+                  id='selectAllId'
+                  type='checkbox'
+                  disabled={totalCount === 0}
+                  checked={isSelectedAll}
+                  onClick={(evt) => {
+                    if (isSelectedAll) onRemoveAll()
+                    else onSelectAll()
+                  }}
+                />
                 <div className={styles.h1}>
                   {totalCount} pessoas
                 </div>
