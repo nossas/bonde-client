@@ -58,5 +58,17 @@ describe('client/components/layout/settings-page-content-layout', () => {
         expect(wrapper.find(childrenSelector).at(1).text()).to.be.equal('Bar')
       })
     })
+
+    describe('overflow', () => {
+      it('should render `overflow-auto` by default', () => {
+        const className = wrapper.find('.settings-page-content-layout').props().className
+        expect(className).to.have.string('overflow-auto')
+      })
+      it('should render `overflow-hidden` when pass `overflow` prop as hidden', () => {
+        const localWrapper = shallow(<SettingsPageContentLayout overflow='hidden' />)
+        const className = localWrapper.find('.settings-page-content-layout').props().className
+        expect(className).to.have.string('overflow-hidden')
+      })
+    })
   })
 })

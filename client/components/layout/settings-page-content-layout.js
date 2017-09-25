@@ -2,10 +2,17 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import classnames from 'classnames'
 
-const SettingsPageContentLayout = ({ children, className, containerClassName, wrapClassName }) => (
+const SettingsPageContentLayout = ({
+  children,
+  className,
+  containerClassName,
+  wrapClassName,
+  overflow
+}) => (
   <div
     className={classnames(
-      'settings-page-content-layout clearfix overflow-auto py3 pr4 pl3 border-box',
+      'settings-page-content-layout clearfix py3 pr4 pl3 border-box',
+      `overflow-${overflow}`,
       className
     )}
   >
@@ -27,6 +34,10 @@ SettingsPageContentLayout.propTypes = {
   className: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   containerClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   wrapClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.array])
+}
+
+SettingsPageContentLayout.defaultProps = {
+  overflow: 'auto'
 }
 
 export default SettingsPageContentLayout

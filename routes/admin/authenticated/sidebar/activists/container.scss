@@ -1,4 +1,7 @@
 $fontStack: 'Source Sans Pro', 'Proxima Nova', sans-serif;
+$listWidth: 650px;
+$headerHeight: 248px;
+$foldedSidebarWidth: 80px;
 
 @mixin tag() {
   font-weight: bold;
@@ -17,7 +20,7 @@ $fontStack: 'Source Sans Pro', 'Proxima Nova', sans-serif;
   box-sizing: border-box;
   max-height: calc(100vh - 249px - 10vh);
   position: absolute;
-  z-index: 1;
+  z-index: 10;
   -webkit-overflow-scrolling: touch;
   width: 100%;
 }
@@ -93,6 +96,21 @@ $fontStack: 'Source Sans Pro', 'Proxima Nova', sans-serif;
 }
 
 :local {
+  .loadingActivists {
+    position: fixed;
+    left: 50%;
+    top: $headerHeight;
+    width: $listWidth;
+    height: calc(100vh - #{$headerHeight});
+    margin-left: calc(-#{$listWidth} / 2 + #{$foldedSidebarWidth} - 4px);
+  }
+
+  .loadingActivistsWithProfile {
+    @extend .loadingActivists;
+    margin: 0;
+    left: calc(7.5rem + #{$foldedSidebarWidth});
+  }
+
   .pageMenu {
     min-height: 180px;
     box-sizing: border-box;
@@ -193,7 +211,7 @@ $fontStack: 'Source Sans Pro', 'Proxima Nova', sans-serif;
       @include selectMenuOuter();
       width: calc(100vw - 240px);
       position: fixed;
-      top: 248px;
+      top: $headerHeight;
       left: 180px;
     }
 
@@ -259,7 +277,7 @@ $fontStack: 'Source Sans Pro', 'Proxima Nova', sans-serif;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 650px;
+    width: $listWidth;
   }
 
   .row {
@@ -312,7 +330,7 @@ $fontStack: 'Source Sans Pro', 'Proxima Nova', sans-serif;
   .detail {
     width: calc(100vw - 866px - 4rem);
     position: fixed;
-    top: 248px;
+    top: $headerHeight;
     right: 3rem;
 
     :global .h3 {

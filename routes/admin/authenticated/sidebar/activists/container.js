@@ -201,26 +201,37 @@ class Container extends Component {
           communityId={communityId}
         />
 
-        <SettingsPageContentLayout className={styles.pageContent} wrapClassName='col-12'>
+        <SettingsPageContentLayout
+          className={styles.pageContent}
+          wrapClassName='col-12'
+          overflow={selecting || loading ? 'hidden' : 'auto'}
+        >
           <div className={`clearfix ${!this.state.item ? styles.contentContainerCenter : ''}`}>
-            <div className='col'>
+            <div className='col relative'>
               <div className={`${styles.title} clearfix`}>
-                <input
-                  id='selectAllId'
-                  type='checkbox'
-                  disabled={totalCount === 0}
-                  checked={isSelectedAll}
-                  onClick={(evt) => {
-                    if (isSelectedAll) onRemoveAll()
-                    else onSelectAll()
-                  }}
-                />
-                <div className={styles.h1}>
-                  {totalCount} pessoas
-                </div>
+                {totalCount <= 0 && (
+                  <div className={`${styles.h1} mx3`}>
+                    Ops! Ninguém com esse filtro :(
+                  </div>
+                )}
+                {totalCount > 0 && (
+                  <input
+                    id='selectAllId'
+                    type='checkbox'
+                    disabled={totalCount === 0}
+                    checked={isSelectedAll}
+                    onClick={(evt) => {
+                      if (isSelectedAll) onRemoveAll()
+                      else onSelectAll()
+                    }}
+                  />
+                )}
+                {totalCount > 0 && (
+                  <div className={styles.h1}>
+                    {totalCount} pessoas
+                  </div>
+                )}
               </div>
-
-              {(selecting || loading) && <Loading />}
 
               <div className={styles.tableContainer}>
                 <div className={styles.table}>
@@ -237,12 +248,25 @@ class Container extends Component {
                 </div>
               </div>
 
-              <Pagination
-                indexPage={this.props.indexPage}
-                lastPage={this.props.lastPage}
-                onPreviousPage={this.props.onPreviousPage}
-                onNextPage={this.props.onNextPage}
-              />
+              {totalCount > 0 && (
+                <Pagination
+                  indexPage={this.props.indexPage}
+                  lastPage={this.props.lastPage}
+                  onPreviousPage={this.props.onPreviousPage}
+                  onNextPage={this.props.onNextPage}
+                />
+              )}
+
+              {(selecting || loading) && (
+                <Loading
+                  className={!this.state.item
+                    ? styles.loadingActivists
+                    : styles.loadingActivistsWithProfile
+                  }
+                  backgroundColor='rgba(255, 255, 255, .6)'
+                  loaderColor='#AFAFAF'
+                />
+              )}
             </div>
 
             {this.state.item && (
