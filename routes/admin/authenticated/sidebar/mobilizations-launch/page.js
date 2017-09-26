@@ -1,7 +1,7 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
 
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, injectIntl } from 'react-intl'
 import * as paths from '~client/paths'
 import * as MobActions from '~client/mobrender/redux/action-creators'
 import { Loading } from '~client/components/await'
@@ -17,26 +17,31 @@ if (require('exenv').canUseDOM) {
   require('./form-share.scss')
 }
 
-const FormShareImplementation = FormShare(
+const FormShareImplementation = injectIntl(FormShare(
   state => ({ initialValues: MobSelectors(state).getMobilization() }),
   { submit: MobActions.asyncUpdateMobilization },
   (values, props) => {
     const errors = {}
+    const messageRequired = props.intl.formatMessage({
+      id: 'page--mobilizations-launch.form-share.validation.required',
+      defaultMessage: 'Obrigatório'
+    })
+
     if (!values.facebook_share_image) {
-      errors.facebook_share_image = 'Obrigatório'
+      errors.facebook_share_image = messageRequired
     }
     if (!values.facebook_share_title) {
-      errors.facebook_share_title = 'Obrigatório'
+      errors.facebook_share_title = messageRequired
     }
     if (!values.facebook_share_description) {
-      errors.facebook_share_description = 'Obrigatório'
+      errors.facebook_share_description = messageRequired
     }
     if (!values.twitter_share_text) {
-      errors.twitter_share_text = 'Obrigatório'
+      errors.twitter_share_text = messageRequired
     }
     return errors
   }
-)
+))
 
 const MobilizationsLaunchPage = ({ hostedZones, mobilization, isSaving, ...formProps }) => {
   const stepDomainValidation = () => !!mobilization.custom_domain
