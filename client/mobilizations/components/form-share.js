@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import { FormattedMessage, intlShape } from 'react-intl'
+import { FormattedMessage, intlShape, injectIntl } from 'react-intl'
 import { reduxForm } from 'redux-form'
 
 import serverConfig from '~server/config'
@@ -192,4 +192,4 @@ export default (
   { form: 'mobilizationShareForm', fields, validate },
   mapStateToProps,
   mapDispatchToProps
-)(FormShare)
+)(injectIntl(FormShare))
