@@ -1,6 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
+import { FormattedMessage } from 'react-intl'
 
 import BLOCK_LAYOUTS from '~client/mobilizations/blocks/constants/block-layouts'
 import Page from '~routes/admin/authenticated/sidebar/blocks-create/page'
@@ -29,8 +30,14 @@ describe('routes/admin/authenticated/sidebar/blocks-create/page', () => {
         expect(wrapper.find('SettingsPageMenuLayout')).to.have.length(1)
       })
       it('should render one <h1> with its content properly', () => {
-        const text = 'Adicione um bloco de conteúdo'
-        expect(wrapper.find('SettingsPageMenuLayout').props().title).to.be.equal(text)
+        const expectedTitleIntl = (
+          <FormattedMessage
+            id='page--block-create.title'
+            defaultMessage='Adicione um bloco de conteúdo'
+          />
+        )
+        const titleIntl = wrapper.find('SettingsPageMenuLayout').props().title
+        expect(titleIntl.props).to.be.deep.equal(expectedTitleIntl.props)
       })
       it('should render one <Tabs> component', () => {
         expect(wrapper.find('Tabs')).to.have.length(1)
