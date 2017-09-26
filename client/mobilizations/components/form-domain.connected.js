@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
 
+import { injectIntl } from 'react-intl'
 import { asyncUpdateMobilization } from '~client/mobrender/redux/action-creators'
 import { isValidDomain } from '~client/utils/validation-helper'
 import FormDomain from './form-domain'
@@ -126,5 +127,5 @@ const mapActionsToProps = (dispatch, props) => ({
 })
 
 export default connect(mapStateToProps, mapActionsToProps)(
-  reduxForm({ form: 'formDomain', fields, validate })(FormDomain)
+  injectIntl(reduxForm({ form: 'formDomain', fields, validate })(FormDomain))
 )

@@ -1,6 +1,7 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
 
+import { FormattedMessage } from 'react-intl'
 import * as paths from '~client/paths'
 import * as MobActions from '~client/mobrender/redux/action-creators'
 import { Loading } from '~client/components/await'
@@ -19,7 +20,7 @@ if (require('exenv').canUseDOM) {
 const FormShareImplementation = FormShare(
   state => ({ initialValues: MobSelectors(state).getMobilization() }),
   { submit: MobActions.asyncUpdateMobilization },
-  values => {
+  (values, props) => {
     const errors = {}
     if (!values.facebook_share_image) {
       errors.facebook_share_image = 'Obrigatório'
@@ -56,7 +57,10 @@ const MobilizationsLaunchPage = ({ hostedZones, mobilization, isSaving, ...formP
   return (
     <PageCentralizedLayout>
       <PageCentralizedLayoutTitle>
-        Lançando sua mobilização
+        <FormattedMessage
+          id='page--mobilizations-launch.button.launch'
+          defaultMessage='Lançando sua mobilização'
+        />
       </PageCentralizedLayoutTitle>
 
       <StepsContainerStack
@@ -94,12 +98,17 @@ const MobilizationsLaunchPage = ({ hostedZones, mobilization, isSaving, ...formP
 
         <StepContent>
           <div className='ux--flat-form'>
-            <h1>Seu BONDE está pronto!</h1>
+            <h1>
+              <FormattedMessage
+                id='page--mobilizations-launch.steps.done.title'
+                defaultMessage='Seu BONDE está pronto!'
+              />
+            </h1>
             <p className='h5'>
-              Em uma nova aba, digite o endereço que cadastrou na mobilização
-              para se certificar de que ela já está no ar. Se ainda não estiver,
-              cheque se cadastrou os domínios corretamente. Está tudo certo? Então
-              é só esperar ele propagar pela internet!
+              <FormattedMessage
+                id='page--mobilizations-launch.steps.done.helper-text'
+                defaultMessage='Em uma nova aba, digite o endereço que cadastrou na mobilização para se certificar de que ela já está no ar. Se ainda não estiver, cheque se cadastrou os domínios corretamente. Está tudo certo? Então é só esperar ele propagar pela internet!'
+              />
             </p>
             <Button href={`http://${mobilization.custom_domain}`} target='_blank'>
               Visualizar mobilização

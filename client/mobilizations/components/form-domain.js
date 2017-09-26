@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import classnames from 'classnames'
 import ServerConfig from '~server/config'
+import { FormattedMessage } from 'react-intl'
 import { FormGroup, ControlLabel, FormControl, FormDropdown, Raise } from '~client/components/forms'
 import { isBoolean } from '~client/utils/type-checker'
 
@@ -19,11 +20,28 @@ const HeaderToggle = ({ children, show, onToggle }) => (
 
 const CreateDomainText = ({ onClickLink }) => (
   <p className='h5'>
-    Ops, você ainda não tem um domínio configurado na sua comunidade. Se quiser
-    cadastar, <a href='#' onClick={onClickLink} target='_self'>clique aqui</a>.
+    <FormattedMessage
+      id='mobilizations.components--form-domain.create-domain-text.first-line'
+      defaultMessage={
+        'Ops, você ainda não tem um domínio configurado na sua comunidade. ' +
+        'Se quiser cadastar, {link}.'
+      }
+      values={{
+        link: (
+          <a href='#' onClick={onClickLink} target='_self'>
+            <FormattedMessage
+              id='mobilizations.components--form-domain.create-domain-text.first-line.link'
+              defaultMessage='clique aqui'
+            />
+          </a>
+        )
+      }}
+    />
     <br />
-    Senão você pode, abaixo, usar um domínio externo para configurar o endereço
-    da sua mobilização.
+      <FormattedMessage
+        id='mobilizations.components--form-domain.create-domain-text.second-line'
+        defaultMessage='Senão você pode, abaixo, usar um domínio externo para configurar o endereço da sua mobilização.'
+      />
   </p>
 )
 
@@ -108,16 +126,44 @@ class FormDomain extends Component {
     return (
       <div className='h5'>
         <p>
-          <strong>Não esqueça</strong>: você vai precisar configurar este domínio no seu
-          servidor de registro para que o endereço seja redirecionado à página da sua mobilização.
-          Pra isso, você vai precisar dessas informações aqui embaixo, anote aí:
+          <FormattedMessage
+            id='mobilizations.components--form-domain.cname-table.helper-text'
+            defaultMessage={
+            '{strong}: você vai precisar configurar este domínio no seu servidor de registro para que o endereço seja redirecionado à página da sua mobilização. Pra isso, você vai precisar dessas informações aqui embaixo, anote aí:'
+            }
+            values={{
+              strong: (
+                <strong>
+                  <FormattedMessage
+                    id='mobilizations.components--form-domain.cname-table.helper-text.strong'
+                    defaultMessage='Não esqueça'
+                  />
+                </strong>
+              )
+            }}
+          />
         </p>
         <table className='col-12 left-align'>
           <tbody>
             <tr>
-              <th>Nome</th>
-              <th>Tipo</th>
-              <th>Dados</th>
+              <th>
+                <FormattedMessage
+                  id='mobilizations.components--form-domain.cname-table.header.name'
+                  defaultMessage='Nome'
+                />
+              </th>
+              <th>
+                <FormattedMessage
+                  id='mobilizations.components--form-domain.cname-table.header.record-type'
+                  defaultMessage='Tipo'
+                />
+              </th>
+              <th>
+                <FormattedMessage
+                  id='mobilizations.components--form-domain.cname-table.header.data'
+                  defaultMessage='Dados'
+                />
+              </th>
             </tr>
             <tr>
               <td><code>{host}</code></td>
@@ -132,10 +178,27 @@ class FormDomain extends Component {
           </tbody>
         </table>
         <p>
-          Se tiver alguma dúvida, dá uma olhada no tópico "Configurando seu domínio no BONDE",
-          no nosso tutorial, o <a href='https://trilho.bonde.org' target='_blank'>
-            Trilho <i className='fa fa-external-link' style={{ fontSize: '.7rem' }} />
-          </a>.
+          <FormattedMessage
+            id='mobilizations.components--form-domain.cname-table.footer.helper-text'
+            defaultMessage={
+              'Se tiver alguma dúvida, dá uma olhada no tópico "Configurando seu domínio no BONDE", no nosso tutorial, o {link}.'
+            }
+            values={{
+              link: (
+                <a href='https://trilho.bonde.org' target='_blank'>
+                  <FormattedMessage
+                    id='mobilizations.components--form-domain.cname-table.footer.helper-text.link'
+                    defaultMessage='Trilho {icon}'
+                    values={{
+                      icon: (
+                        <i className='fa fa-external-link' style={{ fontSize: '.7rem' }} />
+                      )
+                    }}
+                  />
+                </a>
+              )
+            }}
+          />
         </p>
       </div>
     )
@@ -147,6 +210,7 @@ class FormDomain extends Component {
       error,
       fields: { domain, subdomain, externalDomain, rootDomain },
       hostedZones,
+      intl,
       ...formProps
     } = this.props
 
@@ -154,14 +218,32 @@ class FormDomain extends Component {
       <div className='components--form-domain'>
         <FormComponent {...formProps}>
           <p className='h5 mb3'>
-            Estamos quase lá, antes de publicar sua mobilização é preciso
-            escolher a url que será usada para publicação.
+            <FormattedMessage
+              id='mobilizations.components--form-domain.helper-text-first-line'
+              defaultMessage='Estamos quase lá, antes de publicar sua mobilização é preciso escolher a url que será usada para publicação.'
+            />
             <br />
-            Já cadastrou um domínio na comunidade? Selecione abaixo qual
-            das opções melhor se encaixa.
+              <FormattedMessage
+                id='mobilizations.components--form-domain.helper-text-second-line'
+                defaultMessage='Já cadastrou um domínio na comunidade? Selecione abaixo qual das opções melhor se encaixa.'
+              />
             <br />
-            Quer cadastrar um novo
-            domínio? <a href='#' onClick={this.clickHere.bind(this)} target='_self'>Clique aqui</a>.
+              <FormattedMessage
+                id='mobilizations.components--form-domain.helper-text-third-line'
+                defaultMessage={
+                  'Quer cadastrar um novo domínio? {link}.'
+                }
+                values={{
+                  link: (
+                    <a href='#' onClick={this.clickHere.bind(this)} target='_self'>
+                      <FormattedMessage
+                        id='mobilizations.components--form-domain.helper-text-third-line.link'
+                        defaultMessage='Clique aqui'
+                      />
+                    </a>
+                  )
+                }}
+              />
           </p>
 
           {error && <p>{error}</p>}
@@ -171,29 +253,49 @@ class FormDomain extends Component {
               onToggle={() => this.toggle('showSubdomain', !this.state.showSubdomain)}
               show={this.state.showSubdomain}
             >
-              Quero usar um novo sub-domínio
+              <FormattedMessage
+                id='mobilizations.components--form-domain.basic.header-toggle.use-existing-domain'
+                defaultMessage='Quero usar um novo sub-domínio'
+              />
             </HeaderToggle>
             {this.state.showSubdomain && (
               hostedZones.length > 0 ? (
                 <div>
                   <p className='h5'>
-                    Preencha abaixo o subdomínio e escolha o domínio que deseja
-                    configurar como endereço da sua mobilização
+                    <FormattedMessage
+                      id='mobilizations.components--form-domain.basic.helper-text'
+                      defaultMessage='Preencha abaixo o subdomínio e escolha o domínio que deseja configurar como endereço da sua mobilização'
+                    />
                   </p>
                   <div className='form-groups-container flex flex-wrap'>
                     <div className='prefix'>www.</div>
                     <FormGroup controlId='subdomain' {...subdomain}>
-                      <ControlLabel hideError>Subdomínio</ControlLabel>
+                      <ControlLabel hideError>
+                        <FormattedMessage
+                          id='mobilizations.components--form-domain.basic.form.subdomain.label'
+                          defaultMessage='Subdomínio'
+                        />
+                      </ControlLabel>
                       <FormControl
                         type='text'
-                        placeholder='nomedamob'
+                        placeholder={
+                          intl.formatMessage({
+                            id: 'mobilizations.components--form-domain.basic.form.subdomain.placeholder',
+                            defaultMessage: 'nomedamob'
+                          })
+                        }
                       />
                     </FormGroup>
                     <div className='delimiter'>
                       <strong>.</strong>
                     </div>
                     <FormGroup controlId='domain' {...domain}>
-                      <ControlLabel hideError>Domínio Principal</ControlLabel>
+                      <ControlLabel hideError>
+                        <FormattedMessage
+                          id='mobilizations.components--form-domain.basic.form.domain.label'
+                          defaultMessage='Domínio Principal'
+                        />
+                      </ControlLabel>
                       <FormDropdown
                         onChange={e => domain.onChange(e.target.value)}
                         value={
@@ -201,7 +303,12 @@ class FormDomain extends Component {
                           domain.initialValue || ''
                         }
                       >
-                        <option value='' disabled>Escolha...</option>
+                        <option value='' disabled>
+                          <FormattedMessage
+                            id='mobilizations.components--form-domain.basic.form.domain.button.chose'
+                            defaultMessage='Escolha...'
+                          />
+                        </option>
                         {hostedZones.map((obj, i) => (
                           <option key={`hostedZone-${i}`} value={obj.domain_name}>
                             {obj.domain_name}
@@ -227,18 +334,29 @@ class FormDomain extends Component {
               onToggle={() => this.toggle('showRootDomain', !this.state.showRootDomain)}
               show={this.state.showRootDomain}
             >
-              Quero usar um domínio principal cadastrado na comunidade
+              <FormattedMessage
+                id='mobilizations.components--form-domain.root.header-toggle.use-root-domain'
+                defaultMessage='Quero usar um domínio principal cadastrado na comunidade'
+              />
             </HeaderToggle>
             {this.state.showRootDomain && (
               hostedZones.length > 0 ? (
                 <div>
                   <p className='h5'>
-                    Escolha o domínio que deseja configurar como endereço da sua mobilização
+                    <FormattedMessage
+                      id='mobilizations.components--form-domain.root.helper-text'
+                      defaultMessage='Escolha o domínio que deseja configurar como endereço da sua mobilização'
+                    />
                   </p>
                   <div className='form-groups-container flex flex-wrap'>
                     <div className='prefix'>www.</div>
                     <FormGroup controlId='rootDomain' {...rootDomain}>
-                      <ControlLabel hideError>Domínio Principal</ControlLabel>
+                      <ControlLabel hideError>
+                        <FormattedMessage
+                          id='mobilizations.components--form-domain.basic.form.domain.label'
+                          defaultMessage='Domínio Principal'
+                        />
+                      </ControlLabel>
                       <FormDropdown
                         onChange={e => rootDomain.onChange(e.target.value)}
                         value={
@@ -246,7 +364,12 @@ class FormDomain extends Component {
                           rootDomain.initialValue || ''
                         }
                       >
-                        <option value='' disabled>Escolha...</option>
+                        <option value='' disabled>
+                          <FormattedMessage
+                            id='mobilizations.components--form-domain.basic.form.domain.button.chose'
+                            defaultMessage='Escolha...'
+                          />
+                        </option>
                         {hostedZones.map((obj, i) => (
                           <option
                             key={`hostedZone-${i}`}
@@ -275,24 +398,38 @@ class FormDomain extends Component {
               onToggle={() => this.toggle('showExternalDomain', !this.state.showExternalDomain)}
               show={this.state.showExternalDomain}
             >
-              Quero direcionar para um domínio externo
+              <FormattedMessage
+                id='mobilizations.components--form-domain.advanced.header-toggle'
+                defaultMessage='Quero direcionar para um domínio externo'
+              />
             </HeaderToggle>
 
             {this.state.showExternalDomain && (
               <div>
                 <p className='h5'>
-                  Se você quer usar um domínio que comprou mas não está cadastrado na sua comunidade
-                  aqui, pode fazer isso. Por exemplo, se você já comprou www.meudominio.com.br você
-                  pode usá-lo para este BONDE. Demais, né? Preencha o campo abaixo e siga as orientações:
+                  <FormattedMessage
+                    id='mobilizations.components--form-domain.advanced.helper-text'
+                    defaultMessage='Se você quer usar um domínio que comprou mas não está cadastrado na sua comunidade aqui, pode fazer isso. Por exemplo, se você já comprou www.meudominio.com.br você pode usá-lo para este BONDE. Demais, né? Preencha o campo abaixo e siga as orientações:'
+                  />
                 </p>
                 <FormGroup controlId='externalDomain' {...externalDomain}>
-                  <ControlLabel hideError>Domínio personalizado</ControlLabel>
+                  <ControlLabel hideError>
+                    <FormattedMessage
+                      id='mobilizations.components--form-domain.advanced.form.external-domain.label'
+                      defaultMessage='Domínio personalizado'
+                    />
+                  </ControlLabel>
                   <div className='form-control-container--external-domain'>
                     <div className='prefix'>www.</div>
                     <FormControl
                       containerClassName='form-control--external-domain'
                       type='text'
-                      placeholder='meudominio.com.br'
+                      placeholder={
+                        intl.formatMessage ({
+                          id: 'mobilizations.components--form-domain.advanced.form.external-domain.placeholder',
+                          defaultMessage: 'meudominio.com.br'
+                        })
+                      }
                     />
                   </div>
                   {InputError(externalDomain)}

@@ -725,6 +725,8 @@ servidor-03.dominio.com`,
   'mobilizations.components--form-domain.basic.form.subdomain.label': 'Subdomínio',
   'mobilizations.components--form-domain.basic.form.subdomain.placeholder': 'nomedamob',
   'mobilizations.components--form-domain.basic.form.domain.label': 'Domínio Principal',
+  'mobilizations.components--form-domain.basic.form.domain.button.chose': 'Escolha...',
+
 
   'mobilizations.components--form-domain.root.header-toggle.use-root-domain': 'Quero usar um domínio principal cadastrado na comunidade',
   'mobilizations.components--form-domain.root.helper-text': 'Escolha o domínio que deseja configurar como endereço da sua mobilização',
@@ -740,6 +742,7 @@ servidor-03.dominio.com`,
   'mobilizations.components--form-domain.cname-table.header.record-type': 'Tipo',
   'mobilizations.components--form-domain.cname-table.header.data': 'Dados',
   'mobilizations.components--form-domain.cname-table.footer.helper-text': 'Se tiver alguma dúvida, dá uma olhada no tópico "Configurando seu domínio no BONDE", no nosso tutorial, o {link}.',
+  'mobilizations.components--form-domain.cname-table.footer.helper-text.link': 'Trilho',
 
   // component mobrender mobilization
   // filepath: /client/mobrender/components/mobilization.js
