@@ -123,7 +123,7 @@
     "sinon": "^3.2.0",
     "slate-editor": "^2.6.10",
     "socket.io-client": "^2.0.3",
-    "source-map-support": "^0.4.15",
+    "source-map-support": "^0.5.0",
     "standard": "^10.0",
     "standard-loader": "^6.0",
     "standard-version": "^4.2",
