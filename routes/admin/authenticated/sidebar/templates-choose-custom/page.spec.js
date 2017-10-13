@@ -1,7 +1,7 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
+import { shallowWithIntl } from '~root/intl/helpers'
 import Page from '~routes/admin/authenticated/sidebar/templates-choose-custom/page'
 
 describe('routes/admin/authenticated/sidebar/templates-choose-custom/page', () => {
@@ -12,7 +12,7 @@ describe('routes/admin/authenticated/sidebar/templates-choose-custom/page', () =
   }
 
   beforeAll(() => {
-    wrapper = shallow(<Page {...props} />)
+    wrapper = shallowWithIntl(<Page {...props} />)
   })
 
   describe('#render', () => {

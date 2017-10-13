@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import { graphql, gql } from 'react-apollo'
+import { injectIntl } from 'react-intl'
 
 import * as SelectableActions from '~client/components/selectable-list/actions'
 import MobSelectors from '~client/mobrender/redux/selectors'
@@ -44,6 +45,6 @@ const GraphPage = graphql(gql`
     loading,
     templates: customTemplates ? customTemplates.nodes : []
   })
-})(Page)
+})(injectIntl(Page))
 
 export default connect(mapStateToProps, mapActionsToProps)(GraphPage)

@@ -1,5 +1,6 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
+import { FormattedMessage } from 'react-intl'
 
 import * as paths from '~client/paths'
 import { PageTabLayout } from '~client/mobilizations/components'
@@ -25,7 +26,12 @@ class TemplatesChooseCustomPage extends React.Component {
     return loading ? <Loading /> : (
       <PageTabLayout {...{ location }}>
         <div className='choose-custom-page col-12'>
-          <h3 className='h1 mt0 mb3 center'>Meus Templates</h3>
+          <h3 className='h1 mt0 mb3 center'>
+            <FormattedMessage
+              id='page--mobilizations.templates-choose-custom.title'
+              defaultMessage='Meus Templates'
+            />
+          </h3>
           <TemplateSelectableList
             {...listableProps}
             handleGoBack={() => browserHistory.goBack()}

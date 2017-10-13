@@ -33,8 +33,8 @@ BrowsableListItem.propTypes = {
   style: PropTypes.object,
   leftIcon: PropTypes.string,
   rightIcon: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  title: PropTypes.node.isRequired,
+  subtitle: PropTypes.node,
   path: PropTypes.string
 }
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 
 import {
   SettingsPageLayout,
@@ -14,10 +15,35 @@ const PageTabLayout = ({ children, location }) => {
 
   return (
     <SettingsPageLayout>
-      <SettingsPageMenuLayout title='Nova mobilização'>
+      <SettingsPageMenuLayout
+        title={
+          <FormattedMessage
+            id='mobilizations.components--page-tab-layout.title'
+            defaultMessage='Nova mobilização'
+          />
+        }
+      >
         <Tabs>
-          <Tab text='Objetivo' isActive={goalIsActive} index={1} />
-          <Tab text='Templates' isActive={templateIsActive} index={2} />
+          <Tab
+            text={
+              <FormattedMessage
+                id='mobilizations.components--page-tab-layout.tabs.goal'
+                defaultMessage='Objetivo'
+              />
+            }
+            isActive={goalIsActive}
+            index={1}
+          />
+          <Tab
+            text={
+              <FormattedMessage
+                id='mobilizations.components--page-tab-layout.tabs.templates'
+                defaultMessage='Templates'
+              />
+            }
+            isActive={templateIsActive}
+            index={2}
+          />
         </Tabs>
       </SettingsPageMenuLayout>
       <SettingsPageContentLayout wrapClassName='md-col-12 lg-col-6 mx-auto'>

@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
+import { FormattedMessage, intlShape } from 'react-intl'
 import classnames from 'classnames'
 
 // Global module dependencies
@@ -15,21 +16,33 @@ const TemplateSelectableList = props => {
     setSelectedIndex,
     selectedIndex,
     handleSelectItem,
-    handleGoBack
+    handleGoBack,
+    intl
   } = props
 
   const item = filterableTemplates.filter(item => item.id === selectedIndex)[0]
 
   return (
     <div className='mobilization-templates-selectable-list'>
-      <FilterableSearchBar list={templates} placeholder='Busque um template' />
+      <FilterableSearchBar
+        list={templates}
+        placeholder={intl.formatMessage({
+          id: 'templates.components--selectable-list.filterable-search-bar.placeholder',
+          defaultMessage: 'Busque um template'
+        })}
+      />
 
       <div className='bg-white rounded-bottom' style={{ padding: '1.6rem 2rem' }}>
         <SelectableList
           selectedIndex={selectedIndex}
           setSelectedIndex={setSelectedIndex}
           list={filterableTemplates}
-          emptyListText='Não existe nenhum template com esse nome'
+          emptyListText={
+            <FormattedMessage
+              id='templates.components--selectable-list.empty-list-text'
+              defaultMessage='Não existe nenhum template com esse nome'
+            />
+          }
         />
         <div className={styles.buttonContainer}>
           {handleGoBack !== undefined ? (
@@ -38,7 +51,10 @@ const TemplateSelectableList = props => {
                 onClick={() => handleGoBack()}
                 className={classnames('btn h3 white p2 rounded bg-gray', styles.button)}
               >
-                Voltar
+                <FormattedMessage
+                  id='templates.components--selectable-list.button.back'
+                  defaultMessage='Voltar'
+                />
               </button>
             </div>
           ) : undefined}
@@ -52,7 +68,10 @@ const TemplateSelectableList = props => {
                 styles.button
               )}
             >
-              Continuar
+              <FormattedMessage
+                id='templates.components--selectable-list.button.next'
+                defaultMessage='Continuar'
+              />
             </button>
           </div>
         </div>
@@ -67,7 +86,8 @@ TemplateSelectableList.propTypes = {
   selectedIndex: PropTypes.number,
   setSelectedIndex: PropTypes.func.isRequired,
   handleSelectItem: PropTypes.func.isRequired,
-  handleGoBack: PropTypes.func
+  handleGoBack: PropTypes.func,
+  intl: intlShape.isRequired
 }
 
 export default TemplateSelectableList

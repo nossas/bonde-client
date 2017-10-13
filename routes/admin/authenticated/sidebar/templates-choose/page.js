@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { FormattedMessage } from 'react-intl'
 
 import * as paths from '~client/paths'
 import { BrowsableList, BrowsableListItem } from '~client/components/navigation/browsable-list'
@@ -27,12 +28,22 @@ class TemplatesChoosePage extends Component {
     return (
       <PageTabLayout {...{ location }}>
         <div className='choose-menu-page col-12'>
-          <h3 className='h1 mt0 mb3 center'>Como você deseja começar?</h3>
+          <h3 className='h1 mt0 mb3 center'>
+            <FormattedMessage
+              id='page--mobilizations.templates-choose.title'
+              defaultMessage='Como você deseja começar?'
+            />
+          </h3>
           <BrowsableList>
             {renderEmptyChoice && (
               <BrowsableListItem
+                title={
+                  <FormattedMessage
+                    id='page--mobilizations.templates-choose.browsable-list-item.blank'
+                    defaultMessage='Criar mobilização do zero'
+                  />
+                }
                 leftIcon='plus-square-o'
-                title='Criar mobilização do zero'
                 onClick={() => {
                   createEmptyMobilization({ mobilization })
                 }}
@@ -40,17 +51,22 @@ class TemplatesChoosePage extends Component {
             )}
             {globalTemplates && globalTemplates.map(template => (
               <BrowsableListItem
+                title={template.name}
                 key={`index-${template.id}`}
                 leftIcon={template.goal}
-                title={template.name}
                 onClick={() => {
                   createMobilizationFromTemplate({ mobilization, template })
                 }}
               />
             ))}
             <BrowsableListItem
+              title={
+                <FormattedMessage
+                  id='page--mobilizations.templates-choose.browsable-list-item.templates-custom'
+                  defaultMessage='Meus templates'
+                />
+              }
               leftIcon='columns'
-              title='Meus templates'
               subtitle={customTemplatesLength}
               path={paths.mobilizationTemplatesChooseCustomList(mobilization)}
             />
