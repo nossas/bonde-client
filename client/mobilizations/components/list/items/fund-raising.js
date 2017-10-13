@@ -1,9 +1,14 @@
 import PropTypes from 'prop-types'
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 
 const FundRaising = ({ total_fund_raising: totalFundRaising }) => (
   <div className='fund-raising px3 col col-2'>
-    R$ {totalFundRaising || '-'}
+    <FormattedMessage
+      id='mobilizations.components--list.items.fund-raising.currency'
+      defaultMessage='R$'
+    />
+    {' '}{totalFundRaising || '-'}
   </div>
 )
 
@@ -15,7 +20,10 @@ export default FundRaising
 
 const Header = () => (
   <div className='fund-raising-header px3 col col-2'>
-    Arrecadações
+    <FormattedMessage
+      id='mobilizations.components--list.items.fund-raising.header.text'
+      defaultMessage='Arrecadações'
+    />
   </div>
 )
 FundRaising.Header = Header

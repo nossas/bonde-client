@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 import classnames from 'classnames'
 
 // Current module dependencies
@@ -23,7 +24,11 @@ export default Name
 
 const Header = () => (
   <div className='name-header px3 col col-5'>
-    Nome <i className='fa fa-long-arrow-down ml1' />
+    <FormattedMessage
+      id='mobilizations.components--list.items.name.header.text'
+      defaultMessage='Nome'
+    />
+    {' '}<i className='fa fa-long-arrow-down ml1' />
   </div>
 )
 Name.Header = Header

@@ -1,5 +1,6 @@
 import { provideHooks } from 'redial'
 import { connect } from 'react-redux'
+import { injectIntl } from 'react-intl'
 
 import MobSelectors from '~client/mobrender/redux/selectors'
 import { toggleMobilizationMenu } from '~client/mobrender/redux/action-creators'
@@ -33,5 +34,5 @@ const mapActionCreatorsToProps = {
 }
 
 export default provideHooks(redial)(
-  connect(mapStateToProps, mapActionCreatorsToProps)(Page)
+  connect(mapStateToProps, mapActionCreatorsToProps)(injectIntl(Page))
 )

@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 import { Link } from 'react-router'
 import classnames from 'classnames'
 
@@ -28,24 +29,43 @@ const TemplatesListPage = ({
   menuActiveIndex,
   mobilizationTemplates,
   location,
+  intl,
   // Actions
   toggleMenu,
   asyncDestroyTemplate
 }) => (
   <SettingsPageLayout>
-    <SettingsPageMenuLayout title='Seus templates'>
+    <SettingsPageMenuLayout
+      title={
+        <FormattedMessage
+          id='page--templates-list.header.title'
+          defaultMessage='Seus templates'
+        />
+      }
+    >
       <PageHeader {...{ location }} />
     </SettingsPageMenuLayout>
     <SettingsPageContentLayout containerClassName='lg-col-12'>
       {!mobilizationTemplates.length ? (
         <EmptyList>
-          Nenhum template criado. <br />
-          Crie a partir de uma mobilização. <br />
+          <FormattedMessage
+            id='page--templates-list.empty-list.no-template'
+            defaultMessage='Nenhum template criado.'
+          />
+          <br />
+          <FormattedMessage
+            id='page--templates-list.empty-list.create-one'
+            defaultMessage='Crie a partir de uma mobilização.'
+          />
+          <br />
           <Link
             className='bg-pagenta btn caps h3 rounded white py2 px3 mt3'
             to={paths.mobilizations()}
           >
-            Lista de mobilizações
+            <FormattedMessage
+              id='page--templates-list.empty-list.mobilization-list'
+              defaultMessage='Lista de mobilizações'
+            />
           </Link>
         </EmptyList>
       ) : (
@@ -81,11 +101,20 @@ const TemplatesListPage = ({
                   /> */}
                   <MoreMenuAction
                     componentClass='div'
-                    text='Remover'
+                    text={
+                      <FormattedMessage
+                        id='page--templates-list.more-menu-action.remove.text'
+                        defaultMessage='Remover'
+                      />
+                    }
                     icon='trash-o'
                     onClick={() => {
-                      const confirmMessage = 'Tem certeza que deseja remover este' +
-                        ' template? Ao confirmar, não é possível desfazer esta ação.'
+                      const confirmMessage = intl.formatMessage({
+                        id: 'page--templates-list.more-menu-action.remove.confirm',
+                        defaultMessage:
+                          'Tem certeza que deseja remover este template? ' +
+                          'Ao confirmar, não será possível desfazer esta ação.'
+                      })
                       if (window.confirm(confirmMessage)) asyncDestroyTemplate(template)
                     }}
                   />

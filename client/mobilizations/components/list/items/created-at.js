@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 
 /* eslint-disable camelcase */
 const CreatedAt = ({ created_at, createdAt }) => (
@@ -18,7 +19,10 @@ export default CreatedAt
 
 const Header = () => (
   <div className='created-at-header px3 col col-2'>
-    Criada em
+    <FormattedMessage
+      id='mobilizations.components--list.items.created-at.header.text'
+      defaultMessage='Criada em'
+    />
   </div>
 )
 CreatedAt.Header = Header

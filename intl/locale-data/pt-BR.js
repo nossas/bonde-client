@@ -821,7 +821,7 @@ servidor-03.dominio.com`,
   'page--templates-list.empty-list.create-one': 'Crie a partir de uma mobilização.',
   'page--templates-list.empty-list.mobilization-list': 'Lista de mobilizações',
   'page--templates-list.more-menu-action.remove.text': 'Remover',
-  'page--templates-list.more-menu-action.remove.confirm': 'Tem certeza que deseja remover este template? Ao confirmar, não é possível desfazer esta ação.',
+  'page--templates-list.more-menu-action.remove.confirm': 'Tem certeza que deseja remover este template? Ao confirmar, não será possível desfazer esta ação.',
 
   // page templates create
   // filepath: /routes/admin/authenticated/sidebar/templates-create/page.js
