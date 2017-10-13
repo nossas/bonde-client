@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
+import { FormattedMessage, intlShape, injectIntl } from 'react-intl'
 import classnames from 'classnames'
 
 class ControlButtons extends Component {
   render () {
     const { $formRedux: { floatButton, successMessage } } = this.context
-    const { onCancel, submitting, submitted, dirty, formInline, valid } = this.props
+    const { onCancel, submitting, submitted, dirty, formInline, valid, intl } = this.props
     return (
       <div className={classnames(
           'control-buttons',
@@ -16,7 +17,10 @@ class ControlButtons extends Component {
             className='btn h3 col-4 ml2 white mt1 mb2 p2 rounded bg-gray'
             onClick={onCancel}
           >
-            Voltar
+            <FormattedMessage
+              id='components--control-buttons.cancel'
+              defaultMessage='Voltar'
+            />
           </button>
         )}
         <input
@@ -27,7 +31,16 @@ class ControlButtons extends Component {
             onCancel ? 'col-7 ml3' : 'col-12 mx2'
           )}
           disabled={!valid || submitting || !dirty}
-          value={(submitting ? 'Salvando...' : (floatButton || 'Continuar'))}
+          value={(submitting
+            ? intl.formatMessage({
+              id: 'components--control-buttons.input.value.saving',
+              defaultMessage: 'Salvando...'
+            })
+            : floatButton || intl.formatMessage({
+              id: 'components--control-buttons.input.value.default',
+              defaultMessage: 'Continuar'
+            })
+          )}
         />
         {submitted && !!successMessage && (
           <div className='success-message olive h4 px2 mt2'>
@@ -49,11 +62,12 @@ ControlButtons.propTypes = {
   submitted: PropTypes.bool.isRequired,
   dirty: PropTypes.bool,
   valid: PropTypes.bool,
-  formInline: PropTypes.bool.isRequired
+  formInline: PropTypes.bool.isRequired,
+  intl: intlShape.isRequired
 }
 
 ControlButtons.defaultProps = {
   formInline: false
 }
 
-export default ControlButtons
+export default injectIntl(ControlButtons)

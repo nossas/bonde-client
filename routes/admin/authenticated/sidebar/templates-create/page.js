@@ -1,5 +1,6 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
+import { FormattedMessage, intlShape } from 'react-intl'
 
 import * as paths from '~client/paths'
 import {
@@ -10,10 +11,15 @@ import {
 import { Avatar, Name } from '~client/mobilizations/components/list/items'
 import { FormRedux, FormGroup, FormControl, ControlLabel } from '~client/components/forms'
 
-const TemplatesCreatePage = ({ mobilization, fields: { name, goal }, ...formProps }) => (
+const TemplatesCreatePage = ({ mobilization, fields: { name, goal }, intl, ...formProps }) => (
   <SettingsPageLayout>
     <SettingsPageMenuLayout
-      title='Crie um template a partir da mobilização'
+      title={
+        <FormattedMessage
+          id='page--templates-create.header.title'
+          defaultMessage='Crie um template a partir da mobilização'
+        />
+      }
       className='pb4'
     />
     <SettingsPageContentLayout
@@ -47,19 +53,36 @@ const TemplatesCreatePage = ({ mobilization, fields: { name, goal }, ...formProp
         {...formProps}
       >
         <FormGroup controlId='name' {...name}>
-          <ControlLabel maxLength={100}>Nome do seu template</ControlLabel>
+          <ControlLabel maxLength={100}>
+            <FormattedMessage
+              id='page--templates-create.form.name.label'
+              defaultMessage='Nome do seu template'
+            />
+          </ControlLabel>
           <FormControl
             type='text'
-            placeholder='Pela criação de uma delegacia de desaparecidos'
+            placeholder={intl.formatMessage({
+              id: 'page--templates-create.form.name.placeholder',
+              defaultMessage: 'Pela criação de uma delegacia de desaparecidos'
+            })}
             maxLength={100}
           />
         </FormGroup>
         <FormGroup controlId='goal' {...goal}>
-          <ControlLabel maxLength={500}>Descrição</ControlLabel>
+          <ControlLabel maxLength={500}>
+            <FormattedMessage
+              id='page--templates-create.form.goal.label'
+              defaultMessage='Descrição'
+            />
+          </ControlLabel>
           <FormControl
             componentClass='textarea'
-            placeholder={'Faça um texto curto, capaz de motivar outras pessoas a se unirem à' +
-              ' sua mobilização. Você poderá alterar este texto depois.'}
+            placeholder={intl.formatMessage({
+              id: 'page--templates-create.form.goal.placeholder',
+              defaultMessage:
+                'Faça um texto curto, capaz de motivar outras pessoas a se unirem à ' +
+                'sua mobilização. Você poderá alterar este texto depois.'
+            })}
             maxLength={500}
             rows='4'
           />
@@ -68,5 +91,9 @@ const TemplatesCreatePage = ({ mobilization, fields: { name, goal }, ...formProp
     </SettingsPageContentLayout>
   </SettingsPageLayout>
 )
+
+TemplatesCreatePage.propTypes = {
+  intl: intlShape.isRequired
+}
 
 export default TemplatesCreatePage

@@ -628,6 +628,7 @@ servidor-03.dominio.com`,
   //   - /mobilizations/new
   //   - /register
   //   - /subscriptions/:id/edit
+  'components--control-buttons.cancel': 'Voltar',
   'components--control-buttons.input.value.default': 'Continuar',
   'components--control-buttons.input.value.saving': 'Salvando...',
 

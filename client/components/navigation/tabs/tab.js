@@ -43,7 +43,7 @@ class Tab extends Component {
 }
 
 Tab.propTypes = {
-  text: PropTypes.string,
+  text: PropTypes.node,
   isActive: PropTypes.bool,
   path: PropTypes.string,
   index: PropTypes.number
