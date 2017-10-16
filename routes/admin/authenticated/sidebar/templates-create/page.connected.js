@@ -39,6 +39,12 @@ export default provideHooks(redial)(
   connect(mapStateToProps, mapActionCreatorsToProps)(
     reduxForm({
       form: 'templateCreateForm',
+      validate: (values) => {
+        const errors = {}
+        if (!values.name) errors.name = 'Preenchimento obrigatório'
+        if (!values.goal) errors.goal = 'Preenchimento obrigatório'
+        return errors
+      },
       fields: ['name', 'goal', 'mobilization_id', 'global']
     })(Page)
   )
