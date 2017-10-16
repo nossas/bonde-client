@@ -6,11 +6,9 @@
     cursor: pointer;
     box-shadow: 0 0 0 $darken-3;
     transition: box-shadow .2s ease;
-
-    &.hover { opacity: 1 }
-
-    &:hover {
-      z-index: 1;
+    
+    &:hover { 
+      opacity: 1;
       position: relative;
       box-shadow: 0 0 10px $darken-3;
     }

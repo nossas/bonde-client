@@ -34,7 +34,7 @@ const TemplatesListPage = ({
 }) => (
   <SettingsPageLayout>
     <SettingsPageMenuLayout title='Seus templates'>
-      <PageHeader {...{ location }} />
+      <PageHeader location={location} />
     </SettingsPageMenuLayout>
     <SettingsPageContentLayout containerClassName='lg-col-12'>
       {!mobilizationTemplates.length ? (
@@ -54,7 +54,6 @@ const TemplatesListPage = ({
             <Name.Header />
             <CreatedAt.Header />
             <CopyNumber.Header />
-            <FundRaising.Header />
           </Item.Header>
 
           {mobilizationTemplates && mobilizationTemplates.map((template, index) => (
@@ -62,23 +61,18 @@ const TemplatesListPage = ({
               key={`mobilization-${template.id}`}
               className={classnames({ 'z2': menuActiveIndex === index })}
             >
-              <Avatar {...template} />
+              <div className='gay20'>
+                <Avatar {...template} />
 
-              <div className='list-item-table-container overflow-hidden'>
-                <Name {...template} />
-                <CreatedAt {...template} />
-                <CopyNumber {...template} />
-                <FundRaising {...template} />
+                <div className='list-item-table-container overflow-hidden'>
+                  <Name {...template} />
+                  <CreatedAt {...template} />
+                  <CopyNumber {...template} />
+                </div>
               </div>
-
-              <More onClick={toggleMenu} index={index}>
+              
+              <More onClick={() => toggleMenu(index)} index={index}>
                 <MoreMenu active={menuActiveIndex === index}>
-                  {/* <MoreMenuAction
-                    componentClass="div"
-                    text="Editar"
-                    path={paths.mobilizationTemplatesUpdate(1)}
-                    icon="pencil-square-o"
-                  /> */}
                   <MoreMenuAction
                     componentClass='div'
                     text='Remover'
@@ -86,7 +80,12 @@ const TemplatesListPage = ({
                     onClick={() => {
                       const confirmMessage = 'Tem certeza que deseja remover este' +
                         ' template? Ao confirmar, não é possível desfazer esta ação.'
-                      if (window.confirm(confirmMessage)) asyncDestroyTemplate(template)
+                      if (window.confirm(confirmMessage)) {
+                        asyncDestroyTemplate(template)
+                          .then(() => {
+                            toggleMenu(index)
+                          })
+                      }
                     }}
                   />
                 </MoreMenu>

@@ -10,7 +10,7 @@ if (require('exenv').canUseDOM) {
 const Item = ({ children, className, onClick }) => (
   <div
     className={classnames(
-      'item bg-white block clearfix hover relative',
+      'item bg-white block clearfix relative',
       className
     )}
     onClick={onClick}
