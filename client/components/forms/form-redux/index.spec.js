@@ -33,7 +33,7 @@ describe('client/components/forms/form-redux', () => {
   it('should pass onCancel for <ControlButtons />', () => {
     const onCancel = () => {}
     wrapper.setProps({ onCancel })
-    expect(wrapper.find('ControlButtons').props().onCancel).to.equal(onCancel)
+    expect(wrapper.find('InjectIntl(ControlButtons)').props().onCancel).to.equal(onCancel)
   })
 
   describe('default', () => {

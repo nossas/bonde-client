@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-expressions */
 import React from 'react'
-import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
+import { shallowWithIntl } from '~root/intl/helpers'
 import { TemplateSelectableList } from '~client/mobilizations/templates/components'
 
 describe('client/mobilizations/templates/components/template-selectable-list', () => {
@@ -16,7 +16,7 @@ describe('client/mobilizations/templates/components/template-selectable-list', (
   }
 
   beforeAll(() => {
-    wrapper = shallow(<TemplateSelectableList {...props} />)
+    wrapper = shallowWithIntl(<TemplateSelectableList {...props} />)
   })
 
   describe('#render', () => {

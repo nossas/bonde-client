@@ -2,6 +2,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
+import { FormattedMessage } from 'react-intl'
 
 import * as paths from '~client/paths'
 import Sidebar from '~client/components/navigation/sidebar/sidebar'
@@ -31,7 +32,12 @@ describe('client/components/navigation/sidebar/sidebar', () => {
     describe('when editing a mobilization', () => {
       describe('launch navbar item', () => {
         it('should render an item with "PUBLICAR BONDE" text by default', () => {
-          expect(wrapper.find('SidenavListItem').at(0).props().text).to.be.equal('PUBLICAR BONDE')
+          expect(wrapper.find('SidenavListItem').at(0).props().text.props).to.be.deep.equal(
+            <FormattedMessage
+              id='components.navigation--sidebar.mobilization-settings.item.launch'
+              defaultMessage='PUBLICAR BONDE'
+            />.props
+          )
         })
         it('should render an item with "BONDE público" text if it already have a custom domain', () => {
           const mobilization = {
@@ -43,7 +49,12 @@ describe('client/components/navigation/sidebar/sidebar', () => {
             twitter_share_text: 'Twitter Title'
           }
           wrapper.setProps({ ...props, mobilization })
-          expect(wrapper.find('SidenavListItem').at(0).props().text).to.be.equal('BONDE público')
+          expect(wrapper.find('SidenavListItem').at(0).props().text.props).to.be.deep.equal(
+            <FormattedMessage
+              id='components.navigation--sidebar.mobilization-settings.item.launched'
+              defaultMessage='BONDE público'
+            />.props
+          )
           wrapper.setProps(props)
         })
       })
@@ -51,8 +62,12 @@ describe('client/components/navigation/sidebar/sidebar', () => {
       describe('default navbar items', () => {
         describe('- editar mobilização', () => {
           it('should render with its text properly', () => {
-            const text = 'Editar mobilização'
-            expect(wrapper.find('SidenavListItem').at(1).props().text).to.be.equal(text)
+            expect(wrapper.find('SidenavListItem').at(1).props().text.props).to.be.deep.equal(
+              <FormattedMessage
+                id='components.navigation--sidebar.mobilization-settings.item.edit'
+                defaultMessage='Editar mobilização'
+              />.props
+            )
           })
           it('should render with its icon properly', () => {
             const icon = 'pencil'
@@ -66,8 +81,12 @@ describe('client/components/navigation/sidebar/sidebar', () => {
 
         describe('- adicionar conteúdo', () => {
           it('should render with its text properly', () => {
-            const text = 'Adicionar conteúdo'
-            expect(wrapper.find('SidenavListItem').at(2).props().text).to.be.equal(text)
+            expect(wrapper.find('SidenavListItem').at(2).props().text.props).to.be.deep.equal(
+              <FormattedMessage
+                id='components.navigation--sidebar.mobilization-settings.item.add-block'
+                defaultMessage='Adicionar conteúdo'
+              />.props
+            )
           })
           it('should render with its icon properly', () => {
             const icon = 'plus'
@@ -81,8 +100,12 @@ describe('client/components/navigation/sidebar/sidebar', () => {
 
         describe('- ver em uma nova aba', () => {
           it('should render with its text properly', () => {
-            const text = 'Ver em uma nova aba'
-            expect(wrapper.find('SidenavListItem').at(3).props().text).to.be.equal(text)
+            expect(wrapper.find('SidenavListItem').at(3).props().text.props).to.be.deep.equal(
+              <FormattedMessage
+                id='components.navigation--sidebar.mobilization-settings.item.open-at-new-tab'
+                defaultMessage='Ver em uma nova aba'
+              />.props
+            )
           })
           it('should render with its icon properly', () => {
             const icon = 'external-link'
@@ -102,8 +125,12 @@ describe('client/components/navigation/sidebar/sidebar', () => {
 
         describe('- configurações', () => {
           it('should render with its text properly', () => {
-            const text = 'Configurações'
-            expect(wrapper.find('SidenavListItem').at(4).props().text).to.be.equal(text)
+            expect(wrapper.find('SidenavListItem').at(4).props().text.props).to.be.deep.equal(
+              <FormattedMessage
+                id='components.navigation--sidebar.mobilization-settings.item.config'
+                defaultMessage='Configurações'
+              />.props
+            )
           })
           it('should render with its icon properly', () => {
             const icon = 'cog'
@@ -132,8 +159,12 @@ describe('client/components/navigation/sidebar/sidebar', () => {
           beforeAll(incrementIndex)
 
           it('should render with its text properly', () => {
-            const text = 'Mobilizações'
-            expect(wrapper.find('SidenavListItem').at(itemIndex).props().text).to.be.equal(text)
+            expect(wrapper.find('SidenavListItem').at(itemIndex).props().text.props).to.be.deep.equal(
+              <FormattedMessage
+                id='components.navigation--sidebar.community-settings.item.mobilizations'
+                defaultMessage='Mobilizações'
+              />.props
+            )
           })
           it('should render with its icon properly', () => {
             const icon = 'list'
@@ -149,8 +180,12 @@ describe('client/components/navigation/sidebar/sidebar', () => {
           beforeAll(incrementIndex)
 
           it('should render with its text properly', () => {
-            const text = 'Comunidade'
-            expect(wrapper.find('SidenavListItem').at(itemIndex).props().text).to.be.equal(text)
+            expect(wrapper.find('SidenavListItem').at(itemIndex).props().text.props).to.be.deep.equal(
+              <FormattedMessage
+                id='components.navigation--sidebar.community-settings.item.info'
+                defaultMessage='Comunidade'
+              />.props
+            )
           })
           it('should render with its icon properly', () => {
             const icon = 'info-circle'
@@ -166,8 +201,12 @@ describe('client/components/navigation/sidebar/sidebar', () => {
           beforeAll(incrementIndex)
 
           it('should render with its text properly', () => {
-            const text = 'Métricas'
-            expect(wrapper.find('SidenavListItem').at(itemIndex).props().text).to.be.equal(text)
+            expect(wrapper.find('SidenavListItem').at(itemIndex).props().text.props).to.be.deep.equal(
+              <FormattedMessage
+                id='components.navigation--sidebar.community-settings.item.metrics'
+                defaultMessage='Métricas'
+              />.props
+            )
           })
           it('should render with its icon properly', () => {
             const icon = 'line-chart'
@@ -183,8 +222,12 @@ describe('client/components/navigation/sidebar/sidebar', () => {
           beforeAll(incrementIndex)
 
           it('should render with its text properly', () => {
-            const text = 'Domínios'
-            expect(wrapper.find('SidenavListItem').at(itemIndex).props().text).to.be.equal(text)
+            expect(wrapper.find('SidenavListItem').at(itemIndex).props().text.props).to.be.deep.equal(
+              <FormattedMessage
+                id='components.navigation--sidebar.community-settings.item.domains'
+                defaultMessage='Domínios'
+              />.props
+            )
           })
           it('should render with its icon properly', () => {
             const icon = 'cogs'

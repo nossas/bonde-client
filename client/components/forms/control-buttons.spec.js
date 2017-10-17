@@ -2,8 +2,9 @@
 import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
+import { shallowWithIntl } from '~root/intl/helpers'
 
-import { ControlButtons } from '~client/components/forms'
+import { ControlButtons } from '~client/components/forms/control-buttons'
 
 describe('client/components/forms/control-buttons', () => {
   let wrapper
@@ -17,7 +18,7 @@ describe('client/components/forms/control-buttons', () => {
 
   describe('default', () => {
     beforeAll(() => {
-      wrapper = shallow(<ControlButtons {...props} />, { context })
+      wrapper = shallowWithIntl(<ControlButtons {...props} />, { context })
     })
     it('should render buttons without form inline style', () => {
       expect(wrapper.find('.control-buttons').props().className).to.have.string('flex')
@@ -35,7 +36,7 @@ describe('client/components/forms/control-buttons', () => {
 
   describe('with cancel button', () => {
     beforeAll(() => {
-      wrapper = shallow(<ControlButtons {...{ ...props }} />, { context })
+      wrapper = shallowWithIntl(<ControlButtons {...{ ...props }} />, { context })
     })
     it('should render cancel button when pass onCancel', () => {
       let called
@@ -49,7 +50,7 @@ describe('client/components/forms/control-buttons', () => {
 
   describe('with form inline style', () => {
     beforeAll(() => {
-      wrapper = shallow(<ControlButtons {...{ ...props, formInline: true }} />, { context })
+      wrapper = shallowWithIntl(<ControlButtons {...{ ...props, formInline: true }} />, { context })
     })
     it('should render buttons with form inline style', () => {
       expect(wrapper.find('.control-buttons').props().className).to.have.string('inline-block')
@@ -58,7 +59,7 @@ describe('client/components/forms/control-buttons', () => {
 
   describe('with submitting status', () => {
     beforeAll(() => {
-      wrapper = shallow(<ControlButtons {...{ ...props, submitting: true }} />, { context })
+      wrapper = shallowWithIntl(<ControlButtons {...{ ...props, submitting: true }} />, { context })
     })
     it('should render submit button with its text as "Salvando..."', () => {
       expect(wrapper.find('input[type="submit"]').props().value).to.equal('Salvando...')
@@ -70,7 +71,7 @@ describe('client/components/forms/control-buttons', () => {
 
   describe('with submitted status', () => {
     beforeAll(() => {
-      wrapper = shallow(<ControlButtons {...{ ...props, submitted: true }} />, { context })
+      wrapper = shallowWithIntl(<ControlButtons {...{ ...props, submitted: true }} />, { context })
     })
     it('should render form submit success message', () => {
       expect(wrapper.find('.success-message')).to.have.length(1)
@@ -85,7 +86,7 @@ describe('client/components/forms/control-buttons', () => {
 
   describe('with dirty status', () => {
     beforeAll(() => {
-      wrapper = shallow(<ControlButtons {...{ ...props, dirty: true, valid: true }} />, { context })
+      wrapper = shallowWithIntl(<ControlButtons {...{ ...props, dirty: true, valid: true }} />, { context })
     })
     it('should render submit button as enabled', () => {
       expect(wrapper.find('input[type="submit"]').props().disabled).to.be.false

@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-expressions */
 import React from 'react'
 import { expect } from 'chai'
-import { mount } from 'enzyme'
 
+import { shallowWithIntl } from '~root/intl/helpers'
 import * as mock from '~client/utils/mock'
 import { FormControl } from '~client/components/forms'
 
@@ -18,7 +18,7 @@ describe('client/components/forms/form-control', () => {
   }
 
   beforeEach(() => {
-    wrapper = mount(<FormControl {...props} />, { context })
+    wrapper = shallowWithIntl(<FormControl {...props} />, { context })
   })
 
   it('should render ok by default', () => {
@@ -56,7 +56,7 @@ describe('client/components/forms/form-control', () => {
       wrapper.setContext(Object.assign(cloneContext, formReduxContext))
     })
     it('should render <ControlButtons> component', () => {
-      expect(wrapper.find('ControlButtons')).to.have.length(1)
+      expect(wrapper.find('InjectIntl(ControlButtons)')).to.have.length(1)
     })
     it('should render input with form inline style specific className', () => {
       expect(wrapper.find('.form-control-input').props().className).to.have.string('inline-block')

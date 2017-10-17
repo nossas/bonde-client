@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { FormattedMessage, intlShape, injectIntl } from 'react-intl'
 import classnames from 'classnames'
 
-class ControlButtons extends Component {
+export class ControlButtons extends Component {
   render () {
     const { $formRedux: { floatButton, successMessage } } = this.context
     const { onCancel, submitting, submitted, dirty, formInline, valid, intl } = this.props
