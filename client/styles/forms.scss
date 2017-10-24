@@ -35,6 +35,10 @@
       margin: 0;
       padding: 0;
       display: block;
+
+      &.inline-block {
+        display: inline-block;
+      }
     }
 
     .textarea {

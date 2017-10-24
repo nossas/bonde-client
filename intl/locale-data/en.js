@@ -31,5 +31,19 @@ export default {
   'notify.community.add--dns-hosted-zone--failure': 'There was an error on the server, make sure this domain was not already inserted.',
 
   'notification--slug-updated-message.title': 'Important',
-  'notification--slug-updated-message.message': 'The slug of this mobilization was changed. If you do some DNS redirection via CNAME, be sure to update it.'
+  'notification--slug-updated-message.message': 'The slug of this mobilization was changed. If you do some DNS redirection via CNAME, be sure to update it.',
+  
+  // Module communication
+  // path: /communication
+  'page--communication.title': 'New email campaign',
+  'page--communication.tabs.content': 'Content',
+  'page--communication.form.required-field': 'Required field',
+  'page--communication.form.invalid-sender': 'Invalid sender format',
+  'page--communication.form.name.label': 'Campaign name',
+  'page--communication.form.name.placeholder': 'For the creation of a police station for the disappeared',
+  'page--communication.form.subject.label': 'Email subject',
+  'page--communication.form.subject.placeholder': 'Make short text that can motivate others to join your',
+  'page--communication.form.sender.label': 'Sender',
+  'page--communication.form.sender.placeholder': 'Sender',
+  'page--communication.form.content.draft-button': 'Save draft'
 }

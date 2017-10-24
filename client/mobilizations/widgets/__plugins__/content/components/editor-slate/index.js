@@ -62,14 +62,30 @@ class EditorSlate extends Component {
 
   render () {
     const { content, handleSave, handleDelete, readOnly, toolbarStyles, contentStyles } = this.props
-    const initialState = Raw.deserialize(JSON.parse(content), { terse: true })
+    const { btnSaveLabel } = this.props
+
+    let value
+    try {
+      value = JSON.parse(content)
+    } catch (e) {
+      value = JSON.parse(createEditorContent(content))
+    }
+
+    const initialState = Raw.deserialize(value, { terse: true })
+
+    const toolbarStaticStyles = this.props.staticToolbar ? {
+      display: 'block',
+      position: 'relative'
+    } : {}
+
     return (
       <div className='widgets--content-plugin'>
         <SlateEditor plugins={plugins} initialState={initialState} style={{ color: '#fff' }}>
           <SlateToolbar style={{
             ...styles.toolbar,
             display: this.state.editing ? 'block' : 'none',
-            ...toolbarStyles
+            ...toolbarStyles,
+            ...toolbarStaticStyles
           }}>
             <BoldButton className={classNames.button} />
             <ItalicButton className={classNames.button} />
@@ -97,21 +113,23 @@ class EditorSlate extends Component {
           />
 
           <FooterEditor>
-            <ActionButton
-              editing={this.state.editing}
-              title='Remover'
-              style={{
-                position: 'absolute',
-                right: 0,
-                bottom: 0
-              }}
-              className='mt2'
-              onClick={() => {
-                handleDelete()
-              }}
-            >
-              <i className='fa fa-trash' />
-            </ActionButton>
+            {handleDelete ? (
+              <ActionButton
+                editing={this.state.editing}
+                title='Remover'
+                style={{
+                  position: 'absolute',
+                  right: 0,
+                  bottom: 0
+                }}
+                className='mt2'
+                onClick={() => {
+                  handleDelete()
+                }}
+              >
+                <i className='fa fa-trash' />
+              </ActionButton>
+            ) : null}
             <ActionButton
               editing={this.state.editing}
               className='mt2 right-align'
@@ -120,7 +138,7 @@ class EditorSlate extends Component {
                 handleSave(state)
               }}
             >
-              Salvar
+              {btnSaveLabel || 'Salvar'}
             </ActionButton>
           </FooterEditor>
           <Layer
@@ -138,6 +156,7 @@ class EditorSlate extends Component {
 }
 
 EditorSlate.defaultProps = {
+  content: '',
   handleSave: () => {}
 }
 

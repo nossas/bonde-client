@@ -20,6 +20,7 @@ export default store => ({
         require('./account-edit').default(store),
         require('./activists').default(store),
         require('./blocks-create').default(store),
+        require('./communication').default(store),
         require('./community-settings').default(store),
         require('./mobilizations-edit').default(store),
         require('./mobilizations-launch').default(store),

@@ -1265,5 +1265,20 @@ servidor-03.dominio.com`,
   'activists-management.c--filterable-list.period.options.last-quarter': 'Nos últimos 3 meses',
   'activists-management.c--filterable-list.period.options.last-year': 'No último ano',
   'activists-management.c--filterable-list.period.options.always': 'Sempre',
-  'activists-management.c--filterable-list.period.options.custom-period': 'Customizar período...'
+  'activists-management.c--filterable-list.period.options.custom-period': 'Customizar período...',
+
+  // Module communication
+  // path: /communication
+  'page--communication.title': 'Nova campanha de email',
+  'page--communication.tabs.content': 'Conteúdo',
+  'page--communication.form.required-field': 'Preenchimento obrigatório',
+  'page--communication.form.invalid-sender': 'Formato de remetente inválido',
+  'page--communication.form.name.label': 'Nome da campanha',
+  'page--communication.form.name.placeholder': 'Pela criação de uma delegacia de desaparecidos',
+  'page--communication.form.subject.label': 'Assunto do email',
+  'page--communication.form.subject.placeholder': 'Faça um texto curto capaz'+
+  ' de motivar outras pessoas a se unirem a sua',
+  'page--communication.form.sender.label': 'Remetente',
+  'page--communication.form.sender.placeholder': 'Remetente',
+  'page--communication.form.content.draft-button': 'Salvar rascunho'
 }
