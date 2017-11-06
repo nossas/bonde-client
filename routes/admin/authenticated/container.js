@@ -7,15 +7,12 @@ import fetchCurrentUser from '~client/account/queries/current-user'
 import AuthSelectors from '~client/account/redux/selectors'
 
 class CurrentUserContainer extends Component {
-  componentDidMount () {
-    if (this.props.data.currentUser && !this.props.user) {
-      this.props.load(this.props.data.currentUser)
-    }
-  }
-
   componentWillReceiveProps (nextProps, nextState) {
-    if (!this.props.data.currentUser && nextProps.data.currentUser) {
-      this.props.load(nextProps.data.currentUser)
+    const { currentUser } = this.props.data
+    const { currentUser: nextCurrentUser } = nextProps.data
+
+    if ((!currentUser && nextCurrentUser) || (currentUser && currentUser !== nextCurrentUser)) {
+      this.props.load(nextCurrentUser)
     }
   }
 
