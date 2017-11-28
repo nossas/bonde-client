@@ -1,7 +1,8 @@
-import PropTypes from 'prop-types'
+import PropTypes, { instanceOf } from 'prop-types'
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 import { FormattedMessage, intlShape } from 'react-intl'
+import { Cookies } from 'react-cookie'
 
 import * as paths from '~client/paths'
 import {
@@ -35,6 +36,7 @@ class LoginPage extends Component {
       login,
       errorMessage,
       intl,
+      cookies,
       ...formProps
     } = this.props
 
@@ -50,7 +52,7 @@ class LoginPage extends Component {
         <FormRedux
           nosubmit
           className='bg-white rounded'
-          onSubmit={values => login(values)}
+          onSubmit={values => login(values, cookies)}
           {...formProps}
         >
           <FormGroup controlId='emailId' {...email}>
@@ -114,12 +116,10 @@ class LoginPage extends Component {
 }
 
 LoginPage.propTypes = {
-  // Injected by redux
   login: PropTypes.func.isRequired,
-  // Injected by redux-form
   fields: PropTypes.object.isRequired,
-  // Intl shape
-  intl: intlShape.isRequired
+  intl: intlShape.isRequired,
+  cookies: instanceOf(Cookies).isRequired
 }
 
 export default LoginPage

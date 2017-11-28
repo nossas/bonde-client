@@ -49,3 +49,4 @@ static
 jest
 tools/db-dumps/*
 !tools/db-dumps/init.sql
+!tools/jest*

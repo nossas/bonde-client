@@ -3,7 +3,7 @@ import thunk from 'redux-thunk'
 import promise from 'redux-promise'
 import axios from 'axios'
 import { ApolloClient, createNetworkInterface } from 'react-apollo'
-import cookie from 'react-cookie'
+import Cookies from 'universal-cookie'
 import DefaultServerConfig from '~server/config'
 import createReducer from './createReducer'
 import DevTools from './components/dev-tools'
@@ -18,25 +18,23 @@ const networkInterface = createNetworkInterface({
   connectToDevTools: true
 })
 
-networkInterface.use([
-  {
-    applyMiddleware (req, next) {
-      if (!req.options.headers) {
-        req.options.headers = {}
-      }
-      // Non-use auth for authenticate mutation to make a new JWT Token
-      const requiredAuth = req.request.operationName !== 'authenticate'
-
-      cookie.plugToRequest(req)
-      const state = cookie.load('auth') || {}
-      if (state.auth && state.auth.credentials && requiredAuth) {
-        const token = state.auth.credentials['access-token']
-        req.options.headers.authorization = `Bearer ${token}`
-      }
-      next()
+networkInterface.use([{
+  applyMiddleware (req, next) {
+    if (!req.options.headers) {
+      req.options.headers = {}
     }
+    // Non-use auth for authenticate mutation to make a new JWT Token
+    const requiredAuth = req.request.operationName !== 'authenticate'
+    const cookies = new Cookies() // req.headers.cookie
+    const state = cookies.getAll() || {}
+
+    if (state.auth && state.auth['access-token'].length > 0 && requiredAuth) {
+      const token = state.auth['access-token']
+      req.options.headers.authorization = `Bearer ${token}`
+    }
+    next()
   }
-])
+}])
 
 export const client = (options = {}) =>
   new ApolloClient({

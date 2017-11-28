@@ -23,12 +23,11 @@ import Helm from 'react-helmet'
 import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
-
-import cookieParser from 'cookie-parser'
-import cookie from 'react-cookie'
+import cookiesMiddleware from 'universal-cookie-express'
+import { CookiesProvider } from 'react-cookie'
 
 import DefaultServerConfig from './config'
-import webpackConfig from '../tools/webpack.client'
+import webpackConfig from '../tools/webpack.dev'
 import { configureStore, client } from '../client/store'
 import createRoutes from '../routes'
 import loadState from './load-state'
@@ -80,7 +79,7 @@ export const createServer = (config) => {
     colorize: true
   }))
   app.use(express.static('public'))
-  app.use(cookieParser())
+  app.use(cookiesMiddleware())
   app.use(cors())
   app.use(helmet())
   app.use(hpp())
@@ -130,9 +129,9 @@ export const createServer = (config) => {
     )
 
     // React Cookie
-    cookie.plugToRequest(req, res)
-    const community = cookie.load('community') || {}
-    const auth = cookie.load('auth') || {}
+    // cookie.plugToRequest(req, res)
+    const community = req.universalCookies.get('community') || {}
+    const auth = req.universalCookies.get('auth') || {}
 
     const state = loadState()
       .mergeDeep(community)
@@ -199,13 +198,15 @@ export const createServer = (config) => {
           // console.log(components, locals, renderProps)
           const initialState = store.getState()
           const InitialView = (
-            <IntlProvider locale={currentLocale} messages={currentLocaleMessages}>
-              <Provider store={store}>
-                <ApolloProvider store={store} client={client()}>
-                  <RouterContext {...renderProps} />
-                </ApolloProvider>
-              </Provider>
-            </IntlProvider>
+            <CookiesProvider cookies={req.universalCookies}>
+              <IntlProvider locale={currentLocale} messages={currentLocaleMessages}>
+                <Provider store={store}>
+                  <ApolloProvider store={store} client={client()}>
+                    <RouterContext {...renderProps} />
+                  </ApolloProvider>
+                </Provider>
+              </IntlProvider>
+            </CookiesProvider>
           )
 
           // just call html = ReactDOM.renderToString(InitialView)
@@ -249,8 +250,8 @@ export const createServer = (config) => {
         }).catch(e => {
           // Unautorized request
           if (e.response && e.response.status === 401) {
-            cookie.remove('auth')
-            cookie.remove('community')
+            req.universalCookies.remove('auth')
+            req.universalCookies.remove('community')
             res.redirect(302, '/login')
           }
           console.log(e)

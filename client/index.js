@@ -8,12 +8,16 @@ import match from 'react-router/lib/match'
 import browserHistory from 'react-router/lib/browserHistory'
 import { configureStore, client } from './store'
 import { ApolloProvider } from 'react-apollo'
+import { CookiesProvider } from 'react-cookie'
 import { Provider } from 'react-redux'
 import { IntlProvider, addLocaleData } from 'react-intl'
 import pt from 'react-intl/locale-data/pt'
 import es from 'react-intl/locale-data/es'
 import en from 'react-intl/locale-data/en'
 import Raven from 'raven-js'
+import localeData from '../intl/locale-data'
+
+require('./styles/main.scss')
 
 const __PROD__ = process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging'
 const __TEST__ = process.env.NODE_ENV === 'test'
@@ -22,7 +26,9 @@ if (__PROD__ || __TEST__) {
   Raven.config(process.env.SENTRY_DSN_PUBLIC).install()
 }
 
-const initialState = window.INITIAL_STATE || {}
+const initialState = window.INITIAL_STATE || {
+  intl: { currentLocale: 'pt-BR', messages: localeData }
+}
 
 // Set up React-Intl
 addLocaleData([...pt, ...es, ...en])
@@ -53,17 +59,19 @@ const render = () => {
     // We need to have a random in development because of `match`'s dependency on
     // `routes.` Normally, we would want just one file from which we require `routes` from.
     ReactDOM.render(
-      <IntlProvider locale={locale} messages={messages}>
-        <Provider store={store}>
-          <ApolloProvider store={store} client={client()}>
-            <Router
-              routes={routes}
-              history={browserHistory}
-              key={Math.random()}
-            />
-          </ApolloProvider>
-        </Provider>
-      </IntlProvider>,
+      <CookiesProvider>
+        <IntlProvider locale={locale} messages={messages}>
+          <Provider store={store}>
+            <ApolloProvider store={store} client={client()}>
+              <Router
+                routes={routes}
+                history={browserHistory}
+                key={Math.random()}
+              />
+            </ApolloProvider>
+          </Provider>
+        </IntlProvider>
+      </CookiesProvider>,
       container
     )
   })

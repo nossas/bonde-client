@@ -2,6 +2,7 @@ import { reduxForm } from 'redux-form'
 import { injectIntl } from 'react-intl'
 import { graphql } from 'react-apollo'
 import { browserHistory } from 'react-router'
+import { withCookies } from 'react-cookie'
 
 import { createAction } from '~client/utils/redux'
 import { isValidEmail } from '~client/utils/validation-helper'
@@ -48,14 +49,17 @@ const mapStateToProps = state => {
 }
 
 const mapActionsToProps = (dispatch, props) => ({...props,
-  login: values => {
+  login: (values, cookies) => {
     props.mutate({ variables: { ...values } })
       .then(({ data: { authenticate: { jwtToken } } }) => {
         if (jwtToken) {
+          const accessToken = { 'access-token': jwtToken }
+
           dispatch(createAction(
             authType.LOGIN_SUCCESS,
-            { credentials: { 'access-token': jwtToken } }
+            { credentials: accessToken }
           ))
+          cookies.set('auth', accessToken)
           browserHistory.push('/')
         } else {
           dispatch(createAction(
@@ -65,6 +69,7 @@ const mapActionsToProps = (dispatch, props) => ({...props,
               defaultMessage: 'Senha incorreta.'
             })
           ))
+          cookies.remove('auth')
         }
       })
   },
@@ -75,6 +80,6 @@ const FormLoginWithMutation = injectIntl(graphql(authenticate)(reduxForm(
   { form: 'loginForm', fields, validate },
   mapStateToProps,
   mapActionsToProps
-)(FormLogin)))
+)(withCookies(FormLogin))))
 
 export default FormLoginWithMutation

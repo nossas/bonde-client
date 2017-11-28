@@ -152,39 +152,39 @@ services:
       WEB_CONCURRENCY: 1
       WEB_MEMORY: 256
 
-  client:
-    image: nossas/bonde-client
-    command: yarn start
-    depends_on:
-      - api-v1
-      - api-v2
-    volumes:
-      - ./:/code:Z
-    ports:
-      - "3004:5001"
-    build:
-      context: .
-      dockerfile: Dockerfile
-    links:
-      - api-v1:api.bonde.devel
-      - api-v2:data.bonde.devel
-      - redis:keyval.devel
-    extra_hosts:
-      - "app.bonde.devel:127.0.0.1"
-    environment:
-      PORT: 5001
-      API_URL: http://api.bonde.devel:3000
-      APP_DOMAIN: bonde.devel:3004
-      AWS_BUCKET: bonde-assets-development
-      GRAPHQL_URL: http://data.bonde.devel:3001/graphql
-      NEW_RELIC_HOME: ./src
-      NODE_ENV: development
-      REDIS_URL: redis://keyval.devel:6379
-      VALIDATE_REGION: sa-east-1
-      WEB_CONCURRENCY: 1
-      WEB_MEMORY: 256
-    env_file:
-      - .env
+  # client:
+  #   image: nossas/bonde-client
+  #   command: yarn start
+  #   depends_on:
+  #     - api-v1
+  #     - api-v2
+  #   volumes:
+  #     - ./:/code:Z
+  #   ports:
+  #     - "3004:5001"
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   links:
+  #     - api-v1:api.bonde.devel
+  #     - api-v2:data.bonde.devel
+  #     - redis:keyval.devel
+  #   extra_hosts:
+  #     - "app.bonde.devel:127.0.0.1"
+  #   environment:
+  #     PORT: 5001
+  #     API_URL: http://api.bonde.devel:3000
+  #     APP_DOMAIN: bonde.devel:3004
+  #     AWS_BUCKET: bonde-assets-development
+  #     GRAPHQL_URL: http://data.bonde.devel:3001/graphql
+  #     NEW_RELIC_HOME: ./src
+  #     NODE_ENV: development
+  #     REDIS_URL: redis://keyval.devel:6379
+  #     VALIDATE_REGION: sa-east-1
+  #     WEB_CONCURRENCY: 1
+  #     WEB_MEMORY: 256
+  #   env_file:
+  #     - .env
 
   cache:
     image: nossas/bonde-cache:develop
