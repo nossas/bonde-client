@@ -26,7 +26,7 @@ module.exports = {
   output: {
     path: staticsPath,
     filename: '[name].[hash].js',
-    publicPath: isProd ? `https://s3-sa-east-1.amazonaws.com/${process.env.AWS_BUCKET}/` : '/'
+    publicPath: '/'
   },
   resolve: {
     alias: {
@@ -48,9 +48,9 @@ module.exports = {
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
-                { loader: 'css-loader', query: { modules: false, sourceMaps: true } },
-                { loader: 'postcss-loader' },
-                { loader: 'sass-loader', query: { sourceMaps: true } }
+            { loader: 'css-loader', query: { modules: false, sourceMaps: true } },
+            { loader: 'postcss-loader' },
+            { loader: 'sass-loader', query: { sourceMaps: true } }
           ]
         })
       },

@@ -1,14 +1,10 @@
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CompressionPlugin = require('compression-webpack-plugin')
 const Visualizer = require('webpack-visualizer-plugin')
 const common = require('./webpack.common.js')
 
 module.exports = merge.smart(common, {
-  output: {
-    publicPath: `https://s3-sa-east-1.amazonaws.com/${process.env.AWS_BUCKET}/`
-  },
   plugins: [
     new webpack.HashedModuleIdsPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
@@ -32,18 +28,12 @@ module.exports = merge.smart(common, {
         screw_ie8: true
       }
     }),
-    new CompressionPlugin({
-      asset: '[path][query]',
-      algorithm: 'gzip',
-      test: /\.js$|\.css$$/,
-      minRatio: 0.8
-    }),
     new HtmlWebpackPlugin({
       template: '../tools/index.template.ejs',
       inject: 'body'
     }),
     new Visualizer({
-      filename: './build/main.stats.html'
+      filename: './main.stats.html'
     })
   ]
 })
