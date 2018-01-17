@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "next",
-    "start": "next start",
+    "start": "next start -p 5001",
     "build": "next build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -46,8 +46,8 @@
     "redux-form": "^7.2.0",
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0",
-    "slate": "^0.31.7",
-    "slate-editor": "nossas/slate-editor#feature-slate-v0.31.3",
+    "slate-editor": "~4.0",
+    "slate-plain-serializer": "0.4.11",
     "tinycolor2": "^1.4.1"
   },
   "devDependencies": {
