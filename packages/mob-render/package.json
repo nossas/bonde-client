@@ -7,7 +7,7 @@
     "dev": "next",
     "start": "next start -p 5001",
     "build": "next build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 0"
   },
   "keywords": [],
   "author": "",
@@ -46,6 +46,7 @@
     "redux-form": "^7.2.0",
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0",
+    "slate": "^0.32.1",
     "slate-editor": "~4.0",
     "slate-plain-serializer": "0.4.11",
     "tinycolor2": "^1.4.1"

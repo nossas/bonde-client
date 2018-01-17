@@ -2,18 +2,17 @@ workspace:
   base: /code
 
 pipeline:
-  unit-tests:
-    image: node:latest
+  unit-tests-lerna:
+    image: node:alpine
     commands:
-      - yarn install
-      - yarn test:ci
-      - cd mob-render
-      - yarn install
+      - npm install
+      - ./node_modules/.bin/lerna bootstrap
+      - ./node_modules/.bin/lerna run test --parallel
     when:
       event: [push, tag]
 
-  build-client-staging:
-    image: node:latest
+  build-staging:
+    image: node:alpine
     environment:
       - NODE_ENV=production
       - API_URL=https://api.staging.bonde.org
@@ -25,62 +24,55 @@ pipeline:
       - export PAGARME_KEY=$STAG_PAGARME_KEY
       - export SENTRY_DSN_PUBLIC=$STAG_SENTRY_DSN_PUBLIC
       - export GOOGLE_FONTS_API_KEY=$STAG_GOOGLE_FONTS_API_KEY
-      - mkdir build
-      - yarn run build:client
+      - ./node_modules/.bin/lerna run build --parallel
     secrets: [ stag_pagarme_key, stag_sentry_dsn_public, stag_google_fonts_api_key ]
     when:
       status: success
       branch: [hotfix-*, release-*, feature-*, develop]
 
-  build-server-staging:
-    image: node:latest
-    environment:
-      - NODE_ENV=production
-      - API_URL=https://api.staging.bonde.org
-      - BOT_URL=https://beta.staging.bonde.org
-      - GRAPHQL_URL=https://data.staging.bonde.org/graphql
-      - APP_DOMAIN=staging.bonde.org
-      - AWS_BUCKET=bonde-assets-staging
-    commands:
-      - export PAGARME_KEY=$STAG_PAGARME_KEY
-      - export SENTRY_DSN_PUBLIC=$STAG_SENTRY_DSN_PUBLIC
-      - export GOOGLE_FONTS_API_KEY=$STAG_GOOGLE_FONTS_API_KEY
-      - cd mob-render
-      - ./node_modules/.bin/next build
-    secrets: [ stag_pagarme_key, stag_sentry_dsn_public, stag_google_fonts_api_key ]
-    when:
-      status: success
-      branch: [hotfix-*, release-*, feature-*, develop]
-
-  publish-server-staging:
+  publish-admin-staging:
     image: plugins/docker
-    repo: nossas/bonde-client
+    repo: nossas/bonde-admin
+    group: publishing
     secrets: [ docker_username, docker_password ]
+    dockerfile: packages/bonde-admin/Dockerfile
+    context: packages/bonde-admin/
+    tags:
+      - ${DRONE_BRANCH}
+    when:
+      status: success
+      branch: [hotfix-*, release-*, feature-*, develop]
+  publish-mob-render-staging:
+    image: plugins/docker
+    repo: nossas/bonde-public
+    group: publishing
+    secrets: [ docker_username, docker_password ]
+    dockerfile: packages/mob-render/Dockerfile
+    context: packages/mob-render/
     tags:
       - ${DRONE_BRANCH}
     when:
       status: success
       branch: [hotfix-*, release-*, feature-*, develop]
 
-  publish-client-staging:
-    image: nossas/s3cmd
-    group: concurrent
-    commands:
-      - echo access_key=$AWS_ACCESS_KEY_ID >> ~/.s3cfg
-      - echo secret_key=$AWS_SECRET_ACCESS_KEY >> ~/.s3cfg
-      - s3cmd --acl-public --rexclude='\.svg$|\.html$|\.ttf$|\.eot$|\.png$|\.otf|woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$' --add-header='Content-Encoding:gzip' --add-header='Cache-Control:max-age=3600' sync public/ s3://bonde-assets-staging
-      - s3cmd --acl-public --exclude='*' --rinclude='\.svg$|\.html$|\.ttf$|\.eot$|\.png$|\.otf|woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$' --add-header='Cache-Control:max-age=3600' sync public/ s3://bonde-assets-staging
-    secrets: [ aws_access_key_id, aws_secret_access_key ]
-    when:
-      status: success
-      branch: [hotfix-*, release-*, feature-*, develop]
-
+  # deploy-admin-staging:
+  #   image: nossas/s3cmd
+  #   group: concurrent
+  #   commands:
+  #     - echo access_key=$AWS_ACCESS_KEY_ID >> ~/.s3cfg
+  #     - echo secret_key=$AWS_SECRET_ACCESS_KEY >> ~/.s3cfg
+  #     - s3cmd --acl-public --rexclude='\.svg$|\.html$|\.ttf$|\.eot$|\.png$|\.otf|woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$' --add-header='Content-Encoding:gzip' --add-header='Cache-Control:max-age=3600' sync public/ s3://bonde-assets-staging
+  #     - s3cmd --acl-public --exclude='*' --rinclude='\.svg$|\.html$|\.ttf$|\.eot$|\.png$|\.otf|woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$' --add-header='Cache-Control:max-age=3600' sync public/ s3://bonde-assets-staging
+  #   secrets: [ aws_access_key_id, aws_secret_access_key ]
+  #   when:
+  #     status: success
+  #     branch: [hotfix-*, release-*, feature-*, develop]
   deploy-staging:
     image: peloton/drone-rancher
-    group: concurrent
+    group: deploying
     url: http://cluster.bonde.org
     service: staging/client
-    docker_image: nossas/bonde-client:${DRONE_BRANCH}
+    docker_image: nossas/bonde-admin:${DRONE_BRANCH}
     timeout: 360
     confirm: true
     secrets: [ rancher_access_key, rancher_secret_key ]
@@ -90,10 +82,10 @@ pipeline:
 
   deploy-staging-non-ssl:
     image: peloton/drone-rancher
-    group: concurrent
+    group: deploying
     url: http://cluster.bonde.org
     service: staging/client-non-ssl
-    docker_image: nossas/bonde-client:${DRONE_BRANCH}
+    docker_image: nossas/bonde-public:${DRONE_BRANCH}
     timeout: 360
     confirm: true
     secrets: [ rancher_access_key, rancher_secret_key ]

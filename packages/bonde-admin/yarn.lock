@@ -9660,6 +9660,19 @@ slate@0.31.3:
     slate-dev-logger "^0.1.36"
     type-of "^2.0.1"
 
+slate@^0.32.1:
+  version "0.32.1"
+  resolved "https://registry.yarnpkg.com/slate/-/slate-0.32.1.tgz#774f81cfbfa57e5f1dbe8e064d0040eb6d7cbbc3"
+  dependencies:
+    debug "^2.3.2"
+    direction "^0.1.5"
+    esrever "^0.2.0"
+    is-empty "^1.0.0"
+    is-plain-object "^2.0.4"
+    lodash "^4.17.4"
+    slate-dev-logger "^0.1.36"
+    type-of "^2.0.1"
+
 slice-ansi@0.0.4:
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/slice-ansi/-/slice-ansi-0.0.4.tgz#edbf8903f66f7ce2f8eafd6ceed65e264c831b35"
