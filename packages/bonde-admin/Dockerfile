@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:alpine
 MAINTAINER Nossas <tech@nossas.org>
 
 RUN set -x \
@@ -6,6 +6,4 @@ RUN set -x \
     && apt-get install -y --no-install-recommends git
 
 WORKDIR /code
-COPY mob-render .
-EXPOSE 5001
-CMD ["./node_modules/.bin/next", "start", "-p", "5001"]
+COPY . .
