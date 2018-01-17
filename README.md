@@ -64,13 +64,15 @@ Or you could simple add to your ```/etc/hosts``` the following names:
 127.0.0.1	app.bonde.devel bonde.devel api.bonde.devel data.bonde.devel db.devel keyval.devel meurio.bonde.org
 ```
 
-## Container Development
+##  Install
 
 ### Requirements
 
 * Git
 * Docker [with Debian](https://docs.docker.com/engine/installation/linux/debian/) and [Mac OSX](https://www.docker.com/products/docker#/mac)
 * [Docker Compose](https://docs.docker.com/compose/install/)
+* [Yarn](https://yarnpkg.com/) (optional)
+* [Lerna](https://lernajs.io/) (optional)
 
 ```
 $ git --version
@@ -81,7 +83,7 @@ $ docker-compose -v
 docker-compose version 1.15.0, build e12f3b9
 ```
 
-### One-line installation
+### One-line
 ```
 # Install
 sh <(curl -s https://raw.githubusercontent.com/nossas/bonde-install/master/install.sh)
@@ -90,35 +92,55 @@ sh <(curl -s https://raw.githubusercontent.com/nossas/bonde-install/master/insta
 sh <(curl -s https://raw.githubusercontent.com/nossas/bonde-install/master/uninstall.sh)
 ```
 
-### Install
-Images from services used by BONDE ecosystem must be downloaded at the first time container start.
+### Manual
+Docker images from services used by BONDE ecosystem must be downloaded at the first time container start.
 
 ```
 mkdir code/ && cd code/
 git clone git@github.com:nossas/bonde-client.git
 cd bonde-client
-touch .env                                  # fill env vars
 docker-compose up -d                        # download, build and start containers
 docker-compose exec api-v1 rake db:migrate  # sync db
 docker-compose exec api-v1 rake db:seed     # fill db
 docker-compose restart api-v2               # refresh graphql cache schema
-docker-compose run client yarn install      # fill volume with node_modules
 ```
 
-### Others Useful commands
+To configure packages, we use .env files, examples could be founded at each package.
+
+With help from Yarn and Lerna, install dependencies:
+
+### Local Development
 
 ```
-docker-compose logs client -f         # Show logs from container nodejs
-docker-compose exec client /bin/bash  # Open bash inside frontend container
+npm install
+./node_modules/.bin/lerna bootstrap
+./node_modules/.bin/lerna run dev --parallel
+```
+And you are done!
+
+### Tests
+As simples as:
+```
+./node_modules/.bin/lerna run test --parallel
+```
+Now sit and relax.
+
+If you want to test a single file you can temporarily change the first line of `webpack.test.config.js` to:
+
+```
+var context = require.context('./app/scripts/tests', true, /MyComponentTest\.jsx/);
+```
+
+
+
+### Useful commands
+
+```
+./node_modules/.bin/lerna run build --parallel
 docker-compose exec api-v2 /bin/bash  # Open bash inside ruby container
 docker-compose up --build             # Force build from images
 ```
 
-If you need to rebuild node-sass:
-
-```
-docker-compose exec client npm rebuild node-sass
-```
 
 To cleanup all volumes, images and containers run:
 
@@ -135,48 +157,7 @@ And you are done!
 ```
 export DSN_SRC=postgres://postgres:3x4mpl3@localhost:5432/bonde
 export DSN_DEST=postgres://postgres:3x4mpl3@localhost:5432/bonde
-./tools/restore-db.sh
-```
-
-## Local Development
-
-### Requirements
-
-* [Yarn](https://yarnpkg.com/) (optional)
-
-### Install
-```
-npm install
-npm start
-```
-And you are done!
-
-### Tests
-As simples as:
-```
-npm run test
-```
-Now sit and relax.
-
-If you want to test a single file you can temporarily change the first line of `webpack.test.config.js` to:
-
-```
-var context = require.context('./app/scripts/tests', true, /MyComponentTest\.jsx/);
-```
-
-### Deploy
-We have now two environments, staging and production, hosted by Heroku. All you have to do is to push changes to the master branch of these Heroku repositories, and it will be automatically deployed.
-
-Add staging and production environments into your list of remote repos:
-```
-git remote add dokku dokku@server:0-client
-git remote add dokku-prod dokku@server:0-client
-```
-
-Commit your changes to the desired environment:
-```
-git push dokku commithash:master
-git push dokku-prod commithash:master
+./packages/bonde-admin/tools/restore-db.sh
 ```
 
 ## Links

@@ -40,16 +40,11 @@ services:
   api-v1:
     image: nossas/bonde-server:develop
     command: bundle exec puma -C config/puma.rb
-
     # build:
     #   context: ./../bonde-server/
     #   dockerfile: Dockerfile
-    # entrypoint: ./development-entrypoint
-    # command: bundle exec sidekiq -c 5
-
     volumes:
       - app-gems:/usr/local/bundle
-      # - ./../bonde-server:/usr/app:Z
 
     # Enable sending signals (CTRL+C, CTRL+P + CTRL+Q) into the container:
     tty: true
@@ -70,24 +65,11 @@ services:
     ports:
       - "3000:3000" # Bind our host's port 3000 to the app port 3000:
 
-  # test:
-  #   # We'll copy from &app_base, and override:
-  #   <<: *app_base
-  #   command: bundle exec rspec --color --require spec_helper spec --format progress
-  #   environment:
-  #     <<: *app_environment
-  #     # PostgreSQL Test Database:
-  #     DATABASE_URL: postgres://postgres:3x4mpl3@db.devel:5432/bonde_test
-  #     # Run the app in the 'test' environment, instead of the default 'developent'
-  #     RACK_ENV: test
-  #     RAILS_ENV: test
-
   api-v2:
     image: nossas/bonde-graphql:develop
     # build:
     #   context: ./../bonde-graphql/
     #   dockerfile: Dockerfile
-
     depends_on:
       - postgres
     ports:
@@ -105,126 +87,126 @@ services:
       WEB_CONCURRENCY: 1
       WEB_MEMORY: 256
 
-  bot:
-    image: nossas/bonde-bot:develop
-    # build:
-    #   context: ./../bonde-bot/
-    #   dockerfile: Dockerfile
+  # bot:
+  #   image: nossas/bonde-bot:develop
+  #   # build:
+  #   #   context: ./../bonde-bot/
+  #   #   dockerfile: Dockerfile
 
-    depends_on:
-      - postgres
-    ports:
-      - "3002:3002"
-    command: npm run dev
-    links:
-      - api-v2:data.bonde.devel
-    environment:
-      PORT: 3002
-      GRAPHQL_URL: http://data.bonde.devel:3001/graphql
-      MESSENGER_APP_SECRET: 96dc8d
-      MESSENGER_PAGE_ACCESS_TOKEN: EAAajJa
-      MESSENGER_VALIDATION_TOKEN: bonde-client
-      SERVER_AUTH_EMAIL: foo@bar.com
-      SERVER_AUTH_PASSWORD: 123
-      WEB_CONCURRENCY: 1
-      WEB_MEMORY: 256
+  #   depends_on:
+  #     - postgres
+  #   ports:
+  #     - "3002:3002"
+  #   command: npm run dev
+  #   links:
+  #     - api-v2:data.bonde.devel
+  #   environment:
+  #     PORT: 3002
+  #     GRAPHQL_URL: http://data.bonde.devel:3001/graphql
+  #     MESSENGER_APP_SECRET: 96dc8d
+  #     MESSENGER_PAGE_ACCESS_TOKEN: EAAajJa
+  #     MESSENGER_VALIDATION_TOKEN: bonde-client
+  #     SERVER_AUTH_EMAIL: foo@bar.com
+  #     SERVER_AUTH_PASSWORD: 123
+  #     WEB_CONCURRENCY: 1
+  #     WEB_MEMORY: 256
 
-  phone:
-    image: nossas/bonde-phone:develop
-    # build:
-    #   context: ./../bonde-phone/
-    #   dockerfile: Dockerfile
+  # phone:
+  #   image: nossas/bonde-phone:develop
+  #   # build:
+  #   #   context: ./../bonde-phone/
+  #   #   dockerfile: Dockerfile
 
-    depends_on:
-      - postgres
-    ports:
-      - "3003:3003"
-    command: npm run dev
-    links:
-      - postgres:db.devel
-    environment:
-      PORT: 3003
-      APP_DOMAIN: 'https://_______.ngrok.io'
-      TWILIO_ACCOUNT_SID: '____________'
-      TWILIO_AUTH_TOKEN: '____________'
-      TWILIO_NUMBER: '+____________'
-      DATABASE_URL: postgres://postgraphql:3x4mpl3@db.devel:5432/bonde
-      WEB_CONCURRENCY: 1
-      WEB_MEMORY: 256
+  #   depends_on:
+  #     - postgres
+  #   ports:
+  #     - "3003:3003"
+  #   command: npm run dev
+  #   links:
+  #     - postgres:db.devel
+  #   environment:
+  #     PORT: 3003
+  #     APP_DOMAIN: 'https://_______.ngrok.io'
+  #     TWILIO_ACCOUNT_SID: '____________'
+  #     TWILIO_AUTH_TOKEN: '____________'
+  #     TWILIO_NUMBER: '+____________'
+  #     DATABASE_URL: postgres://postgraphql:3x4mpl3@db.devel:5432/bonde
+  #     WEB_CONCURRENCY: 1
+  #     WEB_MEMORY: 256
 
-  client:
-    image: nossas/bonde-client
-    command: yarn start
-    depends_on:
-      - api-v1
-      - api-v2
-    volumes:
-      - ./:/code:Z
-    ports:
-      - "3004:5001"
-    build:
-      context: .
-      dockerfile: Dockerfile
-    links:
-      - api-v1:api.bonde.devel
-      - api-v2:data.bonde.devel
-      - redis:keyval.devel
-    extra_hosts:
-      - "app.bonde.devel:127.0.0.1"
-    environment:
-      PORT: 5001
-      API_URL: http://api.bonde.devel:3000
-      APP_DOMAIN: bonde.devel:3004
-      AWS_BUCKET: bonde-assets-development
-      GRAPHQL_URL: http://data.bonde.devel:3001/graphql
-      NEW_RELIC_HOME: ./src
-      NODE_ENV: development
-      REDIS_URL: redis://keyval.devel:6379
-      VALIDATE_REGION: sa-east-1
-      WEB_CONCURRENCY: 1
-      WEB_MEMORY: 256
-    env_file:
-      - .env
+  # client:
+  #   image: nossas/bonde-client
+  #   command: yarn start
+  #   depends_on:
+  #     - api-v1
+  #     - api-v2
+  #   volumes:
+  #     - ./:/code:Z
+  #   ports:
+  #     - "3004:5001"
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   links:
+  #     - api-v1:api.bonde.devel
+  #     - api-v2:data.bonde.devel
+  #     - redis:keyval.devel
+  #   extra_hosts:
+  #     - "app.bonde.devel:127.0.0.1"
+  #   environment:
+  #     PORT: 5001
+  #     API_URL: http://api.bonde.devel:3000
+  #     APP_DOMAIN: bonde.devel:3004
+  #     AWS_BUCKET: bonde-assets-development
+  #     GRAPHQL_URL: http://data.bonde.devel:3001/graphql
+  #     NEW_RELIC_HOME: ./src
+  #     NODE_ENV: development
+  #     REDIS_URL: redis://keyval.devel:6379
+  #     VALIDATE_REGION: sa-east-1
+  #     WEB_CONCURRENCY: 1
+  #     WEB_MEMORY: 256
+  #   env_file:
+  #     - .env
 
-  cache:
-    image: nossas/bonde-cache:develop
-    command: go run bonde-cache
-    depends_on:
-      - api-v1
-    volumes:
-      - ../bonde-cache:/go/src/app:Z
-    ports:
-      - "3005:3005"
-      - "3006:3006"
-    # build:
-    #   context: .
-    #   dockerfile: Dockerfile
-    links:
-      - api-v1:api.bonde.devel
-    environment:
-      CACHE_APIURL: http://api.bonde.devel:3000
-      PORT: 3005
-      CACHE_ENV: development
-      CACHE_INTERVAL: 6000
-      CACHE_PORT: 3005
-      CACHE_PORTSSL: 3006
-      CACHE_RESET: 'false'
-      AWS_SECRET_ACCESS_KEY:
-      AWS_ACCESS_KEY_ID:
+  # cache:
+  #   image: nossas/bonde-cache:develop
+  #   command: go run bonde-cache
+  #   depends_on:
+  #     - api-v1
+  #   volumes:
+  #     - ../bonde-cache:/go/src/app:Z
+  #   ports:
+  #     - "3005:3005"
+  #     - "3006:3006"
+  #   # build:
+  #   #   context: .
+  #   #   dockerfile: Dockerfile
+  #   links:
+  #     - api-v1:api.bonde.devel
+  #   environment:
+  #     CACHE_APIURL: http://api.bonde.devel:3000
+  #     PORT: 3005
+  #     CACHE_ENV: development
+  #     CACHE_INTERVAL: 6000
+  #     CACHE_PORT: 3005
+  #     CACHE_PORTSSL: 3006
+  #     CACHE_RESET: 'false'
+  #     AWS_SECRET_ACCESS_KEY:
+  #     AWS_ACCESS_KEY_ID:
 
-  redirect:
-    image: nossas/bonde-redirect:develop
-    command: go run rebu-redirect
-    depends_on:
-      - api-v1
-    volumes:
-      - ../bonde-redirect:/go/src/app:Z
-    ports:
-      - "3007:3007"
-    # build:
-    #   context: .
-    #   dockerfile: Dockerfile
-    links:
-      - api-v1:api.bonde.devel
-    environment:
-      PORT: 3007
+  # redirect:
+  #   image: nossas/bonde-redirect:develop
+  #   command: go run rebu-redirect
+  #   depends_on:
+  #     - api-v1
+  #   volumes:
+  #     - ../bonde-redirect:/go/src/app:Z
+  #   ports:
+  #     - "3007:3007"
+  #   # build:
+  #   #   context: .
+  #   #   dockerfile: Dockerfile
+  #   links:
+  #     - api-v1:api.bonde.devel
+  #   environment:
+  #     PORT: 3007

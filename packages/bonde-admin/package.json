@@ -5,9 +5,9 @@
   "author": "Nossas <tech@nosssas.org>",
   "homepage": "http://bonde.org",
   "scripts": {
-    "test": "standard && node --max_old_space_size=4096 ./node_modules/.bin/jest",
-    "test:ci": "yarn test --ci --silent --runInBand --logHeapUsage",
-    "test:watch": "yarn test -- --watch",
+    "test:lint": "standard && node --max_old_space_size=4096 ./node_modules/.bin/jest",
+    "test": "yarn test:lint --ci --silent --runInBand --logHeapUsage",
+    "test:watch": "yarn test:lint -- --watch",
     "test:coverage": "nyc yarn test",
     "dev": "webpack-dev-server --config ./tools/webpack.dev.js",
     "start": "serve -s public",
