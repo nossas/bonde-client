@@ -4,7 +4,7 @@
   "description": "Public release of the mobilization",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
+    "dev": "next -p 5001",
     "start": "next start -p 5001",
     "build": "next build",
     "test": "echo \"Error: no test specified\" && exit 0"
