@@ -3,7 +3,8 @@ import styled, { css } from 'styled-components'
 
 export default styled.div`{
   position: ${props => props.position || 'fixed'};
-  width: ${props => props.width ? `${props.width}px` : '100%'};
+  padding: ${props => props.padding || '0'};
+  width: ${props => props.width ? `${props.width}` : '100%'};
   height: 100%;
   ${props => !props.position && css`
     display: flex;

@@ -12,7 +12,7 @@ const user = {
 
 storiesOf('Header', module)
   .addDecorator(story => (
-    <Wrapper position='relative' width={1200}>
+    <Wrapper position='relative' width='1200px'>
       {story()}
     </Wrapper>
   ))
