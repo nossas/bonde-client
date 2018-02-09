@@ -8,11 +8,10 @@ import { Title } from '../src'
 import { Row, Cell } from '../src/Grid'
 
 const Block = styled.div`
-  height: 50px;
   background: purple;
   border-radius: 3px;
   box-shadow: inset 0 0 0 5px rgba(0,0,0,.5);
-
+  padding: 15px 0;
   display: flex;
   font-size: .7rem;
   font-family: Nunito Sans;
@@ -48,8 +47,7 @@ storiesOf('Grid', module)
 
       <Preformatted>
         <Hightlight code={
-`
-import { Row, Cell } from 'bonde-styleguide/Grid'
+`import { Row, Cell } from 'bonde-styleguide/Grid'
 
 const Block = styled.div\`
   height: 50px;
@@ -78,6 +76,60 @@ const Block = styled.div\`
 
   <Cell size={[2]}>
     <Block>[2, 2, 3, 4, 6, 12]</Block>
+  </Cell>
+</Row>`
+        } />
+      </Preformatted>
+
+      <Title.H1>Nested structure</Title.H1>
+
+      <p>
+        The red border is the root row and, the green border is the nested row.
+      </p>
+
+      <Row style={{ border: '2px solid red' }}>
+        <Cell>
+          <Block>1</Block>
+        </Cell>
+        <Cell size={[8]}>
+          <Row style={{ border: '2px dashed green' }}>
+            <Cell size={[6]}>
+              <Block>8: 6</Block>
+            </Cell>
+            <Cell size={[3]}>
+              <Block>8: 3</Block>
+            </Cell>
+            <Cell size={[3]}>
+              <Block>8: 3</Block>
+            </Cell>
+          </Row>
+        </Cell>
+        <Cell size={[3]}>
+          <Block>3</Block>
+        </Cell>
+      </Row>
+
+      <Preformatted>
+        <Hightlight code={
+`<Row style={{ border: '2px solid red' }}>
+  <Cell>
+    <Block>1</Block>
+  </Cell>
+  <Cell size={[8]}>
+    <Row style={{ border: '2px dashed green' }}>
+      <Cell size={[6]}>
+        <Block>8: 6</Block>
+      </Cell>
+      <Cell size={[3]}>
+        <Block>8: 3</Block>
+      </Cell>
+      <Cell size={[3]}>
+        <Block>8: 3</Block>
+      </Cell>
+    </Row>
+  </Cell>
+  <Cell size={[3]}>
+    <Block>3</Block>
   </Cell>
 </Row>`
         } />
