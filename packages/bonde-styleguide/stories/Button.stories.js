@@ -12,7 +12,7 @@ storiesOf('Button', module)
   ))
   .add('Default disabled', () => (
     <Wrapper>
-      <Button onClick={action('onClick')} disabled>Desabilitado</Button>
+      <Button disabled>Desabilitado</Button>
     </Wrapper>
   ))
   .add('Light', () => (

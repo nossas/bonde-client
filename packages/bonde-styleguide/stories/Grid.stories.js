@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { storiesOf } from '@storybook/react'
 
-import Wrapper from './Wrapper'
 import { Preformatted, Hightlight } from './Icon.stories'
 import { Title } from '../src'
 import { Row, Cell } from '../src/Grid'
