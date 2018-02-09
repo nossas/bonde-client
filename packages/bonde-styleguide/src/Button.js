@@ -7,14 +7,15 @@ const Button = styled.button`{
   font-size: 13px;
   text-align: center;
   line-height: 1.15;
-  height: 45px; 
+  height: 45px;
   border-radius: 100px;
-  padding: 17px 19px 13px;
+  padding: 17px 19px;
   min-width: 192px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   cursor: pointer;
-  
+  outline: none;
+
   /* custom styles  */
   border: none;
   box-shadow: 1px 2px 7px 5px rgba(0, 0, 0, 0.08);
@@ -26,7 +27,7 @@ const Button = styled.button`{
   &:active {
     background-color: #b4006c;
   }
-  
+
   ${props => (props.light || props.dark) && css`
     background: none;
     box-shadow: none;
@@ -40,14 +41,14 @@ const Button = styled.button`{
       background: none;
     }
   `}
-  
+
   ${props => props.light && css`
     color: #000;
     border-color: #000;
     &:hover {
       border-color: #545252;
       color: #545252;
-    } 
+    }
   `}
 
   ${props => props.dark && css`
@@ -61,6 +62,14 @@ const Button = styled.button`{
       border-color: #ee0099;
       color: #ee0099;
     }
+  `}
+
+  ${props => props.disabled && `
+    cursor: default;
+    background-color: #d1cdd2;
+    box-shadow: none;
+    &:hover { background-color: #d1cdd2 }
+    &:active { background-color: #d1cdd2 }
   `}
 }`
 
