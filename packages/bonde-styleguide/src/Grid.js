@@ -22,7 +22,7 @@ const Cell = styled.div`
 `
 
 Cell.propTypes = {
-  size: PropTypes.array
+  size: PropTypes.array.isRequired
 }
 
 Cell.defaultProps = {
