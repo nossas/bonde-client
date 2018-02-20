@@ -9,11 +9,11 @@ import Dropdown, {
 } from '../src/Dropdown'
 
 const Navbar = styled.div`{
-  position: fixed;
+  position: relative;
   width: inherit;
   min-height: 80px;
   background: #000;
-  padding: 0 155px; 
+  padding: 28px 155px 0;
 }`
 
 const Nav = styled.nav`{
