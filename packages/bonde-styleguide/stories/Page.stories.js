@@ -2,9 +2,17 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { Page } from '../src/Layout'
 import Tabs, { Tab } from '../src/Tabs'
-import { Text } from '../src'
+import { Header, Text } from '../src'
+import Wrapper from './Wrapper'
 
-const PageMenu = () => (
+const ModuleTabMenu = () => (
+  <Tabs>
+    <Tab>Editar</Tab>
+    <Tab active>Configurações</Tab>
+  </Tabs>
+)
+
+const PageTabMenu = () => (
   <Tabs inverted>
     <Tab active>Informações</Tab>
     <Tab>Mobilizadores</Tab>
@@ -21,7 +29,17 @@ storiesOf('Page', module)
     </Page>
   ))
   .add('with menuComponent', () => (
-    <Page menuComponent={PageMenu}>
+    <Page menuComponent={PageTabMenu}>
       <Text>Welcome to bonde.org</Text>
     </Page>
+  ))
+  .add('with header', () => (
+    <div>
+      <Header pageTitle='Respeita as Mina'>
+        <ModuleTabMenu />
+      </Header>
+      <Page menuComponent={PageTabMenu}>
+        <Text>Welcome to bonde.org</Text>
+      </Page>
+    </div>
   ))

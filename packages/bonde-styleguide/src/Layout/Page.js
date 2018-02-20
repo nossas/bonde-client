@@ -3,8 +3,8 @@ import styled from 'styled-components'
 
 const PageContainer = styled.div`{
   position: relative;
-  padding-top: 34px;
-  backgroud: ${props => props.bg || '#fff'};
+  padding: 32px 155px 0;
+  background: ${props => props.bg || '#fff'};
 }`
 
 const PageContent = styled.div`{
