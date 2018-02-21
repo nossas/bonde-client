@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default () => (
+const Icon = () => (
   <svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'>
     <g fill='none' fillRule='evenodd'>
         <g fill='#E09'>
@@ -12,3 +12,7 @@ export default () => (
     </g>
   </svg>
 )
+
+Icon.displayName = 'IconColorful.DollarSign'
+
+export default Icon

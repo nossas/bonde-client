@@ -11,11 +11,7 @@ const createKnobsIcon = (Component) => () => (
 
 storiesOf('Icon', module)
   .addDecorator(withKnobs)
-  .addDecorator(story => (
-    <Wrapper>
-      {story()}
-    </Wrapper>
-  ))
+  .addDecorator(story => (<Wrapper>{story()}</Wrapper>))
   .addWithJSX('AngleDown', createKnobsIcon(Icon.AngleDown))
   .addWithJSX('AngleRight', createKnobsIcon(Icon.AngleRight))
   .addWithJSX('Archive', createKnobsIcon(Icon.Archive))

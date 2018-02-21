@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default () => (
+const Icon = () => (
   <svg xmlns='http://www.w3.org/2000/svg' width='60' height='43' viewBox='0 0 60 43'>
     <g fill='none' fillRule='evenodd'>
         <g fill='#E09' transform='translate(9.6)'>
@@ -12,3 +12,7 @@ export default () => (
     </g>
   </svg>
 )
+
+Icon.displayName = 'IconColorful.Power'
+
+export default Icon
