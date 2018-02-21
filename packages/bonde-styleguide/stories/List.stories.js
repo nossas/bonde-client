@@ -145,5 +145,44 @@ import List from 'bonde-styleguide/List'
 </Row>`
         } />
       </Preformatted>
+
+      <Title.H2>Without Avatar</Title.H2>
+
+      <p>
+        If you do not want to render the avatar in the list item component, just pass
+        the <b>noavatar</b> prop to the list item component. See example below:
+      </p>
+
+      <List>
+        <List.Item
+          label='Apoie a Minha Sampa'
+          description='Página de doação da Minha Sampa'
+          noavatar
+        />
+        <List.Item
+          label='CPI do Ônibus pra valer'
+          description='Prorrogar a CPI dos ônibus por mais quatro meses'
+          noavatar
+        />
+      </List>
+
+      <Preformatted>
+        <Hightlight code={
+`import List from 'bonde-styleguide/List'
+
+<List>
+  <List.Item
+    label='Apoie a Minha Sampa'
+    description='Página de doação da Minha Sampa'
+    noavatar
+  />
+  <List.Item
+    label='CPI do Ônibus pra valer'
+    description='Prorrogar a CPI dos ônibus por mais quatro meses'
+    noavatar
+  />
+</List>`
+        } />
+      </Preformatted>
     </div>
   ))

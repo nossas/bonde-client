@@ -31,6 +31,10 @@ const Avatar = styled.div`
   left: ${vars.padding};
   top: ${vars.padding};
 
+  ${({ noavatar }) => noavatar && `
+    display: none;
+  `}
+
   ${({ image, label }) => !image && `
     &:before {
       content: '${label.slice(0, 1).toUpperCase()}';
@@ -47,7 +51,9 @@ const Avatar = styled.div`
 const Label = styled.div.attrs({
   title: props => props.label
 })`
-  margin-left: ${vars.textGap};
+  ${({ noavatar }) => !noavatar && `
+    margin-left: ${vars.textGap};
+  `}
   height: calc(${vars.avatarSize} / 2);
   font-family: Nunito Sans;
   line-height: 1.35;
@@ -87,15 +93,19 @@ const Item = ({ className, href, ...props }) => (
 
 List.Item = styled(Item)`
   position: relative;
-  padding: 18px;
-  padding-left: calc(40px + 18px);
+  padding: ${vars.padding};
+
+  ${({ noavatar }) => !noavatar && `
+    padding-left: calc(${vars.padding} + ${vars.avatarSize});
+  `}
 `
 
-const { string } = PropTypes
+const { string, bool } = PropTypes
 
 List.Item.propTypes = {
   label: string.isRequired,
   description: string.isRequired,
+  noavatar: bool
 }
 
 export default List
