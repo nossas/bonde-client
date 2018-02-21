@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { storiesOf } from '@storybook/react'
+import { withKnobs, array } from '@storybook/addon-knobs/react'
 
 import { Title } from '../src'
 import { Row, Cell } from '../src/Grid'
@@ -19,28 +20,45 @@ const Block = styled.div`
   color: #FFFFFF;
 `
 
+const createKnobsGrid = props => {
+  const defaultSizes = [1, 2, 3, 4, 6, 12]
+  const secondCell = array('2nd cell', [8, 2, 3, 4, 6, 6])
+  const thirdCell = array('3rd cell', [null, null, null, null, null, 6])
+  const fourthCell = array('4th cell', [2])
+
+  const fill = value => [...value, ...defaultSizes.slice(value.length)]
+
+  return (
+    <Row>
+      <Cell>
+        <Block>[{`${defaultSizes}`}]</Block>
+      </Cell>
+
+      <Cell size={secondCell}>
+        <Block>{`[${fill(secondCell)}]`}</Block>
+      </Cell>
+
+      <Cell size={thirdCell}>
+        <Block>{`[${fill(thirdCell)}]`}</Block>
+      </Cell>
+
+      <Cell size={fourthCell}>
+        <Block>{`[${fill(fourthCell)}]`}</Block>
+      </Cell>
+    </Row>
+  )
+}
+
+const options = {
+  showDefaultProps: false,
+  showFunctions: false
+}
+
 Block.displayName = 'Block'
 
 storiesOf('Grid', module)
-  .addWithJSX('default', () => (
-    <Row>
-      <Cell>
-        <Block>[1, 2, 3, 4, 6, 12]</Block>
-      </Cell>
-
-      <Cell size={[8, 2, 3, 4, 6, 6]}>
-        <Block>[8, 2, 3, 4, 6, 6]</Block>
-      </Cell>
-
-      <Cell size={[null, null, null, null, null, 6]}>
-        <Block>[1, 2, 3, 4, 6, 6]</Block>
-      </Cell>
-
-      <Cell size={[2]}>
-        <Block>[2, 2, 3, 4, 6, 12]</Block>
-      </Cell>
-    </Row>
-  ), { showDefaultProps: false })
+  .addDecorator(withKnobs)
+  .addWithJSX('default', () => createKnobsGrid(), options)
   .addWithJSX('nested structure', () => (
     <Row style={{ border: '2px solid red' }}>
       <Cell>
