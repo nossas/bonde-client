@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { storiesOf } from '@storybook/react'
 
-import { Preformatted, Hightlight } from './utils'
 import { Title } from '../src'
 import { Row, Cell } from '../src/Grid'
 
@@ -41,7 +40,7 @@ storiesOf('Grid', module)
         <Block>[2, 2, 3, 4, 6, 12]</Block>
       </Cell>
     </Row>
-  ))
+  ), { showDefaultProps: false })
   .addWithJSX('nested structure', () => (
     <Row style={{ border: '2px solid red' }}>
       <Cell>

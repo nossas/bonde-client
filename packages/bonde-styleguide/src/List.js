@@ -35,7 +35,7 @@ const Avatar = styled.div`
     display: none;
   `}
 
-  ${({ avatar, label }) => !avatar && `
+  ${({ avatar, noavatar, label }) => !avatar && !noavatar && `
     &:before {
       content: '${label.replace(/\W/g, '').slice(0, 1).toUpperCase()}';
       display: flex;
@@ -63,7 +63,7 @@ const Label = styled.div.attrs({
 
   & > div {
     white-space: nowrap;
-    overflow-x: hidden;
+    overflow: hidden;
     text-overflow: ellipsis;
   }
 `
@@ -101,13 +101,13 @@ const Item = ({
 
   return (
     <BaseListTag className={className}>
-      <Avatar avatar={avatar} label={label}  />
-      <Label label={label} noavatar={noavatar}>
+      <Avatar noavatar={noavatar} avatar={avatar} label={label} />
+      <Label noavatar={noavatar} label={label}>
         <div> {/* div inside to fix `text-overflow: ellipsis` behaviour */}
           {label}
         </div>
       </Label>
-      <Description description={description}>
+      <Description noavatar={noavatar} description={description}>
         <div>  {/* div inside to fix `text-overflow: ellipsis` behaviour */}
           {description}
         </div>
@@ -148,7 +148,15 @@ List.Item.propTypes = {
 
 List.Item.defaultProps = {
   label: '[Define your label]',
-  description: '[Define your description]'
+  description: '[Define your description]',
+  noavatar: false
 }
+
+
+List.displayName = 'List'
+List.Item.displayName = 'ListItem'
+Avatar.displayName = 'ListAvatar'
+Label.displayName = 'ListLabel'
+Description.displayName = 'ListDescription'
 
 export default List
