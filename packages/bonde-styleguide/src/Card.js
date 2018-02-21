@@ -20,10 +20,31 @@ export const Card = styled.div`
   border-radius: 1px;
   box-shadow: 2px 1px 14px 11px rgba(0, 0, 0, .04);
   height: 100%;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   background-color: ${props => props.background};
   min-height: ${props => props.minHeight};
   max-height: ${props => props.maxHeight};
+
+  &::-webkit-scrollbar {
+    width: 33px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-clip: padding-box;
+    background-color: rgba(151,151,151,.25);
+    border: 20px solid transparent;
+    border-left-width: 16px;
+    border-right-width: 16px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-clip: padding-box;
+    background-color: rgba(74,74,74,.75);
+    border: 20px solid transparent;
+    border-left-width: 15px;
+    border-right-width: 15px;
+  }
 `
 
 export const Image = styled.div`
