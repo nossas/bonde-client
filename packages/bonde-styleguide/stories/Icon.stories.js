@@ -23,6 +23,20 @@ export const Preformatted = styled.pre`{
   text-align: left;
 }`
 
+export const Code = styled.span`
+  padding: 3px 7px 5px;
+  background-color: #efefef;
+  border-radius: 3px;
+  font-size: 85%;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+
+  ${({ bordered }) => bordered && `
+    background-color: #ffffff;
+    border: 1px solid rgba(0,0,0,.12);
+    font-style: normal;
+  `}
+`
+
 export const Hightlight = ({ code }) => (
   <div dangerouslySetInnerHTML={{ __html: Prism.highlight(code, Prism.languages.js) }} />
 )
