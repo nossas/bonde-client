@@ -1,11 +1,22 @@
 import React from 'react'
+import styled from 'styled-components'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import Wrapper from './Wrapper'
-import { Preformatted, Hightlight } from './Icon.stories'
+import { Preformatted, Hightlight, Code } from './Icon.stories'
 import { Row, Cell } from '../src/Grid'
 import { Title } from '../src'
 import List from '../src/List'
+
+const LinkComponent = styled.div.attrs({
+  onClick: () => action('[List: click] LinkComponent onClick')
+})`
+  background-color: #efefef;
+  cursor: pointer;
+  transition: 200ms box-shadow;
+
+  &:hover { box-shadow: inset 0 0 15px 0 rgba(0,0,0,.3) }
+`
 
 storiesOf('List', module)
   .addDecorator(story => (
@@ -13,6 +24,7 @@ storiesOf('List', module)
       {story()}
     </Wrapper>
   ))
+
   .add('Default', () => (
     <div>
       <Title.H1>List</Title.H1>
@@ -28,7 +40,11 @@ storiesOf('List', module)
   label: string.isRequired,
   description: string.isRequired,
   avatar: string,
-  noavatar: bool
+  noavatar: bool,
+  onClick: func,
+  href: string,
+  target: string,
+  LinkComponent: node
 }`
         } />
       </Preformatted>
@@ -64,6 +80,7 @@ storiesOf('List', module)
       </Preformatted>
     </div>
   ))
+
   .add('avatar', () => (
     <div>
       <Title.H1>List: avatar</Title.H1>
@@ -192,6 +209,115 @@ import List from 'bonde-styleguide/List'
     label='CPI do Ônibus pra valer'
     description='Prorrogar a CPI dos ônibus por mais quatro meses'
     noavatar
+  />
+</List>`
+        } />
+      </Preformatted>
+    </div>
+  ))
+
+  .add('click', () => (
+    <div>
+      <Title.H1>List: click</Title.H1>
+      <p>
+        You can define an <b>onClick</b> function or a <b>href</b> as a prop.
+        If you pass a href, the list item component will be turned into
+        a <Code>{'<a />'}</Code> tag, instead, it will still be
+        the default <Code>{'<li />'}</Code> tag into the list.
+      </p>
+      <p>
+        Also, you can pass a <b>LinkComponent</b> to transform the list item component into
+        a Link component of your favorite route management library such as react-router.
+      </p>
+
+      <Title.H2>Prop: <Code>onClick</Code></Title.H2>
+
+      <p><b>Example:</b></p>
+
+      <List>
+        <List.Item
+          label='Apoie a Minha Sampa'
+          description='Página de doação da Minha Sampa'
+          onClick={action('[List: click] onClick prop')}
+        />
+      </List>
+
+      <Preformatted>
+        <Hightlight code={
+`import List from 'bonde-styleguide/List'
+
+<List>
+  <List.Item
+    label='Apoie a Minha Sampa'
+    description='Página de doação da Minha Sampa'
+    onClick={action('[List: click] onClick prop')}
+  />
+</List>`
+        } />
+      </Preformatted>
+
+      <Title.H2>Prop: <Code>href</Code></Title.H2>
+
+      <p><b>Example:</b></p>
+
+      <List>
+        <List.Item
+          label='Apoie a Minha Sampa'
+          description='Página de doação da Minha Sampa'
+          href='https://google.com'
+          target='_blank'
+        />
+      </List>
+
+      <Preformatted>
+        <Hightlight code={
+`import List from 'bonde-styleguide/List'
+
+<List>
+  <List.Item
+    label='Apoie a Minha Sampa'
+    description='Página de doação da Minha Sampa'
+    href='https://google.com'
+    target='_blank'
+  />
+</List>`
+        } />
+      </Preformatted>
+
+      <Title.H2>Prop: <Code>LinkComponent</Code></Title.H2>
+
+      <p><b>Example:</b></p>
+
+      <List>
+        <List.Item
+          label='Apoie a Minha Sampa'
+          description='Página de doação da Minha Sampa'
+          LinkComponent={LinkComponent}
+        />
+      </List>
+
+      <Preformatted>
+        <Hightlight code={
+`import List from 'bonde-styleguide/List'
+
+//
+// Custom component
+//
+const LinkComponent = styled.div.attrs({
+  onClick: () => action('[List: click] LinkComponent onClick')
+})\`
+  background-color: #efefef;
+  cursor: pointer;
+  transition: 200ms box-shadow;
+
+  &:hover { box-shadow: inset 0 0 15px 0 rgba(0,0,0,.3) }
+\`
+
+<List>
+  <List.Item
+    label='Apoie a Minha Sampa'
+    description='Página de doação da Minha Sampa'
+    LinkComponent={LinkComponent}
   />
 </List>`
         } />

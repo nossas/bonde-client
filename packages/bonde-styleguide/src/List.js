@@ -20,7 +20,7 @@ const List = styled.ul`
 `
 
 const Avatar = styled.div`
-  background-color: #CCCCCC;
+  background-color: #cccccc;
   background-size: cover;
   background-position: center center;
   border-radius: 50%;
@@ -37,13 +37,13 @@ const Avatar = styled.div`
 
   ${({ avatar, label }) => !avatar && `
     &:before {
-      content: '${label.slice(0, 1).toUpperCase()}';
+      content: '${label.replace(/\W/g, '').slice(0, 1).toUpperCase()}';
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100%;
       font-weight: 900;
-      color: #FFFFFF;
+      color: #ffffff;
     }
   `}
 `
@@ -79,34 +79,76 @@ const Description = Label.extend.attrs({
   line-height: 1;
 `
 
-const Item = ({ className, href, ...props }) => (
-  <li className={className}>
-    <Avatar {...props} />
-    <Label {...props}>
-      <div>{props.label}</div>
-    </Label>
-    <Description {...props}>
-      <div>{props.description}</div>
-    </Description>
-  </li>
-)
+const Item = ({
+  className,
+  label,
+  description,
+  avatar,
+  noavatar,
+  onClick,
+  href,
+  target,
+  LinkComponent
+}) => {
+  const ListTag = props => <li {...props} onClick={onClick} />
+
+  let BaseListTag = LinkComponent || ListTag
+  if (href) {
+    const linkProps = { href, target }
+    const LinkTag = props => <a {...props} href={href} target={target} />
+    BaseListTag = LinkTag
+  }
+
+  return (
+    <BaseListTag className={className}>
+      <Avatar avatar={avatar} label={label}  />
+      <Label label={label} noavatar={noavatar}>
+        <div> {/* div inside to fix `text-overflow: ellipsis` behaviour */}
+          {label}
+        </div>
+      </Label>
+      <Description description={description}>
+        <div>  {/* div inside to fix `text-overflow: ellipsis` behaviour */}
+          {description}
+        </div>
+      </Description>
+    </BaseListTag>
+  )
+}
 
 List.Item = styled(Item)`
   position: relative;
   padding: ${vars.padding};
+  transition: 200ms background-color;
+  display: block;
+  text-decoration: none;
+
+  ${props => (props.onClick || props.href) && `
+    cursor: pointer;
+    &:hover { background-color: rgba(180,180,180,.1) }
+  `}
 
   ${({ noavatar }) => !noavatar && `
     padding-left: calc(${vars.padding} + ${vars.avatarSize});
   `}
 `
 
-const { string, bool } = PropTypes
+const { string, bool, func, node, oneOfType } = PropTypes
 
 List.Item.propTypes = {
   label: string.isRequired,
   description: string.isRequired,
   avatar: string,
-  noavatar: bool
+  noavatar: bool,
+  onClick: func,
+  href: string,
+  target: string,
+  LinkComponent: oneOfType([node, func])
+}
+
+List.Item.defaultProps = {
+  label: '[Define your label]',
+  description: '[Define your description]'
 }
 
 export default List
