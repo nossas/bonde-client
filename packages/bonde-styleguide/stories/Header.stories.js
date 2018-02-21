@@ -16,16 +16,16 @@ storiesOf('Header', module)
       {story()}
     </Wrapper>
   ))
-  .add('default', () => (
+  .addWithJSX('default', () => (
     <Header />
   ))
-  .add('with page title', () => (
+  .addWithJSX('with page title', () => (
     <Header pageTitle='Home' />
   ))
-  .add('with user', () => (
+  .addWithJSX('with user', () => (
     <Header user={user} />
   ))
-  .add('with Tabs', () => (
+  .addWithJSX('with Tabs', () => (
     <Header>
       <Tabs>
         <Tab active>Dashboard</Tab>
@@ -35,7 +35,7 @@ storiesOf('Header', module)
       </Tabs>
     </Header>
   ))
-  .add('with Tabs and user', () => (
+  .addWithJSX('with Tabs and user', () => (
     <Header user={user}>
       <Tabs>
         <Tab active>Dashboard</Tab>
@@ -45,7 +45,7 @@ storiesOf('Header', module)
       </Tabs>
     </Header>
   ))
-  .add('with Tabs, user and page title', () => (
+  .addWithJSX('with Tabs, user and page title', () => (
     <Header pageTitle='Nome da Comunidade' user={user}>
       <Tabs>
         <Tab active>Dashboard</Tab>

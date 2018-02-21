@@ -23,17 +23,17 @@ const PageTabMenu = () => (
 )
 
 storiesOf('Page', module)
-  .add('default', () => (
+  .addWithJSX('default', () => (
     <Page>
       <Text>Welcome to bonde.org</Text>
     </Page>
   ))
-  .add('with menuComponent', () => (
+  .addWithJSX('with menuComponent', () => (
     <Page menuComponent={PageTabMenu}>
       <Text>Welcome to bonde.org</Text>
     </Page>
   ))
-  .add('with header', () => (
+  .addWithJSX('with header', () => (
     <div>
       <Header pageTitle='Respeita as Mina'>
         <ModuleTabMenu />

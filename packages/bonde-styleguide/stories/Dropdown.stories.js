@@ -14,13 +14,13 @@ storiesOf('Dropdown', module)
       {story()}
     </Wrapper>
   ))
-  .add('default', () => (
+  .addWithJSX('default', () => (
     <Dropdown label='Dropdown'>
       <DropdownItem onClick={action('clicked Menu 1')}>Menu 1</DropdownItem>
       <DropdownItem onClick={action('clicked Menu 2')}>Menu 2</DropdownItem>
     </Dropdown>
   ))
-  .add('with icon', () => (
+  .addWithJSX('with icon', () => (
     <Dropdown label='Minha sampa' width={200}>
       <DropdownItem onClick={action('clicked Abrir página')}>
         <Icon.Share /> Abrir página
@@ -39,7 +39,7 @@ storiesOf('Dropdown', module)
       </DropdownItem>
     </Dropdown>
   ))
-  .add('with Header', () => (
+  .addWithJSX('with Header', () => (
     <Dropdown label='Maria Benati' width={190}>
       <DropdownHeader>
         <img src='http://via.placeholder.com/35x35?text=U' alt='User' />

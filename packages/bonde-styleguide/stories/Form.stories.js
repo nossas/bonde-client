@@ -10,11 +10,11 @@ storiesOf('Form/Input', module)
       {story()}
     </Wrapper>
   ))
-  .add('default', () => <Input placeholder='Placeholder' />)
-  .add('invalid', () => (
+  .addWithJSX('default', () => <Input placeholder='Placeholder' />)
+  .addWithJSX('invalid', () => (
     <Input value='username@g' onChange={action('onChange')} invalid />
   ))
-  .add('disabled', () => <Input value='username@bonde.org' disabled />)
+  .addWithJSX('disabled', () => <Input value='username@bonde.org' disabled />)
 
 storiesOf('Form/ControlLabel', module)
   .addDecorator(story => (
@@ -22,7 +22,7 @@ storiesOf('Form/ControlLabel', module)
       {story()}
     </Wrapper>
   ))
-  .add('default', () => <ControlLabel>Label</ControlLabel>)
+  .addWithJSX('default', () => <ControlLabel>Label</ControlLabel>)
 
 storiesOf('Form/Select', module)
   .addDecorator(story => (
@@ -30,17 +30,17 @@ storiesOf('Form/Select', module)
       {story()}
     </Wrapper>
   ))
-  .add('default', () => (
+  .addWithJSX('default', () => (
     <Select>
       <option>Selecione</option>
     </Select>
   ))
-  .add('invalid', () => (
+  .addWithJSX('invalid', () => (
     <Select invalid>
       <option>Selecione</option>
     </Select>
   ))
-  .add('disabled', () => (
+  .addWithJSX('disabled', () => (
     <Select value='1' disabled>
       <option>Selecione</option>
       <option value='1'>Value 1</option>
@@ -53,10 +53,10 @@ storiesOf('Form/Checkbox', module)
       {story()}
     </Wrapper>
   ))
-  .add('default', () => <Checkbox>Checkbox</Checkbox>)
-  .add('checked', () => <Checkbox checked readOnly>Checkbox</Checkbox>)
-  .add('disabled', () => <Checkbox disabled>Checkbox</Checkbox>)
-  .add('checked and disabled', () => <Checkbox checked disabled>Checkbox</Checkbox>)
+  .addWithJSX('default', () => <Checkbox>Checkbox</Checkbox>)
+  .addWithJSX('checked', () => <Checkbox checked readOnly>Checkbox</Checkbox>)
+  .addWithJSX('disabled', () => <Checkbox disabled>Checkbox</Checkbox>)
+  .addWithJSX('checked and disabled', () => <Checkbox checked disabled>Checkbox</Checkbox>)
 
 storiesOf('Form/Radio', module)
   .addDecorator(story => (
@@ -64,8 +64,8 @@ storiesOf('Form/Radio', module)
       {story()}
     </Wrapper>
   ))
-  .add('default', () => <Radio>Radio</Radio>)
-  .add('checked', () => <Radio checked readOnly>Radio</Radio>)
-  .add('disabled', () => <Radio disabled>Radio</Radio>)
-  .add('checked and disabled', () => <Radio checked disabled>Radio</Radio>)
+  .addWithJSX('default', () => <Radio>Radio</Radio>)
+  .addWithJSX('checked', () => <Radio checked readOnly>Radio</Radio>)
+  .addWithJSX('disabled', () => <Radio disabled>Radio</Radio>)
+  .addWithJSX('checked and disabled', () => <Radio checked disabled>Radio</Radio>)
 

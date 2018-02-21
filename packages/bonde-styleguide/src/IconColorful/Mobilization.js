@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default ({ size }) => (
+const Icon = ({ size }) => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
     width={size || '43'}
@@ -17,3 +17,7 @@ export default ({ size }) => (
     </g>
   </svg>
 )
+
+Icon.displayName = 'IconColorful.Mobilization'
+
+export default Icon
