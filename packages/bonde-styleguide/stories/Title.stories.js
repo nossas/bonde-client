@@ -9,6 +9,6 @@ storiesOf('Title', module)
       {story()}
     </Wrapper>
   ))
-  .add('H1', () => <Title.H1>Título</Title.H1>)
-  .add('H2', () => <Title.H2>Título</Title.H2>)
-  .add('H3', () => <Title.H3>Título</Title.H3>)
+  .addWithJSX('H1', () => <Title.H1>Título</Title.H1>)
+  .addWithJSX('H2', () => <Title.H2>Título</Title.H2>)
+  .addWithJSX('H3', () => <Title.H3>Título</Title.H3>)

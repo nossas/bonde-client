@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-export const Title = styled.span`
+const Title = styled.span`
   display: block;
   font-family: Nunito Sans;
   font-size: 13px;
@@ -16,7 +16,7 @@ export const Title = styled.span`
   min-height: ${props => props.notitle ? 0 : '14px'};
 `
 
-export const Card = styled.div`
+const Card = styled.div`
   border-radius: 1px;
   box-shadow: 2px 1px 14px 11px rgba(0, 0, 0, .04);
   height: 100%;
@@ -47,7 +47,7 @@ export const Card = styled.div`
   }
 `
 
-export const Image = styled.div`
+const Image = styled.div`
   display: block;
   width: 100%;
   height: 185px;
@@ -56,7 +56,7 @@ export const Image = styled.div`
   background-position: center center;
 `
 
-export const Content = styled.div`
+const Content = styled.div`
   height: calc(100% - (${props => props.paddingY} * 2));
   padding-top: ${props => props.paddingY};
   padding-bottom: ${props => props.paddingY};
@@ -113,6 +113,8 @@ Content.defaultProps = {
   paddingY: '16px',
   paddingX: '16px',
 }
+
+CardWrapper.displayName = 'Card'
 
 CardWrapper.propTypes = {
   title: string

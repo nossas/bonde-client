@@ -23,13 +23,17 @@ export const Tab = styled.a`{
   }
 }`
 
-const Tabs = ({ children, className, inverted }) => (
+Tab.displayName = 'Tab'
+
+const Tabs = styled(({ children, className, inverted }) => (
   <div className={className}>
     {children && children.map(child => React.cloneElement(child, { inverted }))}
   </div>
-)
-
-export default styled(Tabs)`{
+))`{
   display: flex;
   align-items: center;
 }`
+
+Tabs.displayName = 'Tabs'
+
+export default Tabs

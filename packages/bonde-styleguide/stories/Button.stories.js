@@ -1,27 +1,28 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
 import Wrapper from './Wrapper'
 import { Button } from '../src'
 
+const skip = 1
+
 storiesOf('Button', module)
-  .add('Default', () => (
+  .addWithJSX('Default', () => (
     <Wrapper>
-      <Button onClick={action('onClick')}>Principal</Button>
+      <Button>Principal</Button>
     </Wrapper>
-  ))
-  .add('Default disabled', () => (
+  ), { skip })
+  .addWithJSX('Default disabled', () => (
     <Wrapper>
       <Button disabled>Desabilitado</Button>
     </Wrapper>
-  ))
-  .add('Light', () => (
+  ), { skip })
+  .addWithJSX('Light', () => (
     <Wrapper>
-      <Button onClick={action('onClick')} light>Secundário</Button>
+      <Button light>Secundário</Button>
     </Wrapper>
-  ))
-  .add('Dark', () => (
+  ), { skip })
+  .addWithJSX('Dark', () => (
     <Wrapper bg='#000'>
-      <Button onClick={action('onClick')} dark>Secundário</Button>
+      <Button dark>Secundário</Button>
     </Wrapper>
-  ))
+  ), { skip })

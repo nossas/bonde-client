@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { storiesOf } from '@storybook/react'
 
-import { Preformatted, Hightlight } from './Icon.stories'
+import { Preformatted, Hightlight } from './utils'
 import { Title } from '../src'
 import { Row, Cell } from '../src/Grid'
 
@@ -20,139 +20,60 @@ const Block = styled.div`
   color: #FFFFFF;
 `
 
+Block.displayName = 'Block'
+
 storiesOf('Grid', module)
-  .add('Default', () => (
-    <div>
-      <Title.H1>Grid</Title.H1>
-      <p>
-        <Row>
-          <Cell>
-            <Block>[1, 2, 3, 4, 6, 12]</Block>
-          </Cell>
-
-          <Cell size={[8, 2, 3, 4, 6, 6]}>
-            <Block>[8, 2, 3, 4, 6, 6]</Block>
-          </Cell>
-
-          <Cell size={[null, null, null, null, null, 6]}>
-            <Block>[1, 2, 3, 4, 6, 6]</Block>
-          </Cell>
-
-          <Cell size={[2]}>
-            <Block>[2, 2, 3, 4, 6, 12]</Block>
-          </Cell>
-        </Row>
-      </p>
-
-      <Preformatted>
-        <Hightlight code={
-`import { Row, Cell } from 'bonde-styleguide/Grid'
-
-const Block = styled.div\`
-  height: 50px;
-  background: purple;
-  border-radius: 3px;
-  box-shadow: inset 0 0 0 5px rgba(0,0,0,.5);
-
-  font-size: 50px;
-  font-weight: bold;
-  justify-content: center;
-  color: #BBBBBB;
-\`
-
-<Row>
-  <Cell>
-    <Block>[1, 2, 3, 4, 6, 12]</Block>
-  </Cell>
-
-  <Cell size={[8, 2, 3, 4, 6, 6]}>
-    <Block>[8, 2, 3, 4, 6, 6]</Block>
-  </Cell>
-
-  <Cell size={[null, null, null, null, null, 6]}>
-    <Block>[1, 2, 3, 4, 6, 6]</Block>
-  </Cell>
-
-  <Cell size={[2]}>
-    <Block>[2, 2, 3, 4, 6, 12]</Block>
-  </Cell>
-</Row>`
-        } />
-      </Preformatted>
-
-      <Title.H1>Nested structure</Title.H1>
-
-      <p>
-        The red border is the root row and, the green border is the nested row.
-      </p>
-
-      <Row style={{ border: '2px solid red' }}>
-        <Cell>
-          <Block>1</Block>
-        </Cell>
-        <Cell size={[8]}>
-          <Row style={{ border: '2px dashed green' }}>
-            <Cell size={[6]}>
-              <Block>8: 6</Block>
-            </Cell>
-            <Cell size={[3]}>
-              <Block>8: 3</Block>
-            </Cell>
-            <Cell size={[3]}>
-              <Block>8: 3</Block>
-            </Cell>
-          </Row>
-        </Cell>
-        <Cell size={[3]}>
-          <Block>3</Block>
-        </Cell>
-      </Row>
-
-      <Preformatted>
-        <Hightlight code={
-`<Row style={{ border: '2px solid red' }}>
-  <Cell>
-    <Block>1</Block>
-  </Cell>
-  <Cell size={[8]}>
-    <Row style={{ border: '2px dashed green' }}>
-      <Cell size={[6]}>
-        <Block>8: 6</Block>
+  .addWithJSX('default', () => (
+    <Row>
+      <Cell>
+        <Block>[1, 2, 3, 4, 6, 12]</Block>
       </Cell>
-      <Cell size={[3]}>
-        <Block>8: 3</Block>
+
+      <Cell size={[8, 2, 3, 4, 6, 6]}>
+        <Block>[8, 2, 3, 4, 6, 6]</Block>
       </Cell>
-      <Cell size={[3]}>
-        <Block>8: 3</Block>
+
+      <Cell size={[null, null, null, null, null, 6]}>
+        <Block>[1, 2, 3, 4, 6, 6]</Block>
+      </Cell>
+
+      <Cell size={[2]}>
+        <Block>[2, 2, 3, 4, 6, 12]</Block>
       </Cell>
     </Row>
-  </Cell>
-  <Cell size={[3]}>
-    <Block>3</Block>
-  </Cell>
-</Row>`
-        } />
-      </Preformatted>
-
-
-      <Title.H2>Cell</Title.H2>
-
-      <Row>
-        <Cell size={[8, 2, 3, 4, 6, 6]}>
-          <Block>[8, 2, 3, 4, 6, 6]</Block>
-        </Cell>
-      </Row>
-
-      <Preformatted>
-        <Hightlight code={
-`<Row>
-  <Cell size={[8, 2, 3, 4, 6, 6]}>
-    <Block>[8, 2, 3, 4, 6, 6]</Block>
-  </Cell>
-</Row>`
-        } />
-      </Preformatted>
-
+  ))
+  .addWithJSX('nested structure', () => (
+    <Row style={{ border: '2px solid red' }}>
+      <Cell>
+        <Block>1</Block>
+      </Cell>
+      <Cell size={[8]}>
+        <Row style={{ border: '2px dashed green' }}>
+          <Cell size={[6]}>
+            <Block>8: 6</Block>
+          </Cell>
+          <Cell size={[3]}>
+            <Block>8: 3</Block>
+          </Cell>
+          <Cell size={[3]}>
+            <Block>8: 3</Block>
+          </Cell>
+        </Row>
+      </Cell>
+      <Cell size={[3]}>
+        <Block>3</Block>
+      </Cell>
+    </Row>
+  ))
+  .addWithJSX('cell', () => (
+    <Row>
+      <Cell size={[8, 2, 3, 4, 6, 6]}>
+        <Block>[8, 2, 3, 4, 6, 6]</Block>
+      </Cell>
+    </Row>
+  ))
+  .add('NOTE', () => (
+    <div>
       <Title.H3>Default values</Title.H3>
 
       <Preformatted>

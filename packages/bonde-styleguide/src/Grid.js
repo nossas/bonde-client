@@ -8,6 +8,8 @@ const Row = styled.div`
   grid-gap: 20px;
 `
 
+Row.displayName = 'Row'
+
 const Cell = styled.div`
   display: grid;
   grid-column: span 12;
@@ -20,6 +22,8 @@ const Cell = styled.div`
   @media (min-width: 1025px) { grid-column: span ${props => props.size[1] || 2}; }
   @media (min-width: 1281px) { grid-column: span ${props => props.size[0] || 1}; }
 `
+
+Cell.displayName = 'Cell'
 
 Cell.propTypes = {
   size: PropTypes.array.isRequired

@@ -1,6 +1,5 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
 import Wrapper from './Wrapper'
 import Tabs, { Tab } from '../src/Tabs'
 
@@ -10,15 +9,15 @@ storiesOf('Tabs', module)
       {story()}
     </Wrapper>
   ))
-  .add('default', () => (
+  .addWithJSX('default', () => (
     <Tabs>
-      <Tab onClick={action('clicked Dashboard')}>Dashboard</Tab>
-      <Tab onClick={action('clicked Mobilizações')}>Mobilizações</Tab>
+      <Tab>Dashboard</Tab>
+      <Tab>Mobilizações</Tab>
     </Tabs>
   ))
-  .add('with Tab active', () => (
+  .addWithJSX('with Tab active', () => (
     <Tabs>
-      <Tab active onClick={action('clicked Dashboard')}>Dashboard</Tab>
-      <Tab onClick={action('clicked Mobilizações')}>Mobilizações</Tab>
+      <Tab active>Dashboard</Tab>
+      <Tab>Mobilizações</Tab>
     </Tabs>
   ))
