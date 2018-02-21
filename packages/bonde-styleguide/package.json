@@ -35,7 +35,8 @@
     "babel-core": "^6.26.0",
     "nwb": "0.21.x",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "storybook-addon-jsx": "^5.3.0"
   },
   "author": "",
   "homepage": "",
