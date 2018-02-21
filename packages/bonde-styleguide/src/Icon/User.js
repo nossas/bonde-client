@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default ({ color, size }) => (
+const Icon = ({ color, size }) => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
     width={size || '7'}
@@ -16,3 +16,7 @@ export default ({ color, size }) => (
     </g>
   </svg>
 )
+
+Icon.displayName = 'Icon.User'
+
+export default Icon

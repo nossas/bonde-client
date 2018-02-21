@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default ({ color, size }) => (
+const Icon = ({ color, size }) => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
     width={size || '10'}
@@ -17,3 +17,7 @@ export default ({ color, size }) => (
     />
   </svg>
 )
+
+Icon.displayName = 'Icon.Times'
+
+export default Icon
