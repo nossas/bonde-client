@@ -25,7 +25,7 @@ const Avatar = styled.div`
   background-position: center center;
   border-radius: 50%;
   position: absolute;
-  background-image: url(${({ image }) => image || ''});
+  background-image: url(${({ avatar }) => avatar || ''});
   width: ${vars.avatarSize};
   height: ${vars.avatarSize};
   left: ${vars.padding};
@@ -35,7 +35,7 @@ const Avatar = styled.div`
     display: none;
   `}
 
-  ${({ image, label }) => !image && `
+  ${({ avatar, label }) => !avatar && `
     &:before {
       content: '${label.slice(0, 1).toUpperCase()}';
       display: flex;
@@ -105,6 +105,7 @@ const { string, bool } = PropTypes
 List.Item.propTypes = {
   label: string.isRequired,
   description: string.isRequired,
+  avatar: string,
   noavatar: bool
 }
 
