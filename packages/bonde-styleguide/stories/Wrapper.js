@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 
-export default styled.div`{
+const Wrapper = styled.div`{
   position: ${props => props.position || 'fixed'};
   padding: ${props => props.padding || '0'};
   width: ${props => props.width ? `${props.width}` : '100%'};
@@ -14,3 +14,7 @@ export default styled.div`{
   background-color: ${props => props.bg || '#fff'};
   font-family: Nunito Sans, Source Sans Pro, Arial;
 }`
+
+Wrapper.displayName = 'Wrapper'
+
+export default Wrapper
