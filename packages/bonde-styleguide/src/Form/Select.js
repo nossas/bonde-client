@@ -1,4 +1,8 @@
 import React from 'react'
 import Input from './Input'
 
-export default Input.withComponent('select')
+const Select = Input.withComponent('select')
+
+Select.displayName = 'Select'
+
+export default Select

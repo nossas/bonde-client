@@ -1,71 +1,60 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
+import { withKnobs, boolean, text, select } from '@storybook/addon-knobs/react'
 import Wrapper from './Wrapper'
 import { ControlLabel, Input, Select, Checkbox, Radio } from '../src/Form'
 
-storiesOf('Form/Input', module)
-  .addDecorator(story => (
-    <Wrapper>
-      {story()}
-    </Wrapper>
-  ))
-  .addWithJSX('default', () => <Input placeholder='Placeholder' />)
-  .addWithJSX('invalid', () => (
-    <Input value='username@g' onChange={action('onChange')} invalid />
-  ))
-  .addWithJSX('disabled', () => <Input value='username@bonde.org' disabled />)
+const withLayoutCentralized = (story) => <Wrapper>{story()}</Wrapper>
 
-storiesOf('Form/ControlLabel', module)
-  .addDecorator(story => (
-    <Wrapper>
-      {story()}
-    </Wrapper>
+storiesOf('Form', module)
+  .addDecorator(withKnobs)
+  .addDecorator(withLayoutCentralized)
+  .addWithJSX('Input', () => (
+    <Input
+      placeholder={text('Placeholder', 'Placeholder')}
+      value={text('Value', '')}
+      invalid={boolean('Invalid', false)}
+      disabled={boolean('Disabled', false)}
+    />
   ))
-  .addWithJSX('default', () => <ControlLabel>Label</ControlLabel>)
-
-storiesOf('Form/Select', module)
-  .addDecorator(story => (
-    <Wrapper>
-      {story()}
-    </Wrapper>
+  .addWithJSX('ControlLabel', () => (
+    <ControlLabel>{text('Children', 'Label')}</ControlLabel>
   ))
-  .addWithJSX('default', () => (
-    <Select>
-      <option>Selecione</option>
-    </Select>
+  .addWithJSX('Select', () => {
+    const options = {
+      'empty': '',
+      'opt1': 'First',
+      'opt2': 'Second'
+    }
+    const value = select('Value', options, 'empty', 'SelectGroupID')
+    return (
+      <Select
+        value={value}
+        invalid={boolean('Invalid', false)}
+        disabled={boolean('Disabled', false)}
+      >
+        <option value='empty'>Select</option>
+        <option value='opt1'>First</option>
+        <option value='opt2'>Second</option>
+      </Select>
+    )
+  })
+  .addWithJSX('Checkbox', () => (
+    <Checkbox
+      checked={boolean('Checked', false)}
+      readOnly={boolean('ReadOnly', false)}
+      disabled={boolean('Disabled', false)}
+    >
+      {text('Children', 'Checkbox')}
+    </Checkbox>
   ))
-  .addWithJSX('invalid', () => (
-    <Select invalid>
-      <option>Selecione</option>
-    </Select>
+  .addWithJSX('Radio', () => (
+    <Radio
+      checked={boolean('Checked', false)}
+      readOnly={boolean('ReadOnly', false)}
+      disabled={boolean('Disabled', false)}
+    >
+      {text('Children', 'Radio')}
+    </Radio>
   ))
-  .addWithJSX('disabled', () => (
-    <Select value='1' disabled>
-      <option>Selecione</option>
-      <option value='1'>Value 1</option>
-    </Select>
-  ))
-
-storiesOf('Form/Checkbox', module)
-  .addDecorator(story => (
-    <Wrapper>
-      {story()}
-    </Wrapper>
-  ))
-  .addWithJSX('default', () => <Checkbox>Checkbox</Checkbox>)
-  .addWithJSX('checked', () => <Checkbox checked readOnly>Checkbox</Checkbox>)
-  .addWithJSX('disabled', () => <Checkbox disabled>Checkbox</Checkbox>)
-  .addWithJSX('checked and disabled', () => <Checkbox checked disabled>Checkbox</Checkbox>)
-
-storiesOf('Form/Radio', module)
-  .addDecorator(story => (
-    <Wrapper>
-      {story()}
-    </Wrapper>
-  ))
-  .addWithJSX('default', () => <Radio>Radio</Radio>)
-  .addWithJSX('checked', () => <Radio checked readOnly>Radio</Radio>)
-  .addWithJSX('disabled', () => <Radio disabled>Radio</Radio>)
-  .addWithJSX('checked and disabled', () => <Radio checked disabled>Radio</Radio>)
-

@@ -9,9 +9,7 @@ const Radio = Checkbox.withComponent(
       <div className='box' />
     </label>
   )
-)
-
-export default Radio.extend`
+).extend`
 & .box {
   position: absolute;
   top: 2px;
@@ -48,5 +46,8 @@ export default Radio.extend`
 & input:disabled:checked ~ .box:after {
   display: block;
   background: #d1cdd2;
-}
-`
+}`
+
+Radio.displayName = 'Radio'
+
+export default Radio

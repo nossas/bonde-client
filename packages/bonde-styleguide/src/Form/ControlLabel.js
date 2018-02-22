@@ -11,4 +11,6 @@ const Label = styled.label`{
   text-transform: uppercase;
 }`
 
+Label.displayName = 'Label'
+
 export default Label
