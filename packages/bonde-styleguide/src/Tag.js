@@ -31,11 +31,15 @@ const Content = styled.span`
   }
 `
 
-export default ({ children, checked, text, ...props }) => (
+const Tag = ({ children, checked, text, name }) => (
   <label>
-    <Checkbox {...props} defaultChecked={checked} />
+    <Checkbox checked={checked} name={name} />
     <Content>
       {text}
     </Content>
   </label>
 )
+
+Tag.displayName = 'Tag'
+
+export default Tag

@@ -1,18 +1,20 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
+import { withKnobs, boolean, text } from '@storybook/addon-knobs/react'
+
 import Wrapper from './Wrapper'
 import Tag from '../src/Tag'
 
 storiesOf('Tag', module)
-  .addDecorator(story => (
-    <Wrapper>
-      {story()}
-    </Wrapper>
+  .addDecorator(withKnobs)
+  .addDecorator(story => <Wrapper>{story()}</Wrapper>)
+  .addWithJSX('default', () => (
+    <Tag
+      text={text('Text', 'Tag')}
+      checked={boolean('Checked', false)}
+    />
   ))
-  .add('Default', () => <Tag text='Default' />)
-  .add('checked', () => <Tag text='Checked' checked />)
-  .add('list of tags', () => (
+  .addWithJSX('list of tags', () => (
     [
       { id: 1, checked: false },
       { id: 2, checked: false },
@@ -21,13 +23,11 @@ storiesOf('Tag', module)
       { id: 5, checked: true },
       { id: 6, checked: false }
     ].map(({ id, checked }) => (
-      <React.Fragment key={id}>
-        <Tag
-          text={`Item ${id}`}
-          name={`selectedTags[${id}]`}
-          checked={checked}
-          onChange={action('onChange')}
-        />
-      </React.Fragment>
+      <Tag
+        key={id}
+        text={`Item ${id}`}
+        name={`selectedTags[${id}]`}
+        checked={checked}
+      />
     ))
   ))
