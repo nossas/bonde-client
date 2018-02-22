@@ -13119,10 +13119,82 @@ exports.default = NavbarForm;
 
 /***/ }),
 
-/***/ "./components/navigation/sidenav/logo-icon-no-border.svg":
+/***/ "./components/navigation/sidenav/logo-icon-no-border.js":
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "../static/fonts/logo-icon-no-border.svg";
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _jsx = function () { var REACT_ELEMENT_TYPE = typeof Symbol === "function" && Symbol.for && Symbol.for("react.element") || 0xeac7; return function createRawReactElement(type, props, key, children) { var defaultProps = type && type.defaultProps; var childrenLength = arguments.length - 3; if (!props && childrenLength !== 0) { props = {}; } if (props && defaultProps) { for (var propName in defaultProps) { if (props[propName] === void 0) { props[propName] = defaultProps[propName]; } } } else if (!props) { props = defaultProps || {}; } if (childrenLength === 1) { props.children = children; } else if (childrenLength > 1) { var childArray = Array(childrenLength); for (var i = 0; i < childrenLength; i++) { childArray[i] = arguments[i + 3]; } props.children = childArray; } return { $$typeof: REACT_ELEMENT_TYPE, type: type, key: key === undefined ? null : '' + key, ref: null, props: props, _owner: null }; }; }();
+
+var _react = __webpack_require__("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__("prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _ref2 = _jsx('g', {
+  transform: 'matrix(1.66704 0 0 1.66704 -60 -60.6)'
+}, void 0, _jsx('g', {}, void 0, _jsx('g', {}, void 0, _jsx('path', {
+  d: 'm 128.9,112.7 c 0,17.6 -14.3,29 -32,29 l -41.6,0 0,-99.1 38.8,0 c 17.3,0 31.3,11.2 31.3,28.3 0,8.2 -3.3,14.7 -8.6,19.4 7.3,4.7 12.1,12.3 12.1,22.4 z M 78,63.8 l 0,17.6 16.1,0 c 5.1,0 8.6,-3.7 8.6,-8.8 0,-5.1 -3.4,-8.8 -8.6,-8.8 0,0 -16.1,0 -16.1,0 z m 28.3,47.2 c 0,-5.5 -3.7,-9.5 -9.3,-9.5 l -19,0 0,19 19,0 c 5.6,0 9.3,-4 9.3,-9.5 z'
+})), _jsx('g', {}, void 0, _jsx('path', {
+  d: 'm 127.2,111.6 c 0,17.6 -14.3,29 -32,29 l -41.7,0 0,-99.1 38.8,0 c 17.3,0 31.3,11.2 31.3,28.3 0,8.2 -3.3,14.7 -8.6,19.4 7.3,4.7 12.2,12.3 12.2,22.4 z m -51,-48.8 0,17.6 16.1,0 c 5.1,0 8.6,-3.7 8.6,-8.8 0,-5.1 -3.4,-8.8 -8.6,-8.8 l -16.1,0 z m 28.3,47.1 c 0,-5.5 -3.7,-9.5 -9.3,-9.5 l -19,0 0,19 19,0 c 5.6,0 9.3,-4 9.3,-9.5 z'
+})), _jsx('g', {}, void 0, _jsx('path', {
+  d: 'm 125.4,110.5 c 0,17.6 -14.3,29 -32,29 l -41.6,0 0,-99.1 38.8,0 c 17.3,0 31.3,11.2 31.3,28.3 0,8.2 -3.3,14.7 -8.6,19.4 7.3,4.7 12.1,12.3 12.1,22.4 z m -51,-48.8 0,17.6 16.1,0 c 5.1,0 8.6,-3.7 8.6,-8.8 0,-5.1 -3.4,-8.8 -8.6,-8.8 l -16.1,0 z m 28.3,47.1 c 0,-5.5 -3.7,-9.5 -9.3,-9.5 l -19,0 0,19 19,0 c 5.7,0 9.3,-4 9.3,-9.5 z'
+})), _jsx('g', {}, void 0, _jsx('path', {
+  d: 'm 130.7,113.8 c 0,17.6 -14.3,29 -32,29 l -41.6,0 0,-99.1 38.8,0 c 17.3,0 31.3,11.2 31.3,28.3 0,8.2 -3.3,14.7 -8.6,19.4 7.3,4.7 12.1,12.3 12.1,22.4 z m -51,-48.9 0,17.6 16.1,0 c 5.1,0 8.6,-3.7 8.6,-8.8 0,-5.1 -3.4,-8.8 -8.6,-8.8 l -16.1,0 0,0 z m 28.3,47.2 c 0,-5.5 -3.7,-9.5 -9.3,-9.5 l -19,0 0,19 19,0 c 5.7,0 9.3,-4 9.3,-9.5 z'
+})), _jsx('g', {}, void 0, _jsx('path', {
+  d: 'm 123.6,109.4 c 0,17.6 -14.3,29 -32,29 l -41.6,0 0,-99.1 38.8,0 c 17.3,0 31.3,11.2 31.3,28.3 0,8.2 -3.3,14.7 -8.6,19.4 7.3,4.7 12.1,12.4 12.1,22.4 z m -50.9,-48.8 0,17.6 16.1,0 c 5.1,0 8.6,-3.7 8.6,-8.8 0,-5.1 -3.4,-8.8 -8.6,-8.8 0,0 -16.1,0 -16.1,0 z m 28.3,47.1 c 0,-5.5 -3.7,-9.5 -9.3,-9.5 l -19,0 0,19 19,0 c 5.6,0 9.3,-4 9.3,-9.5 z'
+})), _jsx('g', {}, void 0, _jsx('path', {
+  d: 'm 121.9,108.3 c 0,17.6 -14.3,29 -32,29 l -41.6,0 0,-99 38.7,0 c 17.3,0 31.3,11.2 31.3,28.3 0,8.2 -3.3,14.7 -8.6,19.4 7.4,4.6 12.2,12.3 12.2,22.3 z m -51,-48.8 0,17.6 16.1,0 c 5.1,0 8.6,-3.7 8.6,-8.8 0,-5.1 -3.4,-8.8 -8.6,-8.8 0,0 -16.1,0 -16.1,0 z m 28.3,47.1 c 0,-5.5 -3.7,-9.5 -9.3,-9.5 l -19,0 0,19 19,0 c 5.6,0 9.3,-3.9 9.3,-9.5 z'
+})), _jsx('g', {}, void 0, _jsx('path', {
+  d: 'm 120.1,107.3 c 0,17.6 -14.3,29 -32,29 l -41.6,0 0,-99.1 38.8,0 c 17.3,0 31.3,11.2 31.3,28.3 0,8.2 -3.3,14.7 -8.6,19.4 7.3,4.7 12.1,12.3 12.1,22.4 z m -51,-48.9 0,17.6 16.1,0 c 5.1,0 8.6,-3.7 8.6,-8.8 0,-5.1 -3.4,-8.8 -8.6,-8.8 l -16.1,0 z m 28.4,47.2 c 0,-5.5 -3.7,-9.5 -9.3,-9.5 l -19,0 0,19 19,0 c 5.6,-0.1 9.3,-4 9.3,-9.5 z'
+}))), _jsx('g', {}, void 0, _jsx('polygon', {
+  points: '57.9,144.4 58.8,140.6 47.5,133.4 46.5,132.8 46.5,136.3'
+})), _jsx('g', {}, void 0, _jsx('polygon', {
+  fill: '#fff',
+  points: '58.8,110.8 58.8,106.8 47.5,99.6 46.5,99 46.5,102.7'
+})), _jsx('g', {}, void 0, _jsx('polygon', {
+  fill: '#fff',
+  points: '58.8,103.9 58.8,90.8 47.5,83.6 46.5,83 46.5,96.2'
+})), _jsx('g', {}, void 0, _jsx('polygon', {
+  fill: '#fff',
+  points: '46.5,37.2 51.8,37.2 66,44.3 59.8,44.3'
+})), _jsx('g', {}, void 0, _jsx('path', {
+  fill: '#fcfafa',
+  d: 'm 132.4,114.4 c 0,17.6 -14.3,29 -32,29 l -41.6,0 0,-99.1 38.8,0 c 17.3,0 31.3,11.2 31.3,28.3 0,8.2 -3.3,14.7 -8.6,19.4 7.3,4.7 12.1,12.4 12.1,22.4 z m -50.9,-48.8 0,17.6 16.1,0 c 5.1,0 8.6,-3.7 8.6,-8.8 0,-5.1 -3.4,-8.8 -8.6,-8.8 l -16.1,0 z m 28.3,47.1 c 0,-5.5 -3.7,-9.5 -9.3,-9.5 l -19,0 0,19 19,0 c 5.6,0 9.3,-4 9.3,-9.5 z'
+}), _jsx('path', {
+  d: 'm 100.4,144.5 -42.6,0 0,-101.2 39.8,0 c 18.7,0 32.3,12.4 32.3,29.4 0,7.6 -2.8,14.3 -8,19.3 7.4,5.2 11.5,13.1 11.5,22.5 0.1,17.3 -13.8,30 -33,30 z m -40.5,-2.1 40.6,0 c 17.9,0 30.9,-11.8 30.9,-28 0,-9.1 -4.2,-16.7 -11.7,-21.5 l -1.2,-0.8 1.1,-0.9 c 5.4,-4.7 8.3,-11.1 8.3,-18.6 0,-15.8 -12.7,-27.3 -30.2,-27.3 l -37.8,0 0,97.1 z m 40.5,-19.1 -20,0 0,-21.1 20,0 c 6.1,0 10.4,4.3 10.4,10.5 0,6.2 -4.2,10.6 -10.4,10.6 z m -17.9,-2.2 17.9,0 c 5,0 8.3,-3.4 8.3,-8.4 0,-5 -3.3,-8.4 -8.3,-8.4 l -17.9,0 c 0,0 0,16.8 0,16.8 z m 15.1,-36.9 -17.2,0 0,-19.7 17.2,0 c 5.7,0 9.7,4 9.7,9.8 0,5.7 -4.1,9.9 -9.7,9.9 z m -15.1,-2.1 15.1,0 c 4.5,0 7.6,-3.2 7.6,-7.7 0,-4.6 -3,-7.7 -7.6,-7.7 l -15.1,0 0,15.4 z'
+})));
+
+var LogoIconNoBorder = function LogoIconNoBorder(_ref) {
+  var size = _ref.size;
+  return _jsx('svg', {
+    xmlns: 'http://www.w3.org/2000/svg',
+    width: size,
+    height: size,
+    viewBox: '0 0 180 180'
+  }, void 0, _ref2);
+};
+
+var oneOfType = _propTypes2.default.oneOfType,
+    string = _propTypes2.default.string,
+    number = _propTypes2.default.number;
+
+
+LogoIconNoBorder.defaultProps = {
+  size: 45
+};
+
+exports.default = LogoIconNoBorder;
 
 /***/ }),
 
@@ -21641,7 +21713,7 @@ var mapActionsToProps = function mapActionsToProps(dispatch, props) {
         name: name,
         menu_hidden: menu_hidden,
         widgets_attributes: widgetsAttributes,
-        position: position + 1
+        position: position
       };
 
       dispatch((0, _actionCreators.asyncAddBlock)(block));
@@ -22175,6 +22247,10 @@ var _paths = __webpack_require__("./paths.js");
 
 var paths = _interopRequireWildcard(_paths);
 
+var _logoIconNoBorder = __webpack_require__("./components/navigation/sidenav/logo-icon-no-border.js");
+
+var _logoIconNoBorder2 = _interopRequireDefault(_logoIconNoBorder);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -22204,6 +22280,14 @@ var _ref4 = _jsx(_reactIntl.FormattedMessage, {
 });
 
 var _ref5 = _jsx('strong', {}, void 0, ' BONDE.');
+
+var _ref6 = _jsx('div', {
+  className: 'col col-2'
+}, void 0, _jsx('a', {
+  href: 'http://www.bonde.org/?utm_source=footer-slogan',
+  className: 'right my2',
+  target: '_blank'
+}, void 0, _jsx(_logoIconNoBorder2.default, {})));
 
 var Mobilization = function (_React$Component) {
   _inherits(Mobilization, _React$Component);
@@ -22372,17 +22456,7 @@ var Mobilization = function (_React$Component) {
         href: 'http://www.bonde.org/?utm_source=footer-logo',
         style: { 'color': '#000', 'textDecoration': 'none', 'lineHeight': '85px' },
         target: '_blank'
-      }, void 0, _ref4, _ref5)), _jsx('div', {
-        className: 'col col-2'
-      }, void 0, _jsx('a', {
-        href: 'http://www.bonde.org/?utm_source=footer-slogan',
-        className: 'right my2',
-        target: '_blank'
-      }, void 0, _jsx('img', {
-        src: __webpack_require__("exenv").canUseDOM ? __webpack_require__("./components/navigation/sidenav/logo-icon-no-border.svg") : '',
-        alt: 'B',
-        style: { width: '45px' }
-      }))))));
+      }, void 0, _ref4, _ref5)), _ref6)));
     }
   }]);
 

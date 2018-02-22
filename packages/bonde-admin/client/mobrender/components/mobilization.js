@@ -6,6 +6,7 @@ import classnames from 'classnames'
 import Block from './block.connected'
 import Navbar from './navbar'
 import * as paths from '~client/paths'
+import LogoIconNoBorder from '~client/components/navigation/sidenav/logo-icon-no-border'
 
 if (require('exenv').canUseDOM) require('./add-new-block.scss')
 
@@ -167,16 +168,9 @@ class Mobilization extends React.Component {
               <a
                 href='http://www.bonde.org/?utm_source=footer-slogan'
                 className='right my2'
-                target='_blank'>
-                <img
-                  src={
-                    require('exenv').canUseDOM
-                    ? require('~client/components/navigation/sidenav/logo-icon-no-border.svg')
-                    : ''
-                  }
-                  alt='B'
-                  style={{ width: '45px' }}
-                />
+                target='_blank'
+              >
+                <LogoIconNoBorder />
               </a>
             </div>
           </div>

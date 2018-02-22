@@ -1,6 +1,5 @@
 import React from 'react'
 import { FormattedMessage, intlShape } from 'react-intl'
-import query from 'querystring'
 import classnames from 'classnames'
 import { Loading } from '~client/components/await'
 import { Background } from '~client/components/layout'
@@ -94,7 +93,8 @@ class SubscriptionEditPage extends React.Component {
       setModificationType,
       intl,
       loading,
-      data
+      data,
+      query
     } = this.props
 
     const initialValues = {
@@ -168,6 +168,7 @@ class SubscriptionEditPage extends React.Component {
 
             <p className='link--cancel center mt3 lightgray link'>
               <a
+                style={{ color: '#999999' }}
                 onClick={() => {
                   const message = intl.formatMessage({
                     id: 'page--subscription-edit.cancel-subscription.confirm',

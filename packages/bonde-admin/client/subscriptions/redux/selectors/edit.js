@@ -8,6 +8,7 @@ export default state => {
     getCard: () => (
       edit.data &&
       edit.data.last_donation &&
+      edit.data.last_donation.gateway_data &&
       edit.data.last_donation.gateway_data.card
     )
   }

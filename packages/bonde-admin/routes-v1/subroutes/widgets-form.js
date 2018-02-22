@@ -32,8 +32,8 @@ class WidgetsForm extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  const selectors = MobSelectors(state)
+const mapStateToProps = (state, props) => {
+  const selectors = MobSelectors(state, props)
 
   return {
     mobilization: selectors.getMobilization(),

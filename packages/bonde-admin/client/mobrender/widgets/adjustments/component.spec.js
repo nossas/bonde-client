@@ -3,7 +3,7 @@ import { expect } from 'chai'
 
 import * as mock from '~client/utils/mock'
 import { shallowWithIntl } from '~root/intl/helpers'
-import Page from './component'
+import { AdjustmentsSettingsForm as Page } from './component'
 
 describe('client/mobrender/widgets/adjustments/component', () => {
   let wrapper

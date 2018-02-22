@@ -83,7 +83,15 @@ export default (state, props) => ({
 
   getWidget: (id) => {
     const { widgets: { data, currentId } } = state.mobilizations
-    return data.filter(w => w.id === currentId || id)[0]
+    let pkey
+    if (props && props.match.params && props.match.params.widget_id) {
+      pkey = parseInt(props.match.params.widget_id)
+    } else if (id) {
+      pkey = id
+    } else {
+      pkey = currentId
+    }
+    return data.filter(w => w.id === pkey)[0]
   },
 
   mobilizationIsNeedReload: () => {

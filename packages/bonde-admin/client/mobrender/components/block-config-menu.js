@@ -9,7 +9,6 @@ export const EDIT_KEY = 'background'
 const BlockConfigMenu = ({
   block,
   update,
-  duplicate,
   destroy,
   onEdit,
   canMoveUp,
@@ -28,15 +27,8 @@ const BlockConfigMenu = ({
     buttonClassName='btn bg-darken-4 white rounded'
     icon='cog'
   >
-    <DropdownMenuItem className='btn' onClick={() => duplicate(block)}>
-      <span>
-        <i className='fa fa-clone' />{' '}
-        <FormattedMessage
-          id='mobrender.components--block-config-menu.item.duplicate'
-          defaultMessage='Duplicar bloco'
-        />
-      </span>
-    </DropdownMenuItem>
+    {/* TODO: Funcionalidade de 'Duplicar bloco' foi desabilitada até que a estrategia
+       de desenvolvimento esteja definida. */}
     <DropdownMenuItem
       className='btn'
       onClick={() => onEdit(`${EDIT_KEY}-${block.id}`)}

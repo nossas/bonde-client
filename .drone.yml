@@ -56,6 +56,19 @@ pipeline:
       status: success
       branch: [hotfix-*, release-*, feature-*, develop]
 
+  publish-styleguide-staging:
+    image: plugins/docker
+    repo: nossas/bonde-styleguide
+    group: publishing
+    secrets: [ docker_username, docker_password ]
+    dockerfile: packages/bonde-styleguide/Dockerfile
+    context: packages/bonde-styleguide/
+    tags:
+      - ${DRONE_BRANCH}
+    when:
+      status: success
+      branch: [hotfix-*, release-*, feature-*, develop]
+
   # deploy-admin-staging:
   #   image: nossas/s3cmd
   #   group: concurrent
@@ -87,6 +100,19 @@ pipeline:
     url: http://cluster.bonde.org
     service: staging/client-non-ssl
     docker_image: nossas/bonde-public:${DRONE_BRANCH}
+    timeout: 360
+    confirm: true
+    secrets: [ rancher_access_key, rancher_secret_key ]
+    when:
+      status: success
+      branch: [hotfix-*, release-*, feature-*, develop]
+
+  deploy-staging-styleguide:
+    image: peloton/drone-rancher
+    group: deploying
+    url: http://cluster.bonde.org
+    service: staging/styleguide
+    docker_image: nossas/bonde-styleguide:${DRONE_BRANCH}
     timeout: 360
     confirm: true
     secrets: [ rancher_access_key, rancher_secret_key ]
@@ -141,10 +167,10 @@ pipeline:
 
   deploy-production:
     image: peloton/drone-rancher
-    group: deploying
+    group: deploying_prod
     url: http://cluster.bonde.org
     service: bonde/client
-    docker_image: nossas/bonde-admin:${DRONE_TAG##v}
+    docker_image: "nossas/bonde-admin:${DRONE_TAG##v}"
     timeout: 360
     confirm: true
     secrets: [ rancher_access_key, rancher_secret_key ]
@@ -154,10 +180,10 @@ pipeline:
 
   deploy-production-non-ssl:
     image: peloton/drone-rancher
-    group: deploying
+    group: deploying_prod
     url: http://cluster.bonde.org
     service: bonde/client-non-ssl
-    docker_image: nossas/bonde-public:${DRONE_TAG##v}
+    docker_image: "nossas/bonde-public:${DRONE_TAG##v}"
     timeout: 360
     confirm: true
     secrets: [ rancher_access_key, rancher_secret_key ]
