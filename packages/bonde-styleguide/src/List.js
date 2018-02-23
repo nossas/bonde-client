@@ -152,11 +152,7 @@ List.Item.defaultProps = {
   noavatar: false
 }
 
-
 List.displayName = 'List'
-List.Item.displayName = 'ListItem'
-Avatar.displayName = 'ListAvatar'
-Label.displayName = 'ListLabel'
-Description.displayName = 'ListDescription'
+List.Item.displayName = 'List.Item'
 
 export default List

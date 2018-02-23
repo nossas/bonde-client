@@ -7,6 +7,9 @@ import Wrapper from './Wrapper'
 import { Row, Cell } from '../src/Grid'
 import { Title, Button, Card, Text } from '../src'
 import * as IconColorful from '../src/IconColorful'
+import Feed from '../src/Feed'
+
+const now = new Date
 
 storiesOf('Card', module)
   .addDecorator(story => (
@@ -73,13 +76,22 @@ storiesOf('Card', module)
       <Cell size={[4, 4, 6, 6, 12, 12]}>
         <Card
           title='Notificações'
-          paddingY='35px'
-          centralized
+          paddingY='0'
+          paddingX='0'
         >
-          <center>
-            Implement List Component<br />
-            ...
-          </center>
+          <Feed>
+            <Feed.Item
+              date={new Date}
+              text='Juntos causamos mais! Por isso, o primeiro passo é criar uma comunidade.'
+            />
+            <Feed.Item
+              date={now.setMinutes(now.getMinutes() - 1)}
+              text={
+                'Esse é seu Bonde, Maria! Bem-vinda! Qualquer dúvida é só clicar em ' +
+                '"ajuda eu" ali embaixo. #tamojunto'
+              }
+            />
+          </Feed>
         </Card>
       </Cell>
     </Row>
