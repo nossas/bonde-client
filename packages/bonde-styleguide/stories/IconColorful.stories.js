@@ -7,6 +7,7 @@ import * as IconColorful from '../src/IconColorful'
 storiesOf('IconColorful', module)
   .addDecorator(story => <Wrapper>{story()}</Wrapper>)
   .addWithJSX('Abc', () => <IconColorful.Abc />)
+  .addWithJSX('Bonde', () => <IconColorful.Bonde size={200} />)
   .addWithJSX('Code', () => <IconColorful.Code />)
   .addWithJSX('Community', () => <IconColorful.Community />)
   .addWithJSX('DollarSign', () => <IconColorful.DollarSign />)

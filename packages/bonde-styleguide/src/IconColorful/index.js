@@ -1,4 +1,5 @@
 export { default as Abc } from './Abc'
+export { default as Bonde } from './Bonde'
 export { default as Code } from './Code'
 export { default as Community } from './Community'
 export { default as DollarSign } from './DollarSign'
