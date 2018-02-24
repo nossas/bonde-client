@@ -4,6 +4,21 @@ import { Button } from '../src'
 
 const FooterContent = styled.div`{
   flex-grow: 1;
+  padding: 0 0 0 84.7px;
+
+  & a {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin-right: 35px;
+    color: #fff;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }`
 
 const Footer = styled(({ children, className, btnHelpLabel, btnHelpClick }) => (

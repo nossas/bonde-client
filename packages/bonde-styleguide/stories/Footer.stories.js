@@ -11,5 +11,8 @@ storiesOf('Footer', module)
     <Footer
       btnHelpLabel={text('Help Label', 'Ajuda eu')}
       btnHelpClick={onHelpClick}
-    />
+    >
+      <a href='#' title='Sobre'>Sobre</a>
+      <a href='#' title='Contato'>Contato</a>
+    </Footer>
   ))
