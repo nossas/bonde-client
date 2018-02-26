@@ -18,7 +18,7 @@ const Navbar = styled(({
   <div className={className}>
     {HomePageIcon && (
       <a className='homePageLink' href={homePageUrl || '#'} title={homePageTitle}>
-        <HomePageIcon />
+        <HomePageIcon size={16} />
       </a>
     )}
     <NavContainer>
