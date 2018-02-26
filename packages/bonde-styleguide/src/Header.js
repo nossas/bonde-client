@@ -3,12 +3,30 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import * as Icon from './Icon'
 import Title from './Title'
-import Dropdown, {
-  Item as DropdownItem,
-  Header as DropdownHeader
-} from '../src/Dropdown'
 
-const Navbar = styled.div`{
+const Container = styled.div`{
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+}`
+
+const Header = styled(({
+  children,
+  className,
+  pageTitle,
+  navbar: Navbar,
+  actionButton: ActionButton,
+  tabNavigation: Tabs
+}) => (
+  <div className={className}>
+    {Navbar && <Navbar />}
+    <Container>
+      {pageTitle && <Title.H3 color='#fff'>{pageTitle}</Title.H3>}
+      {ActionButton && <ActionButton />}
+    </Container>
+    {Tabs && <Tabs />}
+  </div>
+))`{
   position: relative;
   width: inherit;
   min-height: 80px;
@@ -16,49 +34,6 @@ const Navbar = styled.div`{
   padding: 28px 155px 0;
 }`
 
-const Nav = styled.nav`{
-  display: flex;
-  align-items: center;
-  margin: 28px 0 22px;
-  align-items: center;
-  justify-content: space-between;
-}`
-
-const UserDropdown = ({ user }) => {
-  
-  const fullName = user.last_name
-    ?`${user.first_name} ${user.last_name}`
-    : user.first_name
-
-  return (
-    <Dropdown label={fullName} icon={Icon.Sound} width={190}>
-      <DropdownHeader>
-        <img src={user.avatar} alt={fullName} />
-        <span>{fullName}</span>
-      </DropdownHeader>
-      <DropdownItem>
-        <Icon.User /> Perfil
-      </DropdownItem>
-      <DropdownItem>
-        <Icon.Times /> Sair
-      </DropdownItem>
-    </Dropdown>
-  )
-}
-
-const Header = ({ children, pageTitle, user }) => (
-  <Navbar>
-    <Nav>
-      <a href='#' title='Bonde.org'>
-        <Icon.Bonde />
-      </a>
-      {user && <UserDropdown user={user} />}
-    </Nav>
-    <div>
-      {pageTitle && <Title.H3 color='#fff'>{pageTitle}</Title.H3>}
-      {children}
-    </div>
-  </Navbar>
-)
+Header.displayName = 'Header'
 
 export default Header
