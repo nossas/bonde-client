@@ -93,8 +93,13 @@ const Dropdown = styled.div`{
 const Flexbox = styled.div`{
   width: inherit;
   display: flex;
+  flex-grow: 1;
   justify-content: space-between;
   align-items: center;
+
+  & > svg {
+    margin-right: 15px;
+  }
 }`
 
 
@@ -115,7 +120,7 @@ export default class extends React.Component {
     return (
       <Dropdown width={width}>
         <Flexbox>
-          {Icon && <Icon width={16} height={14} color='#fff' />}
+          {Icon && <Icon size={16} color='#fff' />}
           <button type='button' onClick={this.toggleMenu.bind(this)}> 
             <span>{this.props.label}</span>
             {show ? <AngleRight color='#fff' /> : <AngleDown color='#fff' />}
