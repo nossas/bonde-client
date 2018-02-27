@@ -32,6 +32,12 @@ const Card = styled.div`
   background-color: ${props => props.background};
   min-height: ${props => defaultPX(props.minHeight)};
   max-height: ${props => defaultPX(props.maxHeight)};
+  
+  padding-top: ${props => !props.image ? props.paddingY : 0};
+  padding-bottom: ${props => !props.image ? props.paddingY : 0};
+  padding-left: ${props => !props.image ? props.paddingX : 0};
+  padding-right: ${props => !props.image ? props.paddingX : 0};
+  
   ${props => props.bottom && `
     display: flex;
     align-items: flex-end;
@@ -70,10 +76,12 @@ const Image = styled.div`
 const Content = styled.div`
   width: 100%;
   height: calc(100% - (${props => props.paddingY} * 2));
-  padding-top: ${props => props.paddingY};
-  padding-bottom: ${props => props.paddingY};
-  padding-left: ${props => props.paddingX};
-  padding-right: ${props => props.paddingX};
+  
+  padding-top: ${props => props.image && props.paddingY};
+  padding-bottom: ${props => props.image && props.paddingY};
+  padding-left: ${props => props.image && props.paddingX};
+  padding-right: ${props => props.image && props.paddingX};
+  
   ${props => props.centralized && `
     display: flex;
     justify-content: center;
@@ -104,8 +112,8 @@ Title.defaultProps = {
 
 Card.propTypes = {
   background: string.isRequired,
-  minHeight: PropTypes.string.isRequired,
-  maxHeight: PropTypes.string.isRequired
+  minHeight: PropTypes.any.isRequired,
+  maxHeight: PropTypes.any.isRequired
 }
 
 Card.defaultProps = {
@@ -120,13 +128,13 @@ Content.propTypes = {
   paddingX: string.isRequired,
 }
 
-Content.defaultProps = {
+CardWrapper.displayName = 'Card'
+
+CardWrapper.defaultProps = {
   centralized: false,
   paddingY: '16px',
   paddingX: '16px',
 }
-
-CardWrapper.displayName = 'Card'
 
 CardWrapper.propTypes = {
   title: string
