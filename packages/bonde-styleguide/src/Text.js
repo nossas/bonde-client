@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const Text = styled.p`{
   font-family: 'Nunito Sans', sans-serif;
-  font-size: 18px; 
+  font-size: ${props => props.fontSize ? `${props.fontSize}px` : '18px'}; 
   font-weight: normal;
   line-height: 1.39;
   color: ${props => props.color || '#000'};
