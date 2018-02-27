@@ -2,6 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+const defaultPX = (value) => {
+  if (typeof value === 'number') {
+    return `${value}px`
+  }
+  return value
+}
+
 const Title = styled.span`
   display: block;
   font-family: Nunito Sans;
@@ -23,8 +30,12 @@ const Card = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
   background-color: ${props => props.background};
-  min-height: ${props => props.minHeight};
-  max-height: ${props => props.maxHeight};
+  min-height: ${props => defaultPX(props.minHeight)};
+  max-height: ${props => defaultPX(props.maxHeight)};
+  ${props => props.bottom && `
+    display: flex;
+    align-items: flex-end;
+  `}
 
   &::-webkit-scrollbar {
     width: 33px;
@@ -57,6 +68,7 @@ const Image = styled.div`
 `
 
 const Content = styled.div`
+  width: 100%;
   height: calc(100% - (${props => props.paddingY} * 2));
   padding-top: ${props => props.paddingY};
   padding-bottom: ${props => props.paddingY};
@@ -67,7 +79,7 @@ const Content = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-  `}
+  `} 
 `
 
 const CardWrapper = ({ title, children, ...props }) => (
