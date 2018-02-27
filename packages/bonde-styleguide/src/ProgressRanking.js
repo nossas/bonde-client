@@ -107,7 +107,8 @@ ProgressRanking.propTypes = {
 }
 
 ProgressRanking.defaultProps = {
-  color: '#50e3c2'
+  color: '#50e3c2',
+  trackSize: 'xsmall'
 }
 
 ProgressRanking.Item.propTypes = {

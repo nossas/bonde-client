@@ -80,10 +80,10 @@ const FeedText = styled.div`
   color: #333333;
 `
 
-const { oneOfType, string, object } = PropTypes
+const { oneOfType, string, object, number } = PropTypes
 
 Feed.Item.propTypes = {
-  date: oneOfType([string, object]),
+  date: oneOfType([string, object, number]),
   text: string
 }
 
