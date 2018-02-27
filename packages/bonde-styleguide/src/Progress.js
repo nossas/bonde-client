@@ -14,6 +14,7 @@ const sizes = {
 }
 
 const BarTrack = styled.div`
+  display: flex;
   width: 100%;
   overflow: hidden;
   background-color: ${({ trackColor }) => trackColor};

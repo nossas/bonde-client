@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { storiesOf } from '@storybook/react'
 import { withKnobs, number, select, color } from '@storybook/addon-knobs/react'
 
-import Progress, { sizes } from '../src/Progress'
+import Progress from '../src/Progress'
 
 const sizeOptions = {
   xsmall: 'xsmall',
