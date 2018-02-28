@@ -33,14 +33,19 @@ const Card = styled.div`
   min-height: ${props => defaultPX(props.minHeight)};
   max-height: ${props => defaultPX(props.maxHeight)};
   
-  padding-top: ${props => !props.image ? props.paddingY : 0};
-  padding-bottom: ${props => !props.image ? props.paddingY : 0};
-  padding-left: ${props => !props.image ? props.paddingX : 0};
-  padding-right: ${props => !props.image ? props.paddingX : 0};
+  padding-top: ${props => !props.image ? defaultPX(props.paddingY) : 0};
+  padding-bottom: ${props => !props.image ? defaultPX(props.paddingY) : 0};
+  padding-left: ${props => !props.image ? defaultPX(props.paddingX) : 0};
+  padding-right: ${props => !props.image ? defaultPX(props.paddingX) : 0};
   
   ${props => props.bottom && `
     display: flex;
     align-items: flex-end;
+  `}
+
+  ${props => props.inline && `
+    display: flex;
+    align-items: center;
   `}
 
   &::-webkit-scrollbar {
@@ -77,16 +82,29 @@ const Content = styled.div`
   width: 100%;
   height: calc(100% - (${props => props.paddingY} * 2));
   
-  padding-top: ${props => props.image && props.paddingY};
-  padding-bottom: ${props => props.image && props.paddingY};
-  padding-left: ${props => props.image && props.paddingX};
-  padding-right: ${props => props.image && props.paddingX};
+  padding-top: ${props => props.image && defaultPX(props.paddingY)};
+  padding-bottom: ${props => props.image && defaultPX(props.paddingY)};
+  padding-left: ${props => props.image && defaultPX(props.paddingX)};
+  padding-right: ${props => props.image && defaultPX(props.paddingX)};
   
   ${props => props.centralized && `
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+  `}
+  
+  ${props => props.inline && `
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & > * {
+      margin-right: 46px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
   `} 
 `
 
