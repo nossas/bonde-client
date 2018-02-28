@@ -85,6 +85,8 @@ const Ranking = ({ className, children, color, trackColor, trackSize, maxValue, 
 }
 
 const ProgressRanking = styled(Ranking)`
+  width: inherit;
+
   & > ${Item}:last-child {
     margin-bottom: 0;
   }
