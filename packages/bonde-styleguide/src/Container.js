@@ -14,6 +14,7 @@ const Container = styled.div`{
     flex-direction: column;  
   `}
   ${props => props.bottom && `align-items: flex-end;`}
+  ${props => props.right && `align-items: flex-end;`}
 }`
 
 Container.displayName = 'Container'

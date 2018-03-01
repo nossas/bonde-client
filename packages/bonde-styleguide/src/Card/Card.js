@@ -7,37 +7,15 @@ import { px } from '../utils'
 const CardBox = styled.div`{
   border-radius: 1px;
   box-shadow: 2px 1px 14px 11px rgba(0, 0, 0, .04);
-  background-color: #fff;
-  height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
   
-  background-color: ${props => props.bgColor};
+  background-color: ${props => props.bgColor || '#fff'};
   min-height: ${props => px(props.minHeight)};
   max-height: ${props => px(props.maxHeight)}; 
 
   display: flex;
   flex-direction: column;
   ${props => props.middle && `justify-content: center;`}
-  ${props => props.bottom && `justify-content: flex-end;`}
-
-  &::-webkit-scrollbar {
-    width: 33px;
-  }
-  &::-webkit-scrollbar-track {
-    background-clip: padding-box;
-    background-color: rgba(151,151,151,.25);
-    border: 20px solid transparent;
-    border-left-width: 16px;
-    border-right-width: 16px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-clip: padding-box;
-    background-color: rgba(74,74,74,.75);
-    border: 20px solid transparent;
-    border-left-width: 15px;
-    border-right-width: 15px;
-  }
+  ${props => props.bottom && `justify-content: flex-end;`} 
 }`
 
 const CardTitle = ({ children }) => (

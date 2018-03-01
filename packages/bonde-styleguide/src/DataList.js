@@ -33,35 +33,21 @@ export const DataListRow = styled.div`{
 
 DataListRow.displayName = 'DataListRow'
 
-const DataListTable = styled.div`{
+export const DataListTable = styled.div`{
   display: table;
   border-collapse: collapse;
   width: 100%;
-  margin-top: -17px;
 }`
 
-const LinkShowAll = Text.withComponent('a').extend`
+DataListTable.displayName = 'DataListTable'
+
+export const LinkShowAll = Text.withComponent('a').extend`
   font-size: 11px !important;
   font-weight: 800 !important;
   line-height: 1.36 !important;
   text-transform: uppercase;
   cursor: pointer;
   display: block;
-  text-align: right !important;
-  margin: 9px 26px 0;
 `
 
-const DataList = ({ children, moreAction, moreText, ...props }) => (
-  <Card paddingY='17px' paddingX='0px' {...props}>
-    <DataListTable>
-      {children}
-    </DataListTable>
-    {moreAction && moreText && (
-      <LinkShowAll onClick={moreAction}>{moreText}</LinkShowAll>
-    )}
-  </Card>
-)
-
-DataList.displayName = 'DataList'
-
-export default DataList
+LinkShowAll.displayName = 'LinkShowAll'

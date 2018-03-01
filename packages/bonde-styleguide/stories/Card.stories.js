@@ -5,6 +5,12 @@ import { withKnobs, text, boolean, number } from '@storybook/addon-knobs/react'
 import { Row, Cell } from '../src/Grid'
 import Feed from '../src/Feed'
 import {
+  DataListTable,
+  DataListRow,
+  DataListCol,
+  LinkShowAll
+} from '../src/DataList'
+import {
   Assets,
   Button,
   Card,
@@ -17,6 +23,7 @@ import {
   Page,
   ProgressRanking
 } from '../src'
+import ScrollBox from '../src/Card/ScrollBox'
 import { jsxOptions } from './utils'
 
 const Grid = ({ children, size }) => (
@@ -198,4 +205,74 @@ storiesOf('Card', module)
       </Card>
     </Grid>
   ))
-
+  .addWithJSX('Atividades recentes', () => (
+    <Grid size={6}>
+      <Card
+        title={text('Title', 'Atividades recentes')}
+        minHeight={number('Min. height', 274)}
+      > 
+        <ScrollBox>
+          <DataListTable>
+            <DataListRow>
+              <DataListCol>
+                <Text fontSize={14}>Susan Schwartz</Text>
+              </DataListCol>
+              <DataListCol>
+                <Text fontSize={14}>george.lindgren@hotmail.com</Text>
+              </DataListCol>
+              <DataListCol align='left'>
+                <Text fontSize={14}>{`23/10 às 14h`}</Text>
+              </DataListCol>
+            </DataListRow>
+            <DataListRow>
+              <DataListCol>
+                <Text fontSize={14}>Mattie Cunningham</Text>
+              </DataListCol>
+              <DataListCol>
+                <Text fontSize={14}>graciela_rath@lakin.ca</Text>
+              </DataListCol>
+              <DataListCol align='left'>
+                <Text fontSize={14}>{`23/10 às 14h`}</Text>
+              </DataListCol>
+            </DataListRow>
+            <DataListRow>
+              <DataListCol>
+                <Text fontSize={14}>Carrie Barton</Text>
+              </DataListCol>
+              <DataListCol>
+                <Text fontSize={14}>abdiel.renner@jorge.biz</Text>
+              </DataListCol>
+              <DataListCol align='left'>
+                <Text fontSize={14}>{`23/10 às 14h`}</Text>
+              </DataListCol>
+            </DataListRow>
+            <DataListRow>
+              <DataListCol>
+                <Text fontSize={14}>Jeff Rowe</Text>
+              </DataListCol>
+              <DataListCol>
+                <Text fontSize={14}>elias_prosacco@boyle.com</Text>
+              </DataListCol>
+              <DataListCol align='left'>
+                <Text fontSize={14}>{`23/10 às 14h`}</Text>
+              </DataListCol>
+            </DataListRow>
+            <DataListRow>
+              <DataListCol>
+                <Text fontSize={14}>Owen Padilla</Text>
+              </DataListCol>
+              <DataListCol>
+                <Text fontSize={14}>ignatius.connelly@yahoo.com</Text>
+              </DataListCol>
+              <DataListCol align='left'>
+                <Text fontSize={14}>{`23/10 às 14h`}</Text>
+              </DataListCol>
+            </DataListRow>
+          </DataListTable>
+        </ScrollBox>
+        <Container right padding={{ top: 9, bottom: 17, right: 26 }}>
+          <LinkShowAll>{text('Texto ver todos', 'Ver todos')}</LinkShowAll>
+        </Container>
+      </Card>
+    </Grid> 
+  ), jsxOptions)
