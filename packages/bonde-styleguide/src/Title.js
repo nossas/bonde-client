@@ -21,6 +21,8 @@ const H1 = createTitle('h1', {
   lineHeight: 1.14
 })
 
+H1.displayName = 'Title H1'
+
 const H2 = createTitle('h2', {
   displayName: 'Title.H2',
   fontSize: 32,
@@ -28,11 +30,15 @@ const H2 = createTitle('h2', {
   lineHeight: 1.12
 })
 
+H2.displayName = 'Title.H2'
+
 const H3 = createTitle('h3', {
   displayName: 'Title.H3',
   fontSize: 21,
   fontWeight: 800,
   lineHeight: 0.95
 })
+
+H3.displayName = 'Title.H3'
 
 export default { H1, H2, H3 }

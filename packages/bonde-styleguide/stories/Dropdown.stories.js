@@ -6,7 +6,7 @@ import Dropdown, {
   Item as DropdownItem,
   Header as DropdownHeader
 } from '../src/Dropdown'
-import * as Icon from '../src/Icon'
+import { Icon } from '../src'
 
 storiesOf('Dropdown', module)
   .addDecorator(story => (

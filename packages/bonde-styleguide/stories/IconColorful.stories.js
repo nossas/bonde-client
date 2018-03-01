@@ -2,7 +2,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import Wrapper from './Wrapper'
-import * as IconColorful from '../src/IconColorful'
+import { IconColorful } from '../src'
 
 storiesOf('IconColorful', module)
   .addDecorator(story => <Wrapper>{story()}</Wrapper>)

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { AngleDown, AngleRight } from '../Icon'
+import Icon from '../Icon'
 
 export const Item = styled.a`{
   width: auto;
@@ -123,7 +123,7 @@ export default class extends React.Component {
           {Icon && <Icon size={16} color='#fff' />}
           <button type='button' onClick={this.toggleMenu.bind(this)}> 
             <span>{this.props.label}</span>
-            {show ? <AngleRight color='#fff' /> : <AngleDown color='#fff' />}
+            {show ? <Icon.AngleRight color='#fff' /> : <Icon.AngleDown color='#fff' />}
           </button>
         </Flexbox>
         {show && (<DropdownMenu>{children}</DropdownMenu>)}

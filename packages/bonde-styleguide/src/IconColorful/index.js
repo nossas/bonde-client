@@ -1,14 +1,31 @@
-export { default as Abc } from './Abc'
-export { default as Bonde } from './Bonde'
-export { default as Code } from './Code'
-export { default as Community } from './Community'
-export { default as DollarSign } from './DollarSign'
-export { default as Greeting } from './Greeting'
-export { default as Mobilization } from './Mobilization'
-export { default as Ok } from './Ok'
-export { default as People } from './People'
-export { default as Picture } from './Picture'
-export { default as Power } from './Power'
-export { default as Pressure } from './Pressure'
-export { default as Share } from './Share'
-export { default as Video } from './Video'
+import Abc from './Abc'
+import Bonde from './Bonde'
+import Code from './Code'
+import Community from './Community'
+import DollarSign from './DollarSign'
+import Greeting from './Greeting'
+import Mobilization from './Mobilization'
+import Ok from './Ok'
+import People from './People'
+import Picture from './Picture'
+import Power from './Power'
+import Pressure from './Pressure'
+import Share from './Share'
+import Video from './Video'
+
+export default {
+  Abc,
+  Bonde,
+  Code,
+  Community,
+  DollarSign,
+  Greeting,
+  Mobilization,
+  Ok,
+  People,
+  Picture,
+  Power,
+  Pressure,
+  Share,
+  Video
+}

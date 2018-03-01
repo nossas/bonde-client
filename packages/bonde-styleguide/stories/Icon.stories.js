@@ -1,9 +1,8 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
 import { withKnobs, text, boolean, number } from '@storybook/addon-knobs/react'
 import Wrapper from './Wrapper'
-import * as Icon from '../src/Icon'
+import { Icon } from '../src'
 
 const createKnobsIcon = (Component) => () => (
   <Component color={text('Color', '#000')} size={number('Size', 36)} />

@@ -3,7 +3,7 @@ import Dropdown, {
   Item as DropdownItem,
   Header as DropdownHeader
 } from '../Dropdown'
-import * as Icon from '../Icon'
+import Icon from '../Icon'
 
 const UserNav = () => {
   const avatar = 'http://via.placeholder.com/35x35?text=U'

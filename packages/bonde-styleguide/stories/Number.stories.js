@@ -1,8 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { withKnobs, number, select } from '@storybook/addon-knobs/react'
-import { Card, Number } from '../src'
-import * as IconColorful from '../src/IconColorful'
+import { Card, IconColorful, Number } from '../src'
 import { Row, Cell } from '../src/Grid'
 import { jsxOptions } from './utils'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import * as Icon from './Icon'
+import Icon from './Icon'
 
 const NavContainer = styled.div`{
   display: flex;

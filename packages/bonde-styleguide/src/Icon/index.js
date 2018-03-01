@@ -1,11 +1,25 @@
-export { default as AngleDown } from './AngleDown'
-export { default as AngleRight } from './AngleRight'
-export { default as Archive } from './Archive'
-export { default as Bonde } from './Bonde'
-export { default as Copy } from './Copy'
-export { default as Plus } from './Plus'
-export { default as Share } from './Share'
-export { default as Sound } from './Sound'
-export { default as Star } from './Star'
-export { default as Times } from './Times'
-export { default as User } from './User'
+import AngleDown from './AngleDown'
+import AngleRight from './AngleRight'
+import Archive from './Archive'
+import Bonde from './Bonde'
+import Copy from './Copy'
+import Plus from './Plus'
+import Share from './Share'
+import Sound from './Sound'
+import Star from './Star'
+import Times from './Times'
+import User from './User'
+
+export default {
+  AngleDown,
+  AngleRight,
+  Archive,
+  Bonde,
+  Copy,
+  Plus,
+  Share,
+  Sound,
+  Star,
+  Times,
+  User
+}
