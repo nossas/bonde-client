@@ -8,11 +8,12 @@ import { px } from './utils'
  */
 const Image = styled.div`{
   display: block;
-  width: 100%;
+  width: ${props => px(props.width) || '100%'};
   height: ${props => px(props.height)};
   background-image: url(${props => props.src});
   background-size: cover;
   background-position: center center;
+  ${props => props.rounded && `border-radius: ${px(props.rounded)};`}
 }`
 
 Image.displayName = 'Image'

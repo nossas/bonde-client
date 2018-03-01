@@ -1,11 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 import Text from './Text'
-import Card from './Card'
+import { px } from './utils'
 
 export const DataListCol = styled.div`{
+  ${props => props.width && `width: ${px(props.width)};`}
   display: table-cell;
   padding: 13px 15px 14px 15px;
+  vertical-align: middle;
 
   &:first-child {
     padding-left: 26px;

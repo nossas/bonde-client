@@ -21,7 +21,6 @@ Container.displayName = 'Container'
 
 Container.propTypes = {
   padding: borderSpacingPropTypes,
-  vertical: PropTypes.boolean,
   center: PropTypes.boolean
 }
 

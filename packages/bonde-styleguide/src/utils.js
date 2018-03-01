@@ -1,7 +1,11 @@
 import PropTypes from 'prop-types'
 
-export const px = 
-  (value, defaultValue) => (value || defaultValue) ? `${value || defaultValue}px` : 0;
+export const px = (value, defaultValue) => {
+  if (value && typeof value === 'number') return `${value}px`
+  else if (value && typeof value === 'string') return value
+  else if (!value && defaultValue) return `${defaultValue}px`
+  else return 0
+}
 
 export const borderSpacing = (
   propName = 'margin',
@@ -13,11 +17,11 @@ export const borderSpacing = (
   ${propName}-right: ${px(right, x)};
 `
 
-export const borderSpacingPropTypes = {
+export const borderSpacingPropTypes = PropTypes.shape({
   top: PropTypes.number,
   right: PropTypes.number,
   bottom: PropTypes.number,
   left: PropTypes.number,
   x: PropTypes.number,
   y: PropTypes.number
-}
+})

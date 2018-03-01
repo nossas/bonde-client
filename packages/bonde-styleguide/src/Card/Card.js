@@ -5,6 +5,7 @@ import Text from '../Text'
 import { px } from '../utils'
 
 const CardBox = styled.div`{
+  width: 100%;
   border-radius: 1px;
   box-shadow: 2px 1px 14px 11px rgba(0, 0, 0, .04);
   

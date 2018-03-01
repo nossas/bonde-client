@@ -44,7 +44,7 @@ storiesOf('Card', module)
   .addDecorator(withKnobs)
   .addDecorator(story => (
     <Page bgColor='#ededee'>
-      <div style={{ paddingBottom: '100%' }}>
+      <div style={{ width: '100%', paddingBottom: '100%' }}>
         {story()}
       </div>
     </Page>
@@ -273,6 +273,87 @@ storiesOf('Card', module)
         <Container right padding={{ top: 9, bottom: 17, right: 26 }}>
           <LinkShowAll>{text('Texto ver todos', 'Ver todos')}</LinkShowAll>
         </Container>
+      </Card>
+    </Grid> 
+  ), jsxOptions)
+  .addWithJSX('Minhas mobilizaçõs', () => (
+    <Grid size={4}>
+      <Card
+        title={text('Title', 'Minhas mobilizações')}
+        minHeight={number('Min. height', 250)}
+      > 
+        <ScrollBox>
+          <DataListTable border={boolean('Border?', false)}>
+            <DataListRow>
+              <DataListCol width={40}>
+                <Image
+                  src='https://goo.gl/f8fg1R'
+                  height={40}
+                  rounded='50%'
+                />
+              </DataListCol>
+              <DataListCol>
+                <Text fontSize={16} fontWeight={900} lineHeight={1.25}>
+                  Respeita as mina
+                </Text>
+                <Text fontSize={13} lineHeight={1.54} color='#4a4a4a'>
+                  Pressão
+                </Text>
+              </DataListCol>
+            </DataListRow>
+            <DataListRow>
+              <DataListCol width={40}>
+                <Image
+                  src='https://goo.gl/f8fg1R'
+                  height={40}
+                  rounded='50%'
+                />
+              </DataListCol>
+              <DataListCol>
+                <Text fontSize={16} fontWeight={900} lineHeight={1.25}>
+                  Somos todas Olgas
+                </Text>
+                <Text fontSize={13} lineHeight={1.54} color='#4a4a4a'>
+                  Voluntários
+                </Text>
+              </DataListCol>
+            </DataListRow>
+            <DataListRow>
+              <DataListCol width={40}>
+                <Image
+                  src='https://goo.gl/f8fg1R'
+                  height={40}
+                  rounded='50%'
+                />
+              </DataListCol>
+              <DataListCol>
+                <Text fontSize={16} fontWeight={900} lineHeight={1.25}>
+                  Empodera!
+                </Text>
+                <Text fontSize={13} lineHeight={1.54} color='#4a4a4a'>
+                  Divulgação
+                </Text>
+              </DataListCol>
+            </DataListRow>
+            <DataListRow>
+              <DataListCol width={40}>
+                <Image
+                  src='https://goo.gl/f8fg1R'
+                  height={40}
+                  rounded='50%'
+                />
+              </DataListCol>
+              <DataListCol>
+                <Text fontSize={16} fontWeight={900} lineHeight={1.25}>
+                  Existe amor em SP
+                </Text>
+                <Text fontSize={13} lineHeight={1.54} color='#4a4a4a'>
+                  Voluntários
+                </Text>
+              </DataListCol>
+            </DataListRow>
+          </DataListTable>
+        </ScrollBox>
       </Card>
     </Grid> 
   ), jsxOptions)
