@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 
 const Button = styled.button`{
   font-family: 'Nunito Sans', sans-serif;
-  font-weight: 600;
+  font-weight: 800;
   font-size: 13px;
   text-align: center;
   line-height: 1.15;
