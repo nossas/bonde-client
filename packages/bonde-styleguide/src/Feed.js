@@ -2,6 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+/**
+ * The only true feed.
+ */
 const Feed = styled.ul`
   list-style: none;
   margin: 0;

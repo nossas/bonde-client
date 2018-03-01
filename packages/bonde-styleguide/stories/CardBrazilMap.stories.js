@@ -1,11 +1,10 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
-import { withKnobs, text, boolean, number } from '@storybook/addon-knobs/react'
-import { Card } from '../src'
+import { withKnobs, text, number } from '@storybook/addon-knobs/react'
+import { Assets } from '../src'
+import Card from '../src/Card'
 import { Row, Cell } from '../src/Grid'
 import ProgressRanking from '../src/ProgressRanking'
-import BrazilMap from '../src/BrazilMap'
 
 const withGrid = story => (
   <Row>
@@ -35,6 +34,7 @@ storiesOf('Card Brazil Map', module)
         trackColor='#eeeeee'
         color='#ee0099'
         maxValue={3000}
+        padding={{ right: 46 }}
       >
         <ProgressRanking.Item
           label='São Paulo'
@@ -53,6 +53,6 @@ storiesOf('Card Brazil Map', module)
           value={number('Recife', 322, numberOpts)}
         />
       </ProgressRanking>
-      <BrazilMap width={300} />
+      <Assets.BrazilMap width={300} />
     </Card>
   ))

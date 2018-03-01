@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
+import { px } from './utils'
 import Progress from './Progress'
 
 const ProgressBox = styled.div`
@@ -85,7 +85,7 @@ const Ranking = ({ className, children, color, trackColor, trackSize, maxValue, 
 }
 
 const ProgressRanking = styled(Ranking)`
-  width: inherit;
+  width: ${props => px(props.width) || 'inherit'};
 
   & > ${Item}:last-child {
     margin-bottom: 0;

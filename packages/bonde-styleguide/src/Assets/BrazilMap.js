@@ -33,6 +33,6 @@ const BrazilMap = ({ size, width, height }) => (
   </svg> 
 )
 
-BrazilMap.displayName = 'BrazilMap'
+BrazilMap.displayName = 'Assets.BrazilMap'
 
 export default BrazilMap

@@ -1,147 +1,201 @@
 import React from 'react'
 import styled from 'styled-components'
 import { storiesOf } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
-
-import Wrapper from './Wrapper'
+import { withKnobs, text, boolean, number } from '@storybook/addon-knobs/react'
 import { Row, Cell } from '../src/Grid'
-import { Title, Button, Card, Text } from '../src'
-import * as IconColorful from '../src/IconColorful'
 import Feed from '../src/Feed'
+import {
+  Assets,
+  Button,
+  Card,
+  Container,
+  Image,
+  IconColorful,
+  Title,
+  Text,
+  Number,
+  Page,
+  ProgressRanking
+} from '../src'
+import { jsxOptions } from './utils'
 
-const now = new Date
+const Grid = ({ children, size }) => (
+  <Row>
+    <Cell size={[size]}>
+      {children}
+    </Cell>
+  </Row>
+)
+
+const numberOpts = {
+  range: true,
+  max: 3000,
+  min: 1
+}
 
 storiesOf('Card', module)
+  .addDecorator(withKnobs)
   .addDecorator(story => (
-    <Wrapper position='relative' bg='#EEEEEE' padding='15px' width='inherit'>
-      {story()}
-    </Wrapper>
+    <Page bgColor='#ededee'>
+      <div style={{ paddingBottom: '100%' }}>
+        {story()}
+      </div>
+    </Page>
   ))
-  .addWithJSX('Default', () => (
-    <Row>
-      <Cell size={[4, 4, 6, 6, 12, 12]}>
-        <Card
-          title='Lorem ipsum'
-          minHeight='275px'
-          maxHeight='275px'
-        >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quid loquor de nobis, qui ad
-          laudem et ad decus nati, suscepti, instituti sumus? Quod praeceptum quia maius erat,
-          quam ut ab homine videretur, idcirco assignatum est deo. Audi, ne longe abeam,
-          moriens quid dicat Epicurus, ut intellegas facta eius cum dictis discrepare:
-          Epicurus Hermarcho salutem. Duo Reges: constructio interrete. Utrum enim sit
-          voluptas in iis rebus, quas primas secundum naturam esse diximus, necne sit ad id,
-          quod agimus, nihil interest. Is cum arderet podagrae doloribus visitassetque hominem
-          Charmides Epicureus perfamiliaris et tristis exiret, Mane, quaeso, inquit, Charmide
-          noster; Etenim si delectamur, cum scribimus, quis est tam invidus, qui ab eo nos
-          abducat? An haec ab eo non dicuntur? Nam quod ait sensibus ipsis iudicari voluptatem
-          bonum esse, dolorem malum, plus tribuit sensibus, quam nobis leges permittunt,
-          cum privatarum litium iudices sumus.
-        </Card>
-      </Cell>
-    </Row>
-  ))
-  .addWithJSX('centralized content', () => (
-    <Row>
-      <Cell size={[4, 4, 6, 6, 12, 12]}>
-        <Card
-          title='Minhas Comunidades'
-          paddingY='35px'
-          centralized
-        >
-          <IconColorful.Community size='80' />
-          <Text>
-            Se juntos causam,<br />
-            imagina juntos.
-          </Text>
+  .addWithJSX('Minhas comunidades', () => (
+    <Grid size={4}>
+      <Card
+        title={text('Title', 'Minhas comunidades')}
+        minHeight={number('Min. height', 274)}
+        middle
+      >
+        <Container padding={{ x: 82 }} vertical center>
+          <IconColorful.Community size={80} />
+          <Title.H3 margin={{ top: 10, bottom: 22 }} align='center'>
+            Se juntos já causam, imagina juntos.
+          </Title.H3>
           <Button>Criar comunidade</Button>
-        </Card>
-      </Cell>
-
-      <Cell size={[4, 4, 6, 6, 12, 12]}>
-        <Card
-          title='Minhas Mobilizações'
-          paddingY='35px'
-          centralized
-        >
-          <IconColorful.Mobilization size='80' />
-          <Text>
-            Crie uma comunidade<br />
-            pra começar a mobilizar.
+        </Container>
+      </Card>
+    </Grid>
+  ))
+  .addWithJSX('Notificações', () => (
+    <Grid size={4}>
+      <Card
+        title={text('Title', 'Notificações')}
+        minHeight={number('Min. height', 274)}
+      >
+        <Feed>
+          <Feed.Item
+            date={new Date}
+            text='Juntos causamos mais! Por isso, o primeiro passo é criar uma comunidade.'
+          />
+          <Feed.Item
+            date={new Date().setMinutes(new Date().getMinutes() - 1)}
+            text={
+              'Esse é seu Bonde, Maria! Bem-vinda! Qualquer dúvida é só clicar em ' +
+              '"ajuda eu" ali embaixo. #tamojunto'
+            }
+          />
+        </Feed>
+      </Card>
+    </Grid>
+  ))
+  .addWithJSX('Trending mobs', () => (
+    <Grid size={3}>
+      <Card
+        title={text('Title', 'Treending mobs')}
+        minHeight={number('Min. height', 320)}
+      >
+        <Image src='https://goo.gl/hggWmp' height={185} />
+        <Container padding={{ x: 16, y: 14 }}>
+          <Title.H3>Cinzas dos Muros</Title.H3>
+          <Text
+            fontSize={16}
+            lineHeight={1.31}
+            color='#4a4a4a'
+            margin={{ y: 8 }}
+          >
+            Nossos muros têm voz, têm vida.
           </Text>
-          <Button disabled>Criar mobilização</Button>
-        </Card>
-      </Cell>
+          <Text fontSize={13} lineHeight={1.85} color='#4a4a4a'>
+            Por Minha Sampa
+          </Text>
+        </Container>
+      </Card>
+    </Grid>
+  ))
+  .addWithJSX('Pressões', () => (
+    <Grid size={2}>
+      <Card
+        title={text('Title', 'Pressões')}
+        minHeight={number('Min. height', 110)}
+        bottom
+      >
+        <Container padding={{ y: 14, x: 19 }}>
+          <Number
+            icon={IconColorful.Greeting}
+            value={34}
+          />
+        </Container>
+      </Card>
+    </Grid>
+  ), jsxOptions)
+  .addWithJSX('Localização', () => (
+    <Grid size={4}>
+      <Card
+        title={text('Title', 'Localização')}
+        minHeight={number('Min. height', 274)}
+        middle
+      >
+        <Container padding={{ x: 24 }} horizontal center>
+          <ProgressRanking
+            trackColor='#eeeeee'
+            color='#ee0099'
+            maxValue={3000}
+            width={number('Progress width', 110)}
+          >
+            <ProgressRanking.Item
+              label='São Paulo'
+              value={number('São Paulo', 2361, numberOpts)}
+            />
+            <ProgressRanking.Item
+              label='Rio de Janeiro'
+              value={number('Rio de Janeiro', 1522, numberOpts)}
+            />
+            <ProgressRanking.Item
+              label='Curtiba'
+              value={number('Curitiba', 654, numberOpts)}
+            />
+            <ProgressRanking.Item
+              label='Recife'
+              value={number('Recife', 322, numberOpts)}
+            />
+          </ProgressRanking>
+          <Assets.BrazilMap
+            size={number('BrazilMap size', 170)}
+          />
+        </Container>
+      </Card>
+    </Grid>
+  ))
+  .addWithJSX('Top 5 Mobs', () => (
+    <Grid size={4}>
+      <Card
+        title={text('Title', 'Top 5 Mobs')}
+        minHeight={number('Min. height', 274)}
+        middle
+      >
+        <Container padding={{ x: 27 }} horizontal bottom>
+          <ProgressRanking
+            trackColor='#fff'
+            maxValue={2450}
+            width={number('Progress width', 200)}
+          >
+            <ProgressRanking.Item
+              label='Existe amor em SP'
+              value={number('Existe amor em SP', 2450, numberOpts)}
+            />
+            <ProgressRanking.Item
+              label='Somos toda Olga'
+              value={number('Somos toda Olga', 1602, numberOpts)}
+            />
+            <ProgressRanking.Item
+              label='Respeita as Mina'
+              value={number('Respeita as Mina', 967, numberOpts)}
+            />
+            <ProgressRanking.Item
+              label='Empodera!'
+              value={number('Empodera!', 901, numberOpts)}
+            />
+            <ProgressRanking.Item
+              label='Sem FiuFiu'
+              value={number('Sem FiuFiu', 610, numberOpts)}
+            />
+          </ProgressRanking>
+          <IconColorful.Mobilization size={78} />
+        </Container>
+      </Card>
+    </Grid>
+  ))
 
-      <Cell size={[4, 4, 6, 6, 12, 12]}>
-        <Card
-          title='Notificações'
-          paddingY='0'
-          paddingX='0'
-        >
-          <Feed>
-            <Feed.Item
-              date={new Date}
-              text='Juntos causamos mais! Por isso, o primeiro passo é criar uma comunidade.'
-            />
-            <Feed.Item
-              date={now.setMinutes(now.getMinutes() - 1)}
-              text={
-                'Esse é seu Bonde, Maria! Bem-vinda! Qualquer dúvida é só clicar em ' +
-                '"ajuda eu" ali embaixo. #tamojunto'
-              }
-            />
-          </Feed>
-        </Card>
-      </Cell>
-    </Row>
-  ))
-  .addWithJSX('with image', () => (
-    <Row>
-      <Cell size={[3, 3, 6, 6, 12, 12]}>
-        <Card
-          title='Trending mobs'
-          minHeight='320px'
-          maxHeight='320px'
-          image='https://goo.gl/hggWmp'
-        >
-          <Title.H3 margin='.5rem 0'>Cinzas dos Muros</Title.H3>
-          <p>Nossos muros têm voz, têm vida.</p>
-          <em>Por Minha Sampa</em>
-        </Card>
-      </Cell>
-      <Cell size={[3, 3, 6, 6, 12, 12]}>
-        <Card
-          minHeight='320px'
-          maxHeight='320px'
-          image='https://goo.gl/H5aT5B'
-        >
-          <Title.H3 margin='.5rem 0'>Temer Jamais</Title.H3>
-          <p>Bora encher a caixa de email do Temer!</p>
-          <em>Por Meu Rio</em>
-        </Card>
-      </Cell>
-      <Cell size={[3, 3, 6, 6, 12, 12]}>
-        <Card
-          minHeight='320px'
-          maxHeight='320px'
-          image='https://goo.gl/VpdChy'
-        >
-          <Title.H3 margin='.5rem 0'>Mulheres Inspiradoras</Title.H3>
-          <p>Algumas histórias precisam ser contadas.</p>
-          <em>Por Coletivo Feminista</em>
-        </Card>
-      </Cell>
-      <Cell size={[3, 3, 6, 6, 12, 12]}>
-        <Card
-          minHeight='320px'
-          maxHeight='320px'
-          image='https://goo.gl/vTkgRb'
-        >
-          <Title.H3 margin='.5rem 0'>Vegan Já!</Title.H3>
-          <p>Todos os seres merecem o seu respeito.</p>
-          <em>Por Go Vegan</em>
-        </Card>
-      </Cell>
-    </Row>
-  ))
