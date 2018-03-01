@@ -35,11 +35,15 @@ DataListRow.displayName = 'DataListRow'
 
 export const DataListTable = styled.div`{
   display: table;
-  border-collapse: collapse;
+  border-collapse: ${props => props.border ? 'collapse' : 'unset'};
   width: 100%;
 }`
 
 DataListTable.displayName = 'DataListTable'
+
+DataListTable.defaultProps = {
+  border: false
+}
 
 export const LinkShowAll = Text.withComponent('a').extend`
   font-size: 11px !important;

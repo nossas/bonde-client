@@ -212,7 +212,7 @@ storiesOf('Card', module)
         minHeight={number('Min. height', 274)}
       > 
         <ScrollBox>
-          <DataListTable>
+          <DataListTable border={boolean('Border?', true)}>
             <DataListRow>
               <DataListCol>
                 <Text fontSize={14}>Susan Schwartz</Text>
