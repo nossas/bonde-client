@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import * as Icon from './Icon'
-import Title from './Title'
+import Icon from '../../content/Icon/Icon'
+import Title from '../../content/Title/Title'
 
 const Container = styled.div`{
   display: flex;
@@ -34,6 +34,20 @@ const Header = styled(({
   padding: 28px 155px 0;
 }`
 
-Header.displayName = 'Header'
+const { oneOfType, node, func, string } = PropTypes
 
+Header.propTypes = {
+  /** The content of the header. */
+  children: oneOfType([node, func]),
+  /** The page title text. */
+  pageTitle: string,
+  /** The navbar component. */
+  navbar: oneOfType([node, func]),
+  /** The action button component. */
+  actionButton: oneOfType([node, func]),
+  /** The tab navition component. */
+  tabNavigation: oneOfType([node, func])
+}
+
+/* @component */
 export default Header
