@@ -89,6 +89,7 @@ const ListItem = styled(({
 
   let BaseListTag = LinkComponent || ListTag
   if (href) {
+    // eslint-disable-next-line
     const LinkTag = props => <a {...props} href={href} target={target} />
     BaseListTag = LinkTag
   }
