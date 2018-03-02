@@ -1,7 +1,6 @@
-import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { px, borderSpacing, borderSpacingPropTypes } from '../../utils'
+import { borderSpacing, borderSpacingPropTypes } from '../../utils'
 
 /**
  * The only true container.

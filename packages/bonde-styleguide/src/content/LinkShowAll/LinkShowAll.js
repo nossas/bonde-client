@@ -1,4 +1,3 @@
-import styled from 'styled-components'
 import Text from '../Text/Text'
 
 const LinkShowAll = Text.withComponent('a').extend`

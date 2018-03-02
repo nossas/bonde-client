@@ -52,10 +52,10 @@ const Card = styled(({
   flex-direction: column;
 }`
 
-Card.displayName = 'Card'
 Card.propTypes = {
   minHeight: PropTypes.number,
   maxHeight: PropTypes.number,
 }
 
+/* @component */
 export default Card

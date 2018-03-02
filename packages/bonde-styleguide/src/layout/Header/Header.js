@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import Icon from '../../content/Icon/Icon'
 import Title from '../../content/Title/Title'
 
 const Container = styled.div`{

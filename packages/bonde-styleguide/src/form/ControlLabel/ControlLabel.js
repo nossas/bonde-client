@@ -1,7 +1,6 @@
-import React from 'react'
 import styled from 'styled-components'
 
-const Label = styled.label`{
+const ControlLabel = styled.label`{
   font-family: 'Nunito Sans', sans-serif;
   font-weight: 600;
   font-size: 13px;
@@ -11,6 +10,5 @@ const Label = styled.label`{
   text-transform: uppercase;
 }`
 
-Label.displayName = 'Label'
-
-export default Label
+/* @component */
+export default ControlLabel

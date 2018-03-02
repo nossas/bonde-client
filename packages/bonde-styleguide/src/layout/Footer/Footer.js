@@ -24,7 +24,7 @@ const FooterContent = styled.div`{
 
 const Footer = styled(({ children, className, btnHelpLabel, btnHelpClick }) => (
   <div className={className}>
-    <img src='http://via.placeholder.com/150x30?text=BONDE' />
+    <img alt='Logo' src='http://via.placeholder.com/150x30?text=BONDE' />
     <FooterContent>
     {children}
     </FooterContent>
