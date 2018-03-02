@@ -11,14 +11,6 @@ const vars = {
   textGap: '23px'
 }
 
-const List = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  overflow-x: hidden;
-  text-overflow: ellipsis;
-`
-
 const Avatar = styled.div`
   background-color: #cccccc;
   background-size: cover;
@@ -79,7 +71,10 @@ const Description = Label.extend.attrs({
   line-height: 1;
 `
 
-const Item = ({
+/**
+ * The list item component with avatar option.
+ */
+const ListItem = styled(({
   className,
   label,
   description,
@@ -94,7 +89,6 @@ const Item = ({
 
   let BaseListTag = LinkComponent || ListTag
   if (href) {
-    const linkProps = { href, target }
     const LinkTag = props => <a {...props} href={href} target={target} />
     BaseListTag = LinkTag
   }
@@ -114,9 +108,7 @@ const Item = ({
       </Description>
     </BaseListTag>
   )
-}
-
-List.Item = styled(Item)`
+})`
   position: relative;
   padding: ${vars.padding};
   transition: 200ms background-color;
@@ -135,24 +127,36 @@ List.Item = styled(Item)`
 
 const { string, bool, func, node, oneOfType } = PropTypes
 
-List.Item.propTypes = {
+ListItem.propTypes = {
+  /** The list item label text. */
   label: string.isRequired,
+  /** The list item description text. */
   description: string.isRequired,
+  /** The list item avatar image URL. */
   avatar: string,
+  /** Flag to hide the avatar. */
   noavatar: bool,
+  /** The click event handler function. */
   onClick: func,
+  /**
+   * The anchor link URL. Transform the list item into an anchor tag.
+   * If this prop was setted, the onClick function will be automatically disabled.
+   */
   href: string,
+  /** The anchor tag target attribute. */
   target: string,
+  /**
+   * You can change the default component of list item.
+   * e.g. Passing a `Link` component of `react-router`.
+   */
   LinkComponent: oneOfType([node, func])
 }
 
-List.Item.defaultProps = {
+ListItem.defaultProps = {
   label: '[Define your label]',
   description: '[Define your description]',
   noavatar: false
 }
 
-List.displayName = 'List'
-List.Item.displayName = 'List.Item'
-
-export default List
+/* @component */
+export default ListItem
