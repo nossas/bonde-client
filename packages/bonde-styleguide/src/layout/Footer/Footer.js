@@ -1,6 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Button } from '../src'
+import Button from '../../content/Button/Button'
 
 const FooterContent = styled.div`{
   flex-grow: 1;
@@ -39,6 +40,16 @@ const Footer = styled(({ children, className, btnHelpLabel, btnHelpClick }) => (
   padding: 0 150px 0;
 }`
 
-Footer.displayName = 'Footer'
+const { oneOfType, node, func, string } = PropTypes
 
+Footer.propTypes = {
+  /** The content of the footer. */
+  children: oneOfType([node, func]),
+  /** The help button label text. */
+  btnHelpLabel: string,
+  /** The help button onClick event handler function. */
+  btnHelpClick: func
+}
+
+/* @component */
 export default Footer
