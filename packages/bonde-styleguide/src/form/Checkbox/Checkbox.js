@@ -21,7 +21,7 @@ const Checkbox = styled(({ children, className, ...inputProps }) => (
     z-index: -1;
     opacity: 0;
   }
-  
+
   & .box {
     position: absolute;
     top: 2px;
@@ -32,17 +32,17 @@ const Checkbox = styled(({ children, className, ...inputProps }) => (
     border: 1px solid #4a4a4a;
     border-radius: 4px;
   }
-  
+
   &:hover input:not([disabled]) ~ .box,
   & input:not([disabled]):focus ~ .box {
     border-color: #ee0099;
   }
-  
+
   & input:checked ~ .box {
     background: #ff0099;
     border-color: #ff0099;
   }
-  
+
   & input:disabled:checked ~ .box {
     background: #d1cdd2;
   }
@@ -52,7 +52,7 @@ const Checkbox = styled(({ children, className, ...inputProps }) => (
     background: #ff0099;
     border-color: #ff0099;
   }
-  
+
   & input:disabled ~ .box {
     border-color: #d1cdd2;
     opacity: 0.6;
@@ -83,6 +83,5 @@ const Checkbox = styled(({ children, className, ...inputProps }) => (
   }
 }`
 
-Checkbox.displayName = 'Checkbox'
-
+/* @component */
 export default Checkbox

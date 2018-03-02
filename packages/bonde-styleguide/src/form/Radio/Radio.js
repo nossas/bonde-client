@@ -1,5 +1,5 @@
 import React from 'react'
-import Checkbox from './Checkbox'
+import Checkbox from '../Checkbox/Checkbox'
 
 const Radio = Checkbox.withComponent(
   ({ children, className, ...inputProps }) => (
@@ -13,7 +13,7 @@ const Radio = Checkbox.withComponent(
 & .box {
   position: absolute;
   top: 2px;
-  left: 2px; 
+  left: 2px;
   height: 19px;
   width: 19px;
   background: #fff;
@@ -48,6 +48,5 @@ const Radio = Checkbox.withComponent(
   background: #d1cdd2;
 }`
 
-Radio.displayName = 'Radio'
-
+/* @component */
 export default Radio
