@@ -1,6 +1,9 @@
-import React from 'react'
+import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 
+/**
+ * The only true Button component.
+ */
 const Button = styled.button`{
   font-family: 'Nunito Sans', sans-serif;
   font-weight: 800;
@@ -16,7 +19,6 @@ const Button = styled.button`{
   cursor: pointer;
   outline: none;
 
-  /* custom styles  */
   border: none;
   box-shadow: 1px 2px 7px 5px rgba(0, 0, 0, 0.08);
   background-color: #ff0099;
@@ -73,6 +75,18 @@ const Button = styled.button`{
   `}
 }`
 
-Button.displayName = 'Button'
+const { node, bool } = PropTypes
 
+Button.propTypes = {
+  /** Children nodes. */
+  children: node,
+  /** Disable button. */
+  disabled: bool,
+  /** Dark button style. */
+  dark: bool,
+  /** Light button style. */
+  light: bool
+}
+
+/* @component */
 export default Button
