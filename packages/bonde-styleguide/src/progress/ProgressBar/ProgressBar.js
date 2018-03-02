@@ -43,7 +43,10 @@ const BarText = styled.span`
   `}
 `
 
-const Bar = ({ value, trackColor, thumbColor, textColor, size }) => (
+/**
+ * Rounded border progress bar component.
+ */
+const ProgressBar = ({ value, trackColor, thumbColor, textColor, size }) => (
   <BarTrack size={size} trackColor={trackColor}>
     <BarThumb size={size} thumbColor={thumbColor} value={value}>
       <BarText size={size} value={value} textColor={textColor}>
@@ -53,17 +56,22 @@ const Bar = ({ value, trackColor, thumbColor, textColor, size }) => (
   </BarTrack>
 )
 
-const { oneOfType, oneOf, string, number } = PropTypes
+const { oneOf, string, number } = PropTypes
 
-Bar.propTypes = {
-  value: oneOfType([string, number]),
-  trackColor: string,
-  thumbColor: string,
+ProgressBar.propTypes = {
+  /** The percentage of the progress. */
+  value: number,
+  /** The size of the bar. */
   size: oneOf(Object.keys(sizes)),
+  /** The track background color. */
+  trackColor: string,
+  /** The progress fill background color. */
+  thumbColor: string,
+  /** The progress fill value text color. */
   textColor: string
 }
 
-Bar.defaultProps = {
+ProgressBar.defaultProps = {
   value: 0,
   trackColor: '#eeeeee',
   thumbColor: '#50e3c2',
@@ -71,6 +79,7 @@ Bar.defaultProps = {
   textColor: '#000000'
 }
 
-Bar.displayName = 'Progress.Bar'
+ProgressBar.sizes = sizes
 
-export default { Bar }
+/* @component */
+export default ProgressBar
