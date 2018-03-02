@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { px } from './utils'
+import { px } from '../../utils'
 
 /**
- * The only true image. 
+ * The only true image.
  */
 const Image = styled.div`{
   display: block;
@@ -16,11 +16,18 @@ const Image = styled.div`{
   ${props => props.rounded && `border-radius: ${px(props.rounded)};`}
 }`
 
-Image.displayName = 'Image'
+const { string, number } = PropTypes
 
 Image.propTypes = {
-  src: PropTypes.string.isRequired,
-  height: PropTypes.number.isRequired
+  /** The URL of the image. */
+  src: string.isRequired,
+  /** The height of the image. */
+  height: number.isRequired,
+  /** The width of the image. */
+  width: number,
+  /** The radius of the image border. */
+  rounded: number
 }
 
+/* @component */
 export default Image
