@@ -14,18 +14,18 @@ import Share from './Share'
 import Video from './Video'
 
 export default {
-  Abc,
-  Bonde,
-  Code,
-  Community,
-  DollarSign,
-  Greeting,
-  Mobilization,
-  Ok,
-  People,
-  Picture,
-  Power,
-  Pressure,
-  Share,
-  Video
+  'abc': Abc,
+  'bonde': Bonde,
+  'code': Code,
+  'community': Community,
+  'dollar-sign': DollarSign,
+  'greeting': Greeting,
+  'mobilization': Mobilization,
+  'ok': Ok,
+  'people': People,
+  'picture': Picture,
+  'power': Power,
+  'pressure': Pressure,
+  'share': Share,
+  'video': Video
 }
