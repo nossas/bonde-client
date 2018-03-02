@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const Checkbox = styled.input.attrs({
@@ -31,7 +32,7 @@ const Content = styled.span`
   }
 `
 
-const Tag = ({ children, checked, text, name }) => (
+const Tag = ({ checked, text, name }) => (
   <label>
     <Checkbox checked={checked} name={name} />
     <Content>
@@ -40,6 +41,19 @@ const Tag = ({ children, checked, text, name }) => (
   </label>
 )
 
-Tag.displayName = 'Tag'
+const { oneOfType, node, func, bool, string } = PropTypes
+
+Tag.propTypes = {
+  /** Anything that can be rendered, will be rendered inside the tag. */
+  text: oneOfType([node, func]).isRequired,
+  /** The default checked state. */
+  checked: bool,
+  /** The form input name attribute. */
+  name: string
+}
+
+Tag.defaultProps = {
+  checked: false
+}
 
 export default Tag
