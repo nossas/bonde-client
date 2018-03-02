@@ -1,29 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Icon from '../Icon'
-
-export const Item = styled.a`{
-  width: auto;
-  display: block;
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 13px;
-  font-weight: bold;
-  font-stretch: normal;
-  line-height: 1.54;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000000;
-  text-decoration: none;
-  padding: 10px 25px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: start;
-
-  & > svg, & > i {
-    margin-right: 15px;
-  }
-}`
+import Icon from '../../content/Icon/Icon'
 
 export const Header = styled.div`{
   width: auto;
@@ -47,7 +24,8 @@ const DropdownMenu = styled.div`{
   margin-top: 15px;
   width: inherit;
   position: absolute;
- 
+  z-index: 9;
+
   &::before {
     content: '';
     border-left: 10px solid transparent;
@@ -59,10 +37,10 @@ const DropdownMenu = styled.div`{
   }
 }`
 
-const Dropdown = styled.div`{
+const DropdownComponent = styled.div`{
   position: relative;
   width: ${props => props.width ? `${props.width}px` : 'auto'};
-  
+
   &  button {
     cursor: pointer;
     color: #fff;
@@ -102,9 +80,7 @@ const Flexbox = styled.div`{
   }
 }`
 
-
-
-export default class extends React.Component {
+class Dropdown extends React.Component {
   constructor (props) {
     super(props)
     this.state = { show: false }
@@ -115,19 +91,25 @@ export default class extends React.Component {
   }
 
   render () {
-    const { children, label, icon: Icon, width } = this.props
+    const { children, label, icon: IconComponent, width } = this.props
     const { show } = this.state
     return (
-      <Dropdown width={width}>
+      <DropdownComponent width={width}>
         <Flexbox>
-          {Icon && <Icon size={16} color='#fff' />}
-          <button type='button' onClick={this.toggleMenu.bind(this)}> 
-            <span>{this.props.label}</span>
-            {show ? <Icon.AngleRight color='#fff' /> : <Icon.AngleDown color='#fff' />}
+          {IconComponent && <IconComponent size={16} color='#fff' />}
+          <button type='button' onClick={this.toggleMenu.bind(this)}>
+            <span>{label}</span>
+            {show ? (
+              <Icon name='angle-right' color='#fff' />
+            ) : (
+              <Icon name='angle-down' color='#fff' />
+            )}
           </button>
         </Flexbox>
         {show && (<DropdownMenu>{children}</DropdownMenu>)}
-      </Dropdown>
+      </DropdownComponent>
     )
   }
 }
+
+export default Dropdown
