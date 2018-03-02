@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const PageContainer = styled.div`{
@@ -13,7 +14,7 @@ const PageContent = styled.div`{
   padding-top: 51px;
 }`
 
-export default ({ children, menuComponent: MenuComponent, bgColor }) => (
+const Page = ({ children, menuComponent: MenuComponent, bgColor }) => (
   <PageContainer bgColor={bgColor}>
     {MenuComponent && <MenuComponent />}
     <PageContent>
@@ -21,3 +22,16 @@ export default ({ children, menuComponent: MenuComponent, bgColor }) => (
     </PageContent>
   </PageContainer>
 )
+
+const { oneOfType, node, func, string } = PropTypes
+
+Page.propTypes = {
+  /** The content of the page. */
+  children: oneOfType([node, func]),
+  /** The menu component. */
+  menuComponent: oneOfType([node, func]),
+  /** The background color of the page. */
+  bgColor: string
+}
+
+export default Page

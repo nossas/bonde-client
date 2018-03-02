@@ -1,6 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
+/**
+ * The generic scroll box component.
+ */
 const ScrollBox = styled.div`{
   height: 100%;
   overflow-y: auto;
@@ -25,6 +28,5 @@ const ScrollBox = styled.div`{
   }
 }`
 
-ScrollBox.displayName = 'ScrollBox'
-
+/* @component */
 export default ScrollBox
