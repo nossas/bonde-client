@@ -3,4 +3,4 @@ LABEL maintainer="tech@nossas.org"
 
 WORKDIR /usr/share/nginx/html
 
-COPY ./dist .
+COPY ./styleguide .

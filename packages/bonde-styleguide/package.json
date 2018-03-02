@@ -3,15 +3,13 @@
   "version": "0.0.1",
   "description": "React Components for Bonde Style Guide",
   "scripts": {
-    "build": "build-storybook -c .storybook -o dist",
+    "build": "styleguidist build",
+    "dev": "styleguidist server",
     "clean": "nwb clean-module && nwb clean-demo",
     "xtest": "nwb test-react",
     "test:coverage": "nwb test-react --coverage",
     "test:watch": "nwb test-react --server",
-    "dev": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "styleguide": "styleguidist server",
-    "styleguide:build": "styleguidist build"
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "react": "^16.2.0",
