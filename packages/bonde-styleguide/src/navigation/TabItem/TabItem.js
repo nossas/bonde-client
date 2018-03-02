@@ -1,8 +1,8 @@
-import React from 'react'
+import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 
-export const Tab = styled.a`{
-  display: block;
+export const TabItem = styled.a`{
+  display: inline-block;
   font-family: 'Nunito Sans', sans-serif;
   font-size: 13px;
   font-weight: 800;
@@ -23,17 +23,19 @@ export const Tab = styled.a`{
   }
 }`
 
-Tab.displayName = 'Tab'
+const { bool } = PropTypes
 
-const Tabs = styled(({ children, className, inverted }) => (
-  <div className={className}>
-    {children && children.map(child => React.cloneElement(child, { inverted }))}
-  </div>
-))`{
-  display: flex;
-  align-items: center;
-}`
+TabItem.propTypes = {
+  /** Invert the tab color style. */
+  inverted: bool,
+  /** Mark the current item as active style. */
+  active: bool
+}
 
-Tabs.displayName = 'Tabs'
+TabItem.defaultProps = {
+  inverted: false,
+  active: false
+}
 
-export default Tabs
+/* @component */
+export default TabItem
