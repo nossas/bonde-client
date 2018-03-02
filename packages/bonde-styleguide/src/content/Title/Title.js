@@ -1,12 +1,11 @@
 import React from 'react'
-import styled from 'styled-components'
-import Text from './Text'
+import Text from '../Text/Text'
 
 const createTitle = (element, { displayName, ...defaultTextOpts}) =>
   ({ children, ...props }) => {
     const Title = Text.withComponent(element)
     Title.displayName = displayName
-  
+
     return (
       <Title {...props} {...defaultTextOpts}>
         {children}
@@ -41,4 +40,10 @@ const H3 = createTitle('h3', {
 
 H3.displayName = 'Title.H3'
 
-export default { H1, H2, H3 }
+/**
+ * The title options component.
+ */
+const Title = { H1, H2, H3 }
+
+/* @component */
+export default Title
