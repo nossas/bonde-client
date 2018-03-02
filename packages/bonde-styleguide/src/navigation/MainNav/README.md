@@ -1,0 +1,5 @@
+```js
+<Navbar>
+  <MainNav />
+</Navbar>
+```

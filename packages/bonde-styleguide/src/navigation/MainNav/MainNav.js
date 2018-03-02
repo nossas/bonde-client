@@ -1,5 +1,6 @@
 import React from 'react'
-import Dropdown, { Item as DropdownItem } from '../Dropdown'
+import Dropdown from '../../navigation/Dropdown/Dropdown'
+import DropdownItem from '../../navigation/DropdownItem/DropdownItem'
 
 const MainNav = () => (
   <Dropdown label='Comunidades'>

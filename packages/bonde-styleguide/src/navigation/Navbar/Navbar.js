@@ -1,6 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import Icon from './Icon'
+import Icon from '../../content/Icon/Icon'
 
 const NavContainer = styled.div`{
   display: flex;
@@ -37,10 +38,20 @@ const Navbar = styled(({
   }
 }`
 
-Navbar.defaultProps = {
-  homePageIcon: Icon.Bonde
+const { oneOfType, node, func, string } = PropTypes
+
+Navbar.propTypes = {
+  /** The home page URL. */
+  homePageUrl: string,
+  /** The home page title. */
+  homePageTitle: string,
+  /** The home page icon. */
+  homePageIcon: oneOfType([node, func])
 }
 
-Navbar.displayName = 'Navbar'
+Navbar.defaultProps = {
+  homePageIcon: () => <Icon name='bonde' />
+}
 
+/* @component */
 export default Navbar
