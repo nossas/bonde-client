@@ -2,14 +2,6 @@
   "name": "bonde-styleguide",
   "version": "0.0.1",
   "description": "React Components for Bonde Style Guide",
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "files": [
-    "css",
-    "es",
-    "lib",
-    "umd"
-  ],
   "scripts": {
     "build": "build-storybook -c .storybook -o dist",
     "clean": "nwb clean-module && nwb clean-demo",
@@ -17,27 +9,27 @@
     "test:coverage": "nwb test-react --coverage",
     "test:watch": "nwb test-react --server",
     "dev": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "styleguide": "styleguidist server",
+    "styleguide:build": "styleguidist build"
   },
   "dependencies": {
-    "@storybook/addon-knobs": "^3.3.14",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "prismjs": "^1.10.0",
     "recharts": "^1.0.0-beta.10",
     "styled-components": "^3.1.4",
     "webfontloader": "^1.6.28"
   },
-  "peerDependencies": {
-    "react": "16.x"
-  },
   "devDependencies": {
+    "react-scripts": "1.1.1",
+    "@storybook/addon-knobs": "^3.3.14",
     "@storybook/addon-actions": "^3.3.11",
     "@storybook/addon-links": "^3.3.11",
     "@storybook/addons": "^3.3.11",
     "@storybook/react": "^3.3.11",
-    "babel-core": "^6.26.0",
     "nwb": "0.21.x",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react-styleguidist": "^6.2.5",
     "storybook-addon-jsx": "^5.3.0"
   },
   "author": "",

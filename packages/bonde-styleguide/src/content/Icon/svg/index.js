@@ -11,15 +11,15 @@ import Times from './Times'
 import User from './User'
 
 export default {
-  AngleDown,
-  AngleRight,
-  Archive,
-  Bonde,
-  Copy,
-  Plus,
-  Share,
-  Sound,
-  Star,
-  Times,
-  User
+  'angle-down': AngleDown,
+  'angle-right': AngleRight,
+  'archive': Archive,
+  'bonde': Bonde,
+  'copy': Copy,
+  'plus': Plus,
+  'share': Share,
+  'sound': Sound,
+  'star': Star,
+  'times': Times,
+  'user': User
 }
