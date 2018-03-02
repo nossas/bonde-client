@@ -1,5 +1,6 @@
 import React from 'react'
-import Text from './Text'
+import PropTypes from 'prop-types'
+import Text from '../Text/Text'
 
 
 const TextNumber = Text.extend`
@@ -13,10 +14,17 @@ const TextNumber = Text.extend`
 const Number = ({ value, icon: Icon }) => (
   <TextNumber>
     <span>{value}</span>
-    {Icon && <Icon />}
+    {Icon && Icon}
   </TextNumber>
 )
 
-Number.displayName = 'Number'
+const { oneOfType, number, node, func } = PropTypes
+
+Number.propTypes = {
+  /** The value that will be displayed. */
+  value: number,
+  /** The icon that will be displayed besides the value. */
+  icon: oneOfType([node, func])
+}
 
 export default Number
