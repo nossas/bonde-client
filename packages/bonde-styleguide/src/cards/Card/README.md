@@ -57,56 +57,6 @@
 <Grid>
   <Cell size={[6]}>
     <Card
-      title='Localização'
-      minHeight={274}
-      middle
-    >
-      <Container padding={{ x: 24 }} horizontal center>
-        <ProgressRanking
-          trackColor='#eeeeee'
-          color='#ee0099'
-          maxValue={3000}
-          width={110}
-        >
-          <ProgressRankingItem label='São Paulo' value={2361} />
-          <ProgressRankingItem label='Rio de Janeiro' value={1522} />
-          <ProgressRankingItem label='Curtiba' value={654} />
-          <ProgressRankingItem label='Recife' value={322} />
-        </ProgressRanking>
-        <BrazilMap size={170} />
-      </Container>
-    </Card>
-  </Cell>
-
-  <Cell size={[6]}>
-    <Card
-      title='Top 5 Mobs'
-      minHeight={274}
-      middle
-    >
-      <Container padding={{ x: 27 }} horizontal bottom>
-        <ProgressRanking
-          trackColor='#fff'
-          maxValue={2450}
-          width={200}
-        >
-          <ProgressRankingItem label='Existe amor em SP' value={2450} />
-          <ProgressRankingItem label='Somos toda Olga' value={1602} />
-          <ProgressRankingItem label='Respeita as Mina' value={967} />
-          <ProgressRankingItem label='Empodera!' value={901} />
-          <ProgressRankingItem label='Sem FiuFiu' value={610} />
-        </ProgressRanking>
-        <IconColorful name='mobilization' size={78} />
-      </Container>
-    </Card>
-  </Cell>
-</Grid>
-```
-
-```js { "props": { "className": "noborder" } }
-<Grid>
-  <Cell size={[6]}>
-    <Card
       title='Atividades recentes'
       minHeight={274}
     >

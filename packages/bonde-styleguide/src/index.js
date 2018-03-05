@@ -15,6 +15,7 @@ WebFont.load({
 
 export { default as Card } from './cards/Card/Card'
 export { default as Panel } from './cards/Panel/Panel'
+export { default as RankingCard } from './cards/RankingCard/RankingCard'
 
 export { default as Button } from './content/Button/Button'
 export { default as Icon } from './content/Icon/Icon'

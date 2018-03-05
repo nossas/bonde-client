@@ -8,28 +8,23 @@ import { borderSpacing, borderSpacingPropTypes } from '../../utils'
 const Flexbox = styled.div`{
   display: flex;
   ${props => borderSpacing('padding', props.padding)}
-  ${props => props.center && `align-items: center;`}
   ${props => props.horizontal ? `justify-content: space-between;` : `
     flex-direction: column;
   `}
-  ${props => props.bottom && `align-items: flex-end;`}
-  ${props => props.right && `align-items: flex-end;`}
+  ${props => props.alignItems === 'start' && `align-items: flex-start;`}
+  ${props => props.alignItems === 'end' && `align-items: flex-end;`}
+  ${props => props.alignItems === 'middle' && `align-items: center;`}
 }`
-
-const { bool } = PropTypes
 
 Flexbox.propTypes = {
   padding: borderSpacingPropTypes,
-  center: bool,
-  horizontal: bool,
-  bottom: bool
+  horizontal: PropTypes.bool,
+  alignItems: PropTypes.oneOf(['start', 'middle', 'end'])
 }
 
 Flexbox.defaultProps = {
   padding: {},
-  center: false,
-  horizontal: false,
-  bottom: false
+  horizontal: false
 }
 
 /* @component */

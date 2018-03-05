@@ -1,12 +1,20 @@
 import React from 'react'
 
-const BrazilMap = ({ size, width, height }) => (
+const applyMargin = (margin) => ({
+  marginLeft: margin.left || margin.x || 0,
+  marginRight: margin.right || margin.x || 0,
+  marginTop: margin.top || margin.y || 0,
+  marginBottom: margin.bottom || margin.y || 0
+})
+
+const BrazilMap = ({ size, width, height, margin }) => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
     xmlnsXlink='http://www.w3.org/1999/xlink'
     width={size || width || '156'}
     height={size || height || '158'}
     viewBox='0 0 156 158'
+    style={applyMargin(margin)}
   >
     <defs>
         <rect id='b' width='360' height='274' x='930' y='598' rx='1' />
@@ -32,5 +40,9 @@ const BrazilMap = ({ size, width, height }) => (
     </g>
   </svg>
 )
+
+BrazilMap.defaultProps = {
+  margin: {}
+}
 
 export default BrazilMap
