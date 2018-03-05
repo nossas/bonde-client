@@ -3,7 +3,7 @@ import styled from 'styled-components'
 /**
  * The generic scroll box component.
  */
-const ScrollBox = styled.div`{
+const Scrollbox = styled.div`{
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
@@ -28,4 +28,4 @@ const ScrollBox = styled.div`{
 }`
 
 /* @component */
-export default ScrollBox
+export default Scrollbox
