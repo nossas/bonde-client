@@ -36,29 +36,6 @@
 
 ```js { "props": { "className": "noborder" } }
 <Grid>
-  <Cell size={[6]}>
-    <Card
-      title='Treending mobs'
-      minHeight={320}
-    >
-      <Image src='https://goo.gl/hggWmp' height={185} />
-      <Container padding={{ x: 16, y: 14 }}>
-        <Title.H3>Cinzas dos Muros</Title.H3>
-        <Text
-          fontSize={16}
-          lineHeight={1.31}
-          color='#4a4a4a'
-          margin={{ y: 8 }}
-        >
-          Nossos muros têm voz, têm vida.
-        </Text>
-        <Text fontSize={13} lineHeight={1.85} color='#4a4a4a'>
-          Por Minha Sampa
-        </Text>
-      </Container>
-    </Card>
-  </Cell>
-
   <Cell size={[3]}>
     <Card
       title='Pressões'

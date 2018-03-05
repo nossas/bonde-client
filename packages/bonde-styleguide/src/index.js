@@ -14,16 +14,19 @@ WebFont.load({
 // export { default as Page } from './Layout/Page'
 
 export { default as Card } from './cards/Card/Card'
+export { default as Panel } from './cards/Panel/Panel'
 
 export { default as Button } from './content/Button/Button'
 export { default as Icon } from './content/Icon/Icon'
 export { default as IconColorful } from './content/IconColorful/IconColorful'
+export { default as Image } from './content/Image/Image'
 export { default as Number } from './content/Number/Number'
 export { default as Text } from './content/Text/Text'
 export { default as Title } from './content/Title/Title'
 
 export { default as Cell } from './layout/Cell/Cell'
 export { default as Container } from './layout/Container/Container'
+export { default as Flexbox } from './layout/Flexbox/Flexbox'
 export { default as Grid } from './layout/Grid/Grid'
 
 export { default as Feed } from './list/Feed/Feed'
