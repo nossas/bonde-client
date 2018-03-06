@@ -14,6 +14,8 @@ WebFont.load({
 // export { default as Page } from './Layout/Page'
 
 export { default as Card } from './cards/Card/Card'
+export { default as DataListCard } from './cards/DataListCard/DataListCard'
+export { default as FeedsCard } from './cards/FeedsCard/FeedsCard'
 export { default as Panel } from './cards/Panel/Panel'
 export { default as RankingCard } from './cards/RankingCard/RankingCard'
 
