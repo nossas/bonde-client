@@ -9,6 +9,14 @@ import {
   Scrollbox
 } from '../../'
 
+const CustomCol = ({ render, field, ...colProps }) => (
+  <DataListCol {...colProps}>
+    {typeof render === 'function' ? render(field) : (
+      <Text fontSize={14}>{field}</Text>
+    )}
+  </DataListCol>
+)
+
 const DataListCard = ({
   sectionTitle,
   minHeight,
@@ -25,9 +33,10 @@ const DataListCard = ({
         {items.map(item => (
           <DataListRow>
           {fieldNames.map(fieldName => (
-            <DataListCol {...fields[fieldName]}>
-              <Text fontSize={14}>{item[fieldName]}</Text>
-            </DataListCol>
+            <CustomCol
+              {...fields[fieldName]}
+              field={item[fieldName]}
+            />
           ))}
           </DataListRow>
         ))}
