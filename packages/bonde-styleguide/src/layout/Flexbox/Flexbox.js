@@ -11,6 +11,10 @@ const Flexbox = styled.div`{
   ${props => props.horizontal ? `justify-content: space-between;` : `
     flex-direction: column;
   `}
+  ${props => props.row && `
+    flex-direction: row;
+    flex-grow: 1;
+  `}
   ${props => props.alignItems === 'start' && `align-items: flex-start;`}
   ${props => props.alignItems === 'end' && `align-items: flex-end;`}
   ${props => props.alignItems === 'middle' && `align-items: center;`}
@@ -19,12 +23,14 @@ const Flexbox = styled.div`{
 Flexbox.propTypes = {
   padding: borderSpacingPropTypes,
   horizontal: PropTypes.bool,
+  row: PropTypes.bool,
   alignItems: PropTypes.oneOf(['start', 'middle', 'end'])
 }
 
 Flexbox.defaultProps = {
   padding: {},
-  horizontal: false
+  horizontal: false,
+  row: false
 }
 
 /* @component */

@@ -9,6 +9,7 @@ const TextNumber = Text.extend`
   margin: 0;
   display: flex;
   justify-content: space-between;
+  flex-grow: 1;
 `
 
 const Number = ({ value, icon: Icon }) => (
