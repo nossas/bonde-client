@@ -13,6 +13,7 @@ WebFont.load({
 // export { default as Image } from './Image'
 // export { default as Page } from './Layout/Page'
 
+export { default as ActionCard } from './cards/ActionCard/ActionCard'
 export { default as Card } from './cards/Card/Card'
 export { default as DataListCard } from './cards/DataListCard/DataListCard'
 export { default as FeedsCard } from './cards/FeedsCard/FeedsCard'

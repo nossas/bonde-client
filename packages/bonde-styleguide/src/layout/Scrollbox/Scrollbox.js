@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { borderSpacing, borderSpacingPropTypes } from '../../utils'
 
 /**
  * The generic scroll box component.
@@ -7,6 +8,7 @@ const Scrollbox = styled.div`{
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
+  ${props => borderSpacing('padding', props.padding)}
 
   &::-webkit-scrollbar {
     width: 33px;
@@ -26,6 +28,14 @@ const Scrollbox = styled.div`{
     border-right-width: 15px;
   }
 }`
+
+Scrollbox.propTypes = {
+  padding: borderSpacingPropTypes
+}
+
+Scrollbox.defaultProps = {
+  padding: 0
+}
 
 /* @component */
 export default Scrollbox
