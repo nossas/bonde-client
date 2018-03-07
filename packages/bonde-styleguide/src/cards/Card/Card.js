@@ -17,6 +17,7 @@ const CardBox = styled.div`{
   flex-direction: column;
   ${props => props.middle && `justify-content: center;`}
   ${props => props.bottom && `justify-content: flex-end;`}
+  ${props => props.onClick && `cursor: pointer;`}
 }`
 
 const CardTitle = ({ children }) => (

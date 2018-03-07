@@ -15,6 +15,7 @@ const Flexbox = styled.div`{
     flex-direction: row;
     flex-grow: 1;
   `}
+  ${props => props.fullSize && `flex-grow: 1;`}
   ${props => props.alignItems === 'start' && `align-items: flex-start;`}
   ${props => props.alignItems === 'end' && `align-items: flex-end;`}
   ${props => props.alignItems === 'middle' && `align-items: center;`}
@@ -30,6 +31,7 @@ Flexbox.propTypes = {
 Flexbox.defaultProps = {
   padding: {},
   horizontal: false,
+  fullSize: false,
   row: false
 }
 

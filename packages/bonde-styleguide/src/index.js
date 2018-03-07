@@ -15,6 +15,7 @@ WebFont.load({
 
 export { default as ActionCard } from './cards/ActionCard/ActionCard'
 export { default as Card } from './cards/Card/Card'
+export { default as ClickableCard } from './cards/ClickableCard/ClickableCard'
 export { default as DataListCard } from './cards/DataListCard/DataListCard'
 export { default as FeedsCard } from './cards/FeedsCard/FeedsCard'
 export { default as Panel } from './cards/Panel/Panel'
