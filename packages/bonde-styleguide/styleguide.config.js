@@ -46,11 +46,6 @@ module.exports = {
       name: 'Assets',
       description: 'The list of assets components.',
       components: 'src/assets/[A-Z]*/[A-Z]*.js'
-    },
-    {
-      name: 'Dummy',
-      description: 'The list of dummy components only for presentational reason.',
-      components: 'src/dummy/[A-Z]*/[A-Z]*.js',
     }
   ],
   contextDependencies: [path.resolve(__dirname, 'src')],

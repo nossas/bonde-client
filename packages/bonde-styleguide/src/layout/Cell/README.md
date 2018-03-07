@@ -13,10 +13,10 @@ The `Cell` component works only together with `Grid` component.
       12  // for @media (min-width: 320px)
     ]}
   >
-    <Brick text='[3,3,6,6,12,12]' />
+    <Text>{`[3,3,6,6,12,12]`}</Text>
   </Cell>
   <Cell size={[6,6,10,10,12,12]}>
-    <Brick text='[6,6,10,10,12,12]' />
+    <Text>{`[6,6,10,10,12,12]`}</Text>
   </Cell>
 </Grid>
 ```
@@ -28,10 +28,10 @@ I want to change only the cell size when window width is between 480px and 600px
 ```js
 <Grid>
   <Cell size={[null, null, null, 8]}>
-    <Brick text='example' />
+    <Text>example</Text>
   </Cell>
   <Cell>
-    <Brick text='default' />
+    <Text>default</Text>
   </Cell>
 </Grid>
 ```

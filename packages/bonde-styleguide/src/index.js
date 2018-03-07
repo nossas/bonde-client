@@ -31,7 +31,6 @@ export { default as Text } from './content/Text/Text'
 export { default as Title } from './content/Title/Title'
 
 export { default as Cell } from './layout/Cell/Cell'
-export { default as Container } from './layout/Container/Container'
 export { default as Flexbox } from './layout/Flexbox/Flexbox'
 export { default as Grid } from './layout/Grid/Grid'
 export { default as Scrollbox } from './layout/Scrollbox/Scrollbox'

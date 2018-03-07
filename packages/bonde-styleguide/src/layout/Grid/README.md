@@ -3,18 +3,18 @@ The grid is defined in 12 columns. That wraps multiple `Cell` components.
 
 ```js
 <Grid>
-  <Cell><Brick text='1' /></Cell>
-  <Cell><Brick text='2' /></Cell>
-  <Cell><Brick text='3' /></Cell>
-  <Cell><Brick text='4' /></Cell>
-  <Cell><Brick text='5' /></Cell>
-  <Cell><Brick text='6' /></Cell>
-  <Cell><Brick text='7' /></Cell>
-  <Cell><Brick text='8' /></Cell>
-  <Cell><Brick text='9' /></Cell>
-  <Cell><Brick text='10' /></Cell>
-  <Cell><Brick text='11' /></Cell>
-  <Cell><Brick text='12' /></Cell>
+  <Cell><Text>1</Text></Cell>
+  <Cell><Text>2</Text></Cell>
+  <Cell><Text>3</Text></Cell>
+  <Cell><Text>4</Text></Cell>
+  <Cell><Text>5</Text></Cell>
+  <Cell><Text>6</Text></Cell>
+  <Cell><Text>7</Text></Cell>
+  <Cell><Text>8</Text></Cell>
+  <Cell><Text>9</Text></Cell>
+  <Cell><Text>10</Text></Cell>
+  <Cell><Text>11</Text></Cell>
+  <Cell><Text>12</Text></Cell>
 </Grid>
 ```
 
@@ -29,24 +29,24 @@ The grid is defined in 12 columns. That wraps multiple `Cell` components.
 //
 <Grid style={{ border: '2px solid red' }}>
   <Cell>
-    <Brick text='1' />
+    <Text>1</Text>
   </Cell>
   <Cell size={[8]}>
     <Text>Nested Grid</Text>
     <Grid style={{ border: '2px dashed green' }}>
       <Cell size={[6]}>
-        <Brick text='8: 6' />
+        <Text>{`8: 6`}</Text>
       </Cell>
       <Cell size={[3]}>
-        <Brick text='8: 3' />
+        <Text>{`8: 3`}</Text>
       </Cell>
       <Cell size={[3]}>
-        <Brick text='8: 3' />
+        <Text>{`8: 3`}</Text>
       </Cell>
     </Grid>
   </Cell>
   <Cell size={[3]}>
-    <Brick text='3' />
+    <Text>3</Text>
   </Cell>
 </Grid>
 ```
