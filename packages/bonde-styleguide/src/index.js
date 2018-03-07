@@ -14,6 +14,7 @@ WebFont.load({
 // export { default as Page } from './Layout/Page'
 
 export { default as ActionCard } from './cards/ActionCard/ActionCard'
+export { default as AreaChartCard } from './cards/AreaChartCard/AreaChartCard'
 export { default as Card } from './cards/Card/Card'
 export { default as ClickableCard } from './cards/ClickableCard/ClickableCard'
 export { default as DataListCard } from './cards/DataListCard/DataListCard'
