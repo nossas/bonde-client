@@ -8,7 +8,7 @@ export default store => ({
   path: 'fields',
   getComponent (nextState, callback) {
     require.ensure([], function (require) {
-      callback(null, require('./page').default)
+      callback(null, require('./page.connected').default)
     })
   }
 })

@@ -8,9 +8,8 @@ import * as MobActions from '~client/mobrender/redux/action-creators'
 
 import Page from './page'
 
-const mapStateToProps = state => {
-  const selectors = MobSelectors(state)
-
+const mapStateToProps = (state, props) => {
+  const selectors = MobSelectors(state, props)
   return {
     mobilization: selectors.getMobilization(),
     widget: selectors.getWidget()
