@@ -13,7 +13,7 @@ import { messagePressureTargetsRemoveAll } from '~client/utils/notifications'
 import Page from './page'
 
 const mapStateToProps = (state, props) => {
-  const selectors = MobSelectors(state)
+  const selectors = MobSelectors(state, props)
   const widget = selectors.getWidget()
 
   return {

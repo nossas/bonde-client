@@ -6,8 +6,8 @@ import { donationForm, DonationSettingsForm } from '~client/mobrender/widgets/do
 import MobSelectors from '~client/mobrender/redux/selectors'
 import * as MobActions from '~client/mobrender/redux/action-creators'
 
-const mapStateToProps = state => {
-  const selectors = MobSelectors(state)
+const mapStateToProps = (state, props) => {
+  const selectors = MobSelectors(state, props)
 
   return {
     mobilization: selectors.getMobilization(),

@@ -10,8 +10,8 @@ import * as MobActions from '~client/mobrender/redux/action-creators'
 import { fields, validate } from '~client/mobilizations/widgets/components/form-autofire'
 import Page from './page'
 
-const mapStateToProps = state => {
-  const selectors = MobSelectors(state)
+const mapStateToProps = (state, props) => {
+  const selectors = MobSelectors(state, props)
   const widget = selectors.getWidget()
   return {
     initialValues: widget.settings || {},

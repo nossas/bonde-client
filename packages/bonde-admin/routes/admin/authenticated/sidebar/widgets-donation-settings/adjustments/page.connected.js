@@ -11,8 +11,8 @@ const AdjustmentsSettingsForm = createAdjustmentsForm([
   'call_to_action', 'button_text', 'main_color'
 ])
 
-const mapStateToProps = state => {
-  const selectors = MobSelectors(state)
+const mapStateToProps = (state, props) => {
+  const selectors = MobSelectors(state, props)
 
   return {
     mobilization: selectors.getMobilization(),
