@@ -1,14 +1,13 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { NotFound } from '../../components'
-
-const Login = () => (<p>This is login page</p>)
+import { Page as LoginPage } from './scenes/Login'
 
 const Register = () => (<p>This is register page</p>)
 
 const AuthRoot = ({ match }) => (
   <Switch>
-    <Route path={`${match.url}/login`} component={Login} />
+    <Route path={`${match.url}/login`} component={LoginPage} />
     <Route path={`${match.url}/register`} component={Register} />
     <Route component={NotFound} />
   </Switch>
