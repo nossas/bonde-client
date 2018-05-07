@@ -1,6 +1,8 @@
 import React from 'react'
 import { Mutation } from 'react-apollo'
+import { AuthAPI } from '../../../../services/auth' 
 import AUTHENTICATE from './authenticate.graphql'
+
 
 const AuthLogin = () => {
   let inputEmail
@@ -19,7 +21,7 @@ const AuthLogin = () => {
               }
             })
             .then(({ data }) => {
-              console.log(data)
+              AuthAPI.login(data)
             })
           }}
         >

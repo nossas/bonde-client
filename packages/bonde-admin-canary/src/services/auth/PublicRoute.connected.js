@@ -1,10 +1,9 @@
-import React from 'react'
+import { connect } from '../redux'
 import PublicRoute from './components/PublicRoute'
 import AuthAPI from './api'
 
-export default (props) => (
-  <PublicRoute
-    authenticated={AuthAPI.isAuthenticated()}
-    {...props}
-  />
-)
+const mapStateToProps = () => ({
+  authenticated: AuthAPI.isAuthenticated()
+})
+
+export default connect(mapStateToProps)(PublicRoute)

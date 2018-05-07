@@ -1,11 +1,11 @@
-import React from 'react'
+import { connect } from '../redux'
 import PrivateRoute from './components/PrivateRoute'
 import AuthAPI from './api'
 
-export default ({ redirectTo, ...otherProps }) => (
-  <PrivateRoute
-    redirectTo={redirectTo || '/auth/login'}
-    authenticated={AuthAPI.isAuthenticated()}
-    {...otherProps}
-  />
-)
+
+const mapStateToProps = (state, { redirectTo, ...ownProps }) => ({
+  redirectTo: redirectTo || '/auth/login',
+  authenticated: AuthAPI.isAuthenticated()
+})
+
+export default connect(mapStateToProps)(PrivateRoute)
