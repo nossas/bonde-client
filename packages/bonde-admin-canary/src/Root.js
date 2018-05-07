@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { PrivateRoute } from './services/auth'
 import { ProviderRedux } from './services/redux'
 import { ProviderGraphQL } from './services/graphql'
 // Routes
@@ -12,7 +13,7 @@ const Root = () => (
     <ProviderRedux>
       <Router>
         <Switch>
-          <Route exact path='/' component={HomePage} />
+          <PrivateRoute exact path='/' component={HomePage} />
           <Route path='/auth' component={AuthRoot} />
           <Route component={NotFound} />
         </Switch>
