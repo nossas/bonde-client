@@ -1,4 +1,6 @@
 import { combineReducers } from 'redux'
+// Import used reducers
+import { reducer as authReducer } from '../auth/redux'
 
 // Reducer example
 const home = (state = '', action) => {
@@ -12,5 +14,6 @@ const home = (state = '', action) => {
 
 export default combineReducers({
   // insert your reducers function
-  home
+  home,
+  auth: authReducer
 })
