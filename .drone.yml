@@ -69,6 +69,19 @@ pipeline:
       status: success
       branch: [hotfix-*, release-*, feature-*, develop]
 
+  publish-admin-canary-staging:
+    image: plugins/docker
+    repo: nossas/bonde-admin-canary
+    group: publishing
+    secrets: [ docker_username, docker_password ]
+    dockerfile: packages/bonde-admin-canary/Dockerfile
+    context: packages/bonde-admin-canary/
+    tags:
+      - ${DRONE_BRANCH}
+    when:
+      status: success
+      branch: [hotfix-*, release-*, feature-*, develop]
+
   # deploy-admin-staging:
   #   image: nossas/s3cmd
   #   group: concurrent
@@ -113,6 +126,19 @@ pipeline:
     url: http://cluster.bonde.org
     service: staging/styleguide
     docker_image: nossas/bonde-styleguide:${DRONE_BRANCH}
+    timeout: 360
+    confirm: true
+    secrets: [ rancher_access_key, rancher_secret_key ]
+    when:
+      status: success
+      branch: [hotfix-*, release-*, feature-*, develop]
+
+  deploy-staging-admin-canary:
+    image: peloton/drone-rancher
+    group: deploying
+    url: http://cluster.bonde.org
+    service: staging/admin-canary
+    docker_image: nossas/bonde-admin-canary:${DRONE_BRANCH}
     timeout: 360
     confirm: true
     secrets: [ rancher_access_key, rancher_secret_key ]
