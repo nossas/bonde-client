@@ -33,6 +33,16 @@ class LocalStorageMock {
   removeItem(key) {
     delete this.store[key];
   }
-};
+}
 
 global.localStorage = new LocalStorageMock;
+
+
+// Mock XMLHttpRequest
+class XMLHttpRequest {
+  open() {}
+  setRequestHeader() {}
+  send() {}
+}
+
+global.XMLHttpRequest = XMLHttpRequest;
