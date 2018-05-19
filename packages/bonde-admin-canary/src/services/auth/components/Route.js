@@ -1,6 +1,5 @@
 import React from 'react'
 import { Route as ReactRoute, Redirect } from 'react-router-dom'
-import urlJoin from 'url-join'
 
 const Route = ({
   assert,
