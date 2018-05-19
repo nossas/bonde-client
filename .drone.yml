@@ -18,6 +18,7 @@ pipeline:
       - NODE_ENV=production
       - API_URL=https://api-v1.staging.bonde.org
       - BOT_URL=https://beta.staging.bonde.org
+      - REACT_APP_GRAPHQL_URL=https://api-v2.staging.bonde.org/graphql
       - GRAPHQL_URL=https://api-v2.staging.bonde.org/graphql
       - APP_DOMAIN=staging.bonde.org
       - AWS_BUCKET=bonde-assets-staging
