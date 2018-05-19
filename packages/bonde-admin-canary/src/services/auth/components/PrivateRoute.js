@@ -1,38 +1,16 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Route, Redirect } from 'react-router-dom'
+import { connect } from '../../redux'
+import Route from './Route'
+import AuthAPI from '../api'
 
-const PrivateRoute = ({
-  component: Component,
-  authenticated,
-  redirectTo,
-  ...otherProps
-}) => (
-  <Route
-    {...otherProps}
-    render={props => (
-      authenticated ? (
-        <Component {...props} />
-      ) : (
-        <Redirect
-          to={{ pathname: redirectTo, state: { from: props.location } }}
-        />
-      )
-    )}
-  />
-)
-
-PrivateRoute.propTypes = {
-  authenticated: PropTypes.bool,
-  component: PropTypes.func.isRequired,
-  redirectTo: PropTypes.string.isRequired
-}
-
-PrivateRoute.defaultProps = {
-  authenticated: false
-}
+const mapStateToProps = (state, { redirectTo, ...ownProps }) => ({
+  redirectTo: redirectTo || '/auth/login',
+  assert: AuthAPI.isAuthenticated()
+})
 
 /**
+ * A PrivateRoute connected with AuthAPI to discovery
+ * when user is authenticated.
+ *
  * Component representing a Route, used to render component
  * only when authenticated.
  *
@@ -42,4 +20,4 @@ PrivateRoute.defaultProps = {
  * is true.
  *
  */
-export default PrivateRoute
+export default connect(mapStateToProps)(Route)
