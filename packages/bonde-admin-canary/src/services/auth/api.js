@@ -33,7 +33,10 @@ const AuthAPI = {
   
   isAuthenticated: () => !!getState().auth.user,
 
-  getToken: () => db.get('user').value().jwtToken
+  getToken: () => {
+    const user = db.get('user').value()
+    return user ? user.jwtToken : undefined
+  }
 }
 
 export default AuthAPI
