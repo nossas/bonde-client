@@ -8,7 +8,7 @@ import {
   MultipleChoiceField
 } from 'bonde-styleguide'
 import { Redirect } from 'react-router'
-
+import { auth } from '../../../../services/auth'
 import { translate } from '../../../../services/i18n'
 import { Form, Field } from '../../../../components/Form'
 
@@ -33,14 +33,14 @@ class AuthTags extends React.Component {
   state = { redir: false }
 
   render () {
-    const { t } = this.props
+    const { t, user } = this.props
 
     if (this.state.redir) return <Redirect to='/' />
 
     return (
       <Flexbox vertical middle padding='0 26.6%'>
         <Title.H2 margin={{ bottom: 25 }} fontSize={44}>
-          {`${t('greetings')}, Maria!`}
+          {`${t('greetings')}, ${user.firstName}!`}
         </Title.H2>
 
         <Title.H4 margin={{ bottom: 60 }} fontWeight='normal' align='center'>
@@ -77,4 +77,4 @@ class AuthTags extends React.Component {
   }
 }
 
-export default translate('tags')(AuthTags)
+export default translate('tags')(auth()(AuthTags))
