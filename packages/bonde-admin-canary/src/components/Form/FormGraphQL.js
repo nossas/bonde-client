@@ -1,6 +1,6 @@
 import React from 'react'
 import { Mutation } from 'react-apollo'
-import Form, { SubmissionError } from '../../../../components/Form'
+import { Form, SubmissionError } from './'
 
 const FormGraphQL = ({
   children,
