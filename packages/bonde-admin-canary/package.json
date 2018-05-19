@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "apollo-boost": "^0.1.6",
+    "apollo-cache-inmemory": "^1.2.1",
+    "apollo-link-context": "^1.0.8",
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",
@@ -63,7 +65,7 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
-    "start": "PORT=8000 node scripts/start.js",
+    "dev": "PORT=8000 node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "NODE_ENV=test ava"
   },
