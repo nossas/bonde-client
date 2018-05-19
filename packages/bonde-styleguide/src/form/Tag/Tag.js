@@ -32,11 +32,11 @@ const Content = styled.span`
   }
 `
 
-const Tag = ({ checked, text, name }) => (
+const Tag = ({ label, ...field }) => (
   <label>
-    <Checkbox checked={checked} name={name} />
+    <Checkbox {...field} />
     <Content>
-      {text}
+      {label}
     </Content>
   </label>
 )
@@ -45,7 +45,7 @@ const { oneOfType, node, func, bool, string } = PropTypes
 
 Tag.propTypes = {
   /** Anything that can be rendered, will be rendered inside the tag. */
-  text: oneOfType([node, func]).isRequired,
+  label: oneOfType([node, func]).isRequired,
   /** The default checked state. */
   checked: bool,
   /** The form input name attribute. */

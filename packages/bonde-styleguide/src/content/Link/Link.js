@@ -1,4 +1,3 @@
-import React from 'react'
 import Text from '../Text/Text'
 
 const Link = Text.withComponent('a').extend`
