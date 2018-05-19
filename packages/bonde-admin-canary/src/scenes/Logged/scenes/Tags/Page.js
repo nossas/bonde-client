@@ -3,31 +3,13 @@ import {
   Button,
   Flexbox2 as Flexbox,
   Icon,
-  Tag,
-  Title,
-  MultipleChoiceField
+  Title
 } from 'bonde-styleguide'
 import { Redirect } from 'react-router'
 import { auth } from '../../../../services/auth'
 import { translate } from '../../../../services/i18n'
 import { Form, Field } from '../../../../components/Form'
-
-const tags = [
-  { label: 'Meio Ambiente', value: 'meio-ambiente' },
-  { label: 'Direitos Humanos', value: 'direitos-humanos' },
-  { label: 'Segurança pública', value: 'seguranca-publica' },
-  { label: 'Mobilidade', value: 'mobilidade' },
-  { label: 'Direito das Mulheres', value: 'direito-das-mulheres' },
-  { label: 'Feminismo', value: 'feminismo' },
-  { label: 'Participação Social', value: 'participacao-social' },
-  { label: 'Educação', value: 'educacao' },
-  { label: 'Transparência', value: 'transparencia' },
-  { label: 'Direito LGBTQI+', value: 'direito-lgbtqi' },
-  { label: 'Direito à Moradia', value: 'direito-a-moradia' },
-  { label: 'Combate à Corrupção', value: 'combate-a-corrupcao' },
-  { label: 'Combate ao Racismo', value: 'combate-ao-racismo' },
-  { label: 'Saúde Pública', value: 'saude-publica' },
-]
+import { TagsField } from './components'
 
 class AuthTags extends React.Component {
   state = { redir: false }
@@ -52,12 +34,8 @@ class AuthTags extends React.Component {
           this.setState({ redir: false })
           return resolve()
         })}>
-          <Field
-            name='tags'
-            options={tags}
-            component={MultipleChoiceField}
-            inputComponent={Tag}
-          />
+          
+          <Field name='tags' component={TagsField} />
 
           <Flexbox horizontal spacing='between' margin={{ top: 55 }}>
             <Button flat title={t('buttons.addTag')}>
