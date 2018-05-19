@@ -1,11 +1,11 @@
 import React from 'react'
 import { Page, Header, Navbar } from 'bonde-styleguide'
-import { Route } from '../../services/auth'
+import { AuthProvider, Route } from '../../services/auth'
 import { Page as HomePage } from './scenes/Home'
 import { Page as TagsPage } from './scenes/Tags'
 
 const Root = ({ match }) => (
-  <div>
+  <AuthProvider>
     <Header>
       <Navbar
         homePageTitle='Bonde.org'
@@ -16,7 +16,7 @@ const Root = ({ match }) => (
       <Route exact path={match.url} component={HomePage} />
       <Route path={`${match.url}/tags`} component={TagsPage} />
     </Page>
-  </div>
+  </AuthProvider>
 )
 
 export default Root
