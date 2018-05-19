@@ -14,7 +14,7 @@ const AuthProvider = ({ children }) => (
       if (error) console.log('error', error)
 
       return (
-        <AuthContext.Provider value={data.currentUser}>
+        <AuthContext.Provider value={(data ? data.currentUser : undefined)}>
           {children}
         </AuthContext.Provider>
       )
