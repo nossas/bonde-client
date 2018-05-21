@@ -16,8 +16,8 @@ class Home extends React.Component {
   initOnboarding = () => setTimeout(
     () => {
       const { lastLocation } = this.props
-      const fromRegister = lastLocation && lastLocation.pathname === '/admin/tags'
-      this.setState({ splash: false, step: Number(fromRegister) });
+      const isRegisterFlow = lastLocation && lastLocation.pathname === '/admin/tags'
+      this.setState({ splash: false, step: Number(isRegisterFlow) });
     }, 3000
   )
 
@@ -26,7 +26,6 @@ class Home extends React.Component {
   }
 
   render () {
-    console.log(this.props)
     const { t } = this.props
     const { splash, step } = this.state
 

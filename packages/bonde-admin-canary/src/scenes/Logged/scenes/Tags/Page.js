@@ -32,9 +32,9 @@ class AuthTags extends React.Component {
   state = { redir: false }
 
   render () {
-    const { t, user } = this.props
+    const { t, user, location: { pathname } } = this.props
 
-    if (this.state.redir) return <Redirect to='/' />
+    if (this.state.redir) return <Redirect to='/admin' />
 
     return (
       <PageAdmin noActionButtons>
