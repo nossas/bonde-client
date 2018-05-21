@@ -1,5 +1,5 @@
 import React from 'react'
-import { Page, Header, Navbar } from 'bonde-styleguide'
+// import { Page, Header, Navbar } from 'bonde-styleguide'
 import { AuthProvider, Route } from '../../services/auth'
 import { Page as HomePage } from './scenes/Home'
 import { Page as TagsPage } from './scenes/Tags'

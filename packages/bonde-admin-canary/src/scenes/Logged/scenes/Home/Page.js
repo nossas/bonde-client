@@ -8,7 +8,6 @@ import { CommunityList, MobilizationList, TrendingMobs, OnboardingTooltip } from
 
 class Home extends React.Component {
   state = {
-    loading: true,
     splash: true,
     step: 0,
   }
@@ -29,7 +28,7 @@ class Home extends React.Component {
   render () {
     console.log(this.props)
     const { t } = this.props
-    const { loading, splash, step } = this.state
+    const { splash, step } = this.state
 
     return (
       <PageAdmin
