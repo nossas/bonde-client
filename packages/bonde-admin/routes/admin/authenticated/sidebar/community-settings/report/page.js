@@ -5,26 +5,40 @@ import { ForceDownloadViaAjax } from '~client/community/components'
 import { MetricsCommunity } from '~client/components/metrics'
 import { Title } from '~client/components/title'
 
-const SectionButton = ({ sectionTitle, helperText, buttonTitle, onClick, wrapperStyle }) => (
-  <div className='col md-col-12 lg-col-4 px2 mb2'>
-    <div className='table caps bold mb2 darkengray h6'>
-      <i className='fa fa-file-excel-o darkengray table-cell align-middle h2' />
-      <span className='table-cell align-middle pl1'>
-        {sectionTitle}
-      </span>
-    </div>
+class SectionButton extends React.Component {
+  state = { loading: false }
 
-    <p className='h5 mb2 darkengray' style={{ minHeight: 42 }}>
-      {helperText}
-    </p>
-    <ForceDownloadViaAjax
-      title={buttonTitle}
-      onClick={onClick}
-      className='btn bg-blacker white rounded border-box col-12 center'
-      icon='download'
-    />
-  </div>
-)
+  toggleLoading = () => this.setState({ loading: !this.state.loading })
+
+  render() {
+    const { sectionTitle, helperText, buttonTitle, onClick, wrapperStyle } = this.props
+
+    return (
+      <div className='col md-col-12 lg-col-4 px2 mb2'>
+        <div className='table caps bold mb2 darkengray h6'>
+          <i className='fa fa-file-excel-o darkengray table-cell align-middle h2' />
+          <span className='table-cell align-middle pl1'>
+            {sectionTitle}
+          </span>
+        </div>
+
+        <p className='h5 mb2 darkengray' style={{ minHeight: 42 }}>
+          {helperText}
+        </p>
+        <ForceDownloadViaAjax
+          title={this.state.loading ? '' : buttonTitle}
+          onClick={e => {
+            e.preventDefault()
+            this.toggleLoading()
+            onClick(this.toggleLoading)
+          }}
+          className='btn bg-blacker white rounded border-box col-12 center'
+          icon={this.state.loading ? 'circle-o-notch fa-spin': 'download'}
+        />
+      </div>
+    )
+  }
+}
 
 const CommunitySettingsReportPage = ({
   location,
@@ -76,7 +90,7 @@ const CommunitySettingsReportPage = ({
           defaultMessage='Baixar'
         />
       }
-      onClick={() => asyncDownloadDonations(community)}
+      onClick={toggle => asyncDownloadDonations(community).then(() => toggle())}
     />
     <SectionButton
       sectionTitle={
@@ -100,7 +114,7 @@ const CommunitySettingsReportPage = ({
           defaultMessage='Baixar'
         />
       }
-      onClick={() => asyncDownloadActivistActions(community)}
+      onClick={toggle => asyncDownloadActivistActions(community).then(() => toggle())}
     />
     <SectionButton
       sectionTitle={
@@ -124,7 +138,7 @@ const CommunitySettingsReportPage = ({
           defaultMessage='Baixar'
         />
       }
-      onClick={() => asyncDownloadActivists(community)}
+      onClick={toggle => asyncDownloadActivists(community).then(() => toggle())}
     />
     <SectionButton
       sectionTitle={
@@ -148,7 +162,7 @@ const CommunitySettingsReportPage = ({
           defaultMessage='Baixar'
         />
       }
-      onClick={() => asyncDownloadRecurringDonors(community)}
+      onClick={toggle => asyncDownloadRecurringDonors(community).then(() => toggle())}
     />
   </div>
 )
