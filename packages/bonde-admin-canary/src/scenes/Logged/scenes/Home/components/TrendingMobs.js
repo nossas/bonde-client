@@ -1,16 +1,19 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Grid, Cell, Panel } from 'bonde-styleguide'
 
-const TrendingMobs = ({ t }) => (
+const TrendingMobs = ({ t, Tooltip }) => (
   <Grid>
     <Cell size={[3, 3]}>
-      <Panel
-        sectionTitle={t('trending-mobs')}
-        image='https://goo.gl/hggWmp'
-        title='Cinzas dos Muros'
-        description='Nossos muros têm voz, têm vida.'
-        author='Por Minha Sampa'
-      />
+      <Tooltip>
+        <Panel
+          sectionTitle={t('trending-mobs')}
+          image='https://goo.gl/hggWmp'
+          title='Cinzas dos Muros'
+          description='Nossos muros têm voz, têm vida.'
+          author='Por Minha Sampa'
+        />
+      </Tooltip>
     </Cell>
     <Cell size={[3, 3]}>
       <Panel
@@ -39,5 +42,15 @@ const TrendingMobs = ({ t }) => (
     </Cell>
   </Grid>
 )
+
+const { oneOfType, node, func } = PropTypes
+
+TrendingMobs.propTypes = {
+  Tooltip: oneOfType([node, func]),
+}
+
+TrendingMobs.defaultProps = {
+  Tooltip: ({ children }) => <React.Fragment>{children}</React.Fragment>
+}
 
 export default TrendingMobs

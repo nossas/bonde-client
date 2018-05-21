@@ -11,7 +11,7 @@ const TagsField = (props) => (
       if (loading) return <Loading />
 
       if (error) console.log('error', error)
-      
+
       const tags = data.allTags.nodes.map(({ name, label }) => ({
         label,
         value: name

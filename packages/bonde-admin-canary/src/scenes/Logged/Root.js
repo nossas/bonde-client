@@ -5,17 +5,17 @@ import { Page as HomePage } from './scenes/Home'
 import { Page as TagsPage } from './scenes/Tags'
 
 const Root = ({ match }) => (
+    //<Header>
+    //  <Navbar
+    //    homePageTitle='Bonde.org'
+    //    homePageUrl='http://bonde.org'
+    //  />
+    //</Header>
+    //<Page>
+    //</Page>
   <AuthProvider>
-    <Header>
-      <Navbar
-        homePageTitle='Bonde.org'
-        homePageUrl='http://bonde.org'
-      />
-    </Header>
-    <Page>
-      <Route exact path={match.url} component={HomePage} />
-      <Route path={`${match.url}/tags`} component={TagsPage} />
-    </Page>
+    <Route exact path={match.url} component={HomePage} />
+    <Route path={`${match.url}/tags`} component={TagsPage} />
   </AuthProvider>
 )
 
