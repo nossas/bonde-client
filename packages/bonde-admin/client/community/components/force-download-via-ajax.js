@@ -6,8 +6,8 @@ const ForceDownloadViaAjax = ({ onClick, title, className, icon }) => (
   <div className='DownloadItem' style={{ cursor: 'pointer' }}>
     <p>
       <a className={classnames('table align-middle', className)} href='#' onClick={onClick}>
-        {icon && <i className={`fa fa-${icon} white h2 pr1 align-middle`} />}
-        <span className='align-middle'>{title}</span>
+        {icon && <i className={`fa fa-${icon} white h2 align-middle`} />}
+        <span className='align-middle pl1'>{title}</span>
       </a>
     </p>
   </div>

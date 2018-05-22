@@ -3,7 +3,7 @@ workspace:
 
 pipeline:
   unit-tests-lerna:
-    image: node:alpine
+    image: node:9-alpine
     commands:
       - npm install
       - ./node_modules/.bin/lerna bootstrap
@@ -12,7 +12,7 @@ pipeline:
       event: [push, tag]
 
   build-staging:
-    image: node:alpine
+    image: node:9-alpine
     environment:
       - NODE_ENV=production
       - API_URL=https://api.staging.bonde.org
@@ -121,7 +121,7 @@ pipeline:
       branch: [hotfix-*, release-*, feature-*, develop]
 
   build-production:
-    image: node:alpine
+    image: node:9-alpine
     environment:
       - NODE_ENV=production
       - API_URL=https://api.bonde.org

@@ -120,6 +120,57 @@ export const subscriptionCancelSuccess = intl => ({
   closeButton: false
 })
 
+export const reportDownloadInProgressWarning = (intl, { notificationId, filename }) => ({
+  id: notificationId,
+  title: intl.formatMessage({
+    id: 'notification--report-download-in-progress-warning.title',
+    defaultMessage: 'Download em andamento'
+  }),
+  status: 'warning',
+  message: intl.formatMessage({
+    id: 'notification--report-download-in-progress-warning.message',
+    defaultMessage: 'O download de {filename} está em andamento. ' +
+      'Quando estiver tudo pronto ou, caso dê algum tipo de erro, você será notificado. ' +
+      'Este processo pode demorar alguns minutos. ' +
+      'Em todo caso, não feche a aba do seu navegador.'
+  }, { filename }),
+  dismissAfter: 0,
+  dismissible: true,
+  closeButton: false
+})
+
+export const reportDownloadSuccess = (intl, { filename }) => ({
+  title: intl.formatMessage({
+    id: 'notification--report-download-success.title',
+    defaultMessage: 'Oba! Tudo pronto (:'
+  }),
+  status: 'success',
+  message: intl.formatMessage({
+    id: 'notification--report-download-success.message',
+    defaultMessage: 'O download de {filename} foi feito com sucesso.'
+  }, { filename }),
+  dismissAfter: 0,
+  dismissible: true,
+  closeButton: false
+})
+
+export const reportDownloadError = (intl, { filename }) => ({
+  title: intl.formatMessage({
+    id: 'notification--report-download-error.title',
+    defaultMessage: 'Ops, deu ruim \\:'
+  }),
+  status: 'error',
+  message: intl.formatMessage({
+    id: 'notification--report-download-error.message',
+    defaultMessage: 'Algo de errado aconteceu na hora do download de {filename}. ' +
+    'Pode tentar de novo? Mas caso o erro persista, pode falar com a gente pelo ' +
+    'botão de suporte alí no canto inferior direito. Estamos aqui pra te ajudar (:'
+  }, { filename }),
+  dismissAfter: 0,
+  dismissible: true,
+  closeButton: false
+})
+
 // Standardize use of these functions
 
 const applyIntl = (value, intl) => {

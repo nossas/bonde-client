@@ -5,26 +5,43 @@ import { ForceDownloadViaAjax } from '~client/community/components'
 import { MetricsCommunity } from '~client/components/metrics'
 import { Title } from '~client/components/title'
 
-const SectionButton = ({ sectionTitle, helperText, buttonTitle, onClick, wrapperStyle }) => (
-  <div className='col md-col-12 lg-col-4 px2'>
-    <div className='table caps bold mb2 darkengray h6'>
-      <i className='fa fa-file-excel-o darkengray table-cell align-middle h2' />
-      <span className='table-cell align-middle pl1'>
-        {sectionTitle}
-      </span>
-    </div>
+class SectionButton extends React.Component {
+  constructor (...args) {
+    super(...args)
+    this.state = { loading: false }
+  }
 
-    <p className='h5 mb2 darkengray' style={{ minHeight: 42 }}>
-      {helperText}
-    </p>
-    <ForceDownloadViaAjax
-      title={buttonTitle}
-      onClick={onClick}
-      className='btn bg-blacker white rounded border-box col-12 center'
-      icon='download'
-    />
-  </div>
-)
+  toggleLoading () { this.setState({ loading: !this.state.loading }) }
+
+  render () {
+    const { sectionTitle, helperText, buttonTitle, onClick } = this.props
+
+    return (
+      <div className='col md-col-12 lg-col-4 px2 mb2'>
+        <div className='table caps bold mb2 darkengray h6'>
+          <i className='fa fa-file-excel-o darkengray table-cell align-middle h2' />
+          <span className='table-cell align-middle pl1'>
+            {sectionTitle}
+          </span>
+        </div>
+
+        <p className='h5 mb2 darkengray' style={{ minHeight: 42 }}>
+          {helperText}
+        </p>
+        <ForceDownloadViaAjax
+          title={this.state.loading ? '' : buttonTitle}
+          onClick={e => {
+            e.preventDefault()
+            this.toggleLoading()
+            onClick(this.toggleLoading)
+          }}
+          className='btn bg-blacker white rounded border-box col-12 center'
+          icon={this.state.loading ? 'circle-o-notch fa-spin' : 'download'}
+        />
+      </div>
+    )
+  }
+}
 
 const CommunitySettingsReportPage = ({
   location,
@@ -32,7 +49,8 @@ const CommunitySettingsReportPage = ({
   // Actions
   asyncDownloadActivistActions,
   asyncDownloadActivists,
-  asyncDownloadDonations
+  asyncDownloadDonations,
+  asyncDownloadRecurringDonors
 }) => (
   <div className='mxn2'>
     <div className='col col-12 px2 mb3'>
@@ -75,7 +93,11 @@ const CommunitySettingsReportPage = ({
           defaultMessage='Baixar'
         />
       }
-      onClick={() => asyncDownloadDonations(community)}
+      onClick={toggle => {
+        asyncDownloadDonations(community)
+          .then(() => toggle())
+          .catch(() => toggle())
+      }}
     />
     <SectionButton
       sectionTitle={
@@ -99,7 +121,11 @@ const CommunitySettingsReportPage = ({
           defaultMessage='Baixar'
         />
       }
-      onClick={() => asyncDownloadActivistActions(community)}
+      onClick={toggle => {
+        asyncDownloadActivistActions(community)
+          .then(() => toggle())
+          .catch(() => toggle())
+      }}
     />
     <SectionButton
       sectionTitle={
@@ -123,7 +149,39 @@ const CommunitySettingsReportPage = ({
           defaultMessage='Baixar'
         />
       }
-      onClick={() => asyncDownloadActivists(community)}
+      onClick={toggle => {
+        asyncDownloadActivists(community)
+          .then(() => toggle())
+          .catch(() => toggle())
+      }}
+    />
+    <SectionButton
+      sectionTitle={
+        <FormattedMessage
+          id='page--community-report.section-button.recurring-donors.title'
+          defaultMessage='RELATÓRIO DE DOADORES RECORRENTES'
+        />
+      }
+      helperText={
+        <FormattedMessage
+          id='page--community-report.section-button.recurring-donors.helper-text'
+          defaultMessage={
+            'Clique no botão abaixo para baixar ' +
+            'o relatório dos doadores recorrentes da comunidade.'
+          }
+        />
+      }
+      buttonTitle={
+        <FormattedMessage
+          id='page--community-report.section-button.recurring-donors.text'
+          defaultMessage='Baixar'
+        />
+      }
+      onClick={toggle => {
+        asyncDownloadRecurringDonors(community)
+          .then(() => toggle())
+          .catch(() => toggle())
+      }}
     />
   </div>
 )
@@ -133,7 +191,8 @@ CommunitySettingsReportPage.propTypes = {
   // Actions
   asyncDownloadActivistActions: PropTypes.func.isRequired,
   asyncDownloadActivists: PropTypes.func.isRequired,
-  asyncDownloadDonations: PropTypes.func.isRequired
+  asyncDownloadDonations: PropTypes.func.isRequired,
+  asyncDownloadRecurringDonors: PropTypes.func.isRequired
 }
 
 export default CommunitySettingsReportPage

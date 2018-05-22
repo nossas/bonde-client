@@ -3,10 +3,14 @@ import downloadjs from 'downloadjs'
 import { addNotification as notify, removeNotification as dismiss } from 'reapop'
 import * as notifications from '~client/utils/notifications'
 
-const asyncDownloadDonations = ({ id, name, ...community }) => (dispatch, getState, { api, intl }) => {
+const asyncDownloadRecurringDonors = ({ id, name }) => (dispatch, getState, { api, intl }) => {
   const { auth: { credentials } } = getState()
 
-  const filename = `[Relatório][Doação] ${name}.csv`
+  const endpoint = `/communities/${id}/download_subscriptions.csv`
+  const body = {}
+  const options = { headers: credentials }
+
+  const filename = `[Relatório][DoadoresRecorrentes] ${name}.csv`
   const notificationId = Math.random()
   const notifySuccess = () => {
     dispatch(notify(notifications.reportDownloadSuccess(intl, { filename })))
@@ -21,23 +25,23 @@ const asyncDownloadDonations = ({ id, name, ...community }) => (dispatch, getSta
   dispatch(notify(notifications.reportDownloadInProgressWarning(intl, warningOptions)))
 
   return api
-    .get(`/communities/${id}/donation_reports.csv`, { headers: credentials })
+    .post(endpoint, body, options)
     .then(({ status, data }) => {
       if (status === 400 && data.errors) {
         notifyError()
-        return Promise.reject({ ...data.errors })
+        return Promise.reject(false)
       } else if (status === 200) {
         if (data.length > 0) {
           notifySuccess()
           downloadjs(new Blob([data]), filename, 'text/csv')
-          return Promise.resolve()
+          return Promise.resolve(true)
         }
       }
     })
-    .catch(error => {
+    .catch(() => {
       notifyError()
-      Promise.reject(error)
+      return Promise.reject(false)
     })
 }
 
-export default asyncDownloadDonations
+export default asyncDownloadRecurringDonors
