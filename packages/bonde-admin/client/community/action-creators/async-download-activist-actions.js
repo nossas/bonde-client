@@ -1,22 +1,43 @@
 /* eslint-disable prefer-promise-reject-errors */
 import downloadjs from 'downloadjs'
+import { addNotification as notify, removeNotification as dismiss } from 'reapop'
+import * as notifications from '~client/utils/notifications'
 
-const asyncDownloadActivistActions = ({ id, name, ...community }) => (dispatch, getState, { api }) => {
+const asyncDownloadActivistActions = ({ id, name, ...community }) => (dispatch, getState, { api, intl }) => {
   const { auth: { credentials } } = getState()
+
+  const filename = `[Relatório][Ações dos Ativistas] ${name}.csv`
+  const notificationId = Math.random()
+  const notifySuccess = () => {
+    dispatch(notify(notifications.reportDownloadSuccess(intl, { filename })))
+    dispatch(dismiss(notificationId))
+  }
+  const notifyError = () => {
+    dispatch(notify(notifications.reportDownloadError(intl, { filename })))
+    dispatch(dismiss(notificationId))
+  }
+
+  const warningOptions = { filename, notificationId }
+  dispatch(notify(notifications.reportDownloadInProgressWarning(intl, warningOptions)))
 
   return api
     .get(`/communities/${id}/activist_actions.csv`, { headers: credentials })
     .then(({ status, data }) => {
       if (status === 400 && data.errors) {
+        notifyError()
         return Promise.reject({ ...data.errors })
       } else if (status === 200) {
         if (data.length > 0) {
-          downloadjs(new Blob([data]), `[Relatório][Ações dos Ativistas] ${name}.csv`, 'text/csv')
+          notifySuccess()
+          downloadjs(new Blob([data]), filename, 'text/csv')
           return Promise.resolve()
         }
       }
     })
-    .catch(error => Promise.reject(error))
+    .catch(error => {
+      notifyError()
+      Promise.reject(error)
+    })
 }
 
 export default asyncDownloadActivistActions
