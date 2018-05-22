@@ -90,7 +90,11 @@ const CommunitySettingsReportPage = ({
           defaultMessage='Baixar'
         />
       }
-      onClick={toggle => asyncDownloadDonations(community).then(() => toggle())}
+      onClick={toggle => {
+        asyncDownloadDonations(community)
+          .then(() => toggle())
+          .catch(() => toggle())
+      }}
     />
     <SectionButton
       sectionTitle={
@@ -114,7 +118,11 @@ const CommunitySettingsReportPage = ({
           defaultMessage='Baixar'
         />
       }
-      onClick={toggle => asyncDownloadActivistActions(community).then(() => toggle())}
+      onClick={toggle => {
+        asyncDownloadActivistActions(community)
+          .then(() => toggle())
+          .catch(() => toggle())
+      }}
     />
     <SectionButton
       sectionTitle={
@@ -138,7 +146,11 @@ const CommunitySettingsReportPage = ({
           defaultMessage='Baixar'
         />
       }
-      onClick={toggle => asyncDownloadActivists(community).then(() => toggle())}
+      onClick={toggle => {
+        asyncDownloadActivists(community)
+          .then(() => toggle())
+          .catch(() => toggle())
+      }}
     />
     <SectionButton
       sectionTitle={
@@ -162,7 +174,11 @@ const CommunitySettingsReportPage = ({
           defaultMessage='Baixar'
         />
       }
-      onClick={toggle => asyncDownloadRecurringDonors(community).then(() => toggle())}
+      onClick={toggle => {
+        asyncDownloadRecurringDonors(community)
+          .then(() => toggle())
+          .catch(() => toggle())
+      }}
     />
   </div>
 )
