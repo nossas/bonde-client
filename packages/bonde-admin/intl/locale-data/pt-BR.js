@@ -129,6 +129,15 @@ export default {
   'notification--subscription-cancel-success.title': 'Assinatura cancelada',
   'notification--subscription-cancel-success.message': 'Obrigado pelo seu apoio até aqui - e esperamos que volte a nos apoiar novamente! ',
 
+  'notification--report-download-in-progress-warning.title': 'Download em andamento',
+  'notification--report-download-in-progress-warning.message': 'O download de {filename} está em andamento. Quando estiver tudo pronto ou, caso dê algum tipo de erro, você será notificado. Este processo pode demorar alguns minutos. Em todo caso, não feche a aba do seu navegador.',
+
+  'notification--report-download-success.title': 'Oba! Tudo pronto (:',
+  'notification--report-download-success.message': 'O download de {filename} foi feito com sucesso.',
+
+  'notification--report-download-error.title': 'Ops, deu ruim \\:',
+  'notification--report-download-error.message': 'Algo de errado aconteceu na hora do download de {filename}. Pode tentar de novo? Mas caso o erro persista, pode falar com a gente pelo botão de suporte alí no canto inferior direito. Estamos aqui pra te ajudar (:',
+
   // community dns notifications
   // filepath: /client/community/notifications/dns.js
   // routepath: /community/domain

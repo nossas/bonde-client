@@ -98,6 +98,15 @@ export default {
   'notification--subscription-cancel-success.title': 'Subscription canceled',
   'notification--subscription-cancel-success.message': 'Your signature has been canceled, and the amount of your donation will not be charged until you make a recurring donation.',
 
+  'notification--report-download-in-progress-warning.title': 'Download in progress',
+  'notification--report-download-in-progress-warning.message': 'The {filename} download is in progress. When everything is ready or, if you give some type of error, you will be notified. This process may take a few minutes. In any case, do not close the tab of your browser.',
+
+  'notification--report-download-success.title': 'Yay! All ready (:',
+  'notification--report-download-success.message': 'The {filename} download was successful.',
+
+  'notification--report-download-error.title': 'Oops, something went wrong \\:',
+  'notification--report-download-error.message': 'Something wrong happened when downloading {filename}. Can you try again? But if the error persists, you can talk to us by the support button there in the lower right corner. We are here to help you (:',
+
   'notify.community.check--dns--success.title': 'Yay!',
   'notify.community.check--dns--success.text': 'DNS servers are synchronized, you can now configure your email and other services, as well as choose the domain of your mobilization.',
   'notify.community.check--dns--failure.title': 'Ooops!',

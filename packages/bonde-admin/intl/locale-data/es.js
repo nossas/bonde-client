@@ -128,6 +128,15 @@ export default {
   'notification--subscription-cancel-success.title': 'Suscripción cancelada',
   'notification--subscription-cancel-success.message': 'Gracias por tu apoyo hasta aquí - ¡y esperamos que nos vuelvas a apoyar nuevamente! ',
 
+  'notification--report-download-in-progress-warning.title': 'Descargar en curso',
+  'notification--report-download-in-progress-warning.message': 'La descarga de {filename} está en curso. Cuando esté todo listo o, en caso de algún tipo de error, tu será notificado. Este proceso puede tardar unos minutos. En todo caso, no cierre la pestaña de su navegador.',
+
+  'notification--report-download-success.title': 'Yay! Listo! (:',
+  'notification--report-download-success.message': 'La descarga de {filename} se ha realizado con éxito.',
+
+  'notification--report-download-error.title': 'Ops, se pasó algo malo \\:',
+  'notification--report-download-error.message': 'Algo incorrecto ocurrió a la hora de la descarga de {filename}. ¿Puede intentar de nuevo? Pero si el error persiste, puede hablar con nosotros por el botón de soporte en la esquina inferior derecha. Estamos aquí para ayudarte (:',
+
   // community dns notifications
   // filepath: /client/community/notifications/dns.js
   // routepath: /community/domain
