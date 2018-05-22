@@ -6,12 +6,15 @@ import { MetricsCommunity } from '~client/components/metrics'
 import { Title } from '~client/components/title'
 
 class SectionButton extends React.Component {
-  state = { loading: false }
+  constructor (...args) {
+    super(...args)
+    this.state = { loading: false }
+  }
 
-  toggleLoading = () => this.setState({ loading: !this.state.loading })
+  toggleLoading () { this.setState({ loading: !this.state.loading }) }
 
-  render() {
-    const { sectionTitle, helperText, buttonTitle, onClick, wrapperStyle } = this.props
+  render () {
+    const { sectionTitle, helperText, buttonTitle, onClick } = this.props
 
     return (
       <div className='col md-col-12 lg-col-4 px2 mb2'>
@@ -33,7 +36,7 @@ class SectionButton extends React.Component {
             onClick(this.toggleLoading)
           }}
           className='btn bg-blacker white rounded border-box col-12 center'
-          icon={this.state.loading ? 'circle-o-notch fa-spin': 'download'}
+          icon={this.state.loading ? 'circle-o-notch fa-spin' : 'download'}
         />
       </div>
     )

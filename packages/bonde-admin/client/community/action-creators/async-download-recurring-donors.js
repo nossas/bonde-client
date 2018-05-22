@@ -38,7 +38,7 @@ const asyncDownloadRecurringDonors = ({ id, name }) => (dispatch, getState, { ap
         }
       }
     })
-    .catch(error => {
+    .catch(() => {
       notifyError()
       return Promise.reject(false)
     })
