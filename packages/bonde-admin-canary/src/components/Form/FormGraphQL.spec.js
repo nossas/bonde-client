@@ -3,20 +3,13 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { Mutation } from 'react-apollo'
 import { Title } from 'bonde-styleguide'
-import Form from '../../../../components/Form'
+import Form from './Form'
 import FormGraphQL from './FormGraphQL'
 
 const mutation = {}
 
 test.beforeEach(t => {
   t.context.node = shallow(<FormGraphQL mutation={mutation} />)
-})
-
-test('render authForm Title', t => {
-  const { node } = t.context
-
-  const title = node.find(Title.H1)
-  t.is(title.length, 1)
 })
 
 test('render Mutation with mutation passed by props', t => {

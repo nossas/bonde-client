@@ -1,12 +1,12 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { PrivateRoute } from './services/auth'
+import { BrowserRouter as Router, Redirect, Switch } from 'react-router-dom'
 import { ProviderRedux } from './services/redux'
 import { ProviderGraphQL } from './services/graphql'
 import { ProviderLastLocation } from './services/router'
 // Routes
-import { Page as HomePage } from './scenes/Home'
+import { Root as LoggedRoot } from './scenes/Logged'
 import { Root as AuthRoot } from './scenes/Auth'
+import { PrivateRoute, PublicRoute, Route } from './services/auth'
 import { NotFound } from './components'
 
 const Root = () => (
@@ -15,8 +15,20 @@ const Root = () => (
       <Router>
         <ProviderLastLocation>
           <Switch>
-            <PrivateRoute exact path='/' component={HomePage} />
-            <Route path='/auth' component={AuthRoot} />
+            <PublicRoute
+              path='/auth'
+              redirectTo='/admin'
+              component={AuthRoot}
+            />
+
+            <PrivateRoute
+              path='/admin'
+              redirectTo='/auth/login'
+              component={LoggedRoot}
+            />
+
+            <Redirect exact from='/' to='/admin' />
+
             <Route component={NotFound} />
           </Switch>
         </ProviderLastLocation>

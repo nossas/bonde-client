@@ -43,13 +43,13 @@ class Tag extends React.Component {
   }
 
   render () {
-    const { text } = this.props
+    const { label } = this.props
 
     return (
       <label>
         <Checkbox checked={this.state.checked} {...this.props} />
         <Content onClick={this.handleChange}>
-          {text}
+          {label}
         </Content>
       </label>
     )
@@ -60,7 +60,7 @@ const { oneOfType, node, func, bool, string } = PropTypes
 
 Tag.propTypes = {
   /** Anything that can be rendered, will be rendered inside the tag. */
-  text: oneOfType([node, func]).isRequired,
+  label: oneOfType([node, func]).isRequired,
   /** The default checked state. */
   checked: bool,
   /** The form input name attribute. */

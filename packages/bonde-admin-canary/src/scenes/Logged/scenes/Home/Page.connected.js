@@ -1,4 +1,4 @@
-import { connect } from '../../services/redux'
+import { connect } from '../../../../services/redux'
 import Page from './Page'
 
 const mapStateToProps = (state) => ({ name: state.home })

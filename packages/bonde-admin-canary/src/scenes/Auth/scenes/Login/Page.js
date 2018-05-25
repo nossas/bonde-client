@@ -11,9 +11,8 @@ import {
   Input
 } from 'bonde-styleguide'
 
-import { FormGraphQL } from '../components'
+import { FormGraphQL, Field } from '../../../../components/Form'
 import { Link } from '../../../../components'
-import { Field } from '../../../../components/Form'
 import { isEmail, isEmpty } from '../../../../services/validations'
 
 const AuthLogin = ({ t }) => (

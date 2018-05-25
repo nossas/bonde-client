@@ -1,18 +1,26 @@
 import React from 'react'
-import { Switch } from 'react-router-dom'
-import { PublicRoute, PrivateRoute } from '../../services/auth'
-import { NotFound } from '../../components'
+import { Container, Title } from 'bonde-styleguide'
+import { Route } from '../../services/auth'
 import { Page as LoginPage } from './scenes/Login'
 import { Page as RegisterPage } from './scenes/Register'
-import { Page as TagsPage } from './scenes/Tags'
 
 const AuthRoot = ({ match }) => (
-  <Switch>
-    <PublicRoute path={`${match.url}/login`} component={LoginPage} redirectTo='/' />
-    <PublicRoute path={`${match.url}/register`} component={RegisterPage} redirectTo='/auth/tags' />
-    <PrivateRoute path={`${match.url}/tags`} component={TagsPage} redirectTo='/' />
-    <PublicRoute component={NotFound} />
-  </Switch>
+  <Container>
+    <Title.H1 margin={{ bottom: 37 }}>
+      O Bonde tá na área!
+      Chega mais.
+    </Title.H1>
+    <React.Fragment>
+      <Route
+        path={`${match.url}/login`}
+        component={LoginPage}
+      />
+      <Route
+        path={`${match.url}/register`}
+        component={RegisterPage}
+      />
+    </React.Fragment>
+  </Container>
 )
 
 export default AuthRoot

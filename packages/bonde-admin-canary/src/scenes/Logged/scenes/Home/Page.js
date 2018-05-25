@@ -1,43 +1,33 @@
 import React from 'react'
 import { Grid, Cell, Backdrop, Loading, Title, Text } from 'bonde-styleguide'
 
-import { translate } from '../../services/i18n'
-import { withLastLocation } from '../../services/router'
-import { PageAdmin } from '../../components'
+import { translate } from '../../../../services/i18n'
+import { withLastLocation } from '../../../../services/router'
+import { PageAdmin } from '../../../../components'
 import { CommunityList, MobilizationList, TrendingMobs, OnboardingTooltip } from './components'
 
 class Home extends React.Component {
   state = {
-    loading: true,
-    splash: false,
+    splash: true,
     step: 0,
   }
 
   handleStep = step => this.setState({ step })
-  initSplash = callback => setTimeout(
-    () => {
-      this.setState({ loading: false, splash: true });
-      callback()
-    }, 5000
-  )
   initOnboarding = () => setTimeout(
     () => {
       const { lastLocation } = this.props
-      const fromRegister = lastLocation && lastLocation.pathname === '/auth/tags'
-      this.setState({ splash: false, step: Number(fromRegister) })
+      const isRegisterFlow = lastLocation && lastLocation.pathname === '/admin/tags'
+      this.setState({ splash: false, step: Number(isRegisterFlow) });
     }, 3000
   )
 
   componentDidMount () {
-    this.initSplash(
-      this.initOnboarding
-    )
+    this.initOnboarding()
   }
 
   render () {
-    console.log(this.props)
     const { t } = this.props
-    const { loading, splash, step } = this.state
+    const { splash, step } = this.state
 
     return (
       <PageAdmin
@@ -68,18 +58,6 @@ class Home extends React.Component {
           </OnboardingTooltip>
         )}
       >
-        {loading && (
-          <Backdrop color='#FFFFFF'>
-            <Text align='center' margin={{ top: '20vh' }}>
-              <Loading size={109} />
-            </Text>
-            <Title.H3 align='center' lineHeight={1.29}>
-              Preparando<br />
-              o seu BONDE
-            </Title.H3>
-          </Backdrop>
-        )}
-
         {splash && (
           <Backdrop color='rgba(255, 255, 255, .7)'>
             <Text align='center' margin={{ top: '15vh' }}>

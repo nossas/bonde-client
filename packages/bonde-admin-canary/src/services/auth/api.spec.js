@@ -28,13 +28,13 @@ test('check if user is authenticated', t => {
   t.is(AuthAPI.isAuthenticated(), false)
 })
 
-test('get current user', t => {
-  t.is(AuthAPI.getUser(), undefined)
+test('get current token', t => {
+  t.is(AuthAPI.getToken(), undefined)
 
-  const user = { name: 'Test', jwtToken: 'abcdfg' }
+  const user = { jwtToken: 'abcdfg' }
   AuthAPI.login(user)
-  t.is(AuthAPI.getUser(), user)
+  t.is(AuthAPI.getToken(), user.jwtToken)
 
   AuthAPI.logout()
-  t.is(AuthAPI.getUser(), undefined)
+  t.is(AuthAPI.getToken(), undefined)
 })
