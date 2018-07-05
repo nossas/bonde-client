@@ -15,7 +15,7 @@ const Image = styled.div`{
   ${props => props.rounded && `border-radius: ${px(props.rounded)};`}
 }`
 
-const { string, number } = PropTypes
+const { oneOfType, string, number } = PropTypes
 
 Image.propTypes = {
   /** The URL of the image. */
@@ -25,7 +25,7 @@ Image.propTypes = {
   /** The width of the image. */
   width: number,
   /** The radius of the image border. */
-  rounded: number
+  rounded: oneOfType([string, number])
 }
 
 Image.displayName = 'Image'

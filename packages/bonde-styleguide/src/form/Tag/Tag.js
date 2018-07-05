@@ -47,7 +47,7 @@ Tag.propTypes = {
   /** Anything that can be rendered, will be rendered inside the tag. */
   label: oneOfType([node, func]).isRequired,
   /** The default checked state. */
-  checked: bool,
+  defaultChecked: bool,
   /** The form input name attribute. */
   name: string,
   /** The form input value attribute. */
@@ -55,7 +55,7 @@ Tag.propTypes = {
 }
 
 Tag.defaultProps = {
-  checked: false
+  defaultChecked: false
 }
 
 Tag.displayName = 'Tag'

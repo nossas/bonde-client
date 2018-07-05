@@ -55,14 +55,18 @@ const ProgressRanking = styled(({
   }
 `
 
-const { oneOfType, instanceOf, arrayOf, string, number, bool } = PropTypes
+const { oneOfType, arrayOf, string, number, bool, node } = PropTypes
 
 ProgressRanking.propTypes = {
   /** Use `ProgressRankingItem` to compose the ranking. */
-  children: oneOfType([
-    instanceOf(ProgressRankingItem),
-    arrayOf(ProgressRankingItem)
-  ]).isRequired,
+  //
+  // TODO: Find a way to compare PropTypes.instanceOf with styled-components.
+  //
+  // children: oneOfType([
+  //   instanceOf(ProgressRankingItem),
+  //   arrayOf(instanceOf(ProgressRankingItem))
+  // ]).isRequired,
+  children: oneOfType([node, arrayOf(node)]).isRequired,
   /** The `ProgressBar` fill value and number color to each of items. */
   color: string,
   /** The `ProgressBar` track background color. */

@@ -38,10 +38,11 @@ const DataListCard = ({
       <Scrollbox>
         <DataList border={border}>
         {items.map(item => (
-          <DataListRow>
+          <DataListRow key={Math.random()}>
           {fieldNames.map(fieldName => (
             <CustomCol
               {...fields[fieldName]}
+              key={Math.random()}
               field={item[fieldName]}
             />
           ))}
