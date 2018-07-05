@@ -4,11 +4,20 @@ import PropTypes from 'prop-types'
 import Context, { defaultContext } from './Context'
 import Dialog from './Dialog'
 
+const initializeCondition = initialize => (
+  typeof initialize === 'function'
+    ? initialize()
+    : initialize
+)
+
 class Provider extends React.Component {
-  
+
   static Dialog = Dialog
-  
-  state = defaultContext
+
+  state = {
+    ...defaultContext,
+    initialize: this.props.initialize
+  }
 
   //
   // Class attribute that stores all childrens keys
@@ -17,19 +26,26 @@ class Provider extends React.Component {
   registeredStepKeys = []
 
   componentDidMount () {
-    this.onStart(this.props.initialize)
-  }
-
-  componentWillReceiveProps (nextProps) {
-    if (nextProps.initialize !== this.props.initialize) {
-      this.onStart(nextProps.initialize)
-    }
-  }
-
-  onStart (initialize) {
-    if (typeof initialize === 'function' ? initialize() : initialize) {
+    if (initializeCondition(this.props.initialize)) {
       this.setState({ currentStep: 1 })
     }
+  }
+
+  static getDerivedStateFromProps (props, state) {
+    if (props.initialize !== state.initialize) {
+      const stateChanged = {}
+
+      if (initializeCondition(props.initialize)) {
+        stateChanged.currentStep = 1
+      }
+      else if (!initializeCondition(props.initialize) && state.currentStep !== 0) {
+        stateChanged.currentStep = 0
+      }
+
+      return { initialize: props.initialize, ...stateChanged }
+    }
+
+    return null
   }
 
   registerStep (key) {
