@@ -65,19 +65,13 @@ export default (state = initialState, action = {}) => {
         saving: false,
         error: action.payload
       }
-    case t.MOVE_BLOCK_UP:
+    case t.UPDATE_BLOCK_BATCH:
+      const payload = action.payload.blocks.blocks
       return {...state,
-        data: state.data.map((b, index) => {
-          if (index + 1 < state.data.length && state.data[index + 1].id === action.payload.id) return action.payload
-          else if (b.id === action.payload.id) return state.data[index - 1]
-          else return b
-        })
-      }
-    case t.MOVE_BLOCK_DOWN:
-      return {...state,
-        data: state.data.map((b, index) => {
-          if (index > 0 && state.data[index - 1].id === action.payload.id) return action.payload
-          else if (b.id === action.payload.id) return state.data[index + 1]
+        saving: false,
+        data: state.data.map(b => {
+          const block = payload.find(u => u.id === b.id)
+          if (block) return block
           else return b
         })
       }

@@ -9,19 +9,27 @@ export default block => (dispatch, getState, { api }) => {
   const mobilization = Selectors(getState()).getMobilization()
   const blocks = Selectors(getState()).getBlocks()
 
+  const nextBlock = blocks[blocks.indexOf(blocks.filter(b => b.id === block.id)[0]) + 1]
+
   const body = {
-    block: {
-      ...block,
-      position: blocks[blocks.indexOf(blocks.filter(b => b.id === block.id)[0]) + 1].position
-    }
+    mobilization_id: mobilization.id,
+    blocks: [
+      {
+        ...block,
+        position: nextBlock.position
+      },
+      {
+        ...nextBlock,
+        position: block.position
+      }
+    ]
   }
 
   dispatch(createAction(t.UPDATE_BLOCK_REQUEST))
   return api
-    .put(`/mobilizations/${mobilization.id}/blocks/${block.id}`, body, { headers })
+    .put(`/mobilizations/${mobilization.id}/blocks`, body, { headers })
     .then(res => {
-      dispatch(createAction(t.UPDATE_BLOCK_SUCCESS, res.data))
-      dispatch(createAction(t.MOVE_BLOCK_DOWN, res.data))
+      dispatch(createAction(t.UPDATE_BLOCK_BATCH, res.data))
     })
     .catch(ex => {
       dispatch(createAction(t.UPDATE_BLOCK_FAILURE, ex))

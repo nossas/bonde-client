@@ -18,9 +18,22 @@ const data = [
   { id: 3, name: 'Dolor', position: 3 }
 ]
 mockAxios.onPut(
-  `/mobilizations/1/blocks/2`,
-  { block: {...data[1], position: 1} }
-).reply(200, {...data[1], position: 1})
+  `/mobilizations/1/blocks`,
+  {
+    mobilization_id: 1,
+    blocks: [
+      {...data[1], position: data[0].position},
+      {...data[0], position: data[1].position}
+    ]
+  }
+).reply(200, {
+  blocks: {
+    blocks: [
+      {...data[1], position: data[0].position},
+      {...data[0], position: data[1].position}
+    ]
+  }
+})
 
 // Mock store
 const store = configureStore(
@@ -37,18 +50,21 @@ const store = configureStore(
 
 describe('~client/mobrender/redux/action-creators/async-move-up', () => {
   it('should dispatch actions to move up block', () => {
-    const block = { ...data[1], position: 1 }
+    const blocks = {
+      blocks: [
+        { ...data[1], position: data[0].position },
+        { ...data[0], position: data[1].position }
+      ]
+    }
     const expectedActions = [
       createAction(t.UPDATE_BLOCK_REQUEST),
-      createAction(t.UPDATE_BLOCK_SUCCESS, block),
-      createAction(t.MOVE_BLOCK_UP, block)
+      createAction(t.UPDATE_BLOCK_BATCH, { blocks })
     ]
     return store.dispatch(asyncMoveUp(data[1]))
       .then(() => {
-        expect(store.getActions().length).to.equal(3)
+        expect(store.getActions().length).to.equal(2)
         expect(store.getActions()[0]).to.deep.equal(expectedActions[0])
         expect(store.getActions()[1]).to.deep.equal(expectedActions[1])
-        expect(store.getActions()[2]).to.deep.equal(expectedActions[2])
       })
   })
 })
