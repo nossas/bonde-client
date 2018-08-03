@@ -2,8 +2,14 @@ import * as t from '../action-types'
 import { createAction } from './create-action'
 import AuthSelectors from '~client/account/redux/selectors'
 
-export default ({ mobilization_id: mobilizationId, ...block }) => (dispatch, getState, { api }) => {
+import MobSelectors from '../selectors'
+
+export default ({ mobilization_id: mobilizationId, ...values }) => (dispatch, getState, { api }) => {
+  
   const credentials = AuthSelectors(getState()).getCredentials()
+  const lastPosition = MobSelectors(getState()).getBlockLastPosition()
+  const block = { ...values, position: lastPosition + 1 }
+
   dispatch(createAction(t.ADD_BLOCK_REQUEST))
   return api
     .post(`/mobilizations/${mobilizationId}/blocks`, { block }, { headers: credentials })
