@@ -5,7 +5,6 @@ import AuthSelectors from '~client/account/redux/selectors'
 import MobSelectors from '../selectors'
 
 export default ({ mobilization_id: mobilizationId, ...values }) => (dispatch, getState, { api }) => {
-  
   const credentials = AuthSelectors(getState()).getCredentials()
   const lastPosition = MobSelectors(getState()).getBlockLastPosition()
   const block = { ...values, position: lastPosition + 1 }
