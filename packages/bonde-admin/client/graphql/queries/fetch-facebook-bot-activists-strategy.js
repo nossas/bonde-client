@@ -5,7 +5,7 @@ import { gql } from 'react-apollo'
 //
 export default ({ extraFields = [] }) => gql`
 query fetchFacebookBotActivistsStrategy(
-  $search: Json!
+  $search: JSON!
   $first: Int
 ) {
   query: getFacebookBotActivistsStrategy(

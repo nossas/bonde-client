@@ -28,6 +28,10 @@ const Flexbox = styled.div`
     justify-content: flex-end;
   `}
 
+  ${props => props.justify && `
+    justify-content: ${props.justify};  
+  `}
+
   ${props => props.spacing && `
     justify-content: space-${props.spacing}
   `}

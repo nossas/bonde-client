@@ -46,7 +46,7 @@ H3.displayName = 'Title.H3'
 const H4 = createTitle('h4', {
   displayName: 'Title.H4',
   fontSize: 18,
-  fontWeight: 800,
+  fontWeight: 'normal',
   lineHeight: 1.39,
   color: '#424242'
 })

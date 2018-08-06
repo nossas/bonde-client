@@ -1,17 +1,12 @@
 import React from 'react'
-import { Backdrop, Loading, Text, Title } from 'bonde-styleguide'
+import { Backdrop } from 'bonde-styleguide'
+import Loading from './Loading'
 
 const LoadingFullScreen = ({ message }) => (
   <Backdrop color='#FFFFFF'>
-    <Text align='center' margin={{ top: '20vh' }}>
-      <Loading
-        size={109}
-        sparklesDuration='3s'
-      />
-    </Text>
-    <Title.H3 align='center'>
-      {message || 'Preparando seu BONDE.'}
-    </Title.H3>
+    <Loading
+      message={message || 'Preparando seu BONDE.'}
+    />
   </Backdrop>
 )
 

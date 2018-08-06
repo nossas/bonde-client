@@ -7,8 +7,8 @@ import MobSelectors from '~client/mobrender/redux/selectors'
 
 import Page from './page'
 
-const mapStateToProps = state => {
-  const selectors = MobSelectors(state)
+const mapStateToProps = (state, props) => {
+  const selectors = MobSelectors(state, props)
 
   return {
     loading: state.mobilizations.dataExport.loading,

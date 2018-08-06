@@ -14,12 +14,12 @@ pipeline:
 
   staging-build:
     image: node:9-alpine
-    group: building
     environment:
       - NODE_ENV=production
       - API_URL=https://api-v1.staging.bonde.org
       - BOT_URL=https://beta.staging.bonde.org
       - REACT_APP_GRAPHQL_URL=https://api-v2.staging.bonde.org/graphql
+      - REACT_APP_DOMAIN=http://admin-canary.staging.bonde.org
       - GRAPHQL_URL=https://api-v2.staging.bonde.org/graphql
       - APP_DOMAIN=staging.bonde.org
       - AWS_BUCKET=bonde-assets-staging
@@ -35,7 +35,6 @@ pipeline:
 
   staging-build-admin:
     image: node:9-alpine
-    group: building
     environment:
       - NODE_ENV=production
       - API_URL=https://api-v1.staging.bonde.org
@@ -229,7 +228,11 @@ pipeline:
     docker_image: "nossas/bonde-public:${DRONE_TAG##v}"
     timeout: 360
     confirm: true
-    secrets: [ rancher_access_key, rancher_secret_key ]
+    secrets:
+      - source: rancher_access_key_prod
+        target: rancher_access_key
+      - source: rancher_secret_key_prod
+        target: rancher_secret_key
     when:
       status: success
       event: tag
@@ -242,7 +245,11 @@ pipeline:
     docker_image: "nossas/bonde-admin:${DRONE_TAG##v}"
     timeout: 360
     confirm: true
-    secrets: [ rancher_access_key, rancher_secret_key ]
+    secrets:
+      - source: rancher_access_key_prod
+        target: rancher_access_key
+      - source: rancher_secret_key_prod
+        target: rancher_secret_key
     when:
       status: success
       event: tag
@@ -255,7 +262,11 @@ pipeline:
     docker_image: "nossas/bonde-admin-canary:${DRONE_TAG##v}"
     timeout: 360
     confirm: true
-    secrets: [ rancher_access_key, rancher_secret_key ]
+    secrets:
+      - source: rancher_access_key_prod
+        target: rancher_access_key
+      - source: rancher_secret_key_prod
+        target: rancher_secret_key
     when:
       status: success
       event: tag

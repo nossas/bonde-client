@@ -2,6 +2,105 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.9.6"></a>
+## [0.9.6](https://github.com/nossas/bonde-client/compare/v0.9.5...v0.9.6) (2018-05-25)
+
+
+
+<a name="0.9.5"></a>
+## [0.9.5](https://github.com/nossas/bonde-client/compare/v0.9.4...v0.9.5) (2018-05-25)
+
+
+
+<a name="0.9.4"></a>
+## [0.9.4](https://github.com/nossas/bonde-client/compare/v0.9.3...v0.9.4) (2018-05-25)
+
+
+### Bug Fixes
+
+* **admin:** community report buttons shows the download state ([ff144fc](https://github.com/nossas/bonde-client/commit/ff144fc))
+* **admin:** community report download loading func bind instance ([fad7a7d](https://github.com/nossas/bonde-client/commit/fad7a7d))
+* **admin-canary:** export Interpolate component from react-i18next ([c439905](https://github.com/nossas/bonde-client/commit/c439905))
+* **admin-canary:** lint warnings ([d350eb4](https://github.com/nossas/bonde-client/commit/d350eb4))
+* **admin-canary:** register and login secondary cta flat btn ([e9414fe](https://github.com/nossas/bonde-client/commit/e9414fe))
+* **admin-canary:** use ress to reset global css ([f5ee89c](https://github.com/nossas/bonde-client/commit/f5ee89c))
+* **bonde-admin-canary:** add mock to css ([04037f7](https://github.com/nossas/bonde-client/commit/04037f7))
+* **bonde-admin-canary:** use AuthAPI like props on route component in auth service ([8cdd005](https://github.com/nossas/bonde-client/commit/8cdd005))
+* **bonde-admin-canary:** use AuthAPI like props on route component in auth service ([aa541ca](https://github.com/nossas/bonde-client/commit/aa541ca))
+* **bonde-styleguide:** change render hint only not error ([b93101e](https://github.com/nossas/bonde-client/commit/b93101e))
+* **bonde-styleguide:** use touched to custom render in FormField ([de75438](https://github.com/nossas/bonde-client/commit/de75438))
+* **ci:** use node:9-alpine to avoid yarn Buffer warning on node v10 ([8a94911](https://github.com/nossas/bonde-client/commit/8a94911))
+* **ci:** use node:9-alpine to avoid yarn Buffer warning on node v10 ([8def671](https://github.com/nossas/bonde-client/commit/8def671))
+* **community:** add recurring donors report download button ([469ccc3](https://github.com/nossas/bonde-client/commit/469ccc3)), closes [#156846647](https://github.com/nossas/bonde-client/issues/156846647)
+* **community:** add recurring donors report download button ([6e2d6f9](https://github.com/nossas/bonde-client/commit/6e2d6f9)), closes [#156846647](https://github.com/nossas/bonde-client/issues/156846647)
+* **donation-widget:** spread the widget settings to initial values ([0dc1517](https://github.com/nossas/bonde-client/commit/0dc1517)), closes [#157094839](https://github.com/nossas/bonde-client/issues/157094839)
+* **pressure-widget:** hide phone calls box when type is email ([8dcae17](https://github.com/nossas/bonde-client/commit/8dcae17))
+* **styleguide:** add bonde icon and content padding to Container ([1da1560](https://github.com/nossas/bonde-client/commit/1da1560))
+* **styleguide:** add inverted prop to bonde colorful icon ([59e5694](https://github.com/nossas/bonde-client/commit/59e5694))
+* **styleguide:** add min-height to page component ([a527ce7](https://github.com/nossas/bonde-client/commit/a527ce7))
+* **styleguide:** add options to add margin and padding on flexbox ([f30d065](https://github.com/nossas/bonde-client/commit/f30d065))
+* **styleguide:** add true bonde icon and avoid content overflow ([ec4a45c](https://github.com/nossas/bonde-client/commit/ec4a45c))
+* **styleguide:** adjust checkbox component style ([ae60b4f](https://github.com/nossas/bonde-client/commit/ae60b4f))
+* **styleguide:** adjust checkbox component text distance ([da13286](https://github.com/nossas/bonde-client/commit/da13286))
+* **styleguide:** adjust header action buttons margin ([eb63268](https://github.com/nossas/bonde-client/commit/eb63268))
+* **styleguide:** adjust icon inline vertical alignment ([f8ebe32](https://github.com/nossas/bonde-client/commit/f8ebe32))
+* **styleguide:** adjust radio component style ([6bfdf1d](https://github.com/nossas/bonde-client/commit/6bfdf1d))
+* **styleguide:** adjust some css issues on card and datalist ([68231fe](https://github.com/nossas/bonde-client/commit/68231fe))
+* **styleguide:** adjust text component default color ([874f16c](https://github.com/nossas/bonde-client/commit/874f16c))
+* **styleguide:** decrease button height ([094cdf8](https://github.com/nossas/bonde-client/commit/094cdf8))
+* **styleguide:** first icon button test description ([684465f](https://github.com/nossas/bonde-client/commit/684465f))
+* **styleguide:** improve header padding and alignment ([5edef3d](https://github.com/nossas/bonde-client/commit/5edef3d))
+* remove ress from admin-canary and include in styleguide ([f9b79c7](https://github.com/nossas/bonde-client/commit/f9b79c7))
+* **styleguide:** improve navbar height and margin ([3833fce](https://github.com/nossas/bonde-client/commit/3833fce))
+* **styleguide:** keep the space of card title ([9d5e955](https://github.com/nossas/bonde-client/commit/9d5e955))
+* **styleguide:** navbar bonde icon size ([8619dde](https://github.com/nossas/bonde-client/commit/8619dde))
+* **styleguide:** navbar icon link height ([6baeb75](https://github.com/nossas/bonde-client/commit/6baeb75))
+* **styleguide:** set cursor defult to backdrop component ([d80ff88](https://github.com/nossas/bonde-client/commit/d80ff88))
+* **styleguide:** spread props to  checkbox input attrs ([e6a4e5d](https://github.com/nossas/bonde-client/commit/e6a4e5d))
+* **styleguide:** Tooltip's Backdrop onClick bool warning ([9a0a5e4](https://github.com/nossas/bonde-client/commit/9a0a5e4))
+
+
+### Features
+
+* **admin:** add report download notification messages ([84e1026](https://github.com/nossas/bonde-client/commit/84e1026))
+* **admin:** report download notifications to community reports ([6f502b3](https://github.com/nossas/bonde-client/commit/6f502b3))
+* **admin-canary:** add home loading and splash steps ([ccd6f9b](https://github.com/nossas/bonde-client/commit/ccd6f9b))
+* **admin-canary:** add home onboarding tooltip component ([9c35207](https://github.com/nossas/bonde-client/commit/9c35207))
+* **admin-canary:** add onboarding steps to user home page ([53deb0e](https://github.com/nossas/bonde-client/commit/53deb0e))
+* **admin-canary:** add pagination to mobilization list component ([5a971d7](https://github.com/nossas/bonde-client/commit/5a971d7))
+* **admin-canary:** add user's tags selection page ([256259f](https://github.com/nossas/bonde-client/commit/256259f))
+* **admin-canary:** encapsulate react-router-last-location as a service ([9ebaa1b](https://github.com/nossas/bonde-client/commit/9ebaa1b))
+* **admin-canary:** stylize home page mobilization list component ([ccedb99](https://github.com/nossas/bonde-client/commit/ccedb99))
+* **admin-canary:** user home page components composition draft ([a0f54a4](https://github.com/nossas/bonde-client/commit/a0f54a4))
+* **bonde-admin-canary:** add AuthAPI in auth service to manager session user ([821c805](https://github.com/nossas/bonde-client/commit/821c805))
+* **bonde-admin-canary:** add AuthAPI in auth service to manager session user ([ed7afaf](https://github.com/nossas/bonde-client/commit/ed7afaf))
+* **bonde-admin-canary:** add components to authenticate routes with api dummy ([6ac83b4](https://github.com/nossas/bonde-client/commit/6ac83b4))
+* **bonde-admin-canary:** add components to authenticate routes with api dummy ([d7e3001](https://github.com/nossas/bonde-client/commit/d7e3001))
+* **bonde-admin-canary:** add graphql api with apollo client ([d62936a](https://github.com/nossas/bonde-client/commit/d62936a))
+* **bonde-admin-canary:** add graphql api with apollo client ([d89d326](https://github.com/nossas/bonde-client/commit/d89d326))
+* **bonde-admin-canary:** add lowdb to manager localStore on session service ([b41fe07](https://github.com/nossas/bonde-client/commit/b41fe07))
+* **bonde-admin-canary:** add lowdb to manager localStore on session service ([9073c99](https://github.com/nossas/bonde-client/commit/9073c99))
+* **bonde-admin-canary:** add service to translate app with i18next ([a997732](https://github.com/nossas/bonde-client/commit/a997732))
+* **bonde-admin-canary:** add service to translate app with i18next ([5699856](https://github.com/nossas/bonde-client/commit/5699856))
+* **bonde-admin-canary:** add translate to auth forms ([cac6f02](https://github.com/nossas/bonde-client/commit/cac6f02))
+* **bonde-admin-canary:** implement a Link styled component ([f11a77a](https://github.com/nossas/bonde-client/commit/f11a77a))
+* **bonde-admin-canary:** use sample project with ava, redux and router ([782fccf](https://github.com/nossas/bonde-client/commit/782fccf))
+* **bonde-admin-canary:** use sample project with ava, redux and router ([07b46dd](https://github.com/nossas/bonde-client/commit/07b46dd))
+* **bonde-styleguide:** add build to use bonde-styleguide on thirdy party ([6b39d55](https://github.com/nossas/bonde-client/commit/6b39d55))
+* **bonde-styleguide:** add colSize in Flexbox2 to resize childrens ([cb1729a](https://github.com/nossas/bonde-client/commit/cb1729a))
+* **bonde-styleguide:** add Container component to render background ([07670e2](https://github.com/nossas/bonde-client/commit/07670e2))
+* **bonde-styleguide:** add end alignment to Flexbox2 ([6a46345](https://github.com/nossas/bonde-client/commit/6a46345))
+* **bonde-styleguide:** add Flexbox2 a component to flex layout more simple ([7a1878c](https://github.com/nossas/bonde-client/commit/7a1878c))
+* **bonde-styleguide:** add Link component ([64e47f1](https://github.com/nossas/bonde-client/commit/64e47f1))
+* **styleguide:** accepts margin prop in icon component ([241d7fa](https://github.com/nossas/bonde-client/commit/241d7fa))
+* **styleguide:** add InputAdornment component ([04d9f96](https://github.com/nossas/bonde-client/commit/04d9f96))
+* **styleguide:** add InputHint component ([b5f0870](https://github.com/nossas/bonde-client/commit/b5f0870))
+* **styleguide:** add option to add Footer on Card components ([bdc4690](https://github.com/nossas/bonde-client/commit/bdc4690))
+* **styleguide:** add Pagination component ([8c8c7cc](https://github.com/nossas/bonde-client/commit/8c8c7cc))
+* **styleguide:** add Tooltip component ([bfced61](https://github.com/nossas/bonde-client/commit/bfced61))
+
+
+
 <a name="0.9.3"></a>
 ## [0.9.3](https://github.com/nossas/bonde-client/compare/v0.9.2...v0.9.3) (2018-04-27)
 

@@ -14,7 +14,7 @@ class PasswordField extends React.Component {
       <React.Fragment>
         <FormField
           type={!showPassword ? 'password' : 'text'}
-          placeholder='******'
+          placeholder='&#9679;&#9679;&#9679;&#9679;&#9679;'
           inputComponent={Input}
           {...props}
         />

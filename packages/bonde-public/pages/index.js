@@ -22,12 +22,23 @@ import {
 import styles from './../webviewer/main.dba55199cd8fb7024923.css'
 
 class Page extends React.Component {
-  static async getInitialProps ({ store, req }) {
+  static async getInitialProps ({ store, req, res }) {
     const { dispatch, getState } = store
     const host = getState().sourceRequest.host
+    const protocol = getState().sourceRequest.protocol
     const appDomain = process.env.APP_DOMAIN || 'bonde.devel'
 
     if (host) {
+      if (res) { // force host to be with www
+        if (!host.startsWith("www", 0)) {
+          res.writeHead(302, {
+            Location: `${protocol}://www.${host}`
+          })
+          res.end()
+        }
+      }
+      // return {}
+
       const {
         asyncFilterMobilization,
         asyncFilterBlock,

@@ -1,6 +1,5 @@
-FROM nginx
-LABEL maintainer="tech@nossas.org"
+FROM node:9-alpine
+MAINTAINER Nossas <tech@nossas.org>
 
-WORKDIR /usr/share/nginx/html
-
-COPY ./build .
+WORKDIR /code
+COPY . .

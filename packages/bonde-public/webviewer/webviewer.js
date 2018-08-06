@@ -5465,6 +5465,8 @@ var _react = __webpack_require__("react");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactLifecyclesCompat = __webpack_require__("react-lifecycles-compat");
+
 var _ChildMapping = __webpack_require__("../node_modules/react-transition-group/utils/ChildMapping.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -5513,10 +5515,10 @@ var propTypes = {
    */
   enter: _propTypes2.default.bool,
   /**
-    * A convenience prop that enables or disables exit animations
-    * for all children. Note that specifying this will override any defaults set
-    * on individual children Transitions.
-    */
+   * A convenience prop that enables or disables exit animations
+   * for all children. Note that specifying this will override any defaults set
+   * on individual children Transitions.
+   */
   exit: _propTypes2.default.bool,
 
   /**
@@ -5537,48 +5539,42 @@ var defaultProps = {
   childFactory: function childFactory(child) {
     return child;
   }
+
+  /**
+   * The `<TransitionGroup>` component manages a set of `<Transition>` components
+   * in a list. Like with the `<Transition>` component, `<TransitionGroup>`, is a
+   * state machine for managing the mounting and unmounting of components over
+   * time.
+   *
+   * Consider the example below using the `Fade` CSS transition from before.
+   * As items are removed or added to the TodoList the `in` prop is toggled
+   * automatically by the `<TransitionGroup>`. You can use _any_ `<Transition>`
+   * component in a `<TransitionGroup>`, not just css.
+   *
+   * ## Example
+   *
+   * <iframe src="https://codesandbox.io/embed/00rqyo26kn?fontsize=14" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+   *
+   * Note that `<TransitionGroup>`  does not define any animation behavior!
+   * Exactly _how_ a list item animates is up to the individual `<Transition>`
+   * components. This means you can mix and match animations across different
+   * list items.
+   */
 };
-
-/**
- * The `<TransitionGroup>` component manages a set of `<Transition>` components
- * in a list. Like with the `<Transition>` component, `<TransitionGroup>`, is a
- * state machine for managing the mounting and unmounting of components over
- * time.
- *
- * Consider the example below using the `Fade` CSS transition from before.
- * As items are removed or added to the TodoList the `in` prop is toggled
- * automatically by the `<TransitionGroup>`. You can use _any_ `<Transition>`
- * component in a `<TransitionGroup>`, not just css.
- *
- * ## Example
- *
- * <iframe src="https://codesandbox.io/embed/00rqyo26kn?fontsize=14" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
- *
- * Note that `<TransitionGroup>`  does not define any animation behavior!
- * Exactly _how_ a list item animates is up to the individual `<Transition>`
- * components. This means you can mix and match animations across different
- * list items.
- */
-
 var TransitionGroup = function (_React$Component) {
   _inherits(TransitionGroup, _React$Component);
 
   function TransitionGroup(props, context) {
     _classCallCheck(this, TransitionGroup);
 
-    // Initial children should all be entering, dependent on appear
     var _this = _possibleConstructorReturn(this, _React$Component.call(this, props, context));
 
+    var handleExited = _this.handleExited.bind(_this);
+
+    // Initial children should all be entering, dependent on appear
     _this.state = {
-      children: (0, _ChildMapping.getChildMapping)(props.children, function (child) {
-        return (0, _react.cloneElement)(child, {
-          onExited: _this.handleExited.bind(_this, child),
-          in: true,
-          appear: _this.getProp(child, 'appear'),
-          enter: _this.getProp(child, 'enter'),
-          exit: _this.getProp(child, 'exit')
-        });
-      })
+      handleExited: handleExited,
+      firstRender: true
     };
     return _this;
   }
@@ -5588,67 +5584,20 @@ var TransitionGroup = function (_React$Component) {
       transitionGroup: { isMounting: !this.appeared }
     };
   };
-  // use child config unless explictly set by the Group
-
-
-  TransitionGroup.prototype.getProp = function getProp(child, prop) {
-    var props = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this.props;
-
-    return props[prop] != null ? props[prop] : child.props[prop];
-  };
 
   TransitionGroup.prototype.componentDidMount = function componentDidMount() {
     this.appeared = true;
   };
 
-  TransitionGroup.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-    var _this2 = this;
+  TransitionGroup.getDerivedStateFromProps = function getDerivedStateFromProps(nextProps, _ref) {
+    var prevChildMapping = _ref.children,
+        handleExited = _ref.handleExited,
+        firstRender = _ref.firstRender;
 
-    var prevChildMapping = this.state.children;
-    var nextChildMapping = (0, _ChildMapping.getChildMapping)(nextProps.children);
-
-    var children = (0, _ChildMapping.mergeChildMappings)(prevChildMapping, nextChildMapping);
-
-    Object.keys(children).forEach(function (key) {
-      var child = children[key];
-
-      if (!(0, _react.isValidElement)(child)) return;
-
-      var hasPrev = key in prevChildMapping;
-      var hasNext = key in nextChildMapping;
-
-      var prevChild = prevChildMapping[key];
-      var isLeaving = (0, _react.isValidElement)(prevChild) && !prevChild.props.in;
-
-      // item is new (entering)
-      if (hasNext && (!hasPrev || isLeaving)) {
-        // console.log('entering', key)
-        children[key] = (0, _react.cloneElement)(child, {
-          onExited: _this2.handleExited.bind(_this2, child),
-          in: true,
-          exit: _this2.getProp(child, 'exit', nextProps),
-          enter: _this2.getProp(child, 'enter', nextProps)
-        });
-      }
-      // item is old (exiting)
-      else if (!hasNext && hasPrev && !isLeaving) {
-          // console.log('leaving', key)
-          children[key] = (0, _react.cloneElement)(child, { in: false });
-        }
-        // item hasn't changed transition states
-        // copy over the last transition props;
-        else if (hasNext && hasPrev && (0, _react.isValidElement)(prevChild)) {
-            // console.log('unchanged', key)
-            children[key] = (0, _react.cloneElement)(child, {
-              onExited: _this2.handleExited.bind(_this2, child),
-              in: prevChild.props.in,
-              exit: _this2.getProp(child, 'exit', nextProps),
-              enter: _this2.getProp(child, 'enter', nextProps)
-            });
-          }
-    });
-
-    this.setState({ children: children });
+    return {
+      children: firstRender ? (0, _ChildMapping.getInitialChildMapping)(nextProps, handleExited) : (0, _ChildMapping.getNextChildMapping)(nextProps, prevChildMapping, handleExited),
+      firstRender: false
+    };
   };
 
   TransitionGroup.prototype.handleExited = function handleExited(child, node) {
@@ -5701,7 +5650,7 @@ TransitionGroup.childContextTypes = {
 TransitionGroup.propTypes =  true ? propTypes : {};
 TransitionGroup.defaultProps = defaultProps;
 
-exports.default = TransitionGroup;
+exports.default = (0, _reactLifecyclesCompat.polyfill)(TransitionGroup);
 module.exports = exports['default'];
 
 /***/ }),
@@ -5715,6 +5664,8 @@ module.exports = exports['default'];
 exports.__esModule = true;
 exports.getChildMapping = getChildMapping;
 exports.mergeChildMappings = mergeChildMappings;
+exports.getInitialChildMapping = getInitialChildMapping;
+exports.getNextChildMapping = getNextChildMapping;
 
 var _react = __webpack_require__("react");
 
@@ -5798,6 +5749,66 @@ function mergeChildMappings(prev, next) {
   }
 
   return childMapping;
+}
+
+function getProp(child, prop, props) {
+  return props[prop] != null ? props[prop] : child.props[prop];
+}
+
+function getInitialChildMapping(props, onExited) {
+  return getChildMapping(props.children, function (child) {
+    return (0, _react.cloneElement)(child, {
+      onExited: onExited.bind(null, child),
+      in: true,
+      appear: getProp(child, 'appear', props),
+      enter: getProp(child, 'enter', props),
+      exit: getProp(child, 'exit', props)
+    });
+  });
+}
+
+function getNextChildMapping(nextProps, prevChildMapping, onExited) {
+  var nextChildMapping = getChildMapping(nextProps.children);
+  var children = mergeChildMappings(prevChildMapping, nextChildMapping);
+
+  Object.keys(children).forEach(function (key) {
+    var child = children[key];
+
+    if (!(0, _react.isValidElement)(child)) return;
+
+    var hasPrev = key in prevChildMapping;
+    var hasNext = key in nextChildMapping;
+
+    var prevChild = prevChildMapping[key];
+    var isLeaving = (0, _react.isValidElement)(prevChild) && !prevChild.props.in;
+
+    // item is new (entering)
+    if (hasNext && (!hasPrev || isLeaving)) {
+      // console.log('entering', key)
+      children[key] = (0, _react.cloneElement)(child, {
+        onExited: onExited.bind(null, child),
+        in: true,
+        exit: getProp(child, 'exit', nextProps),
+        enter: getProp(child, 'enter', nextProps)
+      });
+    } else if (!hasNext && hasPrev && !isLeaving) {
+      // item is old (exiting)
+      // console.log('leaving', key)
+      children[key] = (0, _react.cloneElement)(child, { in: false });
+    } else if (hasNext && hasPrev && (0, _react.isValidElement)(prevChild)) {
+      // item hasn't changed transition states
+      // copy over the last transition props;
+      // console.log('unchanged', key)
+      children[key] = (0, _react.cloneElement)(child, {
+        onExited: onExited.bind(null, child),
+        in: prevChild.props.in,
+        exit: getProp(child, 'exit', nextProps),
+        enter: getProp(child, 'enter', nextProps)
+      });
+    }
+  });
+
+  return children;
 }
 
 /***/ }),
@@ -14643,7 +14654,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(['\nquery fetchFacebookBotActivistsStrategy(\n  $search: Json!\n  $first: Int\n) {\n  query: getFacebookBotActivistsStrategy(\n    search: $search,\n    first: $first\n  ) {\n    totalCount\n    activists: nodes {\n      fbContextRecipientId\n      ', '\n    }\n  }\n}\n'], ['\nquery fetchFacebookBotActivistsStrategy(\n  $search: Json!\n  $first: Int\n) {\n  query: getFacebookBotActivistsStrategy(\n    search: $search,\n    first: $first\n  ) {\n    totalCount\n    activists: nodes {\n      fbContextRecipientId\n      ', '\n    }\n  }\n}\n']);
+var _templateObject = _taggedTemplateLiteral(['\nquery fetchFacebookBotActivistsStrategy(\n  $search: JSON!\n  $first: Int\n) {\n  query: getFacebookBotActivistsStrategy(\n    search: $search,\n    first: $first\n  ) {\n    totalCount\n    activists: nodes {\n      fbContextRecipientId\n      ', '\n    }\n  }\n}\n'], ['\nquery fetchFacebookBotActivistsStrategy(\n  $search: JSON!\n  $first: Int\n) {\n  query: getFacebookBotActivistsStrategy(\n    search: $search,\n    first: $first\n  ) {\n    totalCount\n    activists: nodes {\n      fbContextRecipientId\n      ', '\n    }\n  }\n}\n']);
 
 var _reactApollo = __webpack_require__("react-apollo");
 
@@ -27909,7 +27920,7 @@ var integer = exports.integer = (0, _formatNumber2.default)(integerOptions);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.notify = exports.subscriptionCancelSuccess = exports.communityInviteSuccess = exports.accountPasswordRetrieveSuccess = exports.messagePressureTargetsRemoveAll = exports.slugUpdatedMessage = exports.genericSaveSuccess = exports.genericRequestError = undefined;
+exports.notify = exports.reportDownloadError = exports.reportDownloadSuccess = exports.reportDownloadInProgressWarning = exports.subscriptionCancelSuccess = exports.communityInviteSuccess = exports.accountPasswordRetrieveSuccess = exports.messagePressureTargetsRemoveAll = exports.slugUpdatedMessage = exports.genericSaveSuccess = exports.genericRequestError = undefined;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -28036,6 +28047,62 @@ var subscriptionCancelSuccess = exports.subscriptionCancelSuccess = function sub
   };
 };
 
+var reportDownloadInProgressWarning = exports.reportDownloadInProgressWarning = function reportDownloadInProgressWarning(intl, _ref) {
+  var notificationId = _ref.notificationId,
+      filename = _ref.filename;
+  return {
+    id: notificationId,
+    title: intl.formatMessage({
+      id: 'notification--report-download-in-progress-warning.title',
+      defaultMessage: 'Download em andamento'
+    }),
+    status: 'warning',
+    message: intl.formatMessage({
+      id: 'notification--report-download-in-progress-warning.message',
+      defaultMessage: 'O download de {filename} está em andamento. ' + 'Quando estiver tudo pronto ou, caso dê algum tipo de erro, você será notificado. ' + 'Este processo pode demorar alguns minutos. ' + 'Em todo caso, não feche a aba do seu navegador.'
+    }, { filename: filename }),
+    dismissAfter: 0,
+    dismissible: true,
+    closeButton: false
+  };
+};
+
+var reportDownloadSuccess = exports.reportDownloadSuccess = function reportDownloadSuccess(intl, _ref2) {
+  var filename = _ref2.filename;
+  return {
+    title: intl.formatMessage({
+      id: 'notification--report-download-success.title',
+      defaultMessage: 'Oba! Tudo pronto (:'
+    }),
+    status: 'success',
+    message: intl.formatMessage({
+      id: 'notification--report-download-success.message',
+      defaultMessage: 'O download de {filename} foi feito com sucesso.'
+    }, { filename: filename }),
+    dismissAfter: 0,
+    dismissible: true,
+    closeButton: false
+  };
+};
+
+var reportDownloadError = exports.reportDownloadError = function reportDownloadError(intl, _ref3) {
+  var filename = _ref3.filename;
+  return {
+    title: intl.formatMessage({
+      id: 'notification--report-download-error.title',
+      defaultMessage: 'Ops, deu ruim \\\\:'
+    }),
+    status: 'error',
+    message: intl.formatMessage({
+      id: 'notification--report-download-error.message',
+      defaultMessage: 'Algo de errado aconteceu na hora do download de {filename}. ' + 'Pode tentar de novo? Mas caso o erro persista, pode falar com a gente pelo ' + 'botão de suporte alí no canto inferior direito. Estamos aqui pra te ajudar (:'
+    }, { filename: filename }),
+    dismissAfter: 0,
+    dismissible: true,
+    closeButton: false
+  };
+};
+
 // Standardize use of these functions
 
 var applyIntl = function applyIntl(value, intl) {
@@ -28048,13 +28115,13 @@ var applyIntl = function applyIntl(value, intl) {
   return value;
 };
 
-var notify = exports.notify = function notify(_ref, dispatch, ownProps) {
-  var status = _ref.status,
-      title = _ref.title,
-      message = _ref.message;
+var notify = exports.notify = function notify(_ref4, dispatch, ownProps) {
+  var status = _ref4.status,
+      title = _ref4.title,
+      message = _ref4.message;
 
-  var _ref2 = ownProps || {},
-      intl = _ref2.intl;
+  var _ref5 = ownProps || {},
+      intl = _ref5.intl;
 
   dispatch((0, _reapop.addNotification)({
     status: status,
@@ -29142,6 +29209,13 @@ module.exports = require("react-ga");
 /***/ (function(module, exports) {
 
 module.exports = require("react-intl");
+
+/***/ }),
+
+/***/ "react-lifecycles-compat":
+/***/ (function(module, exports) {
+
+module.exports = require("react-lifecycles-compat");
 
 /***/ }),
 

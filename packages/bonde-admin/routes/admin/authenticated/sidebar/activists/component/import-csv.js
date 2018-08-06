@@ -22,7 +22,7 @@ const mapActionsToProps = (dispatch, { intl }) => ({
 })
 
 const createActivistMutation = gql`
-  mutation createActivist($activist: Json!) {
+  mutation createActivist($activist: JSON!) {
     createActivist(input: {
       activist: $activist
     }) {

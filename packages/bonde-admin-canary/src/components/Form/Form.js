@@ -15,4 +15,4 @@ const Form = ({ children, error, handleSubmit }) => {
 
 }
 
-export default reduxForm({ form: 'authLogin' })(Form)
+export default reduxForm({ form: 'components/Form' })(Form)

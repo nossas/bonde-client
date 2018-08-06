@@ -9,11 +9,11 @@ const Button = styled.button`{
   font-family: 'Nunito Sans', sans-serif;
   font-weight: 800;
   font-size: 13px;
-  text-align: center;
+  text-align: ${props => props.align};
   line-height: 1.15;
   height: 38px;
   border-radius: 100px;
-  padding: 0 25px;
+  padding: ${props => props.padding || '0 25px'};
   min-width: 192px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -118,7 +118,7 @@ const Button = styled.button`{
   ${props => props.margin && borderSpacing('margin', props.margin)}
 }`
 
-const { node, bool, string } = PropTypes
+const { oneOf, node, bool, string } = PropTypes
 
 Button.propTypes = {
   /** Children nodes. */
@@ -135,10 +135,12 @@ Button.propTypes = {
   color: string,
   /** Button type. */
   type: string,
-  margin: borderSpacingPropTypes,
+  align: oneOf(['center', 'left', 'right']),
+  margin: borderSpacingPropTypes
 }
 
 Button.defaultProps = {
+  align: 'center',
   type: 'button',
   margin: {}
 }
