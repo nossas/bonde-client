@@ -18,10 +18,10 @@ const BrazilMap = ({ size, width, height, margin }) => (
   >
     <defs>
         <rect id='b' width='360' height='274' x='930' y='598' rx='1' />
-        <filter id='a' width='121.4%' height='128.1%' x='-10.1%' y='-13.7%' filterunits='objectBoundingBox'>
+        <filter id='a' width='121.4%' height='128.1%' x='-10.1%' y='-13.7%' filterUnits='objectBoundingBox'>
             <femorphology in='SourceAlpha' operator='dilate' radius='5.5' result='shadowSpreadOuter1'>
                 <feoffset dx='2' dy='1' in='shadowSpreadOuter1' result='shadowOffsetOuter1'>
-                    <fegaussianblur in='shadowOffsetOuter1' result='shadowBlurOuter1' stddeviation='7'>
+                    <fegaussianblur in='shadowOffsetOuter1' result='shadowBlurOuter1' stdDeviation='7'>
                         <fecolormatrix in='shadowBlurOuter1' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'
                         />
                     </fegaussianblur>

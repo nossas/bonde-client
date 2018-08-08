@@ -30,10 +30,10 @@ const PageTabMenu = () => (
 
 ```js
 const ModuleTabMenu = () => (
-  <Tabs>
-    <Tab>Editar</Tab>
-    <Tab active>Configurações</Tab>
-  </Tabs>
+  <Tab>
+    <TabItem>Editar</TabItem>
+    <TabItem active>Configurações</TabItem>
+  </Tab>
 );
 const PageTabMenu = () => (
   <Tab inverted>

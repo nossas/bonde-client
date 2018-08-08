@@ -1,12 +1,10 @@
-import React from 'react'
 import exenv from 'exenv'
 
-class Zendesk extends React.Component {
-  componentWillMount () {
-    if (exenv.canUseDOM) {
-      const script = document.createElement('script')
-      script.type = 'text/javascript'
-      script.text = `
+const Zendesk = () => {
+  if (exenv.canUseDOM) {
+    const script = document.createElement('script')
+    script.type = 'text/javascript'
+    script.text = `
 window.zESettings = {webWidget:{offset:{horizontal:'150px',vertical:'10px'}}};
 window.zEmbed||function(e,t){var n,o,d,i,s,a=[],r=document.createElement("iframe");
 window.zEmbed=function(){a.push(arguments)},window.zE=window.zE||window.zEmbed,
@@ -18,13 +16,11 @@ var o=this.createElement("script");n&&(this.domain=n),o.id="js-iframe-async",o.s
 this.t=+new Date,this.zendeskHost=t,this.zEQueue=a,this.body.appendChild(o)},o.write(
 '<body onload="document._l();">'),o.close()}(
 "https://assets.zendesk.com/embeddable_framework/main.js","nossas.zendesk.com")`
-      document.body.appendChild(script)
-    }
+
+    document.body.appendChild(script)
   }
 
-  render () {
-    return <span />
-  }
+  return null
 }
 
 export default Zendesk

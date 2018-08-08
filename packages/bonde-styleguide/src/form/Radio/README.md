@@ -6,12 +6,12 @@
 ```
 
 
-### Radio - `checked`
+### Radio - `defaultChecked`
 
 
 ```js
 <div style={{ display: 'flex' }}>
-  <Radio name='checkedRadio' checked>Checked</Radio>
+  <Radio name='checkedRadio' defaultChecked>Checked</Radio>
   <Radio name='checkedRadio'>Radio</Radio>
 </div>
 ```
@@ -30,7 +30,7 @@
 
 ```js
 <div style={{ display: 'flex' }}>
-  <Radio name='disabledRadio' disabled checked>Disabled and Checked</Radio>
+  <Radio name='disabledRadio' disabled defaultChecked>Disabled and Checked</Radio>
   <Radio name='disabledRadio' disabled>Disabled</Radio>
 </div>
 ```

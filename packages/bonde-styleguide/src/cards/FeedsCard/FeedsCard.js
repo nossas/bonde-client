@@ -15,7 +15,7 @@ const FeedsCard = ({ sectionTitle, minHeight, items }) => (
     <Scrollbox>
       <Feed>
         {items.map(feed => (
-          <FeedItem date={feed.date} text={feed.text} />
+          <FeedItem key={Math.random()} date={feed.date} text={feed.text} />
         ))}
       </Feed>
     </Scrollbox>

@@ -3,11 +3,11 @@
 ```
 
 
-### Checkbox - `checked`
+### Checkbox - `defaultChecked`
 
 
 ```js
-<Checkbox checked>Checked</Checkbox>
+<Checkbox defaultChecked>Checked</Checkbox>
 ```
 
 
@@ -24,7 +24,7 @@
 
 ```js
 <div>
-  <Checkbox disabled checked>Disabled and Checked</Checkbox>
+  <Checkbox disabled defaultChecked>Disabled and Checked</Checkbox>
   <Checkbox disabled>Disabled</Checkbox>
 </div>
 ```

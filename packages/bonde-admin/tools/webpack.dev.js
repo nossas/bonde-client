@@ -34,7 +34,6 @@ module.exports = merge(common, {
           'redux-devtools',
           'redux-devtools-dock-monitor',
           'redux-form',
-          'redux-form-validation',
           'redux-thunk',
 
           'cpf_cnpj',

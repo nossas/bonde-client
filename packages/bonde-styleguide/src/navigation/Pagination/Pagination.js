@@ -54,17 +54,8 @@ class IconButton extends React.Component {
  * The only true `Pagination` component.
  */
 class Pagination extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      activeIndex: props.page ? props.page - 1 : props.activeIndex,
-    }
-  }
-
-  componentWillReceiveProps (nextProps) {
-    if (this.props.page !== nextProps.page) {
-      this.setState({ activeIndex: nextProps.page - 1 })
-    }
+  state = {
+    activeIndex: this.props.activeIndex,
   }
 
   handleActiveIndex = activeIndex => {
