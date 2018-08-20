@@ -5,7 +5,8 @@ export default class extends React.Component {
   
   static defaultProps = {
     uuid: s => s.id,
-    sections: []
+    sections: [],
+    renderNavigation: ({ children }) => <div>{children}</div>
   }
 
   static propTypes = {
@@ -13,15 +14,18 @@ export default class extends React.Component {
   }
 
   render () {
-    const { uuid, sections, renderNavigationItem } = this.props
-    
-    return (
-      <div>
-        {sections.map((section, i) => renderNavigationItem({
-          section,
-          href: `#${uuid(section)}`
-        }))}
-      </div>
-    )
+    const {
+      uuid,
+      sections,
+      renderNavigation,
+      renderNavigationItem
+    } = this.props
+   
+    return renderNavigation({
+      children: sections.map((section, i) => renderNavigationItem({
+        section,
+        href: `#${uuid(section)}`
+      }))
+    })
   }
 }

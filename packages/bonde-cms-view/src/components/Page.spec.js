@@ -58,6 +58,22 @@ test('should pass renderNavigationItem to Navigation component', t => {
   )
 })
 
+test('should pass renderNavigation to Navigation component', t => {
+  const { node, defaultProps } = t.context
+  const renderNavigation = ({ children }) => <div />
+  node.setProps({ renderNavigation })
+
+  const navigationProps = node.find(Navigation).props()
+  const props = {
+    children: [{ id: 1, name: 'About' }]
+  }
+  
+  t.deepEqual(
+    navigationProps.renderNavigation(props),
+    renderNavigation(props)
+  )
+})
+
 // Sections
 
 test('should render section components', t => {

@@ -21,11 +21,21 @@ test('should render an anchor link for each section', t => {
 })
 
 test('should custom navigation item render', t => {
-  const { node } = t.context
-  const renderNavigationItem = ({ section, href }) => (
-    <a id='section-link' href={href}>{section.name}</a>
-  )
-  node.setProps({ renderNavigationItem })
+  const { node, defaultProps } = t.context
 
-  t.is(node.find('#section-link').props().children, 'About')
+  const index = 0
+  const navigationProps = node.find('a').at(index).props()
+  const section = defaultProps.sections[index]
+  
+  t.is(navigationProps.children, section.name)
+})
+
+test('should custom navigation wrapper render', t => {
+  const { node } = t.context
+  const Navigation = ({ children }) => (
+    <div />
+  )
+  node.setProps({ renderNavigation: Navigation })
+
+  t.is(node.find('a').length, 0)
 })
