@@ -5,7 +5,18 @@ import PageStructure from './Page'
 import { Footer, Navigation, Section } from './defaults' 
 
 test.beforeEach(t => {
-  t.context.node = shallow(<PageStructure />)
+  t.context.defaultProps = {
+    anchor: s => `section-${s.id}`,
+    sections: [
+      { id: 1, name: 'About' },
+      { id: 2, name: 'Projects' }
+    ],
+    renderNavigationItem: ({ section, href }) => (
+      <a href={href}>{section.name}</a>
+    )
+  }
+
+  t.context.node = shallow(<PageStructure {...t.context.defaultProps} />)
 })
 
 // Navigation
@@ -16,42 +27,53 @@ test('should render a default navigation component', t => {
 })
 
 test('should pass sections to navigation component', t => {
-  const { node } = t.context
-  const sections = [{ name: 'About', uuid: 1 }, { name: 'Projects', uuid: 2 }]
-  node.setProps({ sections })
+  const { node, defaultProps } = t.context
 
   const navigation = node.find(Navigation)
-  t.deepEqual(navigation.props().sections, sections)
+  t.deepEqual(navigation.props().sections, defaultProps.sections)
 })
 
 test('should pass anchor function prop to navigation', t => {
-  const { node } = t.context
-  const sections = [{ name: 'About', id: 1 }]
-  node.setProps({ anchor: (s) => `section-${s.id}`, sections })
+  const { node, defaultProps } = t.context
+
+  const index = 0
+  const navigationProps = node.find(Navigation).at(index).props()
+  const section = defaultProps.sections[index]
+
+  t.is(navigationProps.uuid(section), defaultProps.anchor(section))
+})
+
+test('should pass renderNavigationItem to Navigation component', t => {
+  const { node, defaultProps } = t.context
 
   const navigationProps = node.find(Navigation).props()
-  const section = sections[0]
-  t.is(navigationProps.uuid(section), `section-${section.id}`)
+
+  const props = {
+    section: defaultProps.sections[0],
+    href: '#anchor-link'
+  }
+  t.deepEqual(
+    navigationProps.renderNavigationItem(props),
+    defaultProps.renderNavigationItem(props)
+  )
 })
 
 // Sections
 
 test('should render section components', t => {
-  const { node } = t.context
-  const sections = [{ name: 'About', uuid: 1 }, { name: 'Projects', uuid: 2 }]
-  node.setProps({ sections })
+  const { node, defaultProps } = t.context
 
-  t.is(node.find(Section).length, sections.length)
+  t.is(node.find(Section).length, defaultProps.sections.length)
 })
 
 test('should pass anchor function prop to sections', t => {
-  const { node } = t.context
-  const sections = [{ name: 'About', id: 1 }]
-  node.setProps({ anchor: (s) => `section-${s.id}`, sections })
+  const { node, defaultProps } = t.context
 
-  const sectionProps = node.find(Section).props()
-  const section = sections[0]
-  t.is(sectionProps.uuid(section), `section-${section.id}`)
+  const index = 0
+  const sectionProps = node.find(Section).at(index).props()
+  const section = defaultProps.sections[index]
+
+  t.is(sectionProps.uuid(section), defaultProps.anchor(section))
 })
 
 // Footer tests

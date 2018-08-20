@@ -1,19 +1,32 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Footer, Navigation, Section } from './defaults'
 
 export default class extends React.Component {
 
   static defaultProps = {
-    anchor: s => `section-${s.id}`,
     sections: []
   }
 
+  static propTypes = {
+    // return path anchor link to navigation on section
+    // receive a section object
+    anchor: PropTypes.func.isRequired,
+    // return a component to link section
+    // receive an object { section, href }
+    renderNavigationItem: PropTypes.func.isRequired
+  }
+
   render () {
-    const { anchor, sections } = this.props
+    const { anchor, sections, renderNavigationItem } = this.props
 
     return (
       <div>
-        <Navigation uuid={anchor} sections={sections} />
+        <Navigation
+          uuid={anchor}
+          sections={sections}
+          renderNavigationItem={renderNavigationItem}
+        />
         <div>
           {sections.map((section, i) => (
             <Section

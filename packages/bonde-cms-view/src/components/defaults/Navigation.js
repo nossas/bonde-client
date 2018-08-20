@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 export default class extends React.Component {
   
@@ -7,17 +8,19 @@ export default class extends React.Component {
     sections: []
   }
 
+  static propTypes = {
+    renderNavigationItem: PropTypes.func.isRequired
+  }
+
   render () {
-    const { uuid, sections } = this.props
+    const { uuid, sections, renderNavigationItem } = this.props
     
     return (
       <div>
-        {sections.map((section, i) => (
-          <a
-            key={`navigation-${i}`} 
-            href={`#${uuid(section)}`}
-          />
-        ))}
+        {sections.map((section, i) => renderNavigationItem({
+          section,
+          href: `#${uuid(section)}`
+        }))}
       </div>
     )
   }
