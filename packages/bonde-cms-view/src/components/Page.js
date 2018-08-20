@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Footer, Navigation, Section } from './defaults'
+import { Footer, Navigation, Section, Widget } from './defaults'
 
 export default class extends React.Component {
 
@@ -20,16 +20,25 @@ export default class extends React.Component {
     renderNavigationItem: PropTypes.func.isRequired,
     // return a component wrapper section
     // receive a object { section }
-    renderSection: PropTypes.func
+    renderSection: PropTypes.func,
+    // return a component widget
+    // receive a object { widget }
+    renderWidget: PropTypes.func.isRequired,
+    // return a list of widgets related section
+    // receive section and widgets
+    relationship: PropTypes.func.isRequired
   }
 
   render () {
     const {
       anchor,
       sections,
+      widgets,
+      relationship,
       renderNavigation,
       renderNavigationItem,
-      renderSection
+      renderSection,
+      renderWidget
     } = this.props
 
     return (
@@ -47,7 +56,11 @@ export default class extends React.Component {
               uuid={anchor}
               section={section}
               renderSection={renderSection}
-            />
+            >
+              {relationship(section, widgets).map(w => (
+                <Widget renderWidget={renderWidget} widget={w} />
+              ))}
+            </Section>
           ))}
         </div>
         <Footer />

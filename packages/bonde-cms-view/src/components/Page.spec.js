@@ -2,7 +2,7 @@ import test from 'ava'
 import React from 'react'
 import { shallow } from 'enzyme'
 import PageStructure from './Page'
-import { Footer, Navigation, Section } from './defaults' 
+import { Footer, Navigation, Section, Widget } from './defaults' 
 
 test.beforeEach(t => {
   t.context.defaultProps = {
@@ -11,6 +11,15 @@ test.beforeEach(t => {
       { id: 1, name: 'About' },
       { id: 2, name: 'Projects' }
     ],
+    widgets: [
+      { kind: 'content', sectionId: 1 },
+      { kind: 'draft', sectionId: 1 },
+      { kind: 'draft', sectionId: 2 }
+    ],
+    relationship: (s, widgets) => widgets.filter(
+      w => w.sectionId === s.id
+    ),
+    renderWidget: () => <div />,
     renderNavigationItem: ({ section, href }) => (
       <a href={href}>{section.name}</a>
     )
@@ -110,6 +119,44 @@ test('should pass renderSection to Section component', t => {
   t.deepEqual(
     sectionProps.renderSection(props),
     renderSection(props)
+  )
+})
+
+// Widgets
+
+test('should related widgets with section', t => {
+  const { node, defaultProps } = t.context
+  
+  const section1 = node.find(Section).at(0)
+  const widgets = defaultProps.widgets.filter(w => {
+    return w.sectionId === section1.props().section.id
+  })
+
+  t.is(section1.find(Widget).length, widgets.length)
+})
+
+test('should pass renderWidget to Widget component', t => {
+  const { node, defaultProps } = t.context
+  const renderWidget = ({ widget }) => (
+    <p>
+      {widget.kind}
+    </p>
+  )
+  node.setProps({ renderWidget })
+
+  const i = 1
+  const widget1 = node.find(Section).at(i).find(Widget).at(0)
+  
+  const props = {
+    widget: defaultProps.relationship(
+      defaultProps.sections[i],
+      defaultProps.widgets
+    )[0]
+  }
+  
+  t.deepEqual(
+    widget1.props().renderWidget(props),
+    renderWidget(props)
   )
 })
 

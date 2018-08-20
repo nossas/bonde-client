@@ -7,11 +7,19 @@ const sections = [
   { id: 2, name: 'Projects', bgColor: 'pink' }
 ]
 
+const widgets = [
+  { kind: 'content', sectionId: 1 },
+  { kind: 'draft', sectionId: 2 },
+  { kind: 'pressure', sectionId: 2 }
+]
+
 const Navigation = ({ children }) => {
  
   const styles = {
+    position: 'fixed',
+    width: '100%',
     height: '50px',
-    backgroundColor: 'black',
+    backgroundColor: 'rgba(0,0,0,0.5)',
     textAlign: 'center'
   }
 
@@ -28,26 +36,37 @@ const NavigationItem = ({ section, href }) => (
   </a>
 )
 
-const SectionBackground = ({ section }) => {
+const SectionBackground = ({ children, section }) => {
   const styles = {
     width: '100%',
-    height: '500px',
+    height: '1000px',
     backgroundColor: section.bgColor
   } 
   return (
-    <div style={styles} />
+    <div style={styles}>
+      {children}
+    </div>
   )
 }
+
+const Widget = ({ widget }) => (
+  <div>
+    {widget.kind}
+  </div>
+)
 
 class App extends Component {
   render() {
     return (
       <PageStructure
         anchor={s => `section-${s.id}`}
+        relationship={(section, widgets) => widgets.filter(({ sectionId }) => section.id === sectionId)}
         sections={sections}
+        widgets={widgets}
         renderNavigation={Navigation}
         renderNavigationItem={NavigationItem}
         renderSection={SectionBackground}
+        renderWidget={Widget}
       />
     );
   }

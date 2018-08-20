@@ -10,17 +10,15 @@ export default class extends React.Component {
 
   render() {   
     const {
+      children,
       uuid,
       section,
       renderSection
     } = this.props
-    
-    // TODO: render plugins
-    const children = []
 
     return (
       <div id={uuid(section)}>
-        {renderSection({ section })}
+        {renderSection({ section, children })}
       </div>
     )
   }
