@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import PageStructure from './components/Page'
 
 const sections = [
-  { id: 1, name: 'About' },
-  { id: 2, name: 'Projects' }
+  { id: 1, name: 'About', bgColor: 'yellow' },
+  { id: 2, name: 'Projects', bgColor: 'pink' }
 ]
 
 const Navigation = ({ children }) => {
@@ -28,6 +28,17 @@ const NavigationItem = ({ section, href }) => (
   </a>
 )
 
+const SectionBackground = ({ section }) => {
+  const styles = {
+    width: '100%',
+    height: '500px',
+    backgroundColor: section.bgColor
+  } 
+  return (
+    <div style={styles} />
+  )
+}
+
 class App extends Component {
   render() {
     return (
@@ -36,6 +47,7 @@ class App extends Component {
         sections={sections}
         renderNavigation={Navigation}
         renderNavigationItem={NavigationItem}
+        renderSection={SectionBackground}
       />
     );
   }

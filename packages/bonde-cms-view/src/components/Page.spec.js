@@ -92,6 +92,27 @@ test('should pass anchor function prop to sections', t => {
   t.is(sectionProps.uuid(section), defaultProps.anchor(section))
 })
 
+test('should pass renderSection to Section component', t => {
+  const { node, defaultProps } = t.context
+  const renderSection = ({ section }) => (
+    <div>
+      {section.name}
+    </div>
+  )
+  node.setProps({ renderSection })
+
+  const index = 0
+  const sectionProps = node.find(Section).at(0).props()
+  const props = {
+    section: defaultProps.sections[0]
+  }
+  
+  t.deepEqual(
+    sectionProps.renderSection(props),
+    renderSection(props)
+  )
+})
+
 // Footer tests
 
 test('should render a default footer component', t => {

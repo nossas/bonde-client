@@ -4,14 +4,24 @@ export default class extends React.Component {
   
   static defaultProps = {
     uuid: s => s.id,
-    section: {}
+    section: {},
+    renderSection: () => {}
   }
 
   render() {   
-    const { uuid, section } = this.props
+    const {
+      uuid,
+      section,
+      renderSection
+    } = this.props
     
+    // TODO: render plugins
+    const children = []
+
     return (
-      <div id={uuid(section)} />
+      <div id={uuid(section)}>
+        {renderSection({ section })}
+      </div>
     )
   }
 }

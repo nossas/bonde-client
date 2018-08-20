@@ -17,7 +17,10 @@ export default class extends React.Component {
     renderNavigation: PropTypes.func,
     // return a component to link section
     // receive an object { section, href }
-    renderNavigationItem: PropTypes.func.isRequired
+    renderNavigationItem: PropTypes.func.isRequired,
+    // return a component wrapper section
+    // receive a object { section }
+    renderSection: PropTypes.func
   }
 
   render () {
@@ -25,7 +28,8 @@ export default class extends React.Component {
       anchor,
       sections,
       renderNavigation,
-      renderNavigationItem
+      renderNavigationItem,
+      renderSection
     } = this.props
 
     return (
@@ -42,6 +46,7 @@ export default class extends React.Component {
               key={`section-${i}`}
               uuid={anchor}
               section={section}
+              renderSection={renderSection}
             />
           ))}
         </div>
