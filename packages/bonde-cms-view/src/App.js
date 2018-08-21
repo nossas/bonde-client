@@ -3,8 +3,9 @@ import { Navbar } from './components/ui'
 import PageStructure from './components/PageStructure'
 
 const sections = [
-  { id: 1, name: 'About', bgColor: 'yellow' },
-  { id: 2, name: 'Projects', bgColor: 'pink' }
+  { id: 1, name: 'About', bgColor: 'yellow', position: 1 },
+  { id: 2, name: 'Contact', bgColor: 'pink', position: 3 },
+  { id: 3, name: 'Projects', bgColor: 'blue', position: 2 }
 ]
 
 const widgets = [
@@ -53,6 +54,8 @@ class App extends Component {
         relationship={(section, widgets) => widgets.filter(({ sectionId }) => section.id === sectionId)}
         sections={sections}
         widgets={widgets}
+        // order by asc by position
+        ordering={(s1, s2) => s1.position - s2.position}
         renderNavigation={Navbar}
         renderNavigationItem={Navbar.Item}
         renderSection={SectionBackground}

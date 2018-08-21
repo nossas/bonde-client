@@ -83,6 +83,16 @@ test('should pass renderNavigation to Navigation component', t => {
   )
 })
 
+test('should change ordering sections on navigation', t => {
+  const { node, defaultProps } = t.context
+  const orderDesc = (s1, s2) => s2.id - s1.id
+  node.setProps({ ordering: orderDesc })
+
+  const sections = defaultProps.sections.sort(orderDesc)
+
+  t.deepEqual(node.find(Navigation).props().sections, sections)
+})
+
 // Sections
 
 test('should render section components', t => {
@@ -120,6 +130,17 @@ test('should pass renderSection to Section component', t => {
     sectionProps.renderSection(props),
     renderSection(props)
   )
+})
+
+test('should change ordering on sections render', t => {
+  const { node, defaultProps } = t.context
+  const orderDesc = (s1, s2) => s2.id - s1.id
+  node.setProps({ ordering: orderDesc })
+
+  const sections = defaultProps.sections.sort(orderDesc)
+
+  t.is(node.find(Section).at(0).props().section, sections[0])
+  t.is(node.find(Section).at(1).props().section, sections[1])
 })
 
 // Widgets

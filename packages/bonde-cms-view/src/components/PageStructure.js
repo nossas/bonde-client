@@ -41,19 +41,24 @@ export default class extends React.Component {
       renderNavigationItem,
       renderSection,
       renderWidget,
-      renderFooter
+      renderFooter,
+      ordering
     } = this.props
+
+    const sectionOrderedList = ordering
+      ? sections.sort(ordering)
+      : sections
 
     return (
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <Navigation
           uuid={anchor}
-          sections={sections}
+          sections={sectionOrderedList}
           renderNavigation={renderNavigation}
           renderNavigationItem={renderNavigationItem}
         />
         <div>
-          {sections.map((section, i) => (
+          {sectionOrderedList.map((section, i) => (
             <Section
               key={`section-${i}`}
               uuid={anchor}
