@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Footer, Navigation, Section, Widget } from './defaults'
+import { Navigation, Section, Widget } from './defaults'
 
 export default class extends React.Component {
 
@@ -26,7 +26,9 @@ export default class extends React.Component {
     renderWidget: PropTypes.func.isRequired,
     // return a list of widgets related section
     // receive section and widgets
-    relationship: PropTypes.func.isRequired
+    relationship: PropTypes.func.isRequired,
+    // return a component footer
+    renderFooter: PropTypes.func
   }
 
   render () {
@@ -38,7 +40,8 @@ export default class extends React.Component {
       renderNavigation,
       renderNavigationItem,
       renderSection,
-      renderWidget
+      renderWidget,
+      renderFooter
     } = this.props
 
     return (
@@ -63,7 +66,7 @@ export default class extends React.Component {
             </Section>
           ))}
         </div>
-        <Footer />
+        {renderFooter && renderFooter()}
       </div>
     )
   }

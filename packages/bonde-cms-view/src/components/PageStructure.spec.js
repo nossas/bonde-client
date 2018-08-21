@@ -1,8 +1,8 @@
 import test from 'ava'
 import React from 'react'
 import { shallow } from 'enzyme'
-import PageStructure from './Page'
-import { Footer, Navigation, Section, Widget } from './defaults' 
+import PageStructure from './PageStructure'
+import { Navigation, Section, Widget } from './defaults' 
 
 test.beforeEach(t => {
   t.context.defaultProps = {
@@ -162,7 +162,10 @@ test('should pass renderWidget to Widget component', t => {
 
 // Footer tests
 
-test('should render a default footer component', t => {
+test('should custom footer render', t => {
   const { node } = t.context
+  const Footer = () => <div />
+  node.setProps({ renderFooter: () => <Footer /> })
+  
   t.is(node.find(Footer).length, 1)
 })
