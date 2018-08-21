@@ -45,7 +45,7 @@ export default class extends React.Component {
     } = this.props
 
     return (
-      <div>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
         <Navigation
           uuid={anchor}
           sections={sections}
