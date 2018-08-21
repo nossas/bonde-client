@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-
-import PageStructure from './components/Page'
+import { Navbar } from './components/ui'
+import PageStructure from './components/PageStructure'
 
 const sections = [
   { id: 1, name: 'About', bgColor: 'yellow' },
@@ -13,33 +13,10 @@ const widgets = [
   { kind: 'pressure', sectionId: 2 }
 ]
 
-const Navigation = ({ children }) => {
- 
-  const styles = {
-    position: 'fixed',
-    width: '100%',
-    height: '50px',
-    backgroundColor: 'rgba(0,0,0,0.5)',
-    textAlign: 'center'
-  }
-
-  return (
-    <div style={styles}>
-      {children}
-    </div>
-  )
-}
-
-const NavigationItem = ({ section, href }) => (
-  <a href={href} title={section.name}>
-    {section.name}
-  </a>
-)
-
 const SectionBackground = ({ children, section }) => {
   const styles = {
     width: '100%',
-    height: '1000px',
+    height: '400px',
     backgroundColor: section.bgColor
   } 
   return (
@@ -55,6 +32,19 @@ const Widget = ({ widget }) => (
   </div>
 )
 
+const Footer = () => {
+  const styles = {
+    height: '50px',
+    backgroundColor: 'black'
+  }
+  
+  return (
+    <div style={styles}>
+      <p>Footer</p>
+    </div>
+  )
+}
+
 class App extends Component {
   render() {
     return (
@@ -63,10 +53,11 @@ class App extends Component {
         relationship={(section, widgets) => widgets.filter(({ sectionId }) => section.id === sectionId)}
         sections={sections}
         widgets={widgets}
-        renderNavigation={Navigation}
-        renderNavigationItem={NavigationItem}
+        renderNavigation={Navbar}
+        renderNavigationItem={Navbar.Item}
         renderSection={SectionBackground}
         renderWidget={Widget}
+        renderFooter={Footer}
       />
     );
   }
