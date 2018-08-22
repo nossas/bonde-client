@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PageStructure, { Navbar, Section, Widget } from './package'
+import Form from './plugins/Form'
 
 const sections = [
   { 
@@ -49,7 +50,35 @@ const widgets = [
     sectionId: 3,
     smSize: 12,
     mdSize: 6,
-    lgSize: 6
+    lgSize: 6,
+    settings: {
+      "fields": [
+	{
+	  "uid": "field-1534967789181-5",
+	  "kind": "email",
+	  "label": "Email",
+	  "placeholder": "Insira seu e-mail",
+	  "required": "true"
+	},{
+	  "uid": "field-1534967803763-99",
+	  "kind": "text",
+	  "label": "Nome",
+	  "placeholder": "Insira seu nome",
+	  "required": "true"
+	},
+	{
+          "uid": "field-1534971237536-91",
+          "kind": "dropdown",
+          "label": "Cidade",
+          "placeholder": "São Paulo,Minas Gerais,Rio de Janeiro",
+          "required": "false"
+        }
+      ],
+      "count_text": "assinantes",
+      "mainColor": "rgba(250,154,186,1)",
+      "buttonText": "Assinar",
+      "callToAction": "Preencha o formulário abaixo para assinar a petição"
+    }
   },
   { 
     kind: 'content',
@@ -67,7 +96,7 @@ const plugins = [
   },
   {
     kind: 'form',
-    component: ({ widget }) => <h3>Componente de formulário</h3>
+    component: Form
   }
 ]
 
