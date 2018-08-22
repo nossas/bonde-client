@@ -1,37 +1,65 @@
 import React, { Component } from 'react';
-import { Navbar } from './components/ui'
+import { Navbar, Section, Widget } from './components/ui'
 import PageStructure from './components/PageStructure'
 
 const sections = [
-  { id: 1, name: 'About', bgColor: 'yellow', position: 1 },
-  { id: 2, name: 'Contact', bgColor: 'pink', position: 3 },
-  { id: 3, name: 'Projects', bgColor: 'blue', position: 2 }
+  { 
+    id: 1,
+    name: 'About',
+    bgImage: 'https://s3.amazonaws.com/hub-central/uploads/1486682126__BONDE_capa_maju.png',
+    position: 1
+  },
+  { 
+    id: 2,
+    name: 'Contact',
+    bgImage: 'https://s3.amazonaws.com/hub-central/uploads/1496348747__bonde_tela2.5.png',
+    position: 3
+  },
+  { 
+    id: 3,
+    name: 'Projects',
+    bgImage: 'https://s3.amazonaws.com/hub-central/uploads/1496347540__bonde_tela3.5.png',
+    position: 2
+  }
 ]
 
 const widgets = [
-  { kind: 'content', sectionId: 1 },
-  { kind: 'draft', sectionId: 2 },
-  { kind: 'pressure', sectionId: 2 }
+  { 
+    kind: 'content',
+    sectionId: 1,
+    smSize: 12,
+    mdSize: 6,
+    lgSize: 6
+  },
+  { 
+    kind: 'content',
+    sectionId: 1,
+    smSize: 12,
+    mdSize: 6,
+    lgSize: 6
+  },
+  { 
+    kind: 'content',
+    sectionId: 2,
+    smSize: 12,
+    mgSize: 12,
+    lgSize: 12
+  },
+  { 
+    kind: 'form',
+    sectionId: 3,
+    smSize: 12,
+    mdSize: 6,
+    lgSize: 6
+  },
+  { 
+    kind: 'content',
+    sectionId: 3,
+    smSize: 12,
+    mdSize: 6,
+    lgSize: 6
+  }
 ]
-
-const SectionBackground = ({ children, section }) => {
-  const styles = {
-    width: '100%',
-    height: '400px',
-    backgroundColor: section.bgColor
-  } 
-  return (
-    <div style={styles}>
-      {children}
-    </div>
-  )
-}
-
-const Widget = ({ widget }) => (
-  <div>
-    {widget.kind}
-  </div>
-)
 
 const Footer = () => {
   const styles = {
@@ -58,7 +86,7 @@ class App extends Component {
         ordering={(s1, s2) => s1.position - s2.position}
         renderNavigation={Navbar}
         renderNavigationItem={Navbar.Item}
-        renderSection={SectionBackground}
+        renderSection={Section}
         renderWidget={Widget}
         renderFooter={Footer}
       />
