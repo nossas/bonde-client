@@ -2,14 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Col from './Col'
 
-const Widget = ({ widget }) => (
+const Widget = ({ widget, children }) => (
   <Col
     lg={widget.lgSize}
     md={widget.mdSize}
     sm={widget.smSize}
   >
-    {/* TODO: Render component by kind */}
-    {widget.kind}
+    {children}
   </Col>
 )
 

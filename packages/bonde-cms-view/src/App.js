@@ -61,6 +61,17 @@ const widgets = [
   }
 ]
 
+const plugins = [
+  {
+    kind: 'content',
+    component: ({ widget }) => <h3>Componente de conteúdo</h3>
+  },
+  {
+    kind: 'form',
+    component: ({ widget }) => <h3>Componente de formulário</h3>
+  }
+]
+
 const Footer = () => {
   const styles = {
     height: '50px',
@@ -82,6 +93,7 @@ class App extends Component {
         relationship={(section, widgets) => widgets.filter(({ sectionId }) => section.id === sectionId)}
         sections={sections}
         widgets={widgets}
+        plugins={plugins}
         // order by asc by position
         ordering={(s1, s2) => s1.position - s2.position}
         renderNavigation={Navbar}

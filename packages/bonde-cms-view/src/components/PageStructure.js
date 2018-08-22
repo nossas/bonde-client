@@ -5,7 +5,8 @@ import { Navigation, Section, Widget } from './defaults'
 export default class extends React.Component {
 
   static defaultProps = {
-    sections: []
+    sections: [],
+    plugins: []
   }
 
   static propTypes = {
@@ -28,7 +29,11 @@ export default class extends React.Component {
     // receive section and widgets
     relationship: PropTypes.func.isRequired,
     // return a component footer
-    renderFooter: PropTypes.func
+    renderFooter: PropTypes.func,
+    // array of object { kind, component }
+    // object.kind compare to widget.kind to render component
+    // object.component receive widget like props
+    plugins: PropTypes.array
   }
 
   render () {
@@ -42,7 +47,8 @@ export default class extends React.Component {
       renderSection,
       renderWidget,
       renderFooter,
-      ordering
+      ordering,
+      plugins
     } = this.props
 
     const sectionOrderedList = ordering
@@ -65,9 +71,21 @@ export default class extends React.Component {
               section={section}
               renderSection={renderSection}
             >
-              {relationship(section, widgets).map(w => (
-                <Widget renderWidget={renderWidget} widget={w} />
-              ))}
+              {relationship(section, widgets).map(w => {
+                const plugin = plugins.filter(p => w.kind === p.kind)[0]
+                
+                // TODO: add unit tests to snippet code
+                if (!plugin) throw new Error(`Plugin [kind=${w.kind}] not installed.`)
+                if (!plugin.component) throw new Error(`Plugin [kind=${plugin.kind}] component not found.`)
+
+                const { component: WidgetComponent } = plugin
+                
+                return (
+                  <Widget renderWidget={renderWidget} widget={w}>
+                    {WidgetComponent && <WidgetComponent widget={w} />}
+                  </Widget>
+                )
+              })}
             </Section>
           ))}
         </div>

@@ -8,8 +8,12 @@ export default class extends React.Component {
   }
 
   render () {   
-    const { widget, renderWidget } = this.props
+    const {
+      widget,
+      renderWidget,
+      children
+    } = this.props
     
-    return renderWidget({ widget })
+    return renderWidget({ widget, children })
   }
 }

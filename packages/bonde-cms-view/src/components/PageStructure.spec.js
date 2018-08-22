@@ -5,6 +5,10 @@ import PageStructure from './PageStructure'
 import { Navigation, Section, Widget } from './defaults' 
 
 test.beforeEach(t => {
+  t.context.plugins = {
+    ContentWidget: () => (<div />),
+    DraftWidget: () => (<div />)
+  }
   t.context.defaultProps = {
     anchor: s => `section-${s.id}`,
     sections: [
@@ -22,7 +26,17 @@ test.beforeEach(t => {
     renderWidget: () => <div />,
     renderNavigationItem: ({ section, href }) => (
       <a href={href}>{section.name}</a>
-    )
+    ),
+    plugins: [
+      { 
+        kind: 'content',
+        component: t.context.plugins.ContentWidget
+      },
+      { 
+        kind: 'draft',
+        component: t.context.plugins.DraftWidget
+      }
+    ]
   }
 
   t.context.node = shallow(<PageStructure {...t.context.defaultProps} />)
@@ -179,6 +193,17 @@ test('should pass renderWidget to Widget component', t => {
     widget1.props().renderWidget(props),
     renderWidget(props)
   )
+})
+
+test('should pluggable widgets by kind', t => {
+  const { node, defaultProps, plugins } = t.context
+  const plugin = defaultProps.plugins[0]
+  const totalWidgets = defaultProps
+    .widgets
+    .filter(w => w.kind === plugin.kind)
+    .length
+  
+  t.is(node.find(plugin.component).length, totalWidgets)
 })
 
 // Footer tests
