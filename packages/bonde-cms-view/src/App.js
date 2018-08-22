@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Section, Widget } from './components/ui'
-import PageStructure from './components/PageStructure'
+import PageStructure, { Navbar, Section, Widget } from './package'
 
 const sections = [
   { 
