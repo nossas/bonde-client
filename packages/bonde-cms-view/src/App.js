@@ -96,7 +96,30 @@ const plugins = [
   },
   {
     kind: 'form',
-    component: Form
+    component: Form,
+    config: {
+      validations: {
+        'dropdown': (field, value) => {
+          if (field.required === 'true' && !value) {
+            return `${field.label} não pode ficar em branco.`
+          }
+        },
+        'text': (field, value) => {
+          if (field.required === 'true' && !value) {
+            return `${field.label} não pode ficar em branco.`
+          }
+        },
+        'email': (field, value) => {
+          // eslint-disable-next-line
+          const isValidEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+          if (field.required === 'true' && !value) {
+            return `${field.label} não pode ficar em branco.`
+          } else if (value !== '' && !isValidEmail.test(value)) {
+            return `${field.label} inválido.`
+          }
+        }
+      }
+    }
   }
 ]
 

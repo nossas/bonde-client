@@ -1,18 +1,40 @@
 import React from 'react'
-import Text from './Text'
-import Select from './Select'
-import FieldError from './FieldError'
+import TextField from './TextField'
+import SelectField from './SelectField'
 
-const Field = (props) => {
-  if (props.kind === 'text' || props.kind === 'email') {
-    return <Text {...props} />
+class Field extends React.Component {
+
+  state = {
+    error: undefined
   }
-  if (props.kind === 'dropdown') {
-    const opts = props.placeholder ? props.placeholder.split(',') : []
-    return <Select {...props} opts={opts} />
+
+  render() {
+    const { field, onBlur } = this.props
+    
+    // TOOD: tests this snippet code
+    const handleBlur = ({ target }) => {
+      return onBlur(field, target.value)
+        .then(() => this.setState({ error: undefined }))
+        .catch(({ error }) => {
+          this.setState({ error })
+        })
+    }
+
+    const otherProps = {
+      onBlur: handleBlur,
+      error: this.state.error
+    }
+
+    if (field.kind === 'text' || field.kind === 'email') {
+      return <TextField {...field} {...otherProps} />
+    }
+    if (field.kind === 'dropdown') {
+      const opts = field.placeholder ? field.placeholder.split(',') : []
+      return <SelectField {...field} {...otherProps} opts={opts} />
+    }
+    
+    throw new Error(`Field kind ${field.kind} not found.`)
   }
-  
-  throw new FieldError(`Field kind ${props.kind} not found.`)
 }
 
 export default Field
