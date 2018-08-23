@@ -82,7 +82,12 @@ export default class extends React.Component {
                 
                 return (
                   <Widget renderWidget={renderWidget} widget={w}>
-                    {WidgetComponent && <WidgetComponent widget={w} />}
+                    {WidgetComponent && (
+                      <WidgetComponent
+                        widget={w}
+                        config={plugin.config}
+                      />
+                    )}
                   </Widget>
                 )
               })}

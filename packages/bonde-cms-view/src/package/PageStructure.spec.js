@@ -30,7 +30,10 @@ test.beforeEach(t => {
     plugins: [
       { 
         kind: 'content',
-        component: t.context.plugins.ContentWidget
+        component: t.context.plugins.ContentWidget,
+        config: {
+          header: 'Full Header'
+        }
       },
       { 
         kind: 'draft',
@@ -204,6 +207,17 @@ test('should pluggable widgets by kind', t => {
     .length
   
   t.is(node.find(plugin.component).length, totalWidgets)
+})
+
+test('should pass widget and config to WidgetComponent', t => {
+  const { node, defaultProps, plugins } = t.context
+  const plugin = defaultProps.plugins[0]
+  const widgetIndex = 0
+  const widget = defaultProps.widgets[widgetIndex]
+  const widgetComponent = node.find(plugin.component).at(widgetIndex)
+
+  t.deepEqual(widgetComponent.props().widget, widget)
+  t.deepEqual(widgetComponent.props().config, plugin.config)
 })
 
 // Footer tests
