@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const Form = styled.div`
+const Form = styled.form`
   position: relative;
   background-color: ${(props) => props.bgColor};
   border-radius: 3px;

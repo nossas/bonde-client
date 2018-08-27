@@ -118,7 +118,11 @@ const plugins = [
             return `${field.label} inválido.`
           }
         }
-      }
+      },
+      onSubmit: (values) => new Promise((resolve, reject) => {
+        // simulate request time
+        setTimeout(resolve, 2000)
+      })
     }
   }
 ]
