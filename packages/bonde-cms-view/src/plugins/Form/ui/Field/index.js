@@ -4,25 +4,18 @@ import SelectField from './SelectField'
 
 class Field extends React.Component {
 
-  state = {
-    error: undefined
+  handleBlur (evt) {
+    const { field, onBlur } = this.props
+    onBlur(field, evt.target.value)
   }
 
   render() {
-    const { field, onBlur } = this.props
-    
-    // TOOD: tests this snippet code
-    const handleBlur = ({ target }) => {
-      return onBlur(field, target.value)
-        .then(() => this.setState({ error: undefined }))
-        .catch(({ error }) => {
-          this.setState({ error })
-        })
-    }
+    const { field, error } = this.props
 
     const otherProps = {
-      onBlur: handleBlur,
-      error: this.state.error
+      name: field.uid,
+      onBlur: this.handleBlur.bind(this),
+      error
     }
 
     if (field.kind === 'text' || field.kind === 'email') {

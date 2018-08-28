@@ -10,6 +10,7 @@ const Button = styled.button`
   border-radius: 3px;
   width: 100%;
   border: none;
+  cursor: pointer;
 `
 
 export default Button

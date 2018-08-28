@@ -119,7 +119,9 @@ const plugins = [
           }
         }
       },
-      onSubmit: (values) => new Promise((resolve, reject) => {
+      onSubmit: (values, { widget }) => new Promise((resolve, reject) => {
+        console.log(widget.settings.fields)
+        console.log(values)
         // simulate request time
         setTimeout(resolve, 2000)
       })
