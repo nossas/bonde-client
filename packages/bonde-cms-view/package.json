@@ -2,7 +2,7 @@
   "name": "bonde-cms-view",
   "version": "0.1.0",
   "private": true,
-  "main": "dist/index.js", 
+  "main": "dist/index.js",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.2",
     "@fortawesome/free-solid-svg-icons": "^5.2.0",
@@ -54,7 +54,8 @@
     "prepare": "cross-env NODE_ENV=production babel src/package --out-dir dist --copy-files",
     "dev": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "NODE_ENV=test ava"
+    "test": "NODE_ENV=test ava",
+    "test:coverage": "NODE_ENV=test nyc ava"
   },
   "ava": {
     "files": [
@@ -85,10 +86,11 @@
   "devDependencies": {
     "ava": "0.25.0",
     "babel-cli": "^6.26.0",
-    "babel-plugin-styled-components": "^1.5.1", 
+    "babel-plugin-styled-components": "^1.5.1",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "jsdom": "^11.10.0",
+    "nyc": "^13.0.1",
     "react-test-renderer": "^16.3.2"
   }
 }
