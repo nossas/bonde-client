@@ -1,7 +1,8 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Button, Field, Title, Form } from './ui'
 
-export default class extends React.Component {
+class FormManager extends React.Component {
 
   state = {
     errors: {},
@@ -88,3 +89,29 @@ export default class extends React.Component {
     )
   }
 }
+
+FormManager.propTypes = {
+  /** use widget.settings.mainColor */
+  bgColor: PropTypes.string,
+  /** use widget.settings.fields */
+  fields: PropTypes.array, 
+  /** use widget.settings.callToAction */
+  headerTitle: PropTypes.string,
+  /** use widget.settings.buttonText */
+  submitLabel: PropTypes.string,
+  /** use plugin.config.validations */
+  validations: PropTypes.array,
+  /** use plugin.config.successfullyComponent */
+  successfullyComponent: PropTypes.node,
+  /** use plugin.config.loadingComponent */
+  loadingComponent: PropTypes.node,
+  /** use plugin.config.onSubmit, should return a Promise */
+  onSubmit: PropTypes.func
+}
+
+FormManager.defaultProps = {
+  fields: [],
+  validations: []
+}
+
+export default FormManager

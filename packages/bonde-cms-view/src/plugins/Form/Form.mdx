@@ -1,0 +1,45 @@
+---
+name: Form
+route: /plugins/Form
+---
+
+import { Playground, PropsTable } from 'docz'
+import FormUI from './FormManager'
+
+# Form UI
+
+## Properties
+
+<PropsTable of={FormUI} />
+
+## Render
+
+<Playground>
+  <FormUI
+    fields={[
+      {
+        uid: "field-1534967789181-5",
+        kind: "email",
+        label: "E-mail",
+        placeholder: "Fill your e-mail",
+        required: "true"
+      },{
+        uid: "field-1534967803763-99",
+        kind: "text",
+        label: "Name",
+        placeholder: "Fill your name",
+        required: "true"
+      },
+      {
+        uid: "field-1534971237536-91",
+        kind: "dropdown",
+        label: "City",
+        placeholder: "São Paulo,Minas Gerais,Rio de Janeiro",
+        required: "false"
+      }
+    ]}
+    bgColor='rgba(250,154,186,1)'
+    headerTitle='Come to be part!'
+    submitLabel='Confirm'
+  />
+</Playground>
