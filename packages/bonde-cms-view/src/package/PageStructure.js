@@ -30,9 +30,10 @@ export default class extends React.Component {
     relationship: PropTypes.func.isRequired,
     // return a component footer
     renderFooter: PropTypes.func,
-    // array of object { kind, component }
+    // array of object { kind, component, config }
     // object.kind compare to widget.kind to render component
     // object.component receive widget like props
+    // object.config extras settings to pass widget render
     plugins: PropTypes.array
   }
 

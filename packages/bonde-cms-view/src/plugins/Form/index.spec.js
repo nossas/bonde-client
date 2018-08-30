@@ -16,7 +16,9 @@ test.beforeEach(t => {
     },
     config: {
       validations: [{ kind: 'text', validate: () => {} }],
-      onSubmit: () => '[called] on submit'
+      onSubmit: () => '[called] on submit',
+      successfullyComponent: () => (<div className='successfully' />),
+      loadingComponent: () => (<div className='loading' />)
     }
   }
   t.context.node = shallow(<FormWidget {...t.context.defaultProps} />)
@@ -45,4 +47,20 @@ test('should pass widget settings form to FormManager', t => {
   t.is(formManagerProps.headerTitle, settings.callToAction)
   t.is(formManagerProps.submitLabel, settings.buttonText)
   t.is(formManagerProps.bgColor, settings.mainColor)
+})
+
+test('should pass successfullyComponent to FormManager', t => {
+  const { node, defaultProps } = t.context
+  const formProps = node.find(FormManager).props()
+  const { config } = defaultProps
+
+  t.deepEqual(formProps.successfullyComponent, config.successfullyComponent)
+})
+
+test('should pass loadingComponent to FormManager', t => {
+  const { node, defaultProps } = t.context
+  const formProps = node.find(FormManager).props()
+  const { config } = defaultProps
+
+  t.deepEqual(formProps.loadingComponent, config.loadingComponent)
 })

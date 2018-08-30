@@ -4,7 +4,9 @@ import { Button, Field, Title, Form } from './ui'
 export default class extends React.Component {
 
   state = {
-    errors: {}
+    errors: {},
+    submitting: false,
+    submitted: false
   }
 
   handleBlur(field, value) {
@@ -35,13 +37,23 @@ export default class extends React.Component {
   }
 
   render() {
-    const { onSubmit, bgColor, submitLabel, headerTitle, fields } = this.props
+    const {
+      onSubmit,
+      bgColor,
+      submitLabel,
+      headerTitle,
+      fields,
+      successfullyComponent: Successfully,
+      loadingComponent: Loading
+    } = this.props
+    const { errors, submitting, submitted } = this.state
 
-    return (
+    return submitted && Successfully ? <Successfully /> : (
       <Form
         bgColor={bgColor}
         onSubmit={(evt) => {
           evt.preventDefault()
+          this.setState({ submitting: true })
 
           const values = fields.map(field => {
             return {
@@ -49,25 +61,29 @@ export default class extends React.Component {
               value: evt.target.elements[field.uid].value
             }
           })
-          const errors = this.validateSubmit(fields, values)
+          const formErrors = this.validateSubmit(fields, values)
           
-          if (Object.keys(errors).length > 0) {
-            this.setState({ errors })
+          if (Object.keys(formErrors).length > 0) {
+            this.setState({ errors: formErrors })
           } else {
             return onSubmit(values)
+              .then(() => {
+                this.setState({ submitting: false, submitted: true })
+              })
           }
         }}
       >
+        {submitting && Loading && <Loading />}
         {headerTitle && (<Title>{headerTitle}</Title>)}
         {fields.map((field) => (
           <Field
             key={field.uid}
             field={field}
             onBlur={this.handleBlur.bind(this)}
-            error={this.state.errors[field.uid]}
+            error={errors[field.uid]}
           />
         ))}
-        {submitLabel && (<Button>{submitLabel}</Button>)}
+        {submitLabel && (<Button disabled={submitting}>{submitLabel}</Button>)}
       </Form>
     )
   }

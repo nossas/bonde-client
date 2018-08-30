@@ -39,7 +39,7 @@ test.beforeEach(t => {
       'dropdown': required,
       'text': required
     },
-    onSubmit: values => values
+    onSubmit: values => new Promise(() => {})
   }
   t.context.node = shallow(<FormManager {...t.context.defaultProps} />)
 })
@@ -98,10 +98,8 @@ test('should validate fields when submit form', t => {
   }
   node.find(Form).simulate('submit', mockEvt)
   
-  t.deepEqual(node.instance().state, {
-    errors: {
-      [textField.uid]: validations[textField.kind](textField, '')
-    }
+  t.deepEqual(node.instance().state.errors, {
+    [textField.uid]: validations[textField.kind](textField, '')
   })
 })
 
@@ -130,10 +128,8 @@ test('should pass onBlur to Field', t => {
 
   node.find(Field).at(indexField).props().onBlur(textField, value)
 
-  t.deepEqual(node.instance().state, {
-    errors: {
-      [textField.uid]: textValidate(textField, value)
-    }
+  t.deepEqual(node.instance().state.errors, {
+    [textField.uid]: textValidate(textField, value)
   })
 })
 
@@ -153,5 +149,65 @@ test('should remove errors when onBlur isnt empty', t => {
 
   node.find(Field).at(indexField).props().onBlur(textField, value)
 
-  t.deepEqual(node.instance().state, { errors: { } })
+  t.deepEqual(node.instance().state.errors, {})
+})
+
+test('should disable button while submit form', async t => {
+  const { node, defaultProps } = t.context
+  const { fields } = defaultProps
+
+  node.setProps({ submitLabel: 'Send!' })
+  t.is(node.find(Button).props().disabled, false)
+  
+  node.setState({ submitting: true })
+  t.is(node.find(Button).props().disabled, true)
+})
+
+test('should change submitting to false when onSubmit is success', async t => {
+  const { node, defaultProps } = t.context
+  const { fields } = defaultProps
+  node.setProps({ onSubmit: () => new Promise((resolve) => resolve()) })
+  
+  const mockEvt = {
+    preventDefault: () => true,
+    target: {
+      elements: {
+        [fields[0].uid]: { value: 'mail@domain.com' },
+        [fields[1].uid]: { value: 'name' },
+        [fields[2].uid]: { value: 'dropdown' }
+      }
+    }
+  }
+  await node.find(Form).props().onSubmit(mockEvt)
+
+  t.is(node.instance().state.submitting, false)
+  t.is(node.instance().state.submitted, true)
+})
+
+test('should render successfullComponent when submit is success', t => {
+  const { node } = t.context
+  const SuccessfullyComponent = () => (
+    <div className='successfully' />
+  )
+  
+  t.is(node.find(SuccessfullyComponent).length, 0)
+  
+  node.setProps({ successfullyComponent: SuccessfullyComponent })
+  node.setState({ submitted: true })
+
+  t.is(node.find(SuccessfullyComponent).length, 1)
+})
+
+test('should render loadingComponent when submitting', t => {
+  const { node } = t.context
+  const LoadingComponent = () => (
+    <div className='loading' />
+  )
+
+  t.is(node.find(LoadingComponent).length, 0)
+
+  node.setProps({ loadingComponent: LoadingComponent })
+  node.setState({ submitting: true })
+
+  t.is(node.find(LoadingComponent).length, 1)
 })

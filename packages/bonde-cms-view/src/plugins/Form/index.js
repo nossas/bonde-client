@@ -3,7 +3,12 @@ import PropTypes from 'prop-types'
 import FormManager from './FormManager'
 
 const FormWidget = ({ widget, config }) => {
-  const { validations, onSubmit } = config
+  const {
+    validations,
+    onSubmit,
+    successfullyComponent,
+    loadingComponent
+  } = config
   const { buttonText, callToAction, fields, mainColor } = widget.settings
 
   return (
@@ -13,6 +18,8 @@ const FormWidget = ({ widget, config }) => {
       validations={validations}
       headerTitle={callToAction}
       submitLabel={buttonText}
+      successfullyComponent={successfullyComponent}
+      loadingComponent={loadingComponent}
       // Pass ownProps to submit
       onSubmit={(values) => onSubmit(values, { widget })}
     />
