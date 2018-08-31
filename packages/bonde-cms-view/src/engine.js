@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Navigation, Section, Widget } from './defaults'
+import { Navigation, Section, Widget } from './components'
 
 export default class extends React.Component {
 

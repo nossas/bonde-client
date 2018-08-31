@@ -65,7 +65,7 @@ class FormManager extends React.Component {
           const formErrors = this.validateSubmit(fields, values)
           
           if (Object.keys(formErrors).length > 0) {
-            this.setState({ errors: formErrors })
+            this.setState({ errors: formErrors, submitting: false })
           } else {
             return onSubmit(values)
               .then(() => {

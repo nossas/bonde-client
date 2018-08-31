@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import PageStructure, { Navbar, Section, Widget } from './package'
-import Form from './plugins/Form'
+import PageStructure from '../engine'
+import { Navbar, Section, Widget } from '../themes/bonde'
+import FormUI from '../plugins/Form'
 
 const sections = [
   { 
@@ -96,7 +97,7 @@ const plugins = [
   },
   {
     kind: 'form',
-    component: Form,
+    component: FormUI,
     config: {
       validations: {
         'dropdown': (field, value) => {
@@ -119,12 +120,12 @@ const plugins = [
           }
         }
       },
-      onSubmit: (values, { widget }) => new Promise((resolve, reject) => {
-        console.log(widget.settings.fields)
-        console.log(values)
+      onSubmit: (values, { widget }) => new Promise((resolve, reject) => { 
         // simulate request time
-        setTimeout(resolve, 2000)
-      })
+        return setTimeout(resolve, 5000)
+      }),
+      successfullyComponent: () => (<div className='successfully' />),
+      loadingComponent: () => (<div className='loading'>Carregando!</div>)
     }
   }
 ]
