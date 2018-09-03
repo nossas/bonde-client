@@ -98,8 +98,10 @@ const plugins = [
   {
     kind: 'form',
     component: FormUI,
-    config: {
-      validations: {
+    props: ({ widget }) => {
+      const { buttonText, callToAction, fields, mainColor } = widget.settings
+      
+      const validations = {
         'dropdown': (field, value) => {
           if (field.required === 'true' && !value) {
             return `${field.label} não pode ficar em branco.`
@@ -119,13 +121,21 @@ const plugins = [
             return `${field.label} inválido.`
           }
         }
-      },
-      onSubmit: (values, { widget }) => new Promise((resolve, reject) => { 
-        // simulate request time
-        return setTimeout(resolve, 5000)
-      }),
-      successfullyComponent: () => (<div className='successfully' />),
-      loadingComponent: () => (<div className='loading'>Carregando!</div>)
+      }
+
+      return {
+        bgColor: mainColor,
+        headerTitle: callToAction,
+        submitLabel: buttonText,
+        onSubmit: (values) => new Promise((resolve, reject) => { 
+          // simulate request time
+          return setTimeout(resolve, 5000)
+        }),
+        fields,
+        validations,
+        successfullyComponent: () => (<div className='successfully' />),
+        loadingComponent: () => (<div className='loading'>Carregando!</div>)
+      }
     }
   }
 ]

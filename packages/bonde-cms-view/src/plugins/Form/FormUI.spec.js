@@ -1,8 +1,8 @@
 import test from 'ava'
 import React from 'react'
 import { shallow } from 'enzyme'
-import { Button, Field, Form, Title } from './ui'
-import FormManager from './FormManager'
+import { Button, Field, Form, Title } from './components'
+import FormManager from './FormUI'
 
 const required = (field, value) => {
   if (field.required === 'true' && !value) {

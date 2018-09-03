@@ -2,44 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Navigation, Section, Widget } from './components'
 
-export default class extends React.Component {
-
-  static defaultProps = {
-    sections: [],
-    plugins: []
-  }
-
-  static propTypes = {
-    // return path anchor link to navigation on section
-    // receive a section object
-    anchor: PropTypes.func.isRequired,
-    // return a component to wrapper navigation
-    // receive an object { children }
-    renderNavigation: PropTypes.func,
-    // return a component to link section
-    // receive an object { section, href }
-    renderNavigationItem: PropTypes.func.isRequired,
-    // return a component wrapper section
-    // receive a object { section }
-    renderSection: PropTypes.func,
-    // return a component widget
-    // receive a object { widget }
-    renderWidget: PropTypes.func.isRequired,
-    // return a list of widgets related section
-    // receive section and widgets
-    relationship: PropTypes.func.isRequired,
-    // return a component footer
-    renderFooter: PropTypes.func,
-    // array of object { kind, component, config }
-    // object.kind compare to widget.kind to render component
-    // object.component receive widget like props
-    // object.config extras settings to pass widget render
-    plugins: PropTypes.array
-  }
+class PageEngine extends React.Component { 
 
   render () {
     const {
-      anchor,
+      anchorLink,
       sections,
       widgets,
       relationship,
@@ -59,7 +26,7 @@ export default class extends React.Component {
     return (
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <Navigation
-          uuid={anchor}
+          uuid={anchorLink}
           sections={sectionOrderedList}
           renderNavigation={renderNavigation}
           renderNavigationItem={renderNavigationItem}
@@ -68,7 +35,7 @@ export default class extends React.Component {
           {sectionOrderedList.map((section, i) => (
             <Section
               key={`section-${i}`}
-              uuid={anchor}
+              uuid={anchorLink}
               section={section}
               renderSection={renderSection}
             >
@@ -80,14 +47,15 @@ export default class extends React.Component {
                 if (!plugin.component) throw new Error(`Plugin [kind=${plugin.kind}] component not found.`)
 
                 const { component: WidgetComponent } = plugin
+                let widgetProps = {}
+                if (plugin.props) {
+                  widgetProps = plugin.props({ widget: w })
+                }
                 
                 return (
                   <Widget renderWidget={renderWidget} widget={w}>
                     {WidgetComponent && (
-                      <WidgetComponent
-                        widget={w}
-                        config={plugin.config}
-                      />
+                      <WidgetComponent widget={w} {...widgetProps} />
                     )}
                   </Widget>
                 )
@@ -100,3 +68,60 @@ export default class extends React.Component {
     )
   }
 }
+
+PageEngine.defaultProps = {
+  sections: [],
+  plugins: []
+}
+
+PageEngine.propTypes = {
+  /**
+   * Return path anchor link to navigate section,
+   * receive section like args
+   */
+  anchorLink: PropTypes.func.isRequired,
+  /**
+   * Return a component to wrapper navigation
+   * and receive { children } like props
+   */
+  renderNavigation: PropTypes.func,
+  /**
+   * Return a component to link section
+   * and receive { section, href } like props
+   */
+  renderNavigationItem: PropTypes.func.isRequired,
+  /**
+   * Return a component wrapper section
+   * and receive { section } like props
+   */
+  renderSection: PropTypes.func,
+  /**
+   * Return a component widget and receive { widget } like props
+   */
+  renderWidget: PropTypes.func.isRequired,
+  /**
+   * Return a list of widgets related section
+   * receive section and widgets
+   */
+  relationship: PropTypes.func.isRequired,
+  /**
+   * Component render footer page
+   */
+  renderFooter: PropTypes.func,
+  /**
+   * Map of configurable plugins. For more details see: `src/engine.js`
+   */
+  plugins: PropTypes.arrayOf(PropTypes.shape({
+    /** used to compare kind widget */
+    kind: PropTypes.string,
+    /** full render that represent widget ui */
+    component: PropTypes.oneOfType([
+      PropTypes.node,
+      PropTypes.func
+    ]),
+    /** should return object with props to widget render */
+    props: PropTypes.func
+  }))
+}
+
+export default PageEngine

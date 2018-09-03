@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Button, Field, Title, Form } from './ui'
+import { Button, Field, Title, Form } from './components'
 
-class FormManager extends React.Component {
+class FormUI extends React.Component {
 
   state = {
     errors: {},
@@ -90,28 +90,35 @@ class FormManager extends React.Component {
   }
 }
 
-FormManager.propTypes = {
-  /** use widget.settings.mainColor */
+FormUI.propTypes = {
+  /** Color to fill form */
   bgColor: PropTypes.string,
-  /** use widget.settings.fields */
+  /** Fields objects to render Field component */
   fields: PropTypes.array, 
-  /** use widget.settings.callToAction */
+  /** Main title of form */
   headerTitle: PropTypes.string,
-  /** use widget.settings.buttonText */
+  /** Label submit button if empty not render button */
   submitLabel: PropTypes.string,
-  /** use plugin.config.validations */
-  validations: PropTypes.array,
-  /** use plugin.config.successfullyComponent */
-  successfullyComponent: PropTypes.node,
-  /** use plugin.config.loadingComponent */
-  loadingComponent: PropTypes.node,
-  /** use plugin.config.onSubmit, should return a Promise */
+  /** Validations to fields, array item should be { [kind]: function } */
+  validations: PropTypes.object,
+  /** Component render on submit successfull form */
+  successfullyComponent: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.node
+  ]),
+  /** Component render on submitting form */
+  loadingComponent: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.node
+  ]),
+  /** Receive values { [fieldName]: value }
+   * and return Promise to submit form values */
   onSubmit: PropTypes.func
 }
 
-FormManager.defaultProps = {
+FormUI.defaultProps = {
   fields: [],
   validations: []
 }
 
-export default FormManager
+export default FormUI

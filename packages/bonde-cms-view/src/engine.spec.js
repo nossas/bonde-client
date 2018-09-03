@@ -1,8 +1,8 @@
 import test from 'ava'
 import React from 'react'
 import { shallow } from 'enzyme'
-import PageStructure from './PageStructure'
-import { Navigation, Section, Widget } from './defaults' 
+import PageStructure from './engine'
+import { Navigation, Section, Widget } from './components' 
 
 test.beforeEach(t => {
   t.context.plugins = {
@@ -10,7 +10,7 @@ test.beforeEach(t => {
     DraftWidget: () => (<div />)
   }
   t.context.defaultProps = {
-    anchor: s => `section-${s.id}`,
+    anchorLink: s => `section-${s.id}`,
     sections: [
       { id: 1, name: 'About' },
       { id: 2, name: 'Projects' }
@@ -31,9 +31,9 @@ test.beforeEach(t => {
       { 
         kind: 'content',
         component: t.context.plugins.ContentWidget,
-        config: {
+        props: () => ({
           header: 'Full Header'
-        }
+        })
       },
       { 
         kind: 'draft',
@@ -66,7 +66,7 @@ test('should pass anchor function prop to navigation', t => {
   const navigationProps = node.find(Navigation).at(index).props()
   const section = defaultProps.sections[index]
 
-  t.is(navigationProps.uuid(section), defaultProps.anchor(section))
+  t.is(navigationProps.uuid(section), defaultProps.anchorLink(section))
 })
 
 test('should pass renderNavigationItem to Navigation component', t => {
@@ -125,7 +125,7 @@ test('should pass anchor function prop to sections', t => {
   const sectionProps = node.find(Section).at(index).props()
   const section = defaultProps.sections[index]
 
-  t.is(sectionProps.uuid(section), defaultProps.anchor(section))
+  t.is(sectionProps.uuid(section), defaultProps.anchorLink(section))
 })
 
 test('should pass renderSection to Section component', t => {
@@ -209,15 +209,17 @@ test('should pluggable widgets by kind', t => {
   t.is(node.find(plugin.component).length, totalWidgets)
 })
 
-test('should pass widget and config to WidgetComponent', t => {
+test('should pass config props to WidgetComponent', t => {
   const { node, defaultProps, plugins } = t.context
   const plugin = defaultProps.plugins[0]
   const widgetIndex = 0
   const widget = defaultProps.widgets[widgetIndex]
   const widgetComponent = node.find(plugin.component).at(widgetIndex)
 
-  t.deepEqual(widgetComponent.props().widget, widget)
-  t.deepEqual(widgetComponent.props().config, plugin.config)
+  t.deepEqual(widgetComponent.props(), {
+    widget,
+    ...plugin.props({ widget })
+  })
 })
 
 // Footer tests

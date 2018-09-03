@@ -7,6 +7,7 @@ import Widget from './'
 test.beforeEach(t => {
   t.context.defaultProps = {
     widget: {
+      kind: 'draft',
       lgSize: 6,
       mdSize: 6,
       smSize: 12
