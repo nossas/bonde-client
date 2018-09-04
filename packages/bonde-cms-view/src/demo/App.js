@@ -14,7 +14,7 @@ const sections = [
   { 
     id: 3,
     name: 'Contact',
-    bgImage: 'https://s3.amazonaws.com/hub-central/uploads/1496348747__bonde_tela2.5.png',
+    bgImage: 'https://s3.amazonaws.com/hub-central/uploads/1496347540__bonde_tela3.5.png',
     position: 3
   },
   { 
@@ -30,22 +30,25 @@ const widgets = [
     kind: 'draft',
     sectionId: 1,
     smSize: 12,
-    mdSize: 6,
-    lgSize: 6
-  },
-  { 
-    kind: 'draft',
-    sectionId: 1,
-    smSize: 12,
-    mdSize: 6,
-    lgSize: 6
+    mdSize: 12,
+    lgSize: 12
   },
   { 
     kind: 'content',
     sectionId: 2,
     smSize: 12,
-    mgSize: 12,
-    lgSize: 12,
+    mdSize: 6,
+    lgSize: 6,
+    settings: {
+      content: "Texto do draft js <b>editor </b>esse é o editor antigo<br><div style=\"text-align: center;\"><span class=\"wysiwyg-font-size-h3\">Tem que <a href=\"http://bonde.org\" target=\"_blank\">funcionar</a> também</span></div>"
+    }
+  },
+  {
+    kind: 'content',
+    sectionId: 2,
+    smSize: 12,
+    mgSize: 6,
+    lgSize: 6,
     settings: {
       content: "{\"kind\":\"value\",\"document\":{\"kind\":\"document\",\"data\":{},\"nodes\":[{\"kind\":\"block\",\"type\":\"line\",\"isVoid\":false,\"data\":{},\"nodes\":[{\"kind\":\"text\",\"leaves\":[{\"kind\":\"leaf\",\"text\":\"Inserindo \",\"marks\":[{\"kind\":\"mark\",\"type\":\"color\",\"data\":{\"rgba\":{\"r\":15,\"g\":14,\"b\":14,\"a\":1}}}]},{\"kind\":\"leaf\",\"text\":\"um\",\"marks\":[{\"kind\":\"mark\",\"type\":\"color\",\"data\":{\"rgba\":{\"r\":15,\"g\":14,\"b\":14,\"a\":1}}},{\"kind\":\"mark\",\"type\":\"font-size\",\"data\":{\"fontSize\":\"30\"}}]},{\"kind\":\"leaf\",\"text\":\" texto do \",\"marks\":[{\"kind\":\"mark\",\"type\":\"color\",\"data\":{\"rgba\":{\"r\":15,\"g\":14,\"b\":14,\"a\":1}}}]},{\"kind\":\"leaf\",\"text\":\"editor\",\"marks\":[{\"kind\":\"mark\",\"type\":\"bold\",\"data\":{}},{\"kind\":\"mark\",\"type\":\"color\",\"data\":{\"rgba\":{\"r\":15,\"g\":14,\"b\":14,\"a\":1}}}]},{\"kind\":\"leaf\",\"text\":\" com algumas \",\"marks\":[{\"kind\":\"mark\",\"type\":\"color\",\"data\":{\"rgba\":{\"r\":15,\"g\":14,\"b\":14,\"a\":1}}}]},{\"kind\":\"leaf\",\"text\":\"configurações\",\"marks\":[{\"kind\":\"mark\",\"type\":\"color\",\"data\":{\"rgba\":{\"r\":15,\"g\":14,\"b\":14,\"a\":1}}},{\"kind\":\"mark\",\"type\":\"font-family\",\"data\":{\"fontFamilyIndex\":\"28\"}}]},{\"kind\":\"leaf\",\"text\":\"!\",\"marks\":[{\"kind\":\"mark\",\"type\":\"color\",\"data\":{\"rgba\":{\"r\":15,\"g\":14,\"b\":14,\"a\":1}}}]}]}]},{\"kind\":\"block\",\"type\":\"alignment\",\"isVoid\":false,\"data\":{\"align\":\"center\",\"currentBlockType\":\"line\"},\"nodes\":[{\"kind\":\"text\",\"leaves\":[{\"kind\":\"leaf\",\"text\":\"Mais um texto para \",\"marks\":[{\"kind\":\"mark\",\"type\":\"color\",\"data\":{\"rgba\":{\"r\":15,\"g\":14,\"b\":14,\"a\":1}}}]}]},{\"kind\":\"inline\",\"type\":\"link\",\"isVoid\":false,\"data\":{\"title\":\"Link do slate editor\",\"href\":\"http://app.bonde.org\",\"text\":\"saber\",\"target\":\"_blank\"},\"nodes\":[{\"kind\":\"text\",\"leaves\":[{\"kind\":\"leaf\",\"text\":\"saber\",\"marks\":[{\"kind\":\"mark\",\"type\":\"color\",\"data\":{\"rgba\":{\"r\":15,\"g\":14,\"b\":14,\"a\":1}}}]}]}]},{\"kind\":\"text\",\"leaves\":[{\"kind\":\"leaf\",\"text\":\" se está tudo ok.\",\"marks\":[{\"kind\":\"mark\",\"type\":\"color\",\"data\":{\"rgba\":{\"r\":15,\"g\":14,\"b\":14,\"a\":1}}}]}]}]}]}}"
     }
@@ -86,11 +89,14 @@ const widgets = [
     }
   },
   { 
-    kind: 'draft',
+    kind: 'content',
     sectionId: 3,
     smSize: 12,
     mdSize: 6,
-    lgSize: 6
+    lgSize: 6,
+    settings: {
+      content: "{\"entityMap\":{\"0\":{\"type\":\"LINK\",\"mutability\":\"MUTABLE\",\"data\":{\"href\":\"http://bonde.org\",\"target\":\"_blank\",\"url\":\"http://bonde.org/\"}}},\"blocks\":[{\"key\":\"ggsk\",\"text\":\"Texto do draft js editor esse é o editor antigo\\n\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[{\"offset\":18,\"length\":7,\"style\":\"BOLD\"}],\"entityRanges\":[],\"data\":{}},{\"key\":\"8uokl\",\"text\":\"Tem que funcionar também\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[{\"offset\":8,\"length\":9,\"key\":0}],\"data\":{}}]}"
+    }
   }
 ]
 
