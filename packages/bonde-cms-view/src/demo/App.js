@@ -8,7 +8,7 @@ const sections = [
   { 
     id: 1,
     name: 'About',
-    bgImage: 'https://s3.amazonaws.com/hub-central/uploads/1486682126__BONDE_capa_maju.png',
+    bgClass: '{"r":255,"g":238,"b":162,"a":1}',
     position: 1
   },
   { 
@@ -20,7 +20,6 @@ const sections = [
   { 
     id: 2,
     name: 'Projects',
-    bgImage: 'https://s3.amazonaws.com/hub-central/uploads/1496347540__bonde_tela3.5.png',
     position: 2
   }
 ]
