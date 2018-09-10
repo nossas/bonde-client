@@ -3,6 +3,7 @@ import PageStructure from '../engine'
 import { Navbar, Section, Widget } from '../themes/bonde'
 import FormUI from '../plugins/Form'
 import ContentUI from '../plugins/Content'
+import DonationUI from '../plugins/Donation'
 
 const sections = [
   { 
@@ -29,8 +30,25 @@ const widgets = [
     kind: 'draft',
     sectionId: 1,
     smSize: 12,
-    mdSize: 12,
-    lgSize: 12
+    mdSize: 6,
+    lgSize: 6
+  },
+  {
+    kind: 'donation',
+    sectionId: 1,
+    smSize: 12,
+    mdSize: 6,
+    lgSize: 6,
+    settings: {
+      mainColor: "#54d0f6",
+      titleText: "Clique para editar a ferramenta",
+      buttonText: "Doar agora",
+      paymentType: "users_choice",
+      donationValue1: 20,
+      donationValue2: 25,
+      recurringPeriod: 180,
+      defaultDonationValue: 1
+    }
   },
   { 
     kind: 'content',
@@ -102,7 +120,69 @@ const widgets = [
 const plugins = [
   {
     kind: 'draft',
-    component: ({ widget }) => <div>{widget.kind}</div>
+    component: ({ widget }) => (<div>{widget.kind}</div>)
+  },
+  {
+    kind: 'donation',
+    component: DonationUI,
+    props: ({ widget }) => {
+      const {
+        mainColor,
+        titleText,
+        buttonText,
+        donationValue1,
+        donationValue2,
+        donationValue3,
+        donationValue4,
+        donationValue5,
+        defaultDonationValue,
+        paymentType,
+        recurringPeriod
+      } = widget.settings
+      
+      // work donation values in list
+      const donationValues = []
+      if (donationValue1) donationValues.push(donationValue1)
+      if (donationValue2) donationValues.push(donationValue2)
+      if (donationValue3) donationValues.push(donationValue3)
+      if (donationValue4) donationValues.push(donationValue4)
+      if (donationValue5) donationValues.push(donationValue5)
+
+      // work paymente type in object with label
+      const recurringLabels = { 30: 'mês', 180: 'semestre', 365: 'ano' }
+      const paymentTypeOpts = []
+     
+      if (paymentType !== 'unique') {
+        paymentTypeOpts.push({
+          kind: 'recurring',
+          label: `Apoiar todo ${recurringLabels[recurringPeriod]}`,
+          period: recurringLabels[recurringPeriod]
+        })
+
+        if (paymentType === 'users_choice') {
+          paymentTypeOpts.push({
+            kind: 'unique',
+            label: 'Doação pontual'
+          })
+        }
+      } else {
+        paymentTypeOpts.push({ kind: 'unique' })
+      }
+
+      return {
+        mainColor, 
+        headerTitle: titleText,
+        submitLabel: buttonText,
+        donationValues,
+        defaultDonationValue: donationValues[(defaultDonationValue || 1) - 1],
+        paymentTypes: paymentTypeOpts,
+        onSubmit: (values) => new Promise((resolve, reject) => {
+          // simulate request time
+          console.log('DonationUI submit values:', values)
+          return setTimeout(resolve, 5000)
+        })
+      }
+    }
   },
   {
     kind: 'content',

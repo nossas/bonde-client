@@ -1,21 +1,75 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Header, Button, DonationInput, Form } from './components'
+import {
+  Header,
+  Button,
+  DonationInput,
+  DonationTypeBox,
+  Form
+} from './components'
 
 class DonationUI extends React.Component {
   
   state = {
-    donationValueSelected: this.props.defaultDonationValue
+    donationValueSelected: this.props.defaultDonationValue,
+    paymentTypeSelected: this.props.paymentTypes[0].kind,
+    submitting: false,
+    submitted: false
+  }
+
+  getDonationValueLabel (donationValue) {
+    const { paymentTypeSelected } = this.state 
+    if (paymentTypeSelected !== 'unique') {
+      const paymentType = this.props.paymentTypes.find(p => p.kind === paymentTypeSelected)
+      return `R$ ${donationValue} /${paymentType.period}`
+    }
+    return `R$ ${donationValue}`
+  }
+
+  handleSubmit (e) {
+    e.preventDefault()
+    this.setState({ submitting: true })
+    
+    const { donationValueSelected, paymentTypeSelected } = this.state
+    
+    return this.props.onSubmit({
+      donationValue: donationValueSelected,
+      paymentType: paymentTypeSelected
+    }).then(() => {
+      this.setState({ submitting: false, submitted: true })
+    })
   }
 
   render () {
-    const { mainColor, headerTitle, submitLabel, donationValues } = this.props
-    const { donationValueSelected } = this.state
+    const {
+      mainColor,
+      headerTitle,
+      submitLabel,
+      donationValues,
+      paymentTypes
+    } = this.props
+    const { donationValueSelected, paymentTypeSelected } = this.state
 
     return (
       <React.Fragment>
-        <Header bgColor={mainColor}>{headerTitle}</Header>
-        <Form onSubmit={e => e.preventDefault()}>
+        <Header bgColor={mainColor}>{headerTitle}</Header> 
+        <Form onSubmit={this.handleSubmit.bind(this)}>
+          {paymentTypes.length > 1 && (
+            <DonationTypeBox>
+              {paymentTypes.map((paymentType, i) => (
+                <DonationTypeBox.Item
+                  key={`paymentType-${i}`}
+                  active={paymentType.kind === paymentTypeSelected}
+                  onClick={() => {
+                    this.setState({ paymentTypeSelected: paymentType.kind })
+                  }}
+                >
+                  <DonationTypeBox.Icon name={paymentType.kind} />
+                  {paymentType.label}
+                </DonationTypeBox.Item>
+              ))}
+            </DonationTypeBox>
+          )}
           {donationValues && donationValues.map((donationValue, i) => (
             <DonationInput
               key={`donationInput-${i}`}
@@ -25,7 +79,7 @@ class DonationUI extends React.Component {
                 this.setState({ donationValueSelected: donationValue })
               }}
             >
-              {`R$ ${donationValue}`}
+              {this.getDonationValueLabel(donationValue)}
             </DonationInput>
           ))}
           <Button bgColor={mainColor} type='submit'>{submitLabel}</Button>
@@ -42,7 +96,8 @@ DonationUI.defaultProps = {
 
 DonationUI.propTypes = {
   defaultDonationValue: PropTypes.number,
-  donationValues: PropTypes.array.isRequired
+  donationValues: PropTypes.array.isRequired,
+  onSubmit: PropTypes.func.isRequired
 }
 
 export default DonationUI
