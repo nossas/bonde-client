@@ -97,6 +97,7 @@ DonationUI.defaultProps = {
 DonationUI.propTypes = {
   defaultDonationValue: PropTypes.number,
   donationValues: PropTypes.array.isRequired,
+  paymentTypes: PropTypes.array.isRequired,
   onSubmit: PropTypes.func.isRequired
 }
 
