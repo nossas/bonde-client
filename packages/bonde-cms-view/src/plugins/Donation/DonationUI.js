@@ -5,7 +5,8 @@ import {
   Button,
   DonationInput,
   DonationTypeBox,
-  Form
+  Form,
+  ProgressBar
 } from './components'
 
 class DonationUI extends React.Component {
@@ -46,7 +47,8 @@ class DonationUI extends React.Component {
       headerTitle,
       submitLabel,
       donationValues,
-      paymentTypes
+      paymentTypes,
+      progressBarComponent: ProgressBarComponent
     } = this.props
     const { donationValueSelected, paymentTypeSelected } = this.state
 
@@ -84,6 +86,7 @@ class DonationUI extends React.Component {
           ))}
           <Button bgColor={mainColor} type='submit'>{submitLabel}</Button>
         </Form>
+        {ProgressBarComponent && <ProgressBarComponent />}
       </React.Fragment>
     )
   }
@@ -98,7 +101,10 @@ DonationUI.propTypes = {
   defaultDonationValue: PropTypes.number,
   donationValues: PropTypes.array.isRequired,
   paymentTypes: PropTypes.array.isRequired,
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
+  progressBarComponent: PropTypes.any
 }
+
+DonationUI.ProgressBar = ProgressBar
 
 export default DonationUI
