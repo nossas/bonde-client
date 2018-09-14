@@ -180,7 +180,83 @@ const plugins = [
           // simulate request time
           console.log('DonationUI submit values:', values)
           return setTimeout(resolve, 5000)
-        })
+        }),
+        progressBarComponent: () => {
+          // get widget donation stats in API v2
+         
+          const pledged = 2800 // fix bug when pledged > goal
+          const goal = 5000
+          const donations = 215
+          const goalDateLimit = '10/12/2018' // like store in widget settings
+          
+          return (
+            <DonationUI.ProgressBar
+              fillColor={mainColor}
+              progress={((pledged / goal) * 100)}
+              
+              pledged={pledged}
+              pledgedLabel={({ value }) => (
+                <div>
+                  <div
+                    style={{
+                      color: mainColor,
+                      fontSize: '2.5rem',
+                      lineHeight: '1rem',
+                      fontWeight: 'bold'
+                    }}
+                  >
+                    {value}
+                  </div>
+                  <div
+                    style={{
+                      color: '#666',
+                      fontWeight: 'bold',
+                      textTransform: 'uppercase',
+                      margin: '0.4rem 0 0'
+                    }}
+                  >
+                    arrecadados
+                  </div>
+                </div>
+              )}
+              
+              goal={goal}
+              goalLabel={({ value }) => (
+                <b>
+                  <span style={{ color: '#999' }}>Meta:</span>
+                  {value}
+                </b>
+              )}
+              
+              donations={donations}
+              donationsLabel={({ value }) => (
+                <span style={{ color: '#999' }}>
+                  {value < 2 ? `${value} apoio` : `${value} apoios`}
+                </span>
+              )}
+
+              dateRemaining={goalDateLimit}
+              dateRemainingLabel={({ value }) => {
+                const [day, month, year] = value.split('/')
+                const dateRemaining = Math.ceil(
+                  (new Date(`${year}-${month}-${day}`) - new Date()) / (1000 * 60 * 60 * 24)
+                )
+
+                let label
+                if (dateRemaining === 0) label = 'último dia'
+                else if (dateRemaining > 0 && dateRemaining < 7) label = 'últimos dias'
+                else if (dateRemaining === 7) label = 'última semana'
+                else label = `faltam ${dateRemaining} dias`
+                
+                return (
+                  <b style={{ color: mainColor }}>
+                    {label}
+                  </b>
+                )
+              }}
+            />
+          )
+        }
       }
     }
   },
