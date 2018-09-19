@@ -1,4 +1,4 @@
-import reactCookie from 'react-cookie'
+import cookie from 'react-cookie'
 import * as t from '../action-types'
 
 // Dependency module
@@ -40,15 +40,16 @@ export default (state = initialState, action = {}) => {
         data: [...state.data, action.community]
       }
     case t.EDIT:
-      // update community in cache
-      reactCookie.save('community', {
-        community: {
-          list: {
-            currentId: action.community.id,
-            data: [action.community]
-          }
+      // state saved on storages to hydrate
+      const hydrateState = {
+        list: {
+          currentId: action.community.id,
+          data: [action.community]
         }
-      })
+      }
+      window.localStorage.setItem('community', JSON.stringify(hydrateState))
+      cookie.save('community', hydrateState)
+
       return {
         ...state,
         data: state.data.map(

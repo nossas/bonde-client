@@ -55,7 +55,7 @@ const DonationSettingsPage = props => {
         return asyncWidgetUpdate({
           ...widget,
           settings: { ...settings, ...values },
-          goal: String(values.goal).replace(/,/g, '.')
+          goal: values.goal && String(values.goal).replace(/,/g, '.')
         })
       }}
       successMessage={
