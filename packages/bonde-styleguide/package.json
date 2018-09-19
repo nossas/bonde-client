@@ -1,6 +1,6 @@
 {
   "name": "bonde-styleguide",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "private": false,
   "dependencies": {
     "autoprefixer": "7.1.6",
