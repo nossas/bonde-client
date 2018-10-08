@@ -22,6 +22,7 @@ pipeline:
       - GRAPHQL_URL=https://api-v2.staging.bonde.org/graphql
       - APP_DOMAIN=staging.bonde.org
       - AWS_BUCKET=bonde-assets-staging
+      - NODE_OPTIONS="--max-old-space-size=4096"
     commands:
       - export PAGARME_KEY=$STAG_PAGARME_KEY
       - export SENTRY_DSN_PUBLIC=$STAG_SENTRY_DSN_PUBLIC

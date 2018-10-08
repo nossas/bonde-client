@@ -86,7 +86,6 @@
     "immutable": "^3.8.2",
     "jest": "^22.4.4",
     "jquery": "3.3.1",
-
     "keycode": "2.2.0",
     "lint-staged": "^6.1.1",
     "mocha": "^4.1.0",
@@ -134,7 +133,7 @@
     "redux-promise": "0.6.0",
     "redux-thunk": "2.3.0",
     "sass-loader": "^6.0.7",
-    "serve": "^6.5.8",
+    "serve": "^7.0.0",
     "sinon": "^4.5.0",
     "slate": "0.31.3",
     "slate-editor": "4.0.1",
@@ -181,9 +180,6 @@
     "ignore": [
       "mob-render/webviewer/*"
     ]
-  },
-  "engines": {
-    "node": "~10"
   },
   "postcss": {
     "map": true,

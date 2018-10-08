@@ -6,5 +6,8 @@
     "homepage": "http://bonde.org",
     "devDependencies": {
         "lerna": "^3.4.0"
+    },
+    "engines": {
+      "node": "~10"
     }
 }
