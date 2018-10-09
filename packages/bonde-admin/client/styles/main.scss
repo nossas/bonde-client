@@ -1,4 +1,4 @@
-$fa-font-path: "~font-awesome/fonts";
+$fa-font-path: "./../../node_modules/font-awesome/fonts";
 @import '~font-awesome/scss/font-awesome.scss';
 
 @import './basscss_and_override';
