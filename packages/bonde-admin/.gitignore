@@ -51,3 +51,4 @@ tools/db-dumps/*
 !tools/db-dumps/init.sql
 .next
 dist
+.cache
