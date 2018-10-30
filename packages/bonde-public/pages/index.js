@@ -1,5 +1,5 @@
 import React from 'react'
-import Head from 'next/head'
+// import Head from 'next/head'
 import withRedux from 'next-redux-wrapper'
 import ReactGA from 'react-ga'
 
@@ -18,8 +18,8 @@ import configureStore from '../configureStore'
 import {
   Mobilization as MobilizationApp,
   Reducer as MobilizationRedux
-} from '../webviewer/webviewer'
-import styles from './../webviewer/main.ee66306b0de9bb8b9cf2.css'
+} from '../webviewer/index'
+import styles from './../webviewer/index.css'
 
 class Page extends React.Component {
   static async getInitialProps ({ store, req, res }) {

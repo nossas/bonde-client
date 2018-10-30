@@ -6,10 +6,8 @@ import * as pressureHelper from '~client/mobilizations/widgets/utils/pressure-he
 import { isValidEmail, isValidPhoneE164 } from '~client/utils/validation-helper'
 import AnalyticsEvents from '~client/mobilizations/widgets/utils/analytics-events'
 
-if (require('exenv').canUseDOM) {
-  require('./index.scss')
-  require('./phone-calls.scss')
-}
+import './index.scss'
+import './phone-calls.scss'
 
 // TODO: Reusable Input
 const controlClassname = 'px3 py1'

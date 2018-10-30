@@ -25,12 +25,10 @@ networkInterface.use([
       }
       // Non-use auth for authenticate mutation to make a new JWT Token
       const requiredAuth = req.request.operationName !== 'authenticate'
-      if (require('exenv').canUseDOM) {
-        const localStorageAuth = window.localStorage.getItem('auth')
-        const auth = localStorageAuth ? JSON.parse(localStorageAuth) : {}
-        if (auth && auth.credentials && requiredAuth) {
-          req.options.headers.authorization = `Bearer ${auth.credentials['access-token']}`
-        }
+      const localStorageAuth = window.localStorage.getItem('auth')
+      const auth = localStorageAuth ? JSON.parse(localStorageAuth) : {}
+      if (auth && auth.credentials && requiredAuth) {
+        req.options.headers.authorization = `Bearer ${auth.credentials['access-token']}`
       }
       next()
     }

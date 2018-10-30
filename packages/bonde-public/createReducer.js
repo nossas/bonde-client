@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 // Thirdy apps
-import { Reducer as MobilizationReducer } from './webviewer/webviewer'
+import { Reducer as MobilizationReducer } from './webviewer/index'
 import { reducer as intlReducer } from './intlReducer'
 import apolloClient from './apolloClient'
 

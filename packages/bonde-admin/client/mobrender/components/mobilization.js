@@ -37,46 +37,44 @@ class Mobilization extends React.Component {
       this.props.history.push(paths.mobilizationTemplatesChoose(mobilization))
     }
 
-    if (require('exenv').canUseDOM) {
-      let blocksTotalHeight = 0
-      const blocksWithOffsetTop = []
+    let blocksTotalHeight = 0
+    const blocksWithOffsetTop = []
 
-      // get the offsetTop of each block and put it on state
-      this.state.blocks.map((block, index) => {
-        const { offsetTop, offsetHeight } = document.querySelector(`#block-${block.id}`)
-        const scrollTopReached = index === 0
+    // get the offsetTop of each block and put it on state
+    this.state.blocks.map((block, index) => {
+      const { offsetTop, offsetHeight } = document.querySelector(`#block-${block.id}`)
+      const scrollTopReached = index === 0
 
-        blocksWithOffsetTop.push({ ...block, offsetTop, scrollTopReached })
-        blocksTotalHeight += offsetHeight
-      })
-      this.setState({ blocks: blocksWithOffsetTop })
+      blocksWithOffsetTop.push({ ...block, offsetTop, scrollTopReached })
+      blocksTotalHeight += offsetHeight
+    })
+    this.setState({ blocks: blocksWithOffsetTop })
 
-      // watch the scroll event
-      document.querySelector('#blocks-list').onscroll = ({ target }) => {
-        //
-        // check if the current scroll position is greater or equals
-        // than one of the blocks offsetTop
-        //
-        this.state.blocks.map(block => {
-          const scrollPassed = (target.scrollTop + 120) >= block.offsetTop
+    // watch the scroll event
+    document.querySelector('#blocks-list').onscroll = ({ target }) => {
+      //
+      // check if the current scroll position is greater or equals
+      // than one of the blocks offsetTop
+      //
+      this.state.blocks.map(block => {
+        const scrollPassed = (target.scrollTop + 120) >= block.offsetTop
 
-          if (scrollPassed && !block.scrollTopReached) {
-            this.updateBlock(block, { scrollTopReached: true })
-          }
-        })
-
-        //
-        // small fix if the last block is small than viewport
-        // if the scroll position is greater or equals than
-        // sum of all blocks height, sinalyze that the last block was reached
-        //
-        const viewportBottom = target.scrollTop + target.offsetHeight
-        const isBottom = viewportBottom >= blocksTotalHeight
-        const lastBlock = this.state.blocks.slice(-1)[0]
-
-        if (isBottom && !lastBlock.scrollTopReached) {
-          this.updateBlock(lastBlock, { scrollTopReached: true })
+        if (scrollPassed && !block.scrollTopReached) {
+          this.updateBlock(block, { scrollTopReached: true })
         }
+      })
+
+      //
+      // small fix if the last block is small than viewport
+      // if the scroll position is greater or equals than
+      // sum of all blocks height, sinalyze that the last block was reached
+      //
+      const viewportBottom = target.scrollTop + target.offsetHeight
+      const isBottom = viewportBottom >= blocksTotalHeight
+      const lastBlock = this.state.blocks.slice(-1)[0]
+
+      if (isBottom && !lastBlock.scrollTopReached) {
+        this.updateBlock(lastBlock, { scrollTopReached: true })
       }
     }
   }

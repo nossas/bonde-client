@@ -3,9 +3,7 @@ import React from 'react'
 import classnames from 'classnames'
 
 // Current module dependencies
-if (require('exenv').canUseDOM) {
-  require('./index.scss')
-}
+import './index.scss'
 
 const Item = ({ children, className, onClick }) => (
   <div

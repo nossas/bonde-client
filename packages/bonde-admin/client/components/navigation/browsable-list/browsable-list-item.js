@@ -3,9 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import classnames from 'classnames'
 
-if (require('exenv').canUseDOM) {
-  require('./browsable-list-item.scss')
-}
+import './browsable-list-item.scss'
 
 const BrowsableListItem = ({ className, style, leftIcon, title, subtitle, rightIcon, path, onClick }) => {
   const Component = path ? Link : 'div'

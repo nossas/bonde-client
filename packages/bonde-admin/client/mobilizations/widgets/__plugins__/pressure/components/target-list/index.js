@@ -26,13 +26,11 @@ class TargetList extends Component {
     // to works on nossas/bonde-cache, make an async method
     // to shuffle the pressure targets on the client-side.
     //
-    if (require('exenv').canUseDOM) {
-      const { targets } = this.props
+    const { targets } = this.props
 
-      setTimeout(() => {
-        this.setState({ targets: array.shuffle(targets) })
-      }, 0)
-    }
+    setTimeout(() => {
+      this.setState({ targets: array.shuffle(targets) })
+    }, 0)
   }
 
   render () {

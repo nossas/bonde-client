@@ -5,10 +5,8 @@ import classnames from 'classnames'
 import { FormRedux } from '~client/components/forms'
 import { Button } from '~client/ux/components'
 
-if (require('exenv').canUseDOM) {
-  require('./flat-form.scss')
-  require('./button.scss')
-}
+import './flat-form.scss'
+import './button.scss'
 
 const FlatForm = ({
   formClassNames,

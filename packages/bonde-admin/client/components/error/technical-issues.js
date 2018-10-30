@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 
-if (require('exenv').canUseDOM) {
-  require('./technical-issues.scss')
-}
+import './technical-issues.scss'
 
 class TechnicalIssues extends Component {
   render () {

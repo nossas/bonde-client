@@ -2,9 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import classnames from 'classnames'
 
-if (require('exenv').canUseDOM) {
-  require('./tab-border.scss')
-}
+import './tab-border.scss'
 
 const TabBorder = ({ children, Component, path, className, isActive, style }) => {
   const optionalProps = {}
