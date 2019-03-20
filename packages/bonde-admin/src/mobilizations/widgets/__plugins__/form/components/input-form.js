@@ -233,34 +233,34 @@ export class InputForm extends Component {
                   onChange={this.handleKindChange.bind(this)}
                   value={this.state.kind}>
                   <option value='text'>
-                    <FormattedMessage
-                      id='form-widget.components--input-form.field-type.options.text'
-                      defaultMessage='Texto'
-                    />
+                    {intl.formatMessage({
+                      id: 'form-widget.components--input-form.field-type.options.text',
+                      defaultMessage: 'Texto'
+                    })}
                   </option>
                   <option value='email'>
-                    <FormattedMessage
-                      id='form-widget.components--input-form.field-type.options.email'
-                      defaultMessage='E-mail'
-                    />
+                    {intl.formatMessage({
+                      id: 'form-widget.components--input-form.field-type.options.email',
+                      defaultMessage: 'E-mail'
+                    })}
                   </option>
                   <option value='number'>
-                    <FormattedMessage
-                      id='form-widget.components--input-form.field-type.options.number'
-                      defaultMessage='Número'
-                    />
+                    {intl.formatMessage({
+                      id: 'form-widget.components--input-form.field-type.options.number',
+                      defaultMessage: 'Número'
+                    })}
                   </option>
                   <option value='dropdown'>
-                    <FormattedMessage
-                      id='form-widget.components--input-form.field-type.options.dropdown'
-                      defaultMessage='Dropdown &#9733;'
-                    />
+                    {intl.formatMessage({
+                      id: 'form-widget.components--input-form.field-type.options.dropdown',
+                      defaultMessage: 'Dropdown &#9733;'
+                    })}
                   </option>
                   <option value='greetings'>
-                    <FormattedMessage
-                      id='form-widget.components--input-form.field-type.options.greetings'
-                      defaultMessage='Saudação &#9733;'
-                    />
+                    {intl.formatMessage({
+                      id: 'form-widget.components--input-form.field-type.options.greetings',
+                      defaultMessage: 'Saudação &#9733;'
+                    })}
                   </option>
                 </select>
               </div>
