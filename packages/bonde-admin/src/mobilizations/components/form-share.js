@@ -142,7 +142,7 @@ const FormShare = ({
         controlId='twitterShareText' {...twitterShareText}
         className='twitter-share-text'
       >
-        <ControlLabel maxLength={140}>
+        <ControlLabel maxLength={280}>
           <FormattedMessage
             id='mobilizations.components--form-share.twitter.form.share-text.label'
             defaultMessage='Texto do Tweet'
@@ -151,7 +151,7 @@ const FormShare = ({
         <FormControl
           componentClass='textarea'
           rows={5}
-          maxLength={140}
+          maxLength={280}
           placeholder={
             intl.formatMessage({
               id: 'mobilizations.components--form-share.twitter.form.share-text.placeholder',
