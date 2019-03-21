@@ -4,13 +4,18 @@ import { FormattedMessage } from 'react-intl'
 import classnames from 'classnames'
 
 const WhatsAppShareButton = ({ preview, whatsappText, mobilization }) => {
+  if (!preview) {
+    const baseUrl = "https://api.whatsapp.com/"
+  } else {
+    const baseUrl = "whatsapp://"
+  }
+
   return (
     <a
       className={classnames(
-        'btn white h3 p3 col-12 caps h5 rounded border-box',
-        { 'lg-hide': !preview }
+        'btn white h3 p3 col-12 caps h5 rounded border-box'
       )}
-      href={`whatsapp://send?text=${encodeURIComponent(whatsappText)}`}
+      href={`${baseUrl}send?text=${encodeURIComponent(whatsappText)}`}
       style={{ backgroundColor: '#4CEC68', color: '#fff' }}
     >
       <FormattedMessage
