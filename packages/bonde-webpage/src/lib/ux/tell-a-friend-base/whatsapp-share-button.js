@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
+import { isMobile } from 'react-device-detect'
 import classnames from 'classnames'
 
-const WhatsAppShareButton = ({ preview, whatsappText, mobilization }) => {
-  if (!preview) {
-    const baseUrl = "https://api.whatsapp.com/"
-  } else {
-    const baseUrl = "whatsapp://"
+const WhatsAppShareButton = ({ whatsappText, mobilization }) => {
+  let baseUrl = "whatsapp://"
+  if (!isMobile) {
+    baseUrl = "https://api.whatsapp.com/"
   }
 
   return (
