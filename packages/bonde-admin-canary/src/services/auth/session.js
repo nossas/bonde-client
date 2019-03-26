@@ -7,7 +7,7 @@ class AuthAPI {
     // console.log('[CrossStorageUrl]:', crossStorageUrl)
 
     this.storage = new CrossStorageClient(crossStorageUrl, {
-      timeout: 8000
+      timeout: process.env.REACT_APP_CROSS_STORAGE_TIMEOUT || '10000'
     })
     this.token = undefined
     this.session = {}
