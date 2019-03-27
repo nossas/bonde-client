@@ -6,10 +6,11 @@ const FormGraphQL = ({
   children,
   mutation,
   update,
+  refetchQueries,
   onSubmit,
   ...props
 }) => (
-  <Mutation mutation={mutation} update={update}>
+  <Mutation mutation={mutation} update={update} refetchQueries={refetchQueries}>
     {(mutationFunc) => (
       <Form
         onSubmit={(values) => {
