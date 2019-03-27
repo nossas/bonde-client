@@ -19,7 +19,7 @@ const Switch = styled.label`
     position: absolute;
     cursor: pointer;
     top: 13px;
-    left: 0;
+    left: -3px;
     right: 10px;
     bottom: 8px;
     background-color: #444444;
@@ -90,7 +90,8 @@ SwitchSlider.propTypes = {
 }
 
 SwitchSlider.defaultProps = {
-  round: false
+  round: false,
+  onChange: () => {}
 }
 
 /* @component */

@@ -8,3 +8,4 @@ export { default as MultipleChoiceField } from './MultipleChoiceField/MultipleCh
 export { default as Radio } from './Radio/Radio'
 export { default as Select } from './Select/Select'
 export { default as Tag } from './Tag/Tag'
+export { default as Textarea } from './Textarea/Textarea'
