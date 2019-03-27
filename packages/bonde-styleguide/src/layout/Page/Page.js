@@ -22,7 +22,7 @@ const Page = ({ children, menuComponent: MenuComponent, top }) => (
   </PageContainer>
 )
 
-const { oneOfType, node, func, string } = PropTypes
+const { oneOfType, node, func } = PropTypes
 
 Page.propTypes = {
   /** The content of the page. */
