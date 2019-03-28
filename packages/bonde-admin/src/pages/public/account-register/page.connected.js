@@ -78,9 +78,12 @@ const RegisterWithData = graphql(CheckInvitationQuery, {
   },
   props: ({ ownProps, data: { loading, checkInvitation } }) => {
     const email = checkInvitation && checkInvitation.nodes && checkInvitation.nodes[0].email
-    if (!email) {
+
+    if (!email && !loading) {
+      // Throw error when email is undefined before loading
       throw Error('invitation_code is invalid, invite not found.')
     }
+
     const params = queryString.parse(ownProps.location.search)
     return {
       checkInvitationLoading: loading,
