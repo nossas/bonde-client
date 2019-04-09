@@ -9,16 +9,26 @@ const MESSAGE_TYPE_DATA = gql`
   }
 `
 
-export const queryBuilder = (level) => {
+export default (level) => {
   let queryBase = `
-    query chatbotWorflowMessages($workflowId: Int!) {
-      chatbotWorkflowMessages(workflowId: $workflowId) {
-        #QUERY_BUILD_BODY
+    query Conversation ($id: Int!) {
+      conversation: workflow(id: $id) {
+        edges {
+          node {
+            id,
+            name,
+            lastLevel,
+            draft
+            messages {
+              #QUERY_BUILD_BODY
+            }
+          }
+        }
       }
     }
   `
   Array.from(Array(level).keys()).forEach(i => {
-    if (i + 1 == level) {
+    if (i + 1 === level) {
       queryBase = queryBase.replace('#QUERY_BUILD_BODY', `
         edges {
           node {
@@ -44,18 +54,3 @@ export const queryBuilder = (level) => {
     ${MESSAGE_TYPE_DATA}
   `
 }
-
-export const workflowListQuery = gql`
-  query chatbotWorkflows($communityId: Int!) {
-    chatbotWorkflows(communityId: $communityId) {
-      edges {
-        node {
-          id,
-          name,
-          lastLevel,
-          draft
-        }
-      }
-    }
-  }
-`
