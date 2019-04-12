@@ -1,12 +1,12 @@
 import React from 'react'
 import { Text } from 'bonde-styleguide'
-import { Queryset } from 'components'
+import { Query } from 'react-apollo'
 import ImageColumn from '../ImageColumn'
 import TableCardGadget from '../TableCardGadget'
 import Filter from './Filter'
-import allUserCommunities from './query.graphql'
 import { authSession } from 'services/auth'
 import { toSnakeCase } from '../../utils'
+import userCommunitiesQuery from './query'
 
 const columns = [
   {
@@ -57,21 +57,41 @@ const CommunitiesGadget = ({ t, loading, communities, filter, onChangeFilter }) 
   />
 )
 
-const CommunitiesGadgetQueryset = ({ t }) => (
+/*const CommunitiesGadgetQueryset = ({ t }) => (
   <Queryset
-    query={allUserCommunities}
-    filter={{ orderBy: 'UPDATED_AT_DESC' }}
+    query={HomeAPI.query.userCommunities}
+    filter={{ sort: 'updated_at_desc' }}
   >
-    {({ loading, data, filter, onChangeFilter }) => (
+    {({ loading, data, filter, onChangeFilter }) => {
+      if (loading) return 'Loading...'
+      return (
+        <CommunitiesGadget
+          t={t}
+          loading={loading}
+          filter={filter}
+          onChangeFilter={onChangeFilter}
+          communities={data && data.userCommunities ? data.userCommunities.edges.map(i => i.node) : []}
+        />
+      )
+    }}
+  </Queryset>
+)*/
+
+/*export default CommunitiesGadgetQueryset*/
+export default ({ t }) => (
+  <Query query={userCommunitiesQuery}>
+  {({ data, loading, error }) => {
+    if (loading) return 'Loading...'
+    if (error) return 'Error!'
+
+    return (
       <CommunitiesGadget
         t={t}
         loading={loading}
-        filter={filter}
-        onChangeFilter={onChangeFilter}
-        communities={data && data.allUserCommunities ? data.allUserCommunities.nodes : []}
+        filter={{sort: 'updated_at_desc'}}
+        communities={data && data.userCommunities ? data.userCommunities.edges.map(i => i.node) : []}
       />
-    )}
-  </Queryset>
+    )
+  }}
+  </Query>
 )
-
-export default CommunitiesGadgetQueryset

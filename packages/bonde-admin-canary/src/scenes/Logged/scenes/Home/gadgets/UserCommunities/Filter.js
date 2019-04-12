@@ -6,16 +6,16 @@ const Filter = ({ filter, onChange }) => (
   <I18n ns='home'>
   {(t) => (
     <SelectDropdown
-      initialValue={filter.orderBy}
-      onChange={({ value }) => onChange({ orderBy: value })}
+      initialValue={filter.sort}
+      onChange={({ value }) => onChange({ sort: value })}
       options={[
         { 
           label: t('gadgets.filters.recent'),
-          value: 'UPDATED_AT_DESC'
+          value: 'updated_at_desc'
         },
         {
           label: t('gadgets.filters.alphabetic'),
-          value: 'NAME_ASC'
+          value: 'name_asc'
         },
       ]}
     />

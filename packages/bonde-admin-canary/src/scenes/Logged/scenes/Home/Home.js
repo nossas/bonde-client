@@ -6,11 +6,7 @@ import { ToastContainer } from 'components/Notification'
 import { Page, Header } from 'components/PageLogged'
 import { Redirect } from 'services/router'
 import { Auth } from 'services/auth'
-import {
-  CommunitiesGadget,
-  MobilizationsGadget,
-  TrendingMobilizationsGadget
-} from './components'
+import { UserCommunities, UserMobilizations, TrendingMobilizationsGadget } from './gadgets'
 
 const TutorialDialog = ({ children, step, t, ...props }) => (
   <Tutorial.Dialog
@@ -33,55 +29,49 @@ export default class extends React.Component {
       <I18n ns='home'>
         {t => (
           <Auth>
-            {({ user }) => user.tags.length < 1
-              ? <Redirect to='/admin/tags' />
-              : (
-                <Tutorial initialize={showTutorial}>
-                  <Page
-                    renderTitle={() => (<Header.Title>Home</Header.Title>)}
-                    wrapperHeaderComponent={({ children }) => (
-                      <TutorialDialog
-                        t={t}
-                        step={1}
-                        placement='bottom-left'
-                        margin={{ left: 125 }}
-                      >
-                        {children}
-                      </TutorialDialog>
-                    )}
-                  > 
-                    <Flexbox vertical>
-                      <ToastContainer />
-                      <Grid>
-                        <Cell size={[12, 12, 12]}>
-                          <Grid>
-                            <Cell size={[4, 4, 12, 12, 12, 12]}>
-                              <TutorialDialog t={t} step={2}>
-                                <CommunitiesGadget />
-                              </TutorialDialog>
-                            </Cell>
-                            <Cell size={[8, 8, 12, 12, 12, 12]}>
-                              <TutorialDialog
-                                t={t}
-                                step={3}
-                                placement='bottom-left'
-                              >
-                                <MobilizationsGadget />
-                              </TutorialDialog>
-                            </Cell>
-                          </Grid>
-                        </Cell>
-                        <Cell size={[12, 12, 12, 12, 12, 12]}>
-                          <TutorialDialog t={t} step={4} placement='top-left'>
-                            <TrendingMobilizationsGadget />
-                          </TutorialDialog>
-                        </Cell>
-                      </Grid>
-                    </Flexbox>
-                  </Page>
-                </Tutorial>
-              )
-            }
+            {({ user }) => user.tags.edges.length < 1 ? <Redirect to='/admin/tags' /> : (
+              <Tutorial initialize={showTutorial}>
+                <Page
+                  renderTitle={() => (<Header.Title>Home</Header.Title>)}
+                  wrapperHeaderComponent={({ children }) => (
+                    <TutorialDialog
+                      t={t}
+                      step={1}
+                      placement='bottom-left'
+                      margin={{ left: 125 }}
+                    >
+                      {children}
+                    </TutorialDialog>
+                  )}
+                > 
+                  <Flexbox vertical>
+                    <ToastContainer />
+                    <Grid>
+                      <Cell size={[12, 12, 12]}>
+                        <Grid>
+                          <Cell size={[4, 4, 12, 12, 12, 12]}>
+                            <TutorialDialog t={t} step={2}>
+                              <UserCommunities />
+                            </TutorialDialog>
+                          </Cell>
+                          <Cell size={[8, 8, 12, 12, 12, 12]}>
+                            <TutorialDialog t={t} step={3} placement='bottom-left'>
+                              <UserMobilizations />
+                            </TutorialDialog>
+                          </Cell>
+                        </Grid>
+                      </Cell>
+                      <Cell size={[12, 12, 12, 12, 12, 12]}>
+                        <TutorialDialog t={t} step={4} placement='top-left'>
+                          <div><h3>TrendingMobilizationsGadget</h3></div>
+                          {/*<TrendingMobilizationsGadget />*/}
+                        </TutorialDialog>
+                      </Cell>
+                    </Grid>
+                  </Flexbox>
+                </Page>
+              </Tutorial>
+            )}
           </Auth>
         )}
       </I18n>

@@ -1,23 +1,26 @@
 import React from 'react'
 import { AuthProvider, Route } from 'services/auth'
-import { FullScreenLoadable, LoadingFullScreen } from 'components/Loadable'
+import { LoadingFullScreen } from 'components/Loadable'
+import HomeModule from './scenes/Home'
 import TagsPage from './scenes/Tags'
-
-const HomePage = FullScreenLoadable({
-  loader: () => import('./scenes/Home')
-})
+import ChatbotModule from './scenes/Chatbot'
 
 const Root = ({ match }) => (
   <AuthProvider loading={LoadingFullScreen}>
     <Route
       exact
       path={match.url}
-      component={HomePage}
+      component={HomeModule}
     />
 
     <Route
       path={`${match.url}/tags`}
       component={TagsPage}
+    />
+
+    <Route
+      path={`${match.url}/chatbot`}
+      component={ChatbotModule}
     />
   </AuthProvider>
 )

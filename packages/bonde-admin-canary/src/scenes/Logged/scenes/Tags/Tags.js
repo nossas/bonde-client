@@ -8,7 +8,7 @@ class Tags extends React.Component {
   render () {
     const { t, user } = this.props
 
-    if (user.tags && user.tags.length > 0) return <Redirect to='/admin' />
+    if (user.tags && user.tags.edges.length > 0) return <Redirect to='/admin' />
 
     return (
       <Page fixedFooter>
