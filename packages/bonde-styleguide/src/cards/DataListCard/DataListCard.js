@@ -9,9 +9,9 @@ import {
   Scrollbox
 } from '../../'
 
-const CustomCol = ({ render, field, ...colProps }) => (
+const CustomCol = ({ render, field, row, ...colProps }) => (
   <DataListCol {...colProps}>
-    {typeof render === 'function' ? render(field) : (
+    {typeof render === 'function' ? render(field, row) : (
       <Text fontSize={14}>{field}</Text>
     )}
   </DataListCol>
@@ -23,6 +23,7 @@ const DataListCard = ({
   border,
   fields,
   items,
+  picker,
   Footer,
   footerProps,
 }) => {
@@ -43,7 +44,8 @@ const DataListCard = ({
             <CustomCol
               {...fields[fieldName]}
               key={Math.random()}
-              field={item[fieldName]}
+              row={item}
+              field={picker ? item[picker][fieldName] : item[fieldName]}
             />
           ))}
           </DataListRow>
@@ -67,6 +69,7 @@ DataListCard.propTypes = {
     align: oneOf(['flex-start', 'center', 'flex-end']),
     justify: oneOf(['flex-start', 'center', 'flex-end', 'space-between']),
   }),
+  picker: string
 }
 
 DataListCard.defaultProps = {
