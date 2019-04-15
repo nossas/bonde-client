@@ -7,7 +7,7 @@ import {
 } from 'bonde-styleguide'
 import { CreateFlowModalForm, FlowDataList } from '../../components'
 
-export default ({ community, edges }) => {
+export default ({ changeWorkflow, community, edges }) => {
   // TODO:
   // - add translate
 
@@ -20,7 +20,7 @@ export default ({ community, edges }) => {
       <Title.H5 margin={{ bottom: 25 }}>FLUXOS DE CONVERSA</Title.H5>
       <Grid>
         <Cell size={[12, 12, 12]}>
-          <FlowDataList edges={edges} />
+          <FlowDataList edges={edges} changeWorkflow={changeWorkflow} />
         </Cell>
       </Grid>
     </Flexbox>

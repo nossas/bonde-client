@@ -20,23 +20,31 @@ const NameRender = (name) => (
   <Title.H4>{name}</Title.H4>
 )
 
-const ActionRender = (id) => (
-  <Flexbox horizontal>
-    <ButtonLink to={`/admin/chatbot/${id}`}>Editar</ButtonLink>
-    <Button flat>Excluir</Button>
-  </Flexbox>
-)
+const ActionRender = ({ data, changeWorkflow }) => {
+  return (
+    <Flexbox horizontal>
+      <Button onClick={() => changeWorkflow(data)}>Editar</Button>
+      <Button flat>Excluir</Button>
+    </Flexbox>
+  )
+}
 
-export default ({ edges }) => {
-
+export default ({ edges, changeWorkflow }) => {
+  if (!changeWorkflow) debugger
   return (
     <DataListCard
+      picker='node'
       fields={{
         name: { render: NameRender },
         draft: { render: DraftButtonRender },
-        id: { width: 120, render: ActionRender }
+        id: {
+          width: 120,
+          render: (id, data) => (
+            <ActionRender data={data} changeWorkflow={changeWorkflow} />
+          )
+        }
       }}
-      items={edges.map((obj) => ({...obj.node}))}
+      items={edges}
     />
   )
 }

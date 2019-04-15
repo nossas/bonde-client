@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { Query } from 'react-apollo'
+import Tree from 'react-d3-tree'
 import {
   Cell,
   Flexbox2 as Flexbox,
@@ -9,16 +10,12 @@ import {
 import queryBuilder from './queryBuilder'
 
 
-const TreeView = ({ edges }) => (
-  <ul>
-  {edges.map(obj => (
-    <li key={obj.node.id}>
-      <p>{obj.node.text}</p>
-      {obj.node.children && <TreeView edges={obj.node.children.edges} />}
-    </li>
-  ))}
-  </ul>
-)
+const conversationToTree = (edges) => edges.map(item => {
+  if (item.node.children) {
+    return { name: item.node.text, children: conversationToTree(item.node.children.edges)}
+  }
+  return { name: item.node.text }
+})
 
 
 const ConversationFlow = ({ workflow }) => {
@@ -30,8 +27,8 @@ const ConversationFlow = ({ workflow }) => {
         if (loading) return 'Loading...'
         if (error) return 'Error!'
         
-        const conversation = data.conversation.edges[0].node
-        return <TreeView edges={conversation.messages.edges} />
+        const conversation = data.conversation.edges[0].node.messages.edges
+        return <Tree data={conversationToTree(conversation)} />
       }}
     </Query>
   )

@@ -48,6 +48,7 @@
     "raf": "3.4.0",
     "react": "^16.8.6",
     "react-apollo": "^2.1.9",
+    "react-d3-tree": "^1.12.3",
     "react-dev-utils": "^5.0.1",
     "react-dom": "^16.8.6",
     "react-i18next": "^7.7.0",

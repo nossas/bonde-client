@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Query } from 'react-apollo'
+import { withRouter } from 'react-router-dom'
 import { Page, Header } from 'components/PageLogged'
 import { Route } from 'services/auth'
 import ChatbotAPI from './graphql'
@@ -7,12 +8,15 @@ import FlowsScene from './scenes/Flows'
 import EditGraphScene from './scenes/EditGraph'
 
 
-export default ({ match }) => {
+export default withRouter(({ match, history }) => {
   const community = { id: 1, name: "Bonde"}
   const [workflow, setWorkflow] = useState(undefined)
 
   const handleChangeWorkflow = (workflow) => {
-    setWorkflow(workflow)
+    if (workflow !== undefined) {
+      setWorkflow(workflow)
+      history.push(`/admin/chatbot/${workflow.node.id}`)
+    }
   }
 
   return (
@@ -44,4 +48,4 @@ export default ({ match }) => {
       </Query>
     </Page>
   )
-}
+})
