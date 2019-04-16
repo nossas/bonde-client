@@ -1,22 +1,13 @@
 import React, { useEffect } from 'react'
 import { Query } from 'react-apollo'
-import Tree from 'react-d3-tree'
 import {
   Cell,
   Flexbox2 as Flexbox,
   Grid,
   Title
 } from 'bonde-styleguide'
-import queryBuilder from './queryBuilder'
-
-
-const conversationToTree = (edges) => edges.map(item => {
-  if (item.node.children) {
-    return { name: item.node.text, children: conversationToTree(item.node.children.edges)}
-  }
-  return { name: item.node.text }
-})
-
+import { ConversationTree } from '../../components'
+import queryBuilder from '../../queryBuilder'
 
 const ConversationFlow = ({ workflow }) => {
   const allMessagesQuery = queryBuilder(Number(workflow.node.lastLevel))
@@ -28,7 +19,8 @@ const ConversationFlow = ({ workflow }) => {
         if (error) return 'Error!'
         
         const conversation = data.conversation.edges[0].node.messages.edges
-        return <Tree data={conversationToTree(conversation)} />
+
+        return <ConversationTree workflow={workflow} conversation={conversation} />
       }}
     </Query>
   )

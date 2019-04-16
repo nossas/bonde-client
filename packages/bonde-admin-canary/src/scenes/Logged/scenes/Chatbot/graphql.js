@@ -17,6 +17,23 @@ export default {
           }
         }
       }
+    `,
+    createWorkflowMessage: gql`
+      mutation CreateWorkflowMessage($text: String!, $action: MessageTypeAction!, $parentId: Int!) {
+        createWorkflowMessage(input: {
+          text: $text,
+          action: $action,
+          parentId: $parentId,
+        }) {
+          message {
+            id,
+            text,
+            level,
+            action,
+            parentId
+          }
+        }
+      }
     `
   },
   query: {
