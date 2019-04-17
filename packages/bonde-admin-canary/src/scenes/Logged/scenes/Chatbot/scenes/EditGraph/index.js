@@ -10,17 +10,24 @@ import { ConversationTree } from '../../components'
 import queryBuilder from '../../queryBuilder'
 
 const ConversationFlow = ({ workflow }) => {
-  const allMessagesQuery = queryBuilder(Number(workflow.node.lastLevel))
+  const allMessagesQuery = queryBuilder(20)
+  const height = window.innerHeight
+    || document.documentElement.clientHeight
+    || document.body.clientHeight
 
   return (
-    <Query query={allMessagesQuery} variables={{ id: workflow.node.id }}>
+    <Query query={allMessagesQuery} variables={{ id: workflow.node.id }} fetchPolicy='network-only'>
       {({ loading, error, data }) => {
-        if (loading) return 'Loading...'
+        if (loading) return <div style={{ width: '100%', height: `${height}px` }}>Loading...</div>
         if (error) return 'Error!'
-        
-        const conversation = data.conversation.edges[0].node.messages.edges
 
-        return <ConversationTree workflow={workflow} conversation={conversation} />
+        const conversation = data.conversation.edges[0].node.messages.edges
+        return (
+          <ConversationTree
+            workflow={workflow}
+            conversation={conversation}
+          />
+        )
       }}
     </Query>
   )

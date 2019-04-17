@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { fromJS } from 'immutable'
 import {
   Button,
   Flexbox2 as Flexbox,
@@ -14,12 +15,25 @@ import { required } from 'services/validations'
 import ChatbotAPI from '../graphql'
 import queryBuilder from '../queryBuilder'
 
+const updateTree = (id, update, tree) => {
+  if (Number(tree.node.id) === Number(id)) {
+    if (tree.node.children === undefined) {
+      tree.node.children = { edges: [{ node: update }] }
+    } else {
+      tree.node.children.edges = [{ node: update }]
+    }
+  } else if (tree.node.children && tree.node.children.edges.length > 0) {
+    tree.node.children.edges = tree.node.children.edges.map(item => {
+      return updateTree(id, update, item)
+    })
+  }
+  return tree
+}
 
 export default ({ nodeData, onClose, workflow }) => {
-  const remount = Number(workflow.node.lastLevel) < Number(nodeData.level)
-  const conversationQuery = queryBuilder(remount ? Number(nodeData.level) : Number(workflow.node.lastLevel))
-  
-  const handleCloseModalForm = () => {
+  const conversationQuery = queryBuilder(20)
+
+    const handleCloseModalForm = () => {
     // Should resetForm always close modal
     resetForm()
     onClose()

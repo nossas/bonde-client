@@ -5,20 +5,8 @@ import { CreateMessageModalForm } from './'
 
 
 const conversationToTree = (edges) => edges.map(item => {
-  if (item.node.children) {
-    let lastLevel = undefined
-    let hasChildren = true
-    item.node.children.edges.forEach(i => {
-      if (lastLevel && lastLevel !== i.node.level) {
-        hasChildren = false
-        return
-      } else {
-        lastLevel = i.node.level
-      }
-    })
-    if (hasChildren) {
-      return { uuid: item.node.id, ...item.node, children: conversationToTree(item.node.children.edges)}
-    }
+  if (item.node.children && item.node.children.edges.length > 0) {
+    return { uuid: item.node.id, ...item.node, children: conversationToTree(item.node.children.edges)}
   }
   return { uuid: item.node.id, ...item.node } 
 })
