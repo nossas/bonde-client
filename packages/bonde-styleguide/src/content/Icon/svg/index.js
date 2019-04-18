@@ -12,6 +12,7 @@ import Sound from './Sound'
 import Star from './Star'
 import Tick from './Tick'
 import Times from './Times'
+import Trash from './Trash'
 import User from './User'
 
 export default {
@@ -29,5 +30,6 @@ export default {
   'star': Star,
   'tick': Tick,
   'times': Times,
+  'trash': Trash,
   'user': User
 }

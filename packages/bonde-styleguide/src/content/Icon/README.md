@@ -14,6 +14,7 @@
   <Icon name='star' />
   <Icon name='tick' />
   <Icon name='times' />
+  <Icon name='trash' />
   <Icon name='user' />
 </div>
 ```
