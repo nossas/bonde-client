@@ -19,7 +19,7 @@ const CustomCol = ({ render, field, row, ...colProps }) => (
 
 const DataListCard = ({
   sectionTitle,
-  minHeight,
+  height,
   border,
   fields,
   items,
@@ -32,7 +32,7 @@ const DataListCard = ({
   return (
     <Card
       title={sectionTitle}
-      minHeight={minHeight}
+      height={height}
       Footer={Footer}
       footerProps={footerProps}
     >
@@ -60,7 +60,7 @@ const { oneOfType, oneOf, string, number, bool, object, array, node, func, shape
 
 DataListCard.propTypes = {
   sectionTitle: string,
-  minHeight: number,
+  height: number,
   border: bool,
   fields: object,
   items: array,
@@ -73,7 +73,7 @@ DataListCard.propTypes = {
 }
 
 DataListCard.defaultProps = {
-  minHeight: 274,
+  height: 274,
   border: true,
   fields: {},
   items: []
