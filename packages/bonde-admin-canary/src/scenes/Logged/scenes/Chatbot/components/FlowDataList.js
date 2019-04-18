@@ -7,7 +7,6 @@ import {
   Text,
   Title
 } from 'bonde-styleguide'
-import { ButtonLink } from 'components/Link'
 
 
 const DraftButtonRender = (draft) => (

@@ -6,7 +6,8 @@ import { ToastContainer } from 'components/Notification'
 import { Page, Header } from 'components/PageLogged'
 import { Redirect } from 'services/router'
 import { Auth } from 'services/auth'
-import { UserCommunities, UserMobilizations, TrendingMobilizationsGadget } from './gadgets'
+/*import { UserCommunities, UserMobilizations, TrendingMobilizationsGadget } from './gadgets'*/
+import { UserCommunities, UserMobilizations } from './gadgets'
 
 const TutorialDialog = ({ children, step, t, ...props }) => (
   <Tutorial.Dialog

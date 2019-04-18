@@ -1,6 +1,6 @@
 import React from 'react'
 import Tree from 'react-d3-tree'
-import { Card, Flexbox2 as Flexbox, Text } from 'bonde-styleguide'
+import { Card, Flexbox2 as Flexbox, Icon, Text } from 'bonde-styleguide'
 import { CreateMessageModalForm } from './'
 
 
@@ -45,17 +45,13 @@ const DeleteButton = () => {
     borderRadius: '50px',
     top: '-10px',
     right: '-10px',
-    backgroundColor: 'white'
-  }
-  const plusStyles = {
-    fontSize: '23px',
-    fontWeight: '300',
-    color: '#e9578f',
-    textAlign: 'center'
+    backgroundColor: 'white',
+    strokeWidth: '0',
+    padding: '4px'
   }
   return (
     <div style={wrapperStyles}>
-      <p style={plusStyles}>D</p>
+      <Icon name='trash' size={18} color='#e9578f' />
     </div>
   ) 
 }
