@@ -41,17 +41,17 @@ export default ({ changeWorkflow, edges, match, workflow }) => {
     }
   }, [edges, workflow])
 
-  return (
+  return workflow ? (
     <Flexbox vertical>
       <Flexbox horizontal spacing='between'>
-        <Title.H2 margin={{ bottom: 10 }}>NOME DO FLUXO</Title.H2>
+        <Title.H2 margin={{ bottom: 10 }}>{workflow.node.name}</Title.H2>
       </Flexbox>
-      <Title.H5 margin={{ bottom: 25 }}>FLUXOS DE CONVERSA</Title.H5>
+      <Title.H5 margin={{ bottom: 25 }}>FLUXO DE CONVERSA</Title.H5>
       <Grid>
         <Cell size={[12, 12, 12]}>
           {workflow && <ConversationFlow workflow={workflow} />}
         </Cell>
       </Grid>
     </Flexbox>
-  )
+  ) : 'Loading...'
 }

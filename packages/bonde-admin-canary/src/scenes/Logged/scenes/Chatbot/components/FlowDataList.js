@@ -29,9 +29,12 @@ const ActionRender = ({ data, changeWorkflow }) => {
 }
 
 export default ({ edges, changeWorkflow }) => {
-  if (!changeWorkflow) debugger
+  const height = window.innerHeight
+    || document.documentElement.clientHeight
+    || document.body.clientHeight
   return (
     <DataListCard
+      height={`${height - 320}px`}
       picker='node'
       fields={{
         name: { render: NameRender },

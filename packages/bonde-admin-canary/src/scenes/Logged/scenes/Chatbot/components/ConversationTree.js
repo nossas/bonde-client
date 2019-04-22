@@ -1,14 +1,14 @@
 import React from 'react'
 import Tree from 'react-d3-tree'
-import { Card, Flexbox2 as Flexbox, Icon, Text } from 'bonde-styleguide'
+import { Card, Flexbox2 as Flexbox, Scrollbox, Icon, Text } from 'bonde-styleguide'
 import { CreateMessageModalForm } from './'
 
 
 const conversationToTree = (edges) => edges.map(item => {
   if (item.node.children && item.node.children.edges.length > 0) {
-    return { uuid: item.node.id, ...item.node, children: conversationToTree(item.node.children.edges)}
+    return { uuid: item.node.id, name: item.node.text, ...item.node, children: conversationToTree(item.node.children.edges)}
   }
-  return { uuid: item.node.id, ...item.node } 
+  return { uuid: item.node.id, name: item.node.text, ...item.node }
 })
 
 
@@ -20,7 +20,7 @@ const InsertButton = ({ onClick }) => {
     backgroundColor: '#e9578f',
     borderRadius: '50px',
     bottom: '-17px',
-    right: '74px',
+    right: '40px',
     cursor: 'pointer'
   }
   const plusStyles = {
@@ -43,8 +43,8 @@ const DeleteButton = () => {
     height: '30px',
     border: '2px solid #e9578f',
     borderRadius: '50px',
-    top: '-10px',
-    right: '-10px',
+    top: '-15px',
+    right: '40px',
     backgroundColor: 'white',
     strokeWidth: '0',
     padding: '4px'
@@ -68,10 +68,45 @@ const NodeLabel = ({ className, nodeData, nodeDataSelected, onInsertClick }) => 
     fullProps.border = active ? '2px solid #e9578f' : '2px solid #2f88e6'
     fullProps.color = '#2f88e6'
   }
+
+  const textRender = <Text fontSize={14} fontWeight={600} color={fullProps.color}>{nodeData.text}</Text>
+
   return (
-    <Card width='190px' margin='10px 10px 0 0' border={fullProps.border} rounded={fullProps.rounded}>
+    <Card width='190px' height='116px' margin='10px 10px 0 0' border={fullProps.border} rounded={fullProps.rounded}>
       <Flexbox padding={{x: 10, y: 10}} align='middle'>
-        <Text fontSize={14} fontWeight={600} color={fullProps.color}>{nodeData.text}</Text>
+        {nodeData.action !== 'quick_reply' ? (
+          <Scrollbox height={116}>
+            {textRender}
+          </Scrollbox>
+        ) : textRender}
+      </Flexbox>
+      <React.Fragment>
+        {active && <DeleteButton />}
+        {active && <InsertButton onClick={onInsertClick} />}
+      </React.Fragment>
+    </Card>
+  )
+}
+
+
+const SimpleNodeLabel = ({ nodeData, nodeDataSelected, onInsertClick }) => {
+  const active = nodeDataSelected && nodeData.uuid === nodeDataSelected.uuid
+  const fullProps = {
+    rounded: '10px 10px 10px 0',
+    border: active ? '2px solid #e9578f' : undefined
+  }
+  if (nodeData.action === 'quick_reply') {
+    fullProps.rounded = '15px'
+    fullProps.border = active ? '2px solid #e9578f' : '2px solid #2f88e6'
+    fullProps.color = '#2f88e6'
+  }
+
+  return (
+    <Card margin='15px 10px 0 0' border={fullProps.border} rounded={fullProps.rounded}>
+      <Flexbox padding={{top: 10, left: 10}} align='middle'>
+        <Scrollbox height={100}>
+          <Text fontSize={14} fontWeight={600} color={fullProps.color}>{nodeData.text}</Text>
+        </Scrollbox>
       </Flexbox>
       {active && <DeleteButton />}
       {active && <InsertButton onClick={onInsertClick} />}
@@ -116,19 +151,17 @@ export default class extends React.Component {
           transitionDuration={0}
           collapsible={false}
           data={conversationToTree(conversation)}
+          orientation='vertical'
+          translate={this.state.translate}
+          onClick={(nodeData, evt) => this.setState({ nodeData })}
           nodeLabelComponent={{
             render: (
-              <NodeLabel
+              <SimpleNodeLabel
                 nodeDataSelected={this.state.nodeData}
                 onInsertClick={() => this.setState({ openModal: true })} />
             ),
-            foreignObjectWrapper: { width: 200, height: 300, x: -100, y: -15 }
+            foreignObjectWrapper: { height: 150, x: -58, y: -26 }
           }}
-          onClick={(nodeData, evt) => {
-            this.setState({ nodeData })
-          }}
-          orientation='vertical'
-          translate={this.state.translate}
         />
       </div>
     )

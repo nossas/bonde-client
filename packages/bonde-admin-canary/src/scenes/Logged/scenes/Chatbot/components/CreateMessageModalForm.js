@@ -3,8 +3,8 @@ import {
   Button,
   Flexbox2 as Flexbox,
   FormField,
-  Input,
   Modal,
+  Select,
   Title,
   Text,
   Textarea
@@ -73,9 +73,15 @@ export default ({ nodeData, onClose, workflow }) => {
           <Field
             name='action'
             label='Tipo de mensagem'
-            placeholder='GET_STARTED || TALK || REPLY'
             component={FormField}
-            inputComponent={Input}
+            inputComponent={(props) => {
+              return (
+                <Select native {...props}>
+                  <option value='TALK'>texto</option>
+                  <option value='REPLY'>resposta</option>
+                </Select>
+              )
+            }}
             validate={required('Tipo de mensagem deve ser preenchido.')}
           />
           <Flexbox middle spacing='between'>
