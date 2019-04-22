@@ -14,25 +14,11 @@ import { required } from 'services/validations'
 import ChatbotAPI from '../graphql'
 import queryBuilder from '../queryBuilder'
 
-const updateTree = (id, update, tree) => {
-  if (Number(tree.node.id) === Number(id)) {
-    if (tree.node.children === undefined) {
-      tree.node.children = { edges: [{ node: update }] }
-    } else {
-      tree.node.children.edges = [{ node: update }]
-    }
-  } else if (tree.node.children && tree.node.children.edges.length > 0) {
-    tree.node.children.edges = tree.node.children.edges.map(item => {
-      return updateTree(id, update, item)
-    })
-  }
-  return tree
-}
 
 export default ({ nodeData, onClose, workflow }) => {
   const conversationQuery = queryBuilder(20)
 
-    const handleCloseModalForm = () => {
+  const handleCloseModalForm = () => {
     // Should resetForm always close modal
     resetForm()
     onClose()

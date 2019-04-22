@@ -34,6 +34,13 @@ export default {
           }
         }
       }
+    `,
+    deleteWorkflowMessage: gql`
+      mutation DeleteWorkflowMessage($id: ID!) {
+        deleteWorkflowMessage(messageId: $id) {
+          ok
+        }
+      }
     `
   },
   query: {
