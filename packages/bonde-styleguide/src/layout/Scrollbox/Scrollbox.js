@@ -1,11 +1,12 @@
 import styled from 'styled-components'
-import { borderSpacing, borderSpacingPropTypes } from '../../utils'
+
+import { borderSpacing, borderSpacingPropTypes, px } from '../../utils'
 
 /**
  * The generic scroll box component.
  */
 const Scrollbox = styled.div`{
-  height: 100%;
+  height: ${props => props.height ? px(props.height) : '100%'};
   overflow-y: auto;
   overflow-x: hidden;
   ${props => props.padding && borderSpacing('padding', props.padding)}
