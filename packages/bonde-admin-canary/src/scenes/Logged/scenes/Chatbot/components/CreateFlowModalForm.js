@@ -44,17 +44,17 @@ export default () => {
         <Flexbox vertical>
           <FormGraphQL
             mutation={ChatbotAPI.mutation.createWorkflow}
-            update={(cache, { data: { createWorkflow }}) => {
-              const { workflow } = cache.readQuery({
-                query: ChatbotAPI.query.workflow,
+            update={(cache, { data: { createCampaign }}) => {
+              const { campaigns } = cache.readQuery({
+                query: ChatbotAPI.query.campaigns,
                 variables: { communityId: FACEBOOK_BOT_CONFIGURATION.communityId }
               })
               // TODO: Check simpler way to work with typing in graphql
-              workflow.edges.push({ node: createWorkflow.workflow, __typename: 'WorkflowTypeEdge' })
-              cache.writeQuery({ query: ChatbotAPI.query.workflow, data: { workflow } })
+              campaigns.edges.push({ node: createCampaign.campaign, __typename: 'WorkflowEdge' })
+              cache.writeQuery({ query: ChatbotAPI.query.campaigns, data: { campaigns } })
             }}
             refetchQueries={[{
-              query: ChatbotAPI.query.workflow,
+              query: ChatbotAPI.query.campaigns,
               variables: { communityId: FACEBOOK_BOT_CONFIGURATION.communityId }
             }]}
             onSubmit={(values, mutation) => {

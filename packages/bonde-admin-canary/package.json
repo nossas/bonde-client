@@ -48,7 +48,7 @@
     "raf": "3.4.0",
     "react": "^16.8.6",
     "react-apollo": "^2.1.9",
-    "react-d3-tree": "^1.12.3",
+    "react-d3-tree": "git://github.com/igr-santos/react-d3-tree.git#feature/customize-node",
     "react-dev-utils": "^5.0.1",
     "react-dom": "^16.8.6",
     "react-i18next": "^7.7.0",
@@ -76,7 +76,9 @@
     "dev": "node scripts/start.js",
     "build": "node scripts/build.js",
     "start": "serve -s build",
-    "test": "NODE_ENV=test ava"
+    "test": "NODE_ENV=test ava",
+    "preinstall": "rm -f node_modules/@react-d3-tree",
+    "postinstall": "ln -s /home/igr/Repos/nossas/react-d3-tree node_modules/@react-d3-tree"
   },
   "engines": {
     "node": ">=8"

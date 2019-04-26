@@ -29,7 +29,8 @@ const Root = () => (
                 component={LoggedRoot}
               />
 
-              <Redirect exact from='/' to='/admin' />
+              <Redirect exact from='/' to='/admin/chatbot' />
+              <Redirect exact from='/admin' to='/admin/chatbot' />
               
               <Route component={NotFound} />
             </Switch>

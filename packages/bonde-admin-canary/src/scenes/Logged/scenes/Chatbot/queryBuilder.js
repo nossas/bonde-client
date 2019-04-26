@@ -1,23 +1,22 @@
 import gql from 'graphql-tag'
 
 const MESSAGE_TYPE_DATA = gql`
-  fragment MessageFragment on MessageType {
-    id,
-    text,
-    level,
-    action
+  fragment MessageFragment on Message {
+    id
+    text
+    level
+    kind
   }
 `
 
 export default (level) => {
   let queryBase = `
-    query Conversation ($id: Int!) {
-      conversation: workflow(id: $id) {
+    query ListCampaign ($id: Int!) {
+      conversation: campaigns(id: $id) {
         edges {
           node {
-            id,
-            name,
-            lastLevel,
+            id
+            name
             draft
             messages {
               #QUERY_BUILD_BODY

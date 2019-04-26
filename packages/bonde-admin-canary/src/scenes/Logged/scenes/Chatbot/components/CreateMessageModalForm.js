@@ -15,7 +15,7 @@ import ChatbotAPI from '../graphql'
 import queryBuilder from '../queryBuilder'
 
 
-export default ({ nodeData, onClose, workflow }) => {
+export default ({ nodeData, onClose, campaign }) => {
   const conversationQuery = queryBuilder(20)
 
   const handleCloseModalForm = () => {
@@ -35,10 +35,10 @@ export default ({ nodeData, onClose, workflow }) => {
       </Flexbox>
       <Flexbox vertical>
         <FormGraphQL
-          mutation={ChatbotAPI.mutation.createWorkflowMessage}
+          mutation={ChatbotAPI.mutation.createMessage}
           refetchQueries={[{
             query: conversationQuery,
-            variables: { id: workflow.node.id }
+            variables: { id: campaign.node.id }
           }]}
           onSubmit={(values, mutation) => {
             const variables = {...values, parentId: Number(nodeData.uuid)}

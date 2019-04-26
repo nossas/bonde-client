@@ -2,56 +2,54 @@ import gql from 'graphql-tag'
 
 export default {
   mutation: {
-    createWorkflow: gql`
-      mutation CreateWorkflow($name: String!, $message: String!, $configurationId: Int!) {
-        createWorkflow(input: {
+    createCampaign: gql`
+      mutation CreateCampaign($name: String!, $message: String!, $chatbotSettingsId: Int!) {
+        chatbotCreateCampaign(input: {
           name: $name,
           message: $message,
-          configurationId: $configurationId
+          chatbotSettingsId: $chatbotSettingsId
         }) {
-          workflow {
-            id,
-            name,
-            lastLevel,
+          campaign {
+            id
+            name
             draft
           }
         }
       }
     `,
-    createWorkflowMessage: gql`
-      mutation CreateWorkflowMessage($text: String!, $action: MessageTypeAction!, $parentId: Int!) {
-        createWorkflowMessage(input: {
+    createMessage: gql`
+      mutation CreateMessage($text: String!, $kind: MessageKind!, $parentId: Int!) {
+        chabotCreateMessage(input: {
           text: $text,
-          action: $action,
+          kind: $kind,
           parentId: $parentId,
         }) {
           message {
-            id,
-            text,
-            level,
-            action,
+            id
+            text
+            level
+            kind
             parentId
           }
         }
       }
     `,
-    deleteWorkflowMessage: gql`
-      mutation DeleteWorkflowMessage($id: ID!) {
-        deleteWorkflowMessage(messageId: $id) {
+    deleteMessage: gql`
+      mutation DeleteMessage($id: ID!) {
+        chatbotDeleteMessage(messageId: $id) {
           ok
         }
       }
     `
   },
   query: {
-    workflow: gql`
-      query Workflow($communityId: Int!) {
-        workflow(communityId: $communityId) {
+    campaigns: gql`
+      query ListCampaign($communityId: Int!) {
+        campaigns(communityId: $communityId) {
           edges {
             node {
-              id,
-              name,
-              lastLevel,
+              id
+              name
               draft
             }
           }

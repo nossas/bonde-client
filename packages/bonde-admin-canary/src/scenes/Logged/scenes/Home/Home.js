@@ -21,6 +21,8 @@ const TutorialDialog = ({ children, step, t, ...props }) => (
   </Tutorial.Dialog>
 )
 
+// {({ user }) => user.tags.edges.length < 1 ? <Redirect to='/admin/tags' /> : (
+
 export default class extends React.Component {
   
   render () {
@@ -30,7 +32,7 @@ export default class extends React.Component {
       <I18n ns='home'>
         {t => (
           <Auth>
-            {({ user }) => user.tags.edges.length < 1 ? <Redirect to='/admin/tags' /> : (
+            {({ user }) => (
               <Tutorial initialize={showTutorial}>
                 <Page
                   renderTitle={() => (<Header.Title>Home</Header.Title>)}

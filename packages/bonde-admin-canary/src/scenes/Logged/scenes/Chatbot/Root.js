@@ -10,25 +10,25 @@ import EditGraphScene from './scenes/EditGraph'
 
 export default withRouter(({ match, history }) => {
   const community = { id: 1, name: "Bonde"}
-  const [workflow, setWorkflow] = useState(undefined)
+  const [campaign, setCampaign] = useState(undefined)
 
-  const handleChangeWorkflow = (workflow) => {
-    if (workflow !== undefined) {
-      setWorkflow(workflow)
-      history.push(`/admin/chatbot/${workflow.node.id}`)
+  const handleChangeCampaign = (campaign) => {
+    if (campaign !== undefined) {
+      setCampaign(campaign)
+      history.push(`/admin/chatbot/${campaign.node.id}`)
     }
   }
 
   return (
     <Page renderTitle={() => <Header.Title>{community.name}</Header.Title>}>
-      <Query query={ChatbotAPI.query.workflow} variables={{ communityId: community.id }}>
+      <Query query={ChatbotAPI.query.campaigns} variables={{ communityId: community.id }}>
         {({ loading, error, data }) => {
           if (loading) return 'Loading...'
           if (error) return 'Error!!'
 
           const newProps = {
-            edges: data.workflow.edges,
-            changeWorkflow: handleChangeWorkflow
+            edges: data.campaigns.edges,
+            changeCampaign: handleChangeCampaign
           }
 
           return (
@@ -40,7 +40,7 @@ export default withRouter(({ match, history }) => {
               />
               <Route
                 path={`${match.url}/:id`}
-                component={(props) => <EditGraphScene {...props} {...newProps} workflow={workflow} />}
+                component={(props) => <EditGraphScene {...props} {...newProps} campaign={campaign} />}
               />
             </React.Fragment>
           )

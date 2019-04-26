@@ -9,14 +9,14 @@ import {
 import { ConversationTree } from '../../components'
 import queryBuilder from '../../queryBuilder'
 
-const ConversationFlow = ({ workflow }) => {
+const ConversationFlow = ({ campaign }) => {
   const allMessagesQuery = queryBuilder(20)
   const height = window.innerHeight
     || document.documentElement.clientHeight
     || document.body.clientHeight
 
   return (
-    <Query query={allMessagesQuery} variables={{ id: workflow.node.id }} fetchPolicy='network-only'>
+    <Query query={allMessagesQuery} variables={{ id: campaign.node.id }} fetchPolicy='network-only'>
       {({ loading, error, data }) => {
         if (loading) return <div style={{ width: '100%', height: `${height}px` }}>Loading...</div>
         if (error) return 'Error!'
@@ -24,7 +24,7 @@ const ConversationFlow = ({ workflow }) => {
         const conversation = data.conversation.edges[0].node.messages.edges
         return (
           <ConversationTree
-            workflow={workflow}
+            campaign={campaign}
             conversation={conversation}
           />
         )
@@ -34,22 +34,22 @@ const ConversationFlow = ({ workflow }) => {
 }
 
 
-export default ({ changeWorkflow, edges, match, workflow }) => {
+export default ({ changeCampaign, edges, match, campaign }) => {
   useEffect(() => {
-    if (!workflow && match.params.id) {
-      changeWorkflow(edges.filter(i => i.node.id === match.params.id)[0])
+    if (!campaign && match.params.id) {
+      changeCampaign(edges.filter(i => i.node.id === match.params.id)[0])
     }
-  }, [edges, workflow])
+  }, [edges, campaign])
 
-  return workflow ? (
+  return campaign ? (
     <Flexbox vertical>
       <Flexbox horizontal spacing='between'>
-        <Title.H2 margin={{ bottom: 10 }}>{workflow.node.name}</Title.H2>
+        <Title.H2 margin={{ bottom: 10 }}>{campaign.node.name}</Title.H2>
       </Flexbox>
       <Title.H5 margin={{ bottom: 25 }}>FLUXO DE CONVERSA</Title.H5>
       <Grid>
         <Cell size={[12, 12, 12]}>
-          {workflow && <ConversationFlow workflow={workflow} />}
+          {campaign && <ConversationFlow campaign={campaign} />}
         </Cell>
       </Grid>
     </Flexbox>

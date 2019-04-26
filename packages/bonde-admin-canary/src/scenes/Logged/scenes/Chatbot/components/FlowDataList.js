@@ -19,16 +19,16 @@ const NameRender = (name) => (
   <Title.H4>{name}</Title.H4>
 )
 
-const ActionRender = ({ data, changeWorkflow }) => {
+const ActionRender = ({ data, changeCampaign }) => {
   return (
     <Flexbox horizontal>
-      <Button onClick={() => changeWorkflow(data)}>Editar</Button>
+      <Button onClick={() => changeCampaign(data)}>Editar</Button>
       <Button flat>Excluir</Button>
     </Flexbox>
   )
 }
 
-export default ({ edges, changeWorkflow }) => {
+export default ({ edges, changeCampaign }) => {
   const height = window.innerHeight
     || document.documentElement.clientHeight
     || document.body.clientHeight
@@ -42,7 +42,7 @@ export default ({ edges, changeWorkflow }) => {
         id: {
           width: 120,
           render: (id, data) => (
-            <ActionRender data={data} changeWorkflow={changeWorkflow} />
+            <ActionRender data={data} changeCampaign={changeCampaign} />
           )
         }
       }}

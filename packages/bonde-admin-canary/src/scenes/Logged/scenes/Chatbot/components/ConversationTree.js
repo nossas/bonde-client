@@ -63,14 +63,14 @@ const SimpleNodeLabel = ({ nodeData, nodeDataSelected, onInsertClick, onDeleteCl
   let hasChildrenIsReply = false
   if (nodeData.children) {
     hasChildren = nodeData.children.length > 0
-    hasChildrenIsReply = nodeData.children.filter(x => x.action === 'quick_reply').length > 0
+    hasChildrenIsReply = nodeData.children.filter(x => x.kind === 'quick_reply').length > 0
   }
   const active = nodeDataSelected && nodeData.uuid === nodeDataSelected.uuid
   const fullProps = {
     rounded: '10px 10px 10px 0',
     border: active ? '2px solid #e9578f' : undefined
   }
-  if (nodeData.action === 'quick_reply') {
+  if (nodeData.kind === 'quick_reply') {
     fullProps.rounded = '15px'
     fullProps.border = active ? '2px solid #e9578f' : '2px solid #2f88e6'
     fullProps.color = '#2f88e6'
@@ -111,7 +111,7 @@ export default class extends React.Component {
   }
 
   render() {
-    const { conversation, workflow } = this.props
+    const { conversation, campaign } = this.props
 
     const height = window.innerHeight
       || document.documentElement.clientHeight
@@ -121,14 +121,14 @@ export default class extends React.Component {
       <div style={{height: height ? height - 320 : '100px'}} ref={tc => this.treeContainer = tc}>
         {this.state.nodeData && this.state.openInsertModal && (
           <CreateMessageModalForm
-            workflow={workflow}
+            campaign={campaign}
             nodeData={this.state.nodeData}
             onClose={() => this.setState({ openInsertModal: false })}
           />
         )}
         {this.state.nodeData && this.state.openDeleteModal && (
           <DeleteMessageModal
-            workflow={workflow}
+            campaign={campaign}
             nodeData={this.state.nodeData}
             onClose={() => this.setState({ openDeleteModal: false })}
           />
