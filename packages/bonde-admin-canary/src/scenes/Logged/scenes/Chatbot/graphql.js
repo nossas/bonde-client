@@ -19,7 +19,7 @@ export default {
     `,
     createMessage: gql`
       mutation CreateMessage($text: String!, $kind: MessageKind!, $parentId: Int!) {
-        chabotCreateMessage(input: {
+        chatbotCreateMessage(input: {
           text: $text,
           kind: $kind,
           parentId: $parentId,

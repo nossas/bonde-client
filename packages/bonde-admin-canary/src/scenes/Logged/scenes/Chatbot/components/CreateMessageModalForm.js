@@ -57,7 +57,7 @@ export default ({ nodeData, onClose, campaign }) => {
             validate={required('Mensagem deve ser preenchida.')}
           />
           <Field
-            name='action'
+            name='kind'
             label='Tipo de mensagem'
             component={FormField}
             inputComponent={(props) => {

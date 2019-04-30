@@ -43,14 +43,14 @@ export default () => {
         </Flexbox>
         <Flexbox vertical>
           <FormGraphQL
-            mutation={ChatbotAPI.mutation.createWorkflow}
-            update={(cache, { data: { createCampaign }}) => {
+            mutation={ChatbotAPI.mutation.createCampaign}
+            update={(cache, { data: { chatbotCreateCampaign }}) => {
               const { campaigns } = cache.readQuery({
                 query: ChatbotAPI.query.campaigns,
                 variables: { communityId: FACEBOOK_BOT_CONFIGURATION.communityId }
               })
               // TODO: Check simpler way to work with typing in graphql
-              campaigns.edges.push({ node: createCampaign.campaign, __typename: 'WorkflowEdge' })
+              campaigns.edges.push({ node: chatbotCreateCampaign.campaign, __typename: 'WorkflowEdge' })
               cache.writeQuery({ query: ChatbotAPI.query.campaigns, data: { campaigns } })
             }}
             refetchQueries={[{
@@ -58,7 +58,7 @@ export default () => {
               variables: { communityId: FACEBOOK_BOT_CONFIGURATION.communityId }
             }]}
             onSubmit={(values, mutation) => {
-              return mutation({ variables: {...values, configurationId: FACEBOOK_BOT_CONFIGURATION.id }})
+              return mutation({ variables: {...values, chatbotSettingsId: FACEBOOK_BOT_CONFIGURATION.id }})
                 .then(() => {
                   handleCloseModalForm()
                 })
