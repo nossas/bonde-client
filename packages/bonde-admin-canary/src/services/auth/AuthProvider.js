@@ -41,10 +41,9 @@ class AuthProvider extends React.Component {
               if (error || !data) {
                 if (error.graphQLErrors.length === 1 && error.graphQLErrors[0].message === 'Signature has expired') {
                   this.handleLogout()
-                  setInterval(() => console.log('logout'), 2000)
-                  return <Redirect to={{ pathname: '/auth/login' }} />
+                } else {
+                  return <h2>Houve algum problema na conexão GraphQL</h2>
                 }
-                return <h2>Houve algum problema na conexão GraphQL</h2>
               }
 
               return (
