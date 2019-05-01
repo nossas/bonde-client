@@ -4,7 +4,7 @@ import { Grid, Cell, Flexbox2 as Flexbox } from 'bonde-styleguide'
 import { Tutorial } from 'components'
 import { ToastContainer } from 'components/Notification'
 import { Page, Header } from 'components/PageLogged'
-import { Redirect } from 'services/router'
+/*import { Redirect } from 'services/router'*/
 import { Auth } from 'services/auth'
 /*import { UserCommunities, UserMobilizations, TrendingMobilizationsGadget } from './gadgets'*/
 import { UserCommunities, UserMobilizations } from './gadgets'

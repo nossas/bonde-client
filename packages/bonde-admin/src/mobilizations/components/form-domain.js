@@ -450,7 +450,7 @@ FormDomain.propTypes = {
   formComponent: PropTypes.any.isRequired,
   fields: PropTypes.shape({
     externalDomain: PropTypes.object.isRequired,
-    subdomain: PropTypes.object.isRequred,
+    subdomain: PropTypes.object.isRequired,
     domain: PropTypes.object.isRequired
   }).isRequired,
   mobilization: PropTypes.object.isRequired,
