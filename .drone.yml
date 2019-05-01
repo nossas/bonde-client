@@ -5,6 +5,7 @@ pipeline:
   unit-tests:
     image: node:10-alpine
     commands:
+      - apk add --no-cache --update bash curl tzdata ca-certificates git
       - yarn
       - yarn lerna bootstrap
       - yarn lerna run test
