@@ -82,7 +82,8 @@
     "slate-editor": "5.1.0",
     "slate-plain-serializer": "^0.6.33",
     "slate-react": "0.18.0",
-    "string": "^3.3.3"
+    "string": "^3.3.3",
+    "snyk": "^1.161.1"
   },
   "engines": {
     "node": ">=8"
@@ -98,7 +99,9 @@
     "preinstall": "rm -f node_modules/@ && rm -f node_modules/@mobs",
     "postinstall": "ln -s `pwd`/src node_modules/@ && ln -s `pwd`/src/1corelib node_modules/@mobs",
     "styleguide": "styleguidist server",
-    "styleguide:build": "styleguidist build"
+    "styleguide:build": "styleguidist build",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "jest": {
     "coverageReporters": [
@@ -117,5 +120,6 @@
   ],
   "devDependencies": {
     "react-styleguidist": "^8.0.6"
-  }
+  },
+  "snyk": true
 }
