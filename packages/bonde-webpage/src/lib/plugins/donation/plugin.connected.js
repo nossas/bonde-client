@@ -1,7 +1,8 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Donation from './plugin'
 
-export default class extends React.Component {
+class DonationConnected extends React.Component {
   constructor (props) {
     super(props)
     this.state = { donationCustomerData: undefined }
@@ -24,7 +25,7 @@ export default class extends React.Component {
         : '#43a2cc'
 
       const checkout = new window.PagarMeCheckout.Checkout({
-        encryption_key: process.env.REACT_APP_PAGARME_KEY || 'setup env var',
+        encryption_key: this.props.pagarmeKey || 'setup env var',
         success: (data) => {
           data.subscription = paymentType === 'users_choice'
             ? (selectedPaymentType !== 'unique')
@@ -108,6 +109,12 @@ export default class extends React.Component {
     )
   }
 }
+
+DonationConnected.propTypes = {
+  pagarmeKey: PropTypes.string.isRequired
+}
+
+export default DonationConnected
 
 /* TOOD: script inserted on top level for rendering, but need thing a better solution
 // eslint-disable-next-line

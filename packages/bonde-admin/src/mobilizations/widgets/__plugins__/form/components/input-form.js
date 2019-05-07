@@ -18,6 +18,29 @@ export class InputForm extends Component {
     }
   }
 
+  fieldTypes = {
+    text: {
+      id: 'form-widget.components--input-form.field-type.options.text',
+      defaultMessage: 'Texto'
+    },
+    email: {
+      id: 'form-widget.components--input-form.field-type.options.email',
+      defaultMessage: 'E-mail'
+    },
+    number: {
+      id: 'form-widget.components--input-form.field-type.options.number',
+      defaultMessage: 'Número'
+    },
+    dropdown: {
+      id: 'form-widget.components--input-form.field-type.options.dropdown',
+      defaultMessage: 'Dropdown &#9733;'
+    },
+    greetings: {
+      id: 'form-widget.components--input-form.field-type.options.greetings',
+      defaultMessage: 'Saudação &#9733;'
+    },
+  }
+
   componentWillAppear () {
     const { uid } = this.props
     $('#form-' + uid).hide()
@@ -232,36 +255,9 @@ export class InputForm extends Component {
                   className='select m0'
                   onChange={this.handleKindChange.bind(this)}
                   value={this.state.kind}>
-                  <option value='text'>
-                    {intl.formatMessage({
-                      id: 'form-widget.components--input-form.field-type.options.text',
-                      defaultMessage: 'Texto'
-                    })}
-                  </option>
-                  <option value='email'>
-                    {intl.formatMessage({
-                      id: 'form-widget.components--input-form.field-type.options.email',
-                      defaultMessage: 'E-mail'
-                    })}
-                  </option>
-                  <option value='number'>
-                    {intl.formatMessage({
-                      id: 'form-widget.components--input-form.field-type.options.number',
-                      defaultMessage: 'Número'
-                    })}
-                  </option>
-                  <option value='dropdown'>
-                    {intl.formatMessage({
-                      id: 'form-widget.components--input-form.field-type.options.dropdown',
-                      defaultMessage: 'Dropdown &#9733;'
-                    })}
-                  </option>
-                  <option value='greetings'>
-                    {intl.formatMessage({
-                      id: 'form-widget.components--input-form.field-type.options.greetings',
-                      defaultMessage: 'Saudação &#9733;'
-                    })}
-                  </option>
+                    {Object.keys(this.fieldTypes).map((i, indexI) => (
+                      <option key={indexI} value={i}>{this.props.intl.formatMessage(this.fieldTypes[i])}</option>
+                    ))}
                 </select>
               </div>
             </div>

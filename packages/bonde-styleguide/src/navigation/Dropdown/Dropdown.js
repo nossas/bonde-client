@@ -28,6 +28,7 @@ const DropdownMenu = styled.div`{
   top: calc(100% + 15px);
   z-index: 9;
   overflow-y: auto;
+  box-shadow: 0 7px 14px #E5E5E5, 0 5px 5px #E5E5E5;
   max-height: calc(100vh - 30px - 40px);
   min-width: calc(100% + 15px);
 }`

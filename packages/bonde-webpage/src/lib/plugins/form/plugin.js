@@ -116,7 +116,7 @@ class Form extends Component {
   renderButton () {
     const { widget, intl } = this.props
     const { loading, success } = this.state  
-    return (
+    return widget.settings.fields && (
       <Button
         {...this.props}
         buttonText={

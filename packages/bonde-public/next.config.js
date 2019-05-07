@@ -21,7 +21,8 @@ module.exports = withCSS(withSass({
     publicRuntimeConfig: {
       domainApiRest: process.env.REACT_APP_DOMAIN_API_REST,
       domainApiGraphql: process.env.REACT_APP_DOMAIN_API_GRAPHQL,
-      domainPublic: process.env.REACT_APP_DOMAIN_PUBLIC
+      domainPublic: process.env.REACT_APP_DOMAIN_PUBLIC,
+      pagarmeKey: process.env.REACT_APP_PAGARME_KEY
     }
   })
 )

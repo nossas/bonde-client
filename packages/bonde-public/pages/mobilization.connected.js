@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactGA from 'react-ga'
+import getConfig from 'next/config'
 // MOBILIZATION and external dependencies
 import { Mobilization } from 'bonde-webpage'
 import { PluggableWidget, FinishMessageCustom } from 'bonde-webpage/lib/ux'
@@ -22,6 +23,9 @@ import { DonationAnalytics, DonationTellAFriend } from 'bonde-webpage/lib/plugin
 
 import { connect } from 'react-redux'
 import { selectors as MobilizationSelectors } from 'bonde-webpage/lib/redux'
+
+
+const { publicRuntimeConfig } = getConfig()
 
 const mapStateToProps = (state, props) => {
   const query = MobilizationSelectors(state, props)
@@ -73,6 +77,7 @@ const plugins = [
     component: (props) => (
       <DonationPlugin
         {...props}
+        pagarmeKey={publicRuntimeConfig.pagarmeKey}
         analyticsEvents={DonationAnalytics}
         overrides={{
           FinishCustomMessage: { component: FinishMessageCustom },
