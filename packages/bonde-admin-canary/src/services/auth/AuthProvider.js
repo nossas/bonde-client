@@ -12,52 +12,60 @@ export const { Consumer } = AuthContext
 
 
 class AuthProvider extends React.Component {
-  state = { redirectToReferrer: false }
+  state = {
+    fetching: true,
+    user: undefined
+  }
+
+  componentDidMount () {
+    graphqlApi
+      .query({ query: UserQuery })
+      .then(({ data }) => {
+        this.setState({ user: data.user, fetching: false })
+      })
+      .catch(error => {
+        if (typeof error === 'object' && error.graphQLErrors[0].message === 'Token invalid, user not found.') {
+          authSession
+            .logout()
+            .then(() => {
+              graphqlApi.resetStore()
+              this.setState({ fetching: false })
+            })
+        }
+        console.error(error)
+      })
+  }
 
   handleLogout() {
     return authSession
       .logout()
       .then(() => {
         graphqlApi.resetStore()
-        this.setState({ redirectToReferrer: true })
+        this.setState({ fetching: false })
       })
   }
   
   render () {
     const { children, loading: Loading } = this.props
 
-    if (this.state.redirectToReferrer) {
+    if (!this.state.fetching && !this.state.user) {
+      // Redirect user when is fetched current user but inválid token or session
       return <Redirect to={{ pathname: '/auth/login' }} />
+    } else if (this.state.fetching) {
+      return <Loading />
     }
 
     return (
       <I18n ns='auth'>
         {(t) => (
-          <Query query={UserQuery}>
-            {({ loading, error, data }) => {
-              
-              if (loading) return <Loading />
-
-              if (error || !data) {
-                if (error.graphQLErrors.length === 1 && error.graphQLErrors[0].message === 'Signature has expired') {
-                  this.handleLogout()
-                } else {
-                  return <h2>Houve algum problema na conexão GraphQL</h2>
-                }
-              }
-
-              return (
-                <AuthContext.Provider
-                  value={{
-                    user: data.user,
-                    logout: this.handleLogout.bind(this)
-                  }}
-                >
-                  {children}
-                </AuthContext.Provider>
-              )
+          <AuthContext.Provider
+            value={{
+              user: this.state.user,
+              logout: this.handleLogout.bind(this)
             }}
-          </Query>
+          >
+            {children}
+          </AuthContext.Provider>
         )}
       </I18n>
     )
