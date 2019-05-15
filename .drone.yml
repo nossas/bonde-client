@@ -45,6 +45,7 @@ pipeline:
       - packages/bonde-admin/coverage
       - packages/bonde-admin-canary/coverage
       - packages/bonde-public/coverage
+      - packages/bonde-webpage/coverage
       - packages/bonde-styleguide/coverage
     when:
       status: success

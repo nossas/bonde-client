@@ -4,8 +4,8 @@ import { Cell, Panel } from 'bonde-styleguide'
 
 const TrendingMobilizationsCellsLoading = ({ cells }) => (
   Array(cells).fill('').map(() => (
-    <Cell key={Math.random()} size={[3, 3, 3]}>
-      <Panel loading image='' title='' description='' author='' />
+    <Cell key={Math.random()} size={[6, 6, 6]}>
+      <Panel loading image='' title='' author='' />
     </Cell>
   ))
 )

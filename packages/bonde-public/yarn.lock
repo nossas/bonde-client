@@ -6104,6 +6104,7 @@ slate-dev-logger@^0.1.36, slate-dev-logger@^0.1.39:
 slate-editor@~4:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/slate-editor/-/slate-editor-4.0.1.tgz#3eb8ef1f27600427f71ecd7f3bb05c074ecccb39"
+  integrity sha512-kEH/+3KJvUGoakgFZMz29gw77K2CqKv1DZE26zME658W9THRXxFBStcB3t65vy8eXNn9IqSaKw6zqZgJp0AWnQ==
   dependencies:
     classnames "^2.2.5"
     exenv "^1.2.1"

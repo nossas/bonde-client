@@ -1,27 +1,22 @@
-/* eslint-disable no-unused-expressions */
-// import React from 'react'
-// import { shallow } from 'enzyme'
-import { expect } from 'chai'
+import * as React from 'react'
+import { shallow } from 'enzyme'
+import test from 'ava'
 
-// import { TellAFriend } from './index'
+import TellAFriend from './index'
 
-describe('client/components/share/tell-a-friend', () => {
-  let wrapper
-  const props = {
-    dispatch: () => {},
-    href: 'http://foo.bar',
-    message: 'Foo Bar Message',
-    mobilization: { twitter_share_text: 'Twitter Share Text' },
-    widget: { settings: { whatsapp_text: 'Foo Bar' } }
-  }
+let wrapper
+const props = {
+  dispatch: () => {},
+  href: 'http://foo.bar',
+  message: 'Foo Bar Message',
+  mobilization: { twitter_share_text: 'Twitter Share Text' },
+  widget: { settings: { whatsapp_text: 'Foo Bar' } }
+}
 
-  beforeAll(() => {
-    //wrapper = shallow(<TellAFriend {...props} />)
-  })
+test.beforeEach(() => {
+  wrapper = shallow(<TellAFriend {...props} />)
+})
 
-  describe('#render', () => {
-    xit('should render without crash', () => {
-      expect(wrapper).to.be.ok
-    })
-  })
+test('should render without crash', t => {
+  t.is(wrapper.length, 1)
 })

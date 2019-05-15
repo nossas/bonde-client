@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Text } from 'bonde-styleguide'
 import { Query } from 'react-apollo'
 import ImageColumn from '../ImageColumn'
@@ -17,7 +17,7 @@ const columns = [
   {
     field: 'text',
     render: ({ row }) => (
-      <React.Fragment>
+      <Fragment>
         <Text
           fontSize={16}
           fontWeight={900}
@@ -32,12 +32,12 @@ const columns = [
         >
           {row.description || row.city}
         </Text>
-      </React.Fragment>
+      </Fragment>
     )
   },
 ]
 
-const CommunitiesGadget = ({ t, loading, communities, filter, onChangeFilter }) => (
+const CommunitiesGadget = ({ t, loading, communities }) => (
   <TableCardGadget
     loading={loading}
     data={communities}
@@ -45,7 +45,6 @@ const CommunitiesGadget = ({ t, loading, communities, filter, onChangeFilter }) 
     title={t('gadgets.communities.title')}
     emptyIcon='community'
     emptyText={t('gadgets.communities.emptyText')}
-    renderFilter={() => <Filter filter={filter} onChange={onChangeFilter} />}
     onClickRow={(row) => {
       authSession
         .setAsyncItem('community', toSnakeCase(row))
@@ -57,27 +56,6 @@ const CommunitiesGadget = ({ t, loading, communities, filter, onChangeFilter }) 
   />
 )
 
-/*const CommunitiesGadgetQueryset = ({ t }) => (
-  <Queryset
-    query={HomeAPI.query.userCommunities}
-    filter={{ sort: 'updated_at_desc' }}
-  >
-    {({ loading, data, filter, onChangeFilter }) => {
-      if (loading) return 'Loading...'
-      return (
-        <CommunitiesGadget
-          t={t}
-          loading={loading}
-          filter={filter}
-          onChangeFilter={onChangeFilter}
-          communities={data && data.userCommunities ? data.userCommunities.edges.map(i => i.node) : []}
-        />
-      )
-    }}
-  </Queryset>
-)*/
-
-/*export default CommunitiesGadgetQueryset*/
 export default ({ t }) => (
   <Query query={userCommunitiesQuery}>
   {({ data, loading, error }) => {

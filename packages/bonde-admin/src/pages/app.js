@@ -10,14 +10,12 @@ import NotificationSystem from '@/components/notification-system'
 import AccountRegisterPage from './public/account-register'
 import SubscriptionEditPage from './public/subscription-edit'
 import LoggedRoute from './admin'
-import PlaygroundMobs from './playground-mobs'
 
 const AuthExample = () => (
   <div>
     <Router>
       <Switch>
         <Route exact path='/register' component={AccountRegisterPage} />
-        <Route exact path='/playground' component={PlaygroundMobs} />
         <Route exact path='/subscriptions/:id/edit' component={SubscriptionEditPage} />
         <Route path='/' component={LoggedRoute} />
         <Route component={TechnicalIssues} />

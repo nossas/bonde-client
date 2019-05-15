@@ -1,14 +1,14 @@
 import * as t from '../action-types'
 
 export const initialState = {
-  isLoaded: false,
-  fetching: false,
-  saving: false,
-  data: [],
-  currentId: undefined,
-  menuActiveIndex: undefined,
-  error: undefined,
-  communityId: undefined
+    isLoaded: false,
+    fetching: false,
+    saving: false,
+    data: [],
+    currentId: undefined,
+    menuActiveIndex: undefined,
+    error: undefined,
+    communityId: undefined
 }
 
 export default (state = initialState, action = {}) => {

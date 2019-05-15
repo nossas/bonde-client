@@ -19,8 +19,7 @@ import { client as graphqlClient } from '@/store'
 import DonationPlugin from './plugin-donation.connected'
 import { DonationAnalytics, DonationTellAFriend } from 'bonde-webpage/lib/plugins/donation'
 // TODO: Icons should be inside plugin reference.
-import { PressureEmailIcon, PressurePhoneIcon } from '@/pages/playground-mobs/icons'
-
+import { PressureEmailIcon, PressurePhoneIcon } from './icons'
 
 const MyCustonPressurePlugin = (props) => (
   <PressurePlugin

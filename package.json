@@ -1,11 +1,18 @@
 {
     "name": "bonde",
-    "version": "0.9.3",
+    "version": "0.14.1",
+    "author": "Nossas <tech@nosssas.org>",
+    "homepage": "http://bonde.org",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/nossas/bonde-client.git"
+    },
+    "license": "GPL-3.0",
     "description": "Bonde",
     "author": "Nossas <tech@nosssas.org>",
     "homepage": "http://bonde.org",
     "scripts": {
-      "dev": "yarn lerna run dev --parallel --scope=bonde-admin --scope=bonde-admin-canary --scope=bonde-public --scope=bonde-webpage"
+        "dev": "yarn lerna run dev --parallel --scope=bonde-admin --scope=bonde-admin-canary --scope=bonde-public --scope=bonde-webpage"
     },
     "devDependencies": {
         "lerna": "^3.10.5"

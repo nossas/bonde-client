@@ -5,7 +5,6 @@ import ListEmpty from './ListEmpty'
 
 const TableCardGadget = ({
   title,
-  loading,
   data,
   columns,
   border,
@@ -16,7 +15,8 @@ const TableCardGadget = ({
   HeaderComponent,
   pageIndex,
   pageTotal,
-  onClickRow
+  onClickRow,
+  height
 }) => {
   const showPagination = !!(
     pageIndex !== undefined && pageTotal && pageTotal > 1 && renderPagination
@@ -27,7 +27,7 @@ const TableCardGadget = ({
       title={title}
       renderFilter={renderFilter}
       WrapperComponent={({ children }) => (
-        <Card height='275px'>
+        <Card height={height}>
           {children}
         </Card>
       )}
@@ -54,7 +54,8 @@ const TableCardGadget = ({
 }
 
 TableCardGadget.defaultProps = {
-  data: []
+  data: [],
+  height: '565px'
 }
 
 export default TableCardGadget

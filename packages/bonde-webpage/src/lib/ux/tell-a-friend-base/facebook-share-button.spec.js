@@ -1,21 +1,23 @@
-/* eslint-disable no-unused-expressions */
-import React from 'react'
-import { expect } from 'chai'
+import * as React from 'react'
+import test from 'ava'
 import { shallow } from 'enzyme'
 import sinon from 'sinon'
 import FacebookShareButton from './facebook-share-button'
+import { IntlProvider } from 'react-intl';
+import { shallowWithIntl } from '../../helpers/intl-enzyme-test-helper';
 
 global.window = {}
 
-describe.skip('client/components/share/facebook-share-button', () => {
-  it('should open a popup on click', () => {
-    const wrapper = shallow(<FacebookShareButton href='http://meurio.org.br' />)
+test('should open a popup on click', t => {
+  const { intl } = new IntlProvider({ locale: "en" }, {}).getChildContext()
+  const wrapper = shallow(
+    <FacebookShareButton href='http://meurio.org.br' />, { context: { intl } }
+  ).shallow()
 
-    const stubOpen = sinon.spy()
-    global.window.open = stubOpen
+  const stubOpen = sinon.spy()
+  global.window.open = stubOpen
 
-    wrapper.find('button').at(0).simulate('click')
+  wrapper.find('button').at(0).simulate('click')
 
-    expect(stubOpen.called).to.be.true
-  })
+  t.true(stubOpen.called)
 })
