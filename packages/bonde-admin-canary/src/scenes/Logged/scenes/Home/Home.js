@@ -6,10 +6,7 @@ import { ToastContainer } from 'components/Notification'
 import { Page, Header } from 'components/PageLogged'
 import { Redirect } from 'services/router'
 import { Auth } from 'services/auth'
-import {
-  CommunitiesGadget,
-  TrendingMobilizationsGadget
-} from './components'
+import { UserCommunities, TrendingMobilizationsGadget } from './gadgets'
 
 const TutorialDialog = ({ children, step, t, ...props }) => (
   <Tutorial.Dialog
@@ -56,7 +53,7 @@ export default class extends Component {
                           <Grid>
                             <Cell size={[6, 6, 12, 12, 12, 12]}>
                               <TutorialDialog t={t} step={2}>
-                                <CommunitiesGadget />
+                                <UserCommunities />
                               </TutorialDialog>
                             </Cell>
                             <Cell size={[6, 6, 12, 12, 12, 12]}>

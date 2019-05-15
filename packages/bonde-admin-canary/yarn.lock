@@ -6289,9 +6289,9 @@ react-apollo@^2.1.9:
     ts-invariant "^0.4.0"
     tslib "^1.9.3"
 
-"react-d3-tree@git://github.com/igr-santos/react-d3-tree.git#feature/customize-node":
-  version "1.12.3"
-  resolved "git://github.com/igr-santos/react-d3-tree.git#9722e5a8233d1a13eb7de44b348c3af5e92ea332"
+react-d3-tree@^1.12.4:
+  version "1.12.4"
+  resolved "https://registry.yarnpkg.com/react-d3-tree/-/react-d3-tree-1.12.4.tgz#1d933ffeb585c74ed59c565fc425e661cb7871d4"
   dependencies:
     clone "^2.1.1"
     d3 "3.5.17"
@@ -6323,7 +6323,7 @@ react-dev-utils@^5.0.1:
     strip-ansi "3.0.1"
     text-table "0.2.0"
 
-react-dom@^16.8.6:
+react-dom@^16.4.1:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.8.6.tgz#71d6303f631e8b0097f56165ef608f051ff6e10f"
   dependencies:
@@ -6433,7 +6433,7 @@ react-transition-group@^2.4.0:
     prop-types "^15.6.2"
     react-lifecycles-compat "^3.0.4"
 
-react@^16.8.6:
+react@^16.4.1:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react/-/react-16.8.6.tgz#ad6c3a9614fd3a4e9ef51117f54d888da01f2bbe"
   dependencies:

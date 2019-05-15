@@ -1,5 +1,4 @@
 import React from 'react'
-import { Query } from 'react-apollo'
 import { I18n } from 'react-i18next'
 import { Redirect } from 'react-router-dom'
 import { graphqlApi } from 'services/graphql'
