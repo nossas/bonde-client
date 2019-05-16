@@ -1,3 +1,6 @@
+$fa-font-path: "~font-awesome/fonts";
+@import '~font-awesome/scss/font-awesome.scss';
+
 @import './basscss_and_override';
 @import './animations.scss';
 @import './wysihtml5.scss';
