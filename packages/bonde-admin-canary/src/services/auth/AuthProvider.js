@@ -23,7 +23,12 @@ class AuthProvider extends React.Component {
         this.setState({ user: data.user, fetching: false })
       })
       .catch(error => {
-        if (typeof error === 'object' && error.graphQLErrors[0].message === 'Token invalid, user not found.') {
+        const authErrors = [
+          'Token invalid, user not found.',
+          'Signature verification failed'
+        ]
+
+        if (typeof error === 'object' && authErrors.indexOf(error.graphQLErrors[0].message) !== -1) {
           authSession
             .logout()
             .then(() => {
