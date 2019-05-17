@@ -12,7 +12,7 @@ const TrendingMobilizationsGadget = ({ mobilizations, loading }) => (
       title={t('gadgets.trendingMobilizations.title')}
     >
       <Grid>
-      {loading ? <Loading /> : mobilizations.map(mobilization => {
+      {loading ? <Loading /> : mobilizations.map(({ node: mobilization }) => {
         return (
           <Fragment key={Math.random()}>
             <Cell size={[6, 6, 6, 12, 12, 12]}>
@@ -49,7 +49,7 @@ const TrendingMobilizationsQueryset = () => (
   >
     {({ data, loading }) => (
       <TrendingMobilizationsGadget
-        mobilizations={data && data.trendingMobilizations ? data.trendingMobilizations.nodes : undefined}
+        mobilizations={data && data.trendingMobilizations ? data.trendingMobilizations.edges : undefined}
         loading={loading}
       />
     )}
