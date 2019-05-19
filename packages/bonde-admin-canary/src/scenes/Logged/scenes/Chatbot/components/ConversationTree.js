@@ -59,12 +59,12 @@ const DeleteButton = ({ onClick }) => {
 
 
 const SimpleNodeLabel = ({ nodeData, nodeDataSelected, onInsertClick, onDeleteClick }) => {
-  let hasChildren = false
+  /*let hasChildren = false
   let hasChildrenIsReply = false
   if (nodeData.children) {
     hasChildren = nodeData.children.length > 0
     hasChildrenIsReply = nodeData.children.filter(x => x.kind === 'quick_reply').length > 0
-  }
+  }*/
   const active = nodeDataSelected && nodeData.uuid === nodeDataSelected.uuid
   const fullProps = {
     rounded: '10px 10px 10px 0',
@@ -83,7 +83,7 @@ const SimpleNodeLabel = ({ nodeData, nodeDataSelected, onInsertClick, onDeleteCl
           <Text fontSize={14} fontWeight={600} color={fullProps.color}>{nodeData.text}</Text>
         </Scrollbox>
       </Flexbox>
-      {(!hasChildren || hasChildrenIsReply) && active && (
+      {active && (
         <React.Fragment>
           <DeleteButton onClick={onDeleteClick} />
           <InsertButton onClick={onInsertClick} />
