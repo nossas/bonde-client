@@ -73,6 +73,14 @@ export default () => {
               validate={required('Nome do fluxo deve ser preenchido.')}
             />
             <Field
+              name='prefix'
+              label='Identificador'
+              placeholder='Identificador usado para agrupar mensagens'
+              component={FormField}
+              inputComponent={Input}
+              validate={required('Identificador deve ser preenchida.')}
+            />
+            <Field
               name='message'
               label='Primeira mensagem'
               placeholder='Escreva a primeira mensagem aqui (você poderá editar depois)'

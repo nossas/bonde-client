@@ -3,9 +3,10 @@ import gql from 'graphql-tag'
 export default {
   mutation: {
     createCampaign: gql`
-      mutation CreateCampaign($name: String!, $message: String!, $chatbotSettingsId: Int!) {
+      mutation CreateCampaign($name: String!, $prefix: String!, $message: String!, $chatbotSettingsId: Int!) {
         chatbotCreateCampaign(input: {
           name: $name,
+          prefix: $prefix,
           message: $message,
           chatbotSettingsId: $chatbotSettingsId
         }) {
