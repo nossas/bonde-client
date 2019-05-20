@@ -21,7 +21,7 @@ export default withRouter(({ match, history }) => {
 
   return (
     <Page renderTitle={() => <Header.Title>{community.name}</Header.Title>}>
-      <Query query={ChatbotAPI.query.campaigns} variables={{ communityId: community.id }}>
+      <Query query={ChatbotAPI.query.campaigns} variables={{ communityId: Number(match.params.id) }}>
         {({ loading, error, data }) => {
           if (loading) return 'Loading...'
           if (error) return 'Error!!'
