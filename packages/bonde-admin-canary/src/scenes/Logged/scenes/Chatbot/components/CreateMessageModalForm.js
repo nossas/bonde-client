@@ -65,6 +65,7 @@ export default ({ nodeData, onClose, campaign }) => {
                 <Select native {...props}>
                   <option value='TALK'>texto</option>
                   <option value='REPLY'>resposta</option>
+                  <option value='GIF'>gif</option>
                 </Select>
               )
             }}

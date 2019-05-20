@@ -80,7 +80,11 @@ const SimpleNodeLabel = ({ nodeData, nodeDataSelected, onInsertClick, onDeleteCl
     <Card margin='15px 10px 0 0' border={fullProps.border} rounded={fullProps.rounded}>
       <Flexbox padding={{top: 10, left: 10}} align='middle'>
         <Scrollbox height={100}>
-          <Text fontSize={14} fontWeight={600} color={fullProps.color}>{nodeData.text}</Text>
+          {nodeData.kind === 'gif' ? (
+            <img src={nodeData.text} alt={`GIF: ${nodeData.text}`} />
+          ) : (
+            <Text fontSize={14} fontWeight={600} color={fullProps.color}>{nodeData.text}</Text>
+          )}
         </Scrollbox>
       </Flexbox>
       {active && (
