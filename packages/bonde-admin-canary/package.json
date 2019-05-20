@@ -60,7 +60,7 @@
     "redux-form": "^7.4.2",
     "redux-thunk": "^2.3.0",
     "resolve": "1.8.1",
-    "serve": "^9.3.0",
+    "serve": "^11.0.0",
     "style-loader": "0.21.0",
     "styled-components": "^3.3.3",
     "sw-precache-webpack-plugin": "0.11.5",
