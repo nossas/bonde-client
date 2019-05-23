@@ -36,7 +36,7 @@
     "raf": "3.4.0",
     "react": "16.4.1",
     "react-dev-utils": "^5.0.1",
-    "react-dom": "16.4.1",
+    "react-dom": "16.4.2",
     "react-styleguidist": "7.0.20",
     "recharts": "1.0.1",
     "style-loader": "0.21.0",
