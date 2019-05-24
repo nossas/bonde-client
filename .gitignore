@@ -5,3 +5,5 @@ packages/bonde-admin-canary/build/
 .env
 .env.local
 .docz
+.nyc_output
+coverage

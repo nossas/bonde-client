@@ -26,7 +26,6 @@ import styles from 'bonde-webpage/lib/styles/main.scss'
 
 const { publicRuntimeConfig } = getConfig()
 
-
 class Page extends React.Component {
   static async getInitialProps ({ store, req, res }) {
     const { dispatch, getState } = store

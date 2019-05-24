@@ -8,9 +8,8 @@ pipeline:
       - apk add --no-cache --update bash curl tzdata ca-certificates git
       - yarn
       - yarn lerna bootstrap
-      - yarn lerna run test
       - yarn lerna run coverage
-      - rm -rf packages/bonde-public/node_modules && cd packages/bonde-public && yarn
+      - cd packages/bonde-public && rm -rf node_modules && yarn
     when:
       event: [push, tag]
 

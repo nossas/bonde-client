@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
 
-import * as paths from '../../../paths'
 import { TellAFriendBase } from '../../../ux'
 
 const DonationTellAFriend = ({ preview, mobilization, widget, ...props }) => {
@@ -17,7 +16,6 @@ const DonationTellAFriend = ({ preview, mobilization, widget, ...props }) => {
           defaultMessage='Oba, doação registrada! Sua doação é via boleto? Verifique seu email.'
         />
       }
-      href={paths.mobilization(mobilization)}
       {...props}
     />
   )

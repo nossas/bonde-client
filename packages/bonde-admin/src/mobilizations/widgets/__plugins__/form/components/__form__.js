@@ -5,7 +5,6 @@ import { intlShape } from 'react-intl'
 import $ from 'jquery'
 import classnames from 'classnames'
 
-import * as paths from '@/paths'
 import { Error } from '@/components/form-util'
 import { isValidEmail } from '@/utils/validation-helper'
 import { FinishMessageCustom } from '@/mobilizations/widgets/components'
@@ -32,13 +31,6 @@ class Form extends Component {
   fields () {
     const { settings } = this.props.widget
     return (settings && settings.fields ? settings.fields : [])
-  }
-
-  handleOverlayOnClick () {
-    const { browserHistory, mobilization, widget, editable } = this.props
-    if (editable) {
-      browserHistory.push(paths.fieldsMobilizationWidget(mobilization.id, widget.id))
-    }
   }
 
   submit () {

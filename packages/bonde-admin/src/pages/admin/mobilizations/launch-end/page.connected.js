@@ -3,6 +3,7 @@
 //
 import { provideHooks } from 'redial'
 import { connect } from 'react-redux'
+import { withRouter } from "react-router"
 
 import MobSelectors from '@/mobrender/redux/selectors'
 import * as MobActions from '@/mobrender/redux/action-creators'
@@ -25,5 +26,5 @@ const mapStateToProps = state => ({
 })
 
 export default provideHooks(redial)(
-  connect(mapStateToProps)(Page)
+  connect(mapStateToProps)(withRouter(Page))
 )

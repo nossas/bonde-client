@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+import { array, bool, func} from 'prop-types'
 import React from 'react'
 import classnames from 'classnames'
 
@@ -42,9 +42,9 @@ Menu.defaultProps = {
 }
 
 Menu.propTypes = {
-  linkTo: PropTypes.func.isRequired,
-  blocks: PropTypes.array.isRequired,
-  mobile: PropTypes.bool
+  linkTo: func.isRequired,
+  blocks: array.isRequired,
+  mobile: bool
 }
 
 export default Menu

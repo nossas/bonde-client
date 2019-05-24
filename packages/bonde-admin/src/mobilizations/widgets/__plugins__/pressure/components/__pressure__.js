@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
 import { client as graphqlClient } from '@/store'
 import * as graphqlMutations from '@/graphql/mutations'
 import * as graphqlQueries from '@/graphql/queries'
@@ -9,7 +10,7 @@ import * as paths from '@/paths'
 import * as array from '@/utils/array'
 import MobSelectors from '@/mobrender/redux/selectors'
 import * as PressureActions from '../action-creators'
-import { WidgetOverlay, FinishMessageCustom } from '@/mobilizations/widgets/components'
+import { FinishMessageCustom } from '@/mobilizations/widgets/components'
 import { PressureCount, PressureForm, TargetList, PressureTellAFriend } from '../components'
 
 /* TODO: Change static content by props
@@ -138,10 +139,10 @@ export class Pressure extends Component {
   }
 
   handleOverlayOnClick (e) {
-    const { browserHistory, mobilization, widget, editable } = this.props
+    const { history, mobilization, widget, editable } = this.props
     if (editable) {
       if (e) e.preventDefault()
-      browserHistory.push(
+      history.push(
         paths.pressure(mobilization.id, widget.id)
       )
     }
@@ -176,60 +177,52 @@ export class Pressure extends Component {
       disable_edit_field: 'n'
     }
 
-    return (
-      <WidgetOverlay
-        editable={editable}
-        onClick={this.handleOverlayOnClick.bind(this)}
-        text='Clique para configurar o formulário de pressão direta'
-      >
-        {filledPressureWidgets.includes(widget.id) || this.state.showFinishMessage ? (
-          finishMessageType === 'custom' ? (
-            <FinishMessageCustom widget={widget} />
-          ) : (
-            <PressureTellAFriend mobilization={mobilization} widget={widget} />
-          )
-        ) : (
-          <div className='pressure-widget'>
-            <div onKeyDown={(e) => e.stopPropagation()} />
-            <h2
-              className='center py2 px3 m0 white rounded-top'
-              style={{ backgroundColor: mainColor, fontFamily: headerFont }}
-            >
-              {callToAction || titleText}
-            </h2>
-            <TargetList
-              targets={this.getTargetList() || []}
-              onSelect={this.changeSelectedTargets.bind(this)}
-              errorMessage={this.state.selectedTargetsError}
-              selectable={this.selectableTargetList}
+    return filledPressureWidgets.includes(widget.id) || this.state.showFinishMessage ? (
+      finishMessageType === 'custom' ? (
+        <FinishMessageCustom widget={widget} />
+      ) : (
+        <PressureTellAFriend mobilization={mobilization} widget={widget} />
+      )
+    ) : (
+      <div className='pressure-widget'>
+        <div onKeyDown={(e) => e.stopPropagation()} />
+        <h2
+          className='center py2 px3 m0 white rounded-top'
+          style={{ backgroundColor: mainColor, fontFamily: headerFont }}
+        >
+          {callToAction || titleText}
+        </h2>
+        <TargetList
+          targets={this.getTargetList() || []}
+          onSelect={this.changeSelectedTargets.bind(this)}
+          errorMessage={this.state.selectedTargetsError}
+          selectable={this.selectableTargetList}
+        />
+        <PressureForm
+          disabled={disableEditField === 's'}
+          widget={widget}
+          mobilization={mobilization}
+          buttonText={(saving && !editable ? 'Enviando...' : buttonText)}
+          buttonColor={mainColor}
+          subject={pressureSubject}
+          body={pressureBody}
+          onSubmit={this.handleSubmit.bind(this)}
+          targetList={this.getTargetList()}
+          selectedTargets={this.selectedTargets}
+          callTransition={this.state.callTransition}
+          addTwilioCallMutation={this.state.addTwilioCallMutation}
+          changeParentState={this.changeState.bind(this)}
+        >
+          {countText && (
+            <PressureCount
+              value={this.state.phonePressureCount || widget.count || 0}
+              color={mainColor}
+              text={countText}
+              startCounting={block.scrollTopReached}
             />
-            <PressureForm
-              disabled={disableEditField === 's'}
-              widget={widget}
-              mobilization={mobilization}
-              buttonText={(saving && !editable ? 'Enviando...' : buttonText)}
-              buttonColor={mainColor}
-              subject={pressureSubject}
-              body={pressureBody}
-              onSubmit={this.handleSubmit.bind(this)}
-              targetList={this.getTargetList()}
-              selectedTargets={this.selectedTargets}
-              callTransition={this.state.callTransition}
-              addTwilioCallMutation={this.state.addTwilioCallMutation}
-              changeParentState={this.changeState.bind(this)}
-            >
-              {countText && (
-                <PressureCount
-                  value={this.state.phonePressureCount || widget.count || 0}
-                  color={mainColor}
-                  text={countText}
-                  startCounting={block.scrollTopReached}
-                />
-              )}
-            </PressureForm>
-          </div>
-        )}
-      </WidgetOverlay>
+          )}
+        </PressureForm>
+      </div>
     )
   }
 }
@@ -258,7 +251,4 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = { ...PressureActions }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Pressure)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Pressure))

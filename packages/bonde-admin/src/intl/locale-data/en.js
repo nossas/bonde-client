@@ -708,6 +708,7 @@ servidor-03.dominio.com`,
   'c--content-widget.delete-widget.confirm.message': 'Do you want to remove the widget?',
 
   'c--editor-slate.button-save.text': 'Save',
+  'c--editor-slate.button-cancel.text': 'Cancel',
 
   'page--form-widget-fields.add-button': 'Add a field',
   'page--form-widget-fields.helper-text.still-empty': 'Your form does not have any fields yet. Click below to start adding fields.',

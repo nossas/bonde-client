@@ -1,7 +1,8 @@
 {
   "name": "bonde-webpage",
-  "version": "0.14.0",
+  "version": "0.14.3",
   "private": false,
+  "license": "AGPL-3.0",
   "main": "lib/index.js",
   "files": [
     "lib",

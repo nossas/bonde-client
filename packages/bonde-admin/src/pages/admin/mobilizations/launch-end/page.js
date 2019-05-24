@@ -24,7 +24,7 @@ const Image = ({ image }) => (
   <div className='image' style={{ backgroundImage: `url(${image})` }} />
 )
 
-const MobilizationsLaunchPage = ({ browserHistory, mobilization: { id, facebook_share_image: image } }) => {
+const MobilizationsLaunchPage = ({ history, mobilization: { id, facebook_share_image: image } }) => {
   return (
     <PageCentralizedLayout>
       <PageCentralizedLayoutTitle>
@@ -37,7 +37,7 @@ const MobilizationsLaunchPage = ({ browserHistory, mobilization: { id, facebook_
       <div className='mobilization-launch-end'>
         <Heading />
         <Image image={image} />
-        <Button onClick={() => browserHistory.push(paths.editMobilization(id))}>
+        <Button onClick={() => history.push(paths.editMobilization(id))}>
           <FormattedMessage
             id='page--mobilizations-launch-end.button'
             defaultMessage='Lançar mobilização'

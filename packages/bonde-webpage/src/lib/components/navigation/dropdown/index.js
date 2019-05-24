@@ -1,6 +1,7 @@
-import PropTypes from 'prop-types'
+import { array, object, string } from 'prop-types'
 import React from 'react'
 import classnames from 'classnames'
+import { BarsIcon } from '../../icons'
 
 class DropdownMenu extends React.Component {
   constructor (props, context) {
@@ -18,7 +19,7 @@ class DropdownMenu extends React.Component {
 
   renderIcon () {
     return !this.props.icon ? null : (
-      <i className={classnames('icon fa', `fa-${this.props.icon}`)} />
+      <BarsIcon />
     )
   }
 
@@ -73,14 +74,14 @@ class DropdownMenu extends React.Component {
 }
 
 DropdownMenu.propTypes = {
-  className: PropTypes.string,
-  menuClassName: PropTypes.string,
-  menuStyle: PropTypes.object,
-  wrapperClassName: PropTypes.string,
-  buttonClassName: PropTypes.string,
-  text: PropTypes.string,
-  children: PropTypes.array,
-  icon: PropTypes.string
+  className: string,
+  menuClassName: string,
+  menuStyle: object,
+  wrapperClassName: string,
+  buttonClassName: string,
+  text: string,
+  children: array,
+  icon: string
 }
 
 export default DropdownMenu

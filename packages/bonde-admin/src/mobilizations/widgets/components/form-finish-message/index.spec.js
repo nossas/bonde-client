@@ -75,13 +75,13 @@ describe('client/mobilizations/widgets/components/form-finish-message', () => {
         const value = 'custom'
         const settings = { finish_message_type: { ...field(), value } }
         wrapper.setProps(widgetSettings(props, settings))
-        expect(wrapper.find('InjectIntl(EditorSlate)')).to.have.length(1)
+        expect(wrapper.find('EditorSlate')).to.have.length(1)
       })
       it('should initialize with default finish_message', () => {
         const value = 'custom'
         const settings = { finish_message_type: { ...field(), value } }
         wrapper.setProps(widgetSettings(props, settings))
-        expect(wrapper.find('InjectIntl(EditorSlate)').props().content).to.equal('Clique aqui para editar...')
+        expect(wrapper.find('EditorSlate').props().content).to.equal('Clique aqui para editar...')
       })
       it('should initialize with RebooEditor component', () => {
         const typeValue = 'custom'
