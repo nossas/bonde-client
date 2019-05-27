@@ -13,13 +13,8 @@ import { FormGraphQL, Field, SubmitButton, resetForm } from 'components/Form'
 import { required } from 'services/validations'
 import ChatbotAPI from '../graphql'
 
-// TODO: Select configuration id by user
-const FACEBOOK_BOT_CONFIGURATION = {
-  id: 1,
-  communityId: 1
-}
 
-export default () => {
+export default ({ community }) => {
   const [opened, setOpened] = useState(false)
 
   const handleCloseModalForm = () => {
@@ -47,7 +42,7 @@ export default () => {
             update={(cache, { data: { chatbotCreateCampaign }}) => {
               const { campaigns } = cache.readQuery({
                 query: ChatbotAPI.query.campaigns,
-                variables: { communityId: FACEBOOK_BOT_CONFIGURATION.communityId }
+                variables: { communityId: community.id }
               })
               // TODO: Check simpler way to work with typing in graphql
               campaigns.edges.push({ node: chatbotCreateCampaign.campaign, __typename: 'WorkflowEdge' })
@@ -55,10 +50,12 @@ export default () => {
             }}
             refetchQueries={[{
               query: ChatbotAPI.query.campaigns,
-              variables: { communityId: FACEBOOK_BOT_CONFIGURATION.communityId }
+              variables: { communityId: community.id }
             }]}
             onSubmit={(values, mutation) => {
-              return mutation({ variables: {...values, chatbotSettingsId: FACEBOOK_BOT_CONFIGURATION.id }})
+              // TODO: discuss how to implement the relationship of configurations, communities and bots
+              // chatbotSettingsId = 1 represents BETA the first bot
+              return mutation({ variables: {...values, chatbotSettingsId: 1 }})
                 .then(() => {
                   handleCloseModalForm()
                 })

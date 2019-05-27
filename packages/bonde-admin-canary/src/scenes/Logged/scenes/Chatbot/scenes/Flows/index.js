@@ -15,7 +15,7 @@ export default ({ changeCampaign, community, edges }) => {
     <Flexbox vertical>
       <Flexbox horizontal spacing='between'>
         <Title.H2 margin={{ bottom: 10 }}>Chatbot</Title.H2>
-        <CreateFlowModalForm />
+        <CreateFlowModalForm community={community} />
       </Flexbox>
       <Title.H5 margin={{ bottom: 25 }}>FLUXOS DE CONVERSA</Title.H5>
       <Grid>
