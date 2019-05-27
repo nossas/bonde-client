@@ -9,18 +9,17 @@ import EditGraphScene from './scenes/EditGraph'
 
 
 export default withRouter(({ match, history }) => {
-  const community = { id: 1, name: "Bonde"}
   const [campaign, setCampaign] = useState(undefined)
 
   const handleChangeCampaign = (campaign) => {
     if (campaign !== undefined) {
       setCampaign(campaign)
-      history.push(`/admin/chatbot/${campaign.node.id}`)
+      history.push(`/admin/${match.params.id}/chatbot/${campaign.node.id}`)
     }
   }
 
   return (
-    <Page renderTitle={() => <Header.Title>{community.name}</Header.Title>}>
+    <Page renderTitle={() => <Header.Title>BETA</Header.Title>}>
       <Query query={ChatbotAPI.query.campaigns} variables={{ communityId: Number(match.params.id) }}>
         {({ loading, error, data }) => {
           if (loading) return 'Loading...'
