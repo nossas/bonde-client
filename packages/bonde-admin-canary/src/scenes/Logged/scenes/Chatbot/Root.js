@@ -26,7 +26,7 @@ export default withRouter(({ match, history }) => {
           if (error) return 'Error!!'
 
           const newProps = {
-            community: { id: match.params.id },
+            community: { id: Number(match.params.id) },
             edges: data.campaigns.edges,
             changeCampaign: handleChangeCampaign
           }
