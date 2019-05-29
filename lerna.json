@@ -1,5 +1,11 @@
 {
-  "packages": ["packages/*"],
+  "packages": [
+    "bonde-admin",
+    "bonde-admin-canary",
+    "bonde-public",
+    "bonde-styleguide",
+    "bonde-webpage"
+  ],
   "command": {
     "bootstrap": {
       "npmClient": "yarn"
