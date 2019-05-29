@@ -10,6 +10,8 @@
     "license": "AGPL-3.0",
     "description": "Bonde",
     "scripts": {
+        "clean": "lerna clean -f --yes && rm -rf node_modules",
+        "reset": "yarn run clean && yarn",
         "dev": "yarn lerna run dev --parallel --scope=bonde-admin --scope=bonde-admin-canary --scope=bonde-public --scope=bonde-webpage"
     },
     "devDependencies": {
@@ -17,11 +19,6 @@
     },
     "private": true,
     "workspaces": {
-        "packages": ["packages/*"],
-        "nohoist": [
-            "**/babel**",
-            "**/webpack**",
-            "**/eslint**"
-        ]
+        "packages": ["packages/*"]
     }
 }
