@@ -1,10 +1,6 @@
 {
   "packages": [
-    "bonde-admin",
-    "bonde-admin-canary",
-    "bonde-public",
-    "bonde-styleguide",
-    "bonde-webpage"
+    "packages/*"
   ],
   "command": {
     "bootstrap": {
