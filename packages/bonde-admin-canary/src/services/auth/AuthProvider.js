@@ -30,12 +30,7 @@ class AuthProvider extends React.Component {
         ]
 
         if (typeof error === 'object' && authErrors.indexOf(error.graphQLErrors[0].message) !== -1) {
-          authSession
-            .logout()
-            .then(() => {
-              graphqlApi.resetStore()
-              this.setState({ fetching: false })
-            })
+          this.handleLogout()
         }
         console.error(error)
       })
@@ -46,7 +41,7 @@ class AuthProvider extends React.Component {
       .logout()
       .then(() => {
         graphqlApi.resetStore()
-        this.setState({ fetching: false })
+        this.setState({ fetching: false, user: undefined })
       })
   }
   
