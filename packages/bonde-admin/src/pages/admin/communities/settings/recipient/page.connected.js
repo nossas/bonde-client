@@ -75,6 +75,10 @@ const RecipientForm = createForm({
 
 export default () => {
   const transferInterval = getValues(formName, transferIntervalFieldName)
+  const banks = getCodeBanks(bank => !isNaN(bank.code) && bank.code.length === 3)
+  banks.sort((b1, b2) => {
+    return Number(b1.code) - Number(b2.code)
+  })
 
   return (
     <RecipientForm i18nKeys={i18nKeys}>
@@ -166,37 +170,33 @@ export default () => {
         />
       </Title>
 
-      <div style={{ display: 'flex' }}>
-        <Field
-          style={{ maxWidth: '230px' }}
-          name='recipient.bank_account.type'
-          component={RadioField}
-        >
-          <Radio value='conta_corrente'>
-            <FormattedMessage
-              id='page--community-recipient.form.bank-account-type.value.checking-account'
-              defaultMessage='Corrente'
-            />
-          </Radio>
-          <Radio value='conta_poupanca'>
-            <FormattedMessage
-              id='page--community-recipient.form.bank-account-type.value.savings-account'
-              defaultMessage='Poupança'
-            />
-          </Radio>
-        </Field>
-        <Field name='recipient.bank_account.bank_code' component={SelectField}>
-          {getCodeBanks(bank => !isNaN(bank.code) && bank.code.length === 3)
-            .map((bank, i) => (
-              <Option
-                key={`bankCode-${i}`}
-                value={bank.code}
-                label={`${bank.code} - ${bank.name}`}
-              />
-            )
-          )}
-        </Field>
-      </div>
+      <Field
+        style={{ maxWidth: '230px' }}
+        name='recipient.bank_account.type'
+        component={RadioField}
+      >
+        <Radio value='conta_corrente'>
+          <FormattedMessage
+            id='page--community-recipient.form.bank-account-type.value.checking-account'
+            defaultMessage='Corrente'
+          />
+        </Radio>
+        <Radio value='conta_poupanca'>
+          <FormattedMessage
+            id='page--community-recipient.form.bank-account-type.value.savings-account'
+            defaultMessage='Poupança'
+          />
+        </Radio>
+      </Field>
+      <Field name='recipient.bank_account.bank_code' component={SelectField}>
+        {banks.map((bank, i) => (
+          <Option
+            key={`bankCode-${i}`}
+            value={bank.code}
+            label={`${bank.code} - ${bank.name}`}
+          />
+        ))}
+      </Field>
 
       <div style={{ display: 'flex' }}>
         <div style={{ display: 'flex', width: '30%' }}>
