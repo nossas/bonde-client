@@ -1,6 +1,6 @@
 {
   "name": "bonde-admin",
-  "version": "0.14.3",
+  "version": "0.14.4-alpha.0",
   "private": true,
   "description": "Bonde Admin - Node.js Server and React + Redux Progressive Web App",
   "author": "Nossas <tech@nosssas.org>",
