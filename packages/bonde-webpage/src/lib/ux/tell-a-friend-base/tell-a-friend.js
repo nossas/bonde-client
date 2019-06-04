@@ -34,7 +34,7 @@ const TellAFriend = ({
       </p>
       <p><FacebookShareButton href={href} /></p>
       <p><TwitterShareButton href={href} text={twitterShareText} /></p>
-      <p><WhatsAppShareButton whatsappText={settings.whatsapp_text || href} preview={preview} /></p>
+      <p><WhatsAppShareButton whatsappText={settings.whatsapp_text || href} /></p>
     </div>
   )
 }
