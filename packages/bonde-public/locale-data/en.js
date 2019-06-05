@@ -867,5 +867,15 @@ servidor-03.dominio.com`,
   'activists-management.c--filterable-list.period.options.last-quarter': 'In the last 3 months',
   'activists-management.c--filterable-list.period.options.last-year': 'On the last year',
   'activists-management.c--filterable-list.period.options.always': 'Ever',
-  'activists-management.c--filterable-list.period.options.custom-period': 'Customize period ...'
+  'activists-management.c--filterable-list.period.options.custom-period': 'Customize period ...',
+
+  // FinishPostDonation component - finish-post-donation.js
+  'widgets.components--donation.finish-post-donation.value-list': '$ {value} / month',
+  'widgets.components--donation.finish-post-donation.no-action': 'No action available',
+  'widgets.components--donation.finish-post-donation.title-component': 'Yeah! Donation made :)',
+  'widgets.components--donation.finish-post-donation.improve-impact-question': 'Do you wanna increase your impact?',
+  'widgets.components--donation.finish-post-donation.improve-impact-solution': 'Make this donation recurrent!',
+  'widgets.components--donation.finish-post-donation.improve-impact-explanation': 'Your contribution will be made automatically once a month, starting in 31 days.',
+  'widgets.components--donation.finish-post-donation.support-every-month': 'SUPPORT EVERY MONTH',
+  'widgets.components--donation.finish-post-donation.not-now': 'NOT NOW'
 }

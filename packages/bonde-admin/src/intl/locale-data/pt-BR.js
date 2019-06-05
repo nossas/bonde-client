@@ -1488,5 +1488,15 @@ Caso sua base de ações não esteja sincronizada com o Mailchimp, você pode fo
   'adjustments.form.count-text.placeholder': 'Defina o texto que ficará ao lado do número de pessoas que agiram.',
   'adjustments.form.count-text.helpBlock': 'O contador será mostrado se existir um texto definido.',
   'adjustments.form.main-color.label': 'Cor padrão',
-  'adjustments.form.main-color.helpBlock': 'Selecione a cor no box abaixo ou insira o valor em hex, por exemplo: #DC3DCE.'
+  'adjustments.form.main-color.helpBlock': 'Selecione a cor no box abaixo ou insira o valor em hex, por exemplo: #DC3DCE.',
+
+  // FinishPostDonation component - finish-post-donation.js
+  'widgets.components--donation.finish-post-donation.value-list': '$ {value} / month',
+  'widgets.components--donation.finish-post-donation.no-action': 'Nenhuma ação disponível',
+  'widgets.components--donation.finish-post-donation.title-component': 'Boa! Doação Realizada :)',
+  'widgets.components--donation.finish-post-donation.improve-impact-question': 'Quer aumentar seu impacto?',
+  'widgets.components--donation.finish-post-donation.improve-impact-solution': 'Torne essa doação recorrente!',
+  'widgets.components--donation.finish-post-donation.improve-impact-explanation': 'Sua contribuição será efetivada automaticamente uma vez ao mês, iniciando daqui há 31 dias.',
+  'widgets.components--donation.finish-post-donation.support-every-month': 'APOIAR TODO MÊS',
+  'widgets.components--donation.finish-post-donation.not-now': 'AGORA NÃO'
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { FormattedMessage } from 'react-intl';
 
 export default class FinishPostDonation extends Component {
 
@@ -12,16 +13,62 @@ export default class FinishPostDonation extends Component {
   }
 
   renderValues(settings) {
+    const { donation_value1, donation_value2, donation_value3, donation_value4, donation_value5 } = settings
     if (settings) {
-      return [...Array(5)].map((_, i) => (
-        <option
-          key={i}
-          value={`donation_value${i + 1}`}>
-          R$ {settings[`donation_value${i + 1}`]} / mês
-        </option>
-      ))
+      return <>
+        {donation_value1 && <option value={`donation_value1`}>
+          <FormattedMessage
+            id='widgets.components--donation.finish-post-donation.value-list'
+            defaultMessage='R$ {value} / mês'
+            values={{
+              value: donation_value1
+            }}
+          />
+        </option>}
+        {donation_value2 && <option value={`donation_value2`}>
+          <FormattedMessage
+            id='widgets.components--donation.finish-post-donation.value-list'
+            defaultMessage='R$ {value} / mês'
+            values={{
+              value: donation_value2
+            }}
+          />
+        </option>}
+        {donation_value3 && <option value={`donation_value3`}>
+          <FormattedMessage
+            id='widgets.components--donation.finish-post-donation.value-list'
+            defaultMessage='R$ {value} / mês'
+            values={{
+              value: donation_value3
+            }}
+          />
+        </option>}
+        {donation_value4 && <option value={`donation_value4`}>
+          <FormattedMessage
+            id='widgets.components--donation.finish-post-donation.value-list'
+            defaultMessage='R$ {value} / mês'
+            values={{
+              value: donation_value4
+            }}
+          />
+        </option>}
+        {donation_value5 && <option value={`donation_value5`}>
+          <FormattedMessage
+            id='widgets.components--donation.finish-post-donation.value-list'
+            defaultMessage='R$ {value} / mês'
+            values={{
+              value: donation_value5
+            }}
+          />
+        </option>}
+      </>
     } else {
-      return <option disabled> Nenhuma opção disponível </option>
+      return <option disabled>
+        <FormattedMessage
+          id='widgets.components--donation.finish-post-donation.no-action'
+          defaultMessage='Nenhuma ação disponível'
+        />
+      </option>
     }
   }
 
@@ -46,16 +93,27 @@ export default class FinishPostDonation extends Component {
           className='p2 m0 white rounded-top'
           style={{ fontFamily: header_font, backgroundColor: mainColor, fontWeight: 'bold' }}
         >
-          OBA! Doação Realizada :)
-                </h2>
+          <FormattedMessage
+            id='widgets.components--donation.finish-post-donation.title-component'
+            defaultMessage='OBA! Doação Realizada :)'
+          />
+        </h2>
         <div
           className="p3"
           style={{ paddingTop: 0 }}
         >
           <div className='center clearfix p2'>
-            <b>Quer aumentar seu impacto?</b><br />
-            Torne essa doação recorrente!
-                    </div>
+            <b>
+              <FormattedMessage
+                id='widgets.components--donation.finish-post-donation.improve-impact-question'
+                defaultMessage='Quer aumentar seu impacto?'
+              />
+            </b><br />
+            <FormattedMessage
+              id='widgets.components--donation.finish-post-donation.improve-impact-solution'
+              defaultMessage='Torne essa doação recorrente!'
+            />
+          </div>
           <div
             className='center clearfix mb2'
             style={{
@@ -63,8 +121,11 @@ export default class FinishPostDonation extends Component {
               color: 'gray'
             }}
           >
-            Sua contribuição será efetivada automaticamente uma vez ao mês, iniciando daqui há 31 dias.
-                    </div>
+            <FormattedMessage
+              id='widgets.components--donation.finish-post-donation.improve-impact-explanation'
+              defaultMessage='Sua contribuição será efetivada automaticamente uma vez ao mês, iniciando daqui há 31 dias.'
+            />
+          </div>
           <div className='center clearfix'>
             <select
               className='select mb2'
@@ -81,12 +142,19 @@ export default class FinishPostDonation extends Component {
                 color: 'white'
               }}
             >
-              APOIAR TODO MÊS
+              <FormattedMessage
+                id='widgets.components--donation.finish-post-donation.support-every-month'
+                defaultMessage='APOIAR TODO MÊS'
+              />
             </button>
             <button
               onClick={() => this.props.onFinish()}
-              className="btn col-12 p2">
-              AGORA NÃO
+              className="btn col-12 p2"
+            >
+              <FormattedMessage
+                id='widgets.components--donation.finish-post-donation.not-now'
+                defaultMessage='AGORA NÃO'
+              />
             </button>
           </div>
         </div>
