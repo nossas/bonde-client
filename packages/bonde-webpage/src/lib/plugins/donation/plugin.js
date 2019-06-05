@@ -388,24 +388,19 @@ class Donation extends React.Component {
       FinishDefaultMessage: { component: FinishDefaultMessage, props: defaultProps }
     } = overrides
 
-    // TODO here
-    return finishMessageType === 'custom' ? (
-      <FinishCustomMessage mobilization={mobilization} widget={widget} {...customProps} />
-    ) : (
-      (payment_type ===  "recurring") ? (
-        <FinishDefaultMessage mobilization={mobilization} widget={widget} {...defaultProps} />
-      ) : (
-        this.state.isFinishPostDonationFinished ? (
-          this.state.postDonationValue ? (
-            <div> Usuário aceitou doação recorrente! </div>
-          ) : (
-            <div> Usuário recusou doação recorrente! </div>
-          )
-        ) : (
-          <FinishPostDonation {...this.props} onFinish={this.finishDonation} />
-        )
-      )
-    )
+    if (finishMessageType === 'custom') {
+      return <FinishCustomMessage mobilization={mobilization} widget={widget} {...customProps} />
+    } else if (payment_type === 'recurring') {
+      return <FinishDefaultMessage mobilization={mobilization} widget={widget} {...defaultProps} />
+    } else if (this.state.isFinishPostDonationFinished) {
+      if (this.state.postDonationValue) {
+        return <div> Usuário aceitou doação recorrente! </div>
+      } else {
+        return <div> Usuário recusou doação recorrente! </div>
+      }
+    } else {
+      return <FinishPostDonation {...this.props} onFinish={this.finishDonation} />
+    }
   }
 
   renderReattemptMessage () {
