@@ -9,7 +9,7 @@ export default class FinishPostDonation extends Component {
   }
 
   state = {
-    selectedValue: 'donation_value1'
+    selectedValue: 'donation_value' + this.props.widget.settings.default_donation_value
   }
 
   renderValues(settings) {
