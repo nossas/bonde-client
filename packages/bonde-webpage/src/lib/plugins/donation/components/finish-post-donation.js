@@ -135,6 +135,7 @@ export default class FinishPostDonation extends Component {
               {this.renderValues(settings)}
             </select>
             <button
+              id="donate-btn"
               onClick={() => this.props.onFinish(this.state.selectedValue)}
               className="btn col-12 p2 mb2"
               style={{
@@ -148,6 +149,7 @@ export default class FinishPostDonation extends Component {
               />
             </button>
             <button
+              id="not-now-btn"
               onClick={() => this.props.onFinish()}
               className="btn col-12 p2"
             >
