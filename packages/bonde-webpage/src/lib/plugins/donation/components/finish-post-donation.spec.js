@@ -53,5 +53,5 @@ test('value returned to parent is the same that was donated', t => {
   const callback = sinon.fake()
   finishPostDonation.setProps({ ...props, onFinish: callback })
   finishPostDonation.find('#donate-btn').simulate('click')
-  t.log(callback)
+  t.true(callback.calledWith('100'))
 })
