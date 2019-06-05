@@ -4,9 +4,9 @@ import classnames from 'classnames'
 import { FormattedMessage, intlShape } from 'react-intl'
 import { Progress } from './components'
 import { numberUtils } from './utils'
+import FinishPostDonation from './components/finish-post-donation'
 
 if (require('exenv').canUseDOM) require('./plugin.scss')
-
 
 class Donation extends React.Component {
   constructor (props, context) {
@@ -17,8 +17,18 @@ class Donation extends React.Component {
       success: false,
       selected_value: 1,
       selected_payment_type: 'recurring',
-      errors: []
+      errors: [],
+      isFinishPostDonationFinished: false
     }
+
+    this.finishDonation = this.finishDonation.bind(this)
+  }
+
+  finishDonation(value) {
+    this.setState({
+      isFinishPostDonationFinished: true,
+      postDonationValue: value
+    })
   }
 
   componentDidMount () {
@@ -371,17 +381,30 @@ class Donation extends React.Component {
 
   renderThankyouText () {
     const { mobilization, widget, overrides } = this.props
-    const { settings: { finish_message_type: finishMessageType } } = widget
+    const { settings: { finish_message_type: finishMessageType, payment_type } } = widget
 
     const {
       FinishCustomMessage: { component: FinishCustomMessage, props: customProps },
       FinishDefaultMessage: { component: FinishDefaultMessage, props: defaultProps }
     } = overrides
 
+    // TODO here
     return finishMessageType === 'custom' ? (
       <FinishCustomMessage mobilization={mobilization} widget={widget} {...customProps} />
     ) : (
-      <FinishDefaultMessage mobilization={mobilization} widget={widget} {...defaultProps} />
+      (payment_type ===  "recurring") ? (
+        <FinishDefaultMessage mobilization={mobilization} widget={widget} {...defaultProps} />
+      ) : (
+        this.state.isFinishPostDonationFinished ? (
+          this.state.postDonationValue ? (
+            <div> Usuário aceitou doação recorrente! </div>
+          ) : (
+            <div> Usuário recusou doação recorrente! </div>
+          )
+        ) : (
+          <FinishPostDonation {...this.props} onFinish={this.finishDonation} />
+        )
+      )
     )
   }
 
