@@ -136,7 +136,7 @@ export default class FinishPostDonation extends Component {
             </select>
             <button
               id="donate-btn"
-              onClick={() => this.props.onFinish(this.state.selectedValue)}
+              onClick={() => this.props.onFinish(settings[this.state.selectedValue])}
               className="btn col-12 p2 mb2"
               style={{
                 backgroundColor: mainColor,
