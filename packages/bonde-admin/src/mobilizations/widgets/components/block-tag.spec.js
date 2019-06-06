@@ -2,7 +2,7 @@
 import React from 'react'
 import { expect } from 'chai'
 import { mount } from 'enzyme'
-import { BlockTag } from '@/mobilizations/widgets/components'
+import { BlockTag } from 'mobilizations/widgets/components'
 
 describe('client/mobilizations/widgets/components/block-tag', () => {
   let component

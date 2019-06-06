@@ -4,12 +4,12 @@ import { reduxForm } from 'redux-form'
 import { graphql } from 'react-apollo'
 import Select from 'react-select-plus'
 
-import * as graphqlQueries from '@/graphql/queries'
-import * as validationHelper from '@/utils/validation-helper'
-import * as CommunitySelectors from '@/community/selectors'
-import { client as graphqlClient } from '@/store'
-import { FlatForm } from '@/ux/components'
-import { FormGroup, ControlLabel, FormControl } from '@/components/forms'
+import * as graphqlQueries from 'graphql/queries'
+import * as validationHelper from 'utils/validation-helper'
+import * as CommunitySelectors from 'community/selectors'
+import { client as graphqlClient } from 'store'
+import { FlatForm } from 'ux/components'
+import { FormGroup, ControlLabel, FormControl } from 'components/forms'
 import Summary from './summary'
 
 var styles = require('exenv').canUseDOM ? require('./activist-segmentation-form.scss') : {}

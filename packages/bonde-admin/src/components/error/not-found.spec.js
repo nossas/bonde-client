@@ -3,7 +3,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { NotFound } from '@/components/error'
+import { NotFound } from 'components/error'
 
 describe('client/components/error/not-found', () => {
   let wrapper

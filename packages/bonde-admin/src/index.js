@@ -6,7 +6,7 @@ import pt from 'react-intl/locale-data/pt'
 import es from 'react-intl/locale-data/es'
 import en from 'react-intl/locale-data/en'
 import Raven from 'raven-js'
-import localeData from '@/intl/locale-data'
+import localeData from 'intl/locale-data'
 import Application from './app'
 import { configureStore, client } from './store'
 

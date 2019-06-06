@@ -3,8 +3,8 @@ import React from 'react'
 import classnames from 'classnames'
 
 // Dependency modules
-import { DropdownMenu } from '@/components/dropdown-menu'
-import { NavbarEditionWrapper } from '@/components/navigation/navbar'
+import { DropdownMenu } from 'components/dropdown-menu'
+import { NavbarEditionWrapper } from 'components/navigation/navbar'
 
 const MenuItems = ({ blocks, mobile, ...menuProps }) => {
   const items = blocks.map(block => (

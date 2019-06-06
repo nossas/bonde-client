@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 
-import { FacebookShareButton, TwitterShareButton, WhatsAppShareButton } from '@/components/share'
+import { FacebookShareButton, TwitterShareButton, WhatsAppShareButton } from 'components/share'
 
 const TellAFriend = ({
   preview,

@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 import { expect } from 'chai'
 
-import * as helper from '@/utils/format-number-helper'
+import * as helper from 'utils/format-number-helper'
 
 describe('client/utils/format-number-helper', () => {
   describe('currency', () => {

@@ -2,7 +2,7 @@ import * as t from '../../action-types'
 import { createAction } from '../create-action'
 import * as CommunitySelectors from '../../selectors'
 
-import AuthSelectors from '@/account/redux/selectors'
+import AuthSelectors from 'account/redux/selectors'
 
 export default ({
   dns_hosted_zone_id: dnsHostedZoneId,

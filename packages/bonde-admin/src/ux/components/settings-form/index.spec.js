@@ -2,8 +2,8 @@ import React from 'react'
 import { expect } from 'chai'
 import { FormattedMessage } from 'react-intl'
 
-import { mountWithIntl } from '@/intl/helpers'
-import SettingsForm from '@/ux/components/settings-form'
+import { mountWithIntl } from 'intl/helpers'
+import SettingsForm from 'ux/components/settings-form'
 
 describe('client/ux/components/settings-form', () => {
   let form

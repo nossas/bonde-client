@@ -1,5 +1,5 @@
 import * as CommunitySelectors from '../selectors'
-import AuthSelectors from '@/account/redux/selectors'
+import AuthSelectors from 'account/redux/selectors'
 
 export default () => (dispatch, getState, { api }) => {
   const headers = AuthSelectors(getState()).getCredentials()

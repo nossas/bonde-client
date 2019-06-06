@@ -5,9 +5,9 @@ import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
 import { injectIntl } from 'react-intl'
 
-import MobSelectors from '@/mobrender/redux/selectors'
-import * as MobActions from '@/mobrender/redux/action-creators'
-import { fields, validate } from '@/mobilizations/widgets/components/form-autofire'
+import MobSelectors from 'mobrender/redux/selectors'
+import * as MobActions from 'mobrender/redux/action-creators'
+import { fields, validate } from 'mobilizations/widgets/components/form-autofire'
 import Page from './page'
 
 const mapStateToProps = (state, props) => {

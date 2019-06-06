@@ -4,7 +4,7 @@ import { expect } from 'chai'
 import { mount } from 'enzyme'
 import sinon from 'sinon'
 
-import { NavbarForm } from '@/components/navigation/navbar'
+import { NavbarForm } from 'components/navigation/navbar'
 
 const handleCloseForm = () => {}
 const mobilization = {}

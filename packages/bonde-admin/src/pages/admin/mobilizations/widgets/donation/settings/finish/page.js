@@ -1,8 +1,8 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 
-import { FormFinishMessage } from '@/mobilizations/widgets/components'
-import { DonationTellAFriend } from '@/mobilizations/widgets/__plugins__/donation/components'
+import { FormFinishMessage } from 'mobilizations/widgets/components'
+import { DonationTellAFriend } from 'mobilizations/widgets/__plugins__/donation/components'
 
 const DonationSettingsFinish = props => (
   <FormFinishMessage

@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import * as paths from '@/paths'
+import * as paths from 'paths'
 
 describe('client/mobilizations/widgets/__plugins__/donation/paths', () => {
   describe('#donation', () => {

@@ -2,8 +2,8 @@
 import React from 'react'
 import { expect } from 'chai'
 
-import shallowWithIntl from '@/intl/helpers/shallow-with-intl'
-import { TemplateSelectableList } from '@/mobilizations/templates/components'
+import shallowWithIntl from 'intl/helpers/shallow-with-intl'
+import { TemplateSelectableList } from 'mobilizations/templates/components'
 
 describe('client/mobilizations/templates/components/template-selectable-list', () => {
   let wrapper

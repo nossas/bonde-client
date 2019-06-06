@@ -1,6 +1,6 @@
 import { expect } from 'chai'
-import authReducer, { initialState } from '@/account/redux/reducers'
-import * as t from '@/account/redux/action-types'
+import authReducer, { initialState } from 'account/redux/reducers'
+import * as t from 'account/redux/action-types'
 
 describe('AuthReducer', () => {
   it('auth/LOAD_SUCCESS', () => {

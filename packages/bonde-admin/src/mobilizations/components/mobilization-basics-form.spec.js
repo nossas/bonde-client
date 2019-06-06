@@ -1,9 +1,9 @@
 import React from 'react'
-import shallowWithIntl from '@/intl/helpers/shallow-with-intl'
+import shallowWithIntl from 'intl/helpers/shallow-with-intl'
 import { expect } from 'chai'
 
-import * as mock from '@/utils/mock'
-import { MobilizationBasicsForm } from '@/mobilizations/components/mobilization-basics-form'
+import * as mock from 'utils/mock'
+import { MobilizationBasicsForm } from 'mobilizations/components/mobilization-basics-form'
 
 describe('client/mobilizations/components/mobilization-basics-form', () => {
   let wrapper

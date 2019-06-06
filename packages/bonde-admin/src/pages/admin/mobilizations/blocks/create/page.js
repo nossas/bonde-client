@@ -4,14 +4,14 @@ import { FormattedMessage } from 'react-intl'
 import ReactS3Uploader from 'react-s3-uploader'
 
 
-import * as paths from '@/paths'
+import * as paths from 'paths'
 
-import ColorPicker from '@/components/color-picker'
-import { Tabs, Tab } from '@/components/navigation'
-import { SettingsPageLayout, SettingsPageContentLayout, SettingsPageMenuLayout } from '@/components/layout'
-import { DivFloat, Button } from '@/ux/components'
-import BlockMiniature from '@/mobilizations/blocks/components/block-miniature'
-import BLOCK_LAYOUTS from '@/mobilizations/blocks/constants/block-layouts'
+import ColorPicker from 'components/color-picker'
+import { Tabs, Tab } from 'components/navigation'
+import { SettingsPageLayout, SettingsPageContentLayout, SettingsPageMenuLayout } from 'components/layout'
+import { DivFloat, Button } from 'ux/components'
+import BlockMiniature from 'mobilizations/blocks/components/block-miniature'
+import BLOCK_LAYOUTS from 'mobilizations/blocks/constants/block-layouts'
 
 if (require('exenv').canUseDOM) require('./page.scss')
 

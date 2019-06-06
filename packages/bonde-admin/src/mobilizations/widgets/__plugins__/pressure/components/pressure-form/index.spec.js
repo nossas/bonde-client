@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-expressions */
 import React from 'react'
 import { expect } from 'chai'
-import { mountWithIntl } from '@/intl/helpers'
-import * as pressureHelper from '@/mobilizations/widgets/utils/pressure-helper'
-import { PressureForm } from '@/mobilizations/widgets/__plugins__/pressure/components'
+import { mountWithIntl } from 'intl/helpers'
+import * as pressureHelper from 'mobilizations/widgets/utils/pressure-helper'
+import { PressureForm } from 'mobilizations/widgets/__plugins__/pressure/components'
 
 describe('client/mobilizations/widgets/__plugins__/pressure/components/pressure-form', () => {
   let wrapper

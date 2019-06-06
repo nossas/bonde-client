@@ -2,19 +2,19 @@
 // @route /community/info
 //
 import React from 'react'
-import { createForm, Field } from '@/storybook/forms'
+import { createForm, Field } from 'storybook/forms'
 import {
   combineValidations,
   required,
   isEmailSender
-} from '@/storybook/forms/validate'
+} from 'storybook/forms/validate'
 import {
   SettingsForm,
   TextField,
   UploadField
-} from '@/storybook/settings/forms'
-import { asyncEdit } from '@/community/action-creators'
-import * as CommunitySelectors from '@/community/selectors'
+} from 'storybook/settings/forms'
+import { asyncEdit } from 'community/action-creators'
+import * as CommunitySelectors from 'community/selectors'
 import { i18nKeys } from './i18n'
 
 const emailErrorMessage = {

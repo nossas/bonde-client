@@ -4,8 +4,8 @@
  *  Formulário padrão de doação, extende formulário de ajuste
  */
 import { ModelForm } from '../models'
-import * as formatNumberHelper from '@/utils/format-number-helper'
-import * as validationHelper from '@/utils/validation-helper'
+import * as formatNumberHelper from 'utils/format-number-helper'
+import * as validationHelper from 'utils/validation-helper'
 
 export const donationForm = ModelForm({
   form: 'donationSettingsForm',

@@ -1,10 +1,10 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 
-import * as paths from '@/paths'
-import { PageTabLayout } from '@/mobilizations/components'
-import { TemplateSelectableList } from '@/mobilizations/templates/components'
-import { Loading } from '@/components/await'
+import * as paths from 'paths'
+import { PageTabLayout } from 'mobilizations/components'
+import { TemplateSelectableList } from 'mobilizations/templates/components'
+import { Loading } from 'components/await'
 
 class TemplatesChooseCustomPage extends React.Component {
   componentDidMount () {

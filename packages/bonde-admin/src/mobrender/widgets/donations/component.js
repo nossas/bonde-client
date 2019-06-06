@@ -9,9 +9,9 @@ import {
   FormControl,
   RadioGroup,
   Radio
-} from '@/components/forms'
-import { SettingsForm } from '@/ux/components'
-import { HorizontalLayout } from '@/components/grids'
+} from 'components/forms'
+import { SettingsForm } from 'ux/components'
+import { HorizontalLayout } from 'components/grids'
 
 const DonationSettingsPage = props => {
   const {

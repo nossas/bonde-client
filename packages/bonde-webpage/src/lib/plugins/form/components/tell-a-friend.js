@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
 
-import * as paths from '../../../paths'
 import { TellAFriendBase } from '../../../ux'
 
 const FormTellAFriend = ({ preview, mobilization, widget, ...props }) => (
@@ -16,7 +15,6 @@ const FormTellAFriend = ({ preview, mobilization, widget, ...props }) => (
         defaultMessage='Formulário submetido com sucesso!'
       />
     }
-    href={paths.mobilization(mobilization)}
     {...props}
   />
 )

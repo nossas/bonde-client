@@ -3,12 +3,12 @@
 //
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
-import { createForm, getValues, Field } from '@/storybook/forms'
+import { createForm, getValues, Field } from 'storybook/forms'
 import {
   combineValidations,
   required,
   isCpfCnpj
-} from '@/storybook/forms/validate'
+} from 'storybook/forms/validate'
 import {
   SettingsForm,
   RadioField,
@@ -16,12 +16,12 @@ import {
   SelectField,
   Option,
   TextField
-} from '@/storybook/settings/forms'
-import * as normalizers from '@/utils/redux-form/normalizers'
-import { Title } from '@/components/title'
-import { asyncEdit } from '@/community/action-creators'
-import { getCurrent as getCommunity } from '@/community/selectors'
-import { getCodeBanks } from '@/community/utils'
+} from 'storybook/settings/forms'
+import * as normalizers from 'utils/redux-form/normalizers'
+import { Title } from 'components/title'
+import { asyncEdit } from 'community/action-creators'
+import { getCurrent as getCommunity } from 'community/selectors'
+import { getCodeBanks } from 'community/utils'
 import { RecipientFormWarning } from './helpText'
 import { i18nKeys } from './i18n'
 
@@ -75,6 +75,10 @@ const RecipientForm = createForm({
 
 export default () => {
   const transferInterval = getValues(formName, transferIntervalFieldName)
+  const banks = getCodeBanks(bank => !isNaN(bank.code) && bank.code.length === 3)
+  banks.sort((b1, b2) => {
+    return Number(b1.code) - Number(b2.code)
+  })
 
   return (
     <RecipientForm i18nKeys={i18nKeys}>
@@ -166,37 +170,33 @@ export default () => {
         />
       </Title>
 
-      <div style={{ display: 'flex' }}>
-        <Field
-          style={{ maxWidth: '230px' }}
-          name='recipient.bank_account.type'
-          component={RadioField}
-        >
-          <Radio value='conta_corrente'>
-            <FormattedMessage
-              id='page--community-recipient.form.bank-account-type.value.checking-account'
-              defaultMessage='Corrente'
-            />
-          </Radio>
-          <Radio value='conta_poupanca'>
-            <FormattedMessage
-              id='page--community-recipient.form.bank-account-type.value.savings-account'
-              defaultMessage='Poupança'
-            />
-          </Radio>
-        </Field>
-        <Field name='recipient.bank_account.bank_code' component={SelectField}>
-          {getCodeBanks(bank => !isNaN(bank.code) && bank.code.length === 3)
-            .map((bank, i) => (
-              <Option
-                key={`bankCode-${i}`}
-                value={bank.code}
-                label={`${bank.code} - ${bank.name}`}
-              />
-            )
-          )}
-        </Field>
-      </div>
+      <Field
+        style={{ maxWidth: '230px' }}
+        name='recipient.bank_account.type'
+        component={RadioField}
+      >
+        <Radio value='conta_corrente'>
+          <FormattedMessage
+            id='page--community-recipient.form.bank-account-type.value.checking-account'
+            defaultMessage='Corrente'
+          />
+        </Radio>
+        <Radio value='conta_poupanca'>
+          <FormattedMessage
+            id='page--community-recipient.form.bank-account-type.value.savings-account'
+            defaultMessage='Poupança'
+          />
+        </Radio>
+      </Field>
+      <Field name='recipient.bank_account.bank_code' component={SelectField}>
+        {banks.map((bank, i) => (
+          <Option
+            key={`bankCode-${i}`}
+            value={bank.code}
+            label={`${bank.code} - ${bank.name}`}
+          />
+        ))}
+      </Field>
 
       <div style={{ display: 'flex' }}>
         <div style={{ display: 'flex', width: '30%' }}>

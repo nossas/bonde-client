@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import * as mock from '@/utils/mock'
+import * as mock from 'utils/mock'
 import Page from './page'
 
 describe('routes/admin/authenticated/sidebar/widgets-form-settings/fields/page', () => {

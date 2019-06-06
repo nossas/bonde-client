@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 // The content widget module it is not the perfect module to provide these actions.
 // Needs to refact to more abstract component like global reusable components module.
 //
-import * as ContentActions from '@/mobilizations/widgets/__plugins__/content/action-creators'
+import * as ContentActions from 'mobilizations/widgets/__plugins__/content/action-creators'
 
 // You may will see the warning below:
 // Warning: Stateless function components cannot be given refs (See ref "wrappedInstance" in

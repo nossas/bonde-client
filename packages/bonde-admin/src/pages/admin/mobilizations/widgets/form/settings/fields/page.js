@@ -2,9 +2,9 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { FormattedMessage } from 'react-intl'
 
-import { Loading } from '@/components/await'
-import { Button, DivFloat } from '@/ux/components'
-import Form from '@/mobilizations/widgets/__plugins__/form/components'
+import { Loading } from 'components/await'
+import { Button, DivFloat } from 'ux/components'
+import Form from 'mobilizations/widgets/__plugins__/form/components'
 
 class FormSettingsFieldsPage extends Component {
   constructor (props, context) {

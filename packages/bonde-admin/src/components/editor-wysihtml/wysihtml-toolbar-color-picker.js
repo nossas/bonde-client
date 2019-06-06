@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ColorPicker } from '@/components/color-picker'
+import { ColorPicker } from 'components/color-picker'
 
 if (require('exenv').canUseDOM) require('./wysihtml-toolbar-color-picker.scss')
 

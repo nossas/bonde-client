@@ -5,8 +5,8 @@ import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
 import { injectIntl } from 'react-intl'
 
-import MobSelectors from '@/mobrender/redux/selectors'
-import * as TemplateActions from '@/mobilizations/templates/action-creators'
+import MobSelectors from 'mobrender/redux/selectors'
+import * as TemplateActions from 'mobilizations/templates/action-creators'
 
 import Page from './page'
 

@@ -1,4 +1,4 @@
-import * as t from '@/subscriptions/redux/action-types'
+import * as t from 'subscriptions/redux/action-types'
 
 export const initialState = {
   //

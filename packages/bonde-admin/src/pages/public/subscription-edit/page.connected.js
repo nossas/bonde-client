@@ -8,9 +8,9 @@ import {
   asyncSubscriptionDelete,
   asyncSubscriptionFetch,
   setModificationType
-} from '@/subscriptions/redux/action-creators'
-import SubscriptionEditSelectors from '@/subscriptions/redux/selectors/edit'
-import AwaitSelectors from '@/components/await/redux/selectors'
+} from 'subscriptions/redux/action-creators'
+import SubscriptionEditSelectors from 'subscriptions/redux/selectors/edit'
+import AwaitSelectors from 'components/await/redux/selectors'
 import Page from './page'
 
 const mapStateToProps = (state, props) => {

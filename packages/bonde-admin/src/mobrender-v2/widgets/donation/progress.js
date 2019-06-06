@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import classnames from 'classnames'
 import tinycolor from 'tinycolor2'
-import * as formatNumberHelper from '@/utils/format-number-helper'
+import * as formatNumberHelper from 'utils/format-number-helper'
 
 if (require('exenv').canUseDOM) require('./progress.scss')
 

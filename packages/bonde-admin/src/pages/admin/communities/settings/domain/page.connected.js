@@ -7,7 +7,7 @@ import { reduxForm } from 'redux-form'
 import { injectIntl } from 'react-intl'
 import { addNotification as notify } from 'reapop'
 
-import DNSControlSelectors from '@/community/dns-control-selectors'
+import DNSControlSelectors from 'community/dns-control-selectors'
 import {
   asyncFetchHostedZones,
   asyncFetchDNSRecords,
@@ -15,7 +15,7 @@ import {
   asyncAddDNSRecord,
   asyncDeleteDNSRecord,
   asyncCheckHostedZone
-} from '@/community/action-creators/dns-control'
+} from 'community/action-creators/dns-control'
 
 import Page from './page'
 

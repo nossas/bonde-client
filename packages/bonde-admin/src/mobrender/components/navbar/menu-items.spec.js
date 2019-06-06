@@ -3,7 +3,7 @@ import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-import MenuItems from '@/mobrender/components/navbar/menu-items'
+import MenuItems from 'mobrender/components/navbar/menu-items'
 
 describe('client/mobrender/components/navbar/menu-items', () => {
   let wrapper

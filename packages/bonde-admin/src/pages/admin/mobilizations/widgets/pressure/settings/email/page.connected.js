@@ -6,9 +6,9 @@ import { reduxForm } from 'redux-form'
 import { injectIntl } from 'react-intl'
 import { addNotification as notify } from 'reapop'
 
-import MobSelectors from '@/mobrender/redux/selectors'
-import * as MobActions from '@/mobrender/redux/action-creators'
-import { messagePressureTargetsRemoveAll } from '@/utils/notifications'
+import MobSelectors from 'mobrender/redux/selectors'
+import * as MobActions from 'mobrender/redux/action-creators'
+import { messagePressureTargetsRemoveAll } from 'utils/notifications'
 
 import Page from './page'
 

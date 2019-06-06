@@ -3,7 +3,7 @@ import React from 'react'
 import { injectIntl, intlShape } from 'react-intl'
 import classnames from 'classnames'
 
-import { NavbarButton, NavbarForm } from '@/components/navigation/navbar'
+import { NavbarButton, NavbarForm } from 'components/navigation/navbar'
 
 export class NavbarEditionWrapper extends React.Component {
   constructor (props, context) {

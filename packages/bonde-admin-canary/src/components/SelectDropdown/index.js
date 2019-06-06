@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { any, oneOfType, arrayOf, shape, string, number, node, func } from 'prop-types'
 import { Dropdown, DropdownItem } from 'bonde-styleguide'
 
 class SelectDropdown extends React.Component {
@@ -39,8 +39,6 @@ class SelectDropdown extends React.Component {
     )
   }
 }
-
-const { any, oneOfType, arrayOf, shape, string, number, node, func } = PropTypes
 
 const optionShape = shape({
   label: oneOfType([node, func, string]),

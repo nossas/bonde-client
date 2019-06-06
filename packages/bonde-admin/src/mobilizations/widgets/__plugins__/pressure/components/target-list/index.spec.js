@@ -3,7 +3,7 @@ import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-import { TargetList } from '@/mobilizations/widgets/__plugins__/pressure/components'
+import { TargetList } from 'mobilizations/widgets/__plugins__/pressure/components'
 
 describe('client/mobilizations/widgets/__plugins__/pressure/components/target-list', () => {
   let wrapper

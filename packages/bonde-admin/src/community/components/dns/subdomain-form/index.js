@@ -6,8 +6,8 @@ import {
   FormControl,
   ControlLabel,
   FormDropdown
-} from '@/components/forms'
-import { Button } from '@/ux/components'
+} from 'components/forms'
+import { Button } from 'ux/components'
 
 if (require('exenv').canUseDOM) require('./styles.scss')
 

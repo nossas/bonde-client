@@ -1,9 +1,8 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Text } from 'bonde-styleguide'
 import { Queryset } from 'components'
 import ImageColumn from '../ImageColumn'
 import TableCardGadget from '../TableCardGadget'
-import Filter from './Filter'
 import allUserCommunities from './query.graphql'
 import { authSession } from 'services/auth'
 import { toSnakeCase } from '../../utils'
@@ -17,7 +16,7 @@ const columns = [
   {
     field: 'text',
     render: ({ row }) => (
-      <React.Fragment>
+      <Fragment>
         <Text
           fontSize={16}
           fontWeight={900}
@@ -32,12 +31,12 @@ const columns = [
         >
           {row.description || row.city}
         </Text>
-      </React.Fragment>
+      </Fragment>
     )
   },
 ]
 
-const CommunitiesGadget = ({ t, loading, communities, filter, onChangeFilter }) => (
+const CommunitiesGadget = ({ t, loading, communities }) => (
   <TableCardGadget
     loading={loading}
     data={communities}
@@ -45,7 +44,6 @@ const CommunitiesGadget = ({ t, loading, communities, filter, onChangeFilter }) 
     title={t('gadgets.communities.title')}
     emptyIcon='community'
     emptyText={t('gadgets.communities.emptyText')}
-    renderFilter={() => <Filter filter={filter} onChange={onChangeFilter} />}
     onClickRow={(row) => {
       authSession
         .setAsyncItem('community', toSnakeCase(row))
@@ -62,12 +60,11 @@ const CommunitiesGadgetQueryset = ({ t }) => (
     query={allUserCommunities}
     filter={{ orderBy: 'UPDATED_AT_DESC' }}
   >
-    {({ loading, data, filter, onChangeFilter }) => (
+    {({ loading, data, filter }) => (
       <CommunitiesGadget
         t={t}
         loading={loading}
         filter={filter}
-        onChangeFilter={onChangeFilter}
         communities={data && data.allUserCommunities ? data.allUserCommunities.nodes : []}
       />
     )}

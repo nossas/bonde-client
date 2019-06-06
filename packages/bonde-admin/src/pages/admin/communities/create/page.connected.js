@@ -3,7 +3,7 @@
 //
 import { reduxForm } from 'redux-form'
 import { injectIntl } from 'react-intl'
-import * as CommunityActions from '@/community/action-creators'
+import * as CommunityActions from 'community/action-creators'
 
 import Page from './page'
 

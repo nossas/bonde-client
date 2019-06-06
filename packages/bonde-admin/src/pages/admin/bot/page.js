@@ -3,11 +3,11 @@
 //
 import React, { Component } from 'react'
 
-import { Background } from '@/components/layout'
-import { Tabs, Tab } from '@/components/navigation/tabs'
-import { Loading } from '@/components/await'
-import { Button } from '@/ux/components'
-import { StepsContainerStack, StepContent } from '@/components/steps'
+import { Background } from 'components/layout'
+import { Tabs, Tab } from 'components/navigation/tabs'
+import { Loading } from 'components/await'
+import { Button } from 'ux/components'
+import { StepsContainerStack, StepContent } from 'components/steps'
 import {
   ActivistSegmentationForm,
   FacebookBotMassMessageForm,

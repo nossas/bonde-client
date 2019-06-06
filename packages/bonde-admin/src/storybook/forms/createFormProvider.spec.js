@@ -25,7 +25,7 @@ describe('createFormProvider API', () => {
       submit: sinon.spy(),
       intl: context.intl
     }
-    wrapper = shallow(<FormProvider {...defaultProps} />, { context })
+    wrapper = shallow(<FormProvider {...defaultProps} />)
   })
 
   it('should render a form component by default', () => {
@@ -59,7 +59,7 @@ describe('createFormProvider API', () => {
 
   it('should pass i18n function like child context', () => {
     const message = { id: 'text.label', defaultMessage: 'text' }
-    const intl = { formatMessage: t => t }
+    const intl = { ...defaultProps.intl, formatMessage: t => t }
     wrapper.setProps({ intl })
     expect(wrapper.instance().getChildContext().form.i18n(message))
       .to.deep.equal(message)
@@ -74,7 +74,7 @@ describe('createFormProvider API', () => {
         }
       }
     }
-    const intl = { formatMessage: t => t }
+    const intl = { ...defaultProps.intl, formatMessage: t => t }
     wrapper.setProps({ intl, i18nKeys })
     expect(wrapper.instance().getChildContext().form.i18nKeys)
       .to.deep.equal(i18nKeys)

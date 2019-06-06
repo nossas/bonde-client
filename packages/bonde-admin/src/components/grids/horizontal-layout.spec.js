@@ -3,7 +3,7 @@ import React from 'react'
 import { expect } from 'chai'
 import { mount } from 'enzyme'
 
-import { HorizontalLayout } from '@/components/grids'
+import { HorizontalLayout } from 'components/grids'
 
 const Dummy = props => (
   <span>Dummy</span>

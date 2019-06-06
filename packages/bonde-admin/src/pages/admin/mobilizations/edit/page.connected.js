@@ -3,8 +3,8 @@
 //
 import { connect } from 'react-redux'
 
-import { selectMobilization, asyncFetchBlocks, asyncFetchWidgets } from '@/mobrender/redux/action-creators'
-import MobSelectors from '@/mobrender/redux/selectors'
+import { selectMobilization, asyncFetchBlocks, asyncFetchWidgets } from 'mobrender/redux/action-creators'
+import MobSelectors from 'mobrender/redux/selectors'
 
 import Page from './page'
 

@@ -1,40 +1,37 @@
-import test from 'ava'
 import { store } from 'services/redux'
 import { db } from 'services/session'
 import AuthAPI from './api'
+import {expect} from 'chai'
 
-test('save user in redux and session when login', t => {
-  const user = { name: 'Test', jwtToken: 'abcdfg' }
-  AuthAPI.login(user)
-  t.is(user, store.getState().auth.user)
-  t.is(user, db.get('user').value())
-})
+describe('services > auth > api', () => {
+  it('save user in redux and session when login', () => {
+    const user = { name: 'Test', jwtToken: 'abcdfg' }
+    AuthAPI.login(user)
+    expect(user).to.be.equal(store.getState().auth.user)
+    expect(user).to.be.equal(db.get('user').value())
+  })
 
-test('remove user in redux and session when logout', t => { 
-  AuthAPI.login({ name: 'Test', jwtToken: 'abcdfg' }) // log user
-  
-  AuthAPI.logout()
-  t.is(store.getState().auth.user, undefined)
-  t.is(db.get('user').value(), undefined)
-})
+  it('remove user in redux and session when logout', () => {
+    AuthAPI.login({ name: 'Test', jwtToken: 'abcdfg' }) // log user
+    AuthAPI.logout()
+    expect(store.getState().auth.user).to.be.undefined
+    expect(db.get('user').value()).to.be.undefined
+  })
 
-test('check if user is authenticated', t => {
-  t.is(AuthAPI.isAuthenticated(), false)
+  it('check if user is authenticated', () => {
+    expect(AuthAPI.isAuthenticated()).to.be.false
+    AuthAPI.login({ name: 'Test', jwtToken: 'abcdfg' })
+    expect(AuthAPI.isAuthenticated()).to.be.true
+    AuthAPI.logout()
+    expect(AuthAPI.isAuthenticated()).to.be.false
+  })
 
-  AuthAPI.login({ name: 'Test', jwtToken: 'abcdfg' })
-  t.is(AuthAPI.isAuthenticated(), true)
-
-  AuthAPI.logout()
-  t.is(AuthAPI.isAuthenticated(), false)
-})
-
-test('get current token', t => {
-  t.is(AuthAPI.getToken(), undefined)
-
-  const user = { jwtToken: 'abcdfg' }
-  AuthAPI.login(user)
-  t.is(AuthAPI.getToken(), user.jwtToken)
-
-  AuthAPI.logout()
-  t.is(AuthAPI.getToken(), undefined)
+  it('get current token', () => {
+    expect(AuthAPI.getToken()).to.be.undefined
+    const user = { jwtToken: 'abcdfg' }
+    AuthAPI.login(user)
+    expect(AuthAPI.getToken()).to.be.equal(user.jwtToken)
+    AuthAPI.logout()
+    expect(AuthAPI.getToken()).to.be.undefined
+  })
 })

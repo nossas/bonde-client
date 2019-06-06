@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { object, number, bool} from 'prop-types'
 import { Query } from 'react-apollo'
 // TODO: import only configure queryset to observable
 import { store } from 'services/redux' 
@@ -93,11 +93,11 @@ class Queryset extends React.Component {
 }
 
 Queryset.propTypes = {
-  query: PropTypes.object.isRequired,
-  limit: PropTypes.number,
-  filter: PropTypes.object,
+  query: object.isRequired,
+  limit: number,
+  filter: object,
   // Query should return totalCount when this prop is true
-  observable: PropTypes.bool
+  observable: bool
 }
 
 Queryset.defaultProps = {
@@ -106,9 +106,5 @@ Queryset.defaultProps = {
 }
 
 export { default as reducer } from './redux/reducers'
-
-export { default as actions } from './redux/actions'
-
-export { default as ListeningQueryset } from './ListeningQueryset'
 
 export default Queryset

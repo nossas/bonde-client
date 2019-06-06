@@ -2,7 +2,7 @@
 import React from 'react'
 import { expect } from 'chai'
 import { mount } from 'enzyme'
-import WidgetOverlay from '@/mobrender/components/widget-overlay'
+import WidgetOverlay from 'mobrender/components/widget-overlay'
 
 describe('client/mobrender/components/widget-overlay', () => {
   const props = {

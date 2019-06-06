@@ -13,9 +13,7 @@ i18next
     // have a common nampespace used around the full app
     ns: ['translations'],
     defaultNS: 'translations',
-
     debug: process.env.NODE_ENV === 'development',
-
     react: {
       wait: true
     }

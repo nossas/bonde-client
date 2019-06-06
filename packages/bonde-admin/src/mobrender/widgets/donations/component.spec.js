@@ -1,8 +1,8 @@
 import React from 'react'
 import { expect } from 'chai'
 
-import shallowWithIntl from '@/intl/helpers/shallow-with-intl'
-import * as mock from '@/utils/mock'
+import shallowWithIntl from 'intl/helpers/shallow-with-intl'
+import * as mock from 'utils/mock'
 import Page from './component'
 
 describe('client/mobrender/widgets/donations/component', () => {

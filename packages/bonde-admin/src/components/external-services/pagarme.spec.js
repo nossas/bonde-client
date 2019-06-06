@@ -3,7 +3,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { Pagarme } from '@/components/external-services'
+import { Pagarme } from 'components/external-services'
 
 describe('client/components/external-services/pagarme', () => {
   const wrapper = shallow(<Pagarme />)

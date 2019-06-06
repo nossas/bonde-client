@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { any, array, bool, object, string } from 'prop-types'
 import WidgetArea from './widget-area'
 
 const getBackgroundStyle = block => {
@@ -23,7 +23,6 @@ const getBackgroundStyle = block => {
  * mouseEnter and mouseOut.
  */
 class Section extends React.Component {
-
   renderBlock () {
     const { anchor, block, widgets, widgetComponent, extraWidgetProps } = this.props
     return (
@@ -67,22 +66,22 @@ class Section extends React.Component {
 Section.propTypes = {
   /* Define anchor to navigate between blocks, this value must
    * be unique per block. */
-  anchor: PropTypes.string.isRequired,
+  anchor: string.isRequired,
   /* This component renders wrapped to the block, in it you can
    * customize the rendering of your block, get block and editable
    * as property. */
-  blockWrapper: PropTypes.any,
+  blockWrapper: any,
   /* Data structure of block, passed to blockWrapper component */
-  block: PropTypes.object.isRequired,
+  block: object.isRequired,
   /* True if mobilization is editable mode */
-  editable: PropTypes.bool.isRequired,
+  editable: bool.isRequired,
   /* Array of widgets related on Section */
-  widgets: PropTypes.array,
+  widgets: array,
   /* Component responsible to render a widget logic,
    * receive { widget } props */
-  widgetComponent: PropTypes.any.isRequired,
+  widgetComponent: any.isRequired,
   // TODO: documentation
-  extraWidgetProps: PropTypes.object
+  extraWidgetProps: object
 }
 
 export default Section

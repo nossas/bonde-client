@@ -2,8 +2,8 @@ import { combineReducers } from 'redux'
 
 // Redux Form
 import { reducer as form } from 'redux-form'
-import { normalizer as creditCardForm } from '@/subscriptions/forms/credit-card-form'
-import { normalizer as recurringForm } from '@/subscriptions/forms/recurring-form'
+import { normalizer as creditCardForm } from 'subscriptions/forms/credit-card-form'
+import { normalizer as recurringForm } from 'subscriptions/forms/recurring-form'
 
 // Reapop
 import { reducer as notificationsReducer } from 'reapop'
@@ -12,13 +12,13 @@ import { reducer as notificationsReducer } from 'reapop'
 import { client } from './store'
 
 // Application
-import auth from '@/account/redux/reducers'
-import wait from '@/components/await/redux/reducers'
-import mobilizations from '@/mobrender/redux/reducers'
-import community from '@/community/reducers'
-import colorPicker from '@/components/color-picker/reducers'
-import subscriptions from '@/subscriptions/redux/reducers'
-import intl from '@/intl/redux/reducers'
+import auth from 'account/redux/reducers'
+import wait from 'components/await/redux/reducers'
+import mobilizations from 'mobrender/redux/reducers'
+import community from 'community/reducers'
+import colorPicker from 'components/color-picker/reducers'
+import subscriptions from 'subscriptions/redux/reducers'
+import intl from 'intl/redux/reducers'
 
 const initialState = {
   host: '',

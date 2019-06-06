@@ -1,7 +1,7 @@
 import React from 'react'
-import shallowWithIntl from '@/intl/helpers/shallow-with-intl'
+import shallowWithIntl from 'intl/helpers/shallow-with-intl'
 
-import * as mock from '@/utils/mock'
+import * as mock from 'utils/mock'
 import Page from './page'
 
 describe('routes/admin/authenticated/external/community-new/page', () => {

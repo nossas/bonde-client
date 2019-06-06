@@ -3,7 +3,7 @@ import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-import { Radio } from '@/components/forms'
+import { Radio } from 'components/forms'
 
 describe('client/components/forms/radio', () => {
   let wrapper

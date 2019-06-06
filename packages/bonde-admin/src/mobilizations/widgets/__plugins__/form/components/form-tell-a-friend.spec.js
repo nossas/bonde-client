@@ -3,7 +3,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { FormTellAFriend } from '@/mobilizations/widgets/__plugins__/form/components'
+import { FormTellAFriend } from 'mobilizations/widgets/__plugins__/form/components'
 
 describe('client/mobilizations/widgets/__plugins__/form/components/form-tell-a-friend', () => {
   let wrapper

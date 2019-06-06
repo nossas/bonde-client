@@ -2,9 +2,9 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 
-import * as paths from '@/paths'
-import { Tabs, Tab } from '@/components/navigation/tabs'
-import { DivFloat, Button } from '@/ux/components'
+import * as paths from 'paths'
+import { Tabs, Tab } from 'components/navigation/tabs'
+import { DivFloat, Button } from 'ux/components'
 
 const PageHeader = ({ location }) => {
   const activePath = `${paths.mobilizations()}`

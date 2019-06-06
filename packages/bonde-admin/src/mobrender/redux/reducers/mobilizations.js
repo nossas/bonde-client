@@ -1,5 +1,5 @@
 import * as t from '../action-types'
-import * as tc from '@/community/action-types'
+import * as tc from 'community/action-types'
 
 export const initialState = {
   isLoaded: false,

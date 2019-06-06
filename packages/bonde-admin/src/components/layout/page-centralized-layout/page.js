@@ -4,7 +4,7 @@ import React from 'react'
 import {
   SettingsPageLayout,
   SettingsPageContentLayout
-} from '@/components/layout'
+} from 'components/layout'
 
 if (require('exenv').canUseDOM) require('./page.scss')
 

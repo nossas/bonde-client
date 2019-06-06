@@ -1,8 +1,8 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 
-import { FormFinishMessage } from '@/mobilizations/widgets/components'
-import { PressureTellAFriend } from '@/mobilizations/widgets/__plugins__/pressure/components'
+import { FormFinishMessage } from 'mobilizations/widgets/components'
+import { PressureTellAFriend } from 'mobilizations/widgets/__plugins__/pressure/components'
 
 const PressureSettingsFinishPage = props => (
   <FormFinishMessage

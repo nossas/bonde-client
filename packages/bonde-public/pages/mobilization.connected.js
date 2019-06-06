@@ -27,6 +27,18 @@ import { selectors as MobilizationSelectors } from 'bonde-webpage/lib/redux'
 
 const { publicRuntimeConfig } = getConfig()
 
+export const getSharedPath = (mobilization) => {
+  const domain = publicRuntimeConfig.domainPublic
+
+  if (domain && domain.indexOf('staging') !== -1) {
+    return `http://${mobilization.slug}.${domain}`
+  }
+
+  return mobilization.custom_domain
+    ? `http://${mobilization.custom_domain}`
+    : `http://${mobilization.slug}.${domain}`
+}
+
 const mapStateToProps = (state, props) => {
   const query = MobilizationSelectors(state, props)
   return {
@@ -41,14 +53,17 @@ const mobilizationConnect = connect(mapStateToProps)
 
 const imageUrl = '/static/images/check-mark-image.png'
 
-const MyCustonPressurePlugin = (props) => (
+const MyCustomPressurePlugin = (props) => (
   <PressurePlugin
     {...props}
     analyticsEvents={PressureAnalytics}
     graphqlClient={graphqlClient}
     overrides={{
       FinishCustomMessage: { component: FinishMessageCustom },
-      FinishDefaultMessage: { component: PressureTellAFriend, props: { imageUrl } },
+      FinishDefaultMessage: {
+        component: PressureTellAFriend,
+        props: { imageUrl, href: getSharedPath(props.mobilization) }
+      },
     }}
   />
 )
@@ -67,7 +82,10 @@ const plugins = [
         analyticsEvents={FormAnalytics}
         overrides={{
           FinishCustomMessage: { component: FinishMessageCustom },
-          FinishDefaultMessage: { component: FormTellAFriend, props: { imageUrl } },
+          FinishDefaultMessage: {
+            component: FormTellAFriend,
+            props: { imageUrl, href: getSharedPath(props.mobilization) }
+          },
         }}
       />
     )
@@ -81,18 +99,21 @@ const plugins = [
         analyticsEvents={DonationAnalytics}
         overrides={{
           FinishCustomMessage: { component: FinishMessageCustom },
-          FinishDefaultMessage: { component: DonationTellAFriend, props: { imageUrl } },
+          FinishDefaultMessage: {
+            component: DonationTellAFriend,
+            props: { imageUrl, href: getSharedPath(props.mobilization) }
+          },
         }}
       />
     )
   },
   {
     kind: 'pressure',
-    component: MyCustonPressurePlugin
+    component: MyCustomPressurePlugin
   },
   {
     kind: 'pressure-phone',
-    component: MyCustonPressurePlugin
+    component: MyCustomPressurePlugin
   },
   {
     kind: 'content',
@@ -141,7 +162,7 @@ class MobilizationPreview extends React.Component {
         extraWidgetProps={{
           mobilization: this.props.mobilization,
           editable: this.props.editable,
-          plugins: plugins
+          plugins
         }}
       />
     )

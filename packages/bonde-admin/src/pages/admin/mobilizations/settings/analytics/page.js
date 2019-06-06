@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { FormattedMessage } from 'react-intl'
-import { FormGroup, FormControl, ControlLabel } from '@/components/forms'
-import { SettingsForm } from '@/ux/components'
+import { FormGroup, FormControl, ControlLabel } from 'components/forms'
+import { SettingsForm } from 'ux/components'
 
 const MobilizationsSettingsAnalyticsPage = props => {
   const { fields: { google_analytics_code: googleAnalyticsCode }, ...formProps } = props

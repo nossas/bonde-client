@@ -2,7 +2,7 @@ import React from 'react'
 import { expect } from 'chai'
 import { mount } from 'enzyme'
 
-import DivFloat from '@/ux/components/div-float'
+import DivFloat from 'ux/components/div-float'
 
 describe('client/ux/components/div-float', () => {
   let floatLayout

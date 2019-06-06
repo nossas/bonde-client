@@ -1,6 +1,6 @@
-import * as CommunitySelectors from '@/community/selectors'
-import AuthSelectors from '@/account/redux/selectors'
-import MobSelectors from '@/mobrender/redux/selectors'
+import * as CommunitySelectors from 'community/selectors'
+import AuthSelectors from 'account/redux/selectors'
+import MobSelectors from 'mobrender/redux/selectors'
 
 export default (state, ownProps) => {
   const mob = MobSelectors(state, ownProps)

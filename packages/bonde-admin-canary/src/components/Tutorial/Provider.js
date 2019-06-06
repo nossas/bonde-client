@@ -1,6 +1,6 @@
 // Provider is responsible to union Dialog components
 import React from 'react'
-import PropTypes from 'prop-types'
+import { oneOfType, func, bool } from 'prop-types'
 import Context, { defaultContext } from './Context'
 import Dialog from './Dialog'
 
@@ -89,11 +89,11 @@ Provider.defaultProps = {
 }
 
 Provider.propTypes = {
-  initialize: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.bool
+  initialize: oneOfType([
+    func,
+    bool
   ]),
-  onClose: PropTypes.func
+  onClose: func
 }
 
 export default Provider

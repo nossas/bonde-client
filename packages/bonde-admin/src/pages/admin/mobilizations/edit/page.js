@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 // Global module dependencies
-import { Loading } from '@/components/await'
-import { GoogleFontsLoader } from '@/components/fonts'
-import * as arrayUtil from '@/utils/array'
-import * as paths from '@/paths'
+import { Loading } from 'components/await'
+import { GoogleFontsLoader } from 'components/fonts'
+import * as arrayUtil from 'utils/array'
+import * as paths from 'paths'
 
-import Mobilization from '@/mobrender/components/mobilization.connected'
+import Mobilization from 'mobrender/components/mobilization.connected'
 import MobilizationPreview from './preview'
 
 

@@ -6,7 +6,7 @@ import DivFloat from '../div-float'
 import Button from '../button'
 
 // Dependency module
-import { FormRedux, SuccessMessage } from '@/components/forms'
+import { FormRedux, SuccessMessage } from 'components/forms'
 
 const SettingsForm = ({ children, buttonText, successMessage, ...formProps }) => (
   <FormRedux nosubmit {...formProps}>

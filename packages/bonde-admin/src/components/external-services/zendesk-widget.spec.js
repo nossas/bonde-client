@@ -3,7 +3,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { ZendeskWidget } from '@/components/external-services'
+import { ZendeskWidget } from 'components/external-services'
 
 describe('client/components/external-services/zendesk-widget', () => {
   const wrapper = shallow(<ZendeskWidget />)

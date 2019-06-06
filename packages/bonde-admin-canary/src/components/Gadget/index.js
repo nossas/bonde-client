@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { oneOfType, string, func, node } from 'prop-types'
 import { Flexbox2 as Flexbox, Title, Spacing } from 'bonde-styleguide'
 
 const GadgetTitle = ({ children }) => (
@@ -26,8 +26,6 @@ const Gadget = ({ children, title, renderFilter, WrapperComponent }) => (
     }
   </Flexbox>
 )
-
-const { oneOfType, string, func, node } = PropTypes
 
 Gadget.propTypes = {
   title: string,

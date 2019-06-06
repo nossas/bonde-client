@@ -3,11 +3,11 @@ import { connect } from 'react-redux'
 import { Route } from 'react-router-dom'
 
 // Components
-import { Loading } from '@/components/await'
+import { Loading } from 'components/await'
 
 // Redux
-import { selectWidget } from '@/mobrender/redux/action-creators'
-import MobSelectors from '@/mobrender/redux/selectors'
+import { selectWidget } from 'mobrender/redux/action-creators'
+import MobSelectors from 'mobrender/redux/selectors'
 
 // Pages
 import Donation from './donation'

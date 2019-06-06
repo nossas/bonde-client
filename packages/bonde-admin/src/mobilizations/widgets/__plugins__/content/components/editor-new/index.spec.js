@@ -3,8 +3,8 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import * as mock from '@/utils/mock'
-import EditorNew from '@/mobilizations/widgets/__plugins__/content/components/editor-new'
+import * as mock from 'utils/mock'
+import EditorNew from 'mobilizations/widgets/__plugins__/content/components/editor-new'
 
 describe('client/mobilizations/widgets/__plugins__/content/components/editor-new', () => {
   let wrapper

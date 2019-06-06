@@ -3,7 +3,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { FinishMessageCustom } from '@/mobilizations/widgets/components'
+import { FinishMessageCustom } from 'mobilizations/widgets/components'
 
 describe('client/mobilizations/widgets/components/finish-message-custom', () => {
   let wrapper

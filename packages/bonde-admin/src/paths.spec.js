@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 
-import * as paths from '@/paths'
+import * as paths from 'paths'
 
 describe('client/paths', () => {
   describe('#login', () => {

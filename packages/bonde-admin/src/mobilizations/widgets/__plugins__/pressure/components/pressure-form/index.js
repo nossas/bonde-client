@@ -2,9 +2,9 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import classnames from 'classnames'
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
-import * as pressureHelper from '@/mobilizations/widgets/utils/pressure-helper'
-import { isValidEmail, isValidPhoneE164 } from '@/utils/validation-helper'
-import AnalyticsEvents from '@/mobilizations/widgets/utils/analytics-events'
+import * as pressureHelper from 'mobilizations/widgets/utils/pressure-helper'
+import { isValidEmail, isValidPhoneE164 } from 'utils/validation-helper'
+import AnalyticsEvents from 'mobilizations/widgets/utils/analytics-events'
 
 if (require('exenv').canUseDOM) {
   require('./index.scss')

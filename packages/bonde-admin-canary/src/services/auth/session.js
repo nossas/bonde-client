@@ -1,10 +1,8 @@
 import { CrossStorageClient } from 'cross-storage'
 
 class AuthAPI {
-
   constructor () {
     const crossStorageUrl = process.env.REACT_APP_DOMAIN_CROSS_STORAGE || 'http://cross-storage.bonde.devel'
-    // console.log('[CrossStorageUrl]:', crossStorageUrl)
 
     this.storage = new CrossStorageClient(crossStorageUrl, {
       timeout: 8000

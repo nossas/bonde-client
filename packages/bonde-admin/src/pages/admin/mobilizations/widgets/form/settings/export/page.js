@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { Loading } from '@/components/await'
-import { DataExport } from '@/mobilizations/widgets/components'
+import { Loading } from 'components/await'
+import { DataExport } from 'mobilizations/widgets/components'
 
 const FormSettingsExportPage = props => !props.widget ? <Loading /> : (
   <DataExport {...props} />

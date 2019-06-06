@@ -3,13 +3,13 @@ import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-import Block from '@/mobrender/components/block'
-import Widget from '@/mobrender/components/widget.connected'
-import BlockChangeBackground from '@/mobrender/components/block-change-background.connected'
-import BlockConfigMenu from '@/mobrender/components/block-config-menu.connected'
-import { EDIT_KEY } from '@/mobrender/components/block-config-menu'
+import Block from 'mobrender/components/block'
+import Widget from 'mobrender/components/widget.connected'
+import BlockChangeBackground from 'mobrender/components/block-change-background.connected'
+import BlockConfigMenu from 'mobrender/components/block-config-menu.connected'
+import { EDIT_KEY } from 'mobrender/components/block-config-menu'
 
-describe('@/mobrender/components/block', () => {
+describe('mobrender/components/block', () => {
   let block
   const props = {
     block: { id: 1, bg_class: 'bg-1', hidden: false }

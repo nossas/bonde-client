@@ -5,13 +5,13 @@ import { connect } from 'react-redux'
 import { graphql, gql } from 'react-apollo'
 import { injectIntl } from 'react-intl'
 
-import * as SelectableActions from '@/components/selectable-list/actions'
-import MobSelectors from '@/mobrender/redux/selectors'
-import * as MobActions from '@/mobrender/redux/action-creators'
-import * as TemplateSelectors from '@/mobilizations/templates/selectors'
-import * as CommunitySelectors from '@/community/selectors'
+import * as SelectableActions from 'components/selectable-list/actions'
+import MobSelectors from 'mobrender/redux/selectors'
+import * as MobActions from 'mobrender/redux/action-creators'
+import * as TemplateSelectors from 'mobilizations/templates/selectors'
+import * as CommunitySelectors from 'community/selectors'
 
-import { setFilterableSearchBarList } from '@/components/filterable-search-bar/actions'
+import { setFilterableSearchBarList } from 'components/filterable-search-bar/actions'
 
 import Page from './page'
 

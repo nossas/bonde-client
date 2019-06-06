@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { FormattedMessage } from 'react-intl'
 
-import * as paths from '@/paths'
+import * as paths from 'paths'
 
 if (require('exenv').canUseDOM) require('./sidenav.scss')
 

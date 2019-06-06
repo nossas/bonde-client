@@ -3,7 +3,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { Raise } from '@/components/forms'
+import { Raise } from 'components/forms'
 
 describe('client/components/forms/raise', () => {
   let wrapper

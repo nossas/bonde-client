@@ -3,8 +3,8 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import * as mock from '@/utils/mock'
-import ForceDownloadViaAjax from '@/community/components/force-download-via-ajax'
+import * as mock from 'utils/mock'
+import ForceDownloadViaAjax from 'community/components/force-download-via-ajax'
 
 describe('client/community/components/force-download-via-ajax', () => {
   let wrapper

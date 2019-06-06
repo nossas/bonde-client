@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import EditorOld from './editor-old'
-import MobSelectors from '@/mobrender/redux/selectors'
-import { handleEdit, handleCancelEdit } from '@/mobrender/redux/action-creators'
+import MobSelectors from 'mobrender/redux/selectors'
+import { handleEdit, handleCancelEdit } from 'mobrender/redux/action-creators'
 
 const mapStateToProps = (state, props) => {
   const selectors = MobSelectors(state, props)

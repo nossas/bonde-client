@@ -4,8 +4,8 @@ import $ from 'jquery'
 import classnames from 'classnames'
 
 // Global module dependencies
-import { WYSIHTMLToolbar } from '@/components/editor-wysihtml'
-import { Loading } from '@/components/await'
+import { WYSIHTMLToolbar } from 'components/editor-wysihtml'
+import { Loading } from 'components/await'
 
 class EditorOld extends React.Component {
   constructor (props, context) {

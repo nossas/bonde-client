@@ -7,8 +7,8 @@ import { injectIntl } from 'react-intl'
 import { gql, graphql } from 'react-apollo'
 import queryString from 'query-string'
 
-import { isValidEmail } from '@/utils/validation-helper'
-import crossStorage from '@/cross-storage-client'
+import { isValidEmail } from 'utils/validation-helper'
+import crossStorage from 'cross-storage-client'
 import Page from './page'
 
 const fields = [

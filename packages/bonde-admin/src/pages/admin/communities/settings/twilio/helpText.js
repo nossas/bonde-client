@@ -1,6 +1,6 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
-import { HelpBlock } from '@/storybook/settings/forms'
+import { HelpBlock } from 'storybook/settings/forms'
 
 export const TwilioAccountSidHelp = () => (
   <HelpBlock level='warning'>

@@ -3,9 +3,9 @@
 //
 import { connect } from 'react-redux'
 import { injectIntl } from 'react-intl'
-import { adjustmentsForm, AdjustmentsSettingsForm } from '@/mobrender/widgets/adjustments'
-import MobSelectors from '@/mobrender/redux/selectors'
-import * as MobActions from '@/mobrender/redux/action-creators'
+import { adjustmentsForm, AdjustmentsSettingsForm } from 'mobrender/widgets/adjustments'
+import MobSelectors from 'mobrender/redux/selectors'
+import * as MobActions from 'mobrender/redux/action-creators'
 
 const mapStateToProps = (state, props) => {
   const selectors = MobSelectors(state, props)

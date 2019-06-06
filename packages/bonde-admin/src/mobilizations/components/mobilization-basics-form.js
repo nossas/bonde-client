@@ -4,10 +4,10 @@ import { connect } from 'react-redux'
 import { addNotification as notify } from 'reapop'
 import { FormattedMessage, intlShape } from 'react-intl'
 
-import { slugUpdatedMessage } from '@/utils/notifications'
-import { slugify } from '@/utils/string-helper'
-import { SettingsForm } from '@/ux/components'
-import { Code } from '@/components/markdown'
+import { slugUpdatedMessage } from 'utils/notifications'
+import { slugify } from 'utils/string-helper'
+import { SettingsForm } from 'ux/components'
+import { Code } from 'components/markdown'
 import {
   FormRedux,
   FormGroup,
@@ -15,8 +15,8 @@ import {
   FormControl,
   HelpBlock,
   UploadImageField
-} from '@/components/forms'
-import * as paths from '@/paths'
+} from 'components/forms'
+import * as paths from 'paths'
 
 export const MobilizationBasicsForm = ({
   fields: { name, slug, goal, favicon },

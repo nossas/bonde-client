@@ -3,11 +3,11 @@
 //
 import { connect } from 'react-redux'
 import { graphql, gql } from 'react-apollo'
-import * as CommunitySelectors from '@/community/selectors'
-import MobSelectors from '@/mobrender/redux/selectors'
-import { asyncUpdateMobilization } from '@/mobrender/redux/action-creators'
-import * as TemplateSelectors from '@/mobilizations/templates/selectors'
-import * as paths from '@/paths'
+import * as CommunitySelectors from 'community/selectors'
+import MobSelectors from 'mobrender/redux/selectors'
+import { asyncUpdateMobilization } from 'mobrender/redux/action-creators'
+import * as TemplateSelectors from 'mobilizations/templates/selectors'
+import * as paths from 'paths'
 import Page from './page'
 
 const mapStateToProps = (state, props) => ({

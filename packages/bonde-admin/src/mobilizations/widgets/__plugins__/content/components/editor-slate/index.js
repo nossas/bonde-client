@@ -16,8 +16,12 @@ import { ColorPlugin, ColorButton, ColorStateModel } from '@slate-editor/color-p
 import { GridPlugin, GridButtonBar } from '@slate-editor/grid-plugin'
 import { EmbedPlugin, EmbedButton } from '@slate-editor/embed-plugin'
 
-import { Loading } from '@/components/await'
-import { ActionButton, FooterEditor, Layer } from '@/mobilizations/widgets/__plugins__/content/components'
+import { connect } from 'react-redux'
+import { addNotification as notify } from 'reapop'
+import { genericSaveSuccess } from 'utils/notifications'
+
+import { Loading } from 'components/await'
+import { ActionButton, FooterEditor, Layer } from 'mobilizations/widgets/__plugins__/content/components'
 
 import styles from './styles'
 if (require('exenv').canUseDOM) require('./index.scss')
@@ -77,6 +81,7 @@ class EditorSlate extends Component {
   handleSave (state) {
     this.setState({ initialState: state })
     this.props.handleSave(state)
+    this.props.notifySuccess()
   }
 
   render () {
@@ -182,4 +187,14 @@ export const createEditorContent = content => JSON.stringify(
   Plain.deserialize(content).toJSON()
 )
 
-export default injectIntl(EditorSlate)
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  notifySuccess: () => {
+    return dispatch(notify(genericSaveSuccess(ownProps.intl)))
+  }
+})
+
+const ConnectedEditorSlate = injectIntl(connect(undefined, mapDispatchToProps)(EditorSlate))
+
+ConnectedEditorSlate.displayName = 'EditorSlate'
+
+export default ConnectedEditorSlate

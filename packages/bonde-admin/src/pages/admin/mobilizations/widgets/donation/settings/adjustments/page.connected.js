@@ -3,9 +3,9 @@
 //
 import { connect } from 'react-redux'
 import { injectIntl } from 'react-intl'
-import { adjustmentsForm, createAdjustmentsForm } from '@/mobrender/widgets/adjustments'
-import MobSelectors from '@/mobrender/redux/selectors'
-import * as MobActions from '@/mobrender/redux/action-creators'
+import { adjustmentsForm, createAdjustmentsForm } from 'mobrender/widgets/adjustments'
+import MobSelectors from 'mobrender/redux/selectors'
+import * as MobActions from 'mobrender/redux/action-creators'
 
 const AdjustmentsSettingsForm = createAdjustmentsForm([
   'call_to_action', 'button_text', 'main_color'

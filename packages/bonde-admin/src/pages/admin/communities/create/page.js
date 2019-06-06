@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { FormattedMessage, intlShape } from 'react-intl'
-import { BondeBackground } from '@/components/layout/background'
+import { BondeBackground } from 'components/layout/background'
 import {
   FormRedux,
   FormGroup,
@@ -9,8 +9,8 @@ import {
   FormControl,
   Button,
   FormError
-} from '@/components/forms'
-import * as paths from '@/paths'
+} from 'components/forms'
+import * as paths from 'paths'
 
 class CommunityNewPage extends Component {
   componentWillReceiveProps (nextProps) {

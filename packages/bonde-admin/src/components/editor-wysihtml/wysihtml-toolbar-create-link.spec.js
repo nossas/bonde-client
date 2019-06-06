@@ -5,7 +5,7 @@ import { expect } from 'chai'
 
 import {
   WYSIHTMLToolbarCreateLink
-} from '@/components/editor-wysihtml/wysihtml-toolbar-create-link'
+} from 'components/editor-wysihtml/wysihtml-toolbar-create-link'
 
 describe('client/components/editor-wysihtml/wysihtml-toolbar-create-link', () => {
   let wrapper

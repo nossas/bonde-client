@@ -3,7 +3,7 @@ import React from 'react'
 import { expect } from 'chai'
 import { mount } from 'enzyme'
 
-import { Input } from '@/components/forms'
+import { Input } from 'components/forms'
 
 describe('client/components/forms/input', () => {
   let field

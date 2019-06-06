@@ -1,15 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Route } from 'react-router-dom'
-import { Loading } from '@/components/await'
-import SidebarAPI from '@/components/navigation/sidebar'
+import { Loading } from 'components/await'
+import SidebarAPI from 'components/navigation/sidebar'
 
 // Actions and Selectors
-import MobSelectors from '@/mobrender/redux/selectors'
-import * as MobActions from '@/mobrender/redux/action-creators'
-import * as CommunitySelectors from '@/community/selectors'
-import DNSControlSelectors from '@/community/dns-control-selectors'
-import * as DNSControlActions from '@/community/action-creators/dns-control'
+import MobSelectors from 'mobrender/redux/selectors'
+import * as MobActions from 'mobrender/redux/action-creators'
+import * as CommunitySelectors from 'community/selectors'
+import DNSControlSelectors from 'community/dns-control-selectors'
+import * as DNSControlActions from 'community/action-creators/dns-control'
 
 // SubRoutes
 import CommunitySettings from './communities/settings'

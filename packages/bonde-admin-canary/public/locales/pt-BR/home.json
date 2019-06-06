@@ -1,7 +1,7 @@
 {
   "active": "Ativa",
   "draft": "Rascunho",
-  "title": "Home",
+  "title": "Início",
   "my-mobilizations": "Minhas Mobilizações",
   "trending-mobs": "Trending mobs",
   "actionButtons": {
@@ -26,12 +26,7 @@
       }
     },
     "trendingMobilizations": {
-      "title": "Causando por aí",
-      "filtersAdornment": "Mobilizações",
-      "filters": {
-        "now": "Para agir agora",
-        "inspire": "Para se inspirar"
-      }
+      "title": "Oportunidades de ação"
     }
   },
   "tutorial": {

@@ -1,9 +1,9 @@
 import React from 'react'
 import sinon from 'sinon'
 import { expect } from 'chai'
-import { mountWithIntl } from '@/intl/helpers'
-import { InputTag } from '@/mobilizations/widgets/components/input-tag'
-import * as os from '@/utils/browser/os'
+import { mountWithIntl } from 'intl/helpers'
+import { InputTag } from 'mobilizations/widgets/components/input-tag'
+import * as os from 'utils/browser/os'
 
 describe('client/mobilizations/widgets/components/input-tag', () => {
   let wrapper
@@ -26,7 +26,7 @@ describe('client/mobilizations/widgets/components/input-tag', () => {
         errors.message = 'Dismatch error'
       }
       return errors
-    }
+  }
   }
 
   beforeEach(() => {

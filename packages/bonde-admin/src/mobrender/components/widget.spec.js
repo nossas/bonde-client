@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-expressions */
 import React from 'react'
 import { expect } from 'chai'
-import shallowWithIntl from '@/intl/helpers/shallow-with-intl'
-import Widget from '@/mobrender/components/widget'
-import WidgetOverlay from '@/mobrender/components/widget-overlay.connected'
+import shallowWithIntl from 'intl/helpers/shallow-with-intl'
+import Pressure from 'mobilizations/widgets/__plugins__/pressure/components'
+import Widget from 'mobrender/components/widget'
+import WidgetOverlay from 'mobrender/components/widget-overlay.connected'
 
 describe('client/mobrender/components/widget', () => {
   const props = {
@@ -62,7 +63,7 @@ describe('client/mobrender/components/widget', () => {
     it('should render pressure widget component', () => {
       const widget = shallowWithIntl(<Widget {...props} editable={false} />)
       widget.setProps({ ...props, widget: { ...props.widget, kind: 'pressure' } })
-      expect(widget.find('Connect(Pressure)').length).to.equal(1)
+      expect(widget.find(Pressure).length).to.equal(1)
     })
 
     it('should render form widget component', () => {

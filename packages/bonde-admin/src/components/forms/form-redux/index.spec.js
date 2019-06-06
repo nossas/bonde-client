@@ -3,7 +3,7 @@ import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-import { FormRedux } from '@/components/forms'
+import { FormRedux } from 'components/forms'
 
 describe('client/components/forms/form-redux', () => {
   let wrapper

@@ -2,11 +2,11 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 
-import * as paths from '@/paths'
-import * as mobilizationUtils from '@/mobilizations/utils'
-import { Loading } from '@/components/await'
-import { Sidenav, SidenavList, SidenavListItem } from '@/components/navigation/sidenav'
-import crossStorage from '@/cross-storage-client'
+import * as paths from 'paths'
+import * as mobilizationUtils from 'mobilizations/utils'
+import { Loading } from 'components/await'
+import { Sidenav, SidenavList, SidenavListItem } from 'components/navigation/sidenav'
+import crossStorage from 'cross-storage-client'
 
 const Sidebar = ({ children, loading, mobilization, user, community }) => loading ? <Loading /> : (
   <div className='top-0 right-0 bottom-0 left-0 flex flex-column absolute'>

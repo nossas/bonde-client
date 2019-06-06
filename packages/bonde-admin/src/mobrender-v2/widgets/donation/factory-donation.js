@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import classnames from 'classnames'
 import { FormattedMessage, intlShape } from 'react-intl'
-import * as formatNumberHelper from '@/utils/format-number-helper'
+import * as formatNumberHelper from 'utils/format-number-helper'
 import { Progress } from '.'
 
 if (require('exenv').canUseDOM) require('./donation.scss')

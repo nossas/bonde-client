@@ -3,8 +3,8 @@ import React from 'react'
 import { FormattedMessage } from 'react-intl'
 
 // Global module dependencies
-import * as paths from '@/paths'
-import { TellAFriend } from '@/components/share'
+import * as paths from 'paths'
+import { TellAFriend } from 'components/share'
 
 const FormTellAFriend = ({ preview, mobilization, widget }) => (
   <TellAFriend

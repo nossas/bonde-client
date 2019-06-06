@@ -1,6 +1,6 @@
 import * as t from '../../action-types'
 import { createAction } from '../create-action'
-import AuthSelectors from '@/account/redux/selectors'
+import AuthSelectors from 'account/redux/selectors'
 import * as CommunitySelectors from '../../selectors'
 
 export default dnsHostedZone => (dispatch, getState, { api }) => {

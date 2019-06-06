@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { sanitize, slugify } from '@/utils/string-helper'
+import { sanitize, slugify } from 'utils/string-helper'
 
 describe('client/utils/string-helper', () => {
   describe('#sanitize', () => {

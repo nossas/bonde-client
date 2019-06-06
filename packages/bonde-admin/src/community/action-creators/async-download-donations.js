@@ -1,7 +1,7 @@
 /* eslint-disable prefer-promise-reject-errors */
 import downloadjs from 'downloadjs'
 import { addNotification as notify, removeNotification as dismiss } from 'reapop'
-import * as notifications from '@/utils/notifications'
+import * as notifications from 'utils/notifications'
 
 const asyncDownloadDonations = ({ id, name, ...community }) => (dispatch, getState, { api, intl }) => {
   const { auth: { credentials } } = getState()

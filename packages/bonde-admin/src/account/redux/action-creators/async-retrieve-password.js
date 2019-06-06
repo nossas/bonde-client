@@ -1,6 +1,6 @@
 /* eslint-disable prefer-promise-reject-errors */
 import { addNotification as notify } from 'reapop'
-import { accountPasswordRetrieveSuccess } from '@/utils/notifications'
+import { accountPasswordRetrieveSuccess } from 'utils/notifications'
 import * as t from '../action-types'
 import { createAction } from './create-action'
 

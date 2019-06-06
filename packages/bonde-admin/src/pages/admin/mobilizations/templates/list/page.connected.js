@@ -4,11 +4,11 @@
 import { connect } from 'react-redux'
 import { injectIntl } from 'react-intl'
 
-import MobSelectors from '@/mobrender/redux/selectors'
-import { toggleMobilizationMenu } from '@/mobrender/redux/action-creators'
-import * as CommunitySelectors from '@/community/selectors'
-import * as TemplateActions from '@/mobilizations/templates/action-creators'
-import * as TemplateSelectors from '@/mobilizations/templates/selectors'
+import MobSelectors from 'mobrender/redux/selectors'
+import { toggleMobilizationMenu } from 'mobrender/redux/action-creators'
+import * as CommunitySelectors from 'community/selectors'
+import * as TemplateActions from 'mobilizations/templates/action-creators'
+import * as TemplateSelectors from 'mobilizations/templates/selectors'
 
 import Page from './page'
 

@@ -3,9 +3,9 @@ import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-import { StepsContainer, StepContent } from '@/components/steps'
+import { StepsContainer, StepContent } from 'components/steps'
 
-describe('@/components/steps/steps-container', () => {
+describe('components/steps/steps-container', () => {
   it('should render without crashed', () => {
     const container = shallow(<StepsContainer />)
     expect(container).to.be.ok

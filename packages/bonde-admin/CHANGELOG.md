@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.11.0"></a>
+# [0.11.0](https://github.com/nossas/bonde-client/compare/v0.10.2...v0.11.0) (2018-11-14)
+
+
+### Bug Fixes
+
+* **admin:** use real position to create a new block ([65f9a1f](https://github.com/nossas/bonde-client/commit/65f9a1f))
+
+
+### Features
+
+* **admin:** add input to external resource on donation settings ([ce8f3fe](https://github.com/nossas/bonde-client/commit/ce8f3fe))
+
+
+
+<a name="0.10.2"></a>
+## [0.10.2](https://github.com/nossas/bonde-client/compare/v0.10.1...v0.10.2) (2018-11-14)
+
+
+
 <a name="0.9.6"></a>
 ## [0.9.6](https://github.com/nossas/bonde-client/compare/v0.9.5...v0.9.6) (2018-05-25)
 

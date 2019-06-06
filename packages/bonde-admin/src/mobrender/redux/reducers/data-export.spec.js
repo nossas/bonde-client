@@ -1,7 +1,7 @@
 import { expect } from 'chai'
-import * as t from '@/mobrender/redux/action-types'
-import { createAction } from '@/mobrender/redux/action-creators/create-action'
-import reducer from '@/mobrender/redux/reducers/data-export'
+import * as t from 'mobrender/redux/action-types'
+import { createAction } from 'mobrender/redux/action-creators/create-action'
+import reducer from 'mobrender/redux/reducers/data-export'
 
 describe('client/mobrender/redux/reducers/data-export', () => {
   it('should update state with loading property as true', () => {

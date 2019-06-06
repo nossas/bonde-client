@@ -3,7 +3,7 @@ import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-import { FormDropdown } from '@/components/forms'
+import { FormDropdown } from 'components/forms'
 
 describe('client/components/forms/form-dropdown', () => {
   let wrapper

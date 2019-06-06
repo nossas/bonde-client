@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import classnames from 'classnames'
 import { FormattedMessage } from 'react-intl'
-import { ColorPicker } from '@/components/color-picker'
+import { ColorPicker } from 'components/color-picker'
 import FileUploader from './file-uploader'
 
 export const BLOCK_UPLOAD_KEY = 'bgBlock'

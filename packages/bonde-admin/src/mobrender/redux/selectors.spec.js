@@ -1,14 +1,14 @@
 import { expect } from 'chai'
 import { fromJS } from 'immutable'
 
-import { reducer as rootReducer } from '@/mobrender/redux'
-import Selectors from '@/mobrender/redux/selectors'
+import { reducer as rootReducer } from 'mobrender/redux'
+import Selectors from 'mobrender/redux/selectors'
 
 const state = fromJS({
   mobilizations: rootReducer
 })
 
-describe('@/mobrender/redux/selectors', () => {
+describe('mobrender/redux/selectors', () => {
   describe('#getMobilizations', () => {
     const data = [{ id: 1, name: 'Lorem' }, { id: 2, name: 'Ipsum' }]
     const nextState = state.mergeDeep(fromJS({

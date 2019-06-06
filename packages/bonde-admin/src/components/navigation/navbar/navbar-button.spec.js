@@ -2,7 +2,7 @@ import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-import { NavbarButton } from '@/components/navigation/navbar'
+import { NavbarButton } from 'components/navigation/navbar'
 
 let wrapper
 

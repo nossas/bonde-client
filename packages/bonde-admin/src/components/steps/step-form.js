@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { FormRedux } from '@/components/forms'
+import { FormRedux } from 'components/forms'
 
 const StepForm = ({ children, buttonText, onNextStep, ...formProps }) => {
   return (

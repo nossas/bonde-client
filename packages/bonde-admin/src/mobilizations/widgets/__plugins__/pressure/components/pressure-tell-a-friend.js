@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 
-import { TellAFriend } from '@/components/share'
+import { TellAFriend } from 'components/share'
 
 const PressureTellAFriend = ({ preview, mobilization, widget }) => (
   <TellAFriend

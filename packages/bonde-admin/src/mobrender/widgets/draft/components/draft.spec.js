@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-expressions */
 import React from 'react'
 import { expect } from 'chai'
-import { mountWithIntl } from '@/intl/helpers'
-import { Draft } from '@/mobrender/widgets/draft/components'
-import widgetsConfig from '@/mobrender/widgets/config'
+import { mountWithIntl } from 'intl/helpers'
+import { Draft } from 'mobrender/widgets/draft/components'
+import widgetsConfig from 'mobrender/widgets/config'
 
 describe('client/mobrender/widgets/draft/components/draft', () => {
   const props = {

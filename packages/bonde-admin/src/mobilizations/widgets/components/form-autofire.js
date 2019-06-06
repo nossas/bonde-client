@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { FormattedMessage, intlShape } from 'react-intl'
-import { FormGroup, ControlLabel, FormControl } from '@/components/forms'
-import { SettingsForm } from '@/ux/components'
-import * as validator from '@/utils/validation-helper'
+import { FormGroup, ControlLabel, FormControl } from 'components/forms'
+import { SettingsForm } from 'ux/components'
+import * as validator from 'utils/validation-helper'
 
 const FormAutofire = props => {
   const {

@@ -3,7 +3,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { SettingsMenu } from '@/mobilizations/widgets/__plugins__/pressure/components'
+import { SettingsMenu } from 'mobilizations/widgets/__plugins__/pressure/components'
 
 describe('client/mobilizations/widgets/__plugins__/pressure/components/settings-menu', () => {
   let wrapper

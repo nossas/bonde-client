@@ -3,9 +3,9 @@ import React, { Component } from 'react'
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import keycode from 'keycode'
 import classnames from 'classnames'
-import { BlockTag } from '@/mobilizations/widgets/components'
-import * as array from '@/utils/array'
-import * as os from '@/utils/browser/os'
+import { BlockTag } from 'mobilizations/widgets/components'
+import * as array from 'utils/array'
+import * as os from 'utils/browser/os'
 
 var styles = require('exenv').canUseDOM ? require('./input-tag.scss') : {}
 

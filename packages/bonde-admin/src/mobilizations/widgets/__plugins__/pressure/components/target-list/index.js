@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { FormattedMessage } from 'react-intl'
-import * as array from '@/utils/array'
-import * as pressureHelper from '@/mobilizations/widgets/utils/pressure-helper'
+import * as array from 'utils/array'
+import * as pressureHelper from 'mobilizations/widgets/utils/pressure-helper'
 
 if (require('exenv').canUseDOM) require('./index.scss')
 

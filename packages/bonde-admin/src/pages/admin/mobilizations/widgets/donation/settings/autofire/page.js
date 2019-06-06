@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { Loading } from '@/components/await'
-import { FormAutofire } from '@/mobilizations/widgets/components'
+import { Loading } from 'components/await'
+import { FormAutofire } from 'mobilizations/widgets/components'
 
 const DonationSettingsAutofirePage = props => !props.widget ? (
   <Loading />

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { getGoogleFontsLoadURL, needsToLoadGoogleFonts } from '@/utils/font-name-handler'
+import { getGoogleFontsLoadURL, needsToLoadGoogleFonts } from 'utils/font-name-handler'
 
 const GoogleFontsLoader = ({ fonts }) => (
   needsToLoadGoogleFonts(fonts)

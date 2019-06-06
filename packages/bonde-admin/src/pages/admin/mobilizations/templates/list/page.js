@@ -4,15 +4,15 @@ import { FormattedMessage } from 'react-intl'
 import { Link } from 'react-router-dom'
 import classnames from 'classnames'
 
-import * as paths from '@/paths'
-import EmptyList from '@/components/empty-list'
+import * as paths from 'paths'
+import EmptyList from 'components/empty-list'
 import {
   SettingsPageLayout,
   SettingsPageMenuLayout,
   SettingsPageContentLayout
-} from '@/components/layout'
-import { PageHeader } from '@/mobilizations/components'
-import List from '@/mobilizations/components/list'
+} from 'components/layout'
+import { PageHeader } from 'mobilizations/components'
+import List from 'mobilizations/components/list'
 import {
   Item,
   Avatar,
@@ -22,7 +22,7 @@ import {
   MoreMenu,
   MoreMenuAction,
   CopyNumber
-} from '@/mobilizations/components/list/items'
+} from 'mobilizations/components/list/items'
 
 class TemplatesListPage extends React.Component {
   componentDidMount () {

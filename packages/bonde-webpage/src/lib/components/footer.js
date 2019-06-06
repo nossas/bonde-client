@@ -3,7 +3,6 @@ import { BondeIcon } from './icons'
 // TODO: Remover dependencia dos componentes de tradução
 import { FormattedMessage } from 'react-intl'
 
-
 const Footer = () => (
   <div id='footer' className='col-10 mx-auto'>
     <div className='col col-10'>

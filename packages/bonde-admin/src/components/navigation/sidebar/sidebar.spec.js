@@ -4,8 +4,8 @@ import { shallow } from 'enzyme'
 import { expect } from 'chai'
 import { FormattedMessage } from 'react-intl'
 
-import * as paths from '@/paths'
-import Sidebar from '@/components/navigation/sidebar/sidebar'
+import * as paths from 'paths'
+import Sidebar from 'components/navigation/sidebar/sidebar'
 
 describe('client/components/navigation/sidebar/sidebar', () => {
   let wrapper

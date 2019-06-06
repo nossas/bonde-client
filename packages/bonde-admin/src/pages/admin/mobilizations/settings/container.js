@@ -2,10 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Route } from 'react-router-dom'
 
-import { SettingsPageLayout, SettingsPageContentLayout } from '@/components/layout'
-import { SettingsMenu } from '@/mobilizations/components'
-import MobSelectors from '@/mobrender/redux/selectors'
-import { selectMobilization } from '@/mobrender/redux/action-creators'
+import { SettingsPageLayout, SettingsPageContentLayout } from 'components/layout'
+import { SettingsMenu } from 'mobilizations/components'
+import MobSelectors from 'mobrender/redux/selectors'
+import { selectMobilization } from 'mobrender/redux/action-creators'
 
 // Pages
 import MobilizationsAnalytics from './analytics'

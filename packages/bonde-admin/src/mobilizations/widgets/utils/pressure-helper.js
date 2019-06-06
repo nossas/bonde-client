@@ -1,4 +1,4 @@
-import * as validator from '@/utils/validation-helper'
+import * as validator from 'utils/validation-helper'
 
 export const PRESSURE_TYPE_EMAIL = 'email'
 export const PRESSURE_TYPE_PHONE = 'phone'

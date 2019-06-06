@@ -1,8 +1,8 @@
 import React from 'react'
 import { expect } from 'chai'
 import { Map } from 'immutable'
-import { mountWithIntl } from '@/intl/helpers'
-import { factoryDonation } from '@/mobrender-v2/widgets/donation'
+import { mountWithIntl } from 'intl/helpers'
+import { factoryDonation } from 'mobrender-v2/widgets/donation'
 
 const TellAFriend = () => (<div />)
 const FinishMessageCustom = () => (<div />)

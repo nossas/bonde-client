@@ -3,7 +3,7 @@ import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-import { ColorPicker } from '@/components/forms'
+import { ColorPicker } from 'components/forms'
 
 describe('client/components/forms/color-picker', () => {
   let wrapper

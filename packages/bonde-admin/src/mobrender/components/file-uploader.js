@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import ReactS3Uploader from 'react-s3-uploader'
-import { Progress } from '@/components/await'
+import { Progress } from 'components/await'
 
 
 const FileUploader = ({ file, onRemove, progress, onProgress, onFinish }) => (

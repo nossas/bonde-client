@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {
   Flexbox2 as Flexbox,
   Header as HeaderStyleguide,
-  Icon,
+  IconColorful,
   Navbar,
   Spacing
 } from 'bonde-styleguide'
@@ -15,8 +15,8 @@ import Title from './Title'
 import UserDropdown from './UserDropdown'
 
 const Bonde = () => (
-  <Spacing margin={{ right: 15 }}>
-    <Icon name='bonde' size={20} />
+  <Spacing margin={{ right: 15, bottom: 10 }}>
+    <IconColorful name='bonde' size={85} inverted />
   </Spacing>
 )
 
@@ -27,8 +27,7 @@ const Header = ({
 }) => (
   <HeaderStyleguide> 
     <Navbar renderBrand={Bonde}>
-      <Flexbox horizontal spacing='between'>
-        {renderTitle ? renderTitle() : <div />}
+      <Flexbox horizontal end>
         <UserDropdown />
       </Flexbox>
     </Navbar>
@@ -50,6 +49,8 @@ const Header = ({
         </Tabs>
       </Spacing>
     )}
+
+    {renderTitle ? renderTitle() : <div />}
   </HeaderStyleguide>
 )
 

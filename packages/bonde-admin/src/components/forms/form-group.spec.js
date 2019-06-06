@@ -4,8 +4,8 @@ import React, { Component } from 'react'
 import { expect } from 'chai'
 import { mount } from 'enzyme'
 
-import * as mock from '@/utils/mock'
-import { FormGroup } from '@/components/forms'
+import * as mock from 'utils/mock'
+import { FormGroup } from 'components/forms'
 
 const Label = props => (<label />)
 

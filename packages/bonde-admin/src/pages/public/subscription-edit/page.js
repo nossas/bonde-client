@@ -1,11 +1,11 @@
 import React from 'react'
 import { FormattedMessage, intlShape } from 'react-intl'
 import classnames from 'classnames'
-import { Loading } from '@/components/await'
-import { Background } from '@/components/layout'
-import { CreditCardForm, RecurringForm } from '@/subscriptions/forms'
-import { FlatForm } from '@/ux/components'
-import * as SubscriptionActions from '@/subscriptions/redux/action-creators'
+import { Loading } from 'components/await'
+import { Background } from 'components/layout'
+import { CreditCardForm, RecurringForm } from 'subscriptions/forms'
+import { FlatForm } from 'ux/components'
+import * as SubscriptionActions from 'subscriptions/redux/action-creators'
 import './page.scss'
 
 const CreditCardFormImplementation = CreditCardForm({
@@ -108,7 +108,7 @@ class SubscriptionEditPage extends React.Component {
 
     return !loading && !data ? <Loading /> : (
       <div className='routes--subscription-edit-page'>
-        <Background contentSize={0} image={require('@/images/bg-login.png')}>
+        <Background contentSize={0} image={require('images/bg-login.png')}>
           <section className='section--choose-type'>
             <h1 style={{
               color: '#333',

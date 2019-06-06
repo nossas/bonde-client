@@ -1,14 +1,14 @@
 import React from 'react'
 import { FormattedMessage, intlShape } from 'react-intl'
 
-import * as paths from '@/paths'
+import * as paths from 'paths'
 import {
   SettingsPageLayout,
   SettingsPageMenuLayout,
   SettingsPageContentLayout
-} from '@/components/layout'
-import { Avatar, Name } from '@/mobilizations/components/list/items'
-import { FormRedux, FormGroup, FormControl, ControlLabel } from '@/components/forms'
+} from 'components/layout'
+import { Avatar, Name } from 'mobilizations/components/list/items'
+import { FormRedux, FormGroup, FormControl, ControlLabel } from 'components/forms'
 
 const TemplatesCreatePage = ({ mobilization, fields: { name, goal }, intl, history, ...formProps }) => (
   <SettingsPageLayout>

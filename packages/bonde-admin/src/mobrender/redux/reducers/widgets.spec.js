@@ -1,9 +1,9 @@
 import { expect } from 'chai'
-import * as t from '@/mobrender/redux/action-types'
-import reducer, { initialState } from '@/mobrender/redux/reducers/widgets'
-import { createAction } from '@/mobrender/redux/action-creators/create-action'
+import * as t from 'mobrender/redux/action-types'
+import reducer, { initialState } from 'mobrender/redux/reducers/widgets'
+import { createAction } from 'mobrender/redux/action-creators/create-action'
 
-describe('@/mobrender/redux/reducers/widgets', () => {
+describe('mobrender/redux/reducers/widgets', () => {
   describe('doing fetch', () => {
     it('request', () => {
       const action = { type: t.FETCH_WIDGETS_REQUEST }

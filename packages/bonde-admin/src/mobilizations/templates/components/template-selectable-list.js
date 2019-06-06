@@ -4,8 +4,8 @@ import { FormattedMessage, intlShape } from 'react-intl'
 import classnames from 'classnames'
 
 // Global module dependencies
-import SelectableList from '@/components/selectable-list'
-import FilterableSearchBar from '@/components/filterable-search-bar'
+import SelectableList from 'components/selectable-list'
+import FilterableSearchBar from 'components/filterable-search-bar'
 
 var styles = require('exenv').canUseDOM ? require('./template-selectable-list.scss') : {}
 

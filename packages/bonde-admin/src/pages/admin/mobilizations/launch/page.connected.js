@@ -4,9 +4,9 @@
 import { provideHooks } from 'redial'
 import { connect } from 'react-redux'
 
-import MobSelectors from '@/mobrender/redux/selectors'
-import DNSControlSelectors from '@/community/dns-control-selectors'
-import * as MobActions from '@/mobrender/redux/action-creators'
+import MobSelectors from 'mobrender/redux/selectors'
+import DNSControlSelectors from 'community/dns-control-selectors'
+import * as MobActions from 'mobrender/redux/action-creators'
 import Page from './page'
 
 const redial = {

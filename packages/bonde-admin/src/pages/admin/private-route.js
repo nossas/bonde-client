@@ -1,9 +1,9 @@
 import React from 'react'
 import { Route, Redirect as RedirectComponent } from 'react-router-dom'
 import { connect } from 'react-redux'
-import * as paths from '@/paths'
-import AccountSelectors from '@/account/redux/selectors'
-import * as CommunitySelectors from '@/community/selectors'
+import * as paths from 'paths'
+import AccountSelectors from 'account/redux/selectors'
+import * as CommunitySelectors from 'community/selectors'
 
 const Redirect = ({ pathname, location }) => (
   <RedirectComponent to={{ pathname, state: { from: location } }} />
