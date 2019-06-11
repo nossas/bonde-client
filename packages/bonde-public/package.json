@@ -1,6 +1,6 @@
 {
   "name": "bonde-public",
-  "version": "0.14.4",
+  "version": "0.14.5-alpha.2",
   "private": true,
   "description": "Bonde Public - Responsible render a mobilization on public mode",
   "main": "index.js",
@@ -18,7 +18,7 @@
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
     "axios": "0.18.0",
-    "bonde-webpage": "^0.14.4",
+    "bonde-webpage": "^0.14.5-alpha.2",
     "chain-function": "^1.0.0",
     "classnames": "2.2.6",
     "dotenv": "^4.0.0",

@@ -1,14 +1,14 @@
 {
   "name": "bonde-admin-canary",
   "license": "AGPL-3.0",
-  "version": "0.14.4",
+  "version": "0.14.5-alpha.2",
   "private": true,
   "dependencies": {
     "apollo-cache-inmemory": "^1.2.5",
     "apollo-client": "^2.6.0",
     "apollo-link-context": "^1.0.8",
     "apollo-link-http": "^1.5.14",
-    "bonde-styleguide": "^0.14.4",
+    "bonde-styleguide": "^0.14.5-alpha.2",
     "bonde-webpage": "0.14.0-alpha.0",
     "chai": "^4.2.0",
     "cross-storage": "^1.0.0",
