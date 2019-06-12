@@ -141,8 +141,17 @@ class MobilizationPreview extends React.Component {
   render () {
     // Properties received by HOC
     const { blocks, widgets } = this.props
+    const {
+      color_scheme: colorScheme,
+      header_font: headerFont,
+      body_font: bodyFont
+    } = this.props.mobilization
+
     return (
       <Mobilization
+        colorScheme={colorScheme}
+        headerFont={headerFont}
+        bodyFont={bodyFont}
         linkTo={b => `block-${b.id}`}
         blocks={blocks}
         widgets={widgets}
