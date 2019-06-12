@@ -149,6 +149,7 @@ class MobilizationPreview extends React.Component {
 
     return (
       <Mobilization
+        editable
         colorScheme={colorScheme}
         headerFont={headerFont}
         bodyFont={bodyFont}
