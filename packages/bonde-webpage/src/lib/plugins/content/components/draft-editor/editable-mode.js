@@ -179,7 +179,6 @@ class RebooEditor extends Component {
         >
           <div onClick={this.focus.bind(this)}>
             <Editor
-              ref='editor'
               readOnly={readOnly}
               editorState={this.state.editorState}
               onChange={this.onChangeEditorState.bind(this)}
