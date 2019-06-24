@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import TellAFriend from './tell-a-friend'
-import MobSelectors from '@/mobrender/redux/selectors'
+import MobSelectors from 'mobrender/redux/selectors'
 
 const mapStateToProps = state => {
   const { sourceRequest: { protocol, host } } = state

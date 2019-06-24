@@ -3,7 +3,7 @@ import { mount } from 'enzyme'
 import { expect } from 'chai'
 
 // Current module dependencies
-import { WidgetOverlay } from '@/mobilizations/widgets/components'
+import { WidgetOverlay } from 'mobilizations/widgets/components'
 
 describe('client/mobilizations/widgets/components/widget-overlay', () => {
   let component

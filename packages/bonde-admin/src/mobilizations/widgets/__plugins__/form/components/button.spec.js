@@ -4,7 +4,7 @@ import sinon from 'sinon'
 import { expect } from 'chai'
 import { render, shallow } from 'enzyme'
 
-import { Button } from '@/mobilizations/widgets/__plugins__/form/components'
+import { Button } from 'mobilizations/widgets/__plugins__/form/components'
 
 describe('client/mobilizations/widgets/__plugins__/form/components/button', () => {
   let props = {

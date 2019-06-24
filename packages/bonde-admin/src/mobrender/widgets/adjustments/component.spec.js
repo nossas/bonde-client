@@ -1,8 +1,8 @@
 import React from 'react'
 import { expect } from 'chai'
 
-import * as mock from '@/utils/mock'
-import shallowWithIntl from '@/intl/helpers/shallow-with-intl'
+import * as mock from 'utils/mock'
+import shallowWithIntl from 'intl/helpers/shallow-with-intl'
 import { AdjustmentsSettingsForm as Page } from './component'
 
 describe('client/mobrender/widgets/adjustments/component', () => {

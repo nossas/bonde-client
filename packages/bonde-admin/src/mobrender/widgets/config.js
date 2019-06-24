@@ -4,10 +4,10 @@ import {
   Form,
   Content,
   Donation
-} from '@/mobilizations/widgets/__plugins__'
+} from 'mobilizations/widgets/__plugins__'
 import { PressureEmailIcon, PressurePhoneIcon } from './icons'
-import { createEditorContent } from '@/mobilizations/widgets/__plugins__/content/components/editor-slate'
-import * as Paths from '@/paths'
+import { createEditorContent } from 'mobilizations/widgets/__plugins__/content/components/editor-slate'
+import * as Paths from 'paths'
 
 export default (mobilization, widget, { intl }) => [
   {

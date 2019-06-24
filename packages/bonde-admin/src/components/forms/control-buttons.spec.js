@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-expressions */
 import React from 'react'
 import { expect } from 'chai'
-import shallowWithIntl from '@/intl/helpers/shallow-with-intl'
+import shallowWithIntl from 'intl/helpers/shallow-with-intl'
 
-import { ControlButtons } from '@/components/forms/control-buttons'
+import { ControlButtons } from 'components/forms/control-buttons'
 
 describe('client/components/forms/control-buttons', () => {
   let wrapper

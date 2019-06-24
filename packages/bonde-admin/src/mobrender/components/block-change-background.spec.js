@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-expressions */
 import React from 'react'
 import { expect } from 'chai'
-import { mountWithIntl } from '@/intl/helpers'
-import BlockChangeBackground from '@/mobrender/components/block-change-background'
+import { mountWithIntl } from 'intl/helpers'
+import BlockChangeBackground from 'mobrender/components/block-change-background'
 
-describe('@/mobrender/components/block-change-background', () => {
+describe('mobrender/components/block-change-background', () => {
   let changeBackground
   const props = {
     mobilization: { id: 1, color_scheme: 'meurio' },

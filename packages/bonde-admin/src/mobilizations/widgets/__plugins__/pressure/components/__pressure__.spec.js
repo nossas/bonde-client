@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 import React from 'react'
 import { expect } from 'chai'
-import shallowWithIntl from '@/intl/helpers/shallow-with-intl'
+import shallowWithIntl from 'intl/helpers/shallow-with-intl'
 import { Pressure } from './__pressure__'
 
 describe('client/mobilizations/widgets/__plugins__/pressure/components/__pressure__', () => {

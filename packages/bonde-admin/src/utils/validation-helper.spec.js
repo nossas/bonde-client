@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 import { expect } from 'chai'
 
-import * as validator from '@/utils/validation-helper'
+import * as validator from 'utils/validation-helper'
 
 describe('client/utils/validation-helper', () => {
   describe('isValidEmail(email[:string:required])', () => {

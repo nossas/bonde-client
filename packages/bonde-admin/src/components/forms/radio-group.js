@@ -11,7 +11,7 @@ class RadioGroup extends Component {
     return (
       <p className={classnames('mt1', className)} style={style}>
         {children && children.map((child, index) => {
-          return React.cloneElement(child, {
+          return child && React.cloneElement(child, {
             key: `radio-${index}`,
             checked: value,
             alignment: layout,

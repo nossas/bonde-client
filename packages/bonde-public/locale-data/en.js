@@ -582,7 +582,7 @@ servidor-03.dominio.com`,
   'page--donation-widget.form.button-text.label': 'Confirmation button text',
   'page--donation-widget.form.button-text.placeholder': 'Eg Donate now!',
   'page--donation-widget.form.payment-method.label': 'Enable Pay Per Ticket?',
-  'page--donation-widget.form.payment-method.helper-text': 'Each ticket paid will have an additional cost of R$ 3,00',
+  'page--donation-widget.form.payment-method.helper-text': 'Pay per ticket is only available for one-time donations. Each ticket paid will have an additional cost of R $ 3.00.',
   'page--donation-widget.form.payment-method.radio.yes': 'Yes',
   'page--donation-widget.form.payment-method.radio.no': 'No',
   'page--donation-widget.form.bank-account.label': 'Bank account',
@@ -667,7 +667,6 @@ servidor-03.dominio.com`,
       other {days}
     }
   `,
-
   'form-widget.components--settings-menu.title': 'Set up your action form',
   'form-widget.components--settings-menu.items.fields': 'Form fields',
   'form-widget.components--settings-menu.items.adjusts': 'Settings',
@@ -867,5 +866,18 @@ servidor-03.dominio.com`,
   'activists-management.c--filterable-list.period.options.last-quarter': 'In the last 3 months',
   'activists-management.c--filterable-list.period.options.last-year': 'On the last year',
   'activists-management.c--filterable-list.period.options.always': 'Ever',
-  'activists-management.c--filterable-list.period.options.custom-period': 'Customize period ...'
+  'activists-management.c--filterable-list.period.options.custom-period': 'Customize period ...',
+
+  // FinishPostDonation
+  'widgets.components--donation.finish-post-donation-messages.donation-ok': 'THANK YOU! Your donation has been recorded :) It will be processed automatically once a month, starting in 31 days.',
+  'widgets.components--donation.finish-post-donation-messages.not-now': 'It\'s OK! Thank you for your support :)',
+  'widgets.components--donation.finish-post-donation.value-list': '$ {value} / month',
+  'widgets.components--donation.finish-post-donation.no-action': 'No action available',
+  'widgets.components--donation.finish-post-donation.title-component': 'YAY! Your donation has been processed :)',
+  'widgets.components--donation.finish-post-donation.improve-impact-question': 'You have just supported the basic structure of the Mutirão Ativista, but to reach its maximum potential we\'ll need to hire someone totally dedicated to support people who build campaigns through Panela de Pressão. With a small monthly donation, you can help us hire this person!',
+  'widgets.components--donation.finish-post-donation.improve-impact-solution': 'Make your contribution now:',
+  'widgets.components--donation.finish-post-donation.improve-impact-explanation': 'Your contribution will be made automatically once a month, starting in 31 days.',
+  'widgets.components--donation.finish-post-donation.support-every-month': 'SUPPORT EVERY MONTH',
+  'widgets.components--donation.finish-post-donation.not-now': 'NOT NOW',
+  'widgets.components--donation.finish-post-donation-messages.tell-a-friend.text': 'Share with your crew to spread the Activist Mutirão around every corner:'
 }

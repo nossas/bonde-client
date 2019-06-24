@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { GoogleFontsLoader } from '@/components/fonts'
+import { GoogleFontsLoader } from 'components/fonts'
 
 describe('client/components/fonts/google-fonts-loader', () => {
   const googleWebFonts = ['Armata', 'Ubuntu', 'Open Sans']

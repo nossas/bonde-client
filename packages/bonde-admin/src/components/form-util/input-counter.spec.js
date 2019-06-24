@@ -3,7 +3,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { InputCounter } from '@/components/form-util'
+import { InputCounter } from 'components/form-util'
 
 describe('client/components/form-util/input-counter', () => {
   let wrapper

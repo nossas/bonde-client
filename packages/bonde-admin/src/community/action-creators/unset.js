@@ -1,4 +1,4 @@
-import * as t from '@/community/action-types'
+import * as t from 'community/action-types'
 
 const unset = dispatch => dispatch({ type: t.UNSET })
 

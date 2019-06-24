@@ -1,9 +1,9 @@
 import { expect } from 'chai'
 
-import * as t from '@/mobrender/redux/action-types'
-import reducer, { initialState } from '@/mobrender/redux/reducers/mobilizations'
+import * as t from 'mobrender/redux/action-types'
+import reducer, { initialState } from 'mobrender/redux/reducers/mobilizations'
 
-describe('@/mobrender/redux/reducers/mobilizations', () => {
+describe('mobrender/redux/reducers/mobilizations', () => {
   describe('doing add', () => {
     it('#ADD_MOBILIZATION_REQUEST', () => {
       const state = { ...initialState, isLoaded: true }

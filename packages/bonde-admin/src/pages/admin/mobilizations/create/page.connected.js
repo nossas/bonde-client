@@ -3,10 +3,10 @@
 //
 import { reduxForm } from 'redux-form'
 import { injectIntl } from 'react-intl'
-import * as CommunitySelectors from '@/community/selectors'
-import { fields, validate } from '@/mobilizations/components/mobilization-basics-form'
-import MobSelectors from '@/mobrender/redux/selectors'
-import { asyncAddMobilization } from '@/mobrender/redux/action-creators'
+import * as CommunitySelectors from 'community/selectors'
+import { fields, validate } from 'mobilizations/components/mobilization-basics-form'
+import MobSelectors from 'mobrender/redux/selectors'
+import { asyncAddMobilization } from 'mobrender/redux/action-creators'
 
 import Page from './page'
 

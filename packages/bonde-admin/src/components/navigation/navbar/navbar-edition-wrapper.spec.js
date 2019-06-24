@@ -1,8 +1,8 @@
 import React from 'react'
 import { expect } from 'chai'
 
-import shallowWithIntl from '@/intl/helpers/shallow-with-intl'
-import { NavbarEditionWrapper } from '@/components/navigation/navbar/navbar-edition-wrapper'
+import shallowWithIntl from 'intl/helpers/shallow-with-intl'
+import { NavbarEditionWrapper } from 'components/navigation/navbar/navbar-edition-wrapper'
 
 const block = {}
 const mobilization = {}

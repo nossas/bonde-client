@@ -2,7 +2,7 @@ import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-import EmptyList from '@/components/empty-list'
+import EmptyList from 'components/empty-list'
 
 describe('client/components/empty-list/index', () => {
   let wrapper

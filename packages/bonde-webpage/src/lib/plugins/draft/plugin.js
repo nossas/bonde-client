@@ -32,7 +32,7 @@ class DraftPlugin extends React.Component {
           )
         })}
       </div>
-    ) : <div>&nbsp;</div>
+    ) : <div className='draft-widget-public'>&nbsp;</div>
   }
 }
 

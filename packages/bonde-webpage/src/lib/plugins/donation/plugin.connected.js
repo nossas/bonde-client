@@ -5,7 +5,9 @@ import Donation from './plugin'
 class DonationConnected extends React.Component {
   constructor (props) {
     super(props)
-    this.state = { donationCustomerData: undefined }
+    this.state = { 
+      donationCustomerData: undefined
+    }
   }
 
   handleTransactionCreate (values) {
@@ -36,13 +38,11 @@ class DonationConnected extends React.Component {
           data.widget_id = widget.id
           data.amount = widget.settings['donation_value' + selectedValue] + '00'
 
-          this.props.donationTransactionCreate(data)
-            .then(() => {
-              if (this.state.donationCustomerData) {
-                this.setState({ donationCustomerData: undefined })
-              }
+          return this.props.donationTransactionCreate(data)
+            .then((resp) => {
+              this.setState({ donationCustomerData: undefined })
               this.props.analyticsEvents.donationFinishRequest()
-              return resolve()
+              return resolve({ donation: resp.data })
             })
             .catch(failure => {
               if (failure.config && failure.config.data) {
@@ -64,7 +64,7 @@ class DonationConnected extends React.Component {
         }
       })
 
-      const customerData = {}
+      let customerData = {}
       if (storedDonationCustomerData) {
         const d = storedDonationCustomerData
 

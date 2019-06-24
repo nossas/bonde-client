@@ -1,9 +1,9 @@
 import React from 'react'
 import { expect } from 'chai'
 
-import { mountWithIntl } from '@/intl/helpers'
-import Navbar from '@/mobrender/components/navbar'
-import MenuItems from '@/mobrender/components/navbar/menu-items'
+import { mountWithIntl } from 'intl/helpers'
+import Navbar from 'mobrender/components/navbar'
+import MenuItems from 'mobrender/components/navbar/menu-items'
 
 describe('client/mobrender/components/navbar', () => {
   let wrapper

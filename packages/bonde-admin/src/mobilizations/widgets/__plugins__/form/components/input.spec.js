@@ -3,7 +3,7 @@ import sinon from 'sinon'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-import { Input } from '@/mobilizations/widgets/__plugins__/form/components'
+import { Input } from 'mobilizations/widgets/__plugins__/form/components'
 
 describe('client/mobilizations/widgets/__plugins__/form/components/input', () => {
   describe('when render form edit input settings', () => {

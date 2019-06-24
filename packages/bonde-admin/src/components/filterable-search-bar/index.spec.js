@@ -3,7 +3,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { FilterableSearchBar } from '@/components/filterable-search-bar'
+import { FilterableSearchBar } from 'components/filterable-search-bar'
 
 describe('client/components/filterable-search-bar/index', () => {
   let wrapper

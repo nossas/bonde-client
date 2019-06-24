@@ -2,9 +2,9 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 
-import * as paths from '@/paths'
-import { PageTabLayout } from '@/mobilizations/components'
-import MobilizationBasicsForm from '@/mobilizations/components/mobilization-basics-form'
+import * as paths from 'paths'
+import { PageTabLayout } from 'mobilizations/components'
+import MobilizationBasicsForm from 'mobilizations/components/mobilization-basics-form'
 
 const MobilizationsNewPage = props => (
   <PageTabLayout location={props.location}>

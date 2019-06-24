@@ -1,8 +1,8 @@
 import { expect } from 'chai'
 
-import reducers, { initialState } from '@/mobilizations/widgets/__plugins__/donation/reducers'
-import { createAction } from '@/mobilizations/widgets/__plugins__/donation/action-creators/create-action'
-import * as t from '@/mobilizations/widgets/__plugins__/donation/action-types'
+import reducers, { initialState } from 'mobilizations/widgets/__plugins__/donation/reducers'
+import { createAction } from 'mobilizations/widgets/__plugins__/donation/action-creators/create-action'
+import * as t from 'mobilizations/widgets/__plugins__/donation/action-types'
 
 describe('client/mobilizations/widgets/__plugins__/donation/reducers', () => {
   it('should return the initial state by default', () => {

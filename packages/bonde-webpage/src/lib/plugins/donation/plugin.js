@@ -2,11 +2,21 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { FormattedMessage, intlShape } from 'react-intl'
-import { Progress } from './components'
+import { Progress, TellAFriend } from './components'
 import { numberUtils } from './utils'
 
 if (require('exenv').canUseDOM) require('./plugin.scss')
 
+export const DonationSubmitButton = ({ children, mainColor, onClick }) => (
+  <button
+    type='button'
+    onClick={onClick}
+    style={{ backgroundColor: mainColor }}
+    className='btn white caps bg-darken-4 p2 mt1 col-12 rounded border-box'
+  >
+    {children}
+  </button>
+)
 
 class Donation extends React.Component {
   constructor (props, context) {
@@ -15,6 +25,7 @@ class Donation extends React.Component {
       hasMouseOver: false,
       loading: false,
       success: false,
+      donation: undefined,
       selected_value: 1,
       selected_payment_type: 'recurring',
       errors: []
@@ -53,14 +64,14 @@ class Donation extends React.Component {
       selected_payment_type: selectedPaymentType
     } = this.state
 
-    this.props.handleDonationTransactionCreate({
+    return this.props.handleDonationTransactionCreate({
       mobilization,
       widget,
       selectedValue,
       selectedPaymentType,
       storedDonationCustomerData: donationCustomerData
-    }).then(() => {
-      this.setState({ success: true })
+    }).then(({ donation }) => {
+      this.setState({ success: true, donation })
     })
   }
 
@@ -334,14 +345,12 @@ class Donation extends React.Component {
             </button>
           )}
 
-          <button
-            type='button'
+          <DonationSubmitButton
+            mainColor={mainColor}
             onClick={this.handleClickDonate.bind(this)}
-            style={{ backgroundColor: mainColor }}
-            className='btn white caps bg-darken-4 p2 mt1 col-12 rounded border-box'
           >
             {buttonText}
-          </button>
+          </DonationSubmitButton>
         </div>
 
         <div className='p3' style={{ boxShadow: '#E3E3E3 0px 15px 18px -10px inset' }}>
@@ -375,14 +384,32 @@ class Donation extends React.Component {
 
     const {
       FinishCustomMessage: { component: FinishCustomMessage, props: customProps },
-      FinishDefaultMessage: { component: FinishDefaultMessage, props: defaultProps }
+      FinishDefaultMessage: { component: FinishDefaultMessage, props: defaultProps },
+      FinishDonationMessage: { component: FinishDonationMessage, props: donationProps }
     } = overrides
 
-    return finishMessageType === 'custom' ? (
-      <FinishCustomMessage mobilization={mobilization} widget={widget} {...customProps} />
-    ) : (
-      <FinishDefaultMessage mobilization={mobilization} widget={widget} {...defaultProps} />
-    )
+    if (finishMessageType === 'custom') {
+      return <FinishCustomMessage {...this.props} {...customProps} />
+    }
+    if (finishMessageType === 'donation-recurrent' && this.state.donation.payment_method !== 'boleto') {
+      return (
+        <FinishDonationMessage
+          {...this.props}
+          {...donationProps}
+          defaultSelectedValue={this.state.selected_value}
+          finishDonationComponent={FinishDonationMessage}
+          onClickDonation={(value) => {
+            if (value) {
+              return this.props.handleDonationTransactionConvert({
+                donation_id: this.state.donation.id,
+                amount: widget.settings['donation_value' + value] + '00',
+              })
+            }
+          }}
+        />
+      )
+    }
+    return <FinishDefaultMessage {...this.props} {...defaultProps} />
   }
 
   renderReattemptMessage () {
@@ -434,9 +461,13 @@ class Donation extends React.Component {
   }
 
   renderContentStrategy () {
-    if (this.props.donationCustomerData) return this.renderReattemptMessage()
-    else if (this.state.success) return this.renderThankyouText()
-    else return this.renderForm()
+    if (this.props.donationCustomerData) {
+      return this.renderReattemptMessage()
+    }
+    if (this.state.success) {
+      return this.renderThankyouText()
+    }
+    return this.renderForm()
   }
 
   render () {
@@ -465,7 +496,11 @@ Donation.propTypes = {
     FinishDefaultMessage: shape({
       component: any,
       props: object
-    }).isRequired
+    }).isRequired,
+    FinishPostDonation: shape({
+      component: any,
+      props: object
+    }).isRequired,
   }).isRequired
 }
 

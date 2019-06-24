@@ -3,9 +3,9 @@ import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 import configureStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
-import { asyncFetchBlocks } from '@/mobrender/redux/action-creators'
-import { createAction } from '@/mobrender/redux/action-creators/create-action'
-import * as t from '@/mobrender/redux/action-types'
+import { asyncFetchBlocks } from 'mobrender/redux/action-creators'
+import { createAction } from 'mobrender/redux/action-creators/create-action'
+import * as t from 'mobrender/redux/action-types'
 
 import rootReducer from './mock-reducers/root-reducer'
 

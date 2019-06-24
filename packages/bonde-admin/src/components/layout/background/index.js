@@ -48,7 +48,7 @@ Background.defaultProps = {
 
 export const BondeBackground = ({ children, ...props }) => (
   <Background
-    image={require('exenv').canUseDOM ? require('@/images/bg-login.png') : ''}
+    image={require('exenv').canUseDOM ? require('images/bg-login.png') : ''}
     contentSize={12}
     {...props}
   >

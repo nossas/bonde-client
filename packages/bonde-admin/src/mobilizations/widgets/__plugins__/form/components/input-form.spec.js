@@ -2,8 +2,8 @@
 import React from 'react'
 import { expect } from 'chai'
 
-import shallowWithIntl from '@/intl/helpers/shallow-with-intl'
-import { InputForm } from '@/mobilizations/widgets/__plugins__/form/components/input-form'
+import shallowWithIntl from 'intl/helpers/shallow-with-intl'
+import { InputForm } from 'mobilizations/widgets/__plugins__/form/components/input-form'
 
 describe('client/mobilizations/widgets/__plugins__/form/components/input-form', () => {
   let wrapper

@@ -14,7 +14,7 @@ import { ContentPlugin } from 'bonde-webpage/lib/plugins/content'
 // PRESSURE PLUGIN and external dependencies
 import PressurePlugin from './plugin-pressure.connected'
 import { PressureAnalytics, PressureTellAFriend } from 'bonde-webpage/lib/plugins/pressure'
-import { client as graphqlClient } from '@/store'
+import { client as graphqlClient } from 'store'
 // PRESSURE PLUGIN and external dependencies
 import DonationPlugin from './plugin-donation.connected'
 import { DonationAnalytics, DonationTellAFriend } from 'bonde-webpage/lib/plugins/donation'
@@ -141,8 +141,18 @@ class MobilizationPreview extends React.Component {
   render () {
     // Properties received by HOC
     const { blocks, widgets } = this.props
+    const {
+      color_scheme: colorScheme,
+      header_font: headerFont,
+      body_font: bodyFont
+    } = this.props.mobilization
+
     return (
       <Mobilization
+        editable
+        colorScheme={colorScheme}
+        headerFont={headerFont}
+        bodyFont={bodyFont}
         linkTo={b => `block-${b.id}`}
         blocks={blocks}
         widgets={widgets}

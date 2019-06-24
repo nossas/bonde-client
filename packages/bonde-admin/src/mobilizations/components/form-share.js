@@ -3,7 +3,7 @@ import React from 'react'
 import { FormattedMessage, intlShape, injectIntl } from 'react-intl'
 import { reduxForm } from 'redux-form'
 
-import { FormGroup, ControlLabel, FormControl, UploadImageField } from '@/components/forms'
+import { FormGroup, ControlLabel, FormControl, UploadImageField } from 'components/forms'
 
 const FormShare = ({
   FormComponent,

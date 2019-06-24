@@ -956,7 +956,7 @@ Caso sua base de ações não esteja sincronizada com o Mailchimp, você pode fo
   'page--donation-widget.form.button-text.label': 'Texto do botão',
   'page--donation-widget.form.button-text.placeholder': 'Ex.: Doar agora!',
   'page--donation-widget.form.payment-method.label': 'Quer habilitar o pagamento por boleto?',
-  'page--donation-widget.form.payment-method.helper-text': 'Cada boleto pago terá um custo adicional de R$3,00',
+  'page--donation-widget.form.payment-method.helper-text': 'O pagamento por boleto só está disponível para doações únicas. Cada boleto pago terá um custo adicional de R$3,00.',
   'page--donation-widget.form.payment-method.radio.yes': 'Sim',
   'page--donation-widget.form.payment-method.radio.no': 'Não',
   'page--donation-widget.form.bank-account.label': 'Conta bancária',
@@ -1456,5 +1456,19 @@ Caso sua base de ações não esteja sincronizada com o Mailchimp, você pode fo
   'adjustments.form.count-text.placeholder': 'Defina o texto que ficará ao lado do número de pessoas que agiram.',
   'adjustments.form.count-text.helpBlock': 'O contador será mostrado se existir um texto definido.',
   'adjustments.form.main-color.label': 'Cor padrão',
-  'adjustments.form.main-color.helpBlock': 'Selecione a cor no box abaixo ou insira o valor em hex, por exemplo: #DC3DCE.'
+  'adjustments.form.main-color.helpBlock': 'Selecione a cor no box abaixo ou insira o valor em hex, por exemplo: #DC3DCE.',
+
+
+  // FinishPostDonation component - finish-post-donation.js
+  'widgets.components--donation.finish-post-donation.value-list': '$ {value} / mês',
+  'widgets.components--donation.finish-post-donation.no-action': 'Nenhuma ação disponível',
+  'widgets.components--donation.finish-post-donation.title-component': 'OBA! Sua doação foi processada :)',
+  'widgets.components--donation.finish-post-donation.improve-impact-question': 'Você acabou de apoiar a estrutura básica do Mutirão Ativista, mas para ele atingir seu potencial máximo vamos precisar contratar uma pessoa totalmente dedicada a apoiar todos que quiserem criar suas campanhas no Panela de Pressão. Com uma pequena doação recorrente, você nos ajuda a contratar essa pessoa!',
+  'widgets.components--donation.finish-post-donation.improve-impact-solution': 'Faça sua contribuição agora:',
+  'widgets.components--donation.finish-post-donation.improve-impact-explanation': 'Sua contribuição será processada automaticamente a partir do mês que vem',
+  'widgets.components--donation.finish-post-donation.support-every-month': 'APOIAR TODO MÊS',
+  'widgets.components--donation.finish-post-donation.not-now': 'AGORA NÃO',
+  'widgets.components--donation.finish-post-donation-messages.donation-ok': 'MUITO OBRIGADA! Sua doação foi registrada :) Ela será processada automaticamente uma vez ao mês, começando daqui a 31 dias.',
+  'widgets.components--donation.finish-post-donation-messages.not-now': 'Tudo bem! Valeu por seu apoio :)',
+  'widgets.components--donation.finish-post-donation-messages.tell-a-friend.text': 'Compartilhe com a sua galera para espalhar o Mutirão Ativista por todos os cantos:'
 }

@@ -1,4 +1,4 @@
-import { injectAsyncReducer } from '@/store'
+import { injectAsyncReducer } from 'store'
 
 // polyfill webpack require.ensure
 if (typeof require.ensure !== 'function') require.ensure = (d, c) => c(require)
@@ -11,7 +11,7 @@ export default store => ({
 
   getComponent (nextState, callback) {
     require.ensure([], function (require) {
-      injectAsyncReducer(store, 'community', require('@/community/reducers').default)
+      injectAsyncReducer(store, 'community', require('community/reducers').default)
       callback(null, require('./page.connected').default)
     })
   }

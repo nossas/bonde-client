@@ -4,7 +4,7 @@ import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-import { Form } from '@/components/forms'
+import { Form } from 'components/forms'
 
 const Button = (props) => (
   <button {...props}>Done!</button>

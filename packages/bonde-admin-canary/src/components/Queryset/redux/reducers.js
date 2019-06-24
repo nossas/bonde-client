@@ -1,3 +1,5 @@
+import * as actionTypes from './actionTypes'
+
 const initialState = {
   queries: [],
   observable: {}
@@ -5,7 +7,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case 'Queryset/REGISTER':
+    case actionTypes.REGISTER:
       if (!state.queries.includes(action.payload)) {
         return {
           ...state,
@@ -14,7 +16,7 @@ export default (state = initialState, action) => {
       }
       console.error('Queryset Redux action payload already registered')
       return state
-    case 'Queryset/DONE':
+    case actionTypes.DONE:
       const queryset = action.payload
       return {
         ...state,

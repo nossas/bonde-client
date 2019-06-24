@@ -3,10 +3,10 @@ import React, { Component } from 'react'
 import classnames from 'classnames'
 
 // Global module dependencies
-import { InputCounter } from '@/components/form-util'
+import { InputCounter } from 'components/form-util'
 
 // Current module dependencies
-import { Raise } from '@/components/forms'
+import { Raise } from 'components/forms'
 
 class ControlLabel extends Component {
   render () {

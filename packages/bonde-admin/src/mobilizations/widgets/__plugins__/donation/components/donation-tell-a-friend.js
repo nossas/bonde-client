@@ -2,8 +2,8 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 
-import * as paths from '@/paths'
-import { TellAFriend } from '@/components/share'
+import * as paths from 'paths'
+import { TellAFriend } from 'components/share'
 
 const DonationTellAFriend = ({ preview, mobilization, widget }) => {
   return (

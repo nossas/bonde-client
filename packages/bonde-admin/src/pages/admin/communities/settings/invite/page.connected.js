@@ -3,16 +3,16 @@
 //
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
-import { createForm, Field } from '@/storybook/forms'
+import { createForm, Field } from 'storybook/forms'
 import {
   combineValidations,
   required,
   isEmail
-} from '@/storybook/forms/validate'
-import { SettingsForm, TextField } from '@/storybook/settings/forms'
-import { Info } from '@/components/notify'
-import { asyncInvite } from '@/community/action-creators'
-import * as CommunitySelectors from '@/community/selectors'
+} from 'storybook/forms/validate'
+import { SettingsForm, TextField } from 'storybook/settings/forms'
+import { Info } from 'components/notify'
+import { asyncInvite } from 'community/action-creators'
+import * as CommunitySelectors from 'community/selectors'
 import { i18nKeys } from './i18n'
 
 const InviteForm = createForm({

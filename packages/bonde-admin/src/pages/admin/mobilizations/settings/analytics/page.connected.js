@@ -4,9 +4,9 @@
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
 import { injectIntl } from 'react-intl'
-import MobSelectors from '@/mobrender/redux/selectors'
-import * as MobActions from '@/mobrender/redux/action-creators'
-import { isValidCodeGA } from '@/utils/validation-helper'
+import MobSelectors from 'mobrender/redux/selectors'
+import * as MobActions from 'mobrender/redux/action-creators'
+import { isValidCodeGA } from 'utils/validation-helper'
 
 import Page from './page'
 

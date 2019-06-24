@@ -3,7 +3,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { BrowsableListItem } from '@/components/navigation/browsable-list'
+import { BrowsableListItem } from 'components/navigation/browsable-list'
 
 describe('client/components/navigation/browsable-list/browsable-list-item', () => {
   let wrapper

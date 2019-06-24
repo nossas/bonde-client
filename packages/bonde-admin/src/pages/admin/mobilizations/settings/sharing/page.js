@@ -1,9 +1,9 @@
 import React from 'react'
 
-import MobSelectors from '@/mobrender/redux/selectors'
-import * as MobActions from '@/mobrender/redux/action-creators'
-import { FormShare } from '@/mobilizations/components'
-import { SettingsForm } from '@/ux/components'
+import MobSelectors from 'mobrender/redux/selectors'
+import * as MobActions from 'mobrender/redux/action-creators'
+import { FormShare } from 'mobilizations/components'
+import { SettingsForm } from 'ux/components'
 
 if (require('exenv').canUseDOM) {
   require('./form-share.scss')

@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-expressions */
 import React from 'react'
-import shallowWithIntl from '@/intl/helpers/shallow-with-intl'
+import shallowWithIntl from 'intl/helpers/shallow-with-intl'
 import { expect } from 'chai'
 
-import * as mock from '@/utils/mock'
-import { FormAutofire } from '@/mobilizations/widgets/components'
+import * as mock from 'utils/mock'
+import { FormAutofire } from 'mobilizations/widgets/components'
 
 describe('client/mobilizations/widgets/components/form-autofire', () => {
   let wrapper

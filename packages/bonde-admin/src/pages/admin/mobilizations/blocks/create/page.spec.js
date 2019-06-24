@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import { expect } from 'chai'
 import { FormattedMessage } from 'react-intl'
 
-import BLOCK_LAYOUTS from '@/mobilizations/blocks/constants/block-layouts'
+import BLOCK_LAYOUTS from 'mobilizations/blocks/constants/block-layouts'
 import Page from './page'
 
 describe('routes/admin/authenticated/sidebar/blocks-create/page', () => {

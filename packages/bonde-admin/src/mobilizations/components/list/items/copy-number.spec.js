@@ -3,7 +3,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { CopyNumber } from '@/mobilizations/components/list/items'
+import { CopyNumber } from 'mobilizations/components/list/items'
 
 describe('client/mobilizations/components/list/items/copy-number', () => {
   let wrapper

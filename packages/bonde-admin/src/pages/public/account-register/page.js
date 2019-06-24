@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { FormattedMessage, injectIntl } from 'react-intl'
-import { BondeBackground } from '@/components/layout/background'
-import { Loading } from '@/components/await'
+import { BondeBackground } from 'components/layout/background'
+import { Loading } from 'components/await'
 
 import {
   FormRedux,
@@ -10,7 +10,7 @@ import {
   ControlLabel,
   FormControl,
   Button
-} from '@/components/forms'
+} from 'components/forms'
 
 class RegisterPage extends Component {
   render () {

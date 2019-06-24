@@ -2,9 +2,9 @@
 // @route /community
 //
 import { connect } from 'react-redux'
-import AuthSelectors from '@/account/redux/selectors'
-import * as CommunityActions from '@/community/action-creators'
-import * as CommunitySelectors from '@/community/selectors'
+import AuthSelectors from 'account/redux/selectors'
+import * as CommunityActions from 'community/action-creators'
+import * as CommunitySelectors from 'community/selectors'
 
 import Page from './page'
 

@@ -3,11 +3,11 @@ import { Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 // Components
-import { Loading } from '@/components/await'
+import { Loading } from 'components/await'
 
 // Redux
-import { selectMobilization, asyncFetchWidgets, asyncFetchBlocks } from '@/mobrender/redux/action-creators'
-import MobSelectors from '@/mobrender/redux/selectors'
+import { selectMobilization, asyncFetchWidgets, asyncFetchBlocks } from 'mobrender/redux/action-creators'
+import MobSelectors from 'mobrender/redux/selectors'
 
 // Pages
 import MobilizationList from './list'

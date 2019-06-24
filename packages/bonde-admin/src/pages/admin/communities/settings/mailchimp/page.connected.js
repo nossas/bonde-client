@@ -3,13 +3,13 @@
 //
 // New File
 import React from 'react'
-import { createForm, Field } from '@/storybook/forms'
+import { createForm, Field } from 'storybook/forms'
 import {
   SettingsForm,
   TextField
-} from '@/storybook/settings/forms'
-import * as CommunitySelectors from '@/community/selectors'
-import { asyncEdit } from '@/community/action-creators'
+} from 'storybook/settings/forms'
+import * as CommunitySelectors from 'community/selectors'
+import { asyncEdit } from 'community/action-creators'
 import { i18nKeys } from './i18n'
 import {
   MailchimpFormWarning,

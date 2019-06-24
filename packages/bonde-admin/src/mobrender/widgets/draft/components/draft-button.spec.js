@@ -2,7 +2,7 @@
 import React from 'react'
 import { expect } from 'chai'
 import { mount } from 'enzyme'
-import { DraftButton } from '@/mobrender/widgets/draft/components'
+import { DraftButton } from 'mobrender/widgets/draft/components'
 
 describe('client/mobrender/widgets/draft/components/draft-button', () => {
   const props = {

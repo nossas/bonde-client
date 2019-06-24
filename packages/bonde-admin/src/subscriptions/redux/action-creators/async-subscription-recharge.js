@@ -1,8 +1,8 @@
 import { addNotification } from 'reapop'
-import * as notifications from '@/utils/notifications'
-import * as t from '@/subscriptions/redux/action-types'
-import { createAction } from '@/utils/redux'
-import * as AwaitActions from '@/components/await/redux/action-creators'
+import * as notifications from 'utils/notifications'
+import * as t from 'subscriptions/redux/action-types'
+import { createAction } from 'utils/redux'
+import * as AwaitActions from 'components/await/redux/action-creators'
 
 //
 // Action to update the user subscription data and recharge it.

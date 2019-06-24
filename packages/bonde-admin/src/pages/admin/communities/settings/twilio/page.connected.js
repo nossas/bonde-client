@@ -3,21 +3,21 @@
 //
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
-import { Info } from '@/components/notify'
-import { createForm, Field } from '@/storybook/forms'
+import { Info } from 'components/notify'
+import { createForm, Field } from 'storybook/forms'
 import {
   combineValidations,
   required,
   isPhoneNumber
-} from '@/storybook/forms/validate'
-import { SettingsForm, TextField } from '@/storybook/settings/forms'
+} from 'storybook/forms/validate'
+import { SettingsForm, TextField } from 'storybook/settings/forms'
 // GraphQL
 import { connect } from 'react-redux'
 import { graphql, compose } from 'react-apollo'
-import * as graphqlMutations from '@/graphql/mutations'
-import * as graphqlQueries from '@/graphql/queries'
-import * as CommunityActions from '@/community/action-creators'
-import * as CommunitySelectors from '@/community/selectors'
+import * as graphqlMutations from 'graphql/mutations'
+import * as graphqlQueries from 'graphql/queries'
+import * as CommunityActions from 'community/action-creators'
+import * as CommunitySelectors from 'community/selectors'
 // This module
 import {
   TwilioAccountSidHelp,

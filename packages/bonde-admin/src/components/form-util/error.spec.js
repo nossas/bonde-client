@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { Error } from '@/components/form-util'
+import { Error } from 'components/form-util'
 
 describe('client/components/form-util/error', () => {
   let wrapper

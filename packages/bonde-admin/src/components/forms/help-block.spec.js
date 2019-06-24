@@ -3,7 +3,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { HelpBlock } from '@/components/forms'
+import { HelpBlock } from 'components/forms'
 
 describe('client/components/forms/help-block', () => {
   let wrapper

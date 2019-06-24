@@ -3,8 +3,8 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import * as mock from '@/utils/mock'
-import ListItem from '@/community/components/list-item'
+import * as mock from 'utils/mock'
+import ListItem from 'community/components/list-item'
 
 describe('client/community/components/list-item', () => {
   let wrapper

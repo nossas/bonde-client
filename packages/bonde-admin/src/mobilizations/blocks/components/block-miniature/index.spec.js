@@ -3,8 +3,8 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import BLOCK_LAYOUTS from '@/mobilizations/blocks/constants/block-layouts'
-import BlockMiniature from '@/mobilizations/blocks/components/block-miniature'
+import BLOCK_LAYOUTS from 'mobilizations/blocks/constants/block-layouts'
+import BlockMiniature from 'mobilizations/blocks/components/block-miniature'
 
 describe('client/mobilizations/blocks/components/block-miniature', () => {
   let wrapper

@@ -1,7 +1,7 @@
 import * as t from '../action-types'
 import { createAction } from './create-action'
-import AuthSelectors from '@/account/redux/selectors'
-import MobSelectors from '@/mobrender/redux/selectors'
+import AuthSelectors from 'account/redux/selectors'
+import MobSelectors from 'mobrender/redux/selectors'
 
 export default (block) => (dispatch, getState, { api }) => {
   const headers = AuthSelectors(getState()).getCredentials()

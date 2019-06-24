@@ -3,7 +3,7 @@ import thunk from 'redux-thunk'
 import promise from 'redux-promise'
 import axios from 'axios'
 import { ApolloClient, createNetworkInterface } from 'react-apollo'
-import crossStorage from '@/cross-storage-client'
+import crossStorage from 'cross-storage-client'
 import createReducer from './createReducer'
 import DevTools from './components/dev-tools'
 

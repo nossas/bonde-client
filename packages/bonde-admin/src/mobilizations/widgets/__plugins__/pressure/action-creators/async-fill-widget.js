@@ -1,8 +1,8 @@
 /* eslint-disable prefer-promise-reject-errors */
-import AnalyticsEvents from '@/mobilizations/widgets/utils/analytics-events'
-import MobSelectors from '@/mobrender/redux/selectors'
+import AnalyticsEvents from 'mobilizations/widgets/utils/analytics-events'
+import MobSelectors from 'mobrender/redux/selectors'
 import * as t from '../action-types'
-import * as MobActionTypes from '@/mobrender/redux/action-types'
+import * as MobActionTypes from 'mobrender/redux/action-types'
 import { createAction } from './create-action'
 
 //

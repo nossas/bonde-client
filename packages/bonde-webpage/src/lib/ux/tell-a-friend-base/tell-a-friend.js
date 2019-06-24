@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { any, bool, shape, string } from 'prop-types'
 import { FormattedMessage } from 'react-intl'
 import FacebookShareButton from './facebook-share-button'
 import TwitterShareButton from './twitter-share-button'
@@ -19,7 +19,7 @@ const TellAFriend = ({
   widget
 }) => {
   const settings = widget.settings || {}
-
+  console.log(widget)
   return (
     <div className='center p3 bg-white darkengray rounded'>
       <div className='m0 h3 bold'>{message}</div>
@@ -28,18 +28,18 @@ const TellAFriend = ({
       </div>
       <p>
         <FormattedMessage
-          id='share.components--tell-a-friend.text'
+          id={widget.settings.finish_message_type === 'donation-recurrent'
+          ? 'widgets.components--donation.finish-post-donation-messages.tell-a-friend.text'
+          : 'share.components--tell-a-friend.text'}
           defaultMessage='Agora, compartilhe com seus amigos!'
         />
       </p>
       <p><FacebookShareButton href={href} /></p>
       <p><TwitterShareButton href={href} text={twitterShareText} /></p>
-      <p><WhatsAppShareButton whatsappText={settings.whatsapp_text || href} preview={preview} /></p>
+      <p><WhatsAppShareButton whatsappText={settings.whatsapp_text || href} /></p>
     </div>
   )
 }
-
-const { any, bool, shape, string, object } = PropTypes
 
 TellAFriend.propTypes = {
   preview: bool,

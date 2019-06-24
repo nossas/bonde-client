@@ -3,9 +3,9 @@ import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-import * as mock from '@/utils/mock'
-import Mobilization from '@/mobrender/components/mobilization'
-import Block from '@/mobrender/components/block.connected'
+import * as mock from 'utils/mock'
+import Mobilization from 'mobrender/components/mobilization'
+import Block from 'mobrender/components/block.connected'
 
 describe('client/mobrender/components/mobilization', () => {
   let wrapper

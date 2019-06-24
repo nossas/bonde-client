@@ -1,15 +1,15 @@
 import React from 'react'
 
 import { FormattedMessage, injectIntl } from 'react-intl'
-import * as paths from '@/paths'
-import * as MobActions from '@/mobrender/redux/action-creators'
-import { Loading } from '@/components/await'
-import MobSelectors from '@/mobrender/redux/selectors'
-import { PageCentralizedLayout, PageCentralizedLayoutTitle } from '@/components/layout'
-import { Tabs, Tab } from '@/components/navigation/tabs'
-import { Button, FlatForm } from '@/ux/components'
-import { StepsContainerStack, StepContent } from '@/components/steps'
-import { FormDomain, FormShare } from '@/mobilizations/components'
+import * as paths from 'paths'
+import * as MobActions from 'mobrender/redux/action-creators'
+import { Loading } from 'components/await'
+import MobSelectors from 'mobrender/redux/selectors'
+import { PageCentralizedLayout, PageCentralizedLayoutTitle } from 'components/layout'
+import { Tabs, Tab } from 'components/navigation/tabs'
+import { Button, FlatForm } from 'ux/components'
+import { StepsContainerStack, StepContent } from 'components/steps'
+import { FormDomain, FormShare } from 'mobilizations/components'
 
 if (require('exenv').canUseDOM) {
   require('./form-domain.scss')

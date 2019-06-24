@@ -1,41 +1,58 @@
-import React from 'react'
-import { Button, Flexbox2 as Flexbox, Tooltip, Title, Text } from 'bonde-styleguide'
+import React, { Fragment } from 'react'
+import { node, number, string, func } from 'prop-types'
+import {
+  Button,
+  Flexbox2 as Flexbox,
+  Tooltip,
+  Title,
+  Text
+} from 'bonde-styleguide'
 
 const Navigation = ({ onNext, onClose, currentStep, total }) => (
   <Flexbox horizontal middle>
     <Title.H5 color='#fff'>{currentStep} / {total}</Title.H5>
     {currentStep < total && (
-      <React.Fragment>
+      <Fragment>
         <Button dark flat onClick={onClose}>
           Pular tour
         </Button>
         <Button dark onClick={onNext}>
           Próxima parada
         </Button>
-      </React.Fragment>
+      </Fragment>
     )}
     {currentStep >= total && (
-      <React.Fragment>
+      <Fragment>
         <Button dark flat onClick={onNext}>
           Rever Tour
         </Button>
         <Button dark onClick={onClose}>
           Finalizar Tour
         </Button>
-      </React.Fragment>
+      </Fragment>
     )}
   </Flexbox>
 )
 
 const Header = ({ title, subtitle }) => (
-  <React.Fragment>
+  <Fragment>
     {title && (
-      <Title.H3 color='#fff' margin={{ bottom: 25 }}>{title}</Title.H3>
+      <Title.H3
+        color='#fff'
+        margin={{ bottom: 25 }}
+      >
+        {title}
+      </Title.H3>
     )}
     {subtitle && (
-      <Text color='#fff' margin={{ bottom: 20 }}>{subtitle}</Text>
+      <Text
+        color='#fff'
+        margin={{ bottom: 20 }}
+      >
+        {subtitle}
+      </Text>
     )}
-  </React.Fragment>
+  </Fragment>
 )
 
 const Box = ({
@@ -55,15 +72,18 @@ const Box = ({
     width={width}
     minHeight={minHeight}
     Content={() => (
-      <React.Fragment>
-        <Header title={title} subtitle={subtitle} />
+      <Fragment>
+        <Header
+          title={title}
+          subtitle={subtitle}
+        />
         <Navigation
           currentStep={currentStep}
           total={total}
           onNext={onNext}
           onClose={onClose}
         />
-      </React.Fragment>
+      </Fragment>
     )}
     placement={placement}
   >
@@ -74,6 +94,19 @@ const Box = ({
 Box.defaultProps = {
   width: 445,
   minHeight: 226
+}
+
+Box.propTypes = {
+  children: node.isRequired,
+  width: number,
+  minHeight: number,
+  title: string.isRequired,
+  subtitle: string.isRequired,
+  currentStep: string.isRequired,
+  total: string.isRequired,
+  onNext: func.isRequired,
+  onClose: func.isRequired,
+  placement: string.isRequired,
 }
 
 export default Box

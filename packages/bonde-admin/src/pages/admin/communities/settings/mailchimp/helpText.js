@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl } from 'react-intl'
-import { Warning } from '@/components/notify'
-import { Button, HelpBlock } from '@/storybook/settings/forms'
-import { notify } from '@/utils/notifications'
-import { resyncMailchimp } from '@/community/action-creators'
+import { Warning } from 'components/notify'
+import { Button, HelpBlock } from 'storybook/settings/forms'
+import { notify } from 'utils/notifications'
+import { resyncMailchimp } from 'community/action-creators'
 
 export const MailchimpFormWarning = injectIntl(
   connect(undefined, (dispatch, ownProps) => ({

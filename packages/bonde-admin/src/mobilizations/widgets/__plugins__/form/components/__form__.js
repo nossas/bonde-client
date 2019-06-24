@@ -5,10 +5,10 @@ import { intlShape } from 'react-intl'
 import $ from 'jquery'
 import classnames from 'classnames'
 
-import { Error } from '@/components/form-util'
-import { isValidEmail } from '@/utils/validation-helper'
-import { FinishMessageCustom } from '@/mobilizations/widgets/components'
-import AnalyticsEvents from '@/mobilizations/widgets/utils/analytics-events'
+import { Error } from 'components/form-util'
+import { isValidEmail } from 'utils/validation-helper'
+import { FinishMessageCustom } from 'mobilizations/widgets/components'
+import AnalyticsEvents from 'mobilizations/widgets/utils/analytics-events'
 import { Button, Input, FormTellAFriend } from '../components'
 
 class Form extends Component {

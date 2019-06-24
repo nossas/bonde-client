@@ -1,64 +1,60 @@
-import test from 'ava'
 import React from 'react'
 import { shallow } from 'enzyme'
 import { Dropdown, DropdownItem } from 'bonde-styleguide'
 import { Link } from 'react-router-dom'
 import urljoin from 'url-join'
 import CommunitiesDropdown from './CommunitiesDropdown'
+import { expect } from 'chai'
 
-test.beforeEach(t => {
-  const props = {
-    t: (key) => key,
-    path: '/communities'
-  }
-  t.context.node = shallow(<CommunitiesDropdown {...props} />)
-})
+describe('components > PageLogged > Header > CommunitiesDropdown > CommunitiesDropdown', () => {
+  let node
 
-test('render a Dropdown component', t => {
-  const { node } = t.context
+  beforeEach(() => {
+    const props = {
+      t: (key) => key,
+      path: '/communities'
+    }
+    node = shallow(<CommunitiesDropdown {...props} />)
+  })
 
-  t.is(node.find(Dropdown).length, 1)
-})
+  it('render a Dropdown component', () => {
+    expect(node.find(Dropdown).length).to.be.equal(1)
+  })
 
-test('translate label for communities', t => {
-  const i18nKey = 'dropdown.label.communities'
-  const i18n = () => i18nKey
-  const { node } = t.context
-  node.setProps({ t: i18n })
+  it('translate label for communities', () => {
+    const i18nKey = 'dropdown.label.communities'
+    const i18n = () => i18nKey
+    node.setProps({ t: i18n })
 
-  t.is(node.find(Dropdown).props().label, i18nKey)
-})
+    expect(node.find(Dropdown).props().label).to.be.equal(i18nKey)
+  })
 
-test('when data is empty render disabled', t => {
-  const { node } = t.context
+  it('when data is empty render disabled', () => {
+    expect(node.find(Dropdown).props().disabled).to.be.true
+  })
 
-  t.is(node.find(Dropdown).props().disabled, true)
-})
+  it('render DropdownItem when data is passed', () => {
+    const communities = [
+      { id: 1, name: 'C1' },
+      { id: 2, name: 'C2' }
+    ]
+    node.setProps({ communities })
 
-test('render DropdownItem when data is passed', t => {
-  const { node } = t.context
-  const communities = [
-    { id: 1, name: 'C1' },
-    { id: 2, name: 'C2' }
-  ]
-  node.setProps({ communities })
+    expect(node.find(DropdownItem).length).to.be.equal(communities.length)
+    expect(node.find(DropdownItem).at(0).props().children).to.be.equal('C1')
+    expect(node.find(DropdownItem).at(1).props().children).to.be.equal('C2')
+  })
 
-  t.is(node.find(DropdownItem).length, communities.length)
-  t.is(node.find(DropdownItem).at(0).props().children, 'C1')
-  t.is(node.find(DropdownItem).at(1).props().children, 'C2')
-})
+  it('render DropdownItem with Link router', () => {
+    const communities = [{ id: 1, name: 'C1' }]
+    node.setProps({ communities })
+    expect(node.find(DropdownItem).props().component).to.be.equal(Link)
+  })
 
-test('render DropdownItem with Link router', t => {
-  const { node } = t.context
-  const communities = [{ id: 1, name: 'C1' }]
-  node.setProps({ communities })
-  t.is(node.find(DropdownItem).props().component, Link)
-})
-
-test('mount path to redirect with id when pass path', t => {
-  const { node } = t.context
-  const communities = [{ id: 1, name: 'C1' }]
-  const path = '/admin/communities/'
-  node.setProps({ communities, path })
-  t.is(node.find(DropdownItem).props().to, urljoin(path, communities[0].id.toString()))
+  it('mount path to redirect with id when pass path', () => {
+    const communities = [{ id: 1, name: 'C1' }]
+    const path = '/admin/communities/'
+    node.setProps({ communities, path })
+    expect(node.find(DropdownItem).props().to).to.be.equal(urljoin(path, communities[0].id.toString()))
+  })
 })

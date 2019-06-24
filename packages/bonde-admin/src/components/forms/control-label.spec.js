@@ -3,7 +3,7 @@ import React from 'react'
 import { expect } from 'chai'
 import { mount } from 'enzyme'
 
-import { ControlLabel } from '@/components/forms'
+import { ControlLabel } from 'components/forms'
 
 describe('client/components/forms/control-label', () => {
   let wrapper

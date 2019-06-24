@@ -1,9 +1,9 @@
 import React from 'react'
 import { expect } from 'chai'
 import { mount } from 'enzyme'
-import { mountWithRouter } from '@/utils/enzyme'
+import { mountWithRouter } from 'utils/enzyme'
 
-import Button from '@/ux/components/button'
+import Button from 'ux/components/button'
 
 describe('client/ux/components/button', () => {
   it('should render a button style by default', () => {

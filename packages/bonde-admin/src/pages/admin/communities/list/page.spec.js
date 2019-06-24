@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import * as mock from '@/utils/mock'
+import * as mock from 'utils/mock'
 import Page from './page'
 
 describe('routes/admin/authenticated/external/community-list/page', () => {

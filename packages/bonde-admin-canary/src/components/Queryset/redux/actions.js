@@ -1,7 +1,10 @@
+import * as actionTypes from './actionTypes'
+
 export const register = (queryName) => dispatch => {
-  dispatch({ type: 'Queryset/REGISTER', payload: queryName })
+  dispatch({ type: actionTypes.REGISTER, payload: queryName })
 }
 
 export const done = ({ queryName, length }) => dispatch => {
-  dispatch({ type: 'Queryset/DONE', payload: { queryName, length } })
+  dispatch({ type: actionTypes.DONE, payload: { queryName, length } })
 }
+

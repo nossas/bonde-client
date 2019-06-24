@@ -1,4 +1,3 @@
-import test from 'ava'
 import React from 'react'
 import { shallow } from 'enzyme'
 import { Title } from 'bonde-styleguide'
@@ -7,102 +6,97 @@ import { FormGraphQL, SubmitButton } from 'components/Form'
 import { PasswordField } from '../../components'
 import ResetPasswordForm from './ResetPasswordForm'
 import resetPassword from './resetPassword.graphql'
+import { expect } from 'chai'
 
-test.beforeEach(t => {
-  const i18n = key => key
-  t.context.node = shallow(<ResetPasswordForm t={i18n} />)
-})
-
-// render
-test('should render header labels', t => {
-  const { node } = t.context
-  const title = 'resetPassword.form.title'
-  const subtitle = 'resetPassword.form.subtitle'
-  
-  t.is(node.find(Title.H2).props().children, title)
-  t.is(node.find(Title.H4).props().children, subtitle)
-})
-
-test('should render a form graphql component with mutation', t => {
-  const { node } = t.context
-  const formGraphQL = node.find(FormGraphQL)
-
-  t.is(formGraphQL.props().mutation, resetPassword)
-})
-
-test('should use token and newPassword on submit mutation', t => {
-  t.plan(1)
-  
-  const { node } = t.context
-  const token = 'my-token'
-  node.setProps({
-    token,
-    handleSuccess: (opts) => {
-      t.deepEqual(opts, {
-        variables: {
-          newPassword: values.password,
-          token
-        }
-      })
-    }
+describe('scenes > Auth > scenes > ResetPassword > ResetPasswordForm > ResetPasswordForm', () => {
+  let node
+  beforeEach(() => {
+    const i18n = key => key
+    node = shallow(<ResetPasswordForm t={i18n} />)
   })
-  
-  const submit = node.find(FormGraphQL).props().onSubmit
-  const values = { password: '123456' }
-  const mutation = opts => new Promise(resolve => resolve(opts))
-  
-  return submit(values, mutation)
-})
+  // render
+  it('should render header labels', () => {
+    const title = 'resetPassword.form.title'
+    const subtitle = 'resetPassword.form.subtitle'
 
-test('should render a submit button', t => {
-  const { node } = t.context
-  const submitButton = node.find(SubmitButton)
-  
-  t.is(submitButton.length, 1)
-  t.is(submitButton.props().children, 'resetPassword.form.submit')
-})
+    expect(node.find(Title.H2).props().children).to.be.equal(title)
+    expect(node.find(Title.H4).props().children).to.be.equal(subtitle)
+  })
 
-test('should call handleSuccess when mutation done', t => {
-  t.plan(1)
-  const { node } = t.context
-  node.setProps({ handleSuccess: (n) => t.is(n, 2) })
-  
-  const submit = node.find(FormGraphQL).props().onSubmit
-  return submit({}, () => new Promise((resolve) => {
-    resolve(2)
-  }))
-})
+  it('should render a form graphql component with mutation', () => {
+    const formGraphQL = node.find(FormGraphQL)
+    expect(formGraphQL.props().mutation).to.be.equal(resetPassword)
+  })
 
-test('should render a button link to /auth/login', t => {
-  const { node } = t.context
-  const buttonLinkProps = node.find(ButtonLink).props()
-  
-  t.is(buttonLinkProps.children, 'resetPassword.form.cancel')
-  t.is(buttonLinkProps.to, '/auth/login')
-})
+  it('should use token and newPassword on submit mutation', done => {
+    
+    const token = 'my-token'
+    node.setProps({
+      token,
+      handleSuccess: (opts) => {
+        expect(opts).to.deep.equal({
+          variables: {
+            newPassword: values.password,
+            token
+          }
+        })
+        done()
+      }
+    })
+    
+    const submit = node.find(FormGraphQL).props().onSubmit
+    const values = { password: '123456' }
+    const mutation = opts => new Promise(resolve => resolve(opts))
+    
+    return submit(values, mutation)
+  })
 
-test('should render an input password', t => {
-  const { node } = t.context
-  const fieldProps = node.find('Field').props()
-  
-  t.is(fieldProps.name, 'password')
-  t.is(fieldProps.label, 'resetPassword.fields.password.label')
-  t.is(fieldProps.component, PasswordField)
-})
+  it('should render a submit button', () => {
+    const submitButton = node.find(SubmitButton)
+    
+    expect(submitButton).to.be.lengthOf(1)
+    expect(submitButton.props().children).to.be.equal('resetPassword.form.submit')
+  })
 
-test('should render hint about password < 6 chars', t => {
-  const { node } = t.context
-  const fieldProps = node.find('Field').props()
+  it('should call handleSuccess when mutation done', done => {
+    node.setProps({ handleSuccess: (n) => {
+      expect(n).to.be.equal(2) 
+      done()
+    }})
+    
+    const submit = node.find(FormGraphQL).props().onSubmit
+    return submit({}, () => new Promise((resolve) => {
+      resolve(2)
+    }))
+  })
 
-  t.is(fieldProps.hint, 'resetPassword.fields.password.hint')
-})
+  it('should render a button link to /auth/login', () => {
+    const buttonLinkProps = node.find(ButtonLink).props()
 
-test('should validate password field', t => {
-  const { node } = t.context
-  const fieldProps = node.find('Field').props()
-  const required = fieldProps.validate[0]
-  const min = fieldProps.validate[1]
+    expect(buttonLinkProps.children).to.be.equal('resetPassword.form.cancel')
+    expect(buttonLinkProps.to).to.be.equal('/auth/login')
+  })
 
-  t.is(required(''), 'resetPassword.fields.password.required')
-  t.is(min('123'), 'resetPassword.fields.password.min6')
+  it('should render an input password', () => {
+    const fieldProps = node.find('Field').props()
+    
+    expect(fieldProps.name).to.be.equal('password')
+    expect(fieldProps.label).to.be.equal('resetPassword.fields.password.label')
+    expect(fieldProps.component).to.be.equal(PasswordField)
+  })
+
+  it('should render hint about password < 6 chars', () => {
+    const fieldProps = node.find('Field').props()
+
+    expect(fieldProps.hint).to.be.equal('resetPassword.fields.password.hint')
+  })
+
+  it('should validate password field', () => {
+    const fieldProps = node.find('Field').props()
+    const required = fieldProps.validate[0]
+    const min = fieldProps.validate[1]
+
+    expect(required('')).to.be.equal('resetPassword.fields.password.required')
+    expect(min('123')).to.be.equal('resetPassword.fields.password.min6')
+  })
 })

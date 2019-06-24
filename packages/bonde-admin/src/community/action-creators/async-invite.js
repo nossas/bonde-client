@@ -1,9 +1,9 @@
 /* eslint-disable prefer-promise-reject-errors */
 import { addNotification as notify } from 'reapop'
-import { createAction } from '@/utils/redux'
-import * as t from '@/community/action-types'
-import * as AwaitActions from '@/components/await/redux/action-creators'
-import { genericRequestError, communityInviteSuccess } from '@/utils/notifications'
+import { createAction } from 'utils/redux'
+import * as t from 'community/action-types'
+import * as AwaitActions from 'components/await/redux/action-creators'
+import { genericRequestError, communityInviteSuccess } from 'utils/notifications'
 
 const COMMUNITY_USER_ROLES = {
   owner: 1,

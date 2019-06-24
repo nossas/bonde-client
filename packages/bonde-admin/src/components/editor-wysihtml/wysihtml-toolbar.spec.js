@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { WYSIHTMLToolbar } from '@/components/editor-wysihtml'
+import { WYSIHTMLToolbar } from 'components/editor-wysihtml'
 
 describe('client/components/editor-wysihtml/wysihtml-toolbar', () => {
   let wrapper

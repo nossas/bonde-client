@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import $ from 'jquery'
 
-import * as MobActions from '@/mobrender/redux/action-creators'
+import * as MobActions from 'mobrender/redux/action-creators'
 
 export class InputForm extends Component {
   constructor (props, context) {

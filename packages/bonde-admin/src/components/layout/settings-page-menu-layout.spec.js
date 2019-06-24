@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { SettingsPageMenuLayout } from '@/components/layout'
+import { SettingsPageMenuLayout } from 'components/layout'
 
 describe('client/components/layout/settings-page-menu-layout', () => {
   let wrapper

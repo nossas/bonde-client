@@ -1,7 +1,7 @@
 import React from 'react'
 import { expect } from 'chai'
 
-import shallowWithIntl from '@/intl/helpers/shallow-with-intl'
+import shallowWithIntl from 'intl/helpers/shallow-with-intl'
 import Page from './page'
 
 describe('routes/admin/authenticated/sidebar/templates-choose-custom/page', () => {

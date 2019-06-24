@@ -1,6 +1,6 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
-import { Warning } from '@/components/notify'
+import { Warning } from 'components/notify'
 
 export const RecipientFormWarning = () => (
   <Warning

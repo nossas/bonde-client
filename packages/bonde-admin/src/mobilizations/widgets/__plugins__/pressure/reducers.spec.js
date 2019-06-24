@@ -1,8 +1,8 @@
 import { expect } from 'chai'
 
-import reducers, { initialState } from '@/mobilizations/widgets/__plugins__/pressure/reducers'
-import { createAction } from '@/mobilizations/widgets/__plugins__/pressure/action-creators/create-action'
-import * as t from '@/mobilizations/widgets/__plugins__/pressure/action-types'
+import reducers, { initialState } from 'mobilizations/widgets/__plugins__/pressure/reducers'
+import { createAction } from 'mobilizations/widgets/__plugins__/pressure/action-creators/create-action'
+import * as t from 'mobilizations/widgets/__plugins__/pressure/action-types'
 
 describe('client/mobilizations/widgets/__plugins__/pressure/reducers', () => {
   it('should change saving state to true when requesting', () => {

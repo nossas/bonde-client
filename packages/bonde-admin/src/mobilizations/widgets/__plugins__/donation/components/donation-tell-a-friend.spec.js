@@ -3,7 +3,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { DonationTellAFriend } from '@/mobilizations/widgets/__plugins__/donation/components'
+import { DonationTellAFriend } from 'mobilizations/widgets/__plugins__/donation/components'
 
 describe('client/mobilizations/widgets/__plugins__/donation/components/donation-tell-a-friend',
   () => {

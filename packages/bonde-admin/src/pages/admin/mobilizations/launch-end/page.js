@@ -1,8 +1,8 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
-import * as paths from '@/paths'
-import { PageCentralizedLayout, PageCentralizedLayoutTitle } from '@/components/layout'
-import { Button } from '@/ux/components'
+import * as paths from 'paths'
+import { PageCentralizedLayout, PageCentralizedLayoutTitle } from 'components/layout'
+import { Button } from 'ux/components'
 
 if (require('exenv').canUseDOM) require('./page.scss')
 

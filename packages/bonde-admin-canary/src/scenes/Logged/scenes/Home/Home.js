@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import { I18n } from 'react-i18next'
-import { Grid, Cell, Flexbox2 as Flexbox } from 'bonde-styleguide'
+import {
+  Grid,
+  Cell,
+  Flexbox2 as Flexbox
+} from 'bonde-styleguide'
 import { Tutorial } from 'components'
 import { ToastContainer } from 'components/Notification'
 import { Page, Header } from 'components/PageLogged'
@@ -21,7 +25,6 @@ const TutorialDialog = ({ children, step, t, ...props }) => (
 )
 
 export default class extends Component {
-  
   render () {
     const { lastLocation } = this.props
     const showTutorial = lastLocation && lastLocation.pathname === '/admin/tags'

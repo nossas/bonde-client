@@ -2,13 +2,13 @@ import React from 'react'
 import { ApolloProvider } from 'react-apollo'
 import { IntlProvider } from 'react-intl'
 import { Provider } from 'react-redux'
-import crossStorage from '@/cross-storage-client'
+import crossStorage from 'cross-storage-client'
 // save on store
-import { createAction } from '@/utils/redux'
-import * as authTypes from '@/account/redux/action-types'
-import * as communityTypes from '@/community/action-types'
+import { createAction } from 'utils/redux'
+import * as authTypes from 'account/redux/action-types'
+import * as communityTypes from 'community/action-types'
 // routing app
-import AppRouting from '@/pages/app'
+import AppRouting from 'pages/app'
 import ApplicationContextTypes from './context/types'
 
 const Loading = () => <h1>Signing...</h1>

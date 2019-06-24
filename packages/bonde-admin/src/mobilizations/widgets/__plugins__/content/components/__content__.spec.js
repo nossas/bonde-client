@@ -1,8 +1,8 @@
 import React from 'react'
 import { expect } from 'chai'
-import shallowWithIntl from '@/intl/helpers/shallow-with-intl'
-import { EditorNew } from '@/mobilizations/widgets/__plugins__/content/components'
-import { Content } from '@/mobilizations/widgets/__plugins__/content/components/__content__'
+import shallowWithIntl from 'intl/helpers/shallow-with-intl'
+import { EditorNew } from 'mobilizations/widgets/__plugins__/content/components'
+import { Content } from 'mobilizations/widgets/__plugins__/content/components/__content__'
 
 describe('client/mobilizations/widgets/__plugins__/content/components/__content__', () => {
   let contentWidget

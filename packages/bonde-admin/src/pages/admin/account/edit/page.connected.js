@@ -4,8 +4,8 @@
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
 
-import AuthSelectors from '@/account/redux/selectors'
-import { asyncUpdateUser } from '@/account/redux/action-creators'
+import AuthSelectors from 'account/redux/selectors'
+import { asyncUpdateUser } from 'account/redux/action-creators'
 import Page from './page'
 
 const fields = ['id', 'avatar', 'first_name', 'last_name', 'email']

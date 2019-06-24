@@ -3,7 +3,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { SuccessMessage } from '@/components/forms'
+import { SuccessMessage } from 'components/forms'
 
 describe('client/components/forms/success-message', () => {
   let wrapper

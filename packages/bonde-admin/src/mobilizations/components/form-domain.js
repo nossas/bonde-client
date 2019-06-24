@@ -2,8 +2,8 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import classnames from 'classnames'
 import { FormattedMessage } from 'react-intl'
-import { FormGroup, ControlLabel, FormControl, FormDropdown, Raise } from '@/components/forms'
-import { isBoolean } from '@/utils/type-checker'
+import { FormGroup, ControlLabel, FormControl, FormDropdown, Raise } from 'components/forms'
+import { isBoolean } from 'utils/type-checker'
 
 if (require('exenv').canUseDOM) require('./form-domain.scss')
 

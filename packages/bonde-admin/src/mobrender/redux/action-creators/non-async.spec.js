@@ -1,9 +1,9 @@
 import { expect } from 'chai'
 import thunk from 'redux-thunk'
 import configureStore from 'redux-mock-store'
-import * as MobActions from '@/mobrender/redux/action-creators'
-import * as t from '@/mobrender/redux/action-types'
-import { createAction } from '@/mobrender/redux/action-creators/create-action'
+import * as MobActions from 'mobrender/redux/action-creators'
+import * as t from 'mobrender/redux/action-types'
+import { createAction } from 'mobrender/redux/action-creators/create-action'
 
 describe('client/mobrender/redux/action-creators (non-async)', () => {
   let store

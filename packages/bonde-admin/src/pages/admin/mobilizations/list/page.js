@@ -7,9 +7,9 @@ import {
   SettingsPageLayout,
   SettingsPageMenuLayout,
   SettingsPageContentLayout
-} from '@/components/layout'
-import * as paths from '@/paths'
-import List from '@/mobilizations/components/list'
+} from 'components/layout'
+import * as paths from 'paths'
+import List from 'mobilizations/components/list'
 import {
   Item,
   Avatar,
@@ -20,8 +20,8 @@ import {
   More,
   MoreMenu,
   MoreMenuAction
-} from '@/mobilizations/components/list/items'
-import { PageHeader } from '@/mobilizations/components'
+} from 'mobilizations/components/list/items'
+import { PageHeader } from 'mobilizations/components'
 
 export class MobilizationsListPage extends Component {
   componentWillMount () {

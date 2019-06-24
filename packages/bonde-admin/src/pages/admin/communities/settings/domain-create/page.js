@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { FormattedMessage, intlShape } from 'react-intl'
-import { FormRedux, ControlLabel, FormControl, FormGroup } from '@/components/forms'
-import { Button } from '@/ux/components'
-import * as dnsMessages from '@/community/notifications/dns'
-import { Steps, Step } from '@/steps'
-import { DomainStep } from '@/community/components/dns'
-import { Preformatted } from '@/components/markdown'
-import { Title, Subtitle } from '@/components/title'
-import * as paths from '@/paths'
+import { FormRedux, ControlLabel, FormControl, FormGroup } from 'components/forms'
+import { Button } from 'ux/components'
+import * as dnsMessages from 'community/notifications/dns'
+import { Steps, Step } from 'steps'
+import { DomainStep } from 'community/components/dns'
+import { Preformatted } from 'components/markdown'
+import { Title, Subtitle } from 'components/title'
+import * as paths from 'paths'
 
 var styles = require('exenv').canUseDOM ? require('./page.scss') : {}
 

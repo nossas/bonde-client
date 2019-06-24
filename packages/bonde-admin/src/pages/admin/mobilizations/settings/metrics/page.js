@@ -1,6 +1,6 @@
 import React from 'react'
-import { MetricsMobilization } from '@/components/metrics'
-import { Title } from '@/components/title'
+import { MetricsMobilization } from 'components/metrics'
+import { Title } from 'components/title'
 
 const MobilizationsSettingsMetricsPage = props => (
   <React.Fragment>

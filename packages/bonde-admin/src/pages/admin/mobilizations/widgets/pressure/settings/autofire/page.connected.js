@@ -3,11 +3,11 @@
 //
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
-import { fields, validate } from '@/mobilizations/widgets/components/form-autofire'
+import { fields, validate } from 'mobilizations/widgets/components/form-autofire'
 import { injectIntl } from 'react-intl'
 
-import MobSelectors from '@/mobrender/redux/selectors'
-import * as MobActions from '@/mobrender/redux/action-creators'
+import MobSelectors from 'mobrender/redux/selectors'
+import * as MobActions from 'mobrender/redux/action-creators'
 
 import Page from './page'
 

@@ -4,7 +4,7 @@ import { expect } from 'chai'
 import { shallow } from 'enzyme'
 import sinon from 'sinon'
 
-import { FacebookShareButton } from '@/components/share'
+import { FacebookShareButton } from 'components/share'
 
 global.window = {}
 

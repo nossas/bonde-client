@@ -1,7 +1,7 @@
 import React from 'react'
 import { injectIntl, intlShape } from 'react-intl'
 import DraftButton from './draft-button'
-import widgets from '@/mobrender/widgets/config'
+import widgets from 'mobrender/widgets/config'
 
 if (require('exenv').canUseDOM) require('./draft.scss')
 

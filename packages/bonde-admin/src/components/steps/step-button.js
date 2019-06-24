@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import { Button } from '@/ux/components'
+import { Button } from 'ux/components'
 
 const StepButton = ({ children, onClick, onNextStep, ...props }) => (
   <Button

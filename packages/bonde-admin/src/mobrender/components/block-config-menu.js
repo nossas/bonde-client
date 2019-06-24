@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import classnames from 'classnames'
-import { DropdownMenu, DropdownMenuItem } from '@/components/dropdown-menu'
+import { DropdownMenu, DropdownMenuItem } from 'components/dropdown-menu'
 
 export const EDIT_KEY = 'background'
 

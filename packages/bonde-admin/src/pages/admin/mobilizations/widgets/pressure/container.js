@@ -2,9 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Route } from 'react-router-dom'
 
-import MobSelectors from '@/mobrender/redux/selectors'
-import { SettingsPageContentLayout } from '@/components/layout'
-import { SettingsBase } from '@/mobilizations/widgets/__plugins__/pressure/components'
+import MobSelectors from 'mobrender/redux/selectors'
+import { SettingsPageContentLayout } from 'components/layout'
+import { SettingsBase } from 'mobilizations/widgets/__plugins__/pressure/components'
 
 // Pages
 import Adjustments from './settings/adjustments'

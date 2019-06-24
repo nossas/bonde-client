@@ -1,20 +1,14 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
-import { isMobile } from 'react-device-detect'
 import classnames from 'classnames'
+import { isMobile } from 'react-device-detect'
 
-const WhatsAppShareButton = ({ whatsappText, mobilization }) => {
-  let baseUrl = "whatsapp://"
-  if (!isMobile) {
-    baseUrl = "https://api.whatsapp.com/"
-  }
-
+const WhatsAppShareButton = ({ whatsappText }) => {
+  const baseUrl = isMobile ? 'whatsapp://' : 'https://api.whatsapp.com/'
   return (
     <a
-      className={classnames(
-        'btn white h3 p3 col-12 caps h5 rounded border-box'
-      )}
+      className={classnames('btn white h3 p3 col-12 caps h5 rounded border-box')}
       href={`${baseUrl}send?text=${encodeURIComponent(whatsappText)}`}
       style={{ backgroundColor: '#4CEC68', color: '#fff' }}
     >
@@ -27,8 +21,6 @@ const WhatsAppShareButton = ({ whatsappText, mobilization }) => {
 }
 
 WhatsAppShareButton.propTypes = {
-  href: PropTypes.string.isRequired,
-  preview: PropTypes.bool,
   whatsappText: PropTypes.string
 }
 

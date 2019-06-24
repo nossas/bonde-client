@@ -3,7 +3,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { PageTabLayout } from '@/mobilizations/components'
+import { PageTabLayout } from 'mobilizations/components'
 
 describe('client/mobilizations/components/page-tab-layout', () => {
   let wrapper

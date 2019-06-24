@@ -2,8 +2,8 @@ import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-import Mobilization from '@/mobrender/components/mobilization.connected'
-import Loading from '@/components/await/loading'
+import Mobilization from 'mobrender/components/mobilization.connected'
+import Loading from 'components/await/loading'
 import Page from './page'
 
 describe('routes/admin/authenticated/sidebar/mobilizations-edit/page', () => {

@@ -3,7 +3,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { TechnicalIssues } from '@/components/error'
+import { TechnicalIssues } from 'components/error'
 
 describe('client/components/error/technical-issues', () => {
   let wrapper

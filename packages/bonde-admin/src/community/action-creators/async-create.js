@@ -1,5 +1,5 @@
 /* eslint-disable prefer-promise-reject-errors */
-import * as t from '@/community/action-types'
+import * as t from 'community/action-types'
 
 const asyncCreate = community => (dispatch, getState, { api }) => {
   const { auth: { credentials } } = getState()

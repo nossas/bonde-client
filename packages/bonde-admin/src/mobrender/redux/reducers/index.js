@@ -9,8 +9,8 @@ import mobilizationsReducer from './mobilizations'
 import dataExportReducer from './data-export'
 
 // Dependency modules
-import templatesReducer from '@/mobilizations/templates/reducers'
-import pluginsReducer from '@/mobilizations/widgets/__plugins__/reducers'
+import templatesReducer from 'mobilizations/templates/reducers'
+import pluginsReducer from 'mobilizations/widgets/__plugins__/reducers'
 
 export default combineReducers({
   list: mobilizationsReducer,

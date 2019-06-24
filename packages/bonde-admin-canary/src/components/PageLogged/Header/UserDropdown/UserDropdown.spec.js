@@ -1,63 +1,54 @@
-import test from 'ava'
 import React from 'react'
 import { shallow } from 'enzyme'
 import { Dropdown, DropdownHeader, DropdownItem, Icon } from 'bonde-styleguide'
-import { Link } from 'react-router-dom'
 import UserDropdown from './UserDropdown'
+import { expect } from 'chai'
 
-const user = { firstName: 'Test', lastName: 'Dummy' }
-const name = `${user.firstName} ${user.lastName}`
-
-test.beforeEach(t => {
-  const props = { user, t: () => {} }
-  t.context.node = shallow(<UserDropdown {...props} />)
-})
-
-test('render a Dropdown component', t => {
-  const { node } = t.context
+describe('components > PageLogged > Header > UserDropdown > UserDropdown', () => {
+  const user = { firstName: 'Test', lastName: 'Dummy' }
+  const name = `${user.firstName} ${user.lastName}`
+  let node
   
-  t.is(node.find(Dropdown).length, 1)
-})
+  beforeEach(() => {
+    const props = { user, t: () => {} }
+    node = shallow(<UserDropdown {...props} />)
+  })
 
-test('pass user name like label dropdown', t => {
-  const { node } = t.context
+  it('render a Dropdown component', () => {
+    expect(node.find(Dropdown)).to.be.lengthOf(1)
+  })
 
-  t.is(node.find(Dropdown).props().label, name)
-})
+  it('pass user name like label dropdown', () => {
+    expect(node.find(Dropdown).props().label).to.be.equal(name)
+  })
 
-test('render avatar in dropdown header', t => {
-  const { node } = t.context
-  const avatar = 'http://avatar.png'
-  node.setProps({ user: { ...user, avatar } })
+  it('render avatar in dropdown header', () => {
+    const avatar = 'http://avatar.png'
+    node.setProps({ user: { ...user, avatar } })
 
-  t.is(node.find(DropdownHeader).find('img').props().src, avatar)
-  t.is(node.find(DropdownHeader).find('span').text(), name)
-})
+    expect(node.find(DropdownHeader).find('img').props().src).to.be.equal(avatar)
+    expect(node.find(DropdownHeader).find('span').text()).to.be.equal(name)
+  })
 
-/*
-test('render a profile menu', t => {
-  const { node } = t.context
-  const i18nKey = 'dropdown.items.profile'
-  const i18n = () => i18nKey
-  node.setProps({ t: i18n })
+  it('render a profile menu', () => {
+    const i18nKey = 'dropdown.items.profile'
+    const i18n = () => i18nKey
+    node.setProps({ t: i18n })
+  
+    const item = node.find(DropdownItem).at(0)
+    expect(item.find(Icon).props().name).to.be.equal('times')
+    expect(item.props().children[1]).to.be.equal(i18nKey)
+  })
 
-  const item = node.find(DropdownItem).at(0)
-  t.is(item.find(Icon).props().name, 'user')
-  t.is(item.props().children[1], i18nKey)
-  t.is(item.props().component, Link)
-  t.is(item.props().to, '/admin/profile')
-})
-*/
+  it('render a logout menu', () => {
+    const i18nKey = 'dropdown.items.logout'
+    const i18n = () => i18nKey
+    const logout = () => 'logout'
+    node.setProps({ t: i18n, logout })
 
-test('render a logout menu', t => {
-  const { node } = t.context
-  const i18nKey = 'dropdown.items.logout'
-  const i18n = () => i18nKey
-  const logout = () => 'logout'
-  node.setProps({ t: i18n, logout })
-
-  const item = node.find(DropdownItem).at(0)
-  t.is(item.find(Icon).props().name, 'times')
-  t.is(item.props().children[1], i18nKey)
-  t.is(item.props().onClick(), 'logout')
+    const item = node.find(DropdownItem).at(0)
+    expect(item.find(Icon).props().name).to.be.equal('times')
+    expect(item.props().children[1]).to.be.equal(i18nKey)
+    expect(item.props().onClick()).to.be.equal('logout')
+  })
 })

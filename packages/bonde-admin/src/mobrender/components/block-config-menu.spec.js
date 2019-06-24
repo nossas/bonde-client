@@ -1,10 +1,10 @@
 import React from 'react'
 import { expect } from 'chai'
 import sinon from 'sinon'
-import { mountWithIntl } from '@/intl/helpers'
-import BlockConfigMenu from '@/mobrender/components/block-config-menu'
+import { mountWithIntl } from 'intl/helpers'
+import BlockConfigMenu from 'mobrender/components/block-config-menu'
 
-describe('@/mobrender/components/block-config-menu', () => {
+describe('mobrender/components/block-config-menu', () => {
   const props = {
     block: { id: 1, hidden: false }
   }

@@ -1,4 +1,4 @@
-import { isValidPhoneE164 } from '@/utils/validation-helper'
+import { isValidPhoneE164 } from 'utils/validation-helper'
 import { applyValidate } from './applyValidate'
 
 export const message = {

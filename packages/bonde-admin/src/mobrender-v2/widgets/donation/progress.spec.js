@@ -2,7 +2,7 @@ import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 
-import { Progress } from '@/mobrender-v2/widgets/donation'
+import { Progress } from 'mobrender-v2/widgets/donation'
 
 describe('client/mobrender-v2/widgets/donation/progress', () => {
   let progress

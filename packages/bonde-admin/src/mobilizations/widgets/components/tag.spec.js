@@ -3,7 +3,7 @@ import { expect } from 'chai'
 import { mount } from 'enzyme'
 
 // Current module dependencies
-import { Tag } from '@/mobilizations/widgets/components'
+import { Tag } from 'mobilizations/widgets/components'
 
 describe('client/mobilizations/widgets/components/tag', () => {
   let component

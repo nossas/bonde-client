@@ -1,10 +1,10 @@
 import React from 'react'
 import { Switch } from 'react-router-dom'
 import { graphql } from 'react-apollo'
-import FetchCurrentUser from '@/account/queries/current-user'
+import FetchCurrentUser from 'account/queries/current-user'
 import { connect } from 'react-redux'
-import { load } from '@/account/redux/action-creators'
-import { Loading } from '@/components/await'
+import { load } from 'account/redux/action-creators'
+import { Loading } from 'components/await'
 
 // Routes
 import BetaBotPage from './bot'

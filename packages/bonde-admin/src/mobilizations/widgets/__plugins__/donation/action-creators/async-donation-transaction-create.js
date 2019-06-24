@@ -1,8 +1,8 @@
 /* eslint-disable prefer-promise-reject-errors */
 import { addNotification } from 'reapop'
-import * as notifications from '@/utils/notifications'
+import * as notifications from 'utils/notifications'
 import { createAction } from './create-action'
-import AnalyticsEvents from '@/mobilizations/widgets/utils/analytics-events'
+import AnalyticsEvents from 'mobilizations/widgets/utils/analytics-events'
 import * as t from '../action-types'
 import { setDonationCustomerData } from '.'
 

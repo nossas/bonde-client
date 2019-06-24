@@ -1,5 +1,5 @@
 import React from 'react'
-import shallowWithIntl from '@/intl/helpers/shallow-with-intl'
+import shallowWithIntl from 'intl/helpers/shallow-with-intl'
 import { expect } from 'chai'
 
 import Page from './page'

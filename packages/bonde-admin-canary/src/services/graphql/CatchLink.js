@@ -1,12 +1,9 @@
-import { ApolloLink, Observable } from 'apollo-link';
+import { ApolloLink, Observable } from 'apollo-link'
 
 export const onCatch = errorHandler => {
-  
   return new ApolloLink((operation, forward) => {
-    
     return new Observable(observer => {
       let subscription
-      
       try {
         subscription = forward(operation).subscribe({
           next: result => {
@@ -15,7 +12,7 @@ export const onCatch = errorHandler => {
                 graphQLErrors: result.errors,
                 response: result,
                 operation
-              });
+              })
             }
             observer.next(result)
           },
@@ -32,7 +29,6 @@ export const onCatch = errorHandler => {
       } catch (error) {
         errorHandler({ networkError: error, operation })
       }
-
       return () => {
         if (subscription) subscription.unsubscribe()
       }

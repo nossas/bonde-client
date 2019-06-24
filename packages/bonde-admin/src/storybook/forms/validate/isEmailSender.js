@@ -1,4 +1,4 @@
-import { isValidFromEmail } from '@/utils/validation-helper'
+import { isValidFromEmail } from 'utils/validation-helper'
 import { applyValidate } from './applyValidate'
 
 export const message = {

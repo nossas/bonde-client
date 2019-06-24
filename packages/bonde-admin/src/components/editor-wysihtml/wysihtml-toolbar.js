@@ -7,7 +7,7 @@ import WYSIHTMLToolbarInsertHTML from './wysihtml-toolbar-insert-html'
 import WYSIHTMLToolbarCreateLink from './wysihtml-toolbar-create-link'
 import WYSIHTMLToolbarColorPicker from './wysihtml-toolbar-color-picker'
 
-import { DropdownMenu, DropdownMenuItem } from '@/components/dropdown-menu'
+import { DropdownMenu, DropdownMenuItem } from 'components/dropdown-menu'
 
 const renderFontsizeDropdownMenuItem = (size, className) => (
   <DropdownMenuItem>

@@ -29,3 +29,8 @@ export const whatsappControlLabel = ({
   verticalAlign: 'middle',
   color: '#005E52'
 })
+
+export const previewFinishPostDonation = ({
+  display: 'flex',
+  justifyContent: 'space-between'
+})

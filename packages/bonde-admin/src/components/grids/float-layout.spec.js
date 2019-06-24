@@ -3,7 +3,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { FloatLayout } from '@/components/grids'
+import { FloatLayout } from 'components/grids'
 
 describe('client/components/grids/float-layout', () => {
   let wrapper

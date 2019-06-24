@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-expressions */
 import React from 'react'
 import { expect } from 'chai'
-import shallowWithIntl from '@/intl/helpers/shallow-with-intl'
-import Pressure from '@/mobilizations/widgets/__plugins__/pressure/components'
-import Widget from '@/mobrender/components/widget'
-import WidgetOverlay from '@/mobrender/components/widget-overlay.connected'
+import shallowWithIntl from 'intl/helpers/shallow-with-intl'
+import Pressure from 'mobilizations/widgets/__plugins__/pressure/components'
+import Widget from 'mobrender/components/widget'
+import WidgetOverlay from 'mobrender/components/widget-overlay.connected'
 
 describe('client/mobrender/components/widget', () => {
   const props = {

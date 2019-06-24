@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Editor from './reboo-editor'
-import { decorator } from './Toolbar'
+import Editor from './editable-mode'
 
 if (require('exenv').canUseDOM) require('./index.scss')
 
@@ -26,7 +25,7 @@ class EditorNew extends React.Component {
 
     return (
       <div className='widgets--content-plugin widget editor-new' style={{ fontFamily: bodyFont }}>
-        <Editor value={value} theme={theme} decorator={decorator} />
+        <Editor readOnly value={value} theme={theme} />
       </div>
     )
   }
@@ -34,12 +33,7 @@ class EditorNew extends React.Component {
 
 EditorNew.propTypes = {
   mobilization: PropTypes.object.isRequired,
-  widget: PropTypes.object.isRequired,
-  decorator: PropTypes.object.isRequired
-}
-
-EditorNew.defaultProps = {
-  decorator: decorator
+  widget: PropTypes.object.isRequired
 }
 
 export default EditorNew

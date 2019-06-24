@@ -3,7 +3,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { Users } from '@/mobilizations/components/list/items'
+import { Users } from 'mobilizations/components/list/items'
 
 describe('client/mobilizations/components/list/items/users', () => {
   let wrapper

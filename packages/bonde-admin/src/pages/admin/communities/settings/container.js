@@ -3,8 +3,8 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 
 // Components
-import { SettingsPageLayout, SettingsPageContentLayout } from '@/components/layout'
-import { SettingsMenu } from '@/community/components'
+import { SettingsPageLayout, SettingsPageContentLayout } from 'components/layout'
+import { SettingsMenu } from 'community/components'
 
 // Pages
 import InfoPage from './info/page.connected'

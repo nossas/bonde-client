@@ -22,9 +22,3 @@ test('should render an <a /> tag with its href properly', t => {
   const text = encodeURIComponent(props.whatsappText)
   t.is(wrapper.find('a').props().href, `https://api.whatsapp.com/send?text=${text}`)
 })
-
-test('should render without className hide when preview is true', t => {
-  wrapper.setProps({ preview: true })
-  t.false(wrapper.find('a').props().className.includes('lg-hide'))
-  wrapper.setProps(props)
-})

@@ -1,7 +1,7 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
-import * as formatNumberHelper from '@/utils/format-number-helper'
-import { MetricsCard } from '@/components/metrics/components'
+import * as formatNumberHelper from 'utils/format-number-helper'
+import { MetricsCard } from 'components/metrics/components'
 
 const Value = ({ loading, value }) => (
   loading

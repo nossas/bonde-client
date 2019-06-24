@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { BondeBackground } from '@/components/layout/background'
-import * as paths from '@/paths'
+import { BondeBackground } from 'components/layout/background'
+import * as paths from 'paths'
 import { FormattedMessage } from 'react-intl'
-import { Loading } from '@/components/await'
-import { ListItem } from '@/community/components'
-import crossStorage from '@/cross-storage-client'
+import { Loading } from 'components/await'
+import { ListItem } from 'community/components'
+import crossStorage from 'cross-storage-client'
 
 class CommunityListPage extends Component {
   componentDidMount () {

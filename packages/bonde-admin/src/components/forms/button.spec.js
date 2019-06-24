@@ -3,7 +3,7 @@ import React from 'react'
 import { expect } from 'chai'
 import { mount } from 'enzyme'
 
-import { Button } from '@/components/forms'
+import { Button } from 'components/forms'
 
 describe('client/components/forms/button', () => {
   it('should render without crashed', () => {

@@ -12,8 +12,8 @@ import {
   FormControl,
   ColorPicker,
   HelpBlock
-} from '@/components/forms'
-import { SettingsForm } from '@/ux/components'
+} from 'components/forms'
+import { SettingsForm } from 'ux/components'
 
 const fieldsComponent = {
   'call_to_action': ({ intl, ...field }) => (

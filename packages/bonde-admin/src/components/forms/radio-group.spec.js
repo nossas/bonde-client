@@ -3,7 +3,7 @@ import React from 'react'
 import { expect } from 'chai'
 import { mount } from 'enzyme'
 
-import { RadioGroup } from '@/components/forms'
+import { RadioGroup } from 'components/forms'
 
 const Radio = props => (
   <input type='radio' />

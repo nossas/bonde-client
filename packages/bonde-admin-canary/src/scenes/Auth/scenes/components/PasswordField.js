@@ -1,5 +1,9 @@
-import React from 'react'
-import { Checkbox, FormField, Input } from 'bonde-styleguide'
+import React, { Fragment } from 'react'
+import {
+  Checkbox,
+  FormField,
+  Input
+} from 'bonde-styleguide'
 import { translate } from 'services/i18n'
 
 class PasswordField extends React.Component {
@@ -11,7 +15,7 @@ class PasswordField extends React.Component {
     const { t, ...props } = this.props
 
     return (
-      <React.Fragment>
+      <Fragment>
         <FormField
           type={!showPassword ? 'password' : 'text'}
           placeholder='&#9679;&#9679;&#9679;&#9679;&#9679;'
@@ -26,7 +30,7 @@ class PasswordField extends React.Component {
             {t('links.showPassword')}
           </Checkbox>
         )}
-      </React.Fragment>
+      </Fragment>
     )
   }
 }

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import classnames from 'classnames'
 import { intlShape } from 'react-intl'
-import { Loading } from '@/components/await'
+import { Loading } from 'components/await'
 import WidgetOverlay from './widget-overlay.connected'
 
 import widgets from '../widgets/config'

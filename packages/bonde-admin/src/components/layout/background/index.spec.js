@@ -3,7 +3,7 @@ import React from 'react'
 import { expect } from 'chai'
 import { mount } from 'enzyme'
 
-import { Background } from '@/components/layout'
+import { Background } from 'components/layout'
 
 describe('client/components/layout/background', () => {
   it('should render without crashed', () => {

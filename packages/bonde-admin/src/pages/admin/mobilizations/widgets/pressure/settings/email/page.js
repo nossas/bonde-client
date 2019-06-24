@@ -2,14 +2,14 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { FormattedMessage, intlShape } from 'react-intl'
 
-import * as os from '@/utils/browser/os'
-import * as validator from '@/utils/validation-helper'
-import * as pressureHelper from '@/mobilizations/widgets/utils/pressure-helper'
-import { FormGroup, ControlLabel, FormControl, RadioGroup, Radio } from '@/components/forms'
-import { SettingsForm } from '@/ux/components'
-import { InputTag } from '@/mobilizations/widgets/components'
-import { Info } from '@/components/notify'
-import { Kbd } from '@/components/markdown'
+import * as os from 'utils/browser/os'
+import * as validator from 'utils/validation-helper'
+import * as pressureHelper from 'mobilizations/widgets/utils/pressure-helper'
+import { FormGroup, ControlLabel, FormControl, RadioGroup, Radio } from 'components/forms'
+import { SettingsForm } from 'ux/components'
+import { InputTag } from 'mobilizations/widgets/components'
+import { Info } from 'components/notify'
+import { Kbd } from 'components/markdown'
 
 class PressureSettingsEmailPage extends Component {
   constructor (props) {

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { FormattedMessage } from 'react-intl'
 
-import { Button } from '@/ux/components'
+import { Button } from 'ux/components'
 
 class DataExport extends Component {
   componentDidMount () {

@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
-import { ForceDownloadViaAjax } from '@/community/components'
-import { MetricsCommunity } from '@/components/metrics'
-import { Title } from '@/components/title'
+import { ForceDownloadViaAjax } from 'community/components'
+import { MetricsCommunity } from 'components/metrics'
+import { Title } from 'components/title'
 
 class SectionButton extends React.Component {
   constructor (...args) {

@@ -4,7 +4,7 @@
 import React from 'react'
 import { IntlProvider } from 'react-intl'
 import { shallow } from 'enzyme'
-import pt from '@/intl/locale-data/pt-BR'
+import pt from 'intl/locale-data/pt-BR'
 
 const intlProvider = new IntlProvider({ locale: 'pt-BR', messages: pt }, {})
 const { intl } = intlProvider.getChildContext()

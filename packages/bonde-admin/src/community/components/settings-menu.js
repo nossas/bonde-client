@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
-import { Tabs, Tab } from '@/components/navigation'
-import { SettingsPageMenuLayout } from '@/components/layout'
+import { Tabs, Tab } from 'components/navigation'
+import { SettingsPageMenuLayout } from 'components/layout'
 
-import * as paths from '@/paths'
+import * as paths from 'paths'
 
 const SettingsMenu = ({ location: { pathname } }) => {
   const infoPath = paths.communityInfo()

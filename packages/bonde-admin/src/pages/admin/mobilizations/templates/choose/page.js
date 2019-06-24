@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { FormattedMessage } from 'react-intl'
 
-import * as paths from '@/paths'
-import { BrowsableList, BrowsableListItem } from '@/components/navigation/browsable-list'
-import { Loading } from '@/components/await'
-import { PageTabLayout } from '@/mobilizations/components'
+import * as paths from 'paths'
+import { BrowsableList, BrowsableListItem } from 'components/navigation/browsable-list'
+import { Loading } from 'components/await'
+import { PageTabLayout } from 'mobilizations/components'
 
 class TemplatesChoosePage extends Component {
   render () {

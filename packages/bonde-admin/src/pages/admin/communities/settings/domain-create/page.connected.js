@@ -6,13 +6,13 @@ import { reduxForm } from 'redux-form'
 import { injectIntl } from 'react-intl'
 import { addNotification as notify } from 'reapop'
 
-import { isValidDomain } from '@/utils/validation-helper'
-import DnsControlSelectors from '@/community/dns-control-selectors'
-import * as dnsNotify from '@/community/notifications/dns'
+import { isValidDomain } from 'utils/validation-helper'
+import DnsControlSelectors from 'community/dns-control-selectors'
+import * as dnsNotify from 'community/notifications/dns'
 import {
   asyncAddHostedZone as addHostedZone,
   asyncCheckHostedZone
-} from '@/community/action-creators/dns-control'
+} from 'community/action-creators/dns-control'
 import Page from './page'
 
 const fields = ['domain_name']

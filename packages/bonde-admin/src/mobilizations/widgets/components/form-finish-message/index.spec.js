@@ -1,12 +1,78 @@
 import React from 'react'
 import { expect } from 'chai'
-import shallowWithIntl from '@/intl/helpers/shallow-with-intl'
+import shallowWithIntl from 'intl/helpers/shallow-with-intl'
 
-import { FormFinishMessage } from '@/mobilizations/widgets/components/form-finish-message'
+import { FormFinishMessage } from 'mobilizations/widgets/components/form-finish-message'
 
 const TellAFriend = props => (
   <div className='tell-a-friend' />
 )
+
+const FinishPostDonation = props => (
+  <div className='donation-recurrent' />
+)
+
+describe('client/mobilizations/widgets/components/form-finish-message in donation', () => {
+  let wrapper
+  const props = {
+    mobilization: { id: 1, color_scheme: 'nossas-scheme' },
+    widget: { id: 1 },
+    fields: {
+      finish_message_type: { value: 'donation-recurrent' },
+      finish_message: { value: 'Clique aqui para editar...' }
+    },
+    FinishPostDonation,
+    // Injected components
+    TellAFriend,
+    submitting: false,
+    handleSubmit: () => {},
+    submitFailed: false,
+    dirty: false,
+    valid: false,
+    asyncWidgetUpdate: () => {}
+  }
+
+  beforeAll(() => {
+    wrapper = shallowWithIntl(
+      <FormFinishMessage {...props} />
+    )
+  })
+
+  describe('render', () => {
+    afterAll(() => {
+      wrapper.setProps(props)
+    })
+
+    describe('preview', () => {
+      it('should render TellAFriend component by default', () => {
+        //expect(wrapper.find('TellAFriend')).to.have.length(1)
+      })
+      it('should render FinishPostDonation component by default', () => {
+        //expect(wrapper.find('FinishPostDonation')).to.have.length(1)
+      })
+    })
+  })
+
+  describe('fields', () => {
+    const field = () => wrapper.find('FormGroup[controlId="finish-message-type-id"]').props()
+
+    describe('finish_message_type', () => {
+      afterAll(() => {
+        wrapper.setProps(props)
+      })
+
+      it('should initialize with default finish_message_type', () => {
+        expect(field().value).to.equal('donation-recurrent')
+      })
+      it('should initialize with previously configured finish_message_type', () => {
+        const value = 'custom'
+        const settings = { finish_message_type: { ...field(), value } }
+        wrapper.setProps(widgetSettings(props, settings))
+        expect(field().value).to.equal(value)
+      })
+    })
+  })
+})
 
 describe('client/mobilizations/widgets/components/form-finish-message', () => {
   let wrapper
@@ -96,6 +162,7 @@ describe('client/mobilizations/widgets/components/form-finish-message', () => {
     })
   })
 })
+
 
 const widgetSettings = (props, values) => ({
   ...props,

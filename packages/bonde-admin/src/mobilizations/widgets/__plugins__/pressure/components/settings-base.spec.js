@@ -3,7 +3,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import { SettingsBase } from '@/mobilizations/widgets/__plugins__/pressure/components'
+import { SettingsBase } from 'mobilizations/widgets/__plugins__/pressure/components'
 
 describe('client/mobilizations/widgets/__plugins__/pressure/components/settings-base', () => {
   let wrapper

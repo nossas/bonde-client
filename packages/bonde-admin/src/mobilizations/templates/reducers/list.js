@@ -1,5 +1,5 @@
 // Current module dependencies
-import * as t from '@/mobilizations/templates/action-types'
+import * as t from 'mobilizations/templates/action-types'
 
 export const initialState = {
   loading: false,

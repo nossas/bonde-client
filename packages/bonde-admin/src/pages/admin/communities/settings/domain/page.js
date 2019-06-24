@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { FormattedMessage, intlShape } from 'react-intl'
-import { Loading } from '@/components/await'
-import { Info } from '@/components/notify'
-import { Dialog } from '@/ux/components'
-import { Title, Subtitle } from '@/components/title'
-import { Preformatted } from '@/components/markdown'
+import { Loading } from 'components/await'
+import { Info } from 'components/notify'
+import { Dialog } from 'ux/components'
+import { Title, Subtitle } from 'components/title'
+import { Preformatted } from 'components/markdown'
 import {
   ButtonPreview,
   DomainPreview,
@@ -13,9 +13,9 @@ import {
   SubdomainForm,
   DropdownMenu,
   Preview
-} from '@/community/components/dns'
-import * as dnsMessages from '@/community/notifications/dns'
-import * as Paths from '@/paths'
+} from 'community/components/dns'
+import * as dnsMessages from 'community/notifications/dns'
+import * as Paths from 'paths'
 
 if (require('exenv').canUseDOM) require('./styles.scss')
 
