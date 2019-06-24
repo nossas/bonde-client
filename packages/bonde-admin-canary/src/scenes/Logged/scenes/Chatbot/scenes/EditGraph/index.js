@@ -39,7 +39,7 @@ export default ({ changeCampaign, edges, match, campaign }) => {
     if (!campaign && match.params.id) {
       changeCampaign(edges.filter(i => i.node.id === match.params.id)[0])
     }
-  }, [edges, campaign])
+  }, [edges, campaign, changeCampaign, match])
 
   return campaign ? (
     <Flexbox vertical>
