@@ -13,9 +13,10 @@ import { FormGraphQL, Field, SubmitButton, resetForm } from 'components/Form'
 import { required } from 'services/validations'
 import ChatbotAPI from '../graphql'
 
-
-export default ({ community }) => {
+export default ({ t, community }) => {
   const [opened, setOpened] = useState(false)
+  const [errors, setErrors] = useState([])
+  const [lastValues, setLastValues] = useState({})
 
   const handleCloseModalForm = () => {
     // Should resetForm always close modal
@@ -56,8 +57,14 @@ export default ({ community }) => {
               // TODO: discuss how to implement the relationship of configurations, communities and bots
               // chatbotSettingsId = 1 represents BETA the first bot
               return mutation({ variables: {...values, chatbotSettingsId: 1 }})
-                .then(() => {
+                .then((a) => {
                   handleCloseModalForm()
+                })
+                .catch((err) => {
+                  setLastValues(values)
+                  if (err.graphQLErrors && err.graphQLErrors.length > 0 && err.graphQLErrors[0].message) {
+                    setErrors(JSON.parse(err.graphQLErrors[0].message))
+                  }
                 })
             }}
           >
@@ -72,10 +79,15 @@ export default ({ community }) => {
             <Field
               name='prefix'
               label='Identificador'
-              placeholder='Identificador usado para agrupar mensagens'
+              placeholder='Identificador usado parI18na agrupar mensagens'
               component={FormField}
               inputComponent={Input}
-              validate={required('Identificador deve ser preenchida.')}
+              validate={
+                message => {
+                  return required('Identificador deve ser preenchida.')(message) ||
+                  lastValues.prefix === message && t(errors.prefix, {field: 'prefix'})
+                }
+              }
             />
             <Field
               name='message'
