@@ -56,5 +56,10 @@
   "pagination": {
     "previous": "Anterior",
     "next": "Próximo"
+  },
+  "dropdown": {
+    "label": {
+      "communities": "Comunidades"
+    }
   }
 }
