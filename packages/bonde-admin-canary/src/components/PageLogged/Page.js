@@ -8,6 +8,7 @@ const Page = ({
   renderTitle,
   renderActionButtons,
   renderTabs,
+  renderMenuCommunity,
   wrapperHeaderComponent: WrapperHeader,
   fixedFooter,
   ...pageProps
@@ -22,6 +23,7 @@ const Page = ({
       renderTitle={renderTitle}
       renderActionButtons={renderActionButtons}
       renderTabs={renderTabs}
+      renderMenuCommunity={renderMenuCommunity}
     />
   )
 

@@ -10,6 +10,7 @@ import {
 // Components
 import ActionButton from './ActionButton'
 import CommunitiesDropdown from './CommunitiesDropdown'
+import MenuCommunity from './MenuCommunity'
 import Tabs, { Tab } from './Tabs'
 import Title from './Title'
 import UserDropdown from './UserDropdown'
@@ -23,7 +24,8 @@ const Bonde = () => (
 const Header = ({
   renderTitle,
   renderActionButtons,
-  renderTabs
+  renderTabs,
+  renderMenuCommunity
 }) => (
   <HeaderStyleguide>
     <Navbar renderBrand={Bonde}>
@@ -31,6 +33,12 @@ const Header = ({
         <UserDropdown />
       </Flexbox>
     </Navbar>
+
+    {renderMenuCommunity && (
+      <MenuCommunity>
+        Links
+      </MenuCommunity>
+    )}
 
     {renderActionButtons && (
       <Spacing margin={{ top: 16 }}>
@@ -59,7 +67,8 @@ const { func } = PropTypes
 Header.propTypes = {
   renderTitle: func,
   renderActionButtons: func,
-  renderTabs: func
+  renderTabs: func,
+  renderMenuCommunity: func,
 }
 
 Header.ActionButton = ActionButton
