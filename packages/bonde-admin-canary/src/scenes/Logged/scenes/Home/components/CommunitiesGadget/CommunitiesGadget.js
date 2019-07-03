@@ -38,7 +38,7 @@ const goToCanary = (row) => (
     flat
   >
     <Link to={`/admin/${row.id}/chatbot`}>
-      <IconBot size={25} color='black' />
+      <IconBot size={18} color='black' />
     </Link>
   </Button>
 )
