@@ -13,7 +13,6 @@ const CommunitiesDropdown = ({ t, communities, path }) => {
     >
       {communities.map(c => (
         <DropdownItem
-          key={`communities-dropdown-${c.i}`}
           to={`/admin/${c.id}/chatbot`}
           component={Link}
         >
