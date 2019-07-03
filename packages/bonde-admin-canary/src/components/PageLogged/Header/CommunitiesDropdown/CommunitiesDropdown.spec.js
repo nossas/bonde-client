@@ -7,6 +7,7 @@ import CommunitiesDropdown from './CommunitiesDropdown'
 import { expect } from 'chai'
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 describe('components > PageLogged > Header > CommunitiesDropdown > CommunitiesDropdown', () => {
   let node
 
@@ -70,10 +71,22 @@ describe('components > PageLogged > Header > CommunitiesDropdown > CommunitiesDr
   //   }
   //   node = shallow(<CommunitiesDropdown {...props} />)
   // })
+=======
+describe('components > PageLogged > Header > CommunitiesDropdown > CommunitiesDropdown', () => {
+  let node
+>>>>>>> 4ecc3ef8... feat(admin-canary): refactor icons UserCommunities
 
-  // it('render a Dropdown component', () => {
-  //   expect(node.find(Dropdown).length).to.be.equal(1)
-  // })
+  beforeEach(() => {
+    const props = {
+      t: (key) => key,
+      path: '/communities'
+    }
+    node = shallow(<CommunitiesDropdown {...props} />)
+  })
+
+  it('render a Dropdown component', () => {
+    // expect(node.find(Dropdown).length).to.be.equal(1)
+  })
 
   // it('translate label for communities', () => {
   //   const i18nKey = 'dropdown.label.communities'
@@ -111,5 +124,9 @@ describe('components > PageLogged > Header > CommunitiesDropdown > CommunitiesDr
   //   node.setProps({ communities, path })
   //   expect(node.find(DropdownItem).props().to).to.be.equal(urljoin(path, communities[0].id.toString()))
   // })
+<<<<<<< HEAD
 // })
 >>>>>>> 81d8afce... feat(admin-canary): refactor communitiesDropdown test
+=======
+})
+>>>>>>> 4ecc3ef8... feat(admin-canary): refactor icons UserCommunities
