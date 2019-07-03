@@ -5,17 +5,17 @@ import { IconBot, IconSettings, IconPage, IconChart } from './icons'
 import { Flexbox, Spacing } from 'bonde-styleguide'
 
 const items = [
-  { name: 'chart', path: '/', icon: <IconChart /> },
-  { name: 'pages', path: '/', icon:  <IconPage /> },
-  { name: 'chatbot', path: '/admin/1/chatbot', icon: <IconBot /> },
-  { name: 'settings', path: '/', icon: <IconSettings /> }
+  { name: 'chart', path: '/', icon: <IconChart color='white' />},
+  { name: 'pages', path: '/', icon:  <IconPage color='white' />},
+  { name: 'chatbot', path: `/admin/${1}/chatbot`, icon: <IconBot color='white'/>},
+  { name: 'settings', path: '/', icon: <IconSettings color='white'/>}
 ]
 
 const MenuCommunity = () => (
-  <Flexbox horizontal start padding={8}>
+  <Flexbox horizontal start>
     {items.map(i => {
       return (
-        <Spacing margin={{ left: 8 }}>
+        <Spacing margin={{ left: 12 }}>
           <Link to={i.path}>
             { i.icon }
           </Link>

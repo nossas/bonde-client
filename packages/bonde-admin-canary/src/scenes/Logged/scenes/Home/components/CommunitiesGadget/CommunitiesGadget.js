@@ -1,12 +1,46 @@
 import React, { Fragment } from 'react'
-import PropTypes from 'prop-types'
-import { Text } from 'bonde-styleguide'
-import { Queryset } from 'components'
+import {
+  Text,
+  Button,
+  Flexbox
+} from 'bonde-styleguide'
+import { Link } from 'react-router-dom'
+import { Query } from 'react-apollo'
 import ImageColumn from '../ImageColumn'
 import TableCardGadget from '../TableCardGadget'
 import allUserCommunities from './query.graphql'
 import { authSession } from 'services/auth'
 import { toSnakeCase } from '../../utils'
+import userCommunitiesQuery from './query'
+import IconBot from '../../../../../../components/PageLogged/Header/MenuCommunity/icons/icon-bot'
+
+const goToAdmin = (row) => (
+  <Button
+    light
+    flat
+    onClick={() => {
+      authSession
+      .setAsyncItem('community', toSnakeCase(row))
+      .then(() => {
+        const baseUrl = process.env.REACT_APP_DOMAIN_ADMIN || 'http://app.bonde.devel:5001'
+        window.open(baseUrl, '_self')
+      })
+    }}
+  >
+    Admin
+  </Button>
+)
+
+const goToCanary = (row) => (
+  <Button
+    light
+    flat
+  >
+    <Link to={`/admin/${row.id}/chatbot`}>
+      <IconBot color='black'/>
+    </Link>
+  </Button>
+)
 
 const RenderText = ({ row }) => (
   <Fragment>
@@ -47,14 +81,6 @@ const CommunitiesGadget = ({ t, loading, communities }) => (
     title={t('gadgets.communities.title')}
     emptyIcon='community'
     emptyText={t('gadgets.communities.emptyText')}
-    onClickRow={(row) => {
-      authSession
-        .setAsyncItem('community', toSnakeCase(row))
-        .then(() => {
-          const baseUrl = process.env.REACT_APP_DOMAIN_ADMIN || 'http://app.bonde.devel:5001'
-          window.open(baseUrl, '_self')
-        })
-    }}
   />
 )
 
