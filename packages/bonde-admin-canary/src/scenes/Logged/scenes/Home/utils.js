@@ -1,5 +1,5 @@
 const snakeCase = (key) => {
-  return key.replace( /([A-Z])/g, "_$1" ).toLowerCase()
+  return key.replace(/([A-Z])/g, '_$1').toLowerCase()
 }
 
 /**
@@ -12,7 +12,7 @@ const snakeCase = (key) => {
 const convertCase = (oldObject, converterFunction) => {
   let newObject
 
-  if (!oldObject || typeof oldObject !== "object" || !Object.keys(oldObject).length) {
+  if (!oldObject || typeof oldObject !== 'object' || !Object.keys(oldObject).length) {
     return oldObject
   }
 

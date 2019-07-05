@@ -11,6 +11,7 @@ import { Page, Header } from 'components/PageLogged'
 import { Redirect } from 'services/router'
 import { Auth } from 'services/auth'
 import { UserCommunities, TrendingMobilizationsGadget } from './gadgets'
+import PropTypes from 'prop-types'
 
 const TutorialDialog = ({ children, step, t, ...props }) => (
   <Tutorial.Dialog
@@ -24,7 +25,13 @@ const TutorialDialog = ({ children, step, t, ...props }) => (
   </Tutorial.Dialog>
 )
 
-export default class extends Component {
+TutorialDialog.propTypes = {
+  children: PropTypes.node,
+  step: PropTypes.string,
+  t: PropTypes.func
+}
+
+export default class Home extends Component {
   render () {
     const { lastLocation } = this.props
     const showTutorial = lastLocation && lastLocation.pathname === '/admin/tags'
@@ -48,7 +55,7 @@ export default class extends Component {
                         {children}
                       </TutorialDialog>
                     )}
-                  > 
+                  >
                     <Flexbox vertical>
                       <ToastContainer />
                       <Grid>
@@ -81,4 +88,10 @@ export default class extends Component {
       </I18n>
     )
   }
+}
+
+Home.propTypes = {
+  lastLocation: PropTypes.shape({
+    pathname: PropTypes.string
+  })
 }
