@@ -1,8 +1,8 @@
 import React from 'react'
 import { Button } from 'bonde-styleguide'
+import PropTypes from 'prop-types'
 
-
-export default ({ children }) => (
+const HelpButton = ({ children }) => (
   <Button
     dark
     onClick={() => {
@@ -12,3 +12,9 @@ export default ({ children }) => (
     {children}
   </Button>
 )
+
+HelpButton.propTypes = {
+  children: PropTypes.node
+}
+
+export default HelpButton

@@ -4,6 +4,7 @@ import {
   Flexbox2 as Flexbox
 } from 'bonde-styleguide'
 import HelpButton from './HelpButton'
+import PropTypes from 'prop-types'
 
 const Footer = ({ t, fixed }) => (
   <FooterStyled fixed={fixed}>
@@ -32,5 +33,10 @@ const Footer = ({ t, fixed }) => (
     </Flexbox>
   </FooterStyled>
 )
+
+Footer.propTypes = {
+  t: PropTypes.func,
+  fixed: PropTypes.bool
+}
 
 export default Footer

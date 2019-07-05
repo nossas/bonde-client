@@ -3,20 +3,19 @@ import { Page as Content } from 'bonde-styleguide'
 import Header from './Header'
 import Footer from './Footer'
 
-const Page =  ({
+const Page = ({
   children,
   renderTitle,
   renderActionButtons,
   renderTabs,
   wrapperHeaderComponent: WrapperHeader,
-  bgColor,
   fixedFooter,
   ...pageProps
 }) => {
   // calculate height to resize content and fix Footer component on bottom page
-  const height = (window.innerHeight
-    || document.documentElement.clientHeight
-    || document.body.clientHeight) - 158
+  const height = (window.innerHeight ||
+    document.documentElement.clientHeight ||
+    document.body.clientHeight) - 158
 
   const headerNode = (
     <Header
