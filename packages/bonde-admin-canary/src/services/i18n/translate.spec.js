@@ -1,5 +1,3 @@
-import React from 'react'
-import { shallow } from 'enzyme'
 import { translate as translateI18next } from 'react-i18next'
 import { translate as translateI18n } from './'
 import { expect } from 'chai'
