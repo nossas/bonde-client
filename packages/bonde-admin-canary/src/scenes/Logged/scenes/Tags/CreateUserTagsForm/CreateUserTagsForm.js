@@ -4,6 +4,7 @@ import { Field, FormGraphQL } from 'components/Form'
 import UserTagsField from './UserTagsField'
 import CreateUserTags from './createUserTags.graphql'
 import updateCurrentUserTags from './updateCurrentUserTags'
+import PropTypes from 'prop-types'
 
 const CreateUserTagsForm = ({ t, user }) => {
   return (
@@ -30,6 +31,11 @@ const CreateUserTagsForm = ({ t, user }) => {
       </Flexbox>
     </FormGraphQL>
   )
+}
+
+CreateUserTagsForm.propTypes = {
+  t: PropTypes.func,
+  user: PropTypes.any
 }
 
 export default CreateUserTagsForm

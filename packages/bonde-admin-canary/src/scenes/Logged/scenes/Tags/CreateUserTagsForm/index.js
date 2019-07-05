@@ -3,17 +3,19 @@ import { I18n } from 'react-i18next'
 import { Auth } from 'services/auth'
 import CreateUserTagsForm from './CreateUserTagsForm'
 
-export default (props) => (
+const CreateUserTagsFormWrapper = () => (
   <I18n ns='tags'>
-  {(t) => (
-    <Auth>
-    {({ user }) => (
-      <CreateUserTagsForm
-        t={t}
-        user={user}
-      />
+    {(t) => (
+      <Auth>
+        {({ user }) => (
+          <CreateUserTagsForm
+            t={t}
+            user={user}
+          />
+        )}
+      </Auth>
     )}
-    </Auth>
-  )}
   </I18n>
 )
+
+export default CreateUserTagsFormWrapper

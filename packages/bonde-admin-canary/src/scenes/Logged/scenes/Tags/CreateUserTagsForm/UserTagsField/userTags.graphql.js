@@ -4,8 +4,8 @@ export default gql`
   query UserTags {
     allTags (condition: { tagType: "user" }) {
       nodes {
-	name,
-	label
+        name,
+        label
       }
     }
   }
