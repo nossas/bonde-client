@@ -2,6 +2,9 @@
 import Enzyme from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 
+// mock png
+import requireHacker from 'require-hacker'
+
 Enzyme.configure({ adapter: new Adapter() })
 
 // browser
@@ -14,23 +17,23 @@ global.navigator = dom.window.navigator
 
 // localStorage
 class LocalStorageMock {
-  constructor() {
+  constructor () {
     this.store = {}
   }
 
-  clear() {
+  clear () {
     this.store = {}
   }
 
-  getItem(key) {
+  getItem (key) {
     return this.store[key] || null
   }
 
-  setItem(key, value) {
+  setItem (key, value) {
     this.store[key] = value.toString()
   }
 
-  removeItem(key) {
+  removeItem (key) {
     delete this.store[key]
   }
 }
@@ -39,15 +42,12 @@ global.localStorage = new LocalStorageMock()
 
 // Mock XMLHttpRequest
 class XMLHttpRequest {
-  open() {}
-  setRequestHeader() {}
-  send() {}
+  open () {}
+  setRequestHeader () {}
+  send () {}
 }
 
 global.XMLHttpRequest = XMLHttpRequest
-
-// mock png
-import requireHacker from 'require-hacker'
 
 requireHacker.hook('png', () => 'module.exports = ""')
 requireHacker.hook('css', () => 'module.exports = ""')
