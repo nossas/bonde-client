@@ -1,4 +1,4 @@
-import gql from "graphql-tag"
+import gql from 'graphql-tag'
 
 export default gql`
   query UserMobilizations($first: Int, $last: Int, $sort: [MobilizationModelSortEnum]){

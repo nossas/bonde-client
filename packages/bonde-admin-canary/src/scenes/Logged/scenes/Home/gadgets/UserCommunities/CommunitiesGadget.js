@@ -6,6 +6,34 @@ import TableCardGadget from '../TableCardGadget'
 import { authSession } from 'services/auth'
 import { toSnakeCase } from '../../utils'
 import userCommunitiesQuery from './query'
+import PropTypes from 'prop-types'
+
+const renderText = ({ row }) => (
+  <Fragment>
+    <Text
+      fontSize={16}
+      fontWeight={900}
+      lineHeight={1.25}
+    >
+      {row.name}
+    </Text>
+    <Text
+      fontSize={13}
+      lineHeight={1.54}
+      color='#4a4a4a'
+    >
+      {row.description || row.city}
+    </Text>
+  </Fragment>
+)
+
+renderText.propTypes = {
+  row: PropTypes.shape({
+    name: PropTypes.string,
+    description: PropTypes.string,
+    city: PropTypes.string
+  })
+}
 
 const columns = [
   {
@@ -15,25 +43,8 @@ const columns = [
   },
   {
     field: 'text',
-    render: ({ row }) => (
-      <Fragment>
-        <Text
-          fontSize={16}
-          fontWeight={900}
-          lineHeight={1.25}
-        >
-          {row.name}
-        </Text>
-        <Text
-          fontSize={13}
-          lineHeight={1.54}
-          color='#4a4a4a'
-        >
-          {row.description || row.city}
-        </Text>
-      </Fragment>
-    )
-  },
+    render: renderText
+  }
 ]
 
 const CommunitiesGadget = ({ t, loading, communities }) => (
@@ -55,20 +66,32 @@ const CommunitiesGadget = ({ t, loading, communities }) => (
   />
 )
 
-export default ({ t }) => (
-  <Query query={userCommunitiesQuery}>
-  {({ data, loading, error }) => {
-    if (loading) return 'Loading...'
-    if (error) return 'Error!'
+CommunitiesGadget.propTypes = {
+  t: PropTypes.func,
+  loading: PropTypes.bool,
+  communities: PropTypes.array
+}
 
-    return (
-      <CommunitiesGadget
-        t={t}
-        loading={loading}
-        filter={{sort: 'updated_at_desc'}}
-        communities={data && data.userCommunities ? data.userCommunities.edges.map(i => i.node) : []}
-      />
-    )
-  }}
+const CommunitiesGadgetWrapper = ({ t }) => (
+  <Query query={userCommunitiesQuery}>
+    {({ data, loading, error }) => {
+      if (loading) return 'Loading...'
+      if (error) return 'Error!'
+
+      return (
+        <CommunitiesGadget
+          t={t}
+          loading={loading}
+          filter={{ sort: 'updated_at_desc' }}
+          communities={data && data.userCommunities ? data.userCommunities.edges.map(i => i.node) : []}
+        />
+      )
+    }}
   </Query>
 )
+
+CommunitiesGadgetWrapper.propTypes = {
+  t: PropTypes.func
+}
+
+export default CommunitiesGadgetWrapper
