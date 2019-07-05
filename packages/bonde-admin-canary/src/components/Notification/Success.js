@@ -1,5 +1,6 @@
 import React from 'react'
 import { IconColorful, Text, Button, Flexbox2 as Flexbox } from 'bonde-styleguide'
+import PropTypes from 'prop-types'
 
 const Success = ({ message, closeToast }) => (
   <div
@@ -29,5 +30,10 @@ const Success = ({ message, closeToast }) => (
     </Flexbox>
   </div>
 )
+
+Success.propTypes = {
+  message: PropTypes.string,
+  closeToast: PropTypes.func
+}
 
 export default Success
