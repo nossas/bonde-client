@@ -4,7 +4,7 @@ import { Dropdown, DropdownItem } from 'bonde-styleguide'
 
 class SelectDropdown extends React.Component {
   state = {
-    value: undefined 
+    value: undefined
   }
 
   onChange = currentOption => {
@@ -49,7 +49,7 @@ SelectDropdown.propTypes = {
   options: arrayOf(optionShape).isRequired,
 
   onChange: func,
-  initialValue: any,
+  initialValue: any
 }
 
 SelectDropdown.defaultProps = {
