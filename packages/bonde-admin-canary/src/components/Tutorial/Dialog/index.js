@@ -29,7 +29,7 @@ RegisterDialog.propTypes = {
   context: PropTypes.shape({
     total: PropTypes.number,
     onNext: PropTypes.func,
-    onClose: PropTypes.onClose,
+    onClose: PropTypes.func,
     currentStep: PropTypes.number,
     step: PropTypes.number,
     registerStep: PropTypes.func
