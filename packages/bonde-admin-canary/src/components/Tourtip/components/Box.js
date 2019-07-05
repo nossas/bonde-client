@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { node, number, string, func } from 'prop-types'
+import PropTypes, { node, number, string, func } from 'prop-types'
 import {
   Button,
   Flexbox2 as Flexbox,
@@ -34,6 +34,13 @@ const Navigation = ({ onNext, onClose, currentStep, total }) => (
   </Flexbox>
 )
 
+Navigation.propTypes = {
+  onNext: PropTypes.func,
+  onClose: PropTypes.func,
+  currentStep: PropTypes.number,
+  total: PropTypes.number
+}
+
 const Header = ({ title, subtitle }) => (
   <Fragment>
     {title && (
@@ -54,6 +61,11 @@ const Header = ({ title, subtitle }) => (
     )}
   </Fragment>
 )
+
+Header.propTypes = {
+  title: PropTypes.string,
+  subtitle: PropTypes.string
+}
 
 const Box = ({
   children,
@@ -106,7 +118,7 @@ Box.propTypes = {
   total: string.isRequired,
   onNext: func.isRequired,
   onClose: func.isRequired,
-  placement: string.isRequired,
+  placement: string.isRequired
 }
 
 export default Box
