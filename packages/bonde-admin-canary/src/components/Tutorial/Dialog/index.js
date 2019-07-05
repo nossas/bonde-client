@@ -24,6 +24,18 @@ export class RegisterDialog extends React.Component {
   }
 }
 
+RegisterDialog.propTypes = {
+  name: PropTypes.string,
+  context: PropTypes.shape({
+    total: PropTypes.number,
+    onNext: PropTypes.func,
+    onClose: PropTypes.onClose,
+    currentStep: PropTypes.number,
+    step: PropTypes.number,
+    registerStep: PropTypes.func
+  })
+}
+
 const Dialog = (props) => (
   <Context.Consumer>
     {context => <RegisterDialog context={context} {...props} />}

@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { string, number } from 'prop-types'
+import PropTypes from 'prop-types'
 import { Tooltip } from 'bonde-styleguide'
 import Header from './Header'
 import Navigation from './Navigation'
@@ -45,11 +45,18 @@ DialogTooltip.defaultProps = {
 }
 
 DialogTooltip.propTypes = {
-  title: string.isRequired,
-  description: string.isRequired,
+  width: PropTypes.number,
+  minHeight: PropTypes.number,
+  children: PropTypes.node,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
   // received by context Provider/Consumer
-  currentStep: number.isRequired,
-  total: number.isRequired
+  currentStep: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  onNext: PropTypes.func,
+  onClose: PropTypes.func,
+  placement: PropTypes.string,
+  margin: PropTypes.number
 }
 
 export default DialogTooltip

@@ -4,8 +4,9 @@ import {
   Flexbox2 as Flexbox,
   Title
 } from 'bonde-styleguide'
+import PropTypes from 'prop-types'
 
-export default ({ t, onNext, onClose, currentStep, total }) => (
+const Navigation = ({ t, onNext, onClose, currentStep, total }) => (
   <Flexbox horizontal middle>
     <Title.H5 color='#fff'>{currentStep} / {total}</Title.H5>
     {currentStep < total && (
@@ -30,3 +31,13 @@ export default ({ t, onNext, onClose, currentStep, total }) => (
     )}
   </Flexbox>
 )
+
+Navigation.propTypes = {
+  t: PropTypes.func,
+  onNext: PropTypes.func,
+  onClose: PropTypes.func,
+  currentStep: PropTypes.number,
+  total: PropTypes.number
+}
+
+export default Navigation
