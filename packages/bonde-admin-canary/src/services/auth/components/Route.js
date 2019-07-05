@@ -34,7 +34,7 @@ Route.propTypes = {
   assert: PropTypes.any,
   component: PropTypes.func,
   redirectTo: PropTypes.string,
-  location: PropTypes.string
+  location: PropTypes.object
 }
 
 export default Route
