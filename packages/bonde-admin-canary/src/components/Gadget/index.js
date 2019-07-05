@@ -1,5 +1,5 @@
 import React from 'react'
-import { oneOfType, string, func, node } from 'prop-types'
+import PropTypes from 'prop-types'
 import { Flexbox2 as Flexbox, Title, Spacing } from 'bonde-styleguide'
 
 const GadgetTitle = ({ children }) => (
@@ -7,6 +7,10 @@ const GadgetTitle = ({ children }) => (
     {children}
   </Title.H5>
 )
+
+GadgetTitle.propTypes = {
+  children: PropTypes.node
+}
 
 const Gadget = ({ children, title, renderFilter, WrapperComponent }) => (
   <Flexbox vertical>
@@ -28,9 +32,10 @@ const Gadget = ({ children, title, renderFilter, WrapperComponent }) => (
 )
 
 Gadget.propTypes = {
-  title: string,
-  renderFilter: func,
-  WrapperComponent: oneOfType([node, func])
+  children: PropTypes.node,
+  title: PropTypes.string,
+  renderFilter: PropTypes.func,
+  WrapperComponent: PropTypes.oneOfType([PropTypes.node, PropTypes.func])
 }
 
 Gadget.Title = GadgetTitle
