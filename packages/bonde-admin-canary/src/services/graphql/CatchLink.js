@@ -20,9 +20,9 @@ export const onCatch = errorHandler => {
             errorHandler({
               operation,
               networkError: error,
-              //Network errors can return GraphQL errors on for example a 403
+              // Network errors can return GraphQL errors on for example a 403
               graphQLErrors: error.result && error.result.errors
-            });
+            })
           },
           complete: observer.complete.bind(observer)
         })
@@ -37,12 +37,12 @@ export const onCatch = errorHandler => {
 }
 
 export class CatchLink extends ApolloLink {
-  constructor(errorHandler) {
+  constructor (errorHandler) {
     super()
     this.link = onCatch(errorHandler)
   }
 
-  request(operation, forward) {
+  request (operation, forward) {
     return this.link.request(operation, forward)
   }
 }

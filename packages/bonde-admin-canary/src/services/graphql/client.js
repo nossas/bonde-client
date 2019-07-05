@@ -23,8 +23,7 @@ const authLink = setContext((_, { headers }) => {
   return { headers }
 })
 
-
-const handleError = onCatch(({ response, networkError }) => {
+const handleError = onCatch(({ networkError }) => {
   if (networkError && (networkError.statusCode === 401 || networkError.statusCode === 403)) {
     const redirectTo = authSession.getItem('redirectTo')
 
