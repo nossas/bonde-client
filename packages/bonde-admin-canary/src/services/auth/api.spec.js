@@ -1,7 +1,7 @@
 import { store } from 'services/redux'
 import { db } from 'services/session'
 import AuthAPI from './api'
-import {expect} from 'chai'
+import { expect } from 'chai'
 
 describe('services > auth > api', () => {
   it('save user in redux and session when login', () => {

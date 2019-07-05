@@ -4,9 +4,11 @@ import { StaticRouter } from 'react-router-dom'
 import Route from './Route'
 import { expect } from 'chai'
 
+const Component = () => <p id='testComponent'>Test Render</p>
+
 describe('services > auth > components', () => {
   const props = {
-    component: () => (<p id='testComponent'>Test Render</p>),
+    component: Component,
     redirectTo: '/login'
   }
 
@@ -25,7 +27,7 @@ describe('services > auth > components', () => {
 
   it('render redirect when assert if false', () => {
     const context = {}
-    const node = mount(
+    mount(
       <StaticRouter context={context}>
         <Route {...props} assert={false} />
       </StaticRouter>

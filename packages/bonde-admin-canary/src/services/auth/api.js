@@ -23,7 +23,7 @@ const storage = new CrossStorageClient(
  *
  */
 const AuthAPI = {
-  login: (user) => new Promise((resolve, reject) => {
+  login: (user) => new Promise((resolve) => {
     dispatch({ type: actionTypes.LOGIN, payload: user })
     db.set('user', user).write()
     storage.onConnect()
@@ -32,7 +32,7 @@ const AuthAPI = {
       })
     return resolve(user)
   }),
-  logout: () => new Promise((resolve, reject) => {
+  logout: () => new Promise((resolve) => {
     dispatch({ type: actionTypes.LOGOUT })
     db.unset('user').write()
     storage.onConnect()

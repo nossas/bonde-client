@@ -4,11 +4,11 @@ import { Redirect } from 'react-router-dom'
 import { graphqlApi } from 'services/graphql'
 import authSession from './session'
 import UserQuery from './user.graphql'
+import PropTypes from 'prop-types'
 
 const AuthContext = React.createContext()
 
 export const { Consumer } = AuthContext
-
 
 class AuthProvider extends React.Component {
   state = {
@@ -32,11 +32,10 @@ class AuthProvider extends React.Component {
         if (typeof error === 'object' && authErrors.indexOf(error.graphQLErrors[0].message) !== -1) {
           this.handleLogout()
         }
-        console.error(error)
       })
   }
 
-  handleLogout() {
+  handleLogout () {
     return authSession
       .logout()
       .then(() => {
@@ -44,7 +43,7 @@ class AuthProvider extends React.Component {
         this.setState({ fetching: false, user: undefined })
       })
   }
-  
+
   render () {
     const { children, loading: Loading } = this.props
 
@@ -57,7 +56,7 @@ class AuthProvider extends React.Component {
 
     return (
       <I18n ns='auth'>
-        {(t) => (
+        {() => (
           <AuthContext.Provider
             value={{
               user: this.state.user,
@@ -70,6 +69,12 @@ class AuthProvider extends React.Component {
       </I18n>
     )
   }
+}
+
+AuthProvider.propTypes = {
+  children: PropTypes.node,
+  loading: PropTypes.node,
+  t: PropTypes.func
 }
 
 export default AuthProvider

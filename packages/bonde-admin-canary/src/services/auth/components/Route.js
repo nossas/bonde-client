@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route as ReactRoute, Redirect } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 const Route = ({
   assert,
@@ -7,7 +8,6 @@ const Route = ({
   redirectTo,
   ...ownProps
 }) => {
- 
   const valid = typeof assert === 'function' ? assert() : assert
 
   return (
@@ -28,6 +28,13 @@ const Route = ({
 
 Route.defaultProps = {
   assert: true
+}
+
+Route.propTypes = {
+  assert: PropTypes.any,
+  component: PropTypes.func,
+  redirectTo: PropTypes.string,
+  location: PropTypes.string
 }
 
 export default Route
