@@ -1,8 +1,8 @@
 import React from 'react'
-import { object, number, bool} from 'prop-types'
+import PropTypes from 'prop-types'
 import { Query } from 'react-apollo'
 // TODO: import only configure queryset to observable
-import { store } from 'services/redux' 
+import { store } from 'services/redux'
 import * as actions from './redux/actions'
 import QueryObject from './QueryObject'
 
@@ -12,7 +12,6 @@ import QueryObject from './QueryObject'
 // - Filter
 
 class Queryset extends React.Component {
-
   constructor (props) {
     super(props)
     if (props.observable) {
@@ -25,7 +24,7 @@ class Queryset extends React.Component {
     if (this.props.observable) {
       store.dispatch(actions.register(
         this.queryObject.name
-      )) 
+      ))
     }
   }
 
@@ -51,7 +50,7 @@ class Queryset extends React.Component {
       variables: { offset },
       updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult) return prev
-        
+
         return Object.assign({}, prev, {
           data: fetchMoreResult.data
         })
@@ -77,7 +76,7 @@ class Queryset extends React.Component {
               length: data[this.queryObject.selector].totalCount
             }))
           }
-          
+
           return this.props.children({
             data,
             loading,
@@ -93,11 +92,12 @@ class Queryset extends React.Component {
 }
 
 Queryset.propTypes = {
-  query: object.isRequired,
-  limit: number,
-  filter: object,
+  query: PropTypes.object.isRequired,
+  limit: PropTypes.number,
+  filter: PropTypes.object,
   // Query should return totalCount when this prop is true
-  observable: bool
+  observable: PropTypes.bool,
+  children: PropTypes.node
 }
 
 Queryset.defaultProps = {
