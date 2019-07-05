@@ -7,7 +7,6 @@ import ChatbotAPI from './graphql'
 import FlowsScene from './scenes/Flows'
 import EditGraphScene from './scenes/EditGraph'
 
-
 export default withRouter(({ match, history }) => {
   const [campaign, setCampaign] = useState(undefined)
 

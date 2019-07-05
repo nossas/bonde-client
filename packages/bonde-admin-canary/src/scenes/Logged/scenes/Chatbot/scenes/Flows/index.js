@@ -6,9 +6,10 @@ import {
   Title
 } from 'bonde-styleguide'
 import { CreateFlowModalForm, FlowDataList } from '../../components'
-import { I18n } from 'react-i18next';
+import { I18n } from 'react-i18next'
+import PropTypes from 'prop-types'
 
-export default ({ changeCampaign, community, edges }) => {
+const Flows = ({ changeCampaign, community, edges }) => {
   // TODO:
   // - add translate
 
@@ -31,3 +32,11 @@ export default ({ changeCampaign, community, edges }) => {
     </Flexbox>
   )
 }
+
+Flows.propTypes = {
+  changeCampaign: PropTypes.func,
+  community: PropTypes.any,
+  edges: PropTypes.array
+}
+
+export default Flows

@@ -2,15 +2,14 @@ import React from 'react'
 import Tree from 'react-d3-tree'
 import { Card, Flexbox2 as Flexbox, Scrollbox, Icon, Text } from 'bonde-styleguide'
 import { CreateMessageModalForm, DeleteMessageModal } from './'
-
+import PropTypes from 'prop-types'
 
 const conversationToTree = (edges) => edges.map(item => {
   if (item.node.children && item.node.children.edges.length > 0) {
-    return { uuid: item.node.id, name: item.node.text, ...item.node, children: conversationToTree(item.node.children.edges)}
+    return { uuid: item.node.id, name: item.node.text, ...item.node, children: conversationToTree(item.node.children.edges) }
   }
   return { uuid: item.node.id, name: item.node.text, ...item.node }
 })
-
 
 const InsertButton = ({ onClick }) => {
   const wrapperStyles = {
@@ -36,6 +35,10 @@ const InsertButton = ({ onClick }) => {
   )
 }
 
+InsertButton.propTypes = {
+  onClick: PropTypes.func
+}
+
 const DeleteButton = ({ onClick }) => {
   const wrapperStyles = {
     position: 'absolute',
@@ -54,17 +57,20 @@ const DeleteButton = ({ onClick }) => {
     <div style={wrapperStyles} onClick={onClick}>
       <Icon name='trash' size={18} color='#e9578f' />
     </div>
-  ) 
+  )
 }
 
+DeleteButton.propTypes = {
+  onClick: PropTypes.func
+}
 
 const SimpleNodeLabel = ({ nodeData, nodeDataSelected, onInsertClick, onDeleteClick }) => {
-  /*let hasChildren = false
+  /* let hasChildren = false
   let hasChildrenIsReply = false
   if (nodeData.children) {
     hasChildren = nodeData.children.length > 0
     hasChildrenIsReply = nodeData.children.filter(x => x.kind === 'quick_reply').length > 0
-  }*/
+  } */
   const active = nodeDataSelected && nodeData.uuid === nodeDataSelected.uuid
   const fullProps = {
     rounded: '10px 10px 10px 0',
@@ -78,7 +84,7 @@ const SimpleNodeLabel = ({ nodeData, nodeDataSelected, onInsertClick, onDeleteCl
 
   return (
     <Card margin='15px 10px 0 0' border={fullProps.border} rounded={fullProps.rounded}>
-      <Flexbox padding={{top: 10, left: 10}} align='middle'>
+      <Flexbox padding={{ top: 10, left: 10 }} align='middle'>
         <Scrollbox height={100}>
           {nodeData.kind === 'gif' ? (
             <img src={nodeData.text} alt={`GIF: ${nodeData.text}`} />
@@ -97,14 +103,27 @@ const SimpleNodeLabel = ({ nodeData, nodeDataSelected, onInsertClick, onDeleteCl
   )
 }
 
-export default class extends React.Component {
+SimpleNodeLabel.propTypes = {
+  nodeData: PropTypes.shape({
+    uuid: PropTypes.string,
+    kind: PropTypes.string,
+    text: PropTypes.string
+  }),
+  nodeDataSelected: PropTypes.shape({
+    uuid: PropTypes.string
+  }),
+  onInsertClick: PropTypes.func,
+  onDeleteClick: PropTypes.func
+}
+
+export default class ConversationTree extends React.Component {
   state = {
     nodeData: undefined,
     openInsertModal: false,
     openDeleteModal: false
   }
 
-  componentDidMount() {
+  componentDidMount () {
     const dimensions = this.treeContainer.getBoundingClientRect()
     this.setState({
       translate: {
@@ -114,15 +133,15 @@ export default class extends React.Component {
     })
   }
 
-  render() {
+  render () {
     const { conversation, campaign } = this.props
 
-    const height = window.innerHeight
-      || document.documentElement.clientHeight
-      || document.body.clientHeight
+    const height = window.innerHeight ||
+      document.documentElement.clientHeight ||
+      document.body.clientHeight
 
     return (
-      <div style={{height: height ? height - 320 : '100px'}} ref={tc => this.treeContainer = tc}>
+      <div style={{ height: height ? height - 320 : '100px' }} ref={tc => { this.treeContainer = tc }}>
         {this.state.nodeData && this.state.openInsertModal && (
           <CreateMessageModalForm
             campaign={campaign}
@@ -144,7 +163,7 @@ export default class extends React.Component {
           data={conversationToTree(conversation)}
           orientation='vertical'
           translate={this.state.translate}
-          onClick={(nodeData, evt) => this.setState({ nodeData })}
+          onClick={(nodeData) => this.setState({ nodeData })}
           nodeLabelComponent={{
             render: (
               <SimpleNodeLabel
@@ -159,4 +178,9 @@ export default class extends React.Component {
       </div>
     )
   }
+}
+
+ConversationTree.propTypes = {
+  conversation: PropTypes.array,
+  campaign: PropTypes.any
 }

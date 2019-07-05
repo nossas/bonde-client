@@ -13,9 +13,9 @@ import { FormGraphQL, Field, SubmitButton, resetForm } from 'components/Form'
 import { required } from 'services/validations'
 import ChatbotAPI from '../graphql'
 import queryBuilder from '../queryBuilder'
+import PropTypes from 'prop-types'
 
-
-export default ({ nodeData, onClose, campaign }) => {
+const CreateMessageModalForm = ({ nodeData, onClose, campaign }) => {
   const conversationQuery = queryBuilder(20)
 
   const handleCloseModalForm = () => {
@@ -41,7 +41,7 @@ export default ({ nodeData, onClose, campaign }) => {
             variables: { id: campaign.node.id }
           }]}
           onSubmit={(values, mutation) => {
-            const variables = {...values, parentId: Number(nodeData.uuid)}
+            const variables = { ...values, parentId: Number(nodeData.uuid) }
             return mutation({ variables })
               .then(() => {
                 handleCloseModalForm()
@@ -82,3 +82,17 @@ export default ({ nodeData, onClose, campaign }) => {
     </Modal>
   )
 }
+
+CreateMessageModalForm.propTypes = {
+  nodeData: PropTypes.shape({
+    uuid: PropTypes.string
+  }),
+  campaign: PropTypes.shape({
+    node: PropTypes.shape({
+      id: PropTypes.string
+    })
+  }),
+  onClose: PropTypes.func
+}
+
+export default CreateMessageModalForm

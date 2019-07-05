@@ -12,8 +12,9 @@ import {
 import { FormGraphQL, Field, SubmitButton, resetForm } from 'components/Form'
 import { required } from 'services/validations'
 import ChatbotAPI from '../graphql'
+import PropTypes from 'prop-types'
 
-export default ({ t, community }) => {
+const CreateFlowModalForm = ({ t, community }) => {
   const [opened, setOpened] = useState(false)
   const [errors, setErrors] = useState([])
   const [lastValues, setLastValues] = useState({})
@@ -40,7 +41,7 @@ export default ({ t, community }) => {
         <Flexbox vertical>
           <FormGraphQL
             mutation={ChatbotAPI.mutation.createCampaign}
-            update={(cache, { data: { chatbotCreateCampaign }}) => {
+            update={(cache, { data: { chatbotCreateCampaign } }) => {
               const { campaigns } = cache.readQuery({
                 query: ChatbotAPI.query.campaigns,
                 variables: { communityId: community.id }
@@ -56,8 +57,8 @@ export default ({ t, community }) => {
             onSubmit={(values, mutation) => {
               // TODO: discuss how to implement the relationship of configurations, communities and bots
               // chatbotSettingsId = 1 represents BETA the first bot
-              return mutation({ variables: {...values, chatbotSettingsId: 1 }})
-                .then((a) => {
+              return mutation({ variables: { ...values, chatbotSettingsId: 1 } })
+                .then(() => {
                   handleCloseModalForm()
                 })
                 .catch((err) => {
@@ -85,7 +86,7 @@ export default ({ t, community }) => {
               validate={
                 message => {
                   return required('Identificador deve ser preenchida.')(message) ||
-                  lastValues.prefix === message && t(errors.prefix, {field: 'prefix'})
+                  (lastValues.prefix === message && t(errors.prefix, { field: 'prefix' }))
                 }
               }
             />
@@ -109,3 +110,12 @@ export default ({ t, community }) => {
     </React.Fragment>
   )
 }
+
+CreateFlowModalForm.propTypes = {
+  t: PropTypes.func,
+  community: PropTypes.shape({
+    id: PropTypes.string
+  })
+}
+
+export default CreateFlowModalForm
