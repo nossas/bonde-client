@@ -161,3 +161,5 @@ const MobilizationsGadjet = ({ t }) => {
 MobilizationsGadjet.propTypes = {
   t: PropTypes.func
 }
+
+export default MobilizationsGadjet
