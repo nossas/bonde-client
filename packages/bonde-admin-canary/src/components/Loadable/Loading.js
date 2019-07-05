@@ -5,8 +5,9 @@ import {
   Text,
   Title
 } from 'bonde-styleguide'
+import PropTypes from 'prop-types'
 
-export default ({ message }) => (
+const Loading = ({ message }) => (
   <Flexbox vertical>
     <Text align='center' margin={{ top: '20vh' }}>
       <LoadingStyled
@@ -21,3 +22,9 @@ export default ({ message }) => (
     )}
   </Flexbox>
 )
+
+Loading.propTypes = {
+  message: PropTypes.string
+}
+
+export default Loading

@@ -4,10 +4,9 @@ import LoadingFullScreen from './LoadingFullScreen'
 
 const LoadingComponent = (props) => {
   if (props.error) {
-    console.log('loadable error', props.error)
     return <div>Error! <button onClick={props.retry}>Retry</button></div>
   } else if (props.timedOut) {
-    return <div>Taking a long time... <button onClick={ props.retry }>Retry</button></div>;
+    return <div>Taking a long time... <button onClick={ props.retry }>Retry</button></div>
   } else if (props.pastDelay) {
     return <LoadingFullScreen />
   } else {
