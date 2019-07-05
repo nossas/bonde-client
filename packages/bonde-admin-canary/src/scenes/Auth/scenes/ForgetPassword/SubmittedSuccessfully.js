@@ -8,7 +8,7 @@ import {
 } from 'bonde-styleguide'
 import { ButtonLink } from 'components/Link'
 
-export default () => (
+const SubmittedSuccessfully = () => (
   <I18n ns='auth'>
     {(t) => {
       const spacing = { bottom: 25 }
@@ -36,3 +36,5 @@ export default () => (
     }}
   </I18n>
 )
+
+export default SubmittedSuccessfully

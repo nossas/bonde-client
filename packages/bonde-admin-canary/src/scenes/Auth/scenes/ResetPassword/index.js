@@ -8,42 +8,52 @@ import tokenVerify from './tokenVerify.graphql'
 import CheckingToken from './CheckingToken'
 import InvalidToken from './InvalidToken'
 import ResetPasswordForm from './ResetPasswordForm'
+import PropTypes from 'prop-types'
 
-export default ({ match }) => (
+const ResetPassword = ({ match }) => (
   <I18n ns='auth'>
-  {t => {
-    const token = match.params.token
-    
-    return (
-      <Query query={tokenVerify} variables={{ token }}>
-      {({ data, loading, error }) => {
-        
-        if (loading) return <CheckingToken t={t} />
-        
-        if (error) return <InvalidToken t={t} />
-        
-        return (
-          <ResetPasswordForm
-            t={t}
-            token={token}
-            handleSuccess={({ data }) => {
-              const { changePasswordField } = data.resetPasswordChangePassword
-              const user = { name: changePasswordField.userFirstName }
-              
-              AuthAPI.login({
-                jwtToken: changePasswordField.token
-              })
-              .then(() => {
-                notify(t('resetPassword.success', { user }))
-                // should redirect with window to rehydrate session
-                window.location.href = '/'
-              })
-            }}
-          />
-        )
-      }}
-      </Query>
-    )
-  }}
+    {t => {
+      const token = match.params.token
+
+      return (
+        <Query query={tokenVerify} variables={{ token }}>
+          {({ loading, error }) => {
+            if (loading) return <CheckingToken t={t} />
+
+            if (error) return <InvalidToken t={t} />
+
+            return (
+              <ResetPasswordForm
+                t={t}
+                token={token}
+                handleSuccess={({ data }) => {
+                  const { changePasswordField } = data.resetPasswordChangePassword
+                  const user = { name: changePasswordField.userFirstName }
+
+                  AuthAPI.login({
+                    jwtToken: changePasswordField.token
+                  })
+                    .then(() => {
+                      notify(t('resetPassword.success', { user }))
+                      // should redirect with window to rehydrate session
+                      window.location.href = '/'
+                    })
+                }}
+              />
+            )
+          }}
+        </Query>
+      )
+    }}
   </I18n>
 )
+
+ResetPassword.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      token: PropTypes.string
+    })
+  })
+}
+
+export default ResetPassword

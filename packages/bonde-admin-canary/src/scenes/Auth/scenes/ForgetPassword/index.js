@@ -2,7 +2,7 @@ import React from 'react'
 import RequestTokenForm from './RequestTokenForm'
 import SubmittedSuccessfully from './SubmittedSuccessfully'
 
-export default class extends React.Component {
+export default class ForgetPassword extends React.Component {
   state = { submitted: false }
 
   render () {

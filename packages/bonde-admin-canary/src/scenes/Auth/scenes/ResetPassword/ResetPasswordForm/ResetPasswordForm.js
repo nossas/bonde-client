@@ -5,8 +5,9 @@ import { ButtonLink } from 'components/Link'
 import { required, min } from 'services/validations'
 import { PasswordField } from '../../components'
 import resetPassword from './resetPassword.graphql'
+import PropTypes from 'prop-types'
 
-export default ({ t, token, handleSuccess }) => (
+const ResetPasswordForm = ({ t, token, handleSuccess }) => (
   <Flexbox vertical>
     <Title.H2 margin={{ bottom: 18 }}>{t('resetPassword.form.title')}</Title.H2>
     <Title.H4 margin={{ bottom: 30 }}>{t('resetPassword.form.subtitle')}</Title.H4>
@@ -19,7 +20,7 @@ export default ({ t, token, handleSuccess }) => (
             token
           }
         })
-        .then(handleSuccess)
+          .then(handleSuccess)
       }}
     >
       <Field
@@ -39,3 +40,11 @@ export default ({ t, token, handleSuccess }) => (
     </FormGraphQL>
   </Flexbox>
 )
+
+ResetPasswordForm.propTypes = {
+  t: PropTypes.func,
+  token: PropTypes.string,
+  handleSuccess: PropTypes.func
+}
+
+export default ResetPasswordForm

@@ -2,6 +2,7 @@ import React from 'react'
 import { AuthAPI } from 'services/auth'
 import { translate } from 'services/i18n'
 import REGISTER from './register.graphql'
+import PropTypes from 'prop-types'
 
 import {
   Button,
@@ -26,23 +27,24 @@ const AuthRegister = ({ t }) => (
         return mutation({
           variables: { user: { data: JSON.stringify(values) } }
         })
-        .then(({ data }) => {
-          if (data.register && !data.register.jwtToken) {
-            return Promise.reject({ form: 'register is fail.' })
-          }
-          AuthAPI.login({ jwtToken: data.register.jwtToken })
-          return Promise.resolve()
-        })
-        .catch(error => {
-          if (String(error).includes('index_users_on_uid_and_provider')) {
-            return Promise.reject({
-              fields: {
-                email: t('fields.email.errors.isDuplicated')
-              }
-            })
-          }
-          console.error(error)
-        })
+          .then(({ data }) => {
+            if (data.register && !data.register.jwtToken) {
+              // eslint-disable-next-line prefer-promise-reject-errors
+              return Promise.reject({ form: 'register is fail.' })
+            }
+            AuthAPI.login({ jwtToken: data.register.jwtToken })
+            return Promise.resolve()
+          })
+          .catch(error => {
+            if (String(error).includes('index_users_on_uid_and_provider')) {
+              // eslint-disable-next-line prefer-promise-reject-errors
+              return Promise.reject({
+                fields: {
+                  email: t('fields.email.errors.isDuplicated')
+                }
+              })
+            }
+          })
       }}
     >
       <Flexbox colSize='49.1%' spacing='between'>
@@ -104,5 +106,9 @@ const AuthRegister = ({ t }) => (
     </FormGraphQL>
   </React.Fragment>
 )
+
+AuthRegister.propTypes = {
+  t: PropTypes.func
+}
 
 export default translate('auth')(AuthRegister)

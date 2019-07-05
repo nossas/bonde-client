@@ -29,7 +29,6 @@ describe('scenes > Auth > scenes > ResetPassword > ResetPasswordForm > ResetPass
   })
 
   it('should use token and newPassword on submit mutation', done => {
-    
     const token = 'my-token'
     node.setProps({
       token,
@@ -43,27 +42,27 @@ describe('scenes > Auth > scenes > ResetPassword > ResetPasswordForm > ResetPass
         done()
       }
     })
-    
+
     const submit = node.find(FormGraphQL).props().onSubmit
     const values = { password: '123456' }
     const mutation = opts => new Promise(resolve => resolve(opts))
-    
+
     return submit(values, mutation)
   })
 
   it('should render a submit button', () => {
     const submitButton = node.find(SubmitButton)
-    
+
     expect(submitButton).to.be.lengthOf(1)
     expect(submitButton.props().children).to.be.equal('resetPassword.form.submit')
   })
 
   it('should call handleSuccess when mutation done', done => {
     node.setProps({ handleSuccess: (n) => {
-      expect(n).to.be.equal(2) 
+      expect(n).to.be.equal(2)
       done()
-    }})
-    
+    } })
+
     const submit = node.find(FormGraphQL).props().onSubmit
     return submit({}, () => new Promise((resolve) => {
       resolve(2)
@@ -79,7 +78,7 @@ describe('scenes > Auth > scenes > ResetPassword > ResetPasswordForm > ResetPass
 
   it('should render an input password', () => {
     const fieldProps = node.find('Field').props()
-    
+
     expect(fieldProps.name).to.be.equal('password')
     expect(fieldProps.label).to.be.equal('resetPassword.fields.password.label')
     expect(fieldProps.component).to.be.equal(PasswordField)

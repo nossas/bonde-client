@@ -8,7 +8,7 @@ import InvalidToken from './InvalidToken'
 
 describe('scenes > Auth > scenes > ResetPassword > InvalidToken', () => {
   let node
-  
+
   beforeEach(() => {
     const i18n = key => key
     node = shallow(<InvalidToken t={i18n} />)

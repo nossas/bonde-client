@@ -2,8 +2,9 @@ import React from 'react'
 import { Trans } from 'react-i18next'
 import { Flexbox2 as Flexbox, Title } from 'bonde-styleguide'
 import Link, { ButtonLink } from 'components/Link'
+import PropTypes from 'prop-types'
 
-export default ({ t }) => (
+const InvalidToken = ({ t }) => (
   <Flexbox vertical>
     <Title.H2 margin={{ bottom: 20 }}>{t('resetPassword.invalidToken.title')}</Title.H2>
     <Title.H4 margin={{ bottom: 25 }}>{t('resetPassword.invalidToken.subtitle')}</Title.H4>
@@ -17,3 +18,9 @@ export default ({ t }) => (
     </ButtonLink>
   </Flexbox>
 )
+
+InvalidToken.propTypes = {
+  t: PropTypes.func
+}
+
+export default InvalidToken
