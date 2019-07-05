@@ -8,7 +8,7 @@ describe('components > PageLogged > Header > UserDropdown > UserDropdown', () =>
   const user = { firstName: 'Test', lastName: 'Dummy' }
   const name = `${user.firstName} ${user.lastName}`
   let node
-  
+
   beforeEach(() => {
     const props = { user, t: () => {} }
     node = shallow(<UserDropdown {...props} />)
@@ -34,7 +34,7 @@ describe('components > PageLogged > Header > UserDropdown > UserDropdown', () =>
     const i18nKey = 'dropdown.items.profile'
     const i18n = () => i18nKey
     node.setProps({ t: i18n })
-  
+
     const item = node.find(DropdownItem).at(0)
     expect(item.find(Icon).props().name).to.be.equal('times')
     expect(item.props().children[1]).to.be.equal(i18nKey)

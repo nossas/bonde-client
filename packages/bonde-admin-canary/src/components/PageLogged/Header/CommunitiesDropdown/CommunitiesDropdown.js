@@ -8,7 +8,7 @@ const CommunitiesDropdown = ({ t, communities, path }) => {
   return (
     <Dropdown
       label={t('dropdown.label.communities')}
-      disabled={communities.length > 0 ? false : true}
+      disabled={!(communities.length > 0)}
     >
       {communities.map(c => (
         <DropdownItem
@@ -32,7 +32,8 @@ CommunitiesDropdown.propTypes = {
   communities: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string
-  }))
+  })),
+  t: PropTypes.func
 }
 
 export default CommunitiesDropdown

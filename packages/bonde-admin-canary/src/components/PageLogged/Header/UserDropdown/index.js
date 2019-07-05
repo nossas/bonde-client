@@ -3,7 +3,7 @@ import { I18n } from 'react-i18next'
 import { Auth } from 'services/auth'
 import UserDropdown from './UserDropdown'
 
-export default (props) => (
+const UserDropDownWrapper = (props) => (
   <I18n ns='header'>
     {(t) => (
       <Auth>
@@ -19,3 +19,5 @@ export default (props) => (
     )}
   </I18n>
 )
+
+export default UserDropDownWrapper

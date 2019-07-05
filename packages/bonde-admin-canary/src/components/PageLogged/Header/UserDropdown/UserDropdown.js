@@ -4,7 +4,6 @@ import { Dropdown, DropdownItem, DropdownHeader, Icon } from 'bonde-styleguide'
 // import { Link } from 'react-router-dom'
 
 const UserDropdown = ({ t, user, logout }) => {
-
   const name = `${user.firstName} ${user.lastName}`
 
   return (
@@ -35,7 +34,9 @@ UserDropdown.propTypes = {
     firstName: PropTypes.string,
     lastName: PropTypes.string,
     avatar: PropTypes.string
-  }).isRequired
+  }).isRequired,
+  t: PropTypes.func,
+  logout: PropTypes.func
 }
 
 export default UserDropdown
