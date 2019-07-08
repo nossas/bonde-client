@@ -14,7 +14,12 @@ const ShowCommunity = ({ match }) => {
         if (error) return 'Error!'
 
         const myCommunity = data.userCommunities.edges.map(i => {
-          if (i.node.id === match.params.id) return i.node.name
+          let myCommunityName
+          if (i.node.id === match.params.id) {
+            myCommunityName = i.node.name
+            return myCommunityName
+          }
+          return myCommunityName
         })
 
         return (
