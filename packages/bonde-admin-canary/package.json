@@ -52,7 +52,8 @@
     "start": "serve -s build",
     "test": "jest --modulePaths=src",
     "coverage": "npm run test -- --watchAll=false --coverage",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint ."
   },
   "engines": {
     "node": ">=8"
