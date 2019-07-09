@@ -1,0 +1,46 @@
+{
+  "root": true,
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "standard"
+  ],
+  "plugins": [
+    "react",
+    "babel"
+  ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+      "spread": true
+    },
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-invalid-this": 0,
+    "babel/no-invalid-this": 1
+  },
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "overrides": [
+    {
+      "files": "*.spec.js",
+      "globals": {
+        "describe": true,
+        "beforeEach": true,
+        "it": true
+      },
+      "rules": {
+        "no-unused-expressions": "off",
+      }
+    }
+  ],
+  "settings": {
+    "react": {
+      "version": "detect",
+    }
+  }
+}

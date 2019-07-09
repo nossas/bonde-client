@@ -3,6 +3,7 @@ import { Flexbox2 as Flexbox, Title } from 'bonde-styleguide'
 import { Page } from 'components/PageLogged'
 import { Redirect } from 'services/router'
 import CreateUserTagsForm from './CreateUserTagsForm'
+import PropTypes from 'prop-types'
 
 class Tags extends React.Component {
   render () {
@@ -26,6 +27,11 @@ class Tags extends React.Component {
       </Page>
     )
   }
+}
+
+Tags.propTypes = {
+  t: PropTypes.func,
+  user: PropTypes.any
 }
 
 export default Tags

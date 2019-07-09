@@ -2,13 +2,13 @@ import React from 'react'
 import { connect } from 'services/redux'
 import * as actions from '../redux/actions'
 import Box from './Box'
+import PropTypes from 'prop-types'
 
 class BoxConnected extends React.Component {
-
   componentDidMount () {
     this.props.registerStep()
   }
-  
+
   render () {
     return this.props.showTooltip ? (
       <Box
@@ -24,6 +24,19 @@ class BoxConnected extends React.Component {
       </Box>
     ) : this.props.children
   }
+}
+
+BoxConnected.propTypes = {
+  registerStep: PropTypes.func,
+  title: PropTypes.string,
+  description: PropTypes.string,
+  step: PropTypes.number,
+  total: PropTypes.number,
+  onNext: PropTypes.func,
+  onClose: PropTypes.func,
+  placement: PropTypes.string,
+  children: PropTypes.node,
+  showTooltip: PropTypes.bool
 }
 
 const mapStateToProps = (state, { tourName, step }) => {

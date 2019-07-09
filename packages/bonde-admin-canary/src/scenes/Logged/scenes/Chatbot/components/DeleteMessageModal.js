@@ -9,11 +9,11 @@ import {
 import { FormGraphQL, resetForm } from 'components/Form'
 import ChatbotAPI from '../graphql'
 import queryBuilder from '../queryBuilder'
+import PropTypes from 'prop-types'
 
-
-export default ({ campaign, nodeData, onClose }) => {
+const DeleteMessageModal = ({ campaign, nodeData, onClose }) => {
   const conversationQuery = queryBuilder(20)
-  
+
   const handleCloseModal = () => {
     // Should resetForm always close modal
     resetForm()
@@ -33,7 +33,7 @@ export default ({ campaign, nodeData, onClose }) => {
             variables: { id: campaign.node.id }
           }]}
           onSubmit={(values, mutation) => {
-            return mutation({ variables: { id: nodeData.uuid }})
+            return mutation({ variables: { id: nodeData.uuid } })
               .then(() => {
                 handleCloseModal()
               })
@@ -52,3 +52,18 @@ export default ({ campaign, nodeData, onClose }) => {
     </Modal>
   )
 }
+
+DeleteMessageModal.propTypes = {
+  campaign: PropTypes.shape({
+    node: PropTypes.shape({
+      id: PropTypes.string
+    })
+  }),
+  nodeData: PropTypes.shape({
+    uuid: PropTypes.string,
+    text: PropTypes.string
+  }),
+  onClose: PropTypes.func
+}
+
+export default DeleteMessageModal

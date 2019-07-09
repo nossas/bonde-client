@@ -7,6 +7,7 @@ const initialState = {
 }
 
 export default (state = initialState, action = {}) => {
+  const { total, currentStep } = state
   switch (action.type) {
     case actionTypes.REGISTER_STEP:
       return {
@@ -24,7 +25,6 @@ export default (state = initialState, action = {}) => {
         show: false
       }
     case actionTypes.NEXT_STEP:
-      const { total, currentStep } = state
       return {
         ...state,
         currentStep: currentStep === total ? 1 : currentStep + 1

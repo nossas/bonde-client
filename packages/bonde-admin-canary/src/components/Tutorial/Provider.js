@@ -1,6 +1,6 @@
 // Provider is responsible to union Dialog components
 import React from 'react'
-import { oneOfType, func, bool } from 'prop-types'
+import PropTypes, { oneOfType, func, bool } from 'prop-types'
 import Context, { defaultContext } from './Context'
 import Dialog from './Dialog'
 
@@ -11,7 +11,6 @@ const initializeCondition = initialize => (
 )
 
 class Provider extends React.Component {
-
   static Dialog = Dialog
 
   state = {
@@ -37,8 +36,7 @@ class Provider extends React.Component {
 
       if (initializeCondition(props.initialize)) {
         stateChanged.currentStep = 1
-      }
-      else if (!initializeCondition(props.initialize) && state.currentStep !== 0) {
+      } else if (!initializeCondition(props.initialize) && state.currentStep !== 0) {
         stateChanged.currentStep = 0
       }
 
@@ -93,7 +91,8 @@ Provider.propTypes = {
     func,
     bool
   ]),
-  onClose: func
+  onClose: func,
+  children: PropTypes.node
 }
 
 export default Provider

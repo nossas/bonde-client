@@ -1,6 +1,7 @@
 import React from 'react'
 import { Mutation } from 'react-apollo'
 import { Form, SubmissionError } from './'
+import PropTypes from 'prop-types'
 
 const FormGraphQL = ({
   children,
@@ -22,11 +23,10 @@ const FormGraphQL = ({
                   errors = { _error: error.form }
                 }
                 if (error.fields) {
-                  errors = {...errors, ...error.fields}
+                  errors = { ...errors, ...error.fields }
                 }
                 throw new SubmissionError(errors)
-              } 
-              console.error(error)
+              }
             })
         }}
         {...props}
@@ -36,5 +36,13 @@ const FormGraphQL = ({
     )}
   </Mutation>
 )
+
+FormGraphQL.propTypes = {
+  children: PropTypes.node,
+  mutation: PropTypes.object,
+  update: PropTypes.func,
+  refetchQueries: PropTypes.arrayOf(PropTypes.object),
+  onSubmit: PropTypes.func
+}
 
 export default FormGraphQL

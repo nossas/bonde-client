@@ -25,7 +25,7 @@ const Header = ({
   renderActionButtons,
   renderTabs
 }) => (
-  <HeaderStyleguide> 
+  <HeaderStyleguide>
     <Navbar renderBrand={Bonde}>
       <Flexbox horizontal end>
         <UserDropdown />

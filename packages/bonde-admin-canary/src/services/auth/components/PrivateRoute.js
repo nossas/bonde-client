@@ -2,7 +2,7 @@ import { connect } from 'services/redux'
 import Route from './Route'
 import authSession from '../session'
 
-const mapStateToProps = (state, { redirectTo, ...ownProps }) => ({
+const mapStateToProps = (_, { redirectTo }) => ({
   redirectTo: redirectTo || '/auth/login',
   assert: authSession.isAuthenticated()
 })

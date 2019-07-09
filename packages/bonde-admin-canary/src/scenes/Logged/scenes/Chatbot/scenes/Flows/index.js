@@ -6,8 +6,10 @@ import {
   Title
 } from 'bonde-styleguide'
 import { CreateFlowModalForm, FlowDataList } from '../../components'
+import { I18n } from 'react-i18next'
+import PropTypes from 'prop-types'
 
-export default ({ changeCampaign, community, edges }) => {
+const Flows = ({ changeCampaign, community, edges }) => {
   // TODO:
   // - add translate
 
@@ -15,7 +17,11 @@ export default ({ changeCampaign, community, edges }) => {
     <Flexbox vertical>
       <Flexbox horizontal spacing='between'>
         <Title.H2 margin={{ bottom: 10 }}>Chatbot</Title.H2>
-        <CreateFlowModalForm community={community} />
+        <I18n ns='chatbot'>
+          {t => (
+            <CreateFlowModalForm t={t} community={community} />
+          )}
+        </I18n>
       </Flexbox>
       <Title.H5 margin={{ bottom: 25 }}>FLUXOS DE CONVERSA</Title.H5>
       <Grid>
@@ -26,3 +32,11 @@ export default ({ changeCampaign, community, edges }) => {
     </Flexbox>
   )
 }
+
+Flows.propTypes = {
+  changeCampaign: PropTypes.func,
+  community: PropTypes.any,
+  edges: PropTypes.array
+}
+
+export default Flows

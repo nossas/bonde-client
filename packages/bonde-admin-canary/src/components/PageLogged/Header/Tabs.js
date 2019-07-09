@@ -12,7 +12,8 @@ export const Tab = ({ children, to }) => (
 )
 
 Tab.propTypes = {
-  to: PropTypes.string.isRequired
+  to: PropTypes.string.isRequired,
+  children: PropTypes.node
 }
 
 export default Tabs

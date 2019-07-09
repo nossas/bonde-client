@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Flexbox2 as Flexbox, IconColorful, Title } from 'bonde-styleguide'
 
-const ListEmpty = ({ iconColorfulName, text, redirectTo }) => (
+const ListEmpty = ({ iconColorfulName, text }) => (
   <Flexbox vertical middle>
     <IconColorful name={iconColorfulName} size={90} />
     <Title.H4
@@ -12,7 +12,7 @@ const ListEmpty = ({ iconColorfulName, text, redirectTo }) => (
     >
       {text}
     </Title.H4>
-  </Flexbox> 
+  </Flexbox>
 )
 
 ListEmpty.propTypes = {

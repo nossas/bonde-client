@@ -7,7 +7,7 @@ import {
   Text,
   Title
 } from 'bonde-styleguide'
-
+import PropTypes from 'prop-types'
 
 const DraftButtonRender = (draft) => (
   <SwitchSlider round checked={!draft}>
@@ -28,7 +28,16 @@ const ActionRender = ({ data, changeCampaign }) => {
   )
 }
 
-export default ({ edges, changeCampaign }) => {
+ActionRender.propTypes = {
+  data: PropTypes.any,
+  changeCampaign: PropTypes.func
+}
+
+const FieldsRender = (changeCampaign, _, data) => (
+  <ActionRender data={data} changeCampaign={changeCampaign} />
+)
+
+const FlowDataList = ({ edges, changeCampaign }) => {
   return (
     <DataListCard
       picker='node'
@@ -37,12 +46,17 @@ export default ({ edges, changeCampaign }) => {
         draft: { render: DraftButtonRender },
         id: {
           width: 120,
-          render: (id, data) => (
-            <ActionRender data={data} changeCampaign={changeCampaign} />
-          )
+          render: (_, data) => FieldsRender(changeCampaign, _, data)
         }
       }}
       items={edges}
     />
   )
 }
+
+FlowDataList.propTypes = {
+  edges: PropTypes.array,
+  changeCampaign: PropTypes.func
+}
+
+export default FlowDataList

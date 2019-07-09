@@ -8,12 +8,13 @@ import {
 } from 'bonde-styleguide'
 import { ConversationTree } from '../../components'
 import queryBuilder from '../../queryBuilder'
+import PropTypes from 'prop-types'
 
 const ConversationFlow = ({ campaign }) => {
   const allMessagesQuery = queryBuilder(20)
-  const height = window.innerHeight
-    || document.documentElement.clientHeight
-    || document.body.clientHeight
+  const height = window.innerHeight ||
+    document.documentElement.clientHeight ||
+    document.body.clientHeight
 
   return (
     <Query query={allMessagesQuery} variables={{ id: campaign.node.id }} fetchPolicy='network-only'>
@@ -33,8 +34,15 @@ const ConversationFlow = ({ campaign }) => {
   )
 }
 
+ConversationFlow.propTypes = {
+  campaign: PropTypes.shape({
+    node: PropTypes.shape({
+      id: PropTypes.any
+    })
+  })
+}
 
-export default ({ changeCampaign, edges, match, campaign }) => {
+const EditGraph = ({ changeCampaign, edges, match, campaign }) => {
   useEffect(() => {
     if (!campaign && match.params.id) {
       changeCampaign(edges.filter(i => i.node.id === match.params.id)[0])
@@ -55,3 +63,22 @@ export default ({ changeCampaign, edges, match, campaign }) => {
     </Flexbox>
   ) : 'Loading...'
 }
+
+EditGraph.propTypes = {
+  changeCampaign: PropTypes.func,
+  edges: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string
+  })),
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string
+    })
+  }),
+  campaign: PropTypes.shape({
+    node: PropTypes.shape({
+      name: PropTypes.string
+    })
+  })
+}
+
+export default EditGraph

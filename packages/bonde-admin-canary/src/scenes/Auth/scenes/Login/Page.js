@@ -1,3 +1,4 @@
+/* eslint-disable prefer-promise-reject-errors */
 import React from 'react'
 import { authSession } from 'services/auth'
 import { translate } from 'services/i18n'
@@ -15,6 +16,7 @@ import { FormGraphQL, Field, SubmitButton } from 'components/Form'
 import { ButtonLink } from 'components/Link'
 import { isEmail, required } from 'services/validations'
 import { PasswordField } from '../components'
+import PropTypes from 'prop-types'
 
 const AuthLogin = ({ t, location }) => (
   <React.Fragment>
@@ -67,7 +69,7 @@ const AuthLogin = ({ t, location }) => (
         </Flexbox>
       */}
       <Flexbox middle spacing='between'>
-      {/**
+        {/**
         *
         * TODO: Account register will be released on future
         <ButtonLink
@@ -90,5 +92,12 @@ const AuthLogin = ({ t, location }) => (
     </FormGraphQL>
   </React.Fragment>
 )
+
+AuthLogin.propTypes = {
+  t: PropTypes.func,
+  location: PropTypes.shape({
+    search: PropTypes.string
+  })
+}
 
 export default translate('auth')(AuthLogin)

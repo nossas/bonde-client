@@ -1,41 +1,60 @@
 import React, { useState } from 'react'
 import { Text, Pagination } from 'bonde-styleguide'
 import { Query } from 'react-apollo'
-/*import { Queryset } from 'components'*/
+/* import { Queryset } from 'components' */
 import ImageColumn from '../ImageColumn'
 import TableCardGadget from '../TableCardGadget'
-/*import HomeAPI from '../../graphql'*/
+/* import HomeAPI from '../../graphql' */
 import Filter from './Filter'
 import { authSession } from 'services/auth'
-import { toSnakeCase  } from '../../utils'
+import { toSnakeCase } from '../../utils'
 import userMobilizationsQuery from './query'
+import PropTypes from 'prop-types'
+
+const Name = ({ value }) => (
+  <Text fontSize={16} fontWeight={900} lineHeight={1.25}>
+    {value}
+  </Text>
+)
+
+Name.propTypes = {
+  value: PropTypes.any
+}
+
+const Community = ({ value }) => (
+  <Text fontSize={13} lineHeight={1.54} color='#4a4a4a'>
+    {value.name}
+  </Text>
+)
+
+Community.propTypes = {
+  value: PropTypes.any
+}
+
+const Score = ({ value }) => (
+  <Text fontSize={13} lineHeight={1.54} color='#4a4a4a'>
+    {value || '–'}
+  </Text>
+)
+
+Score.propTypes = {
+  value: PropTypes.any
+}
 
 const columns = [
   { field: 'image', render: ImageColumn, props: { width: '40px' } },
   {
     field: 'name',
-    render: ({ value }) => (
-      <Text fontSize={16} fontWeight={900} lineHeight={1.25}>
-        {value}
-      </Text>
-    )
+    render: Name
   },
   {
     field: 'community',
-    render: ({ value }) => (
-      <Text fontSize={13} lineHeight={1.54} color='#4a4a4a'>
-        {value.name}
-      </Text>
-    )
+    render: Community
   },
   {
     field: 'score',
-    render: ({ value }) => (
-      <Text fontSize={13} lineHeight={1.54} color='#4a4a4a'>
-        {value || '–'}
-      </Text>
-    )
-  },
+    render: Score
+  }
 ]
 
 const MobilizationList = ({
@@ -78,49 +97,69 @@ const MobilizationList = ({
   />
 )
 
-export default ({ t }) => {
+MobilizationList.propTypes = {
+  t: PropTypes.func,
+  loading: PropTypes.any,
+  mobilizations: PropTypes.any,
+  filter: PropTypes.shape({
+    sort: PropTypes.string
+  }),
+  onChangeFilter: PropTypes.func,
+  page: PropTypes.shape({
+    index: PropTypes.number,
+    total: PropTypes.number
+  }),
+  onChangePage: PropTypes.func
+}
+
+const MobilizationsGadjet = ({ t }) => {
   const [orderBy, setOrderBy] = useState('updated_at_desc')
   const [pagination, setPagination] = useState({ page: 1, size: 2 })
 
   const variables = { sort: orderBy, first: pagination.size * pagination.page, last: pagination.size }
   return (
     <Query query={userMobilizationsQuery} variables={variables} fetchPolicy="cache-and-network">
-    {({ data, error, fetchMore, loading, refetch }) => {
-      if (loading) return 'Loading...'
-      if (error) return 'Error!!'
+      {({ data, error, fetchMore, loading, refetch }) => {
+        if (loading) return 'Loading...'
+        if (error) return 'Error!!'
 
+        const pageTotal = data ? (data.userMobilizations.totalCount / pagination.size) : 0
 
-      const pageTotal = data ? (data.userMobilizations.totalCount / pagination.size) : 0
-
-      const onChangeFilter = ({ sort }) => {
-        refetch({ sort })
-        setOrderBy(sort)
-      }
-
-      const onChangePage = (index) => {
-        const first = index > 0 ? index * pagination.size : pagination.size
-        const variables = { first }
-        const updateQuery = (prev, { fetchMoreResult }) => {
-          if (!fetchMoreResult) return prev
-          return Object.assign({}, prev, { data: fetchMoreResult })
+        const onChangeFilter = ({ sort }) => {
+          refetch({ sort })
+          setOrderBy(sort)
         }
-        
-        fetchMore({ variables, updateQuery })
-        setPagination({ ...pagination, page: index + 1 })
-      }
 
-      return (
-        <MobilizationList
-          t={t}
-          filter={{ sort: orderBy }}
-          onChangeFilter={onChangeFilter}
-          page={{ index: pagination.page - 1, total: pageTotal }}
-          onChangePage={onChangePage}
-          loading={loading}
-          mobilizations={data && data.userMobilizations ? data.userMobilizations.edges.map(i => i.node) : []}
-        />
-      )
-    }}
+        const onChangePage = (index) => {
+          const first = index > 0 ? index * pagination.size : pagination.size
+          const variables = { first }
+          const updateQuery = (prev, { fetchMoreResult }) => {
+            if (!fetchMoreResult) return prev
+            return Object.assign({}, prev, { data: fetchMoreResult })
+          }
+
+          fetchMore({ variables, updateQuery })
+          setPagination({ ...pagination, page: index + 1 })
+        }
+
+        return (
+          <MobilizationList
+            t={t}
+            filter={{ sort: orderBy }}
+            onChangeFilter={onChangeFilter}
+            page={{ index: pagination.page - 1, total: pageTotal }}
+            onChangePage={onChangePage}
+            loading={loading}
+            mobilizations={data && data.userMobilizations ? data.userMobilizations.edges.map(i => i.node) : []}
+          />
+        )
+      }}
     </Query>
   )
 }
+
+MobilizationsGadjet.propTypes = {
+  t: PropTypes.func
+}
+
+export default MobilizationsGadjet

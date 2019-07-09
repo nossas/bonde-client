@@ -2,11 +2,12 @@ import React from 'react'
 import authSession from './session'
 import qs from 'query-string'
 import { LoadingFullScreen } from 'components/Loadable'
+import PropTypes from 'prop-types'
 
 /*
  * Responsible to control session used on cross-storage
  **/
-class SessionProvider extends React.Component { 
+class SessionProvider extends React.Component {
   constructor (props) {
     super(props)
     this.state = { signing: true, authenticated: false }
@@ -33,8 +34,12 @@ class SessionProvider extends React.Component {
   render () {
     return !this.state.signing
       ? this.props.children
-      : <LoadingFullScreen /> 
+      : <LoadingFullScreen />
   }
+}
+
+SessionProvider.propTypes = {
+  children: PropTypes.node
 }
 
 export default SessionProvider

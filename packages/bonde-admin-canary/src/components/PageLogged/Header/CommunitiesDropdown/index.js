@@ -3,6 +3,7 @@ import { I18n } from 'react-i18next'
 import { Queryset } from 'components'
 import allUserCommunities from './query.graphql'
 import CommunitiesDropdown from './CommunitiesDropdown'
+import PropTypes from 'prop-types'
 
 const CommunitiesDropdownQueryset = ({ path }) => (
   <Queryset
@@ -25,5 +26,9 @@ const CommunitiesDropdownQueryset = ({ path }) => (
     )}
   </Queryset>
 )
+
+CommunitiesDropdownQueryset.propTypes = {
+  path: PropTypes.string
+}
 
 export default CommunitiesDropdownQueryset

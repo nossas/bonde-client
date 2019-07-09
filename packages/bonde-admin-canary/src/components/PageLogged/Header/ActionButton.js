@@ -1,5 +1,5 @@
 import React from 'react'
-import { string } from 'prop-types'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { Button, Spacing } from 'bonde-styleguide'
 
@@ -14,7 +14,8 @@ const ActionButton = ({ label, to, ...props }) => (
 )
 
 ActionButton.propTypes = {
-  to: string.isRequired
+  to: PropTypes.string.isRequired,
+  label: PropTypes.string
 }
 
 export default ActionButton

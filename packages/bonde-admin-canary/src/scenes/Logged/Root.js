@@ -4,6 +4,7 @@ import { LoadingFullScreen } from 'components/Loadable'
 import HomeModule from './scenes/Home'
 import TagsPage from './scenes/Tags'
 import ChatbotModule from './scenes/Chatbot'
+import PropTypes from 'prop-types'
 
 const Root = ({ match }) => (
   <AuthProvider loading={LoadingFullScreen}>
@@ -24,5 +25,11 @@ const Root = ({ match }) => (
     />
   </AuthProvider>
 )
+
+Root.propTypes = {
+  match: PropTypes.shape({
+    url: PropTypes.string
+  })
+}
 
 export default Root
