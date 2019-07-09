@@ -95,7 +95,7 @@ const SimpleNodeLabel = ({ nodeData, nodeDataSelected, onInsertClick, onDeleteCl
       </Flexbox>
       {active && (
         <React.Fragment>
-          <DeleteButton onClick={onDeleteClick} />
+          {nodeData.level > 1 && <DeleteButton onClick={onDeleteClick} />}
           <InsertButton onClick={onInsertClick} />
         </React.Fragment>
       )}
