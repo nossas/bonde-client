@@ -10,7 +10,6 @@ import {
 } from './icons'
 import { Flexbox, Spacing } from 'bonde-styleguide'
 
-
 const items = [
   // TODO: add routes, icons and activeHandle
   // { name: 'chart', path: '/', icon: <IconChart color='white' />},
