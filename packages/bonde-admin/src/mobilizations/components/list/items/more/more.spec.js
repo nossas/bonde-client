@@ -7,7 +7,10 @@ import { More } from 'mobilizations/components/list/items'
 
 describe('client/mobilizations/components/list/items/more/more', () => {
   let wrapper
-  const props = {}
+  const props = {
+    index: 0,
+    onClick: () => {}
+  }
 
   beforeAll(() => {
     wrapper = shallow(<More {...props} />)

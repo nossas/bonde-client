@@ -44,7 +44,8 @@ describe('client/components/forms/form-group', () => {
       error: undefined,
       layout: 'block',
       touched: undefined,
-      valid: undefined
+      valid: undefined,
+      submitError: undefined
     })
   })
 

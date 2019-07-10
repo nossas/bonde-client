@@ -19,7 +19,6 @@ const TellAFriend = ({
   widget
 }) => {
   const settings = widget.settings || {}
-  console.log(widget)
   return (
     <div className='center p3 bg-white darkengray rounded'>
       <div className='m0 h3 bold'>{message}</div>

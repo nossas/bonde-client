@@ -10,7 +10,7 @@ const dummyField = field => ({
   onChange: () => {}
 })
 
-describe('./page', () => {
+describe('./pag', () => {
   const props = {
     auth: {},
     submit: () => {},
@@ -20,7 +20,10 @@ describe('./page', () => {
       last_name: dummyField('last_name'),
       email: dummyField('email')
     },
-    handleSubmit: () => {}
+    handleSubmit: () => {},
+    submitFailed: false,
+    dirty: false,
+    valid: false
   }
 
   it('should render without crashed', () => {

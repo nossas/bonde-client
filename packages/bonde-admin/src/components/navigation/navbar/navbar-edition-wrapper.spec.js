@@ -3,6 +3,10 @@ import { expect } from 'chai'
 
 import shallowWithIntl from 'intl/helpers/shallow-with-intl'
 import { NavbarEditionWrapper } from 'components/navigation/navbar/navbar-edition-wrapper'
+import { IntlProvider } from 'react-intl';
+
+const intlProvider = new IntlProvider({ locale: 'en' }, {});
+const { intl } = intlProvider.getChildContext();
 
 const block = {}
 const mobilization = {}
@@ -16,6 +20,8 @@ describe('client/components/navigation/navbar/navbar-edition-wrapper', () => {
       mobilization={mobilization}
       auth={auth}
       dispatch={dispatch}
+      intl={intl}
+      blockUpdate={Function}
     />
   )
   it('should render form when its in the edit mode', () => {

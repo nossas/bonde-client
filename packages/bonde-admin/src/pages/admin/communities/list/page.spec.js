@@ -8,7 +8,7 @@ describe('routes/admin/authenticated/external/community-list/page', () => {
   const props = {
     isLoaded: true,
     isLoading: false,
-    communities: [{ id: 1 }],
+    communities: [{ id: 1, name: '' }],
     user: { first_name: 'Foo Bar' },
     // Actions
     select: mock.noop,

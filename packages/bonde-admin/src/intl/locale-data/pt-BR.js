@@ -1496,7 +1496,7 @@ Caso sua base de ações não esteja sincronizada com o Mailchimp, você pode fo
   'widgets.components--donation.finish-post-donation.value-list': '$ {value} / mês',
   'widgets.components--donation.finish-post-donation.no-action': 'Nenhuma ação disponível',
   'widgets.components--donation.finish-post-donation.title-component': 'OBA! Sua doação foi processada :)',
-  'widgets.components--donation.finish-post-donation.improve-impact-question': 'Você acabou de apoiar a estrutura básica do Mutirão Ativista, mas para ele atingir seu potencial máximo vamos precisar contratar uma pessoa totalmente dedicada a apoiar todos que quiserem criar suas campanhas no Panela de Pressão. Com uma pequena doação recorrente, você nos ajuda a contratar essa pessoa!',
+  'widgets.components--donation.finish-post-donation.improve-impact-question': 'Você acabou de apoiar a estrutura básica do Panela de Pressão, mas para ele atingir seu potencial máximo vamos precisar contratar uma pessoa totalmente dedicada a apoiar todos que quiserem criar suas campanhas na plataforma. Com uma pequena doação recorrente, você nos ajuda a contratar essa pessoa!',
   'widgets.components--donation.finish-post-donation.improve-impact-solution': 'Faça sua contribuição agora:',
   'widgets.components--donation.finish-post-donation.improve-impact-explanation': 'Sua contribuição será efetivada automaticamente uma vez ao mês, iniciando daqui há 31 dias.',
   'widgets.components--donation.finish-post-donation.support-every-month': 'APOIAR TODO MÊS',

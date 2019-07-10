@@ -4,6 +4,10 @@ import { expect } from 'chai'
 import { mountWithIntl } from 'intl/helpers'
 import { InputTag } from 'mobilizations/widgets/components/input-tag'
 import * as os from 'utils/browser/os'
+import { IntlProvider } from 'react-intl';
+
+const intlProvider = new IntlProvider({ locale: 'en' }, {});
+const { intl } = intlProvider.getChildContext();
 
 describe('client/mobilizations/widgets/components/input-tag', () => {
   let wrapper
@@ -26,11 +30,13 @@ describe('client/mobilizations/widgets/components/input-tag', () => {
         errors.message = 'Dismatch error'
       }
       return errors
-  }
+    },
+    onRemoveAll: () => {},
+    helperText: ''
   }
 
   beforeEach(() => {
-    wrapper = mountWithIntl(<InputTag {...props} />)
+    wrapper = mountWithIntl(<InputTag {...props} intl={intl} />)
   })
 
   it('should render one <label> element', () => {

@@ -50,7 +50,7 @@ export default (state, props) => ({
     const lastIndex = data.length - 1
     return data.length > 0
       ? data.sort(orderBy)[lastIndex].position
-      : 1
+      : 0
   },
 
   blocksIsLoaded: () => {

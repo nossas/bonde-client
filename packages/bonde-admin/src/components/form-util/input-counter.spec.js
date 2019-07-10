@@ -12,7 +12,7 @@ describe('client/components/form-util/input-counter', () => {
   }
 
   beforeAll(() => {
-    wrapper = shallow(<InputCounter {...props} />)
+    wrapper = shallow(<InputCounter maxLength={50} {...props} />)
   })
 
   describe('#render', () => {

@@ -123,11 +123,12 @@ export const createAdjustmentsForm = (fieldList) => (props) => {
         defaultMessage: 'Formulário configurado com sucesso!'
       })}
     >
-      {fieldList.filter(name => props.fields[name]).map(fieldName => {
+      {fieldList.filter(name => props.fields[name]).map((fieldName, indexFieldName) => {
         const FieldComponent = fieldsComponent[fieldName]
         const fieldProps = props.fields[fieldName]
         return (
           <FieldComponent
+            key={indexFieldName}
             intl={intl}
             dispatch={dispatch}
             colorScheme={colorScheme}

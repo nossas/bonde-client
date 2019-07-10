@@ -7,7 +7,9 @@ import { MoreMenu } from 'mobilizations/components/list/items'
 
 describe('client/mobilizations/components/list/items/more/menu', () => {
   let wrapper
-  const props = {}
+  const props = {
+    children: <div />
+  }
   const context = { router: {} }
 
   beforeAll(() => {

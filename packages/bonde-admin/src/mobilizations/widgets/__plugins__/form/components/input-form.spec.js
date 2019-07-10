@@ -4,6 +4,10 @@ import { expect } from 'chai'
 
 import shallowWithIntl from 'intl/helpers/shallow-with-intl'
 import { InputForm } from 'mobilizations/widgets/__plugins__/form/components/input-form'
+import { IntlProvider } from 'react-intl';
+
+const intlProvider = new IntlProvider({ locale: 'en' }, {});
+const { intl } = intlProvider.getChildContext();
 
 describe('client/mobilizations/widgets/__plugins__/form/components/input-form', () => {
   let wrapper
@@ -17,7 +21,7 @@ describe('client/mobilizations/widgets/__plugins__/form/components/input-form', 
   }
 
   beforeAll(() => {
-    wrapper = shallowWithIntl(<InputForm {...props} />)
+    wrapper = shallowWithIntl(<InputForm {...props} intl={intl} />)
   })
 
   describe('#render', () => {

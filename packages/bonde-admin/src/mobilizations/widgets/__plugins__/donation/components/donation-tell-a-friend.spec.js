@@ -9,7 +9,8 @@ describe('client/mobilizations/widgets/__plugins__/donation/components/donation-
   () => {
     let wrapper
     const props = {
-      mobilization: {}
+      mobilization: {},
+      widget: {}
     }
 
     beforeAll(() => {

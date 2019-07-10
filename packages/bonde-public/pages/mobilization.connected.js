@@ -106,7 +106,7 @@ const plugins = [
           },
           FinishDonationMessage: {
             component: FinishPostDonation,
-            props: { imageUrl }
+            props: { imageUrl, href: getSharedPath(props.mobilization) }
           }
         }}
       />

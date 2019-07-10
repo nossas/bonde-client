@@ -28,7 +28,8 @@ class StepsContainer extends Component {
              el = React.cloneElement(child, {
               position,
               step: this.state.step,
-              onNextStep: () => this.nextStep(position)
+              onNextStep: () => this.nextStep(position),
+              key: index,
             })
           }
           return el

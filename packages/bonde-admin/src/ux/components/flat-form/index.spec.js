@@ -16,7 +16,11 @@ describe('client/ux/components/flat-form', () => {
       dirty: false,
       valid: false
     },
-    buttonText: 'Continuar'
+    buttonText: 'Continuar',
+    handleSubmit: () => {},
+    submitFailed: false,
+    dirty: false,
+    valid: false
   }
   const children = <h1>Foo Bar Children</h1>
 

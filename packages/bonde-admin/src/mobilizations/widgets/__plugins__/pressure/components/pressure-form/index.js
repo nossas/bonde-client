@@ -381,7 +381,7 @@ class PressureForm extends Component {
         {this.state.pressureType === 'phone' && (
           <div className='phone-calls'>
             <ul>
-              {callManagement && callManagement.length && callManagement.map(target => {
+              {callManagement && callManagement.length && callManagement.map((target, targetIndex) => {
                 const {
                   name,
                   value,
@@ -395,7 +395,7 @@ class PressureForm extends Component {
                 if (to === value) {
                   if (status === 'completed') {
                     ListItem = (
-                      <li className='success'>
+                      <li className='success' key={targetIndex}>
                         <div className='flex-container'>
                           <div className='call-item'>
                             <div>
@@ -412,7 +412,7 @@ class PressureForm extends Component {
                     )
                   } else if (['initiated', 'ringing', 'in-progress'].includes(status)) {
                     ListItem = (
-                      <li className='warning'>
+                      <li className='warning' key={targetIndex}>
                         <div className='flex-container'>
                           <div className='call-item'>
                             <div>
@@ -436,7 +436,7 @@ class PressureForm extends Component {
                     )
                   } else if (['busy', 'failed', 'no-answer'].includes(status)) {
                     ListItem = (
-                      <li className='danger'>
+                      <li className='danger' key={targetIndex}>
                         <div className='flex-container'>
                           <div className='call-item'>
                             <span className='fa fa-phone-square' />
@@ -486,7 +486,7 @@ class PressureForm extends Component {
                   }
                 } else {
                   ListItem = (
-                    <li>
+                    <li key={targetIndex}>
                       <div className='flex-container'>
                         <div className='call-item'>
                           <span className='fa fa-phone-square primary' />

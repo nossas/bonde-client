@@ -9,7 +9,8 @@ describe('mobrender/components/block-change-background', () => {
   const props = {
     mobilization: { id: 1, color_scheme: 'meurio' },
     block: { id: 1, bg_class: 'bg-1', bg_image: 'tmp://bg.png' },
-    onCancelEdit: () => {}
+    onCancelEdit: () => {},
+    update: () => {}
   }
 
   beforeEach(() => {

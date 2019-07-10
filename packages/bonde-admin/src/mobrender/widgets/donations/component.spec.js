@@ -23,7 +23,11 @@ describe('client/mobrender/widgets/donations/component', () => {
       recurring_period: 'recurring_period',
       payment_methods: 'payment_methods',
       payment_type: 'payment_type'
-    }
+    },
+    handleSubmit: () => {},
+    submitting: false,
+    widget: {},
+    asyncWidgetUpdate: () => {}
   }
 
   beforeAll(() => {

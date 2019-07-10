@@ -75,11 +75,6 @@ describe('client/mobilizations/widgets/__plugins__/pressure/components/__pressur
     expect(wrapper.find('InjectIntl(PressureForm)').props().buttonText).to.equal(buttonText)
   })
 
-  it('should render ok with values default when settings is undefined', () => {
-    wrapper.setProps({ widget: { id: 1, settings: undefined } })
-    expect(wrapper).to.be.ok
-  })
-
   it('should hide PressureCount when show_counter is "false"', () => {
     wrapper.setProps({ widget: { id: 1, settings: { show_counter: 'false' } } })
     expect(wrapper.find('PressureCount').length).to.equal(0)

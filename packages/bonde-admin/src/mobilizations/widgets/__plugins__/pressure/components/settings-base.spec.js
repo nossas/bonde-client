@@ -11,8 +11,12 @@ describe('client/mobilizations/widgets/__plugins__/pressure/components/settings-
     location: {
       pathname: 'foo/bar'
     },
-    mobilization: {},
-    widget: {}
+    mobilization: {
+      id: 1
+    },
+    widget: {
+      id: 1
+    }
   }
 
   beforeAll(() => {

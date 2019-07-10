@@ -3,6 +3,10 @@ import { expect } from 'chai'
 import shallowWithIntl from 'intl/helpers/shallow-with-intl'
 
 import { FormFinishMessage } from 'mobilizations/widgets/components/form-finish-message'
+import { IntlProvider } from 'react-intl';
+
+const intlProvider = new IntlProvider({ locale: 'en' }, {});
+const { intl } = intlProvider.getChildContext();
 
 const TellAFriend = props => (
   <div className='tell-a-friend' />
@@ -29,12 +33,13 @@ describe('client/mobilizations/widgets/components/form-finish-message in donatio
     submitFailed: false,
     dirty: false,
     valid: false,
-    asyncWidgetUpdate: () => {}
+    asyncWidgetUpdate: () => {},
+    FinishPostDonation: () => <div />
   }
 
   beforeAll(() => {
     wrapper = shallowWithIntl(
-      <FormFinishMessage {...props} />
+      <FormFinishMessage {...props} intl={intl} />
     )
   })
 
@@ -92,12 +97,13 @@ describe('client/mobilizations/widgets/components/form-finish-message', () => {
     dirty: false,
     valid: false,
     // Actions
-    asyncWidgetUpdate: () => {}
+    asyncWidgetUpdate: () => {},
+    FinishPostDonation: () => <div />
   }
 
   beforeAll(() => {
     wrapper = shallowWithIntl(
-      <FormFinishMessage {...props} />
+      <FormFinishMessage {...props} intl={intl} />
     )
   })
 

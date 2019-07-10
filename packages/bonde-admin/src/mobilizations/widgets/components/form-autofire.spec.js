@@ -5,6 +5,10 @@ import { expect } from 'chai'
 
 import * as mock from 'utils/mock'
 import { FormAutofire } from 'mobilizations/widgets/components'
+import { IntlProvider } from 'react-intl';
+
+const intlProvider = new IntlProvider({ locale: 'en' }, {});
+const { intl } = intlProvider.getChildContext();
 
 describe('client/mobilizations/widgets/components/form-autofire', () => {
   let wrapper
@@ -22,7 +26,7 @@ describe('client/mobilizations/widgets/components/form-autofire', () => {
   }
 
   beforeAll(() => {
-    wrapper = shallowWithIntl(<FormAutofire {...props} />)
+    wrapper = shallowWithIntl(<FormAutofire {...props} intl={intl} />)
   })
 
   describe('#render', () => {

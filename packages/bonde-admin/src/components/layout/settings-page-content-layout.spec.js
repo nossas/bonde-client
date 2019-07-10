@@ -65,7 +65,9 @@ describe('client/components/layout/settings-page-content-layout', () => {
         expect(className).to.have.string('overflow-auto')
       })
       it('should render `overflow-hidden` when pass `overflow` prop as hidden', () => {
-        const localWrapper = shallow(<SettingsPageContentLayout overflow='hidden' />)
+        const localWrapper = shallow(
+          <SettingsPageContentLayout overflow='hidden' children={<div />} />
+        )
         const className = localWrapper.find('.settings-page-content-layout').props().className
         expect(className).to.have.string('overflow-hidden')
       })

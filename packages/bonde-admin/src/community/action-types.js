@@ -12,6 +12,10 @@ export const SELECT = 'community/SELECT'
 
 export const UNSET = 'community/UNSET'
 
+export const SET_ERRORS = 'community/SET_ERRORS'
+
+export const CLEAR_ERROR = 'community/CLEAR_ERRORS'
+
 export const FETCH_DNS_HOSTED_ZONES_REQUEST = 'FETCH_DNS_HOSTED_ZONES_REQUEST'
 export const FETCH_DNS_HOSTED_ZONES_SUCCESS = 'FETCH_DNS_HOSTED_ZONES_SUCCESS'
 export const FETCH_DNS_HOSTED_ZONES_FAILURE = 'FETCH_DNS_HOSTED_ZONES_FAILURE'

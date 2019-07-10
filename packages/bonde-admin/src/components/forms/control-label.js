@@ -14,6 +14,7 @@ class ControlLabel extends Component {
     const controlId = formGroup && formGroup.controlId
     const error = formGroup && formGroup.error
     const touched = formGroup && formGroup.touched
+    const submitError = formGroup && formGroup.submitError
 
     const { children, htmlFor = controlId, className, maxLength, hideError, ...props } = this.props
 
@@ -27,7 +28,7 @@ class ControlLabel extends Component {
             length={formGroup.value ? formGroup.value.length : 0}
           />
         )}
-        {error && touched && !hideError && <Raise error={error} />}
+        {(submitError || error) && touched && !hideError && <Raise error={error || submitError} />}
       </label>
     )
   }

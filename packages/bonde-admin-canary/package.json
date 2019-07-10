@@ -1,14 +1,14 @@
 {
   "name": "bonde-admin-canary",
   "license": "AGPL-3.0",
-  "version": "0.14.5-alpha.5",
+  "version": "0.14.6-alpha.0",
   "private": true,
   "dependencies": {
     "apollo-cache-inmemory": "^1.2.5",
     "apollo-client": "^2.6.0",
     "apollo-link-context": "^1.0.8",
     "apollo-link-http": "^1.5.14",
-    "bonde-styleguide": "^0.14.5-alpha.5",
+    "bonde-styleguide": "^0.14.6-alpha.0",
     "bonde-webpage": "0.14.0-alpha.0",
     "chai": "^4.2.0",
     "cross-storage": "^1.0.0",
@@ -50,7 +50,7 @@
     "dev": "react-scripts start",
     "build": "react-scripts build",
     "start": "serve -s build",
-    "test": "jest --modulePaths=src",
+    "test": "react-scripts test",
     "coverage": "npm run test -- --watchAll=false --coverage",
     "eject": "react-scripts eject",
     "lint": "eslint ."

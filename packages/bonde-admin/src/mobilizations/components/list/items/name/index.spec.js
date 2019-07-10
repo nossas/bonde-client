@@ -12,7 +12,7 @@ describe('client/mobilizations/components/list/items/name', () => {
   describe('Name', () => {
     beforeAll(() => {
       props = {}
-      wrapper = shallow(<Name {...props} />)
+      wrapper = shallow(<Name {...props} name={''} goal={''} />)
     })
 
     describe('#render', () => {

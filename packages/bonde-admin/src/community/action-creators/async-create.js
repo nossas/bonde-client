@@ -18,7 +18,15 @@ const asyncCreate = community => (dispatch, getState, { api }) => {
         return Promise.resolve()
       }
     })
-    .catch(error => Promise.reject(error))
+    .catch(error => {
+      if (error.response.data) {
+        dispatch({ 
+          type: t.SET_ERRORS,
+          submitError: error.response.data
+        })
+      }
+      return Promise.reject(error)
+    })
 }
 
 export default asyncCreate

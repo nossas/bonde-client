@@ -13,7 +13,7 @@ describe('client/mobilizations/components/page-tab-layout', () => {
   }
 
   beforeAll(() => {
-    wrapper = shallow(<PageTabLayout {...props} />)
+    wrapper = shallow(<PageTabLayout {...props} children={<div />} />)
   })
 
   describe('#render', () => {

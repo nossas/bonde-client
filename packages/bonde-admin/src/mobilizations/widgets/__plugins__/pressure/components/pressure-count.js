@@ -14,7 +14,7 @@ const PressureCount = ({ value, color, text, startCounting }) => {
   }
   return (
     <div className='pressure-count p3 bg-white rounded-bottom' style={pressureCount}>
-      <p className='center m0'>
+      <div className='center m0'>
         <div className='h1' style={{ color }}>
           <CountUp
             start={0}
@@ -30,7 +30,7 @@ const PressureCount = ({ value, color, text, startCounting }) => {
             />
           )}
         </span>
-      </p>
+      </div>
     </div>
   )
 }

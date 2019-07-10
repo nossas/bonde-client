@@ -10,7 +10,8 @@ import {
 describe('client/components/editor-wysihtml/wysihtml-toolbar-create-link', () => {
   let wrapper
   const props = {
-    dispatch: () => {}
+    dispatch: () => {},
+    editorLinkTargetType: ''
   }
 
   beforeAll(() => {

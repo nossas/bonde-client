@@ -4,6 +4,10 @@ import { expect } from 'chai'
 import * as mock from 'utils/mock'
 import shallowWithIntl from 'intl/helpers/shallow-with-intl'
 import Page from './page'
+import { IntlProvider } from 'react-intl';
+
+const intlProvider = new IntlProvider({ locale: 'en' }, {});
+const { intl } = intlProvider.getChildContext();
 
 describe('routes/admin/authenticated/sidebar/widgets-pressure-settings/email/page', () => {
   let wrapper
@@ -17,7 +21,7 @@ describe('routes/admin/authenticated/sidebar/widgets-pressure-settings/email/pag
   }
 
   beforeAll(() => {
-    wrapper = shallowWithIntl(<Page {...props} />)
+    wrapper = shallowWithIntl(<Page {...props} intl={intl} />)
   })
 
   describe('#render', () => {

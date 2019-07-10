@@ -324,7 +324,7 @@ pipeline:
 
   notify:
     image: plugins/slack
-    webhook: https://hooks.slack.com/services/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
+    webhook: https://hooks.slack.com/services/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
     channel: bonde_bots
     username: CI - ${DRONE_REPO_NAME}
     when:

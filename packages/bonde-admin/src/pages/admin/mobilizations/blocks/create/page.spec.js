@@ -13,7 +13,8 @@ describe('routes/admin/authenticated/sidebar/blocks-create/page', () => {
     blocks: {},
     auth: { credentials: {} },
     mobilization: { id: 1, color_scheme: 'meurio-scheme' },
-    location: { pathname: '' }
+    location: { pathname: '' },
+    onCreateBlock: () => {}
   }
 
   describe('#render', () => {

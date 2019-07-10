@@ -12,7 +12,7 @@ describe('client/components/navigation/browsable-list/browsable-list-item', () =
   }
 
   beforeAll(() => {
-    wrapper = shallow(<BrowsableListItem {...props} />)
+    wrapper = shallow(<BrowsableListItem title={''} {...props} />)
   })
 
   describe('#render', () => {

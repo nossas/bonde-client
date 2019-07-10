@@ -9,7 +9,9 @@ describe('client/mobilizations/widgets/__plugins__/pressure/components/target-li
   let wrapper
 
   beforeEach(() => {
-    wrapper = shallow(<TargetList />)
+    wrapper = shallow(<TargetList
+      onSelect={() => {}}
+    />)
   })
 
   it('should render ok by default', () => {

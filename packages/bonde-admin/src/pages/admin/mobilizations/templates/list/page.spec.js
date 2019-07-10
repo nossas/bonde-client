@@ -10,10 +10,12 @@ describe('routes/admin/authenticated/sidebar/templates-list/page', () => {
   const props = {
     toggleMenu: mock.noop,
     menuActiveIndex: 0,
-    mobilizationTemplates: [{ id: 1 }, { id: 2 }],
+    mobilizationTemplates: [{ id: 1, name: '', goal: '' }, { id: 2, name: '', goal: '' }],
     asyncDestroyTemplate: mock.noop,
     asyncFetch: mock.noop,
-    location: {}
+    location: {
+      pathname: ''
+    }
   }
 
   beforeAll(() => {

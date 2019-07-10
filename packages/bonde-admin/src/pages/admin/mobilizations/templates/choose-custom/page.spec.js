@@ -8,7 +8,11 @@ describe('routes/admin/authenticated/sidebar/templates-choose-custom/page', () =
   let wrapper
   const props = {
     mobilization: { id: 1 },
-    createMobilizationFromTemplate: () => {}
+    createMobilizationFromTemplate: () => {},
+    templates: [],
+    setFilterableSearchBarList: () => {},
+    filterableTemplates: [],
+    setSelectedIndex: () => {}
   }
 
   beforeAll(() => {

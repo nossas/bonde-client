@@ -10,7 +10,10 @@ describe('client/mobilizations/components/list/items/avatar', () => {
   const props = {
     image: 'image',
     facebook_share_image: 'facebook_share_image',
-    imageSize: 100
+    imageSize: {
+      width: '100px',
+      height: '100px'
+    }
   }
 
   beforeAll(() => {

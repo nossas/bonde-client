@@ -35,6 +35,7 @@ class FinishPostDonation extends React.Component {
   
     return this.state.success ? (
       <TellAFriend
+        {...this.props}
         mobilization={mobilization}
         widget={widget}
         message={<FormattedMessage

@@ -7,7 +7,11 @@ import { MoreMenuAction } from 'mobilizations/components/list/items'
 
 describe('client/mobilizations/components/list/items/more/menu-action', () => {
   let wrapper
-  const props = {}
+  const props = {
+    text: '',
+    icon: '',
+    path: ''
+  }
 
   beforeAll(() => {
     wrapper = shallow(<MoreMenuAction {...props} />)

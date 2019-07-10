@@ -8,7 +8,8 @@ import { SidenavListItem } from './index'
 describe('client/components/navigation/sidenav/sidenav-list-item', () => {
   let wrapper
   const props = {
-    dispatch: () => {}
+    dispatch: () => {},
+    href: ''
   }
 
   beforeAll(() => {

@@ -4,6 +4,10 @@ import { expect } from 'chai'
 
 import * as mock from 'utils/mock'
 import { MobilizationBasicsForm } from 'mobilizations/components/mobilization-basics-form'
+import { IntlProvider } from 'react-intl';
+
+const intlProvider = new IntlProvider({ locale: 'en' }, {});
+const { intl } = intlProvider.getChildContext();
 
 describe('client/mobilizations/components/mobilization-basics-form', () => {
   let wrapper
@@ -21,7 +25,7 @@ describe('client/mobilizations/components/mobilization-basics-form', () => {
   }
 
   beforeAll(() => {
-    wrapper = shallowWithIntl(<MobilizationBasicsForm {...props} />)
+    wrapper = shallowWithIntl(<MobilizationBasicsForm {...props} intl={intl} />)
   })
 
   describe('#render', () => {
@@ -33,7 +37,7 @@ describe('client/mobilizations/components/mobilization-basics-form', () => {
       expect(wrapper.find('FormRedux').length).to.equal(1)
     })
     it('should SettingsForm when floatSubmit prop is true', () => {
-      wrapper = shallowWithIntl(<MobilizationBasicsForm {...props} floatSubmit />)
+      wrapper = shallowWithIntl(<MobilizationBasicsForm {...props} floatSubmit intl={intl} />)
       expect(wrapper.find('SettingsForm').length).to.equal(1)
     })
   })

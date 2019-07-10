@@ -8,7 +8,8 @@ import { FormTellAFriend } from 'mobilizations/widgets/__plugins__/form/componen
 describe('client/mobilizations/widgets/__plugins__/form/components/form-tell-a-friend', () => {
   let wrapper
   const props = {
-    mobilization: {}
+    mobilization: {},
+    widget: {}
   }
 
   beforeAll(() => {

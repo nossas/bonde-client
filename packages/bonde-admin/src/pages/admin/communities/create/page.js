@@ -27,6 +27,8 @@ class CommunityNewPage extends Component {
       intl,
       // Actions
       asyncCreate,
+      submitError,
+      clearError,
       ...formProps
     } = this.props
     return (
@@ -47,10 +49,13 @@ class CommunityNewPage extends Component {
           <FormRedux
             nosubmit
             className='bg-white rounded'
-            onSubmit={values => asyncCreate(values)}
+            onSubmit={values => {
+              clearError()
+              return asyncCreate(values)
+            }}
             {...formProps}
           >
-            <FormGroup controlId='nameId' {...name}>
+            <FormGroup controlId='nameId' {...name} submitError={submitError && submitError.name}>
               <ControlLabel>
                 <FormattedMessage
                   id='page--community-new.form.name.label'
@@ -67,7 +72,7 @@ class CommunityNewPage extends Component {
                 }
               />
             </FormGroup>
-            <FormGroup controlId='cityId' {...city}>
+            <FormGroup controlId='cityId' {...city} submitError={submitError && submitError.city}>
               <ControlLabel>
                 <FormattedMessage
                   id='page--community-new.form.city.label'

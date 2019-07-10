@@ -10,7 +10,10 @@ describe('client/ux/components/settings-form', () => {
   const props = {
     submit: () => {},
     handleSubmit: () => {},
-    submitting: false
+    submitting: false,
+    submitFailed: false,
+    dirty: false,
+    valid: false
   }
 
   beforeEach(() => {

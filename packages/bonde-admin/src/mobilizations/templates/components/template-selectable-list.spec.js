@@ -4,6 +4,10 @@ import { expect } from 'chai'
 
 import shallowWithIntl from 'intl/helpers/shallow-with-intl'
 import { TemplateSelectableList } from 'mobilizations/templates/components'
+import { IntlProvider } from 'react-intl';
+
+const intlProvider = new IntlProvider({ locale: 'en' }, {});
+const { intl } = intlProvider.getChildContext();
 
 describe('client/mobilizations/templates/components/template-selectable-list', () => {
   let wrapper
@@ -16,7 +20,7 @@ describe('client/mobilizations/templates/components/template-selectable-list', (
   }
 
   beforeAll(() => {
-    wrapper = shallowWithIntl(<TemplateSelectableList {...props} />)
+    wrapper = shallowWithIntl(<TemplateSelectableList {...props} intl={intl} />)
   })
 
   describe('#render', () => {

@@ -12,7 +12,8 @@ import { EDIT_KEY } from 'mobrender/components/block-config-menu'
 describe('mobrender/components/block', () => {
   let block
   const props = {
-    block: { id: 1, bg_class: 'bg-1', hidden: false }
+    block: { id: 1, bg_class: 'bg-1', hidden: false },
+    widgets: []
   }
   const blockSelector = `#block-${props.block.id}`
 

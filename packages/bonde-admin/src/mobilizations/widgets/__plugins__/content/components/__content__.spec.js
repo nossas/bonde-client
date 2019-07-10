@@ -3,6 +3,10 @@ import { expect } from 'chai'
 import shallowWithIntl from 'intl/helpers/shallow-with-intl'
 import { EditorNew } from 'mobilizations/widgets/__plugins__/content/components'
 import { Content } from 'mobilizations/widgets/__plugins__/content/components/__content__'
+import { IntlProvider } from 'react-intl';
+
+const intlProvider = new IntlProvider({ locale: 'en' }, {});
+const { intl } = intlProvider.getChildContext();
 
 describe('client/mobilizations/widgets/__plugins__/content/components/__content__', () => {
   let contentWidget
@@ -20,7 +24,7 @@ describe('client/mobilizations/widgets/__plugins__/content/components/__content_
   }
 
   beforeEach(() => {
-    contentWidget = shallowWithIntl(<Content {...props} />, { context: stubContext })
+    contentWidget = shallowWithIntl(<Content {...props} intl={intl} />, { context: stubContext })
   })
 
   it('should render draft.js editor when settings content is JSON and have "entityMap" key', () => {

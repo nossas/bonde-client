@@ -1,6 +1,6 @@
 {
   "name": "bonde-admin",
-  "version": "0.14.5-alpha.6",
+  "version": "0.14.6-alpha.0",
   "private": true,
   "description": "Bonde Admin - Node.js Server and React + Redux Progressive Web App",
   "author": "Nossas <tech@nosssas.org>",
@@ -28,7 +28,7 @@
     "axios": "^0.18.0",
     "axios-mock-adapter": "^1.16.0",
     "basscss-sass": "^4.0.0",
-    "bonde-webpage": "^0.14.5-alpha.6",
+    "bonde-webpage": "^0.14.6-alpha.0",
     "chai": "^4.2.0",
     "cpf_cnpj": "^0.2.0",
     "cross-storage": "^1.0.0",

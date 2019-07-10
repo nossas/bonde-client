@@ -9,11 +9,14 @@ describe('client/components/selectable-list/index', () => {
   let wrapper
   const props = {
     dispatch: () => {},
-    list: [{ id: 1 }]
+    list: [{ id: 1, name: '', goal:  ''}]
   }
 
   beforeAll(() => {
-    wrapper = shallow(<SelectableList {...props} />)
+    wrapper = shallow(<SelectableList
+      {...props}
+      setSelectedIndex={Function}
+    />)
   })
 
   describe('#render', () => {

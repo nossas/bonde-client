@@ -7,7 +7,7 @@ import Tabs from './tabs'
 describe('client/components/navigation/tabs/tabs', () => {
   describe('#render', () => {
     it('should render one root .tabs <nav> element', () => {
-      const wrapper = shallow(<Tabs />)
+    const wrapper = shallow(<Tabs children={<div />} />)
       expect(wrapper.find('nav.tabs')).to.have.length(1)
     })
     it('should render one <div> element as a children', () => {

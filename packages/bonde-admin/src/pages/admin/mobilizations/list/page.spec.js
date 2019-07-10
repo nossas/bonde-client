@@ -8,11 +8,13 @@ import Page from './page'
 describe('routes/admin/authenticated/sidebar/mobilizations-list/page', () => {
   let wrapper
   const props = {
-    mobilizations: [{ id: 1 }, { id: 2 }],
+    mobilizations: [{ id: 1, name: '', goal: '' }, { id: 2, name: '', goal: '' }],
     toggleMenu: () => {},
     select: mock.noop,
     menuActiveIndex: 1,
-    location: {},
+    location: {
+      pathname: ''
+    },
     dispatch: mock.noop
   }
   const context = { router: {} }

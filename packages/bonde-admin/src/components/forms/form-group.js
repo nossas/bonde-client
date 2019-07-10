@@ -4,9 +4,9 @@ import classnames from 'classnames'
 
 class FormGroup extends Component {
   getChildContext () {
-    const { controlId, layout, value, onChange, onBlur, error, touched, valid } = this.props
+    const { controlId, layout, value, onChange, onBlur, error, touched, valid, submitError } = this.props
     return {
-      $formGroup: { controlId, layout, value, onChange, onBlur, error, touched, valid }
+      $formGroup: { controlId, layout, value, onChange, onBlur, error, touched, valid, submitError }
     }
   }
 

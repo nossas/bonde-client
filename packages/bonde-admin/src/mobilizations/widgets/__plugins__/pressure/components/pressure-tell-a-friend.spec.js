@@ -8,7 +8,8 @@ import { PressureTellAFriend } from 'mobilizations/widgets/__plugins__/pressure/
 describe('client/mobilizations/widgets/__plugins__/pressure/components/pressure-tell-a-friend', () => {
   let wrapper
   const props = {
-    mobilization: {}
+    mobilization: {},
+    widget: {}
   }
 
   beforeAll(() => {

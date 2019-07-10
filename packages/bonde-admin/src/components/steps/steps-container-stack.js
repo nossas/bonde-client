@@ -93,8 +93,8 @@ class StepsContainerStack extends Component {
 }
 
 StepsContainerStack.propTypes = {
-  ComponentPointerContainer: PropTypes.node,
-  ComponentPointerChildren: PropTypes.node,
+  ComponentPointerContainer: PropTypes.func,
+  ComponentPointerChildren: PropTypes.func,
   pointerChildrenProps: PropTypes.func,
   progressValidations: PropTypes.array.isRequired,
   propsPropagationWhitelist: PropTypes.array

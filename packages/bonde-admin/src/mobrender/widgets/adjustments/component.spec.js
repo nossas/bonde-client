@@ -4,6 +4,10 @@ import { expect } from 'chai'
 import * as mock from 'utils/mock'
 import shallowWithIntl from 'intl/helpers/shallow-with-intl'
 import { AdjustmentsSettingsForm as Page } from './component'
+import { IntlProvider } from 'react-intl';
+
+const intlProvider = new IntlProvider({ locale: 'en' }, {});
+const { intl } = intlProvider.getChildContext();
 
 describe('client/mobrender/widgets/adjustments/component', () => {
   let wrapper
@@ -23,7 +27,7 @@ describe('client/mobrender/widgets/adjustments/component', () => {
   }
 
   beforeAll(() => {
-    wrapper = shallowWithIntl(<Page {...props} />)
+    wrapper = shallowWithIntl(<Page {...props} intl={intl} />)
   })
 
   describe('#render', () => {
