@@ -107,7 +107,8 @@ SimpleNodeLabel.propTypes = {
   nodeData: PropTypes.shape({
     uuid: PropTypes.string,
     kind: PropTypes.string,
-    text: PropTypes.string
+    text: PropTypes.string,
+    level: PropTypes.number
   }),
   nodeDataSelected: PropTypes.shape({
     uuid: PropTypes.string
