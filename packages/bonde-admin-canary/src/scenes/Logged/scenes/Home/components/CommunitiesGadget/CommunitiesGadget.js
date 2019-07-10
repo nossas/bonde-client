@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import PropTypes from 'prop-types'
 import {
   Text,
   Button,
@@ -73,6 +74,7 @@ const columns = [
     render: RenderText
   }
 ]
+/* eslint-enable */
 
 const CommunitiesGadget = ({ t, loading, communities }) => (
   <TableCardGadget

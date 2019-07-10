@@ -22,7 +22,7 @@ const MenuCommunity = () => (
   <Flexbox horizontal start>
     {items.map(i => {
       return (
-        <Spacing margin={{ left: 12 }}>
+        <Spacing key={i.name} margin={{ left: 12 }}>
           <Link to={i.path}>
             { i.icon }
           </Link>
@@ -40,7 +40,7 @@ MenuCommunity.propTypes = {
   }))
 }
 
-export default ({ t , props }) => (
+export default ({ t, props }) => ( //eslint-disable-line
   <MenuCommunity
     t={t}
     items={items}
