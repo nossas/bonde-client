@@ -50,8 +50,8 @@ TrendingMobilizationsGadget.propTypes = {
 const TrendingMobilizationsQueryset = () => (
   <Queryset
     limit={4}
-    filter={{ days: 2 }}
     query={trendingMobilizationsQuery}
+    filter={{ days: 90 }}
   >
     {({ data, loading }) => (
       <TrendingMobilizationsGadget

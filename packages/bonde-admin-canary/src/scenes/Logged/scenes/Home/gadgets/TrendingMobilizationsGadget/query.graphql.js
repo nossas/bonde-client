@@ -1,8 +1,8 @@
 import gql from 'graphql-tag'
 
 export default gql`
-  query TrendingMobilizations($days: Int, $limit: Int) {
-    trendingMobilizations(days: $days, first: $limit) {
+  query TrendingMobilizations($days: Int) {
+    trendingMobilizations(days: $days) {
       edges {
         node {
           id
