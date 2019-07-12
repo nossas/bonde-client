@@ -15,7 +15,7 @@ const Page = ({
   // calculate height to resize content and fix Footer component on bottom page
   const height = (window.innerHeight ||
     document.documentElement.clientHeight ||
-    document.body.clientHeight) - 158
+    document.body.clientHeight)
 
   const headerNode = (
     <Header
