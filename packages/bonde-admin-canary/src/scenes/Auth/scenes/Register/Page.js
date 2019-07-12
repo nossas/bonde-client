@@ -1,7 +1,7 @@
 import React from 'react'
 import { AuthAPI } from 'services/auth'
 import { translate } from 'services/i18n'
-import REGISTER from './register.graphql'
+import CREATEUSER from './register.graphql'
 
 import {
   Button,
@@ -21,10 +21,16 @@ const AuthRegister = ({ t }) => (
   <React.Fragment>
     <Title.H1 margin={{ bottom: 37 }}>{t('welcome')}</Title.H1>
     <FormGraphQL
-      mutation={REGISTER}
+      mutation={CREATEUSER}
       onSubmit={(values, mutation) => {
+        const userInput = { 
+          email: values.email,
+          firstName: values.firstName,
+          lastName: values.lastName,
+          password: values.password,
+        } 
         return mutation({
-          variables: { user: { data: JSON.stringify(values) } }
+          variables: { ...userInput }
         })
         .then(({ data }) => {
           if (data.register && !data.register.jwtToken) {
@@ -47,7 +53,7 @@ const AuthRegister = ({ t }) => (
     >
       <Flexbox colSize='49.1%' spacing='between'>
         <Field
-          name='first_name'
+          name='firstName'
           label={t('fields.firstName.label')}
           placeholder={t('fields.firstName.placeholder')}
           component={FormField}
@@ -55,7 +61,7 @@ const AuthRegister = ({ t }) => (
           validate={required(t('fields.firstName.errors.isEmpty'))}
         />
         <Field
-          name='last_name'
+          name='lastName'
           label={t('fields.lastName.label')}
           placeholder={t('fields.lastName.placeholder')}
           component={FormField}
