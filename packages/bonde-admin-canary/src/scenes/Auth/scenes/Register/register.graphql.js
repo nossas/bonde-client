@@ -1,8 +1,16 @@
 import gql from 'graphql-tag'
 
 export default gql`
-mutation register ($user: RegisterInput!) {
-  register (input: $user) {
-    jwtToken
+  mutation createUser ($email: String!, $password: String!, $lastName: String, $firstName: String!){
+    createUser(input: {
+      email: $email
+      password: $password
+      lastName: $lastName
+      firstName: $firstName
+    }) {
+      user {
+        email
+      }
+    }
   }
-}`
+`
