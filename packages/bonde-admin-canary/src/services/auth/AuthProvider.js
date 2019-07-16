@@ -26,6 +26,7 @@ class AuthProvider extends React.Component {
         const authErrors = [
           'Token invalid, user not found.',
           'Signature verification failed',
+          'Signature has expired',
           'Invalid audience'
         ]
 
