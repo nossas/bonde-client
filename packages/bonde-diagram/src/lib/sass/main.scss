@@ -1,0 +1,84 @@
+@import "storm-react-diagrams/src/sass/main.scss";
+
+.srd-bonde-diagram {
+  background: #c7c7c7;
+  height: 450px;
+}
+
+
+// drag-and-drop
+.diagram-app {
+  display: flex;
+  flex-direction: row;
+
+  .diagram-tools {
+    min-width: 200px;
+    flex-grow: 0;
+    flex-shrink: 0;
+
+    .draggable-item {
+      text-transform: uppercase;
+      font-family: 'Nunito Sans', sans-serif;
+      color: #000;
+      padding: 30px;
+      border-radius: 2px;
+      cursor: pointer;
+      background-color: #fff;
+      margin: 0 2px 4px 0;
+      -webkit-box-shadow: 3px 8px 5px 0px rgba(0,0,0,0.24);
+      -moz-box-shadow: 3px 8px 5px 0px rgba(0,0,0,0.24);
+      box-shadow: 3px 8px 5px 0px rgba(0,0,0,0.24);
+    }
+  }
+
+  .diagram-layer {
+    position: relative;
+    flex-grow: 1;
+
+    .srd-node {
+      .srd-default-node {
+        max-width: 150px;
+        border: none;
+        border-radius: 10px;
+        -webkit-box-shadow: 3px 8px 5px 0px rgba(0,0,0,0.24);
+        -moz-box-shadow: 3px 8px 5px 0px rgba(0,0,0,0.24);
+        box-shadow: 3px 8px 5px 0px rgba(0,0,0,0.24);
+
+        .srd-default-node__title {
+          color: #444;
+          background: none;
+          white-space: pre-wrap;
+          font-size: 16px;
+          font-family: 'Nunito Sans', sans-serif;
+          padding: 20px;
+        }
+      }
+      .srd-port {
+        width: 30px;
+        height: 30px;
+      }
+      .srd-default-port {
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 12px;
+        font-weigth: 600;
+        color: #000;
+        text-transform: uppercase;
+      }
+      .srd-default-node__out {
+        .srd-port {
+          border-radius: 0 0 10px 0;
+        }
+      }
+      .srd-default-node__in {
+        .srd-port {
+          border-radius: 0 0 0 10px;
+        }
+      }
+    }
+    .srd-node--selected  {
+      .srd-default-node {
+        border: 2px solid #e9578f!important;
+      }
+    }
+  }
+}
