@@ -1,25 +1,8 @@
 import React from 'react'
 import WebFont from 'webfontloader'
 import { DiagramWidget } from 'storm-react-diagrams'
+import { DraggableItem } from './components'
 import { NodeModel } from './node'
-
-class DraggableItem extends React.Component {
-  render() {
-    const { color, model } = this.props
-    return (
-      <div
-        draggable
-        className='draggable-item'
-        style={{ borderColor: color }}
-        onDragStart={(event) => {
-          event.dataTransfer.setData("storm-diagram-node", JSON.stringify(model))
-        }}
-      >
-        {this.props.name}
-      </div>
-    )
-  }
-}
 
 
 class Diagram extends React.Component {
@@ -38,7 +21,6 @@ class Diagram extends React.Component {
 
   handleDrop(event) {
     const name = window.prompt('Insira sua mensagem:')
-    /*const data = JSON.parse(event.dataTransfer.getData("storm-diagram-node"))*/
     const nodesCount = Object.keys(
       this.props.app
         .getDiagramEngine()
@@ -78,9 +60,9 @@ class Diagram extends React.Component {
     return (
       <div className='diagram-app'>
         <div className='diagram-tools'>
-          <DraggableItem model={{ type: 'text' }} name='Criar mensagem' />
-          <DraggableItem model={{ type: 'ask' }} name='Fazer uma pergunta' />
-          <DraggableItem model={{ type: 'reply' }} name='Criar  uma resposta' />
+          <DraggableItem>Criar mensagem</DraggableItem>
+          <DraggableItem>Fazer uma pergunta</DraggableItem>
+          <DraggableItem>Criar  uma resposta</DraggableItem>
         </div>
         <div
           className='diagram-layer'
