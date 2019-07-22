@@ -4,9 +4,10 @@ import NodeWidget from './widget'
 import NodeModel from './model'
 
 
-class NodeFactory extends AbstractNodeFactory {
+class NodeFactory extends AbstractNodeFactory<NodeModel> {
   constructor() {
-    super('message')
+    super('node')
+    console.log('NodeFactory', this)
   }
 
   generateReactWidget(diagramEngine, node) {
@@ -14,6 +15,7 @@ class NodeFactory extends AbstractNodeFactory {
   }
 
   getNewInstance(initialConfig) {
+    console.log('getNewInstance')
     return new NodeModel(initialConfig)
   }
 }

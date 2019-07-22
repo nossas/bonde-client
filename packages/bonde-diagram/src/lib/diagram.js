@@ -6,9 +6,14 @@ import { NodeModel } from './node'
 
 
 class Diagram extends React.Component {
+
+  static DATATRANSFER_KEY = 'srd-diagram-model'
+
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      entitySelected: undefined
+    }
   }
 
   componentDidMount() {
@@ -20,7 +25,8 @@ class Diagram extends React.Component {
   }
 
   handleDrop(event) {
-    const name = window.prompt('Insira sua mensagem:')
+    const model = JSON.parse(event.dataTransfer.getData(this.DATATRANSFER_KEY))
+    console.log('model', model)
     const nodesCount = Object.keys(
       this.props.app
         .getDiagramEngine()
@@ -31,10 +37,10 @@ class Diagram extends React.Component {
     let node = null;
     // when the first message on diagram model should only has output port
     if (nodesCount === 0) {
-      node = new NodeModel(name !== null ? name : "Node " + (nodesCount + 1))
+      node = new NodeModel("Node " + (nodesCount + 1), model.kind)
       node.addOutPort("Out")
     } else {
-      node = new NodeModel(name !== null ? name : "Node " + (nodesCount + 1))
+      node = new NodeModel("Node " + (nodesCount + 1), model.kind)
       node.addInPort("In")
       node.addOutPort("Out")
     }
@@ -56,13 +62,26 @@ class Diagram extends React.Component {
     event.preventDefault()
   }
 
+  handleDragStart(model, event) {
+    event.dataTransfer.setData(this.DATATRANSFER_KEY, JSON.stringify(model))
+  }
+
   render() {
     return (
       <div className='diagram-app'>
         <div className='diagram-tools'>
-          <DraggableItem>Criar mensagem</DraggableItem>
-          <DraggableItem>Fazer uma pergunta</DraggableItem>
-          <DraggableItem>Criar  uma resposta</DraggableItem>
+          <DraggableItem
+            model={{ kind: 'text' }}
+            onDragStart={this.handleDragStart.bind(this)}
+          >
+            Criar mensagem
+          </DraggableItem>
+          <DraggableItem
+            model={{ kind: 'quick_reply' }}
+            onDragStart={this.handleDragStart.bind(this)}
+          >
+            Fazer uma pergunta
+          </DraggableItem>
         </div>
         <div
           className='diagram-layer'

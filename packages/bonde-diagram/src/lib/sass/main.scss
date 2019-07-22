@@ -36,21 +36,22 @@
     flex-grow: 1;
 
     .srd-node {
-      .srd-default-node {
-        max-width: 150px;
+      .srd-base-node {
+        background-color: #fff;
         border: none;
         border-radius: 10px;
         -webkit-box-shadow: 3px 8px 5px 0px rgba(0,0,0,0.24);
         -moz-box-shadow: 3px 8px 5px 0px rgba(0,0,0,0.24);
         box-shadow: 3px 8px 5px 0px rgba(0,0,0,0.24);
 
-        .srd-default-node__title {
+        .srd-base-node__title {
           color: #444;
           background: none;
           white-space: pre-wrap;
           font-size: 16px;
           font-family: 'Nunito Sans', sans-serif;
           padding: 20px;
+          max-width: 110px;
         }
       }
       .srd-port {
@@ -64,12 +65,12 @@
         color: #000;
         text-transform: uppercase;
       }
-      .srd-default-node__out {
+      .srd-base-node__out {
         .srd-port {
           border-radius: 0 0 10px 0;
         }
       }
-      .srd-default-node__in {
+      .srd-base-node__in {
         .srd-port {
           border-radius: 0 0 0 10px;
         }
