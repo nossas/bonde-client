@@ -1,21 +1,15 @@
-import { DefaultPortModel, NodeModel, Toolkit } from 'storm-react-diagrams'
+import { NodeModel, Toolkit } from 'storm-react-diagrams'
 import _ from 'lodash'
+import BetaPortModel from './BetaPortModel'
 
-export default class extends NodeModel {
+
+class BetaNodeModel extends NodeModel {
   constructor(name, kind) {
-    super('node')
+    super('beta')
     this.name = name;
     this.kind = kind;
   }
-
-  addInPort(label) {
-    return this.addPort(new DefaultPortModel(true, Toolkit.UID(), label))
-  }
-
-  addOutPort(label) {
-    return this.addPort(new DefaultPortModel(false, Toolkit.UID(), label))
-  }
-
+  // Funções que devem ser implementadas
   deSerialize(object, engine) {
     super.deSerialize(object, engine)
     this.name = object.name
@@ -27,6 +21,15 @@ export default class extends NodeModel {
       name: this.name,
       kind: this.kind
     });
+  }
+
+  // Funções customizadas
+  addInPort(label) {
+    return this.addPort(new BetaPortModel(true, Toolkit.UID(), label))
+  }
+
+  addOutPort(label) {
+    return this.addPort(new BetaPortModel(false, Toolkit.UID(), label))
   }
 
   getInPorts() {
@@ -45,3 +48,5 @@ export default class extends NodeModel {
     this.name = name
   }
 }
+
+export default BetaNodeModel

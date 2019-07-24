@@ -1,9 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
-import {
-  BaseWidget,
-  DefaultPortLabel
-} from 'storm-react-diagrams'
+import { BaseWidget } from 'storm-react-diagrams'
+import BetaPortWidget from './BetaPortLabelWidget'
 
 
 class BaseNodeWidget extends BaseWidget {
@@ -16,7 +14,13 @@ class BaseNodeWidget extends BaseWidget {
   }
 
   generatePort(port) {
-    return <DefaultPortLabel model={port} key={port.id} />
+    return (
+      <BetaPortWidget
+        node={port.getParent()}
+        model={port}
+        key={port.id}
+      />
+    )
   }
 
   handleKeyPress(e) {

@@ -54,11 +54,7 @@
           max-width: 110px;
         }
       }
-      .srd-port {
-        width: 30px;
-        height: 30px;
-      }
-      .srd-default-port {
+      .srd-base-port {
         font-family: 'Nunito Sans', sans-serif;
         font-size: 12px;
         font-weigth: 600;
@@ -66,18 +62,35 @@
         text-transform: uppercase;
       }
       .srd-base-node__out {
+        padding: 10px;
         .srd-port {
-          border-radius: 0 0 10px 0;
+          border-radius: 5px;
+          background-color: blue;
+          width: 100%;
+          padding: 10px;
+        }
+        .srd-port--selected {
+          background: none;
+          border: 1px solid blue;
         }
       }
       .srd-base-node__in {
         .srd-port {
-          border-radius: 0 0 0 10px;
+          border-radius: 50px;
+          margin-left: -10px;
+          margin-top: -10px;
+          width: 20px;
+          height: 20px;
+          background-color: green;
+        }
+        .srd-port--selected {
+          background: none;
+          border: 1px solid green;
         }
       }
     }
     .srd-node--selected  {
-      .srd-default-node {
+      .srd-base-node {
         border: 2px solid #e9578f!important;
       }
     }

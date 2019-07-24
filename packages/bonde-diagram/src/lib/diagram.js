@@ -2,7 +2,7 @@ import React from 'react'
 import WebFont from 'webfontloader'
 import { DiagramWidget } from 'storm-react-diagrams'
 import { DraggableItem } from './components'
-import { NodeModel } from './node'
+import { BetaNodeModel } from './beta/models'
 
 
 class Diagram extends React.Component {
@@ -37,12 +37,13 @@ class Diagram extends React.Component {
     let node = null;
     // when the first message on diagram model should only has output port
     if (nodesCount === 0) {
-      node = new NodeModel("Node " + (nodesCount + 1), model.kind)
-      node.addOutPort("Out")
+      node = new BetaNodeModel("Node " + (nodesCount + 1), model.kind)
+      node.addOutPort("Default")
     } else {
-      node = new NodeModel("Node " + (nodesCount + 1), model.kind)
+      node = new BetaNodeModel("Node " + (nodesCount + 1), model.kind)
       node.addInPort("In")
-      node.addOutPort("Out")
+      node.addOutPort("Default")
+      node.addOutPort("Vamos seguir em frente")
     }
     
     const points = this.props.app.getDiagramEngine().getRelativeMousePoint(event)
