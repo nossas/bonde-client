@@ -46,6 +46,7 @@
         padding: 0 24px;
         box-shadow: 0px 6px 7px rgba(0, 0, 0, 0.05);
         border-radius: 30px 30px 30px 0px;
+        box-sizing: border-box;
         -webkit-box-shadow: 3px 8px 5px 0px rgba(0,0,0,0.24);
         -moz-box-shadow: 3px 8px 5px 0px rgba(0,0,0,0.24);
         box-shadow: 3px 8px 5px 0px rgba(0,0,0,0.24);
@@ -73,6 +74,7 @@
           color: #1E88E5;
           border-radius: 5px;
           width: calc(100% - 48px);
+          height: calc(100% - 20px);
           padding: 10px 24px;
           text-align: center;
           margin-bottom: 5px;
