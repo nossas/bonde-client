@@ -5,7 +5,6 @@
   height: 650px;
 }
 
-
 // drag-and-drop
 .diagram-app {
   display: flex;
@@ -50,7 +49,11 @@
         -webkit-box-shadow: 3px 8px 5px 0px rgba(0,0,0,0.24);
         -moz-box-shadow: 3px 8px 5px 0px rgba(0,0,0,0.24);
         box-shadow: 3px 8px 5px 0px rgba(0,0,0,0.24);
-
+        
+        &:hover {
+          box-shadow: 0px 0px 20px rgba(238, 0, 153, 0.62);
+          border-radius: 30px 30px 30px 0px;
+        }
         .srd-base-node__title {
           color: #444;
           background: none;
