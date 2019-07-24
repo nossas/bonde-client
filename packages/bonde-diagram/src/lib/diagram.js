@@ -48,6 +48,8 @@ class Diagram extends React.Component {
     
     const points = this.props.app.getDiagramEngine().getRelativeMousePoint(event)
     
+    console.log('points', points)
+
     node.x = points.x
     node.y = points.y
     
@@ -64,6 +66,8 @@ class Diagram extends React.Component {
   }
 
   handleDragStart(model, event) {
+    console.log(model)
+    console.log(event)
     event.dataTransfer.setData(this.DATATRANSFER_KEY, JSON.stringify(model))
   }
 
