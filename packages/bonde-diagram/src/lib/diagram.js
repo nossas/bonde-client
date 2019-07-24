@@ -3,7 +3,7 @@ import WebFont from 'webfontloader'
 import { DiagramWidget } from 'storm-react-diagrams'
 import { DraggableItem } from './components'
 import { BetaNodeModel } from './beta/models'
-
+import { IconMessage, IconQuickReply } from './components/icons'
 
 class Diagram extends React.Component {
 
@@ -75,13 +75,13 @@ class Diagram extends React.Component {
             model={{ kind: 'text' }}
             onDragStart={this.handleDragStart.bind(this)}
           >
-            Criar mensagem
+            <IconMessage /> Criar mensagem
           </DraggableItem>
           <DraggableItem
             model={{ kind: 'quick_reply' }}
             onDragStart={this.handleDragStart.bind(this)}
           >
-            Fazer uma pergunta
+            <IconQuickReply /> Fazer uma pergunta
           </DraggableItem>
         </div>
         <div
