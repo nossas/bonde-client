@@ -97,6 +97,7 @@ class Diagram extends React.Component {
           <DiagramWidget
             className='srd-bonde-diagram'
             diagramEngine={this.props.app.getDiagramEngine()}
+            smartRouting
           />
         </div>
       </div>
