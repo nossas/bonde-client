@@ -91,11 +91,11 @@
         font-family: 'Nunito Sans', sans-serif;
         font-size: 12px;
         font-weight: 600;
-        color: #000;
         text-transform: uppercase;
       }
       .srd-base-node__out {
         padding: 10px;
+        font-size: 16px;
         
         .srd-reply-port {
           position: relative;
@@ -123,6 +123,19 @@
         .srd-port--selected {
           background: none;
           border: 1px solid #EE0090;
+        }
+
+        input {
+          border: none;
+          color: #1E88E5;
+          font-size: 16px;
+          text-align: center;
+        }
+
+        button {
+          border: none;
+          color: #EE0090;
+          font-weight: 800;
         }
       }
       .srd-base-node__in {
