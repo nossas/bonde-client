@@ -1,7 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
 import { BaseWidget } from 'storm-react-diagrams'
-import BetaPortWidget from './BetaPortLabelWidget'
+import ReplyPortWidget from './ReplyPortLabelWidget'
 
 
 class BaseNodeWidget extends BaseWidget {
@@ -15,7 +15,7 @@ class BaseNodeWidget extends BaseWidget {
 
   generatePort(port) {
     return (
-      <BetaPortWidget
+      <ReplyPortWidget
         node={port.getParent()}
         model={port}
         key={port.id}

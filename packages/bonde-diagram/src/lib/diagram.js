@@ -42,8 +42,8 @@ class Diagram extends React.Component {
     } else {
       node = new BetaNodeModel("Node " + (nodesCount + 1), model.kind)
       node.addInPort("In")
-      node.addOutPort("Default")
-      node.addOutPort("Vamos seguir em frente")
+      node.addQuickReply("Default")
+      node.addQuickReply("Vamos seguir em frente")
     }
     
     const points = this.props.app.getDiagramEngine().getRelativeMousePoint(event)

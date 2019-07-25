@@ -1,6 +1,7 @@
 import { NodeModel, Toolkit } from 'storm-react-diagrams'
 import _ from 'lodash'
 import BetaPortModel from './BetaPortModel'
+import ReplyPortModel from './ReplyPortModel'
 
 
 class BetaNodeModel extends NodeModel {
@@ -24,6 +25,10 @@ class BetaNodeModel extends NodeModel {
   }
 
   // Funções customizadas
+  addQuickReply(text) {
+    return this.addPort(new ReplyPortModel(text, Toolkit.UID()))
+  }
+
   addInPort(label) {
     return this.addPort(new BetaPortModel(true, Toolkit.UID(), label))
   }

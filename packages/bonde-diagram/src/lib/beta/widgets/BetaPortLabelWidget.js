@@ -42,7 +42,6 @@ class BetaPortLabelWidget extends BaseWidget {
           <BetaPortWidget
             node={model.getParent()}
             name={model.name}
-            onDoubleClick={this.handleDoubleClick.bind(this)}
           >
             {isEditing ? (
               <input
