@@ -37,6 +37,10 @@
     position: relative;
     flex-grow: 1;
 
+    .srd-link-layer {
+      z-index: 99;
+    }
+
     .srd-default-link path{
       stroke: #EE0090;
     }
