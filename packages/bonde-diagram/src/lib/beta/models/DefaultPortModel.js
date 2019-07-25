@@ -2,23 +2,23 @@ import _ from 'lodash'
 import { DefaultLinkModel, PortModel } from 'storm-react-diagrams'
 
 
-class BetaPortModel extends PortModel {
-  constructor(isInput, name, label, id) {
-    super(name, 'beta', id)
+class DefaultPortModel extends PortModel {
+  constructor(isInput, name, id) {
+    super(name, 'default', id)
     this.in = isInput
-    this.label = label || name
+    this.name = name
   }
 
   deSerialize(object, engine) {
     super.deSerialize(object, engine)
     this.in = object.in
-    this.label = object.label
+    this.name = object.name
   }
 
   serialize() {
     return _.merge(super.serialize(), {
       in: this.in,
-      label: this.label
+      name: this.name
     })
   }
 
@@ -30,7 +30,7 @@ class BetaPortModel extends PortModel {
   }
 
   canLinkToPort(port) {
-    if (port instanceof BetaPortModel) {
+    if (port instanceof DefaultPortModel) {
       return this.in !== port.in
     }
     return true
@@ -40,11 +40,7 @@ class BetaPortModel extends PortModel {
     let link = super.createLinkModel()
     return link || new DefaultLinkModel()
   }
-
-  setLabel(label) {
-    this.label = label
-  }
 }
 
 
-export default BetaPortModel
+export default DefaultPortModel

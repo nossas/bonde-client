@@ -38,10 +38,11 @@ class Diagram extends React.Component {
     // when the first message on diagram model should only has output port
     if (nodesCount === 0) {
       node = new BetaNodeModel("Node " + (nodesCount + 1), model.kind)
-      node.addOutPort("Default")
+      node.addOutPort('Out')
+      node.addInPort('In')
     } else {
       node = new BetaNodeModel("Node " + (nodesCount + 1), model.kind)
-      node.addInPort("In")
+      node.addInPort('In')
       node.addQuickReply("Default")
       node.addQuickReply("Vamos seguir em frente")
     }

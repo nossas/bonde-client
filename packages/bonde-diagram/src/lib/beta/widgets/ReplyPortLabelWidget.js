@@ -19,7 +19,7 @@ class ReplyPortLabelWidget extends BaseWidget {
 
   handleKeyPress(e) {
     if (e.key === 'Enter' && e.ctrlKey) {
-      this.props.model.setLabel(e.target.value)
+      this.props.model.changeText(e.target.value)
 
       this.setState({ isEditing: false })
       this.forceUpdate()

@@ -1,6 +1,6 @@
 import { NodeModel, Toolkit } from 'storm-react-diagrams'
 import _ from 'lodash'
-import BetaPortModel from './BetaPortModel'
+import DefaultPortModel from './DefaultPortModel'
 import ReplyPortModel from './ReplyPortModel'
 
 
@@ -29,12 +29,12 @@ class BetaNodeModel extends NodeModel {
     return this.addPort(new ReplyPortModel(text, Toolkit.UID()))
   }
 
-  addInPort(label) {
-    return this.addPort(new BetaPortModel(true, Toolkit.UID(), label))
+  addInPort(name) {
+    return this.addPort(new DefaultPortModel(true, name, Toolkit.UID()))
   }
 
-  addOutPort(label) {
-    return this.addPort(new BetaPortModel(false, Toolkit.UID(), label))
+  addOutPort(name) {
+    return this.addPort(new DefaultPortModel(false, name, Toolkit.UID()))
   }
 
   getInPorts() {

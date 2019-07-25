@@ -1,26 +1,26 @@
 import React from 'react'
 import _ from 'lodash'
 import { BaseWidget } from 'storm-react-diagrams'
-import { DefaultPortModel, ReplyPortModel } from '../models'
-import DefaultPortWidget from './DefaultPortWidget'
 import ReplyPortWidget from './ReplyPortLabelWidget'
 
 
-class BaseNodeWidget extends BaseWidget {
+class RichTextNodeWidget extends BaseWidget {
   constructor(props) {
     super('srd-base-node', props)
     this.state = {
-      value: props.node.name,
+      value: props.model.text,
       isEditing: false
     }
   }
 
   generatePort(port) {
-    if (port instanceof DefaultPortModel) {
-      return <DefaultPortWidget node={port.getParent()} model={port} key={port.id} />
-    } else if (port instanceof ReplyPortModel) {
-      return <ReplyPortWidget node={port.getParent()} model={port} key={port.id} />
-    }
+    return (
+      <ReplyPortWidget
+        node={port.getParent()}
+        model={port}
+        key={port.id}
+      />
+    )
   }
 
   handleKeyPress(e) {
@@ -71,4 +71,4 @@ class BaseNodeWidget extends BaseWidget {
   }
 }
 
-export default BaseNodeWidget
+export default RichTextNodeWidget
