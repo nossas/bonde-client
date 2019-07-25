@@ -37,6 +37,18 @@
     position: relative;
     flex-grow: 1;
 
+    .srd-default-link path{
+      stroke: #EE0090;
+    }
+
+    .srd-default-link--path-selected {
+      stroke: #EE0090!important;
+    }
+
+    .srd-default-link__point {
+      fill: #EE0090;
+    }
+
     .srd-node {
       .srd-base-node {
         background-color: #FFFFFF;
@@ -99,7 +111,7 @@
         }
         .srd-port--selected {
           background: none;
-          border: 1px solid #1E88E5;
+          border: 1px solid #EE0090;
         }
       }
       .srd-base-node__in {
