@@ -4,7 +4,7 @@ import { MessageNodeWidget } from '../widgets'
 import { MessageNodeModel } from '../models'
 
 
-class MessageNodeFactory extends AbstractNodeFactory<BetaNodeModelf> {
+class MessageNodeFactory extends AbstractNodeFactory {
   constructor() {
     super('message')
   }
