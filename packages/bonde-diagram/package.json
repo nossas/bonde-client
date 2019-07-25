@@ -3,6 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/core": "7.2.2",
+    "@babel/plugin-proposal-class-properties": "7.2.3",
+    "@babel/plugin-proposal-decorators": "7.2.3",
+    "@babel/plugin-proposal-object-rest-spread": "7.2.0",
+    "@babel/plugin-syntax-dynamic-import": "7.2.0",
+    "@babel/plugin-transform-classes": "7.2.2",
+    "@babel/plugin-transform-destructuring": "7.2.0",
+    "@babel/plugin-transform-flow-strip-types": "7.2.3",
+    "@babel/plugin-transform-react-constant-elements": "7.2.0",
+    "@babel/plugin-transform-react-display-name": "7.2.0",
+    "@babel/plugin-transform-runtime": "7.2.0",
+    "@babel/preset-env": "7.2.3",
+    "@babel/preset-react": "7.0.0",
+    "@babel/preset-typescript": "7.1.0",
+    "@babel/runtime": "7.2.0",
+    "babel-loader": "8.0.5",
+    "babel-plugin-dynamic-import-node": "2.2.0",
+    "babel-plugin-macros": "2.4.4",
+    "babel-plugin-transform-react-remove-prop-types": "0.4.21",
     "classnames": "^2.2.6",
     "immutable": "^4.0.0-rc.12",
     "lodash": "^4.17.15",
@@ -15,9 +34,24 @@
   },
   "scripts": {
     "dev": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "NODE_ENV=production babel src/lib --out-dir lib --copy-files --ignore __tests__,spec.js,test.js,__snapshots__",
     "test": "react-scripts test",
     "coverage": "npm run test -- --watchAll=false --coverage"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      "babel-plugin-macros",
+      "@babel/plugin-transform-destructuring",
+      "@babel/plugin-proposal-class-properties",
+      "@babel/plugin-proposal-object-rest-spread",
+      "@babel/plugin-transform-runtime",
+      "babel-plugin-transform-react-remove-prop-types",
+      "@babel/plugin-syntax-dynamic-import"
+    ]
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -38,6 +72,8 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "jsom": "^1.0.0",
-    "require-hacker": "^3.0.1"
+    "require-hacker": "^3.0.1",
+    "@babel/cli": "^7.2.3",
+    "@babel/register": "^7.4.4"
   }
 }
