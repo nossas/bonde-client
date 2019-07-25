@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* <h1>Bonde Diagram | <button onClick={serialize}>Serialize</button></h1> */}
+      <h1>Bonde Diagram | <button onClick={serialize}>Serialize</button></h1>
       <BondeDiagram app={app} />
     </div>
   )

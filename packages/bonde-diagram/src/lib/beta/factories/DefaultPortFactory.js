@@ -1,7 +1,7 @@
 import { AbstractPortFactory } from 'storm-react-diagrams'
 import { DefaultPortModel } from '../models'
 
-class DefaultPortFactory extends AbstractPortFactor {
+class DefaultPortFactory extends AbstractPortFactory {
   constructor() {
     super('beta')
   }
