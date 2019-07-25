@@ -47,6 +47,10 @@ class MessageNodeWidget extends BaseWidget {
     this.forceUpdate()
   }
 
+  getClassName() {
+    return super.getClassName() + this.props.node.kind
+  }
+
   render() {
     const { node } = this.props
     const { value, isEditing } = this.state

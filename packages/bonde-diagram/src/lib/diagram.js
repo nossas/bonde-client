@@ -36,14 +36,20 @@ class Diagram extends React.Component {
 
     let node = null;
     // when the first message on diagram model should only has output port
-    if (nodesCount === 0) {
+    if (nodesCount === 0 && model.kind === 'text') {
+      node = new MessageNodeModel("Node " + (nodesCount + 1), model.kind)
+      node.addOutPort('Out')
+    } else if (model.kind === 'text') {
       node = new MessageNodeModel("Node " + (nodesCount + 1), model.kind)
       node.addOutPort('Out')
       node.addInPort('In')
-    } else {
+    } else if (model.kind === 'quick_reply'){
       node = new MessageNodeModel("Node " + (nodesCount + 1), model.kind)
       node.addInPort('In')
       node.addQuickReply('Texto do botão')
+    } else {
+      // TODO: throws exception
+      console.error('não é possível adicionar esse tipo de mensagem agora')
     }
     
     const points = this.props.app.getDiagramEngine().getRelativeMousePoint(event)
@@ -79,13 +85,15 @@ class Diagram extends React.Component {
             model={{ kind: 'text' }}
             onDragStart={this.handleDragStart.bind(this)}
           >
-            <IconMessage /> Criar mensagem
+            <IconMessage />
+            <span>Criar mensagem</span>
           </DraggableItem>
           <DraggableItem
             model={{ kind: 'quick_reply' }}
             onDragStart={this.handleDragStart.bind(this)}
           >
-            <IconQuickReply /> Fazer uma pergunta
+            <IconQuickReply />
+            <span>Fazer uma pergunta</span>
           </DraggableItem>
         </div>
         <div

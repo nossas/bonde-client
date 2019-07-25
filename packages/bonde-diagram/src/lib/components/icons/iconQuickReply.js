@@ -3,11 +3,11 @@ import React from 'react'
 const IconQuickReply = () => {
   return (
     <svg
-      width='22'
-      height='22'
+      width='27'
+      height='27'
       xmlns='http://www.w3.org/2000/svg'
       fill='none'
-      viewBox='0 0 25 25'
+      viewBox='0 0 30 30'
     >
       <path
         fill='#000'

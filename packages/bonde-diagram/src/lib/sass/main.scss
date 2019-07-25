@@ -16,6 +16,9 @@
     flex-shrink: 0;
 
     .draggable-item {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
       text-transform: uppercase;
       font-family: 'Nunito Sans', sans-serif;
       color: #000000;
@@ -30,6 +33,13 @@
       font-style: normal;
       line-height: 18px;
       letter-spacing: 0.005em;
+
+      svg {
+        padding: 0 20px 0 0;
+      }
+      span {
+        max-width: 100px;
+      }
     }
   }
 
@@ -51,10 +61,10 @@
 
     .srd-node {
       .srd-base-node {
+        position: relative;
         background-color: #FFFFFF;
         border: none;
         border-radius: 10px;
-        padding: 0 24px;
         box-shadow: 0px 6px 7px rgba(0, 0, 0, 0.05);
         border-radius: 30px 30px 30px 0px;
         box-sizing: border-box;
@@ -73,7 +83,7 @@
           white-space: pre-wrap;
           font-size: 16px;
           font-family: 'Nunito Sans', sans-serif;
-          padding: 20px;
+          padding: 23px;
           max-width: 110px;
         }
 
@@ -86,6 +96,29 @@
           height: auto;
           border: none;
         }
+        &.quick_reply {
+          .srd-base-node__out {
+            padding: 0 23px;
+            .srd-port {
+              position: absolute;
+              right: -7px;
+              bottom: 12px;
+              border-radius: 50px;
+              margin-left: -10px;
+              margin-top: -10px;
+              width: 15px;
+              height: 15px;
+              background-color: #EE0090;
+            }
+          }
+        }
+        &.text {
+          .srd-base-node__out {
+            position: absolute;
+            right: -7px;
+            top: 50%;
+          }
+        }
       }
       .srd-base-port {
         font-family: 'Nunito Sans', sans-serif;
@@ -93,10 +126,7 @@
         font-weight: 600;
         text-transform: uppercase;
       }
-      .srd-base-node__out {
-        padding: 10px;
-        font-size: 16px;
-        
+      .srd-base-node__out {        
         .srd-reply-port {
           position: relative;
           color: #1E88E5;
@@ -104,21 +134,11 @@
           width: calc(100% - 48px);
           height: calc(100% - 20px);
           padding: 10px 24px;
+          font-size: 16px;
           text-align: center;
           margin-bottom: 5px;
           border: 1px solid #1E88E5;
           border-radius: 50px;
-        }
-        .srd-port {
-          position: absolute;
-          right: -10px;
-          bottom: 10px;
-          border-radius: 50px;
-          margin-left: -10px;
-          margin-top: -10px;
-          width: 20px;
-          height: 20px;
-          background-color: #EE0090;
         }
         .srd-port--selected {
           background: none;
@@ -136,16 +156,39 @@
           border: none;
           color: #EE0090;
           font-weight: 800;
+          background: none;
+          padding: 10px 10px 15px;
+          cursor: pointer;
+
+          &:active,
+          &:focus {
+            border: none;
+            outline: none;
+          }
         }
       }
+      .srd-port {
+        border-radius: 50px;
+        margin-left: -10px;
+        margin-top: -10px;
+        width: 15px;
+        height: 15px;
+      }
       .srd-base-node__in {
+        position: absolute;
+        top: 50%;
+        left: 0;
+
         .srd-port {
-          border-radius: 50px;
-          margin-left: -10px;
-          margin-top: -10px;
-          width: 20px;
-          height: 20px;
-          background-color: #EE0090;
+          border: 1px solid #EE0090;
+        }
+        .srd-port--selected {
+          background: #EE0090;
+        }
+      }
+      .srd-base-node__out {
+        .srd-port {
+          background: #EE0090;
         }
         .srd-port--selected {
           background: none;
@@ -155,7 +198,7 @@
     }
     .srd-node--selected  {
       .srd-base-node {
-        border: 2px solid #e9578f!important;
+        border: 1px solid #e9578f!important;
       }
     }
   }
