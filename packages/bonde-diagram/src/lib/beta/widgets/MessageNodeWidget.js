@@ -42,6 +42,11 @@ class MessageNodeWidget extends BaseWidget {
     this.setState({ isEditing: true })
   }
 
+  handleCreateReply() {
+    this.props.node.addQuickReply('Texto do botão')
+    this.forceUpdate()
+  }
+
   render() {
     const { node } = this.props
     const { value, isEditing } = this.state
@@ -64,6 +69,9 @@ class MessageNodeWidget extends BaseWidget {
           </div>
           <div className={this.bem("__out")}>
             {_.map(node.getOutPorts(), this.generatePort.bind(this))}
+            {node.kind === 'quick_reply' && (
+              <button onClick={this.handleCreateReply.bind(this)}>+ add botão</button>
+            )}
           </div>
         </div>
       </div>

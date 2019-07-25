@@ -43,8 +43,7 @@ class Diagram extends React.Component {
     } else {
       node = new MessageNodeModel("Node " + (nodesCount + 1), model.kind)
       node.addInPort('In')
-      node.addQuickReply("Default")
-      node.addQuickReply("Vamos seguir em frente")
+      node.addQuickReply('Texto do botão')
     }
     
     const points = this.props.app.getDiagramEngine().getRelativeMousePoint(event)
@@ -97,7 +96,6 @@ class Diagram extends React.Component {
           <DiagramWidget
             className='srd-bonde-diagram'
             diagramEngine={this.props.app.getDiagramEngine()}
-            smartRouting
           />
         </div>
       </div>

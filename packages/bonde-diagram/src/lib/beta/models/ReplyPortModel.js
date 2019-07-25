@@ -3,8 +3,8 @@ import { DefaultLinkModel, PortModel } from 'storm-react-diagrams'
 
 
 class ReplyPortModel extends PortModel {
-  constructor(text, id) {
-    super(text, 'reply', id)
+  constructor(name, text, id) {
+    super(name, 'reply', id)
     this.in = false
     this.text = text
   }

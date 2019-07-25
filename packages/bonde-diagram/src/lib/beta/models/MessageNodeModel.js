@@ -26,7 +26,9 @@ class MessageNodeModel extends NodeModel {
 
   // Funções customizadas
   addQuickReply(text) {
-    return this.addPort(new ReplyPortModel(text, Toolkit.UID()))
+    const uuid = Toolkit.UID()
+    const portModel = new ReplyPortModel(`reply-port-${uuid}`, text, uuid)
+    return this.addPort(portModel)
   }
 
   addInPort(name) {
