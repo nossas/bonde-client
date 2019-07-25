@@ -6,11 +6,11 @@ import DefaultPortWidget from './DefaultPortWidget'
 import ReplyPortWidget from './ReplyPortLabelWidget'
 
 
-class BaseNodeWidget extends BaseWidget {
+class MessageNodeWidget extends BaseWidget {
   constructor(props) {
     super('srd-base-node', props)
     this.state = {
-      value: props.node.name,
+      value: props.node.text,
       isEditing: false
     }
   }
@@ -25,7 +25,7 @@ class BaseNodeWidget extends BaseWidget {
 
   handleKeyPress(e) {
     if (e.key === 'Enter' && e.ctrlKey) {
-      this.props.node.setName(e.target.value)
+      this.props.node.changeText(e.target.value)
 
       this.setState({ isEditing: false })
       this.forceUpdate()
@@ -56,7 +56,7 @@ class BaseNodeWidget extends BaseWidget {
             onKeyUp={this.handleKeyPress.bind(this)}
           />
         ) : (
-          <div className={this.bem("__title")} onDoubleClick={this.handleDoubleClick.bind(this)}>{node.name}</div>
+          <div className={this.bem("__title")} onDoubleClick={this.handleDoubleClick.bind(this)}>{node.text}</div>
         )}
         <div className={this.bem("__ports")}>
           <div className={this.bem("__in")}>
@@ -71,4 +71,4 @@ class BaseNodeWidget extends BaseWidget {
   }
 }
 
-export default BaseNodeWidget
+export default MessageNodeWidget

@@ -4,22 +4,22 @@ import DefaultPortModel from './DefaultPortModel'
 import ReplyPortModel from './ReplyPortModel'
 
 
-class BetaNodeModel extends NodeModel {
-  constructor(name, kind) {
-    super('beta')
-    this.name = name;
+class MessageNodeModel extends NodeModel {
+  constructor(text, kind) {
+    super('message')
+    this.text = text;
     this.kind = kind;
   }
   // Funções que devem ser implementadas
   deSerialize(object, engine) {
     super.deSerialize(object, engine)
-    this.name = object.name
+    this.text = object.text
     this.kind = object.kind
   }
 
   serialize() {
     return _.merge(super.serialize(), {
-      name: this.name,
+      text: this.text,
       kind: this.kind
     });
   }
@@ -49,9 +49,9 @@ class BetaNodeModel extends NodeModel {
     })
   }
 
-  setName(name) {
-    this.name = name
+  changeText(text) {
+    this.text = text
   }
 }
 
-export default BetaNodeModel
+export default MessageNodeModel

@@ -1,1 +1,1 @@
-export { default as BetaNodeWidget } from './BetaNodeWidget'
+export { default as MessageNodeWidget } from './MessageNodeWidget'

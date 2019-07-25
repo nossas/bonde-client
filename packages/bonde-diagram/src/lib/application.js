@@ -3,7 +3,7 @@ import {
   DiagramModel
 } from 'storm-react-diagrams'
 import {
-  BetaNodeFactory,
+  MessageNodeFactory,
   DefaultPortFactory,
   ReplyPortFactory
 } from './beta/factories'
@@ -15,7 +15,7 @@ class Application {
     this.diagramEngine = new DiagramEngine()
     this.diagramEngine.installDefaultFactories()
 
-    this.diagramEngine.registerNodeFactory(new BetaNodeFactory())
+    this.diagramEngine.registerNodeFactory(new MessageNodeFactory())
     this.diagramEngine.registerPortFactory(new DefaultPortFactory())
     this.diagramEngine.registerPortFactory(new ReplyPortFactory())
 

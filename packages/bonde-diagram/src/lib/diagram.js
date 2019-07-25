@@ -2,7 +2,7 @@ import React from 'react'
 import WebFont from 'webfontloader'
 import { DiagramWidget } from 'storm-react-diagrams'
 import { DraggableItem } from './components'
-import { BetaNodeModel } from './beta/models'
+import { MessageNodeModel } from './beta/models'
 import { IconMessage, IconQuickReply } from './components/icons'
 
 class Diagram extends React.Component {
@@ -37,11 +37,11 @@ class Diagram extends React.Component {
     let node = null;
     // when the first message on diagram model should only has output port
     if (nodesCount === 0) {
-      node = new BetaNodeModel("Node " + (nodesCount + 1), model.kind)
+      node = new MessageNodeModel("Node " + (nodesCount + 1), model.kind)
       node.addOutPort('Out')
       node.addInPort('In')
     } else {
-      node = new BetaNodeModel("Node " + (nodesCount + 1), model.kind)
+      node = new MessageNodeModel("Node " + (nodesCount + 1), model.kind)
       node.addInPort('In')
       node.addQuickReply("Default")
       node.addQuickReply("Vamos seguir em frente")
