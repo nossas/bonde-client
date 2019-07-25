@@ -40,6 +40,10 @@ class BetaPortModel extends PortModel {
     let link = super.createLinkModel()
     return link || new DefaultLinkModel()
   }
+
+  setLabel(label) {
+    this.label = label
+  }
 }
 
 

@@ -1,9 +1,7 @@
 import * as React from 'react'
 import { BaseWidget } from 'storm-react-diagrams'
 
-/**
- * @author Dylan Vorster
- */
+
 class BetaPortWidget extends BaseWidget {
   constructor(props: PortProps) {
     super("srd-port", props);
@@ -20,6 +18,7 @@ class BetaPortWidget extends BaseWidget {
     return (
       <div
         {...this.getProps()}
+        onDoubleClick={this.props.onDoubleClick}
         onMouseEnter={() => {
           this.setState({ selected: true });
         }}

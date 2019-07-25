@@ -33,6 +33,8 @@ class BaseNodeWidget extends BaseWidget {
     } else if (e.key === 'Backspace' || e.key === 'Delete') {
       // stop propagation on backspace and delete pressed
       e.stopPropagation()
+    } else if (e.key === 'Escape') {
+      this.setState({ isEditing: false, value: this.props.node.name })
     }
   }
 
@@ -45,7 +47,7 @@ class BaseNodeWidget extends BaseWidget {
     const { value, isEditing } = this.state
 
     return (
-      <div {...this.getProps()} onDoubleClick={this.handleDoubleClick.bind(this)}>
+      <div {...this.getProps()}>
         {isEditing ? (
           <textarea
             className={this.bem("__title")}
@@ -54,7 +56,7 @@ class BaseNodeWidget extends BaseWidget {
             onKeyUp={this.handleKeyPress.bind(this)}
           />
         ) : (
-          <div className={this.bem("__title")}>{node.name}</div>
+          <div className={this.bem("__title")} onDoubleClick={this.handleDoubleClick.bind(this)}>{node.name}</div>
         )}
         <div className={this.bem("__ports")}>
           <div className={this.bem("__in")}>
