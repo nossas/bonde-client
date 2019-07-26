@@ -1,13 +1,14 @@
-const { parsed: localEnv } = require('dotenv').config()
+require('dotenv').config()
 const webpack = require('webpack')
 const withSass = require('@zeit/next-sass')
 const withCSS = require('@zeit/next-css')
+const Dotenv = require('dotenv-webpack');
 
 module.exports = withCSS(withSass({
     webpack: (config) => {
       // config environment by .env
       config.plugins.push(
-        new webpack.EnvironmentPlugin(localEnv)
+        new Dotenv()
       )
       // url-loader
       config.module.rules.push({
@@ -24,12 +25,6 @@ module.exports = withCSS(withSass({
       })
 
       return config
-    },
-    publicRuntimeConfig: {
-      domainApiRest: process.env.REACT_APP_DOMAIN_API_REST,
-      domainApiGraphql: process.env.REACT_APP_DOMAIN_API_GRAPHQL,
-      domainPublic: process.env.REACT_APP_DOMAIN_PUBLIC,
-      pagarmeKey: process.env.REACT_APP_PAGARME_KEY
     }
   })
 )

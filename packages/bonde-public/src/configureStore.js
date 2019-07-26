@@ -13,8 +13,7 @@ const middlewares = [
     intl: intlClient,
     api: apiClient,
     axios
-  }),
-  apolloClient().middleware()
+  })
 ]
 
 export default (initialState, options) => {

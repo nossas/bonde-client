@@ -24,7 +24,6 @@ export const sourceReqCreateReducer = initialState =>
 export default (initialState = {}) => combineReducers({
   intl: intlReducer,
   sourceRequest: sourceReqCreateReducer(sourceReqInitialState),
-  apollo: apolloClient().reducer(),
   mobilizations: mobilizationReducer,
   ...initialState
 })

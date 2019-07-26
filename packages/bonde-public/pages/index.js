@@ -1,19 +1,16 @@
 import React from 'react'
 import Head from 'next/head'
-import withRedux from 'next-redux-wrapper'
 import ReactGA from 'react-ga'
 import getConfig from 'next/config'
+import {connect} from 'react-redux'
 
 // Intl
 import { IntlProvider } from 'react-intl'
-import { defaultLocale, messages, setCurrentLocale, localeStrategy } from '../intlReducer'
+import { defaultLocale, messages, setCurrentLocale, localeStrategy } from '../src/intlReducer'
 
 // ApolloClient
 import { ApolloProvider } from 'react-apollo'
-import apolloClient from '../apolloClient'
-
-// Store
-import configureStore from '../configureStore'
+import apolloClient from '../src/apolloClient'
 
 // bonde-webpage
 import {
@@ -21,17 +18,15 @@ import {
   asyncFilterBlock,
   asyncFilterWidget
 } from 'bonde-webpage/lib/redux/action-creators'
-import MobilizationApp from './mobilization.connected'
+import MobilizationApp from '../src/mobilization.connected'
 import styles from 'bonde-webpage/lib/styles/main.scss'
-
-const { publicRuntimeConfig } = getConfig()
 
 class Page extends React.Component {
   static async getInitialProps ({ store, req, res }) {
     const { dispatch, getState } = store
     const host = getState().sourceRequest.host
     const protocol = getState().sourceRequest.protocol
-    const appDomain = publicRuntimeConfig.domainPublic || 'bonde.devel'
+    const appDomain = process.env.REACT_APP_DOMAIN_PUBLIC || 'bonde.devel'
 
     if (host) {
       if (res) { // force host to be with www
@@ -106,6 +101,8 @@ class Page extends React.Component {
 
     const url = `${this.props.protocol}://${customDomain}` || host
 
+    // return <pre>{styles}</pre>
+
     return (
       <div>
         <Head>
@@ -131,9 +128,9 @@ class Page extends React.Component {
           />
           <script type='text/javascript' src='https://assets.pagar.me/checkout/checkout.js' />
         </Head>
-        <style global jsx>{styles}</style>
+        <style jsx>{styles}</style>
         <IntlProvider locale={currentLocale} key={currentLocale} messages={messages[currentLocale]}>
-          <ApolloProvider client={apolloClient()}>
+          <ApolloProvider client={apolloClient}>
             <MobilizationApp editable={false} />
           </ApolloProvider>
         </IntlProvider>
@@ -159,4 +156,4 @@ const mapStateToProps = (state, props) => {
   return { isLoaded, ...composeProps, protocol, currentLocale }
 }
 
-export default withRedux(configureStore, mapStateToProps)(Page)
+export default connect(mapStateToProps)(Page)
