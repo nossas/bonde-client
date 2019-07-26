@@ -8,7 +8,6 @@ import {
   ReplyPortFactory
 } from './beta/factories'
 
-
 class Application {
 
   constructor() {

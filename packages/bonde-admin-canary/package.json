@@ -8,6 +8,7 @@
     "apollo-client": "^2.6.0",
     "apollo-link-context": "^1.0.8",
     "apollo-link-http": "^1.5.14",
+    "bonde-diagram": "^0.1.0",
     "bonde-styleguide": "^0.14.7-alpha.0",
     "bonde-webpage": "0.14.0-alpha.0",
     "chai": "^4.2.0",
