@@ -1,6 +1,6 @@
 {
   "name": "bonde-public",
-  "version": "0.14.7-alpha.0",
+  "version": "0.15.0-alpha.0",
   "private": true,
   "description": "Bonde Public - Responsible render a mobilization on public mode",
   "main": "index.js",
