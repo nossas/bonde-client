@@ -79,11 +79,12 @@
     ]
   },
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/register": "^7.4.4",
+    "bonde-styleguide": "^0.14.7-alpha.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "jsom": "^1.0.0",
-    "require-hacker": "^3.0.1",
-    "@babel/cli": "^7.2.3",
-    "@babel/register": "^7.4.4"
+    "require-hacker": "^3.0.1"
   }
 }
