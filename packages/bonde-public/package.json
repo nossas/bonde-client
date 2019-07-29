@@ -78,7 +78,7 @@
     "css-loader": "^0.28.8",
     "file-loader": "1.1.11",
     "typescript": "^3.5.3",
-    "webpack-bundle-analyzer": "2.13.1"
+    "webpack-bundle-analyzer": "3.3.2"
   },
   "engines": {
     "node": ">=8"
