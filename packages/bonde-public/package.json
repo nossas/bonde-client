@@ -9,7 +9,9 @@
     "start": "next start -p 5001",
     "prepare": "rm -rf .next",
     "build": "next build",
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "keywords": [],
   "author": "",
@@ -65,7 +67,8 @@
     "slate-plain-serializer": "0.4.11",
     "ssri": "^5.2.2",
     "tinycolor2": "^1.4.1",
-    "url-loader": "^1.1.2"
+    "url-loader": "^1.1.2",
+    "snyk": "^1.161.1"
   },
   "devDependencies": {
     "@types/graphql": "^14.2.2",
@@ -82,5 +85,6 @@
   },
   "engines": {
     "node": ">=8"
-  }
+  },
+  "snyk": true
 }
