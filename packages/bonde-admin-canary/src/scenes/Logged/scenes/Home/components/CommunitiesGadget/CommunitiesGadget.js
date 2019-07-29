@@ -70,6 +70,7 @@ const RenderText = ({ row }) => (
 
 RenderText.propTypes = {
   row: PropTypes.shape({
+    id: PropTypes.number,
     name: PropTypes.string,
     description: PropTypes.string,
     city: PropTypes.string
