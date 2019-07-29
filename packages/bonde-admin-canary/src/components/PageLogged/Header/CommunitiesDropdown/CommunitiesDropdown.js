@@ -25,7 +25,6 @@ const ShowCommunity = ({ match }) => {
         // TODO: add image community
         return (
           <div>
-            
             {myCommunity}
           </div>
         )
