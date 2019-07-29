@@ -65,17 +65,6 @@ const RenderText = ({ row }) => (
   </Fragment>
 )
 
-const RenderText = ({ row }) => (
-  <Fragment>
-    <Text fontSize={16} fontWeight={900} lineHeight={1.25}>
-      {row.name}
-    </Text>
-    <Text fontSize={13} lineHeight={1.54} color='#4a4a4a'>
-      {row.description || row.city}
-    </Text>
-  </Fragment>
-)
-
 RenderText.propTypes = {
   row: PropTypes.shape({
     name: PropTypes.string,

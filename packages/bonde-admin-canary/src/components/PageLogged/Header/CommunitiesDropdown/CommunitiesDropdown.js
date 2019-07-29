@@ -4,36 +4,36 @@ import { Link } from 'react-router-dom'
 import { Dropdown, DropdownItem } from 'bonde-styleguide'
 import { Query } from 'react-apollo'
 import userCommunitiesQuery from './query'
-import { withRouter } from 'react-router'
+// import { withRouter } from 'react-router'
 
-const ShowCommunity = ({ match }) => {
-  return (
-    <Query query={userCommunitiesQuery}>
-      {({ data, loading, error }) => {
-        if (loading) return 'Loading...'
-        if (error) return 'Error!'
+// const ShowCommunity = ({ match }) => {
+//   return (
+//     <Query query={userCommunitiesQuery}>
+//       {({ data, loading, error }) => {
+//         if (loading) return 'Loading...'
+//         if (error) return 'Error!'
 
-        const myCommunity = data.userCommunities.edges.map(i => {
-          let myCommunityName
-          if (i.node.id === match.params.id) {
-            myCommunityName = i.node.name
-            return myCommunityName
-          }
-          return myCommunityName
-        })
+//         const myCommunity = data.userCommunities.edges.map(i => {
+//           let myCommunityName
+//           if (i.node.id === match.params.id) {
+//             myCommunityName = i.node.name
+//             return myCommunityName
+//           }
+//           return myCommunityName
+//         })
 
-        // TODO: add image community
-        return (
-          <div>
-            {myCommunity}
-          </div>
-        )
-      }}
-    </Query>
-  )
-}
+//         // TODO: add image community
+//         return (
+//           <div>
+//             {myCommunity}
+//           </div>
+//         )
+//       }}
+//     </Query>
+//   )
+// }
 
-const ShowCommunityWithRouter = withRouter(ShowCommunity)
+// const ShowCommunityWithRouter = withRouter(ShowCommunity)
 
 const CommunitiesDropdown = ({ t, communities, path }) => {
   return (
