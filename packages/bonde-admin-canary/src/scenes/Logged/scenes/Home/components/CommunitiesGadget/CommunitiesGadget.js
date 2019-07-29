@@ -2,46 +2,67 @@ import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import {
   Text,
-  Button,
   Flexbox,
   Spacing
 } from 'bonde-styleguide'
 import { Link } from 'react-router-dom'
-import { Query } from 'react-apollo'
+import { Queryset } from 'components'
 import ImageColumn from '../ImageColumn'
 import TableCardGadget from '../TableCardGadget'
 import allUserCommunities from './query.graphql'
 import { authSession } from 'services/auth'
 import { toSnakeCase } from '../../utils'
-import userCommunitiesQuery from './query'
 import { IconBot, IconPage } from '../../../../../../components/PageLogged/Header/MenuCommunity/icons/'
 
 const goToAdmin = (row) => (
-  <Button
-    light
-    flat
-    onClick={() => {
-      authSession
-      .setAsyncItem('community', toSnakeCase(row))
-      .then(() => {
-        const baseUrl = process.env.REACT_APP_DOMAIN_ADMIN || 'http://app.bonde.devel:5001'
-        window.open(baseUrl, '_self')
-      })
-    }}
-  >
-    <IconPage size={18} color='black' />
-  </Button>
+  <Spacing margin={{ left: 12, top: 12 }}>
+    <button onClick={() => {
+        authSession
+        .setAsyncItem('community', toSnakeCase(row))
+        .then(() => {
+          const baseUrl = process.env.REACT_APP_DOMAIN_ADMIN || 'http://app.bonde.devel:5001'
+          window.open(baseUrl, '_self')
+        })
+      }}
+    >
+      <IconPage size={18} color='black' />
+    </button>
+  </Spacing>
 )
 
 const goToCanary = (row) => (
-  <Button
-    light
-    flat
-  >
+  <Spacing margin={{ left: 12, top: 12 }}>
     <Link to={`/admin/${row.id}/chatbot`}>
       <IconBot size={18} color='black' />
     </Link>
-  </Button>
+  </Spacing>
+)
+
+const RenderText = ({ row }) => (
+  <Fragment>
+    <Flexbox horizontal> 
+      <div>
+        <Text
+          fontSize={16}
+          fontWeight={900}
+          lineHeight={1.25}
+        >
+          {row.name}
+        </Text>
+        <Text
+          fontSize={13}
+          lineHeight={1.54}
+          color='#4a4a4a'
+        >
+          {row.description || row.city}
+        </Text>
+      </div>
+      <Flexbox horizontal> 
+        { goToCanary(row) }
+        { goToAdmin(row) }
+      </Flexbox>
+    </Flexbox>
+  </Fragment>
 )
 
 const RenderText = ({ row }) => (
@@ -74,7 +95,6 @@ const columns = [
     render: RenderText
   }
 ]
-/* eslint-enable */
 
 const CommunitiesGadget = ({ t, loading, communities }) => (
   <TableCardGadget
