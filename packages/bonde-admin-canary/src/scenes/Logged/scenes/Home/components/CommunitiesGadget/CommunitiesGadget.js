@@ -58,7 +58,10 @@ const RenderText = ({ row }) => (
         </Text>
       </div>
       <Flexbox horizontal>
-        { goToCanary(row) }
+        {row.id === '73' && (
+          goToCanary(row)
+        )}
+
         { goToAdmin(row) }
       </Flexbox>
     </Flexbox>
