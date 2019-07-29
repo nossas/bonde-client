@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const IconBot = ({ size, color }) => (
   <svg
@@ -14,12 +15,17 @@ const IconBot = ({ size, color }) => (
     <path d='M15.082 3.23944H13.3613V7.30082H15.082V3.23944Z' />
     <path d='M1.72068 3.32037H0V7.21886H1.72068V3.32037Z' />
     <path d='M22.2168 3.32037H20.4961V7.21886H22.2168V3.32037Z' />
-</svg>
+  </svg>
 )
 
 IconBot.defaultProps = {
   size: 20,
-  color: 'white' 
+  color: 'white'
+}
+
+IconBot.propTypes = {
+  size: PropTypes.number,
+  color: PropTypes.string
 }
 
 export default IconBot

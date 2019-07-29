@@ -35,6 +35,7 @@ import userCommunitiesQuery from './query'
 
 // const ShowCommunityWithRouter = withRouter(ShowCommunity)
 
+/* eslint-disable */
 const CommunitiesDropdown = ({ t, communities, path }) => {
   return (
     <Dropdown
@@ -62,7 +63,8 @@ CommunitiesDropdown.propTypes = {
     id: PropTypes.number,
     name: PropTypes.string
   })),
-  t: PropTypes.func
+  t: PropTypes.func,
+  path: PropTypes.any
 }
 
 export default ({ t , props }) => (
@@ -82,3 +84,4 @@ export default ({ t , props }) => (
     }}
   </Query>
 )
+/* eslint-disable */

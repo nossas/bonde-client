@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const IconPage = ({ size, color }) => (
   <svg
@@ -16,7 +17,12 @@ const IconPage = ({ size, color }) => (
 
 IconPage.defaultProps = {
   size: 20,
-  color: 'white' 
+  color: 'white'
+}
+
+IconPage.propTypes = {
+  size: PropTypes.number,
+  color: PropTypes.string
 }
 
 export default IconPage

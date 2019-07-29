@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import {
-  IconBot,
+  IconBot
   // TODO: add import icons
   // IconSettings,
   // IconPage,
@@ -12,10 +12,10 @@ import { Flexbox, Spacing } from 'bonde-styleguide'
 
 const items = [
   // TODO: add routes, icons and activeHandle
-  // { name: 'chart', path: '/', icon: <IconChart color='white' />},
-  // { name: 'pages', path: '/', icon:  <IconPage color='white' />},
-  { name: 'chatbot', path: `/admin/${1}/chatbot`, icon: <IconBot color='white'/>},
-  // { name: 'settings', path: '/', icon: <IconSettings color='white'/>}
+  // { name: 'chart', path: '/', icon: <IconChart color='white' /> },
+  // { name: 'pages', path: '/', icon:  <IconPage color='white' /> },
+  { name: 'chatbot', path: `/admin/${1}/chatbot`, icon: <IconBot color='white'/> }
+  // { name: 'settings', path: '/', icon: <IconSettings color='white'/> }
 ]
 
 const MenuCommunity = () => (

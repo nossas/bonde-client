@@ -1,8 +1,9 @@
 
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const IconSettings = ({ size, color }) => (
-  <svg 
+  <svg
     width={size}
     height={size}
     viewBox='0 0 22 21'
@@ -16,7 +17,12 @@ const IconSettings = ({ size, color }) => (
 
 IconSettings.defaultProps = {
   size: 20,
-  color: 'white' 
+  color: 'white'
+}
+
+IconSettings.propTypes = {
+  size: PropTypes.number,
+  color: PropTypes.string
 }
 
 export default IconSettings

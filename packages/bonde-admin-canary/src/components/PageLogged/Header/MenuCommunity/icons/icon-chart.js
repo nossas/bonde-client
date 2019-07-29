@@ -1,6 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-const IconChart = ({ size, color  }) => (
+const IconChart = ({ size, color }) => (
   <svg
     width={size}
     height={size}
@@ -17,7 +18,12 @@ const IconChart = ({ size, color  }) => (
 
 IconChart.defaultProps = {
   size: 20,
-  color: 'white' 
+  color: 'white'
+}
+
+IconChart.propTypes = {
+  size: PropTypes.number,
+  color: PropTypes.string
 }
 
 export default IconChart

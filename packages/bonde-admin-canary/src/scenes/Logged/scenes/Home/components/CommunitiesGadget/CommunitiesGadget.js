@@ -17,13 +17,13 @@ import { IconBot, IconPage } from '../../../../../../components/PageLogged/Heade
 const goToAdmin = (row) => (
   <Spacing margin={{ left: 12, top: 12 }}>
     <button onClick={() => {
-        authSession
+      authSession
         .setAsyncItem('community', toSnakeCase(row))
         .then(() => {
           const baseUrl = process.env.REACT_APP_DOMAIN_ADMIN || 'http://app.bonde.devel:5001'
           window.open(baseUrl, '_self')
         })
-      }}
+    }}
     >
       <IconPage size={18} color='black' />
     </button>
@@ -40,7 +40,7 @@ const goToCanary = (row) => (
 
 const RenderText = ({ row }) => (
   <Fragment>
-    <Flexbox horizontal> 
+    <Flexbox horizontal>
       <div>
         <Text
           fontSize={16}
@@ -57,7 +57,7 @@ const RenderText = ({ row }) => (
           {row.description || row.city}
         </Text>
       </div>
-      <Flexbox horizontal> 
+      <Flexbox horizontal>
         { goToCanary(row) }
         { goToAdmin(row) }
       </Flexbox>
