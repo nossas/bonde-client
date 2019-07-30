@@ -4,54 +4,60 @@ import { Link } from 'react-router-dom'
 import { Dropdown, DropdownItem } from 'bonde-styleguide'
 import { Query } from 'react-apollo'
 import userCommunitiesQuery from './query'
-// import { withRouter } from 'react-router'
+import { withRouter } from 'react-router'
 
-// const ShowCommunity = ({ match }) => {
-//   return (
-//     <Query query={userCommunitiesQuery}>
-//       {({ data, loading, error }) => {
-//         if (loading) return 'Loading...'
-//         if (error) return 'Error!'
-
-//         const myCommunity = data.userCommunities.edges.map(i => {
-//           let myCommunityName
-//           if (i.node.id === match.params.id) {
-//             myCommunityName = i.node.name
-//             return myCommunityName
-//           }
-//           return myCommunityName
-//         })
-
-//         // TODO: add image community
-//         return (
-//           <div>
-//             {myCommunity}
-//           </div>
-//         )
-//       }}
-//     </Query>
-//   )
-// }
-
-// const ShowCommunityWithRouter = withRouter(ShowCommunity)
-
-/* eslint-disable */
-const CommunitiesDropdown = ({ t, communities, path }) => {
+const ShowCommunity = ({ match }) => {
   return (
-    <Dropdown
-      label={t('dropdown.label.communities')}
-      disabled={!(communities.length > 0)}
-    >
-      {communities.map(c => (
+    <Query query={userCommunitiesQuery}>
+      {({ data, loading, error }) => {
+        if (loading) return 'Loading...'
+        if (error) return 'Error!'
+
+        const myCommunity = data.userCommunities.edges.map(i => {
+          let myCommunityName
+          if (i.node.id === match.params.id) {
+            myCommunityName = i.node.name
+            return myCommunityName
+          }
+          return myCommunityName
+        })
+
+        // TODO: add image community
+        return (
+          <div>
+
+            {myCommunity}
+          </div>
+        )
+      }}
+    </Query>
+  )
+}
+
+const ShowCommunityWithRouter = withRouter(ShowCommunity)
+
+const CommunitiesDropdown = ({ t, loading, communities }) => (
+  <Dropdown
+    loading={loading}
+    label={<ShowCommunityWithRouter />}
+    disabled={!(communities.length > 0)}
+  >
+    {communities.map(c => {
+      return (
         <DropdownItem
+          key={c.id}
           to={`/admin/${c.id}/chatbot`}
           component={Link}
         >
           {c.name}
         </DropdownItem>
-      ))}
-    </Dropdown>
-  )
+      )
+    })}
+  </Dropdown>
+)
+
+ShowCommunity.propTypes = {
+  match: PropTypes.object
 }
 
 CommunitiesDropdown.defaultProps = {
@@ -60,14 +66,14 @@ CommunitiesDropdown.defaultProps = {
 
 CommunitiesDropdown.propTypes = {
   communities: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string
-  })),
-  t: PropTypes.func,
-  path: PropTypes.any
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired
+  })).isRequired,
+  loading: PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired
 }
 
-export default ({ t , props }) => (
+const CommunitiesDropdownQuery = ({ t, props }) => ( //eslint-disable-line
   <Query query={userCommunitiesQuery}>
     {({ data, loading, error }) => {
       if (loading) return 'Loading...'
@@ -84,4 +90,5 @@ export default ({ t , props }) => (
     }}
   </Query>
 )
-/* eslint-disable */
+
+export default CommunitiesDropdownQuery
