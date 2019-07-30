@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import urljoin from 'url-join'
 import { Link } from 'react-router-dom'
 import { Dropdown, DropdownItem } from 'bonde-styleguide'
 import { Query } from 'react-apollo'
@@ -36,7 +37,7 @@ const ShowCommunity = ({ match }) => {
 
 const ShowCommunityWithRouter = withRouter(ShowCommunity)
 
-const CommunitiesDropdown = ({ t, loading, communities }) => (
+const CommunitiesDropdown = ({ t, loading, communities, path }) => (
   <Dropdown
     loading={loading}
     label={<ShowCommunityWithRouter />}
@@ -45,8 +46,8 @@ const CommunitiesDropdown = ({ t, loading, communities }) => (
     {communities.map(c => {
       return (
         <DropdownItem
-          key={c.id}
-          to={`/admin/${c.id}/chatbot`}
+          key={`communities-dropdown-${c.i}`}
+          to={path && urljoin(path, c.id.toString())}
           component={Link}
         >
           {c.name}
@@ -65,6 +66,7 @@ CommunitiesDropdown.defaultProps = {
 }
 
 CommunitiesDropdown.propTypes = {
+  path: PropTypes.string.isRequired,
   communities: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired
