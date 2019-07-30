@@ -25,10 +25,7 @@ const ShowCommunity = ({ match }) => {
 
         // TODO: add image community
         return (
-          <div>
-
-            {myCommunity}
-          </div>
+          <div>{myCommunity}</div>
         )
       }}
     </Query>
@@ -37,7 +34,7 @@ const ShowCommunity = ({ match }) => {
 
 const ShowCommunityWithRouter = withRouter(ShowCommunity)
 
-const CommunitiesDropdown = ({ t, loading, communities, path }) => (
+const CommunitiesDropdown = ({ loading, communities, path }) => (
   <Dropdown
     loading={loading}
     label={<ShowCommunityWithRouter />}
@@ -75,22 +72,4 @@ CommunitiesDropdown.propTypes = {
   t: PropTypes.func.isRequired
 }
 
-const CommunitiesDropdownQuery = ({ t, props }) => ( //eslint-disable-line
-  <Query query={userCommunitiesQuery}>
-    {({ data, loading, error }) => {
-      if (loading) return 'Loading...'
-      if (error) return 'Error!'
-
-      return (
-        <CommunitiesDropdown
-          t={t}
-          loading={loading}
-          communities={data && data.userCommunities ? data.userCommunities.edges.map(i => i.node) : []}
-          {...props}
-        />
-      )
-    }}
-  </Query>
-)
-
-export default CommunitiesDropdownQuery
+export default CommunitiesDropdown
