@@ -82,7 +82,8 @@
     "slate-editor": "5.1.1",
     "slate-plain-serializer": "^0.6.33",
     "slate-react": "0.18.0",
-    "string": "^3.3.3"
+    "string": "^3.3.3",
+    "snyk": "^1.161.1"
   },
   "engines": {
     "node": ">=8"
@@ -96,7 +97,9 @@
     "coverage": "npm run test -- --watchAll=false --coverage",
     "release": "standard-version",
     "styleguide": "styleguidist server",
-    "styleguide:build": "styleguidist build"
+    "styleguide:build": "styleguidist build",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -109,5 +112,6 @@
   ],
   "devDependencies": {
     "react-styleguidist": "^8.0.6"
-  }
+  },
+  "snyk": true
 }
