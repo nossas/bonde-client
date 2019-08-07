@@ -51,14 +51,17 @@
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "sinon": "^7.2.3",
-    "slate-editor": "^5.1.0"
+    "slate-editor": "^5.1.0",
+    "snyk": "^1.189.0"
   },
   "scripts": {
     "prepare": "yarn build",
     "dev": "yarn build --watch",
     "build": "NODE_ENV=production babel src/lib --out-dir lib --copy-files --ignore __tests__,spec.js,test.js,__snapshots__",
     "test": "cross-env NODE_ENV=test ava",
-    "coverage": "nyc --reporter=lcov ava"
+    "coverage": "nyc --reporter=lcov ava",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "babel": {
     "presets": [
@@ -127,5 +130,6 @@
         "jsx"
       ]
     }
-  }
+  },
+  "snyk": true
 }
