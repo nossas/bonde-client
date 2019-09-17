@@ -1,6 +1,6 @@
 {
     "name": "bonde-diagram",
-    "version": "0.15.1-alpha.10",
+    "version": "0.15.1-alpha.11",
     "main": "dist/pkg/index.js",
     "types": "dist/pkg/index.d.ts",
     "files": [
@@ -14,7 +14,7 @@
         "@types/react": "16.9.2",
         "@types/react-dom": "16.9.0",
         "@types/react-textarea-autosize": "^4.3.4",
-        "bonde-styleguide": "^0.15.1-alpha.10",
+        "bonde-styleguide": "^0.15.1-alpha.11",
         "react": "^16.9.0",
         "react-dom": "^16.9.0",
         "react-scripts": "3.1.1",
