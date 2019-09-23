@@ -21,7 +21,7 @@
     "apollo-link-context": "^1.0.18",
     "apollo-link-http": "^1.5.15",
     "axios": "0.19.0",
-    "bonde-webpage": "^0.15.1-alpha.10",
+    "bonde-webpage": "^0.15.1-alpha.14",
     "chain-function": "^1.0.0",
     "classnames": "2.2.6",
     "dotenv": "^4.0.0",
@@ -82,5 +82,5 @@
   "engines": {
     "node": ">=8"
   },
-  "version": "0.15.1-alpha.10"
+  "version": "0.15.1-alpha.14"
 }

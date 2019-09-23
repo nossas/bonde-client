@@ -1,6 +1,6 @@
 {
   "name": "bonde-webpage",
-  "version": "0.15.1-alpha.10",
+  "version": "0.15.1-alpha.14",
   "private": false,
   "license": "AGPL-3.0",
   "main": "lib/index.js",
