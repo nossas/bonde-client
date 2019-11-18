@@ -3,18 +3,18 @@ workspace:
 
 pipeline:
   unit-tests:
-    image: node:10-alpine
+    image: node:12-alpine
     commands:
-      - yarn
-      - yarn lerna bootstrap
-      - yarn lerna run lint
-      - yarn lerna run coverage
-      - cd packages/bonde-public && rm -rf node_modules && yarn
+      - apk --update add curl
+      - curl -L https://unpkg.com/@pnpm/self-installer | node
+      - pnpm i
+      - pnpm m run test
+      - pnpm m run coverage
     when:
       event: [push, tag]
 
   build:
-    image: node:10-alpine
+    image: node:12-alpine
     environment:
       - NODE_ENV=production
       - REACT_APP_DOMAIN_ADMIN=https://app.staging.bonde.org
@@ -26,10 +26,12 @@ pipeline:
       - REACT_APP_DOMAIN_BOT=https://chatbot.staging.bonde.org
       - REACT_APP_AWS_BUCKET=bonde-assets-staging
     commands:
+      - apk --update add curl
+      - curl -L https://unpkg.com/@pnpm/self-installer | node
       - export REACT_APP_PAGARME_KEY=$STAG_PAGARME_KEY
       - export REACT_APP_SENTRY_DSN_PUBLIC=$STAG_SENTRY_DSN_PUBLIC
       - export REACT_APP_HASURA_SECRET=$STAG_HASURA_KEY
-      - yarn lerna run build
+      - pnpm m run build
     secrets: [ stag_pagarme_key, stag_sentry_dsn_public, stag_hasura_key ]
     group: build
     when:
@@ -207,7 +209,7 @@ pipeline:
       branch: [develop]
 
   production-build:
-    image: node:10-alpine
+    image: node:12-alpine
     environment:
       - NODE_ENV=production
       - REACT_APP_DOMAIN_ADMIN=https://app.bonde.org

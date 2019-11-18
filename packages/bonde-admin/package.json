@@ -62,7 +62,7 @@
     "react-router-config": "^1.0.0-beta.4",
     "react-router-dom": "4.3.1",
     "react-s3-uploader": "4.8.0",
-    "react-scripts": "3.0.1",
+    "react-scripts": "3.2.0",
     "react-select-plus": "1.2.0",
     "react-test-renderer": "16.7.0",
     "react-toastify": "5.3.2",
