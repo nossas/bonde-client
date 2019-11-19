@@ -1,7 +1,6 @@
 /* eslint-env browser */
 import Enzyme from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-
 // mock png
 import requireHacker from 'require-hacker'
 

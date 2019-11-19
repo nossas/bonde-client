@@ -3,6 +3,7 @@
   "license": "AGPL-3.0",
   "private": true,
   "dependencies": {
+    "@types/react": "^16.9.11",
     "apollo-cache-inmemory": "^1.2.5",
     "apollo-client": "^2.6.0",
     "apollo-link-context": "^1.0.8",

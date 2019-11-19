@@ -24,11 +24,16 @@
     "@slate-editor/list-plugin": "5.1.0",
     "@slate-editor/strikethrough-plugin": "5.1.0",
     "@slate-editor/underline-plugin": "5.1.0",
+    "@types/classnames": "^2.2.9",
+    "@types/immutable": "^3.8.7",
+    "@types/react": "^16.9.11",
+    "@types/uuid": "^3.4.6",
     "axios": "^0.18.0",
     "axios-mock-adapter": "^1.16.0",
     "basscss-sass": "^4.0.0",
     "bonde-webpage": "^0.15.3-alpha.4",
     "chai": "^4.2.0",
+    "classnames": "^2.2.6",
     "cpf_cnpj": "^0.2.0",
     "cross-storage": "^1.0.0",
     "downloadjs": "^1.4.7",
@@ -40,6 +45,7 @@
     "exports-loader": "^0.7.0",
     "font-awesome": "^4.7.0",
     "format-number": "^3.0.0",
+    "immutable": "^4.0.0-rc.12",
     "keycode": "^2.2.0",
     "node-sass": "^4.11.0",
     "prop-types": "^15.6.2",
@@ -81,7 +87,8 @@
     "slate-editor": "5.1.1",
     "slate-plain-serializer": "^0.6.33",
     "slate-react": "0.18.0",
-    "string": "^3.3.3"
+    "string": "^3.3.3",
+    "uuid": "^3.3.3"
   },
   "engines": {
     "node": ">=8"

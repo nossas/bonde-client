@@ -160,6 +160,7 @@ importers:
       uuid: ^3.3.3
   packages/bonde-admin-canary:
     dependencies:
+      '@types/react': 16.9.11
       apollo-cache-inmemory: 1.6.3_graphql@0.13.2
       apollo-client: 2.6.4_graphql@0.13.2
       apollo-link-context: 1.0.19_graphql@0.13.2
@@ -215,6 +216,7 @@ importers:
       react-test-renderer: 16.12.0_react@16.12.0
       require-hacker: 3.0.1
     specifiers:
+      '@types/react': ^16.9.11
       apollo-cache-inmemory: ^1.2.5
       apollo-client: ^2.6.0
       apollo-link-context: ^1.0.8
@@ -360,10 +362,11 @@ importers:
       '@zeit/next-sass': 1.0.1_node-sass@4.13.0
       apollo-cache-inmemory: 1.6.3_graphql@14.5.8
       apollo-client: 2.6.4_graphql@14.5.8
+      apollo-link: 1.2.13_graphql@14.5.8
       apollo-link-context: 1.0.19_graphql@14.5.8
       apollo-link-http: 1.5.16_graphql@14.5.8
       axios: 0.19.0
-      bonde-webpage: 0.15.3_react-dom@16.8.6+react@16.8.6
+      bonde-webpage: 'link:../bonde-webpage'
       chain-function: 1.0.1
       classnames: 2.2.6
       dotenv: 4.0.0
@@ -427,6 +430,7 @@ importers:
       '@zeit/next-sass': ^1.0.1
       apollo-cache-inmemory: ^1.6.2
       apollo-client: ^2.6.3
+      apollo-link: ^1.2.13
       apollo-link-context: ^1.0.18
       apollo-link-http: ^1.5.15
       axios: 0.19.0
@@ -3688,7 +3692,7 @@ packages:
       '@babel/plugin-transform-template-literals': 7.4.4_@babel+core@7.2.2
       '@babel/plugin-transform-typeof-symbol': 7.2.0_@babel+core@7.2.2
       '@babel/plugin-transform-unicode-regex': 7.7.0_@babel+core@7.2.2
-      browserslist: 4.7.2
+      browserslist: 4.7.3
       invariant: 2.2.4
       js-levenshtein: 1.1.6
       semver: 5.7.1
@@ -4519,7 +4523,6 @@ packages:
     peerDependencies:
       closest: ^0.0.1
       lodash: 4.*
-      mathjs: '*'
       react: 16.*
     resolution:
       integrity: sha512-NPdSoepUG53Xxh7IFfw3QV2aSNAbCSsdaYV0BhrpXy9PwpsB5uS7rVLpXEa9TLOpfbQiWKxZOsDwsz6RRtZwTQ==
@@ -4549,7 +4552,6 @@ packages:
     peerDependencies:
       closest: ^0.0.1
       lodash: 4.*
-      mathjs: '*'
       react: 16.*
       resize-observer-polyfill: ^1.5.1
     resolution:
@@ -4580,11 +4582,8 @@ packages:
     peerDependencies:
       '@emotion/core': ^10.*
       '@emotion/styled': ^10.*
-      closest: '*'
       lodash: 4.*
-      mathjs: '*'
       react: 16.*
-      resize-observer-polyfill: '*'
     resolution:
       integrity: sha512-PfcM3RVBRPA1r4XcSeEgATH178oh5XkBK9C/A7DMepo7ttQFWZLcNJ3uedX9q/sChjcSIutNEuX1EW5EEY4BnQ==
   /@projectstorm/react-diagrams-routing/6.0.1-beta.5_d4551fd42919d79271ae5c36dff377a2:
@@ -4619,16 +4618,11 @@ packages:
       react: 16.12.0
     dev: false
     peerDependencies:
-      '@emotion/core': '*'
-      '@emotion/styled': '*'
-      closest: '*'
       dagre: ^0.8.4
       lodash: 4.*
-      mathjs: '*'
       pathfinding: ^0.4.18
       paths-js: ^0.4.9
       react: 16.*
-      resize-observer-polyfill: '*'
     resolution:
       integrity: sha512-ldnPke/i1Cx2hZW4kGcBdnDxPOdbKtiCBDT3J22nJ92kgGGhAC8SdyVa5EmtCZNax0ggyiwuQNoUr3GOtaHteg==
   /@projectstorm/react-diagrams/6.0.1-beta.5_d4551fd42919d79271ae5c36dff377a2:
@@ -4657,16 +4651,7 @@ packages:
       '@projectstorm/react-diagrams-routing': 6.0.1-beta.5_react@16.12.0
     dev: false
     peerDependencies:
-      '@emotion/core': '*'
-      '@emotion/styled': '*'
-      closest: '*'
-      dagre: '*'
-      lodash: '*'
-      mathjs: '*'
-      pathfinding: '*'
-      paths-js: '*'
       react: '*'
-      resize-observer-polyfill: '*'
     resolution:
       integrity: sha512-KmqwSmSFcyJUPtBbnXXol0dzs/ADTmbqnjjiQrMPlIk6T8pePlHnqlKI+Fcv4eKztmY3AyF/1QrE2KKsJfY69g==
   /@sinonjs/commons/1.6.0:
@@ -4705,8 +4690,8 @@ packages:
       '@slate-editor/components': 5.1.0
       classnames: 2.2.6
       exenv: 1.2.2
-      react: 16.12.0
-      react-fontawesome: 1.7.1_react@16.12.0
+      react: 16.8.6
+      react-fontawesome: 1.7.1_react@16.8.6
     dev: false
     resolution:
       integrity: sha512-bQrwVotp6ryZBgJOT7EY/OxDiD6Esy3G/2p/Q9fGhr7zo8vNnqPksaTESmzch6Hgck6bdXXXK2GPMI8VRxmQoA==
@@ -4714,8 +4699,8 @@ packages:
     dependencies:
       '@slate-editor/utils': 5.1.0
       classnames: 2.2.6
-      react: 16.12.0
-      react-fontawesome: 1.7.1_react@16.12.0
+      react: 16.8.6
+      react-fontawesome: 1.7.1_react@16.8.6
     dev: false
     resolution:
       integrity: sha512-18ppqv813jEAsYXVuYopLis0DwLc5pkdprttUpvYdk9X8YviiEFYdx/M6csvQI49zKlpkmA5nPjeJvAhA2P4rw==
@@ -4725,10 +4710,10 @@ packages:
       classnames: 2.2.6
       exenv: 1.2.2
       prop-types: 15.7.2
-      react: 16.12.0
+      react: 16.8.6
       react-color: 2.14.1
       react-draggable: 3.3.2
-      react-fontawesome: 1.7.1_react@16.12.0
+      react-fontawesome: 1.7.1_react@16.8.6
     dev: false
     resolution:
       integrity: sha512-c6PCXOkdjP8TrQdryQzRVWklFr5sS5TqfOvpbpkpixoygqN4TyBH/8fhhJHScnVKy8/nzSIH27HuP5c1EbOkqw==
@@ -4737,7 +4722,7 @@ packages:
       '@slate-editor/utils': 5.1.0
       classnames: 2.2.6
       exenv: 1.2.2
-      react: 16.12.0
+      react: 16.8.6
     dev: false
     resolution:
       integrity: sha512-M+Qbgw6MXBGOwTFZtA1b+C1mX9TOaSjePXkFguO4cJAsmPAUKDESDxAd9j+3IbAElFv5rieMcknSKtyk20/d9A==
@@ -4747,8 +4732,8 @@ packages:
       '@slate-editor/utils': 5.1.0
       classnames: 2.2.6
       exenv: 1.2.2
-      react: 16.12.0
-      react-fontawesome: 1.7.1_react@16.12.0
+      react: 16.8.6
+      react-fontawesome: 1.7.1_react@16.8.6
     dev: false
     resolution:
       integrity: sha512-cF5ieN+mKs8vSv3j/XaccmGPL3nm9/jlsTqQo0UDUSr2nCVcIKCb2PKObsELW0r0Tg/ISIPSkBcIHcuAG/oVZw==
@@ -4756,7 +4741,7 @@ packages:
     dependencies:
       '@slate-editor/utils': 5.1.0
       classnames: 2.2.6
-      react: 16.12.0
+      react: 16.8.6
     dev: false
     resolution:
       integrity: sha512-R+HL7mIOMLxsqZypNKqOzPcFRmSnZHRSyYij4yemM8EVaDIDlmnZpqPdVDcjODMAjIc6jIA2XFCYogbKFmy+0A==
@@ -4765,7 +4750,7 @@ packages:
       '@slate-editor/utils': 5.1.0
       classnames: 2.2.6
       exenv: 1.2.2
-      react: 16.12.0
+      react: 16.8.6
     dev: false
     resolution:
       integrity: sha512-fVVAKOvk91YtWBwVRybpHCfVqKDMD0GOX5ETg19QYqFGBVAoKCTfeJZR7h8MTxhT6XLWyLZJJw9mTfxk79Hcnw==
@@ -4774,8 +4759,8 @@ packages:
       '@slate-editor/components': 5.1.0
       classnames: 2.2.6
       exenv: 1.2.2
-      react: 16.12.0
-      react-fontawesome: 1.7.1_react@16.12.0
+      react: 16.8.6
+      react-fontawesome: 1.7.1_react@16.8.6
     dev: false
     resolution:
       integrity: sha512-ZcEAGoG5obvMdhe0Ry00zP8uSm80M/B8oUX4Q2xWI90pV6QPn9mrAINjJ7ejiRmWDf65hLHfD7fmz+c5bZWQLQ==
@@ -4785,9 +4770,9 @@ packages:
       '@slate-editor/utils': 5.1.0
       classnames: 2.2.6
       exenv: 1.2.2
-      react: 16.12.0
-      react-dom: 16.7.0_react@16.12.0
-      react-fontawesome: 1.7.1_react@16.12.0
+      react: 16.8.6
+      react-dom: 16.8.6_react@16.8.6
+      react-fontawesome: 1.7.1_react@16.8.6
       react-s3-uploader: 4.8.0
     dev: false
     resolution:
@@ -4797,8 +4782,8 @@ packages:
       '@slate-editor/components': 5.1.0
       '@slate-editor/utils': 5.1.0
       classnames: 2.2.6
-      react: 16.12.0
-      react-fontawesome: 1.7.1_react@16.12.0
+      react: 16.8.6
+      react-fontawesome: 1.7.1_react@16.8.6
     dev: false
     resolution:
       integrity: sha512-4edX9hwvK+rXBMMgDWw3AbEb4zSWc4Gb/E59+WLbwQN7mCxRV13+Fbt/aXGY3EIOzyGOIeaEFQe8u1J2EDl40Q==
@@ -4808,8 +4793,8 @@ packages:
       '@slate-editor/utils': 5.1.0
       classnames: 2.2.6
       exenv: 1.2.2
-      react: 16.12.0
-      react-fontawesome: 1.7.1_react@16.12.0
+      react: 16.8.6
+      react-fontawesome: 1.7.1_react@16.8.6
     dev: false
     resolution:
       integrity: sha512-XzM2ukJq6D2hFEg1dR6FtgA5keZ2NFaekwTzGub086svZPMwTnzWtAsVn0x7xGXMUupX34RM3RnDdhGOqLdiNw==
@@ -4818,8 +4803,8 @@ packages:
       '@slate-editor/components': 5.1.0
       classnames: 2.2.6
       exenv: 1.2.2
-      react: 16.12.0
-      react-fontawesome: 1.7.1_react@16.12.0
+      react: 16.8.6
+      react-fontawesome: 1.7.1_react@16.8.6
     dev: false
     resolution:
       integrity: sha512-nuZ13CSRpF2xnzuR25y+U6TsJ2wRmjKrNT7GIaYDemLXahlVMYqjR6u4eO3o4VfYjGQH5zEGfnp88LqaK9nFZw==
@@ -4827,8 +4812,8 @@ packages:
     dependencies:
       '@slate-editor/components': 5.1.0
       json-beautify: 1.1.1
-      react: 16.12.0
-      react-fontawesome: 1.7.1_react@16.12.0
+      react: 16.8.6
+      react-fontawesome: 1.7.1_react@16.8.6
     dev: false
     resolution:
       integrity: sha512-g+zDQUw5/h08qHh4yiNxX5uNvF0pdQYoh4H37B8UAHnmKwgeNplwXpGZl1uJTmhX4Jo9CFhRoMYNOrplcg1q3w==
@@ -4836,16 +4821,16 @@ packages:
     dependencies:
       '@slate-editor/components': 5.1.0
       classnames: 2.2.6
-      react: 16.12.0
-      react-fontawesome: 1.7.1_react@16.12.0
+      react: 16.8.6
+      react-fontawesome: 1.7.1_react@16.8.6
     dev: false
     resolution:
       integrity: sha512-9hktr0CMXRth2uoq9iGfxSbiLXPwlxzlsJXkLKSjgKaYjLHeKUUi5qhTr3U6EVJxWgGV649R1BfAPCQrEjlt5Q==
   /@slate-editor/toggle-readonly/5.1.0:
     dependencies:
       '@slate-editor/components': 5.1.0
-      react: 16.12.0
-      react-fontawesome: 1.7.1_react@16.12.0
+      react: 16.8.6
+      react-fontawesome: 1.7.1_react@16.8.6
     dev: false
     resolution:
       integrity: sha512-CH+RyJEI09W2maK4G8j0HcPWJLsMDlDwMIDWIv64CU437OZzCsOGBZzxOdR81Kybn7iu51ZQyM7aDLu6HHKZdQ==
@@ -4854,14 +4839,14 @@ packages:
       '@slate-editor/components': 5.1.0
       '@slate-editor/utils': 5.1.0
       classnames: 2.2.6
-      react: 16.12.0
-      react-fontawesome: 1.7.1_react@16.12.0
+      react: 16.8.6
+      react-fontawesome: 1.7.1_react@16.8.6
     dev: false
     resolution:
       integrity: sha512-+f/fV34KsdcOUuXOfc2sMCb4RpS01MX8crNWgmncfwu7M7p3iW7GURK8ei7bcZ9bsEMQWqR/laujnayP846VaQ==
   /@slate-editor/utils/5.1.0:
     dependencies:
-      react: 16.12.0
+      react: 16.8.6
     dev: false
     resolution:
       integrity: sha512-lVv9DfqCRV0alLnPH8N+tZUhu8UNEKlaRkiwVDVV2Z54LDHVuKGC0yFxMKRQOeex2n2S2cbTXrB8I7YOnBqhHw==
@@ -5284,7 +5269,6 @@ packages:
     peerDependencies:
       '@typescript-eslint/parser': ^2.0.0
       eslint: ^5.0.0 || ^6.0.0
-      typescript: '*'
     peerDependenciesMeta:
       typescript:
         optional: true
@@ -5335,7 +5319,6 @@ packages:
       node: ^8.10.0 || ^10.13.0 || >=11.10.1
     peerDependencies:
       eslint: '*'
-      typescript: '*'
     resolution:
       integrity: sha512-jZ05E4SxCbbXseQGXOKf3ESKcsGxT8Ucpkp1jiVp55MGhOvZB2twmWKf894PAuVQTCgbPbJz9ZbRDqtUWzP8xA==
   /@typescript-eslint/experimental-utils/2.8.0_eslint@6.6.0+typescript@3.7.2:
@@ -5392,7 +5375,6 @@ packages:
       node: ^8.10.0 || ^10.13.0 || >=11.10.1
     peerDependencies:
       eslint: ^5.0.0 || ^6.0.0
-      typescript: '*'
     resolution:
       integrity: sha512-NseXWzhkucq+JM2HgqAAoKEzGQMb5LuTRjFPLQzGIdLthXMNUfuiskbl7QSykvWW6mvzCtYbw1fYWGa2EIaekw==
   /@typescript-eslint/parser/2.8.0_eslint@6.6.0+typescript@3.7.2:
@@ -5442,8 +5424,6 @@ packages:
     dev: false
     engines:
       node: ^8.10.0 || ^10.13.0 || >=11.10.1
-    peerDependencies:
-      typescript: '*'
     peerDependenciesMeta:
       typescript:
         optional: true
@@ -7483,7 +7463,6 @@ packages:
       webfontloader: 1.6.28
     dev: false
     peerDependencies:
-      '@babel/core': '*'
       react: '*'
       react-dom: '*'
     resolution:
@@ -7529,54 +7508,6 @@ packages:
       redux-thunk: 2.3.0
       sinon: 7.5.0
       slate-editor: 5.1.1_react-dom@16.7.0
-    dev: false
-    peerDependencies:
-      prop-types: '*'
-      react: '*'
-      react-dom: '*'
-    resolution:
-      integrity: sha512-kN6qBZLRhqRCo8MXF+vnx7CJnpbDkKuZ8YtVkg9bWCAbg23NBT792wYQ9xS9/YgWQMJfSXHABnL5roFX+NXRtw==
-  /bonde-webpage/0.15.3_react-dom@16.8.6+react@16.8.6:
-    dependencies:
-      '@babel/core': 7.2.2
-      '@babel/plugin-proposal-class-properties': 7.2.3_@babel+core@7.2.2
-      '@babel/plugin-proposal-decorators': 7.2.3_@babel+core@7.2.2
-      '@babel/plugin-proposal-object-rest-spread': 7.2.0_@babel+core@7.2.2
-      '@babel/plugin-syntax-dynamic-import': 7.2.0_@babel+core@7.2.2
-      '@babel/plugin-transform-classes': 7.2.2_@babel+core@7.2.2
-      '@babel/plugin-transform-destructuring': 7.2.0_@babel+core@7.2.2
-      '@babel/plugin-transform-flow-strip-types': 7.2.3_@babel+core@7.2.2
-      '@babel/plugin-transform-react-constant-elements': 7.2.0_@babel+core@7.2.2
-      '@babel/plugin-transform-react-display-name': 7.2.0_@babel+core@7.2.2
-      '@babel/plugin-transform-runtime': 7.2.0_@babel+core@7.2.2
-      '@babel/preset-env': 7.2.3_@babel+core@7.2.2
-      '@babel/preset-react': 7.0.0_@babel+core@7.2.2
-      '@babel/preset-typescript': 7.1.0_@babel+core@7.2.2
-      '@babel/runtime': 7.2.0
-      apollo-client: 2.6.4_graphql@14.5.8
-      axios: 0.18.1
-      babel-loader: 8.0.5_@babel+core@7.2.2
-      babel-plugin-dynamic-import-node: 2.2.0
-      babel-plugin-macros: 2.4.4
-      babel-plugin-transform-react-remove-prop-types: 0.4.21
-      basscss-sass: 4.0.0
-      classnames: 2.2.6
-      draft-js: 0.10.5_react-dom@16.8.6+react@16.8.6
-      exenv: 1.2.2
-      format-number: 3.0.0
-      graphql: 14.5.8
-      immutable: 4.0.0-rc.12
-      node-sass: 4.13.0
-      react-apollo: 1.4.15_7f61b9dd875bc232b7172c966555f568
-      react-countup: 4.2.3_react@16.8.6
-      react-device-detect: 1.9.10_react-dom@16.8.6+react@16.8.6
-      react-ga: 2.5.6_react@16.8.6
-      react-intl: 2.9.0_react@16.8.6
-      react-redux: 6.0.1_react@16.8.6+redux@4.0.4
-      redux: 4.0.4
-      redux-thunk: 2.3.0
-      sinon: 7.5.0
-      slate-editor: 5.1.1_react-dom@16.8.6
     dev: false
     peerDependencies:
       prop-types: '*'
@@ -9301,7 +9232,7 @@ packages:
       integrity: sha512-OX8XqP7/1a9cqkxYw2yXss15f26NKWBpDXQd0/uK/KPqdQhxbPa994hnzjcE2VqQpDslf55723cKPUOGSmMY3g==
   /debug/3.2.6:
     dependencies:
-      ms: 2.1.1
+      ms: 2.1.2
     resolution:
       integrity: sha512-mel+jf7nrtEl5Pn1Qx46zARXKDpBbvzezse7p7LqINmdoIk8PYP5SySaxEmYv6TZ0JyEKA1hsCId6DIhgITtWQ==
   /debug/4.1.1:
@@ -15903,6 +15834,8 @@ packages:
     dev: false
     engines:
       node: '>=6'
+    peerDependencies:
+      typescript: '*'
     resolution:
       integrity: sha512-jd9olUr9D7do+RN8Wspzhpxhgp1n6Vd0NtQ4SFkmIACZoEL1nkyAdW9Ygrinjec0vgDcWjscFQQ1gDW8rsfKTg==
   /pnp-webpack-plugin/1.5.0_typescript@3.7.2:
@@ -17316,25 +17249,6 @@ packages:
       redux: ^2.0.0 || ^3.0.0
     resolution:
       integrity: sha512-4pQCq1V4MdWqJw0qurZHgQyGf5dM4Mk+66PydB6Y4vr2TX73pNAZDie43WT6+cZPyYqI7g7nEEjeXvwb9/G+KA==
-  /react-apollo/1.4.15_7f61b9dd875bc232b7172c966555f568:
-    dependencies:
-      apollo-client: 1.9.3
-      graphql: 14.5.8
-      graphql-tag: 2.10.1_graphql@14.5.8
-      hoist-non-react-statics: 2.5.5
-      invariant: 2.2.4
-      lodash.pick: 4.4.0
-      object-assign: 4.1.1
-      prop-types: 15.7.2
-      react: 16.8.6
-      redux: 4.0.4
-    dev: false
-    peerDependencies:
-      graphql: '*'
-      react: 0.14.x || 15.* || ^15.0.0 || ^16.0.0-alpha
-      redux: ^2.0.0 || ^3.0.0
-    resolution:
-      integrity: sha512-4pQCq1V4MdWqJw0qurZHgQyGf5dM4Mk+66PydB6Y4vr2TX73pNAZDie43WT6+cZPyYqI7g7nEEjeXvwb9/G+KA==
   /react-apollo/1.4.16_9d6d968c908c8c256b00095c8de8f3da:
     dependencies:
       apollo-client: 1.9.3
@@ -17519,17 +17433,6 @@ packages:
       react: '>= 16.3.0'
     resolution:
       integrity: sha512-4re0CdtymFC0z5YivMnnBg2SC5ugqt4is/Y/RyTRTY/4QePawUhi2+Y23cQPUjXsdm/FpvicD9ZkQ4H+zVBsZg==
-  /react-countup/4.2.3_react@16.8.6:
-    dependencies:
-      countup.js: 1.9.3
-      prop-types: 15.7.2
-      react: 16.8.6
-      warning: 4.0.3
-    dev: false
-    peerDependencies:
-      react: '>= 16.3.0'
-    resolution:
-      integrity: sha512-4re0CdtymFC0z5YivMnnBg2SC5ugqt4is/Y/RyTRTY/4QePawUhi2+Y23cQPUjXsdm/FpvicD9ZkQ4H+zVBsZg==
   /react-dev-utils/9.1.0:
     dependencies:
       '@babel/code-frame': 7.5.5
@@ -17565,17 +17468,6 @@ packages:
     dependencies:
       react: 16.12.0
       react-dom: 16.7.0_react@16.12.0
-      ua-parser-js: 0.7.20
-    dev: false
-    peerDependencies:
-      react: ^0.14.0 || ^15.0.0 || ^16.0.0
-      react-dom: ^0.14.0 || ^15.0.0 || ^16.0.0
-    resolution:
-      integrity: sha512-Rb618NuNwJojJeIgI5UoONwztbd4wMT4TBofzvYOHnPNu61LYYz8b78cXQb7kXRrPn6iI5T1gFtNQh0GxHEPxw==
-  /react-device-detect/1.9.10_react-dom@16.8.6+react@16.8.6:
-    dependencies:
-      react: 16.8.6
-      react-dom: 16.8.6_react@16.8.6
       ua-parser-js: 0.7.20
     dev: false
     peerDependencies:
@@ -17653,7 +17545,6 @@ packages:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       prop-types: 15.7.2
-      react: 16.12.0
       scheduler: 0.12.0
     dev: false
     peerDependencies:
@@ -17690,17 +17581,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==
-  /react-fontawesome/1.7.1_react@16.12.0:
-    dependencies:
-      prop-types: 15.7.2
-      react: 16.12.0
-    dev: false
-    engines:
-      node: '>=0.10.0'
-    peerDependencies:
-      react: '>=0.12.0'
-    resolution:
-      integrity: sha512-kottReWW1I9Uupub6A5YX4VK7qfpFnEjAcm5zB4Aepst7iofONT27GJYdTcRsj7q5uQu9PXBL7GsxAFKANNUVg==
   /react-fontawesome/1.7.1_react@16.8.6:
     dependencies:
       prop-types: 15.7.2
@@ -17723,15 +17603,6 @@ packages:
     dependencies:
       prop-types: 15.7.2
       react: 16.12.0
-    dev: false
-    peerDependencies:
-      prop-types: ^15.6.0
-      react: ^15.6.2 || ^16.0
-    resolution:
-      integrity: sha512-g04dz6zrbdHRxVaURPWT3RUbjLflh74sS6dCuhGeZupj7ii+UEt9lwTjALb2ST2w+7wAmzG1YqYlNX4yvRXe1g==
-  /react-ga/2.5.6_react@16.8.6:
-    dependencies:
-      react: 16.8.6
     dev: false
     peerDependencies:
       prop-types: ^15.6.0
@@ -17990,22 +17861,6 @@ packages:
       loose-envify: 1.4.0
       prop-types: 15.7.2
       react: 16.12.0
-      react-is: 16.12.0
-      redux: 4.0.4
-    dev: false
-    peerDependencies:
-      react: ^16.4.0-0
-      redux: ^2.0.0 || ^3.0.0 || ^4.0.0-0
-    resolution:
-      integrity: sha512-T52I52Kxhbqy/6TEfBv85rQSDz6+Y28V/pf52vDWs1YRXG19mcFOGfHnY2HsNFHyhP+ST34Aih98fvt6tqwVcQ==
-  /react-redux/6.0.1_react@16.8.6+redux@4.0.4:
-    dependencies:
-      '@babel/runtime': 7.7.2
-      hoist-non-react-statics: 3.3.1
-      invariant: 2.2.4
-      loose-envify: 1.4.0
-      prop-types: 15.7.2
-      react: 16.8.6
       react-is: 16.12.0
       redux: 4.0.4
     dev: false
@@ -18846,7 +18701,6 @@ packages:
       lodash.debounce: 4.0.8
       prop-types: 15.7.2
       react: 16.8.6
-      react-dom: 16.8.6_react@16.8.6
       react-json-tree: 0.11.2_react-dom@16.8.6+react@16.8.6
       react-pure-render: 1.0.2
       redux-devtools: 3.5.0_0e9742cbdc0d9e2b7b11cb55759555fe
@@ -20048,7 +19902,7 @@ packages:
   /slate-base64-serializer/0.2.112_slate@0.41.3:
     dependencies:
       isomorphic-base64: 1.0.2
-      slate: 0.41.3_201e385583ddf7d4d4de1c21f390321e
+      slate: 0.41.3_immutable@3.8.2+react@16.8.6
     dev: false
     peerDependencies:
       slate: '>=0.32.0'
@@ -20117,36 +19971,6 @@ packages:
       react-dom: '*'
     resolution:
       integrity: sha512-L//MISou5GHAhrSX8afT3CtUCd37F7/KHXENWOm5meA1QuZfy1g6wX/YXXJk5IhUPvPbiFwkFeAiwkue8c7FFA==
-  /slate-editor/5.1.1_react-dom@16.8.6:
-    dependencies:
-      '@slate-editor/alignment-plugin': 5.1.0
-      '@slate-editor/bold-plugin': 5.1.0
-      '@slate-editor/color-plugin': 5.1.0
-      '@slate-editor/components': 5.1.0
-      '@slate-editor/embed-plugin': 5.1.0
-      '@slate-editor/font-family-plugin': 5.1.0
-      '@slate-editor/font-size-plugin': 5.1.0
-      '@slate-editor/grid-plugin': 5.1.0
-      '@slate-editor/image-plugin': 5.1.1
-      '@slate-editor/italic-plugin': 5.1.0
-      '@slate-editor/link-plugin': 5.1.0
-      '@slate-editor/list-plugin': 5.1.0
-      '@slate-editor/state-logger': 5.1.0
-      '@slate-editor/strikethrough-plugin': 5.1.0
-      '@slate-editor/toggle-readonly': 5.1.0
-      '@slate-editor/underline-plugin': 5.1.0
-      '@slate-editor/utils': 5.1.0
-      classnames: 2.2.6
-      immutable: 3.8.2
-      prop-types: 15.7.2
-      react: 16.12.0
-      slate: 0.41.3_immutable@3.8.2+react@16.12.0
-      slate-react: 0.18.11_a5f475fbd80f06fe3f42959aa533e8e4
-    dev: false
-    peerDependencies:
-      react-dom: '*'
-    resolution:
-      integrity: sha512-L//MISou5GHAhrSX8afT3CtUCd37F7/KHXENWOm5meA1QuZfy1g6wX/YXXJk5IhUPvPbiFwkFeAiwkue8c7FFA==
   /slate-hotkeys/0.2.9:
     dependencies:
       is-hotkey: 0.1.4
@@ -20189,7 +20013,7 @@ packages:
   /slate-plain-serializer/0.6.39_immutable@3.8.2+slate@0.41.3:
     dependencies:
       immutable: 3.8.2
-      slate: 0.41.3_immutable@3.8.2+react@16.12.0
+      slate: 0.41.3_immutable@3.8.2+react@16.8.6
     dev: false
     peerDependencies:
       immutable: '>=3.8.1'
@@ -20219,7 +20043,7 @@ packages:
   /slate-prop-types/0.4.67_immutable@3.8.2+slate@0.41.3:
     dependencies:
       immutable: 3.8.2
-      slate: 0.41.3_immutable@3.8.2+react@16.12.0
+      slate: 0.41.3_immutable@3.8.2+react@16.8.6
     dev: false
     peerDependencies:
       immutable: '>=3.8.1'
@@ -20281,34 +20105,6 @@ packages:
       slate: '>=0.37.0'
     resolution:
       integrity: sha512-k2XE8GLOl459evStuAhGlTXaBQ5bTGPwGkr8XhY6m0abSmvaKr3Xy9Vn0wvzbFWbYDeDFsd+NBpIabd4vU2ZUQ==
-  /slate-react/0.18.11_a5f475fbd80f06fe3f42959aa533e8e4:
-    dependencies:
-      debug: 3.2.6
-      get-window: 1.1.2
-      immutable: 3.8.2
-      is-window: 1.0.2
-      lodash: 4.17.15
-      memoize-one: 4.0.3
-      prop-types: 15.7.2
-      react: 16.12.0
-      react-dom: 16.8.6_react@16.8.6
-      react-immutable-proptypes: 2.1.0_immutable@3.8.2
-      selection-is-backward: 1.0.0
-      slate: 0.41.3_immutable@3.8.2+react@16.12.0
-      slate-base64-serializer: 0.2.112_slate@0.41.3
-      slate-dev-environment: 0.2.2
-      slate-dev-warning: 0.0.1
-      slate-hotkeys: 0.2.9
-      slate-plain-serializer: 0.6.39_immutable@3.8.2+slate@0.41.3
-      slate-prop-types: 0.4.67_immutable@3.8.2+slate@0.41.3
-    dev: false
-    peerDependencies:
-      immutable: '>=3.8.1'
-      react: '>=0.14.0'
-      react-dom: '>=0.14.0'
-      slate: '>=0.37.0'
-    resolution:
-      integrity: sha512-7u0+LLabGaxjWYb0oTqUDcs3iCvJdaZwcGW6hLc1hFv06KkwaIxAqYpP8dUBRVlQd+0/X0TdyagCmf0IjFSPhg==
   /slate-react/0.18.11_edd1264d8546d7e947462f3a6d878bff:
     dependencies:
       debug: 3.2.6
@@ -20400,10 +20196,25 @@ packages:
       debug: 3.2.6
       direction: 0.1.5
       esrever: 0.2.0
+      is-plain-object: 2.0.4
+      lodash: 4.17.15
+      slate-dev-warning: 0.0.1
+      type-of: 2.0.1
+    dev: false
+    peerDependencies:
+      immutable: '>=3.8.1'
+      react: '>=0.14.0'
+    resolution:
+      integrity: sha512-I/ymHWRxtoSOWYKh/SFgW3Vkkojt5ywWf7Wh4oBvaKic/3mAsM1wymyZmhnvSKK59IeE0JJzD4uyyQaM1KEFHA==
+  /slate/0.41.3_immutable@3.8.2+react@16.8.6:
+    dependencies:
+      debug: 3.2.6
+      direction: 0.1.5
+      esrever: 0.2.0
       immutable: 3.8.2
       is-plain-object: 2.0.4
       lodash: 4.17.15
-      react: 16.12.0
+      react: 16.8.6
       slate-dev-warning: 0.0.1
       type-of: 2.0.1
     dev: false
@@ -21003,6 +20814,7 @@ packages:
       react: 16.12.0
       react-dom: 16.12.0_react@16.12.0
       react-is: 16.12.0
+      styled-components: 4.4.1_b5ffe839b1a452f2d2c7d94d3059774c
       stylis: 3.5.4
       stylis-rule-sheet: 0.0.10_stylis@3.5.4
       supports-color: 5.5.0
