@@ -1,131 +1,50 @@
 {
   "name": "bonde-webpage",
   "version": "0.15.3-alpha.4",
-  "private": false,
-  "license": "AGPL-3.0",
-  "main": "lib/index.js",
+  "license": "MIT",
+  "author": "Lucas Pirola",
+  "main": "dist/index.js",
+  "module": "dist/bonde-webpage.esm.js",
+  "typings": "dist/index.d.ts",
   "files": [
-    "lib",
-    "README.md"
+    "dist"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/nossas/bonde-client.git"
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --env=jsdom",
+    "lint": "tsdx lint"
+  },
+  "peerDependencies": {
+    "react": ">=16"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.23",
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^16.9.4",
+    "husky": "^3.1.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "tsdx": "^0.11.0",
+    "tslib": "^1.10.0",
+    "typescript": "^3.7.2"
   },
   "dependencies": {
-    "@babel/core": "7.2.2",
-    "@babel/plugin-proposal-class-properties": "7.2.3",
-    "@babel/plugin-proposal-decorators": "7.2.3",
-    "@babel/plugin-proposal-object-rest-spread": "7.2.0",
-    "@babel/plugin-syntax-dynamic-import": "7.2.0",
-    "@babel/plugin-transform-classes": "7.2.2",
-    "@babel/plugin-transform-destructuring": "7.2.0",
-    "@babel/plugin-transform-flow-strip-types": "7.2.3",
-    "@babel/plugin-transform-react-constant-elements": "7.2.0",
-    "@babel/plugin-transform-react-display-name": "7.2.0",
-    "@babel/plugin-transform-runtime": "7.2.0",
-    "@babel/preset-env": "7.2.3",
-    "@babel/preset-react": "7.0.0",
-    "@babel/preset-typescript": "7.1.0",
-    "@babel/runtime": "7.2.0",
-    "apollo-client": "^2.4.12",
-    "axios": "^0.18.0",
-    "babel-loader": "8.0.6",
-    "babel-plugin-dynamic-import-node": "2.2.0",
-    "babel-plugin-macros": "2.4.4",
-    "babel-plugin-transform-react-remove-prop-types": "0.4.21",
-    "basscss-sass": "^4.0.0",
+    "@types/classnames": "^2.2.9",
+    "@types/prop-types": "^15.7.3",
     "classnames": "^2.2.6",
-    "draft-js": "^0.10.5",
-    "exenv": "^1.2.2",
-    "format-number": "^3.0.0",
-    "graphql": "^14.1.1",
-    "immutable": "^4.0.0-rc.12",
-    "node-sass": "^4.11.0",
-    "react-apollo": "1.4.15",
-    "react-countup": "^4.0.0",
-    "react-device-detect": "^1.6.2",
-    "react-ga": "^2.5.6",
-    "react-intl": "^2.8.0",
-    "react-redux": "^6.0.0",
-    "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0",
-    "sinon": "^7.2.3",
-    "slate-editor": "^5.1.0"
-  },
-  "scripts": {
-    "prepare": "yarn build",
-    "dev": "yarn build --watch",
-    "build": "NODE_ENV=production babel src/lib --out-dir lib --copy-files --ignore __tests__,spec.js,test.js,__snapshots__",
-    "test": "cross-env NODE_ENV=test ava",
-    "coverage": "nyc --reporter=lcov ava"
-  },
-  "babel": {
-    "presets": [
-      "@babel/preset-env",
-      "@babel/preset-react"
-    ],
-    "plugins": [
-      "babel-plugin-macros",
-      "@babel/plugin-transform-destructuring",
-      "@babel/plugin-proposal-class-properties",
-      "@babel/plugin-proposal-object-rest-spread",
-      "@babel/plugin-transform-runtime",
-      "babel-plugin-transform-react-remove-prop-types",
-      "@babel/plugin-syntax-dynamic-import"
-    ]
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
-  "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/register": "^7.4.4",
-    "ava": "^1.4.1",
-    "axios-mock-adapter": "^1.16.0",
-    "chai": "^4.2.0",
-    "cross-env": "^5.2.0",
-    "enzyme": "3.10.0",
-    "enzyme-adapter-react-16": "^1.7.1",
-    "jsdom": "^15.1.0",
-    "mocha": "^6.1.4",
-    "nyc": "^14.1.1",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
-    "react-scripts": "^2.1.3",
-    "redux-mock-store": "^1.5.3"
-  },
-  "ava": {
-    "files": [
-      "src/**/*.spec.js"
-    ],
-    "concurrency": 5,
-    "failFast": true,
-    "failWithoutAssertions": false,
-    "tap": true,
-    "compileEnhancements": false,
-    "require": [
-      "@babel/register",
-      "./src/setupTests.js"
-    ],
-    "babel": {
-      "testOptions": {
-        "plugins": [
-          "@babel/plugin-syntax-jsx"
-        ],
-        "babelrc": false,
-        "configFile": false
-      },
-      "extensions": [
-        "js",
-        "jsx"
-      ]
-    }
+    "prop-types": "^15.7.2",
+    "react-intl": "^3.6.0"
   }
 }
