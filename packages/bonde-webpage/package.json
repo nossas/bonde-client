@@ -41,7 +41,7 @@
     "format-number": "^3.0.0",
     "graphql": "^14.1.1",
     "immutable": "^4.0.0-rc.12",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.13.1",
     "react-apollo": "1.4.15",
     "react-countup": "^4.0.0",
     "react-device-detect": "^1.6.2",
