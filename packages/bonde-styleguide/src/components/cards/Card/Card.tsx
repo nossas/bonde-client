@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Spacing } from '../../layout'
 import { px } from '../../../utils'
@@ -15,8 +15,33 @@ const CardStyled = styled.div`
   ${props => props.onClick && `cursor: pointer;`}
   ${props => props.border && `border: ${props.border};`}
 `
+interface Props {
+  margin?: {
+    x?: number;
+    y?: number;
+    top?: number | string;
+    bottom?: number | string;
+    left?: number | string;
+    right?: number | string;
+  },
 
-const Card = ({ margin, padding, children, ...rest }) => margin || padding ? (
+  padding?: {
+    x?: number;
+    y?: number;
+    top?: number | string;
+    bottom?: number | string;
+    left?: number | string;
+    right?: number | string;
+  },
+  children?: any;
+  title?: string;
+  minHeight?: string;
+  middle?: boolean;
+  onClick?: any;
+}
+const Card = (
+  { margin = { x: 0, y:0 }, padding = { x: 0, y:0 }, children, ...rest }: Props
+  ) => margin || padding ? (
   <Spacing margin={margin}>
     <CardStyled {...rest}>
       <Spacing padding={padding}>
@@ -30,12 +55,12 @@ const Card = ({ margin, padding, children, ...rest }) => margin || padding ? (
   </CardStyled>
 )
 
-Card.displayName = 'Card'
+// Card.displayName = 'Card'
 
-Card.propTypes = {
-  margin: PropTypes.object,
-  padding: PropTypes.object
-}
+// Card.propTypes = {
+//   margin: PropTypes.object,
+//   padding: PropTypes.object
+// }
 
 /** @component */
 export default Card

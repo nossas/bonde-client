@@ -1,28 +1,58 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import ControlLabel from '../ControlLabel/ControlLabel'
 import Flexbox from '../../layout/Flexbox/Flexbox'
 import InputAdornment from '../InputAdornment/InputAdornment'
 import InputHint from '../InputHint/InputHint'
 
+interface MetaProps {
+  /** Valid style. */
+  valid: boolean;
+  /** Error text. The invalid input style is based on existence of this prop. */
+  error: string | boolean;
+  touched: boolean;
+  dirty: boolean;
+}
+
+interface Props {
+  /** Label text. */
+  label: string;
+  meta: MetaProps
+  /** Hint text. */
+  hint?: string;
+  /** Placeholder text. */
+  placeholder?: string;
+  /** Show valid theme in input when finish validation */
+  showValid?: boolean;
+  inputComponent: any
+  input: any
+}
+
 /**
  * Full field component that composes ControlLabel, props.inputComponent,
  * InputHint and InputAdornment components.
  */
-class FormField extends React.Component {
+class FormField extends React.Component<Props> {
+
+  static defaultProps = {
+    meta: {},
+    showValid: true
+  }
+
+// FormField.displayName = 'FormField'
   render () {
     const {
       label,
       hint,
       placeholder,
-      meta: { error, valid, touched, dirty },
+      meta: { error, valid, touched },
       inputComponent: InputComponent,
       input,
       showValid,
       ...props
     } = this.props
 
-    const adornmentProps = {}
+    const adornmentProps: any = {}
     let showAdornment = false
 
     if (touched) {
@@ -59,33 +89,6 @@ class FormField extends React.Component {
     )
   }
 }
-
-FormField.propTypes = {
-  /** Label text. */
-  label: PropTypes.string.isRequired,
-  meta: PropTypes.shape({
-    /** Valid style. */
-    valid: PropTypes.bool,
-    /** Error text. The invalid input style is based on existence of this prop. */
-    error: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.bool
-    ]),
-  }),
-  /** Hint text. */
-  hint: PropTypes.string,
-  /** Placeholder text. */
-  placeholder: PropTypes.string,
-  /** Show valid theme in input when finish validation */
-  showValid: PropTypes.bool
-}
-
-FormField.defaultProps = {
-  meta: {},
-  showValid: true
-}
-
-FormField.displayName = 'FormField'
 
 /** @component */
 export default FormField

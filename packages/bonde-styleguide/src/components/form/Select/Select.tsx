@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Input from '../Input/Input'
 import Backdrop from '../../layout/Backdrop/Backdrop'
@@ -35,11 +35,27 @@ const SelectInputNative = styled(() => <Input as='select' />)`
     border-bottom: 1px solid #EE0099;
   }
 `
+interface SelectInputProps {
+  className?: string;
+  name: string;
+  disabled: boolean;
+  children?: any
+}
 
-const SelectInput = styled(() => <Input as={() => class extends React.Component {
-  state = {
-    open: false,
-    selected: {},
+interface SelectInputState {
+  open: boolean;
+  selected: any;
+}
+
+const SelectInput = styled(() => <Input as={() => class extends React.Component<SelectInputProps, SelectInputState> {
+
+  constructor(props: SelectInputProps) {
+    super(props)
+
+    this.state = {
+      open: false,
+      selected: {},
+    }
   }
 
   toggleOptions = () => this.setState({ open: !this.state.open })
@@ -70,7 +86,7 @@ const SelectInput = styled(() => <Input as={() => class extends React.Component 
               {children.map((option, index) => index !== 0 && (
                 <Option
                   key={Math.random()}
-                  onClick={f => this.handleSelected(option.props)}
+                  onClick={() => this.handleSelected(option.props)}
                 >
                   {option.props.children}
                 </Option>
@@ -122,8 +138,15 @@ const Option = styled.div`
 
   &:hover { color: #000000 }
 `
+interface SelectProps {
+  /** List of options to compose the select. */
+  children: any;
+  /** The name of input. */
+  name: string;
+  native: boolean;
+}
 
-class Select extends React.Component {
+class Select extends React.Component<SelectProps> {
   render() {
     const { native } = this.props
     return (
@@ -135,16 +158,9 @@ class Select extends React.Component {
   }
 }
 
-const { oneOfType, node, func, string } = PropTypes
+// const { oneOfType, node, func, string } = PropTypes
 
-Select.propTypes = {
-  /** List of options to compose the select. */
-  children: oneOfType([node, func]).isRequired,
-  /** The name of input. */
-  name: string.isRequired
-}
-
-Select.displayName = 'Select'
+// Select.displayName = 'Select'
 
 /** @component */
 export default Select

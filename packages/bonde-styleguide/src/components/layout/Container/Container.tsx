@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import BGImage from './assets/bg@2x.png'
+const BGImage = require('./assets/bg@2x.png')
 import Flexbox from '../Flexbox2/Flexbox2'
 import { Title } from '../../content'
 import IconColorful from '../../content/IconColorful/IconColorful'

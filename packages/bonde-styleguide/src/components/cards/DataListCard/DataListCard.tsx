@@ -17,14 +17,14 @@ const CustomCol = ({ render, value, row, label, ...colProps }) => (
 )
 
 const DataListCard = ({
-  sectionTitle,
-  height,
+  // sectionTitle,
+  // height,
   border,
   fields,
   items,
   picker,
-  Footer,
-  footerProps,
+  // Footer,
+  // footerProps,
 }) => {
   const fieldNames = Object.keys(fields)
 
@@ -58,7 +58,18 @@ const DataListCard = ({
   )
 }
 
-const { oneOfType, oneOf, string, number, bool, object, array, node, func, shape } = PropTypes
+const {
+  // oneOfType,
+  oneOf,
+  // string,
+  // number,
+  // bool,
+  object,
+  array,
+  // node,
+  // func,
+  // shape
+} = PropTypes
 
 DataListCard.propTypes = {
   border: oneOf(['collapse', 'separate', 'unset']),

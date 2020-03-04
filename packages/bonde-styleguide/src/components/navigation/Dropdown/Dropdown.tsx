@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Icon from '../../content/Icon/Icon'
 import Spacing from '../../layout/Spacing/Spacing'
@@ -75,11 +75,28 @@ const DropdownComponent = styled.div`
   }
 `
 
-const DropdownTriggerButton = styled.button.attrs(props => ({ type: 'button' }))`
+const DropdownTriggerButton = styled.button.attrs(() => ({ type: 'button' }))`
   height: 100%;
 `
 
-class Dropdown extends React.Component {
+interface Props {
+  children?: any;
+  label: string | Function;
+  icon?: string;
+  width?: string;
+  disabled?: boolean;
+  inverted?: boolean;
+}
+
+interface ChildrenProps {
+  closeMenu?: Function;
+}
+
+interface State {
+  show?: boolean;
+}
+
+class Dropdown extends React.Component<Props, State> {
   constructor (props) {
     super(props)
     this.state = { show: false }
@@ -119,7 +136,7 @@ class Dropdown extends React.Component {
           <React.Fragment>
             <DropdownMenu>
               {React.Children.map(children, child => (
-                React.cloneElement(child, { closeMenu: this.closeMenu.bind(this) })
+                React.cloneElement<ChildrenProps>(child, { closeMenu: this.closeMenu.bind(this) })
               ))}
             </DropdownMenu>
             <DropdownMenuArrow />
@@ -130,19 +147,19 @@ class Dropdown extends React.Component {
   }
 }
 
-Dropdown.propTypes = {
-  label: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.func
-  ]).isRequired,
-  inverted: PropTypes.bool
-}
+// Dropdown.propTypes = {
+//   label: PropTypes.oneOfType([
+//     PropTypes.string,
+//     PropTypes.func
+//   ]).isRequired,
+//   inverted: PropTypes.bool
+// }
 
-Dropdown.defaultProps = {
-  inverted: false
-}
+// Dropdown.defaultProps = {
+//   inverted: false
+// }
 
-Dropdown.displayName = 'Dropdown'
+// Dropdown.displayName = 'Dropdown'
 
 /** @component */
 export default Dropdown

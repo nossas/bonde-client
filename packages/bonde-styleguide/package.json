@@ -1,69 +1,56 @@
 {
-  "name": "bonde-styleguide",
-  "version": "0.16.4",
-  "main": "dist/index.js",
   "private": false,
-  "dependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
-    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
-    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/plugin-transform-runtime": "^7.5.5",
-    "@babel/preset-env": "^7.7.1",
-    "@babel/preset-react": "^7.7.0",
-    "@babel/runtime": "^7.8.7",
-    "babel-plugin-styled-components": "^1.10.6",
-    "prop-types": "^15.7.2",
-    "recharts": "^1.6.2",
-    "styled-components": "^4.3.2",
-    "webfontloader": "^1.6.28"
-  },
+  "version": "0.16.4",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "prepare": "cross-env NODE_ENV=production babel src --out-dir dist --copy-files",
-    "watch": "yarn prepare --watch",
-    "dev": "yarn prepare --watch",
-    "build": "styleguidist build",
-    "test": "echo \"Error: no test specified\" && exit 0",
-    "eject": "react-scripts eject",
-    "start": "styleguidist server"
+    "styleguidist": "styleguidist server",
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --passWithNoTests",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "peerDependencies": {
+    "react": ">=16"
   },
-  "babel": {
-    "presets": [
-      "@babel/preset-env",
-      "@babel/preset-react"
-    ],
-    "plugins": [
-      "babel-plugin-styled-components",
-      "@babel/plugin-proposal-class-properties",
-      "@babel/plugin-proposal-object-rest-spread",
-      "@babel/plugin-transform-runtime",
-      "@babel/plugin-syntax-dynamic-import"
-    ]
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
   },
+  "name": "bonde-styleguide",
+  "author": "Lucas Pirola",
+  "module": "dist/styleguide.esm.js",
   "devDependencies": {
-    "@babel/cli": "^7.0.0",
-    "@babel/core": "^7.0.0",
-    "babel-preset-react-app-babel-7": "^4.0.2-0",
-    "cross-env": "^5.2.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1",
-    "react-styleguidist": "^9.1.13",
-    "stylelint-config-styled-components": "^0.1.1",
-    "webpack": "^4.38.0"
+    "@rollup/plugin-image": "^2.0.4",
+    "@types/jest": "^25.1.3",
+    "@types/react": "^16.9.23",
+    "@types/react-dom": "^16.9.5",
+    "@types/webfontloader": "^1.6.29",
+    "husky": "^4.2.3",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "tsdx": "^0.12.3",
+    "tslib": "^1.11.1",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "@types/node": "^13.9.1",
+    "prop-types": "^15.7.2",
+    "react-styleguidist": "^10.6.2",
+    "recharts": "^2.0.0-beta.1",
+    "styled-components": "^5.0.1",
+    "webfontloader": "^1.6.28"
   }
 }

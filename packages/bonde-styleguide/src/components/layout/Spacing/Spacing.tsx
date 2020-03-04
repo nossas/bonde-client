@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { px } from '../../../utils'
 
@@ -14,11 +14,31 @@ const SpacingStyled = styled.div`
   ${props => props.padding && props.padding.left && `padding-left: ${px(props.padding.left)};`}
   ${props => props.padding && props.padding.right && `padding-right: ${px(props.padding.right)};`}
 `
+interface Props {
+  margin?: {
+    x?: number;
+    y?: number;
+    top?: number | string;
+    bottom?: number | string;
+    left?: number | string;
+    right?: number | string;
+  },
+
+  padding?: {
+    x?: number;
+    y?: number;
+    top?: number | string;
+    bottom?: number | string;
+    left?: number | string;
+    right?: number | string;
+  },
+  children?: any;
+}
 
 /**
  * The only true Spacing component.
  */
-const Spacing = ({ margin, padding, ...ownProps }) => {
+const Spacing = ({ margin = { x: 0, y:0 }, padding = { x: 0, y:0 }, ...ownProps }: Props) => {
   const { x: marginX, y: marginY } = margin
   const { x: paddingX, y: paddingY } = padding
   return (
@@ -41,35 +61,35 @@ const Spacing = ({ margin, padding, ...ownProps }) => {
 }
 
 // decouple PropTypes only facility design props
-const { shape, oneOfType, string, number } = PropTypes
+// const { shape, oneOfType, string, number } = PropTypes
 
-Spacing.propTypes = {
-  /** The margin property. */
-  margin: shape({
-    x: oneOfType([string, number]),
-    y: oneOfType([string, number]),
-    top: oneOfType([string, number]),
-    bottom: oneOfType([string, number]),
-    left: oneOfType([string, number]),
-    right: oneOfType([string, number])
-  }),
-  /** The padding property. */
-  padding: shape({
-    x: oneOfType([string, number]),
-    y: oneOfType([string, number]),
-    top: oneOfType([string, number]),
-    bottom: oneOfType([string, number]),
-    left: oneOfType([string, number]),
-    right: oneOfType([string, number])
-  })
-}
+// Spacing.propTypes = {
+//   /** The margin property. */
+//   margin: shape({
+//     x: oneOfType([string, number]),
+//     y: oneOfType([string, number]),
+//     top: oneOfType([string, number]),
+//     bottom: oneOfType([string, number]),
+//     left: oneOfType([string, number]),
+//     right: oneOfType([string, number])
+//   }),
+//   /** The padding property. */
+//   padding: shape({
+//     x: oneOfType([string, number]),
+//     y: oneOfType([string, number]),
+//     top: oneOfType([string, number]),
+//     bottom: oneOfType([string, number]),
+//     left: oneOfType([string, number]),
+//     right: oneOfType([string, number])
+//   })
+// }
 
-Spacing.displayName = 'Spacing'
+// Spacing.displayName = 'Spacing'
 
-Spacing.defaultProps = {
-  margin: {},
-  padding: {}
-}
+// Spacing.defaultProps = {
+//   margin: {},
+//   padding: {}
+// }
 
 /** @component */
 export default Spacing

@@ -23,12 +23,23 @@ const FeedText = styled.div`
   color: #333333;
 `
 
+interface Props {
+  className?: string;
+  date: string | number | Date;
+  text?: string;
+}
+
+interface State {
+  now?: Date;
+}
 /**
  * The item that composes the Feed component.
  * Each item updates the feed date difference per minute,
  * based on current date.
  */
-const FeedItem = styled(class extends React.Component {
+const FeedItem = styled(class extends React.Component<Props, State> {
+  timer: any;
+
   constructor (props) {
     super(props)
     this.state = { now: new Date() }
@@ -45,7 +56,7 @@ const FeedItem = styled(class extends React.Component {
   render () {
     const { className, date, text } = this.props
 
-    const diff = Math.abs(this.state.now - new Date(date))
+    const diff = Math.abs(Number(this.state.now) - Number(new Date(date)))
     const mins = Math.floor((diff / 1000) / 60)
 
     return (

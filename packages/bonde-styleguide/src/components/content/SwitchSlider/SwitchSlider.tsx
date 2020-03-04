@@ -61,7 +61,7 @@ const Switch = styled.label`
 `
 
 const SwitchSlider = ({ children, round, checked, onChange }) => {
-  const inputProps = { onChange }
+  const inputProps = { onChange, checked }
   if (checked !== undefined) {
     inputProps.checked = checked
   }

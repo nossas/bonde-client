@@ -28,7 +28,7 @@ const ReactTable = ({
   ColumnComponent,
   HeaderComponent,
   EmptyComponent,
-  FooterComponent,
+  // FooterComponent,
   onClickRow
 }) => {
 

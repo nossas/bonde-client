@@ -21,7 +21,7 @@ const H1 = createTitle('h1', {
   color: '#000'
 })
 
-H1.displayName = 'Title H1'
+// H1.displayName = 'Title H1'
 
 const H2 = createTitle('h2', {
   displayName: 'Title.H2',
@@ -31,7 +31,7 @@ const H2 = createTitle('h2', {
   color: '#000'
 })
 
-H2.displayName = 'Title.H2'
+// H2.displayName = 'Title.H2'
 
 const H3 = createTitle('h3', {
   displayName: 'Title.H3',
@@ -41,7 +41,7 @@ const H3 = createTitle('h3', {
   color: '#000'
 })
 
-H3.displayName = 'Title.H3'
+// H3.displayName = 'Title.H3'
 
 const H4 = createTitle('h4', {
   displayName: 'Title.H4',
@@ -51,7 +51,7 @@ const H4 = createTitle('h4', {
   color: '#000'
 })
 
-H4.displayName = 'Title.H4'
+// H4.displayName = 'Title.H4'
 
 const H5 = createTitle('h5', {
   displayName: 'Title.H5',
@@ -60,7 +60,7 @@ const H5 = createTitle('h5', {
   color: '#424242'
 })
 
-H5.displayName = 'Title.H5'
+// H5.displayName = 'Title.H5'
 
 const H6 = createTitle('h6', {
   displayName: 'Title.H6',
@@ -69,7 +69,7 @@ const H6 = createTitle('h6', {
   color: '#424242'
 })
 
-H6.displayName = 'Title.H6'
+// H6.displayName = 'Title.H6'
 
 /**
  * The title options component.

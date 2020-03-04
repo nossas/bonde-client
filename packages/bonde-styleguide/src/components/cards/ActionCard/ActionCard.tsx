@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import {
   Card,
   Flexbox,
@@ -7,6 +7,16 @@ import {
   Title,
   Button
 } from '../../..'
+
+interface Props {
+  sectionTitle?: string;
+  minHeight?: string;
+  iconName?: string;
+  callToAction: string;
+  btnText: string;
+  btnOnClick?: Function;
+  btnDisabled?: boolean;
+}
 
 const ActionCard = ({
   sectionTitle,
@@ -16,7 +26,7 @@ const ActionCard = ({
   btnText,
   btnOnClick,
   btnDisabled
-}) => (
+}: Props) => (
   <Card title={sectionTitle} minHeight={minHeight} middle>
     <Flexbox padding={{ x: 82 }} alignItems='middle'>
       {iconName && <IconColorful name={iconName} size={80} />}
@@ -28,22 +38,13 @@ const ActionCard = ({
   </Card>
 )
 
-ActionCard.propTypes = {
-  sectionTitle: PropTypes.string,
-  minHeight: PropTypes.number,
-  iconName: PropTypes.string,
-  callToAction: PropTypes.string.isRequired,
-  btnText: PropTypes.string.isRequired,
-  btnOnClick: PropTypes.func.isRequired,
-  btnDisabled: PropTypes.bool
-}
 
 ActionCard.defaultProps = {
   minHeight: 274,
   btnDisabled: false
 }
 
-ActionCard.displayName = 'ActionCard'
+// ActionCard.displayName = 'ActionCard'
 
 /** @component */
 export default ActionCard

@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
 import Flexbox from  '../../layout/Flexbox2/Flexbox2'
 import Button from '../../content/Button/Button'
 import Icon from '../../content/Icon/Icon'
@@ -21,7 +20,13 @@ const FlatButton = styled(({ className, children, ...props }) => (
 
 FlatButton.displayName = 'FlatButton'
 
-class IconButton extends React.Component {
+interface IconButtonProps {
+  disabled: boolean;
+  onClick: any;
+  name: string;
+}
+
+class IconButton extends React.Component<IconButtonProps> {
   state = { color: '#000000' }
 
   handleColorMouseEnter = () => this.setState({ color: '#424242' })
@@ -52,10 +57,29 @@ class IconButton extends React.Component {
   }
 }
 
+interface PaginationProps {
+  onChangePage: Function;
+  pageIndex: number;
+  pages: number;
+  textPrev: React.ReactNode | Function;
+  textNext: React.ReactNode | Function;
+  iconFirst: string;
+  iconLast: string;
+}
+
 /**
  * The only true `Pagination` component.
  */
-class Pagination extends React.Component {
+class Pagination extends React.Component<PaginationProps> {
+
+  static defaultProps = {
+    pages: 1,
+    pageIndex: 0,
+    textPrev: 'Prev',
+    textNext: 'Next',
+    iconFirst: 'double-arrow-left',
+    iconLast: 'double-arrow-right',
+  }
 
   handleActiveIndex = activeIndex => {
     this.props.onChangePage(activeIndex)
@@ -73,7 +97,7 @@ class Pagination extends React.Component {
 
     const isFirst = pageIndex === 0
     const isLast = pageIndex === pages - 1
-    
+
     return (
       <Flexbox horizontal spacing='between' middle>
         <div>
@@ -111,36 +135,6 @@ class Pagination extends React.Component {
     )
   }
 }
-
-const { oneOfType, number, func, node, string } = PropTypes
-
-Pagination.propTypes = {
-  /** Number of total pages. */
-  pages: number,
-  /** Active page index */
-  pageIndex: number.isRequired,
-  /** Callback when clicks the button to take to the specific page. */
-  onChangePage: func.isRequired,
-  /** Previous button text. */
-  textPrev: oneOfType([node, func]),
-  /** Next button text. */
-  textNext: oneOfType([node, func]),
-  /** First Icon name. */
-  iconFirst: string,
-  /** Last Icon name. */
-  iconLast: string,
-}
-
-Pagination.defaultProps = {
-  pages: 1,
-  pageIndex: 0,
-  textPrev: 'Prev',
-  textNext: 'Next',
-  iconFirst: 'double-arrow-left',
-  iconLast: 'double-arrow-right',
-}
-
-Pagination.displayName = 'Pagination'
 
 /** @component */
 export default Pagination

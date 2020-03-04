@@ -1,5 +1,5 @@
 import WebFont from 'webfontloader'
-import './index.css'
+// import './index.css'
 
 WebFont.load({
   google: {
