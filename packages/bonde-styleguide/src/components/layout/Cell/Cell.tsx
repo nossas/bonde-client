@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 /**
  * The Grid composition Cell component.
@@ -11,13 +11,25 @@ const Cell = styled.div`
   ${props => props.align && `text-align: ${props.align};`}
 
   /* https://gist.github.com/chrisjlee/5832418 */
-  @media (min-width: 320px)  { grid-column: span ${props => props.size[5] || 12}; }
-  @media (min-width: 480px)  { grid-column: span ${props => props.size[4] || 6}; }
-  @media (min-width: 600px)  { grid-column: span ${props => props.size[3] || 4}; }
-  @media (min-width: 801px)  { grid-column: span ${props => props.size[2] || 3}; }
-  @media (min-width: 1025px) { grid-column: span ${props => props.size[1] || 2}; }
-  @media (min-width: 1281px) { grid-column: span ${props => props.size[0] || 1}; }
-`
+  @media (min-width: 320px) {
+    grid-column: span ${props => props.size[5] || 12};
+  }
+  @media (min-width: 480px) {
+    grid-column: span ${props => props.size[4] || 6};
+  }
+  @media (min-width: 600px) {
+    grid-column: span ${props => props.size[3] || 4};
+  }
+  @media (min-width: 801px) {
+    grid-column: span ${props => props.size[2] || 3};
+  }
+  @media (min-width: 1025px) {
+    grid-column: span ${props => props.size[1] || 2};
+  }
+  @media (min-width: 1281px) {
+    grid-column: span ${props => props.size[0] || 1};
+  }
+`;
 
 Cell.propTypes = {
   /**
@@ -31,14 +43,14 @@ Cell.propTypes = {
    * **size[4]:** `>= 480px`,
    * **size[5]:** `>= 320px`
    */
-  size: PropTypes.array
-}
+  size: PropTypes.array,
+};
 
 Cell.defaultProps = {
-  size: [1,2,3,4,6,12]
-}
+  size: [1, 2, 3, 4, 6, 12],
+};
 
-Cell.displayName = 'Cell'
+Cell.displayName = 'Cell';
 
 /** @component */
-export default Cell
+export default Cell;

@@ -1,16 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import {
-  Card,
-  Flexbox,
-  ProgressRanking,
-  ProgressRankingItem
-} from '../../..'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Card, Flexbox, ProgressRanking, ProgressRankingItem } from '../../..';
 
 const getMaxValue = items => {
-  items.sort((obj1, obj2) => obj2.value - obj1.value)
-  return items[0].value
-}
+  items.sort((obj1, obj2) => obj2.value - obj1.value);
+  return items[0].value;
+};
 
 const RankingCard = ({
   children,
@@ -20,12 +15,12 @@ const RankingCard = ({
   items,
   alignItems,
   trackColor,
-  progressColor
+  progressColor,
 }) => (
   <Card title={sectionTitle} minHeight={minHeight} middle>
     <Flexbox padding={{ x: 24 }} horizontal alignItems={alignItems}>
       <ProgressRanking
-        width='100%'
+        width="100%"
         trackColor={trackColor}
         color={progressColor}
         maxValue={maxValue || getMaxValue(items)}
@@ -41,29 +36,31 @@ const RankingCard = ({
       {children}
     </Flexbox>
   </Card>
-)
+);
 
 RankingCard.propTypes = {
   sectionTitle: PropTypes.string,
   minHeight: PropTypes.number,
   maxValue: PropTypes.number,
-  items: PropTypes.arrayOf(PropTypes.shape({
-    label: PropTypes.string,
-    value: PropTypes.number
-  })).isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string,
+      value: PropTypes.number,
+    })
+  ).isRequired,
   alignItems: PropTypes.oneOf(['start', 'middle', 'end']),
   trackColor: PropTypes.string,
-  progressColor: PropTypes.string
-}
+  progressColor: PropTypes.string,
+};
 
 RankingCard.defaultProps = {
   minHeight: 274,
   items: [],
   alignItems: 'start',
-  trackColor: '#fff'
-}
+  trackColor: '#fff',
+};
 
-RankingCard.displayName = 'RankingCard'
+RankingCard.displayName = 'RankingCard';
 
 /** @component */
-export default RankingCard
+export default RankingCard;

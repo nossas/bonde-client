@@ -13,9 +13,8 @@ class GenericForm extends React.Component {
     const { formId, cleanForm } = this.props
     if (cleanForm) resetForm(formId)
   }
-
-  // eslint-disable-next-line
-  componentWillReceiveProps (nextProps) {
+  // eslint-disable-next-line camelcase
+  UNSAFE_componentWillReceiveProps (nextProps) {
     if (!this.props.submitting && nextProps.submitSucceeded && this.props.cleanForm) {
       resetForm(this.props.formId)
     }

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 /**
  * Gris system that wraps multiple `Cell` components.
@@ -8,13 +8,13 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   grid-gap: ${props => `${props.gap}px`};
-`
+`;
 
-Grid.displayName = 'Grid'
+Grid.displayName = 'Grid';
 
 Grid.defaultProps = {
-  gap: 30
-}
+  gap: 30,
+};
 
 /** @component */
-export default Grid
+export default Grid;

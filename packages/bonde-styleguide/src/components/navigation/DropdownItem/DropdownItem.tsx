@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 const Item = styled('a')`
   width: auto;
@@ -18,11 +18,11 @@ const Item = styled('a')`
   align-items: center;
   justify-content: start;
 
-  & > svg, & > i {
+  & > svg,
+  & > i {
     margin-right: 15px;
   }
-`
-
+`;
 
 /**
  * The item component that composes the `Dropdown`.
@@ -33,20 +33,20 @@ const DropdownItem = ({
   onClick,
   ...props
 }) => {
-  const Styled = Component ? Item.withComponent(Component) : Item
+  const Styled = Component ? Item.withComponent(Component) : Item;
 
   return (
     <Styled
       {...props}
       onClick={() => {
-        if (closeMenu) closeMenu()
-        onClick()
+        if (closeMenu) closeMenu();
+        onClick();
       }}
     />
-  )
-}
+  );
+};
 
-DropdownItem.displayName = 'DropdownItem'
+DropdownItem.displayName = 'DropdownItem';
 
 /** @component */
-export default DropdownItem
+export default DropdownItem;

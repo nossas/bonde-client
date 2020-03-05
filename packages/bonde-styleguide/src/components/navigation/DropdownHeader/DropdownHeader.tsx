@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 /**
  * The header component of `Dropdown`.
@@ -17,9 +17,9 @@ const DropdownHeader = styled.div`
   & > img {
     margin-right: 15px;
   }
-`
+`;
 
-DropdownHeader.displayName = 'DropdownHeader'
+DropdownHeader.displayName = 'DropdownHeader';
 
 /** @component */
-export default DropdownHeader
+export default DropdownHeader;

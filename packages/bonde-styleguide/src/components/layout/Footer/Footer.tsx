@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import IconColorful from '../../content/IconColorful/IconColorful'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import IconColorful from '../../content/IconColorful/IconColorful';
 
 const FooterContent = styled.div`
   flex-grow: 1;
@@ -20,22 +20,19 @@ const FooterContent = styled.div`
       text-decoration: underline;
     }
   }
-`
+`;
 
-const Footer = styled(({
-  children,
-  className,
+const Footer = styled(({ children, className }) => (
   // btnHelpLabel,
   // btnHelpClick
-}) => (
   <div className={className}>
-    <IconColorful name='bonde' size={115} inverted />
-    <FooterContent>
-    {children}
-    </FooterContent>
+    <IconColorful name="bonde" size={115} inverted />
+    <FooterContent>{children}</FooterContent>
   </div>
 ))`
-  ${props => props.fixed && `
+  ${props =>
+    props.fixed &&
+    `
     position: absolute;
     bottom: 0;
   `}
@@ -45,10 +42,10 @@ const Footer = styled(({
   background: #000;
   padding: 0 150px;
   overflow: hidden;
-  width: ${props => props.fixed ? '100%' : 'auto'};
-`
+  width: auto;
+`;
 
-const { oneOfType, node, func, string } = PropTypes
+const { oneOfType, node, func, string } = PropTypes;
 
 Footer.propTypes = {
   /** The content of the footer. */
@@ -56,10 +53,10 @@ Footer.propTypes = {
   /** The help button label text. */
   btnHelpLabel: string,
   /** The help button onClick event handler function. */
-  btnHelpClick: func
-}
+  btnHelpClick: func,
+};
 
-Footer.displayName = 'Footer'
+Footer.displayName = 'Footer';
 
 /** @component */
-export default Footer
+export default Footer;

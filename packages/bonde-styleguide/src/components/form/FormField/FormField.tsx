@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-import ControlLabel from '../ControlLabel/ControlLabel'
-import Flexbox from '../../layout/Flexbox/Flexbox'
-import InputAdornment from '../InputAdornment/InputAdornment'
-import InputHint from '../InputHint/InputHint'
+import ControlLabel from '../ControlLabel/ControlLabel';
+import Flexbox from '../../layout/Flexbox/Flexbox';
+import InputAdornment from '../InputAdornment/InputAdornment';
+import InputHint from '../InputHint/InputHint';
 
 interface MetaProps {
   /** Valid style. */
@@ -17,15 +17,15 @@ interface MetaProps {
 interface Props {
   /** Label text. */
   label: string;
-  meta: MetaProps
+  meta: MetaProps;
   /** Hint text. */
   hint?: string;
   /** Placeholder text. */
   placeholder?: string;
   /** Show valid theme in input when finish validation */
   showValid?: boolean;
-  inputComponent: any
-  input: any
+  inputComponent: any;
+  input: any;
 }
 
 /**
@@ -33,14 +33,13 @@ interface Props {
  * InputHint and InputAdornment components.
  */
 class FormField extends React.Component<Props> {
-
   static defaultProps = {
     meta: {},
-    showValid: true
-  }
+    showValid: true,
+  };
 
-// FormField.displayName = 'FormField'
-  render () {
+  // FormField.displayName = 'FormField'
+  render() {
     const {
       label,
       hint,
@@ -50,18 +49,18 @@ class FormField extends React.Component<Props> {
       input,
       showValid,
       ...props
-    } = this.props
+    } = this.props;
 
-    const adornmentProps: any = {}
-    let showAdornment = false
+    const adornmentProps: any = {};
+    let showAdornment = false;
 
     if (touched) {
       if (!!error) {
-        adornmentProps.invalid = true
-        showAdornment = true
+        adornmentProps.invalid = true;
+        showAdornment = true;
       } else if (valid && showValid) {
-        adornmentProps.valid = true
-        showAdornment = true
+        adornmentProps.valid = true;
+        showAdornment = true;
       }
     }
 
@@ -69,8 +68,10 @@ class FormField extends React.Component<Props> {
       <div style={{ padding: '0 0 17px' }}>
         <Flexbox horizontal>
           <ControlLabel>{label}</ControlLabel>
-          {(touched && error && typeof error === 'string') && <InputHint invalid={true}>{error}</InputHint>}
-          {(hint && (!error || !touched)) && <InputHint>{hint}</InputHint>}
+          {touched && error && typeof error === 'string' && (
+            <InputHint invalid={true}>{error}</InputHint>
+          )}
+          {hint && (!error || !touched) && <InputHint>{hint}</InputHint>}
         </Flexbox>
         <Flexbox horizontal>
           <InputComponent
@@ -83,12 +84,12 @@ class FormField extends React.Component<Props> {
             {...input}
             {...props}
           />
-          {showAdornment && (<InputAdornment {...adornmentProps} />)}
+          {showAdornment && <InputAdornment {...adornmentProps} />}
         </Flexbox>
       </div>
-    )
+    );
   }
 }
 
 /** @component */
-export default FormField
+export default FormField;

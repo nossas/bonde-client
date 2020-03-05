@@ -1,15 +1,15 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import Icon from '../../content/Icon/Icon'
-import Button from '../../content/Button/Button'
-import Backdrop from '../../layout/Backdrop/Backdrop'
-import { px } from '../../../utils'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import Icon from '../../content/Icon/Icon';
+import Button from '../../content/Button/Button';
+import Backdrop from '../../layout/Backdrop/Backdrop';
+import { px } from '../../../utils';
 
 const CloseButton = styled(({ className, onClose }) => (
   <div className={className}>
     <Button flat onClick={onClose}>
-      <Icon name='times' size={12} color='#FFFFFF' />
+      <Icon name="times" size={12} color="#FFFFFF" />
     </Button>
   </div>
 ))`
@@ -21,7 +21,7 @@ const CloseButton = styled(({ className, onClose }) => (
     padding: 0;
     min-width: 38px;
   }
-`
+`;
 
 const CardTooltip = styled(({ className, onClose, Content }) => (
   <div className={className}>
@@ -41,21 +41,39 @@ const CardTooltip = styled(({ className, onClose, Content }) => (
   flex-direction: column;
   justify-content: space-between;
 
-  ${props => props.margin && props.margin.top && `margin-top: ${px(props.margin.top)};`}
-  ${props => props.margin && props.margin.bottom && `margin-bottom: ${px(props.margin.bottom)};`}
-  ${props => props.margin && props.margin.left && `margin-left: ${px(props.margin.left)};`}
-  ${props => props.margin && props.margin.right && `margin-right: ${px(props.margin.right)};`}
+  ${props =>
+    props.margin && props.margin.top && `margin-top: ${px(props.margin.top)};`}
+  ${props =>
+    props.margin &&
+    props.margin.bottom &&
+    `margin-bottom: ${px(props.margin.bottom)};`}
+  ${props =>
+    props.margin &&
+    props.margin.left &&
+    `margin-left: ${px(props.margin.left)};`}
+  ${props =>
+    props.margin &&
+    props.margin.right &&
+    `margin-right: ${px(props.margin.right)};`}
 
-  ${props => props.minWidth && `
+  ${props =>
+    props.minWidth &&
+    `
     min-width: ${props.minWidth}px;
   `}
-  ${props => props.width && `
+  ${props =>
+    props.width &&
+    `
     width: ${props.width}px;
   `}
-  ${props => props.minHeight && `
+  ${props =>
+    props.minHeight &&
+    `
     min-height: ${props.minHeight}px;
   `}
-  ${props => props.small && `
+  ${props =>
+    props.small &&
+    `
     padding: 15px;
   `}
 
@@ -64,104 +82,154 @@ const CardTooltip = styled(({ className, onClose, Content }) => (
     position: absolute;
     border: 8px solid transparent;
 
-    ${props => props.placement.startsWith('left') && `
+    ${props =>
+      props.placement.startsWith('left') &&
+      `
       right: -16px;
       border-left-color: #424242;
     `}
-    ${props => props.placement.startsWith('right') && `
+    ${props =>
+      props.placement.startsWith('right') &&
+      `
       left: -16px;
       border-right-color: #424242;
     `}
-    ${props => props.placement.startsWith('top') && `
+    ${props =>
+      props.placement.startsWith('top') &&
+      `
       bottom: -16px;
       border-top-color: #424242;
     `}
-    ${props => props.placement.startsWith('bottom') && `
+    ${props =>
+      props.placement.startsWith('bottom') &&
+      `
       top: -16px;
       border-bottom-color: #424242;
     `}
-    ${props => props.placement.endsWith('top') && `
+    ${props =>
+      props.placement.endsWith('top') &&
+      `
       top: 8%;
     `}
-    ${props => props.placement.endsWith('bottom') && `
+    ${props =>
+      props.placement.endsWith('bottom') &&
+      `
       bottom: 8%;
     `}
-    ${props => props.placement.endsWith('left') && `
+    ${props =>
+      props.placement.endsWith('left') &&
+      `
       left: 8%;
     `}
-    ${props => props.placement.endsWith('right') && `
+    ${props =>
+      props.placement.endsWith('right') &&
+      `
       right: 8%;
     `}
 
     /**
      * TODO: Needs to fix middle positions.
      */
-    ${props => ['top-middle', 'bottom-middle'].includes(props.placement) && `
+    ${props =>
+      ['top-middle', 'bottom-middle'].includes(props.placement) &&
+      `
       left: calc(50% - 8px);
     `}
-    ${props => ['right-middle', 'left-middle'].includes(props.placement) && `
+    ${props =>
+      ['right-middle', 'left-middle'].includes(props.placement) &&
+      `
       top: calc(50% - 8px);
     `}
   }
 
-  ${props => props.placement.startsWith('top') && `
+  ${props =>
+    props.placement.startsWith('top') &&
+    `
     margin-bottom: 8px;
     bottom: 103%;
   `}
-  ${props => props.placement.startsWith('bottom') && `
+  ${props =>
+    props.placement.startsWith('bottom') &&
+    `
     margin-top: 8px;
     top: 103%;
   `}
-  ${props => props.placement.startsWith('left') && `
+  ${props =>
+    props.placement.startsWith('left') &&
+    `
     margin-right: 8px;
     right: 103%;
   `}
-  ${props => props.placement.startsWith('right') && `
+  ${props =>
+    props.placement.startsWith('right') &&
+    `
     margin-left: 8px;
     left: 103%;
   `}
-  ${props => props.placement.endsWith('top') && `
+  ${props =>
+    props.placement.endsWith('top') &&
+    `
     top: 0;
   `}
-  ${props => props.placement.endsWith('bottom') && `
+  ${props =>
+    props.placement.endsWith('bottom') &&
+    `
     bottom: 0;
   `}
-  ${props => props.placement.endsWith('left') && `
+  ${props =>
+    props.placement.endsWith('left') &&
+    `
     left: 0;
   `}
-  ${props => props.placement.endsWith('right') && `
+  ${props =>
+    props.placement.endsWith('right') &&
+    `
     right: 0;
   `}
 
   /**
    * TODO: Needs to fix middle positions.
    */
-  ${props => ['top-middle', 'bottom-middle'].includes(props.placement) && `
+  ${props =>
+    ['top-middle', 'bottom-middle'].includes(props.placement) &&
+    `
     left: calc(50% - 41px);
   `}
-  ${props => ['right-middle', 'left-middle'].includes(props.placement) && `
+  ${props =>
+    ['right-middle', 'left-middle'].includes(props.placement) &&
+    `
     top: calc(50% - 41px);
   `}
 
-  ${props => props.position && props.position.top && `top: ${props.position.top};`}
-  ${props => props.position && props.position.bottom && `bottom: ${props.position.bottom};`}
-  ${props => props.position && props.position.left && `left: ${props.position.left};`}
-  ${props => props.position && props.position.right && `right: ${props.position.right};`}
-`
+  ${props =>
+    props.position && props.position.top && `top: ${props.position.top};`}
+  ${props =>
+    props.position &&
+    props.position.bottom &&
+    `bottom: ${props.position.bottom};`}
+  ${props =>
+    props.position && props.position.left && `left: ${props.position.left};`}
+  ${props =>
+    props.position && props.position.right && `right: ${props.position.right};`}
+`;
 
-const Tooltip = styled(({ className, children, nolock, backdropClose, show, ...props }) => (
-  <div className={className}>
-    {show && !nolock && <Backdrop onClick={backdropClose ? props.onClose : undefined} />}
-    {show && <CardTooltip {...props} />}
-    {children}
-  </div>
-))`
+const Tooltip = styled(
+  ({ className, children, nolock, backdropClose, show, ...props }) => (
+    <div className={className}>
+      {show && !nolock && (
+        <Backdrop onClick={backdropClose ? props.onClose : undefined} />
+      )}
+      {show && <CardTooltip {...props} />}
+      {children}
+    </div>
+  )
+)`
   display: inline-block;
   position: relative;
   width: 100%;
-`
+`;
 
-const { oneOfType, oneOf, node, func, bool, shape, number, string } = PropTypes
+const { oneOfType, oneOf, node, func, bool, shape, number, string } = PropTypes;
 
 Tooltip.propTypes = {
   /** The component that will be wrapped with the tooltip. */
@@ -207,8 +275,8 @@ Tooltip.propTypes = {
     bottom: oneOfType([string, number]),
     left: oneOfType([string, number]),
     right: oneOfType([string, number]),
-  })
-}
+  }),
+};
 
 Tooltip.defaultProps = {
   nolock: false,
@@ -216,10 +284,10 @@ Tooltip.defaultProps = {
   show: true,
   placement: 'right-top',
   position: {},
-  margin: {}
-}
+  margin: {},
+};
 
-Tooltip.displayName = 'Tooltip'
+Tooltip.displayName = 'Tooltip';
 
 /** @component */
-export default Tooltip
+export default Tooltip;

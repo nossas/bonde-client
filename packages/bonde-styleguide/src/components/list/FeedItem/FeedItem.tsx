@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 const Time = styled.div`
   display: table-cell;
@@ -12,7 +12,7 @@ const Time = styled.div`
   color: #9b9b9b;
   white-space: nowrap;
   width: 35px;
-`
+`;
 
 const FeedText = styled.div`
   display: table-cell;
@@ -21,7 +21,7 @@ const FeedText = styled.div`
   font-size: 16px;
   line-height: 1.35;
   color: #333333;
-`
+`;
 
 interface Props {
   className?: string;
@@ -37,49 +37,51 @@ interface State {
  * Each item updates the feed date difference per minute,
  * based on current date.
  */
-const FeedItem = styled(class extends React.Component<Props, State> {
-  timer: any;
+const FeedItem = styled(
+  class extends React.Component<Props, State> {
+    timer: any;
 
-  constructor (props) {
-    super(props)
-    this.state = { now: new Date() }
+    constructor(props) {
+      super(props);
+      this.state = { now: new Date() };
+    }
+
+    componentDidMount() {
+      this.timer = setInterval(() => this.setState({ now: new Date() }), 1000);
+    }
+
+    componentWillUnmount() {
+      clearInterval(this.timer);
+    }
+
+    render() {
+      const { className, date, text } = this.props;
+
+      const diff = Math.abs(Number(this.state.now) - Number(new Date(date)));
+      const mins = Math.floor(diff / 1000 / 60);
+
+      return (
+        <li className={className}>
+          <Time>{mins} min</Time>
+          <FeedText>{text}</FeedText>
+        </li>
+      );
+    }
   }
-
-  componentDidMount () {
-    this.timer = setInterval(() => this.setState({ now: new Date() }), 1000)
-  }
-
-  componentWillUnmount () {
-    clearInterval(this.timer)
-  }
-
-  render () {
-    const { className, date, text } = this.props
-
-    const diff = Math.abs(Number(this.state.now) - Number(new Date(date)))
-    const mins = Math.floor((diff / 1000) / 60)
-
-    return (
-      <li className={className}>
-        <Time>{mins} min</Time>
-        <FeedText>{text}</FeedText>
-      </li>
-    )
-  }
-})`
+)`
   display: table-row;
-`
+`;
 
-const { oneOfType, string, object, number } = PropTypes
+const { oneOfType, string, object, number } = PropTypes;
 
 FeedItem.propTypes = {
   /** Feed item date. It can be a Date object, UTC Date string or a timestamp. */
   date: oneOfType([string, object, number]).isRequired,
   /** Feed item text. */
-  text: string.isRequired
-}
+  text: string.isRequired,
+};
 
-FeedItem.displayName = 'FeedItem'
+FeedItem.displayName = 'FeedItem';
 
 /** @component */
-export default FeedItem
+export default FeedItem;

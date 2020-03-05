@@ -1,10 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 const Checkbox = styled.input.attrs(() => ({ type: 'checkbox' }))`
   display: none;
-`
+`;
 
 const Content = styled.span`
   display: inline-block;
@@ -22,24 +22,22 @@ const Content = styled.span`
   padding: 15px 25px;
   margin: 0 5px 5px 0;
 
-  transition: .2s;
+  transition: 0.2s;
 
   ${Checkbox}:checked + & {
     border: solid 1px #ee0099;
     color: #ee0099;
   }
-`
+`;
 
 const Tag = ({ label, ...field }) => (
   <label>
     <Checkbox {...field} />
-    <Content>
-      {label}
-    </Content>
+    <Content>{label}</Content>
   </label>
-)
+);
 
-const { oneOfType, node, func, bool, string } = PropTypes
+const { oneOfType, node, func, bool, string } = PropTypes;
 
 Tag.propTypes = {
   /** Anything that can be rendered, will be rendered inside the tag. */
@@ -50,9 +48,9 @@ Tag.propTypes = {
   name: string,
   /** The form input value attribute. */
   value: oneOfType([bool, string]),
-}
+};
 
-Tag.displayName = 'Tag'
+Tag.displayName = 'Tag';
 
 /** @component */
-export default Tag
+export default Tag;

@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { LayerDynamicStyle } from '../BaseUI/Layer'
+import styled from 'styled-components';
+import { LayerDynamicStyle } from '../BaseUI/Layer';
 
 const Layer = styled.div`
   ${LayerDynamicStyle}
@@ -7,6 +7,6 @@ const Layer = styled.div`
   .Replies {
     padding: 0 0 23px 23px;
   }
-`
+`;
 
-export default Layer
+export default Layer;

@@ -1,9 +1,9 @@
-import React from 'react'
-import styled from 'styled-components'
-import TableCell from './TableCell'
-import TableRow from './TableRow'
+import React from 'react';
+import styled from 'styled-components';
+import TableCell from './TableCell';
+import TableRow from './TableRow';
 
-const TableHeaderCell = styled((props) => <TableCell {...props} />)`
+const TableHeaderCell = styled(props => <TableCell {...props} />)`
   opacity: 0.53;
   font-family: 'Nunito Sans', sans-serif;
   font-size: 9px;
@@ -16,7 +16,7 @@ const TableHeaderCell = styled((props) => <TableCell {...props} />)`
   color: #222222;
   text-transform: uppercase;
   padding: 0 15px;
-`
+`;
 
 const TableHeader = styled(({ className, children, columns }) => (
   <div className={className}>
@@ -31,11 +31,13 @@ const TableHeader = styled(({ className, children, columns }) => (
     )}
     {children}
   </div>
-))`{
-  display: table-header-group;
-}`
+))`
+   {
+    display: table-header-group;
+  }
+`;
 
-TableHeader.displayName = 'TableHeader'
+TableHeader.displayName = 'TableHeader';
 
 /** @component */
-export default TableHeader
+export default TableHeader;

@@ -1,23 +1,27 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import TableRow from './TableRow'
-import TableCell from './TableCell'
-import { Scrollbox } from '../../..'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import TableRow from './TableRow';
+import TableCell from './TableCell';
+import { Scrollbox } from '../../..';
 
-const Table = styled.div`{
-  display: table;
-  width: 100%;
-  border-collapse: collapse;
-}`
+const Table = styled.div`
+   {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+  }
+`;
 
-Table.displayName = 'Table'
+Table.displayName = 'Table';
 
-const TableBody = styled.div`{
-  display: table-row-group;
-}`
+const TableBody = styled.div`
+   {
+    display: table-row-group;
+  }
+`;
 
-TableBody.displayName = 'TableBody'
+TableBody.displayName = 'TableBody';
 
 const ReactTable = ({
   data,
@@ -29,10 +33,9 @@ const ReactTable = ({
   HeaderComponent,
   EmptyComponent,
   // FooterComponent,
-  onClickRow
+  onClickRow,
 }) => {
-
-  const empty = data.length === 0
+  const empty = data.length === 0;
 
   return !empty ? (
     <Scrollbox margin={margin} borderBottom={borderBottom}>
@@ -43,29 +46,24 @@ const ReactTable = ({
             <TableRow
               border={border}
               key={Math.random()}
-              onClick={(
-                onClickRow
-                  ? () => onClickRow(row)
-                  : undefined
-              )}
+              onClick={onClickRow ? () => onClickRow(row) : undefined}
             >
-            {columns.map(col => (
-              <ColumnComponent
-                key={Math.random()}
-                {...col.props}
-              >
-                {col.render
-                  ? col.render({ value: row[col.field], row })
-                  : row[col.field]}
-              </ColumnComponent>
-            ))}
+              {columns.map(col => (
+                <ColumnComponent key={Math.random()} {...col.props}>
+                  {col.render
+                    ? col.render({ value: row[col.field], row })
+                    : row[col.field]}
+                </ColumnComponent>
+              ))}
             </TableRow>
           ))}
         </TableBody>
       </Table>
     </Scrollbox>
-  ) :  <EmptyComponent />
-}
+  ) : (
+    <EmptyComponent />
+  );
+};
 
 ReactTable.propTypes = {
   data: PropTypes.array,
@@ -74,16 +72,16 @@ ReactTable.propTypes = {
   onClickRow: PropTypes.func,
   ColumnComponent: PropTypes.any,
   EmptyComponent: PropTypes.any,
-  HeaderComponent: PropTypes.any
-}
+  HeaderComponent: PropTypes.any,
+};
 
 ReactTable.defaultProps = {
   border: false,
   data: [],
-  ColumnComponent: TableCell
-}
+  ColumnComponent: TableCell,
+};
 
-ReactTable.displayName = 'Table'
+ReactTable.displayName = 'Table';
 
 /** @component */
-export default ReactTable
+export default ReactTable;

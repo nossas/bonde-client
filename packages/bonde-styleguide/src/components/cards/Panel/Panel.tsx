@@ -1,25 +1,25 @@
-import React from 'react'
-import styled, { keyframes } from 'styled-components'
-import PropTypes from 'prop-types'
-import { Card } from '../../..'
-import Flexbox from '../../layout/Flexbox2/Flexbox2'
-import IconColorful from '../../content/IconColorful/IconColorful'
-import Image from '../../content/Image/Image'
-import Spacing from '../../layout/Spacing/Spacing'
-import Text from '../../content/Text/Text'
-import Title from '../../content/Title/Title'
+import React from 'react';
+import styled, { keyframes } from 'styled-components';
+import PropTypes from 'prop-types';
+import { Card } from '../../..';
+import Flexbox from '../../layout/Flexbox2/Flexbox2';
+import IconColorful from '../../content/IconColorful/IconColorful';
+import Image from '../../content/Image/Image';
+import Spacing from '../../layout/Spacing/Spacing';
+import Text from '../../content/Text/Text';
+import Title from '../../content/Title/Title';
 
-const textColor = '#4a4a4a'
+const textColor = '#4a4a4a';
 
 const placeHolderShimmer = keyframes`
   0% { transform: translateX(-180%) }
   100% { transform: translateX(70%) }
-`
+`;
 
 const BackgroundMasker = styled.div`
   background: #fff;
   position: absolute;
-`
+`;
 
 const AnimatedBackground = styled.div`
   animation-name: ${placeHolderShimmer};
@@ -28,10 +28,15 @@ const AnimatedBackground = styled.div`
   animation-iteration-count: infinite;
   animation-timing-function: linear;
   background: #f6f7f8;
-  background: linear-gradient(to right, transparent 30%, #dddddd 70%, transparent 100%);
+  background: linear-gradient(
+    to right,
+    transparent 30%,
+    #dddddd 70%,
+    transparent 100%
+  );
   height: 300px;
   position: relative;
-`
+`;
 
 const PanelLoading = styled(({ className, minHeight, title }) => (
   <Card title={title} minHeight={minHeight}>
@@ -53,11 +58,11 @@ const PanelLoading = styled(({ className, minHeight, title }) => (
   min-height: 300px;
   position: relative;
   overflow: hidden;
-`
+`;
 
 const DefaultImage = styled(({ className }) => (
   <div className={className}>
-    <IconColorful name='community' size={130} />
+    <IconColorful name="community" size={130} />
   </div>
 ))`
   display: flex;
@@ -65,7 +70,7 @@ const DefaultImage = styled(({ className }) => (
   align-items: center;
   height: 185px;
   background-color: #424242;
-`
+`;
 
 const Panel = ({
   loading,
@@ -75,36 +80,38 @@ const Panel = ({
   author,
   title,
   description,
-  onClick
-}) => loading ? <PanelLoading title={sectionTitle} minHeight={minHeight} /> : (
-  <Card title={sectionTitle} minHeight={minHeight} onClick={onClick}>
-    <Flexbox vertical spacing='between'>
-      <div>
-        {image
-          ? <Image src={image} height={185} />
-          : <DefaultImage />
-        }
+  onClick,
+}) =>
+  loading ? (
+    <PanelLoading title={sectionTitle} minHeight={minHeight} />
+  ) : (
+    <Card title={sectionTitle} minHeight={minHeight} onClick={onClick}>
+      <Flexbox vertical spacing="between">
+        <div>
+          {image ? <Image src={image} height={185} /> : <DefaultImage />}
+
+          <Spacing padding={{ x: 16, y: 14 }}>
+            <Title.H4>{title}</Title.H4>
+            {description && (
+              <Spacing margin={{ x: 8, y: 0 }}>
+                <Text fontSize={16} lineHeight={1.31} color={textColor}>
+                  {description}
+                </Text>
+              </Spacing>
+            )}
+          </Spacing>
+        </div>
 
         <Spacing padding={{ x: 16, y: 14 }}>
-          <Title.H4>{title}</Title.H4>
-          {description && (<Spacing margin={{ x: 8, y: 0 }}>
-            <Text fontSize={16} lineHeight={1.31} color={textColor}>
-              {description}
-            </Text>
-          </Spacing>)}
+          <Text fontSize={13} lineHeight={1.85} color={textColor}>
+            {author}
+          </Text>
         </Spacing>
-      </div>
+      </Flexbox>
+    </Card>
+  );
 
-      <Spacing padding={{ x: 16, y: 14 }}>
-        <Text fontSize={13} lineHeight={1.85} color={textColor}>
-          {author}
-        </Text>
-      </Spacing>
-    </Flexbox>
-  </Card>
-)
-
-const { bool, string, number } = PropTypes
+const { bool, string, number } = PropTypes;
 
 Panel.propTypes = {
   loading: bool,
@@ -113,15 +120,15 @@ Panel.propTypes = {
   image: string,
   title: string.isRequired,
   description: string,
-  author: string.isRequired
-}
+  author: string.isRequired,
+};
 
 Panel.defaultProps = {
   loading: false,
-  minHeight: 320
-}
+  minHeight: 320,
+};
 
-Panel.displayName = 'Panel'
+Panel.displayName = 'Panel';
 
 /** @component */
-export default Panel
+export default Panel;

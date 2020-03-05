@@ -1,12 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-import {
-  Card,
-  Flexbox,
-  IconColorful,
-  Title,
-  Button
-} from '../../..'
+import { Card, Flexbox, IconColorful, Title, Button } from '../../..';
 
 interface Props {
   sectionTitle?: string;
@@ -25,20 +19,20 @@ const ActionCard = ({
   callToAction,
   btnText,
   btnOnClick,
-  btnDisabled = false
+  btnDisabled = false,
 }: Props) => (
   <Card title={sectionTitle} minHeight={minHeight} middle>
-    <Flexbox padding={{ x: 82 }} alignItems='middle'>
+    <Flexbox padding={{ x: 82 }} alignItems="middle">
       {iconName && <IconColorful name={iconName} size={80} />}
-      <Title.H3 margin={{ top: 10, bottom: 22 }}>
-        {callToAction}
-      </Title.H3>
-      <Button disabled={btnDisabled} onClick={btnOnClick}>{btnText}</Button>
+      <Title.H3 margin={{ top: 10, bottom: 22 }}>{callToAction}</Title.H3>
+      <Button disabled={btnDisabled} onClick={btnOnClick}>
+        {btnText}
+      </Button>
     </Flexbox>
   </Card>
-)
+);
 
 // ActionCard.displayName = 'ActionCard'
 
 /** @component */
-export default ActionCard
+export default ActionCard;

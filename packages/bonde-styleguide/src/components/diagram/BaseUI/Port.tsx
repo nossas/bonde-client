@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components'
+import styled, { css } from 'styled-components';
 
 // TODO: Use types of lib
-export const PortDynamicStyle = (props)  => css`
+export const PortDynamicStyle = props => css`
   background: #ee0090;
   border-radius: 50px;
   width: 16px;
@@ -15,10 +15,10 @@ export const PortDynamicStyle = (props)  => css`
   }
 
   ${props.node.getOptions().in ? 'left: -8px;' : 'right: -8px;'}
-`
+`;
 
 const Port = styled.div`
   ${PortDynamicStyle}
-`
+`;
 
-export default Port
+export default Port;

@@ -1,11 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 const Checkbox = styled(({ children, className, ...inputProps }) => (
   <label className={className}>
-    <input type='checkbox' {...inputProps} />
+    <input type="checkbox" {...inputProps} />
     <span>{children}</span>
-    <div className='box' />
+    <div className="box" />
   </label>
 ))`
   font-family: 'Nunito Sans', sans-serif;
@@ -78,9 +78,9 @@ const Checkbox = styled(({ children, className, ...inputProps }) => (
     border-width: 0 1px 1px 0;
     transform: rotate(45deg);
   }
-`
+`;
 
-Checkbox.displayName = 'Checkbox'
+Checkbox.displayName = 'Checkbox';
 
 /** @component */
-export default Checkbox
+export default Checkbox;

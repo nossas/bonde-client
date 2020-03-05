@@ -1,11 +1,15 @@
-import styled from 'styled-components'
-import PropTypes from 'prop-types'
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Position = styled.div`
-  ${props => props.absolute && `
+  ${props =>
+    props.absolute &&
+    `
     position: absolute;
   `}
-  ${props => props.relative && `
+  ${props =>
+    props.relative &&
+    `
     position: absolute;
   `}
 
@@ -20,9 +24,9 @@ const Position = styled.div`
   ${props => props.index && `z-index: ${props.index};`}
   ${props => props.width && `width: ${props.width};`}
   ${props => props.height && `height: ${props.height};`}
-`
+`;
 
-const { bool, number, string } = PropTypes
+const { bool, number, string } = PropTypes;
 
 Position.propTypes = {
   absolute: bool,
@@ -33,8 +37,8 @@ Position.propTypes = {
   right: number,
   index: number,
   width: string,
-  height: string
-}
+  height: string,
+};
 
 /** @component */
-export default Position
+export default Position;

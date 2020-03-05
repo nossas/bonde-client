@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled, { css } from 'styled-components'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
 
 export const TabItem = ({ component: Component, ...rest }) => {
   const StyledComponent = styled(Component)`
@@ -9,28 +9,30 @@ export const TabItem = ({ component: Component, ...rest }) => {
     font-size: 13px;
     font-weight: 800;
     line-height: 1.15;
-    color: ${props => props.inverted ? '#000' : '#fff'};
+    color: ${props => (props.inverted ? '#000' : '#fff')};
     text-transform: uppercase;
     cursor: pointer;
     margin: 0 15px 0 0;
     padding-bottom: 11px;
     text-decoration: none;
 
-    ${props => props.active && css`
-      border-bottom: 2px solid #ee0099;
-      padding-bottom: 9px;
-    `}
+    ${props =>
+      props.active &&
+      css`
+        border-bottom: 2px solid #ee0099;
+        padding-bottom: 9px;
+      `}
 
     &:hover, &:active {
       border-bottom: 2px solid #ee0099;
       padding-bottom: 9px;
     }
-  `
+  `;
 
-  return <StyledComponent {...rest} />
-}
+  return <StyledComponent {...rest} />;
+};
 
-const { any, bool } = PropTypes
+const { any, bool } = PropTypes;
 
 TabItem.propTypes = {
   /** Invert the tab color style. */
@@ -38,16 +40,16 @@ TabItem.propTypes = {
   /** Mark the current item as active style. */
   active: bool,
   /** Component used to render */
-  component: any
-}
+  component: any,
+};
 
 TabItem.defaultProps = {
   inverted: false,
   active: false,
-  component: 'a'
-}
+  component: 'a',
+};
 
-TabItem.displayName = 'TabItem'
+TabItem.displayName = 'TabItem';
 
 /** @component */
-export default TabItem
+export default TabItem;

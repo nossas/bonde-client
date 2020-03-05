@@ -11,7 +11,7 @@
     "styleguidist": "styleguidist server",
     "start": "tsdx watch",
     "build": "tsdx build",
-    "test": "tsdx test --passWithNoTests",
+    "ttest": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
     "prepare": "tsdx build"
   },
@@ -43,10 +43,12 @@
     "react-dom": "^16.13.0",
     "tsdx": "^0.12.3",
     "tslib": "^1.11.1",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.0"
   },
   "dependencies": {
     "@types/node": "^13.9.1",
+    "enzyme": "^3.11.0",
     "prop-types": "^15.7.2",
     "react-styleguidist": "^10.6.2",
     "recharts": "^2.0.0-beta.1",

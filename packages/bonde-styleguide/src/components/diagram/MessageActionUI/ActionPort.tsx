@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { PortDynamicStyle } from '../BaseUI/Port'
+import styled from 'styled-components';
+import { PortDynamicStyle } from '../BaseUI/Port';
 
 const ActionPort = styled.div`
   padding: 0 10px 0;
@@ -9,8 +9,9 @@ const ActionPort = styled.div`
 
   .port {
     ${PortDynamicStyle}
-    background-color: ${props => props.node.getOptions().success ? 'green' : 'red'};
+    background-color: ${props =>
+      props.node.getOptions().success ? 'green' : 'red'};
   }
-`
+`;
 
-export default ActionPort
+export default ActionPort;

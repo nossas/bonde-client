@@ -1,9 +1,9 @@
-import React from 'react'
-import styled from 'styled-components'
-import Flexbox from  '../../layout/Flexbox2/Flexbox2'
-import Button from '../../content/Button/Button'
-import Icon from '../../content/Icon/Icon'
-import InputPage from './InputPage'
+import React from 'react';
+import styled from 'styled-components';
+import Flexbox from '../../layout/Flexbox2/Flexbox2';
+import Button from '../../content/Button/Button';
+import Icon from '../../content/Icon/Icon';
+import InputPage from './InputPage';
 
 const FlatButton = styled(({ className, children, ...props }) => (
   <Button {...props} className={className} flat>
@@ -13,12 +13,14 @@ const FlatButton = styled(({ className, children, ...props }) => (
   min-width: 0 !important;
   padding: 0 8px !important;
   font-size: 11px !important;
-  ${props => props.color && `
+  ${props =>
+    props.color &&
+    `
     color: ${props.color} !important;
   `}
-`
+`;
 
-FlatButton.displayName = 'FlatButton'
+FlatButton.displayName = 'FlatButton';
 
 interface IconButtonProps {
   disabled: boolean;
@@ -27,15 +29,15 @@ interface IconButtonProps {
 }
 
 class IconButton extends React.Component<IconButtonProps> {
-  state = { color: '#000000' }
+  state = { color: '#000000' };
 
-  handleColorMouseEnter = () => this.setState({ color: '#424242' })
-  handleColorMouseLeave = () => this.setState({ color: '#000000' })
-  handleColorMouseDown = () => this.setState({ color: '#9b9b9b' })
-  handleColorMouseUp = () => this.setState({ color: '#000000' })
+  handleColorMouseEnter = () => this.setState({ color: '#424242' });
+  handleColorMouseLeave = () => this.setState({ color: '#000000' });
+  handleColorMouseDown = () => this.setState({ color: '#9b9b9b' });
+  handleColorMouseUp = () => this.setState({ color: '#000000' });
 
-  render () {
-    const { disabled } = this.props
+  render() {
+    const { disabled } = this.props;
 
     return (
       <FlatButton
@@ -48,12 +50,12 @@ class IconButton extends React.Component<IconButtonProps> {
       >
         <Icon
           name={this.props.name}
-          size='11'
-          margin='-2px 5px 0'
+          size="11"
+          margin="-2px 5px 0"
           color={!disabled ? this.state.color : '#aaaaaa'}
         />
       </FlatButton>
-    )
+    );
   }
 }
 
@@ -71,7 +73,6 @@ interface PaginationProps {
  * The only true `Pagination` component.
  */
 class Pagination extends React.Component<PaginationProps> {
-
   static defaultProps = {
     pages: 1,
     pageIndex: 0,
@@ -79,13 +80,13 @@ class Pagination extends React.Component<PaginationProps> {
     textNext: 'Next',
     iconFirst: 'double-arrow-left',
     iconLast: 'double-arrow-right',
-  }
+  };
 
   handleActiveIndex = activeIndex => {
-    this.props.onChangePage(activeIndex)
-  }
+    this.props.onChangePage(activeIndex);
+  };
 
-  render () {
+  render() {
     const {
       pageIndex,
       pages,
@@ -93,13 +94,13 @@ class Pagination extends React.Component<PaginationProps> {
       textNext,
       iconFirst,
       iconLast,
-    } = this.props
+    } = this.props;
 
-    const isFirst = pageIndex === 0
-    const isLast = pageIndex === pages - 1
+    const isFirst = pageIndex === 0;
+    const isLast = pageIndex === pages - 1;
 
     return (
-      <Flexbox horizontal spacing='between' middle>
+      <Flexbox horizontal spacing="between" middle>
         <div>
           <IconButton
             onClick={() => this.handleActiveIndex(0)}
@@ -132,9 +133,9 @@ class Pagination extends React.Component<PaginationProps> {
           />
         </div>
       </Flexbox>
-    )
+    );
   }
 }
 
 /** @component */
-export default Pagination
+export default Pagination;

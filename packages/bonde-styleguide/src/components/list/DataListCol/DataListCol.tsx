@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import PropTypes from 'prop-types'
-import { px } from '../../../utils'
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { px } from '../../../utils';
 
 /**
  * The column component of `DataList`.
@@ -8,7 +8,8 @@ import { px } from '../../../utils'
 const DataListCol = styled.div`
   ${props => props.width && `width: ${px(props.width)};`}
   display: table-cell;
-  padding: ${props => props.padding ? '13px 15px 14px 15px' : '0 15px 0 15px'};
+  padding: ${props =>
+    props.padding ? '13px 15px 14px 15px' : '0 15px 0 15px'};
   vertical-align: middle;
 
   &:first-child {
@@ -19,23 +20,23 @@ const DataListCol = styled.div`
   }
 
   text-align: ${props => props.align};
-`
+`;
 
-const { number, string } = PropTypes
+const { number, string } = PropTypes;
 
 DataListCol.propTypes = {
   /** The list column width. */
   width: number,
   /** The list column alignment. */
-  align: string
-}
+  align: string,
+};
 
 DataListCol.defaultProps = {
   align: 'inherit',
-  padding: true
-}
+  padding: true,
+};
 
-DataListCol.displayName = 'DataListCol'
+DataListCol.displayName = 'DataListCol';
 
 /** @component */
-export default DataListCol
+export default DataListCol;

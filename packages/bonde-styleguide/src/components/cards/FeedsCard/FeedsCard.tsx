@@ -1,11 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import {
-  Card,
-  Scrollbox,
-  Feed,
-  FeedItem
-} from '../../..'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Card, Scrollbox, Feed, FeedItem } from '../../..';
 
 /*
  * The only feeds card component.
@@ -20,27 +15,29 @@ const FeedsCard = ({ sectionTitle, minHeight, items }) => (
       </Feed>
     </Scrollbox>
   </Card>
-)
+);
 
 FeedsCard.propTypes = {
   sectionTitle: PropTypes.string,
   minHeight: PropTypes.number,
-  items: PropTypes.arrayOf(PropTypes.shape({
-    date: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.object,
-      PropTypes.number
-    ]).isRequired,
-    text: PropTypes.string.isRequired
-  }))
-}
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      date: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.object,
+        PropTypes.number,
+      ]).isRequired,
+      text: PropTypes.string.isRequired,
+    })
+  ),
+};
 
 FeedsCard.defaultProps = {
   minHeight: 274,
-  items: []
-}
+  items: [],
+};
 
-FeedsCard.displayName = 'FeedsCard'
+FeedsCard.displayName = 'FeedsCard';
 
 /** @component */
-export default FeedsCard
+export default FeedsCard;

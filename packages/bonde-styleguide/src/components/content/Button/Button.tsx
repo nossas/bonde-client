@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types'
-import styled, { css } from 'styled-components'
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
 
 /**
  * The only true Button component.
@@ -30,59 +30,72 @@ const Button = styled.button`
     background-color: #b4006c;
   }
 
-  ${props => (props.light || props.dark) && css`
-    background: none;
-    box-shadow: none;
-    border: solid 1px;
-    &:active {
+  ${props =>
+    (props.light || props.dark) &&
+    css`
       background: none;
-      border-color: #ee0099;
-      color: #ee0099;
-    }
-    &:hover {
-      background: none;
-    }
-  `}
-
-  ${props => props.light && css`
-    color: #000;
-    border-color: #000;
-    &:hover {
-      border-color: #545252;
-      color: #545252;
-    }
-  `}
-
-  ${props => props.dark && css`
-    color: #fff;
-    border-color: #fff;
-
-    path, g {
-      fill: #fff;
-    }
-
-    &:hover {
-      border-color: #bebebe;
-      color: #bebebe;
-
-      path, g {
-        fill: #ee0099!important;
+      box-shadow: none;
+      border: solid 1px;
+      &:active {
+        background: none;
+        border-color: #ee0099;
+        color: #ee0099;
       }
-    }
-    &:active {
-      border-color: #ee0099;
-      color: #ee0099;
-    }
-  `}
+      &:hover {
+        background: none;
+      }
+    `}
 
-  ${props => props.active && css`
-    color: #ee0099!important;
-    path, g {
-      fill: #ee0099!important;
-    }
-  `}
+  ${props =>
+    props.light &&
+    css`
+      color: #000;
+      border-color: #000;
+      &:hover {
+        border-color: #545252;
+        color: #545252;
+      }
+    `}
 
-  ${props => props.disabled && `
+  ${props =>
+    props.dark &&
+    css`
+      color: #fff;
+      border-color: #fff;
+
+      path,
+      g {
+        fill: #fff;
+      }
+
+      &:hover {
+        border-color: #bebebe;
+        color: #bebebe;
+
+        path,
+        g {
+          fill: #ee0099 !important;
+        }
+      }
+      &:active {
+        border-color: #ee0099;
+        color: #ee0099;
+      }
+    `}
+
+  ${props =>
+    props.active &&
+    css`
+      color: #ee0099 !important;
+      path,
+      g {
+        fill: #ee0099 !important;
+      }
+    `}
+
+  ${props =>
+    props.disabled &&
+    `
     cursor: default;
     background-color: #d1cdd2;
     box-shadow: none;
@@ -90,7 +103,9 @@ const Button = styled.button`
     &:active { background-color: #d1cdd2 }
   `}
 
-  ${props => props.flat && `
+  ${props =>
+    props.flat &&
+    `
     background-color: transparent;
     border-color: transparent;
     color: #000000;
@@ -113,7 +128,10 @@ const Button = styled.button`
     }
   `}
 
-  ${props => props.flat && props.dark && `
+  ${props =>
+    props.flat &&
+    props.dark &&
+    `
     color: #fff;
 
     &:hover {
@@ -126,23 +144,36 @@ const Button = styled.button`
     }
   `}
 
-  ${props => props.flat && props.disabled && `
+  ${props =>
+    props.flat &&
+    props.disabled &&
+    `
     color: #aaaaaa;
     &:hover { color: #aaaaaa }
     &:active { color: #aaaaaa }
   `}
 
-  ${props => props.color && `
+  ${props =>
+    props.color &&
+    `
     color: ${props.color};
   `}
 
-  ${props => props.margin && props.margin.top && `margin-top: ${props.margin.top};`}
-  ${props => props.margin && props.margin.bottom && `margin-bottom: ${props.margin.bottom};`}
-  ${props => props.margin && props.margin.left && `margin-left: ${props.margin.left};`}
-  ${props => props.margin && props.margin.right && `margin-right: ${props.margin.right};`}
-`
+  ${props =>
+    props.margin && props.margin.top && `margin-top: ${props.margin.top};`}
+  ${props =>
+    props.margin &&
+    props.margin.bottom &&
+    `margin-bottom: ${props.margin.bottom};`}
+  ${props =>
+    props.margin && props.margin.left && `margin-left: ${props.margin.left};`}
+  ${props =>
+    props.margin &&
+    props.margin.right &&
+    `margin-right: ${props.margin.right};`}
+`;
 
-const { oneOf, node, bool, string, shape } = PropTypes
+const { oneOf, node, bool, string, shape } = PropTypes;
 
 Button.propTypes = {
   /** Children nodes. */
@@ -173,17 +204,17 @@ Button.propTypes = {
     right: string,
   }),
   /** Button padding. */
-  padding: string
-}
+  padding: string,
+};
 
 Button.defaultProps = {
   align: 'center',
   type: 'button',
   margin: {},
-  padding: '5px 20px'
-}
+  padding: '5px 20px',
+};
 
-Button.displayName = 'Button'
+Button.displayName = 'Button';
 
 /** @component */
-export default Button
+export default Button;

@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 /**
  * The container to render feed items.
@@ -10,16 +10,16 @@ const Feed = styled.ul`
   padding: 0;
   display: table;
   width: 100%;
-`
+`;
 
-const { oneOfType, node, arrayOf } = PropTypes
+const { oneOfType, node, arrayOf } = PropTypes;
 
 Feed.propTypes = {
   /** Use FeedItem component to compose the Feed. */
-  children: oneOfType([node, arrayOf(node)]).isRequired
-}
+  children: oneOfType([node, arrayOf(node)]).isRequired,
+};
 
-Feed.displayName = 'Feed'
+Feed.displayName = 'Feed';
 
 /** @component */
-export default Feed
+export default Feed;

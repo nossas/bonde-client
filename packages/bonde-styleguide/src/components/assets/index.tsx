@@ -1,1 +1,1 @@
-export { default as BrazilMap } from './BrazilMap/BrazilMap'
+export { default as BrazilMap } from './BrazilMap/BrazilMap';

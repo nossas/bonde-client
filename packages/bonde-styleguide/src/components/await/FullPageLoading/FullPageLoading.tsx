@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-import { TextLoading } from '../'
-import { Backdrop } from '../../layout'
+import { TextLoading } from '../';
+import { Backdrop } from '../../layout';
 
 interface Props {
   bgColor: string;
@@ -12,6 +12,6 @@ const LoadingFullScreen = ({ bgColor = '#fff', message }: Props) => (
   <Backdrop color={bgColor}>
     <TextLoading message={message} />
   </Backdrop>
-)
+);
 
-export default LoadingFullScreen
+export default LoadingFullScreen;

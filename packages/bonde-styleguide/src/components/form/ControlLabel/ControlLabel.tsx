@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const ControlLabel = styled.label`
   font-family: 'Nunito Sans', sans-serif;
@@ -8,9 +8,9 @@ const ControlLabel = styled.label`
   letter-spacing: 0.5px;
   color: #aaa;
   text-transform: uppercase;
-`
+`;
 
-ControlLabel.displayName = 'ControlLabel'
+ControlLabel.displayName = 'ControlLabel';
 
 /** @component */
-export default ControlLabel
+export default ControlLabel;

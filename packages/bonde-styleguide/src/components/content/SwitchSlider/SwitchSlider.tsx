@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 const Switch = styled.label`
   position: relative;
@@ -25,18 +25,18 @@ const Switch = styled.label`
     right: 10px;
     bottom: 8px;
     background-color: #444444;
-    transition: .4s;
+    transition: 0.4s;
     ${props => props.round && `border-radius: 34px;`};
 
     &:before {
       position: absolute;
-      content: "";
+      content: '';
       height: 16px;
       width: 16px;
       left: 0;
       bottom: 0;
       background-color: white;
-      transition: .4s;
+      transition: 0.4s;
       box-shadow: 0 0 3px 0px;
       ${props => props.round && `border-radius: 50%;`};
     }
@@ -47,7 +47,7 @@ const Switch = styled.label`
   }
 
   input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px #2196f3;
   }
 
   input:checked + .slider:before {
@@ -56,14 +56,14 @@ const Switch = styled.label`
   }
   p {
     margin-top: -9px;
-    color: ${props => props.checked ? '#6ee8bf' : '#444444'};
+    color: ${props => (props.checked ? '#6ee8bf' : '#444444')};
   }
-`
+`;
 
 const SwitchSlider = ({ children, round, checked, onChange }) => {
-  const inputProps = { onChange, checked }
+  const inputProps = { onChange, checked };
   if (checked !== undefined) {
-    inputProps.checked = checked
+    inputProps.checked = checked;
   }
   return (
     <Switch round={round} checked={checked}>
@@ -71,8 +71,8 @@ const SwitchSlider = ({ children, round, checked, onChange }) => {
       <span className="slider" />
       {children}
     </Switch>
-  )
-}
+  );
+};
 
 SwitchSlider.propTypes = {
   /** Control checkbox marking */
@@ -80,13 +80,13 @@ SwitchSlider.propTypes = {
   /** Function called when toggle slider */
   onChange: PropTypes.func,
   /** Change rectangular to rounded */
-  round: PropTypes.bool
-}
+  round: PropTypes.bool,
+};
 
 SwitchSlider.defaultProps = {
   round: false,
-  onChange: () => {}
-}
+  onChange: () => {},
+};
 
 /** @component */
-export default SwitchSlider
+export default SwitchSlider;

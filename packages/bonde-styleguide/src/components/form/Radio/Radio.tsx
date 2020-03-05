@@ -1,12 +1,12 @@
-import React from 'react'
-import styled from 'styled-components'
-import Text from '../../content/Text/Text'
+import React from 'react';
+import styled from 'styled-components';
+import Text from '../../content/Text/Text';
 
 const Radio = styled(({ children, className, ...inputProps }) => (
   <label className={className}>
-    <input type='radio' {...inputProps} />
+    <input type="radio" {...inputProps} />
     <Text>{children}</Text>
-    <div className='box' />
+    <div className="box" />
   </label>
 ))`
   margin-right: 1.5rem;
@@ -23,7 +23,6 @@ const Radio = styled(({ children, className, ...inputProps }) => (
     border: 1px solid #fff;
     border-radius: 50%;
   }
-
 
   &:hover input:not([disabled]) ~ .box,
   & input:not([disabled]):focus ~ .box {
@@ -61,9 +60,9 @@ const Radio = styled(({ children, className, ...inputProps }) => (
   & input:disabled ~ ${Text} {
     color: #d1cdd2;
   }
-`
+`;
 
-Radio.displayName = 'Radio'
+Radio.displayName = 'Radio';
 
 /** @component */
-export default Radio
+export default Radio;

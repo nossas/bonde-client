@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 /**
  * The generic data list component.
@@ -9,20 +9,20 @@ const DataList = styled.div`
   border-collapse: ${props => props.border};
   border-spacing: 0 15px;
   width: 100%;
-`
+`;
 
-const { oneOf } = PropTypes
+const { oneOf } = PropTypes;
 
 DataList.propTypes = {
   /** Flag to show or hide the wrapper border. */
-  border: oneOf(['collapse', 'separate', 'unset'])
-}
+  border: oneOf(['collapse', 'separate', 'unset']),
+};
 
 DataList.defaultProps = {
-  border: 'unset'
-}
+  border: 'unset',
+};
 
-DataList.displayName = 'DataList'
+DataList.displayName = 'DataList';
 
 /** @component */
-export default DataList
+export default DataList;

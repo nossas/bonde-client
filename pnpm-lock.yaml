@@ -411,8 +411,9 @@ importers:
   packages/bonde-styleguide:
     dependencies:
       '@types/node': 13.9.1
+      enzyme: 3.11.0
       prop-types: 15.7.2
-      react-styleguidist: 10.6.2_react-dom@16.13.0+react@16.13.0
+      react-styleguidist: 10.6.2_9d5e83cd5531bf5940eca4b6c403419f
       recharts: 2.0.0-beta.2_react-dom@16.13.0+react@16.13.0
       styled-components: 5.0.1_d35884ee1c3afc8413cfc45d78861198
       webfontloader: 1.6.28
@@ -428,6 +429,7 @@ importers:
       tsdx: 0.12.3
       tslib: 1.11.1
       typescript: 3.8.3
+      webpack: 4.42.0_webpack@4.42.0
     specifiers:
       '@rollup/plugin-image': ^2.0.4
       '@types/jest': ^25.1.3
@@ -435,6 +437,7 @@ importers:
       '@types/react': ^16.9.23
       '@types/react-dom': ^16.9.5
       '@types/webfontloader': ^1.6.29
+      enzyme: ^3.11.0
       husky: ^4.2.3
       prop-types: ^15.7.2
       react: ^16.13.0
@@ -446,6 +449,7 @@ importers:
       tslib: ^1.11.1
       typescript: ^3.8.3
       webfontloader: ^1.6.28
+      webpack: ^4.42.0
   packages/bonde-webpage:
     dependencies:
       '@babel/core': 7.2.2
@@ -5046,7 +5050,6 @@ packages:
       '@webassemblyjs/helper-module-context': 1.8.5
       '@webassemblyjs/helper-wasm-bytecode': 1.8.5
       '@webassemblyjs/wast-parser': 1.8.5
-    dev: false
     resolution:
       integrity: sha512-aJMfngIZ65+t71C3y2nBBg5FFG0Okt9m0XEgWZ7Ywgn1oMAT8cNwx00Uv1cQyHtidq0Xn94R4TAywO+LCQ+ZAQ==
   /@webassemblyjs/floating-point-hex-parser/1.7.11:
@@ -5054,7 +5057,6 @@ packages:
     resolution:
       integrity: sha512-zY8dSNyYcgzNRNT666/zOoAyImshm3ycKdoLsyDw/Bwo6+/uktb7p4xyApuef1dwEBo/U/SYQzbGBvV+nru2Xg==
   /@webassemblyjs/floating-point-hex-parser/1.8.5:
-    dev: false
     resolution:
       integrity: sha512-9p+79WHru1oqBh9ewP9zW95E3XAo+90oth7S5Re3eQnECGq59ly1Ri5tsIipKGpiStHsUYmY3zMLqtk3gTcOtQ==
   /@webassemblyjs/helper-api-error/1.7.11:
@@ -5062,7 +5064,6 @@ packages:
     resolution:
       integrity: sha512-7r1qXLmiglC+wPNkGuXCvkmalyEstKVwcueZRP2GNC2PAvxbLYwLLPr14rcdJaE4UtHxQKfFkuDFuv91ipqvXg==
   /@webassemblyjs/helper-api-error/1.8.5:
-    dev: false
     resolution:
       integrity: sha512-Za/tnzsvnqdaSPOUXHyKJ2XI7PDX64kWtURyGiJJZKVEdFOsdKUCPTNEVFZq3zJ2R0G5wc2PZ5gvdTRFgm81zA==
   /@webassemblyjs/helper-buffer/1.7.11:
@@ -5070,7 +5071,6 @@ packages:
     resolution:
       integrity: sha512-MynuervdylPPh3ix+mKZloTcL06P8tenNH3sx6s0qE8SLR6DdwnfgA7Hc9NSYeob2jrW5Vql6GVlsQzKQCa13w==
   /@webassemblyjs/helper-buffer/1.8.5:
-    dev: false
     resolution:
       integrity: sha512-Ri2R8nOS0U6G49Q86goFIPNgjyl6+oE1abW1pS84BuhP1Qcr5JqMwRFT3Ah3ADDDYGEgGs1iyb1DGX+kAi/c/Q==
   /@webassemblyjs/helper-code-frame/1.7.11:
@@ -5082,7 +5082,6 @@ packages:
   /@webassemblyjs/helper-code-frame/1.8.5:
     dependencies:
       '@webassemblyjs/wast-printer': 1.8.5
-    dev: false
     resolution:
       integrity: sha512-VQAadSubZIhNpH46IR3yWO4kZZjMxN1opDrzePLdVKAZ+DFjkGD/rf4v1jap744uPVU6yjL/smZbRIIJTOUnKQ==
   /@webassemblyjs/helper-fsm/1.7.11:
@@ -5090,7 +5089,6 @@ packages:
     resolution:
       integrity: sha512-nsAQWNP1+8Z6tkzdYlXT0kxfa2Z1tRTARd8wYnc/e3Zv3VydVVnaeePgqUzFrpkGUyhUUxOl5ML7f1NuT+gC0A==
   /@webassemblyjs/helper-fsm/1.8.5:
-    dev: false
     resolution:
       integrity: sha512-kRuX/saORcg8se/ft6Q2UbRpZwP4y7YrWsLXPbbmtepKr22i8Z4O3V5QE9DbZK908dh5Xya4Un57SDIKwB9eow==
   /@webassemblyjs/helper-module-context/1.7.11:
@@ -5101,7 +5099,6 @@ packages:
     dependencies:
       '@webassemblyjs/ast': 1.8.5
       mamacro: 0.0.3
-    dev: false
     resolution:
       integrity: sha512-/O1B236mN7UNEU4t9X7Pj38i4VoU8CcMHyy3l2cV/kIF4U5KoHXDVqcDuOs1ltkac90IM4vZdHc52t1x8Yfs3g==
   /@webassemblyjs/helper-wasm-bytecode/1.7.11:
@@ -5109,7 +5106,6 @@ packages:
     resolution:
       integrity: sha512-cMXeVS9rhoXsI9LLL4tJxBgVD/KMOKXuFqYb5oCJ/opScWpkCMEz9EJtkonaNcnLv2R3K5jIeS4TRj/drde1JQ==
   /@webassemblyjs/helper-wasm-bytecode/1.8.5:
-    dev: false
     resolution:
       integrity: sha512-Cu4YMYG3Ddl72CbmpjU/wbP6SACcOPVbHN1dI4VJNJVgFwaKf1ppeFJrwydOG3NDHxVGuCfPlLZNyEdIYlQ6QQ==
   /@webassemblyjs/helper-wasm-section/1.7.11:
@@ -5127,7 +5123,6 @@ packages:
       '@webassemblyjs/helper-buffer': 1.8.5
       '@webassemblyjs/helper-wasm-bytecode': 1.8.5
       '@webassemblyjs/wasm-gen': 1.8.5
-    dev: false
     resolution:
       integrity: sha512-VV083zwR+VTrIWWtgIUpqfvVdK4ff38loRmrdDBgBT8ADXYsEZ5mPQ4Nde90N3UYatHdYoDIFb7oHzMncI02tA==
   /@webassemblyjs/ieee754/1.7.11:
@@ -5139,7 +5134,6 @@ packages:
   /@webassemblyjs/ieee754/1.8.5:
     dependencies:
       '@xtuc/ieee754': 1.2.0
-    dev: false
     resolution:
       integrity: sha512-aaCvQYrvKbY/n6wKHb/ylAJr27GglahUO89CcGXMItrOBqRarUMxWLJgxm9PJNuKULwN5n1csT9bYoMeZOGF3g==
   /@webassemblyjs/leb128/1.7.11:
@@ -5151,7 +5145,6 @@ packages:
   /@webassemblyjs/leb128/1.8.5:
     dependencies:
       '@xtuc/long': 4.2.2
-    dev: false
     resolution:
       integrity: sha512-plYUuUwleLIziknvlP8VpTgO4kqNaH57Y3JnNa6DLpu/sGcP6hbVdfdX5aHAV716pQBKrfuU26BJK29qY37J7A==
   /@webassemblyjs/utf8/1.7.11:
@@ -5159,7 +5152,6 @@ packages:
     resolution:
       integrity: sha512-C6GFkc7aErQIAH+BMrIdVSmW+6HSe20wg57HEC1uqJP8E/xpMjXqQUxkQw07MhNDSDcGpxI9G5JSNOQCqJk4sA==
   /@webassemblyjs/utf8/1.8.5:
-    dev: false
     resolution:
       integrity: sha512-U7zgftmQriw37tfD934UNInokz6yTmn29inT2cAetAsaU9YeVCveWEwhKL1Mg4yS7q//NGdzy79nlXh3bT8Kjw==
   /@webassemblyjs/wasm-edit/1.7.11:
@@ -5185,7 +5177,6 @@ packages:
       '@webassemblyjs/wasm-opt': 1.8.5
       '@webassemblyjs/wasm-parser': 1.8.5
       '@webassemblyjs/wast-printer': 1.8.5
-    dev: false
     resolution:
       integrity: sha512-A41EMy8MWw5yvqj7MQzkDjU29K7UJq1VrX2vWLzfpRHt3ISftOXqrtojn7nlPsZ9Ijhp5NwuODuycSvfAO/26Q==
   /@webassemblyjs/wasm-gen/1.7.11:
@@ -5205,7 +5196,6 @@ packages:
       '@webassemblyjs/ieee754': 1.8.5
       '@webassemblyjs/leb128': 1.8.5
       '@webassemblyjs/utf8': 1.8.5
-    dev: false
     resolution:
       integrity: sha512-BCZBT0LURC0CXDzj5FXSc2FPTsxwp3nWcqXQdOZE4U7h7i8FqtFK5Egia6f9raQLpEKT1VL7zr4r3+QX6zArWg==
   /@webassemblyjs/wasm-opt/1.7.11:
@@ -5223,7 +5213,6 @@ packages:
       '@webassemblyjs/helper-buffer': 1.8.5
       '@webassemblyjs/wasm-gen': 1.8.5
       '@webassemblyjs/wasm-parser': 1.8.5
-    dev: false
     resolution:
       integrity: sha512-HKo2mO/Uh9A6ojzu7cjslGaHaUU14LdLbGEKqTR7PBKwT6LdPtLLh9fPY33rmr5wcOMrsWDbbdCHq4hQUdd37Q==
   /@webassemblyjs/wasm-parser/1.7.11:
@@ -5245,7 +5234,6 @@ packages:
       '@webassemblyjs/ieee754': 1.8.5
       '@webassemblyjs/leb128': 1.8.5
       '@webassemblyjs/utf8': 1.8.5
-    dev: false
     resolution:
       integrity: sha512-pi0SYE9T6tfcMkthwcgCpL0cM9nRYr6/6fjgDtL6q/ZqKHdMWvxitRi5JcZ7RI4SNJJYnYNaWy5UUrHQy998lw==
   /@webassemblyjs/wast-parser/1.7.11:
@@ -5267,7 +5255,6 @@ packages:
       '@webassemblyjs/helper-code-frame': 1.8.5
       '@webassemblyjs/helper-fsm': 1.8.5
       '@xtuc/long': 4.2.2
-    dev: false
     resolution:
       integrity: sha512-daXC1FyKWHF1i11obK086QRlsMsY4+tIOKgBqI1lxAnkp9xe9YMcgOxm9kLe+ttjs5aWV2KKE1TWJCN57/Btsg==
   /@webassemblyjs/wast-printer/1.7.11:
@@ -5283,7 +5270,6 @@ packages:
       '@webassemblyjs/ast': 1.8.5
       '@webassemblyjs/wast-parser': 1.8.5
       '@xtuc/long': 4.2.2
-    dev: false
     resolution:
       integrity: sha512-w0U0pD4EhlnvRyeJzBqaVSJAo9w/ce7/WPogeXLzGkO6hzhr4GnQIZ4W4uUt5b9ooAaXPtnXlj0gzsXEOUNYMg==
   /@wry/context/0.4.4:
@@ -5307,7 +5293,6 @@ packages:
     resolution:
       integrity: sha512-FZdkNBDqBRHKQ2MEbSC17xnPFOhZxeJ2YGSfr2BKf3sujG49Qe3bB+rGCwQfIaA7WHnGeGkSijX4FuBCdrzW/g==
   /@xtuc/long/4.2.2:
-    dev: false
     resolution:
       integrity: sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
   /@zeit/next-css/1.0.1:
@@ -7611,7 +7596,6 @@ packages:
       ssri: 6.0.1
       unique-filename: 1.1.1
       y18n: 4.0.0
-    dev: false
     resolution:
       integrity: sha512-kqdmfXEGFepesTuROHMs3MpFLWrPkSSpRqOw80RCflZXy/khxaArvFrQ7uJxSUduzAufc6G0g1VUCOZXxWavPw==
   /cacache/13.0.1:
@@ -8064,10 +8048,11 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-4diC9HaTE+KRAMWhDhrGOECgWZxoevMc5TlkObMqNSsVU62PYzXZ/SMTjzyGAFF1YusgxGcSWTEXBhp0CPwQ1A==
-  /clean-webpack-plugin/3.0.0:
+  /clean-webpack-plugin/3.0.0_webpack@4.42.0:
     dependencies:
       '@types/webpack': 4.41.7
       del: 4.1.1
+      webpack: 4.42.0_webpack@4.42.0
     dev: false
     engines:
       node: '>=8.9.0'
@@ -8572,7 +8557,7 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
-  /copy-webpack-plugin/5.1.1:
+  /copy-webpack-plugin/5.1.1_webpack@4.42.0:
     dependencies:
       cacache: 12.0.3
       find-cache-dir: 2.1.0
@@ -8585,6 +8570,7 @@ packages:
       p-limit: 2.2.2
       schema-utils: 1.0.0
       serialize-javascript: 2.1.2
+      webpack: 4.42.0_webpack@4.42.0
       webpack-log: 2.0.0
     dev: false
     engines:
@@ -12756,7 +12742,6 @@ packages:
     resolution:
       integrity: sha1-8w9xbI4r00bHtn0985FVZqfAVgc=
   /infer-owner/1.0.4:
-    dev: false
     resolution:
       integrity: sha512-IClj+Xz94+d7irH5qRyfJonOdfTzuDaifE6ZPWfx0N0+/ATZCbuTPq2prFl526urkQd90WyUKIh1DfBQ2hMz9A==
   /inflight/1.0.6:
@@ -15281,7 +15266,6 @@ packages:
     resolution:
       integrity: sha1-4BpckQnyr3lmDk6LlYd5AYT1qWw=
   /mamacro/0.0.3:
-    dev: false
     resolution:
       integrity: sha512-qMEwh+UujcQ+kbz3T6V+wAmO2U8veoq2w+3wY8MquqwVA3jChfwY+Tk52GZKDfACEPjuZ7r2oJLejwpt8jtwTA==
   /map-age-cleaner/0.1.3:
@@ -19496,18 +19480,18 @@ packages:
       react-dom: ^15.0.0 || ^16.0.0
     resolution:
       integrity: sha512-eW057HT0lFgCKh8ilr0y2JaH2YbNcuEdFpxyg7Gf/qDKk9hqGMyXryZJ8iMGJEuKH0+wxS0ccSsBBB3W8yCn8w==
-  /react-styleguidist/10.6.2_react-dom@16.13.0+react@16.13.0:
+  /react-styleguidist/10.6.2_9d5e83cd5531bf5940eca4b6c403419f:
     dependencies:
       '@vxna/mini-html-webpack-template': 1.0.0
       acorn: 6.4.1
       acorn-jsx: 5.2.0_acorn@6.4.1
       ast-types: 0.13.2
       buble: 0.19.8
-      clean-webpack-plugin: 3.0.0
+      clean-webpack-plugin: 3.0.0_webpack@4.42.0
       clipboard-copy: 3.1.0
       clsx: 1.1.0
       common-dir: 3.0.0
-      copy-webpack-plugin: 5.1.1
+      copy-webpack-plugin: 5.1.1_webpack@4.42.0
       core-js: 3.6.4
       doctrine: 3.0.0
       es6-object-assign: 1.1.0
@@ -19555,11 +19539,11 @@ packages:
       recast: 0.18.7
       remark: 11.0.2
       strip-html-comments: 1.0.0
-      terser-webpack-plugin: 2.3.5
+      terser-webpack-plugin: 2.3.5_webpack@4.42.0
       to-ast: 1.0.0
       type-detect: 4.0.8
       unist-util-visit: 2.0.2
-      webpack-dev-server: 3.10.3
+      webpack-dev-server: 3.10.3_webpack@4.42.0
       webpack-merge: 4.2.2
     dev: false
     engines:
@@ -19568,6 +19552,7 @@ packages:
     peerDependencies:
       react: '>=16.8'
       react-dom: '>=16.8'
+      webpack: '*'
     resolution:
       integrity: sha512-wDvhklJAHiE/oBIxBg3nAxzGCfmO/V//5WC7DSLEzs+Z+wM5ynLnhgSldJgtqusoU3lAyyHYz8FOshNUbajsMw==
   /react-test-renderer/16.13.0_react@16.13.0:
@@ -22417,7 +22402,6 @@ packages:
       webpack: 4.42.0_webpack@4.42.0
       webpack-sources: 1.4.3
       worker-farm: 1.7.0
-    dev: false
     engines:
       node: '>= 6.9.0'
     peerDependencies:
@@ -22443,7 +22427,7 @@ packages:
       webpack: ^4.0.0 || ^5.0.0
     resolution:
       integrity: sha512-Nv96Nws2R2nrFOpbzF6IxRDpIkkIfmhvOws+IqMvYdFLO7o6wAILWFKONFgaYy8+T4LVz77DQW0f7wOeDEAjrg==
-  /terser-webpack-plugin/2.3.5:
+  /terser-webpack-plugin/2.3.5_webpack@4.42.0:
     dependencies:
       cacache: 13.0.1
       find-cache-dir: 3.3.1
@@ -22453,6 +22437,7 @@ packages:
       serialize-javascript: 2.1.2
       source-map: 0.6.1
       terser: 4.6.6
+      webpack: 4.42.0_webpack@4.42.0
       webpack-sources: 1.4.3
     dev: false
     engines:
@@ -23514,12 +23499,13 @@ packages:
       webpack: ^4.0.0
     resolution:
       integrity: sha512-qvDesR1QZRIAZHOE3iQ4CXLZZSQ1lAUsSpnQmlB1PBfoN/xdRjmge3Dok0W4IdaVLJOGJy3sGI4sZHwjRU0PCA==
-  /webpack-dev-middleware/3.7.2:
+  /webpack-dev-middleware/3.7.2_webpack@4.41.5:
     dependencies:
       memory-fs: 0.4.1
       mime: 2.4.4
       mkdirp: 0.5.1
       range-parser: 1.2.1
+      webpack: 4.41.5_webpack@4.41.5
       webpack-log: 2.0.0
     dev: false
     engines:
@@ -23528,13 +23514,13 @@ packages:
       webpack: ^4.0.0
     resolution:
       integrity: sha512-1xC42LxbYoqLNAhV6YzTYacicgMZQTqRd27Sim9wn5hJrX3I5nxYy1SxSd4+gjUFsz1dQFj+yEe6zEVmSkeJjw==
-  /webpack-dev-middleware/3.7.2_webpack@4.41.5:
+  /webpack-dev-middleware/3.7.2_webpack@4.42.0:
     dependencies:
       memory-fs: 0.4.1
       mime: 2.4.4
       mkdirp: 0.5.1
       range-parser: 1.2.1
-      webpack: 4.41.5_webpack@4.41.5
+      webpack: 4.42.0_webpack@4.42.0
       webpack-log: 2.0.0
     dev: false
     engines:
@@ -23632,7 +23618,7 @@ packages:
         optional: true
     resolution:
       integrity: sha512-pxZKPYb+n77UN8u9YxXT4IaIrGcNtijh/mi8TXbErHmczw0DtPnMTTjHj+eNjkqLOaAZM/qD7V59j/qJsEiaZA==
-  /webpack-dev-server/3.10.3:
+  /webpack-dev-server/3.10.3_webpack@4.42.0:
     dependencies:
       ansi-html: 0.0.7
       bonjour: 3.5.0
@@ -23663,7 +23649,8 @@ packages:
       strip-ansi: 3.0.1
       supports-color: 6.1.0
       url: 0.11.0
-      webpack-dev-middleware: 3.7.2
+      webpack: 4.42.0_webpack@4.42.0
+      webpack-dev-middleware: 3.7.2_webpack@4.42.0
       webpack-log: 2.0.0
       ws: 6.2.1
       yargs: 12.0.5
@@ -23816,7 +23803,7 @@ packages:
       eslint-scope: 4.0.3
       json-parse-better-errors: 1.0.2
       loader-runner: 2.4.0
-      loader-utils: 1.2.3
+      loader-utils: 1.4.0
       memory-fs: 0.4.1
       micromatch: 3.1.10
       mkdirp: 0.5.1
@@ -23827,7 +23814,6 @@ packages:
       terser-webpack-plugin: 1.4.3_webpack@4.42.0
       watchpack: 1.6.0
       webpack-sources: 1.4.3
-    dev: false
     engines:
       node: '>=6.11.5'
     hasBin: true

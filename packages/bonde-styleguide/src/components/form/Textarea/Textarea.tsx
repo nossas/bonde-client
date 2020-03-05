@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const Textarea = styled.textarea`
   ${props => props.fullWidth && 'width: 100%;'}
@@ -25,20 +25,29 @@ const Textarea = styled.textarea`
   &:-ms-input-placeholder { color: #424242 }
   &:-moz-placeholder { color: #424242 }
 
-  ${props => !props.invalid && !props.valid && `{
+  ${props =>
+    !props.invalid &&
+    !props.valid &&
+    `{
     &:focus { border-bottom: 1px solid #EE0099; }
   }`}
 
-  ${props => props.invalid && `{
+  ${props =>
+    props.invalid &&
+    `{
     border-bottom-color: #FF0931;
   }`}
 
-  ${props => props.showValid && props.touched && props.valid && `{
+  ${props =>
+    props.showValid &&
+    props.touched &&
+    props.valid &&
+    `{
     border-bottom-color: #50e3c2;
   }`}
-`
+`;
 
-Textarea.displayName = 'Textarea'
+Textarea.displayName = 'Textarea';
 
 /** @component */
-export default Textarea
+export default Textarea;

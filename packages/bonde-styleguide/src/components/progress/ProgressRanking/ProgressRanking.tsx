@@ -1,8 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
-import { px } from '../../../utils'
-import { ProgressRankingItem } from '../../..'
+import { px } from '../../../utils';
+import { ProgressRankingItem } from '../../..';
 
 // const sortFn = items => items.sort((a, b) => b.props.value - a.props.value)
 
@@ -33,57 +33,59 @@ interface Props {
 /**
  * The component that sorts children items to display as a ranking.
  */
-const ProgressRanking = styled(({
-  className,
-  children,
-  color = '#50e3c2',
-  trackSize = 'xsmall',
-  trackColor,
-  maxValue,
-  // nosort
-}: Props) => {
-  // let sorted = []
-  // let listItems = []
+const ProgressRanking = styled(
+  ({
+    className,
+    children,
+    color = '#50e3c2',
+    trackSize = 'xsmall',
+    trackColor,
+    maxValue,
+  }: // nosort
+  Props) => {
+    // let sorted = []
+    // let listItems = []
 
-  // if (Array.isArray(children)) {
-  //   sorted = sortFn([...children])
-  //   listItems = !nosort ? sorted : children
-  // }
+    // if (Array.isArray(children)) {
+    //   sorted = sortFn([...children])
+    //   listItems = !nosort ? sorted : children
+    // }
 
-  // const sharedProps = { color, trackColor, trackSize }
+    // const sharedProps = { color, trackColor, trackSize }
 
-  return (
-    <div className={className}>
-      {/* {!Array.isArray(children) ? (
+    return (
+      <div className={className}>
+        {/* {!Array.isArray(children) ? (
         React.cloneElement(children, {
           ...sharedProps,
           maxValue: maxValue || children.props.value
         })
       ) : ( */}
         {/* listItems.map(({ props }) => ( */}
-          <ProgressRankingItem
-            key={Math.random()}
-            maxValue={maxValue
-              //  || sorted[0].props.value
-              }
-            // {...sharedProps}
-            color={color}
-            trackSize={trackSize}
-            trackColor={trackColor}
-          >
-            {children}
-          </ProgressRankingItem>
-        ))
-      )}
-    </div>
-  )
-})`
+        <ProgressRankingItem
+          key={Math.random()}
+          maxValue={
+            maxValue
+            //  || sorted[0].props.value
+          }
+          // {...sharedProps}
+          color={color}
+          trackSize={trackSize}
+          trackColor={trackColor}
+        >
+          {children}
+        </ProgressRankingItem>
+        )) )}
+      </div>
+    );
+  }
+)`
   width: ${props => px(props.width) || 'inherit'};
 
   & > ${ProgressRankingItem}:last-child {
     margin-bottom: 0;
   }
-`
+`;
 
 /** @component */
-export default ProgressRanking
+export default ProgressRanking;

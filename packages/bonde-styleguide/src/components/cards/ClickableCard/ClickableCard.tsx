@@ -1,11 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import {
-  Card,
-  Flexbox,
-  Text,
-  IconColorful
-} from '../../..'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Card, Flexbox, Text, IconColorful } from '../../..';
 
 const ClickableCard = ({
   sectionTitle,
@@ -13,18 +8,22 @@ const ClickableCard = ({
   iconName,
   label,
   description,
-  onClick
+  onClick,
 }) => (
   <Card title={sectionTitle} minHeight={minHeight} onClick={onClick} middle>
     <Flexbox horizontal padding={{ x: 18 }}>
       <IconColorful name={iconName} />
       <Flexbox fullSize padding={{ left: 20 }}>
-        <Text fontSize={16} fontWeight={900} lineHeight={1.25}>{label}</Text>
-        <Text fontSize={13} lineHeight={1.54} color='#4a4a4a'>{description}</Text>
+        <Text fontSize={16} fontWeight={900} lineHeight={1.25}>
+          {label}
+        </Text>
+        <Text fontSize={13} lineHeight={1.54} color="#4a4a4a">
+          {description}
+        </Text>
       </Flexbox>
     </Flexbox>
   </Card>
-)
+);
 
 ClickableCard.propTypes = {
   sectionTitle: PropTypes.string,
@@ -32,14 +31,14 @@ ClickableCard.propTypes = {
   iconName: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired
-}
+  onClick: PropTypes.func.isRequired,
+};
 
 ClickableCard.defaultProps = {
-  minHeight: 110
-}
+  minHeight: 110,
+};
 
-ClickableCard.displayName = 'ClickableCard'
+ClickableCard.displayName = 'ClickableCard';
 
 /** @component */
-export default ClickableCard
+export default ClickableCard;

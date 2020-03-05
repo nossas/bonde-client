@@ -1,20 +1,16 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import {
-  DataList,
-  DataListRow,
-  DataListCol,
-  Text,
-  Scrollbox
-} from '../../..'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { DataList, DataListRow, DataListCol, Text, Scrollbox } from '../../..';
 
 const CustomCol = ({ render, value, row, label, ...colProps }) => (
   <DataListCol {...colProps}>
-    {typeof render === 'function' ? render({ value, row }) : (
+    {typeof render === 'function' ? (
+      render({ value, row })
+    ) : (
       <Text fontSize={14}>{value}</Text>
     )}
   </DataListCol>
-)
+);
 
 const DataListCard = ({
   // sectionTitle,
@@ -26,37 +22,41 @@ const DataListCard = ({
   // Footer,
   // footerProps,
 }) => {
-  const fieldNames = Object.keys(fields)
+  const fieldNames = Object.keys(fields);
 
   return (
     <Scrollbox>
       <DataList border={border}>
         <DataListRow transparent>
           {fieldNames.map(fieldName => {
-            const { label, ...colProps } = fields[fieldName]
+            const { label, ...colProps } = fields[fieldName];
             return (
-              <DataListCol {...colProps} key={`row-header-${Math.random()}`} padding={false}>
+              <DataListCol
+                {...colProps}
+                key={`row-header-${Math.random()}`}
+                padding={false}
+              >
                 <Text>{label}</Text>
               </DataListCol>
-            )
+            );
           })}
         </DataListRow>
         {items.map(item => (
           <DataListRow key={`row-${Math.random()}`}>
-          {fieldNames.map(fieldName => (
-            <CustomCol
-              {...fields[fieldName]}
-              key={`col-${Math.random()}`}
-              row={item}
-              value={picker ? item[picker][fieldName] : item[fieldName]}
-            />
-          ))}
+            {fieldNames.map(fieldName => (
+              <CustomCol
+                {...fields[fieldName]}
+                key={`col-${Math.random()}`}
+                row={item}
+                value={picker ? item[picker][fieldName] : item[fieldName]}
+              />
+            ))}
           </DataListRow>
         ))}
       </DataList>
     </Scrollbox>
-  )
-}
+  );
+};
 
 const {
   // oneOfType,
@@ -69,21 +69,21 @@ const {
   // node,
   // func,
   // shape
-} = PropTypes
+} = PropTypes;
 
 DataListCard.propTypes = {
   border: oneOf(['collapse', 'separate', 'unset']),
   fields: object,
-  items: array
-}
+  items: array,
+};
 
 DataListCard.defaultProps = {
   border: 'unset',
   fields: {},
-  items: []
-}
+  items: [],
+};
 
-DataListCard.displayName = 'DataListCard'
+DataListCard.displayName = 'DataListCard';
 
 /** @component */
-export default DataListCard
+export default DataListCard;

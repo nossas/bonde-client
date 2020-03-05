@@ -1,12 +1,12 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
-import { ProgressBar } from '../../..'
+import { ProgressBar } from '../../..';
 
 const ProgressBox = styled.div`
   display: flex;
   align-items: center;
-`
+`;
 
 const Label = styled.div`
   font-family: Nunito Sans;
@@ -15,7 +15,7 @@ const Label = styled.div`
   font-weight: bold;
   color: #000000;
   margin-bottom: 8px;
-`
+`;
 
 const Value = styled.div`
   font-family: Nunito Sans;
@@ -24,51 +24,49 @@ const Value = styled.div`
   display: inline-block;
   margin-right: 5px;
   color: ${({ color }) => color};
-  `
-  interface Props {
-    className: string;
-    /** The progress fill value. */
-    value: number;
-    /** The item label text. */
-    label: string;
-    /** The progress max value to calc the fill value percentage. */
-    maxValue: number,
-    /** The `ProgressBar` fill and value color. */
-    color?: string,
-    /** The `ProgressBar` track background color. */
-    trackColor?: string,
-    /** The `ProgressBar` track size options. */
-    trackSize?: string
-  }
+`;
+interface Props {
+  className: string;
+  /** The progress fill value. */
+  value: number;
+  /** The item label text. */
+  label: string;
+  /** The progress max value to calc the fill value percentage. */
+  maxValue: number;
+  /** The `ProgressBar` fill and value color. */
+  color?: string;
+  /** The `ProgressBar` track background color. */
+  trackColor?: string;
+  /** The `ProgressBar` track size options. */
+  trackSize?: string;
+}
 
-const ProgressRankingItem = styled(({
-  className,
-  value,
-  label,
-  color,
-  trackColor,
-  trackSize,
-  maxValue
-}: Props) => (
-  <div className={className}>
-    <Label>
-      {label}
-    </Label>
-    <ProgressBox>
-      <Value color={color}>
-        {value}
-      </Value>
-      <ProgressBar
-        thumbColor={color}
-        trackColor={trackColor}
-        size={trackSize}
-        value={Math.round((value / maxValue * 100) * 100) / 100}
-      />
-    </ProgressBox>
-  </div>
-))`
+const ProgressRankingItem = styled(
+  ({
+    className,
+    value,
+    label,
+    color,
+    trackColor,
+    trackSize,
+    maxValue,
+  }: Props) => (
+    <div className={className}>
+      <Label>{label}</Label>
+      <ProgressBox>
+        <Value color={color}>{value}</Value>
+        <ProgressBar
+          thumbColor={color}
+          trackColor={trackColor}
+          size={trackSize}
+          value={Math.round((value / maxValue) * 100 * 100) / 100}
+        />
+      </ProgressBox>
+    </div>
+  )
+)`
   margin-bottom: 20px;
-`
+`;
 
 /** @component */
-export default ProgressRankingItem
+export default ProgressRankingItem;

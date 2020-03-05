@@ -1,7 +1,7 @@
-import React from 'react'
-import styled from 'styled-components'
-import Icon from '../../content/Icon/Icon'
-import Spacing from '../../layout/Spacing/Spacing'
+import React from 'react';
+import styled from 'styled-components';
+import Icon from '../../content/Icon/Icon';
+import Spacing from '../../layout/Spacing/Spacing';
 
 export const Header = styled.div`
   width: auto;
@@ -17,7 +17,7 @@ export const Header = styled.div`
   & > img {
     margin-right: 15px;
   }
-`
+`;
 
 const DropdownMenu = styled.div`
   background-color: #fff;
@@ -31,7 +31,7 @@ const DropdownMenu = styled.div`
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.45), 0 2px 2px rgba(0, 0, 0, 0.45);
   max-height: calc(100vh - 30px - 40px);
   min-width: calc(100% + 15px);
-`
+`;
 
 const DropdownMenuArrow = styled.div`
   border-left: 10px solid transparent;
@@ -40,16 +40,16 @@ const DropdownMenuArrow = styled.div`
   position: absolute;
   bottom: -15px;
   right: 3px;
-`
+`;
 
 const DropdownComponent = styled.div`
   position: relative;
   display: flex;
-  width: ${props => props.width ? `${props.width}px` : 'auto'};
+  width: ${props => (props.width ? `${props.width}px` : 'auto')};
 
-  &  button {
+  & button {
     cursor: pointer;
-    color: ${props => props.inverted ? '#000000' : '#FFFFFF'};
+    color: ${props => (props.inverted ? '#000000' : '#FFFFFF')};
     font-family: 'Nunito Sans', sans-serif;
     font-size: 13px;
     font-weight: 800;
@@ -61,8 +61,9 @@ const DropdownComponent = styled.div`
     align-items: center;
     justify-content: space-between;
 
-    &:active, &:focus {
-      border:none;
+    &:active,
+    &:focus {
+      border: none;
       outline: none;
     }
   }
@@ -72,11 +73,11 @@ const DropdownComponent = styled.div`
     line-height: 1.15;
     letter-spacing: 0.5px;
   }
-`
+`;
 
 const DropdownTriggerButton = styled.button.attrs(() => ({ type: 'button' }))`
   height: 100%;
-`
+`;
 
 interface Props {
   children?: any;
@@ -96,28 +97,27 @@ interface State {
 }
 
 class Dropdown extends React.Component<Props, State> {
-
   static defaultProps = {
-    inverted: false
+    inverted: false,
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = { show: false };
   }
 
-  constructor (props) {
-    super(props)
-    this.state = { show: false }
+  toggleMenu() {
+    this.setState({ show: !this.state.show });
   }
 
-  toggleMenu () {
-    this.setState({ show: !this.state.show })
+  closeMenu() {
+    this.setState({ show: false });
   }
 
-  closeMenu () {
-    this.setState({ show: false })
-  }
-
-  render () {
-    const { children, label, icon, width, disabled, inverted } = this.props
-    const show = this.state.show && !disabled
-    const colorStrategy = inverted ? '#000000' : '#FFFFFF'
+  render() {
+    const { children, label, icon, width, disabled, inverted } = this.props;
+    const show = this.state.show && !disabled;
+    const colorStrategy = inverted ? '#000000' : '#FFFFFF';
 
     return (
       <DropdownComponent width={width} inverted={inverted}>
@@ -128,28 +128,30 @@ class Dropdown extends React.Component<Props, State> {
             </Spacing>
           )}
           <DropdownTriggerButton onClick={this.toggleMenu.bind(this)}>
-            {typeof label === 'string' ? (<span>{label}</span>) : label()}
+            {typeof label === 'string' ? <span>{label}</span> : label()}
             {show ? (
-              <Icon name='angle-right' color={colorStrategy} />
+              <Icon name="angle-right" color={colorStrategy} />
             ) : (
-              <Icon name='angle-down' color={colorStrategy} />
+              <Icon name="angle-down" color={colorStrategy} />
             )}
           </DropdownTriggerButton>
         </React.Fragment>
         {show && (
           <React.Fragment>
             <DropdownMenu>
-              {React.Children.map(children, child => (
-                React.cloneElement<ChildrenProps>(child, { closeMenu: this.closeMenu.bind(this) })
-              ))}
+              {React.Children.map(children, child =>
+                React.cloneElement<ChildrenProps>(child, {
+                  closeMenu: this.closeMenu.bind(this),
+                })
+              )}
             </DropdownMenu>
             <DropdownMenuArrow />
           </React.Fragment>
         )}
       </DropdownComponent>
-    )
+    );
   }
 }
 
 /** @component */
-export default Dropdown
+export default Dropdown;
