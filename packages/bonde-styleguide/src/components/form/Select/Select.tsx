@@ -1,6 +1,6 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
 import styled from 'styled-components'
+
 import Input from '../Input/Input'
 import Backdrop from '../../layout/Backdrop/Backdrop'
 
@@ -157,10 +157,6 @@ class Select extends React.Component<SelectProps> {
     )
   }
 }
-
-// const { oneOfType, node, func, string } = PropTypes
-
-// Select.displayName = 'Select'
 
 /** @component */
 export default Select

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled, { keyframes } from 'styled-components'
 
 
-const Spark = styled.path.attrs((props) => ({ d: props => props.d}))`
+const Spark = styled.path.attrs(() => ({ d: props => props.d}))`
   fill: ${props => props.colorInit};
   animation-name: ${props => props.pulse};
   animation-duration: ${props => props.duration};

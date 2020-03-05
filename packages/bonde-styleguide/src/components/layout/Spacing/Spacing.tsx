@@ -1,5 +1,5 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
+
 import styled from 'styled-components'
 import { px } from '../../../utils'
 
@@ -59,37 +59,6 @@ const Spacing = ({ margin = { x: 0, y:0 }, padding = { x: 0, y:0 }, ...ownProps 
     />
   )
 }
-
-// decouple PropTypes only facility design props
-// const { shape, oneOfType, string, number } = PropTypes
-
-// Spacing.propTypes = {
-//   /** The margin property. */
-//   margin: shape({
-//     x: oneOfType([string, number]),
-//     y: oneOfType([string, number]),
-//     top: oneOfType([string, number]),
-//     bottom: oneOfType([string, number]),
-//     left: oneOfType([string, number]),
-//     right: oneOfType([string, number])
-//   }),
-//   /** The padding property. */
-//   padding: shape({
-//     x: oneOfType([string, number]),
-//     y: oneOfType([string, number]),
-//     top: oneOfType([string, number]),
-//     bottom: oneOfType([string, number]),
-//     left: oneOfType([string, number]),
-//     right: oneOfType([string, number])
-//   })
-// }
-
-// Spacing.displayName = 'Spacing'
-
-// Spacing.defaultProps = {
-//   margin: {},
-//   padding: {}
-// }
 
 /** @component */
 export default Spacing

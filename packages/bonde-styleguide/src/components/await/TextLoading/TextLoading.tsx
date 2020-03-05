@@ -1,8 +1,12 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { Flexbox2 as Flexbox, Loading, Text, Title } from '../../../'
 
-const TextLoading = ({ message }) => (
+import { Flexbox2 as Flexbox, Loading, Text, Title } from '../../..'
+
+interface Props {
+  message: string
+}
+
+const TextLoading = ({ message }: Props) => (
   <Flexbox vertical middle>
     <Text align='center' margin={{ top: '20vh' }}>
       <Loading
@@ -17,9 +21,5 @@ const TextLoading = ({ message }) => (
     )}
   </Flexbox>
 )
-
-TextLoading.propTypes = {
-  message: PropTypes.string
-}
 
 export default TextLoading

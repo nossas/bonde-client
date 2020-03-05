@@ -1,6 +1,6 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
+
 import { ProgressBar } from '../../..'
 
 const ProgressBox = styled.div`
@@ -24,7 +24,22 @@ const Value = styled.div`
   display: inline-block;
   margin-right: 5px;
   color: ${({ color }) => color};
-`
+  `
+  interface Props {
+    className: string;
+    /** The progress fill value. */
+    value: number;
+    /** The item label text. */
+    label: string;
+    /** The progress max value to calc the fill value percentage. */
+    maxValue: number,
+    /** The `ProgressBar` fill and value color. */
+    color?: string,
+    /** The `ProgressBar` track background color. */
+    trackColor?: string,
+    /** The `ProgressBar` track size options. */
+    trackSize?: string
+  }
 
 const ProgressRankingItem = styled(({
   className,
@@ -34,7 +49,7 @@ const ProgressRankingItem = styled(({
   trackColor,
   trackSize,
   maxValue
-}) => (
+}: Props) => (
   <div className={className}>
     <Label>
       {label}
@@ -54,25 +69,6 @@ const ProgressRankingItem = styled(({
 ))`
   margin-bottom: 20px;
 `
-
-const { number, string } = PropTypes
-
-ProgressRankingItem.propTypes = {
-  /** The progress fill value. */
-  value: number.isRequired,
-  /** The item label text. */
-  label: string.isRequired,
-  /** The progress max value to calc the fill value percentage. */
-  maxValue: number,
-  /** The `ProgressBar` fill and value color. */
-  color: string,
-  /** The `ProgressBar` track background color. */
-  trackColor: string,
-  /** The `ProgressBar` track size options. */
-  trackSize: string
-}
-
-ProgressRankingItem.displayName = 'ProgressRankingItem'
 
 /** @component */
 export default ProgressRankingItem

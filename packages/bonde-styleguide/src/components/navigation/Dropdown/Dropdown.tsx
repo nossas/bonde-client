@@ -1,5 +1,4 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Icon from '../../content/Icon/Icon'
 import Spacing from '../../layout/Spacing/Spacing'
@@ -97,6 +96,11 @@ interface State {
 }
 
 class Dropdown extends React.Component<Props, State> {
+
+  static defaultProps = {
+    inverted: false
+  }
+
   constructor (props) {
     super(props)
     this.state = { show: false }
@@ -146,20 +150,6 @@ class Dropdown extends React.Component<Props, State> {
     )
   }
 }
-
-// Dropdown.propTypes = {
-//   label: PropTypes.oneOfType([
-//     PropTypes.string,
-//     PropTypes.func
-//   ]).isRequired,
-//   inverted: PropTypes.bool
-// }
-
-// Dropdown.defaultProps = {
-//   inverted: false
-// }
-
-// Dropdown.displayName = 'Dropdown'
 
 /** @component */
 export default Dropdown

@@ -1,5 +1,5 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
+
 import ControlLabel from '../ControlLabel/ControlLabel'
 import Flexbox from '../../layout/Flexbox/Flexbox'
 import InputAdornment from '../InputAdornment/InputAdornment'

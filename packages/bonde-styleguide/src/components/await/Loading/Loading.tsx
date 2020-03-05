@@ -1,12 +1,25 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import Sparkles from './atoms/Sparkles'
+
+interface Props {
+  color?: string;
+  size: string | number;
+  sparklesColor?: string;
+  sparklesColorInit?: string;
+  sparklesDuration?: string;
+}
 
 /**
  * Animated loading transition component.
  */
-const Loading = ({ size, color, sparklesColor, sparklesColorInit, sparklesDuration }) => (
+const Loading = ({
+  color = '#050505',
+  size = 176,
+  sparklesColor = '#35E3C3',
+  sparklesColorInit = '#DBDBDB',
+  sparklesDuration = '6s'
+}: Props) => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
     width={size || '176'}
@@ -28,26 +41,6 @@ const Loading = ({ size, color, sparklesColor, sparklesColorInit, sparklesDurati
     />
   </svg>
 )
-
-const { string, number, oneOfType } = PropTypes
-
-Loading.propTypes = {
-  color: string,
-  size: oneOfType([string, number]),
-  sparklesColor: string,
-  sparklesColorInit: string,
-  sparklesDuration: string
-}
-
-Loading.defaultProps = {
-  color: '#050505',
-  size: 176,
-  sparklesColor: '#35E3C3',
-  sparklesColorInit: '#DBDBDB',
-  sparklesDuration: '6s'
-}
-
-Loading.displayName = 'Loading'
 
 /** @component */
 export default Loading

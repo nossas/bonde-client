@@ -1,6 +1,6 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
 import styled from 'styled-components'
+
 import { Spacing } from '../../layout'
 import { px } from '../../../utils'
 
@@ -54,13 +54,6 @@ const Card = (
     {children}
   </CardStyled>
 )
-
-// Card.displayName = 'Card'
-
-// Card.propTypes = {
-//   margin: PropTypes.object,
-//   padding: PropTypes.object
-// }
 
 /** @component */
 export default Card
