@@ -26,7 +26,7 @@ pipeline:
       - REACT_APP_DOMAIN_BOT=https://chatbot.staging.bonde.org
       - REACT_APP_DOMAIN_BETA=https://beta.staging.bonde.org
       - REACT_APP_AWS_BUCKET=bonde-assets-staging
-      - REACT_APP_DOMAIN_REDES=https://solidarity.staging.bonde.org
+      - REACT_APP_DOMAIN_REDES=https://redes.staging.bonde.org
     commands:
       - export REACT_APP_PAGARME_KEY=$STAG_PAGARME_KEY
       - export REACT_APP_SENTRY_DSN_PUBLIC=$STAG_SENTRY_DSN_PUBLIC
@@ -221,7 +221,7 @@ pipeline:
       - REACT_APP_DOMAIN_BOT=https://chatbot.bonde.org
       - REACT_APP_DOMAIN_BETA=https://beta.bonde.org
       - REACT_APP_AWS_BUCKET=bonde-assets
-      - REACT_APP_DOMAIN_REDES=https://solidarity.bonde.org
+      - REACT_APP_DOMAIN_REDES=https://redes.bonde.org
     commands:
       - export REACT_APP_PAGARME_KEY=$PROD_PAGARME_KEY
       - export REACT_APP_SENTRY_DSN_PUBLIC=$PROD_SENTRY_DSN_PUBLIC

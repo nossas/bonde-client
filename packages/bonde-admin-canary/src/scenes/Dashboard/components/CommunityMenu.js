@@ -23,7 +23,7 @@ const menuBuilder = (menuName, { community, module }) => ({
       authSession
         .setAsyncItem('community', community)
         .then(() => {
-          const baseUrl = process.env.REACT_APP_DOMAIN_REDES || 'http://solidarity.bonde.devel:4000'
+          const baseUrl = process.env.REACT_APP_DOMAIN_REDES || 'http://redes.bonde.devel:4000'
           window.open(baseUrl, '_self')
         })
     }
