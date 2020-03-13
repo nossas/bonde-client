@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Icon from '../../content/Icon/Icon';
+import { Icon } from '../../content/Icon/Icon';
 import Spacing from '../../layout/Spacing/Spacing';
 
 export const Header = styled.div`
@@ -96,7 +96,7 @@ interface State {
   show?: boolean;
 }
 
-class Dropdown extends React.Component<Props, State> {
+export class Dropdown extends React.Component<Props, State> {
   static defaultProps = {
     inverted: false,
   };
@@ -154,4 +154,4 @@ class Dropdown extends React.Component<Props, State> {
 }
 
 /** @component */
-export default Dropdown;
+// export default Dropdown;

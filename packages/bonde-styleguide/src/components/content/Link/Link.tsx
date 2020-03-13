@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Link = styled.a`
+export const Link = styled.a`
   color: #ee0099 !important;
   text-decoration: none;
 
@@ -17,4 +17,4 @@ const Link = styled.a`
 Link.displayName = 'Link';
 
 /** @component */
-export default Link;
+// export default Link;

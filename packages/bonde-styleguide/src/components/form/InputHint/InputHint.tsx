@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Text from '../../content/Text/Text';
+import { Text } from '../../content/Text/Text';
 
 const InputHint = ({ children, invalid }) => (
   <Text

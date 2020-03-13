@@ -52,4 +52,4 @@ TabItem.defaultProps = {
 TabItem.displayName = 'TabItem';
 
 /** @component */
-export default TabItem;
+// export default TabItem;

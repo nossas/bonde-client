@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import svg from './svg';
 
-const Icon = styled(({ className, name, color, size }) => {
+export const Icon = styled(({ className, name, color, size }) => {
   const IconSVG = svg[name];
 
   return <IconSVG className={className} color={color} size={size} />;
@@ -30,4 +30,4 @@ Icon.defaultProps = {
 Icon.displayName = 'Icon';
 
 /** @component */
-export default Icon;
+// export default Icon;

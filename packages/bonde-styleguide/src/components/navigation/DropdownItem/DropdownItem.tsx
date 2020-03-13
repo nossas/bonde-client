@@ -27,7 +27,7 @@ const Item = styled('a')`
 /**
  * The item component that composes the `Dropdown`.
  */
-const DropdownItem = ({
+export const DropdownItem = ({
   component: Component,
   closeMenu,
   onClick,
@@ -49,4 +49,4 @@ const DropdownItem = ({
 DropdownItem.displayName = 'DropdownItem';
 
 /** @component */
-export default DropdownItem;
+// export default DropdownItem;

@@ -5,7 +5,7 @@ import { px } from '../../../utils';
 /**
  * The only true image.
  */
-const Image = styled.div`
+export const Image = styled.div`
   display: block;
   width: ${props => (props.width ? px(props.width) : '100%')};
   height: ${props => px(props.height)};
@@ -31,4 +31,4 @@ Image.propTypes = {
 Image.displayName = 'Image';
 
 /** @component */
-export default Image;
+// export default Image;

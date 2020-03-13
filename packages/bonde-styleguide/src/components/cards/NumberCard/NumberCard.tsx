@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card } from '../../cards';
 import { Flexbox } from '../../layout';
-import { Number } from '../../content';
+import { Number } from '../../content/Number/Number';
 
 const NumberCard = ({
   sectionTitle,

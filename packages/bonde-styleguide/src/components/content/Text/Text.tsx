@@ -4,7 +4,7 @@ import styled from 'styled-components';
 /**
  * The only true paragraph.
  */
-const Text = styled.p`
+export const Text = styled.p`
   font-family: 'Nunito Sans', sans-serif;
   font-size: ${props => props.fontSize}px;
   font-weight: ${props => props.fontWeight};
@@ -38,4 +38,4 @@ Text.defaultProps = {
 Text.displayName = 'Text';
 
 /** @component */
-export default Text;
+// export default Text;

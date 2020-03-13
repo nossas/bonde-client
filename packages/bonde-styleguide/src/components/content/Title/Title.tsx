@@ -1,5 +1,5 @@
 import React from 'react';
-import Text from '../Text/Text';
+import { Text } from '../Text/Text';
 
 const createTitle = (element, { displayName, ...defaultTextOpts }) => ({
   children,
@@ -76,7 +76,7 @@ const H6 = createTitle('h6', {
 /**
  * The title options component.
  */
-const Title = { H1, H2, H3, H4, H5, H6 };
+export const Title = { H1, H2, H3, H4, H5, H6 };
 
 /** @component */
-export default Title;
+// export default Title;

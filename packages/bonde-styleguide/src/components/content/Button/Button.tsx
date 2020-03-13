@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 /**
  * The only true Button component.
  */
-const Button = styled.button`
+export const Button = styled.button`
   font-family: 'Nunito Sans', sans-serif;
   font-weight: 800;
   font-size: 13px;
@@ -217,4 +217,4 @@ Button.defaultProps = {
 Button.displayName = 'Button';
 
 /** @component */
-export default Button;
+// export default Button;

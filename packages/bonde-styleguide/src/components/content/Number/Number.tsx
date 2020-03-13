@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Text from '../Text/Text';
-import IconColorful from '../IconColorful/IconColorful';
+import { Text } from '../Text/Text';
+import { IconColorful } from '../IconColorful/IconColorful';
 
 const TextNumber = styled(Text)`
   font-size: 32px !important;
@@ -13,7 +13,7 @@ const TextNumber = styled(Text)`
   flex-grow: 1;
 `;
 
-const Number = ({ value, iconName }) => {
+export const Number = ({ value, iconName }) => {
   return (
     <TextNumber>
       <span>{value}</span>
@@ -32,4 +32,4 @@ Number.propTypes = {
 Number.displayName = 'Number';
 
 /** @component */
-export default Number;
+// export default Number;

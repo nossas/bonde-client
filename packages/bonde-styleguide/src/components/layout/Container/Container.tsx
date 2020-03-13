@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import Flexbox from '../Flexbox2/Flexbox2';
-import { Title } from '../../content';
-import IconColorful from '../../content/IconColorful/IconColorful';
+import { Title } from '../../content/Title/Title';
+import { IconColorful } from '../../content/IconColorful/IconColorful';
 const BGImage = require('./assets/bg@2x.png');
 
 const Content = styled.div`

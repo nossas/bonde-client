@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Icon from '../../content/Icon/Icon';
+import { Icon } from '../../content/Icon/Icon';
 
 //
 // TODO: Make component accepts the content like icons as a children.

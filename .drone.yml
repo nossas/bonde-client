@@ -6,6 +6,7 @@ pipeline:
     image: node:12-alpine
     environment:
       - SKIP_PREFLIGHT_CHECK=true
+      - NODE_ENV=test
     commands:
       - apk --update add curl
       - curl -L https://unpkg.com/@pnpm/self-installer | node
@@ -18,6 +19,7 @@ pipeline:
   build:
     image: node:12-alpine
     environment:
+      - NODE_ENV=production
       - SKIP_PREFLIGHT_CHECK=true
       - REACT_APP_DOMAIN_ADMIN=https://app.staging.bonde.org
       - REACT_APP_DOMAIN_ADMIN_CANARY=https://admin-canary.staging.bonde.org

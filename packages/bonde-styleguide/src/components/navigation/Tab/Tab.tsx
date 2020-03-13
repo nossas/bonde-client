@@ -10,7 +10,7 @@ interface TabProps {
   inverted: boolean;
 }
 
-const Tab = styled(({ children, className, inverted = false }: TabProps) => (
+export const Tab = styled(({ children, className, inverted = false }: TabProps) => (
   <div className={className}>
     {React.Children.map(children, child =>
       React.cloneElement(child, { inverted, key: Math.random() })
@@ -22,4 +22,4 @@ const Tab = styled(({ children, className, inverted = false }: TabProps) => (
 `;
 
 /** @component */
-export default Tab;
+// export default Tab;

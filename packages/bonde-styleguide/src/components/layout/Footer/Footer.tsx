@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import IconColorful from '../../content/IconColorful/IconColorful';
+import { IconColorful } from '../../content/IconColorful/IconColorful';
 
 const FooterContent = styled.div`
   flex-grow: 1;

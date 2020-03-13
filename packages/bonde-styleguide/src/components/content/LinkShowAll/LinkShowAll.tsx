@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Text from '../Text/Text';
+import { Text } from '../Text/Text';
 
-const LinkShowAll = styled(() => <Text as="a" />)`
+export const LinkShowAll = styled(() => <Text as="a" />)`
   font-size: 11px !important;
   font-weight: 800 !important;
   line-height: 1.36 !important;
@@ -14,4 +14,4 @@ const LinkShowAll = styled(() => <Text as="a" />)`
 LinkShowAll.displayName = 'LinkShowAll';
 
 /** @component */
-export default LinkShowAll;
+// export default LinkShowAll;

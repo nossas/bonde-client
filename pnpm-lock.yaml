@@ -414,7 +414,7 @@ importers:
       enzyme: 3.11.0
       prop-types: 15.7.2
       react-styleguidist: 10.6.2_9d5e83cd5531bf5940eca4b6c403419f
-      recharts: 2.0.0-beta.2_react-dom@16.13.0+react@16.13.0
+      recharts: 2.0.0-beta.3_react-dom@16.13.0+react@16.13.0
       styled-components: 5.0.1_d35884ee1c3afc8413cfc45d78861198
       webfontloader: 1.6.28
     devDependencies:
@@ -19877,7 +19877,7 @@ packages:
     dev: false
     resolution:
       integrity: sha512-t8p5sccG9Blm7c1JQK/ak9O8o95WGhNXD7TXg/BW5bYbVlr6eCeRBNpgyigD4p6pSSMehC5nSvBUPj6F68rbFA==
-  /recharts/2.0.0-beta.2_react-dom@16.13.0+react@16.13.0:
+  /recharts/2.0.0-beta.3_react-dom@16.13.0+react@16.13.0:
     dependencies:
       classnames: 2.2.6
       core-js: 3.6.4
@@ -19897,7 +19897,7 @@ packages:
       react: ^16.0.0
       react-dom: ^16.0.0
     resolution:
-      integrity: sha512-rXZ44+K6Ky5XtwWAlSlV0Ts8tr/Ix3UqmjYVSXNrfEHnwbYg3LsyheNnwZ9+ZC86sA8rGw3OxfY3/gDIySH/5g==
+      integrity: sha512-NMdG5SRro2q/ovZu8fSwmJgPwSz1sBHlnI1MuR6l5urTeNfgapAcu+72GhXDv8MN48UXxL1Pk+IkWs03SQ/YGw==
   /rechoir/0.6.2:
     dependencies:
       resolve: 1.15.1

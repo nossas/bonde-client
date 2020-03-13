@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Text from '../../content/Text/Text';
+import { Text } from '../../content/Text/Text';
 
 const Radio = styled(({ children, className, ...inputProps }) => (
   <label className={className}>

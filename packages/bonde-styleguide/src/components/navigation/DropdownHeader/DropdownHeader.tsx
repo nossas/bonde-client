@@ -3,7 +3,7 @@ import styled from 'styled-components';
 /**
  * The header component of `Dropdown`.
  */
-const DropdownHeader = styled.div`
+export const DropdownHeader = styled.div`
   width: auto;
   font-family: 'Nunito Sans', sans-serif;
   font-size: 16px;
@@ -22,4 +22,4 @@ const DropdownHeader = styled.div`
 DropdownHeader.displayName = 'DropdownHeader';
 
 /** @component */
-export default DropdownHeader;
+// export default DropdownHeader;

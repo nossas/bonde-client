@@ -3,11 +3,11 @@ import styled, { keyframes } from 'styled-components';
 import PropTypes from 'prop-types';
 import { Card } from '../../..';
 import Flexbox from '../../layout/Flexbox2/Flexbox2';
-import IconColorful from '../../content/IconColorful/IconColorful';
-import Image from '../../content/Image/Image';
+import { IconColorful } from '../../content/IconColorful/IconColorful';
+import { Image } from '../../content/Image/Image';
 import Spacing from '../../layout/Spacing/Spacing';
-import Text from '../../content/Text/Text';
-import Title from '../../content/Title/Title';
+import { Text } from '../../content/Text/Text';
+import { Title } from '../../content/Title/Title';
 
 const textColor = '#4a4a4a';
 

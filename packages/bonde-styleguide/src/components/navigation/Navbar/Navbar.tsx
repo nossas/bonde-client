@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const Navbar = styled(({ children, className, renderBrand }) => (
+export const Navbar = styled(({ children, className, renderBrand }) => (
   <div className={className}>
     {renderBrand && renderBrand()}
 
@@ -23,4 +23,4 @@ Navbar.propTypes = {
 Navbar.displayName = 'Navbar';
 
 /** @component */
-export default Navbar;
+// export default Navbar;

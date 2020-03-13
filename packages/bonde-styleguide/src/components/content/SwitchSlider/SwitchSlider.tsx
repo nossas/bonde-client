@@ -60,7 +60,7 @@ const Switch = styled.label`
   }
 `;
 
-const SwitchSlider = ({ children, round, checked, onChange }) => {
+export const SwitchSlider = ({ children, round, checked, onChange }) => {
   const inputProps = { onChange, checked };
   if (checked !== undefined) {
     inputProps.checked = checked;
@@ -89,4 +89,4 @@ SwitchSlider.defaultProps = {
 };
 
 /** @component */
-export default SwitchSlider;
+// export default SwitchSlider;

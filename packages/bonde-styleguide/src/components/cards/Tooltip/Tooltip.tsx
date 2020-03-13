@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Icon from '../../content/Icon/Icon';
-import Button from '../../content/Button/Button';
+import { Icon } from '../../content/Icon/Icon';
+import { Button } from '../../content/Button/Button';
 import Backdrop from '../../layout/Backdrop/Backdrop';
 import { px } from '../../../utils';
 

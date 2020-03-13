@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import svg from './svg';
 
-const IconColorful = styled(({ name, color, size, inverted, title }) => {
+export const IconColorful = styled(({ name, color, size, inverted, title }) => {
   const IconSVG = svg[name];
 
   return (
@@ -27,4 +27,4 @@ IconColorful.defaultProps = {
 IconColorful.displayName = 'IconColorful';
 
 /** @component */
-export default IconColorful;
+// export default IconColorful;

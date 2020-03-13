@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import Flexbox from '../../layout/Flexbox2/Flexbox2';
-import Button from '../../content/Button/Button';
-import Icon from '../../content/Icon/Icon';
+import { Button } from '../../content/Button/Button';
+import { Icon } from '../../content/Icon/Icon';
 import InputPage from './InputPage';
 
 const FlatButton = styled(({ className, children, ...props }) => (
@@ -72,7 +72,7 @@ interface PaginationProps {
 /**
  * The only true `Pagination` component.
  */
-class Pagination extends React.Component<PaginationProps> {
+export class Pagination extends React.Component<PaginationProps> {
   static defaultProps = {
     pages: 1,
     pageIndex: 0,
@@ -138,4 +138,4 @@ class Pagination extends React.Component<PaginationProps> {
 }
 
 /** @component */
-export default Pagination;
+// export default Pagination;
