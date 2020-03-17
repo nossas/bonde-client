@@ -1,7 +1,7 @@
 ### Dropdown
 
 ```js { "props": { "className": "dark" } }
-import { Dropdown } from '../';
+import Dropdown from './DropdownExample';
 
 <Dropdown
   item='Selecione uma fruta'
@@ -13,7 +13,8 @@ import { Dropdown } from '../';
 ### Dropdown with DropdownIconItem
 
 ```js { "props": { "className": "dark" } }
-import { Dropdown, DropdownIconItem } from '../';
+import Dropdown from './DropdownExample';
+import { DropdownIconItem } from '../';
 
 <Dropdown
   item='Selecione uma fruta'
@@ -30,7 +31,8 @@ import { Dropdown, DropdownIconItem } from '../';
 ### Community Dropdown Example
 
 ```js { "props": { "className": "dark" } }
-import { Dropdown, DropdownImageItem } from '../';
+import Dropdown from './DropdownExample';
+import { DropdownImageItem } from '../';
 import { Icon } from '../../content';
 import { Flexbox2 as Flexbox, Spacing } from '../../layout';
 
@@ -63,7 +65,8 @@ import { Flexbox2 as Flexbox, Spacing } from '../../layout';
 ### User Dropdown Example
 
 ```js { "props": { "className": "dark" } }
-import { Dropdown, DropdownIconItem, DropdownImageItem } from '../';
+import Dropdown from './DropdownExample';
+import { DropdownIconItem, DropdownImageItem } from '../';
 import { Flexbox2 as Flexbox } from '../../layout';
 import { Text, Title } from '../../content';
 

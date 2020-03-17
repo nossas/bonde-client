@@ -28,12 +28,12 @@ const DropdownImageItem = styled(({ className, value }) => {
   `}
 `
 
-const { shape, string } = PropTypes
+const { any, shape, string } = PropTypes
 
 DropdownImageItem.propTypes = {
   value: shape({
     img: shape({ src: string.isRequired, alt: string }),
-    label: string.isRequired
+    label: any.isRequired
   }),
   placeholder: string
 }
