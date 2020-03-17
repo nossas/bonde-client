@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Icon from '../../../content/Icon/Icon'
+import Icon from '../../content/Icon/Icon'
 
 
 const DropdownIconItem = styled(({ className, value, onClick }) => {
