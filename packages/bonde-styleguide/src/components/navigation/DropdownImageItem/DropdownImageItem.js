@@ -38,4 +38,5 @@ DropdownImageItem.propTypes = {
   placeholder: string
 }
 
+/** @component */
 export default DropdownImageItem

@@ -129,4 +129,5 @@ Dropdown.defaultProps = {
   dropdownList: DropdownList
 }
 
+/** @component */
 export default Dropdown

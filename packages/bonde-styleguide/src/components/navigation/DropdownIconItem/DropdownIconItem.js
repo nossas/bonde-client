@@ -32,4 +32,6 @@ const DropdownIconItem = styled(({ className, value, onClick }) => {
     }
   }
 `
+
+/** @component */
 export default DropdownIconItem
