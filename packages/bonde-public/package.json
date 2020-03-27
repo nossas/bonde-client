@@ -34,7 +34,7 @@
     "immutable": "^3.8.2",
     "isomorphic-fetch": "^2.2.1",
     "keycode": "2.2.0",
-    "next": "^9.0.2",
+    "next": "^9.3.2",
     "next-redux-wrapper": "^3.0.0-alpha.3",
     "node-sass": "^4.11.0",
     "qs": "6.5.2",
