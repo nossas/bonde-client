@@ -39,7 +39,7 @@
     "dotenv": "^8.1.0",
     "node-fetch": "^2.6.0",
     "pnpm": "^4.0.1",
-    "source-map-support": "^0.5.13",
+    "source-map-support": "^0.5.19",
     "ws": "^7.1.2"
   }
 }
