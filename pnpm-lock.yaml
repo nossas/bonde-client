@@ -4,7 +4,7 @@ importers:
       dotenv: 8.2.0
       node-fetch: 2.6.0
       pnpm: 4.13.0
-      source-map-support: 0.5.16
+      source-map-support: 0.5.19
       ws: 7.2.3
     devDependencies:
       '@types/debug': 4.1.5
@@ -62,7 +62,7 @@ importers:
       jest: ^24.9.0
       node-fetch: ^2.6.0
       pnpm: ^4.0.1
-      source-map-support: ^0.5.13
+      source-map-support: ^0.5.19
       supertest: ^4.0.2
       ts-jest: ^24.1.0
       tsc-watch: ^4.0.0
@@ -4523,7 +4523,6 @@ packages:
       functional-red-black-tree: 1.0.1
       regexpp: 3.1.0
       tsutils: 3.17.1_typescript@3.8.3
-      typescript: 3.8.3
     dev: true
     engines:
       node: ^8.10.0 || ^10.13.0 || >=11.10.1
@@ -4610,7 +4609,6 @@ packages:
       '@typescript-eslint/typescript-estree': 2.28.0_typescript@3.8.3
       eslint: 6.8.0
       eslint-visitor-keys: 1.1.0
-      typescript: 3.8.3
     dev: true
     engines:
       node: ^8.10.0 || ^10.13.0 || >=11.10.1
@@ -4650,7 +4648,6 @@ packages:
       lodash: 4.17.15
       semver: 6.3.0
       tsutils: 3.17.1_typescript@3.8.3
-      typescript: 3.8.3
     dev: true
     engines:
       node: ^8.10.0 || ^10.13.0 || >=11.10.1
@@ -20508,6 +20505,13 @@ packages:
       source-map: 0.6.1
     resolution:
       integrity: sha512-efyLRJDr68D9hBBNIPWFjhpFzURh+KJykQwvMyW5UiZzYwoF6l4YMMDIJJEyFWxWCqfyxLzz6tSfUFR+kXXsVQ==
+  /source-map-support/0.5.19:
+    dependencies:
+      buffer-from: 1.1.1
+      source-map: 0.6.1
+    dev: false
+    resolution:
+      integrity: sha512-Wonm7zOCIJzBGQdB+thsPar0kYuCIzYvxZwlBa87yi/Mdjv7Tip2cyVbLj5o0cFPN4EVkuTwb3GDDyUx2DGnGw==
   /source-map-url/0.4.0:
     resolution:
       integrity: sha1-PpNdfd1zYxuXZZlW1VEo6HtQhKM=
@@ -22262,7 +22266,6 @@ packages:
     hasBin: true
     peerDependencies:
       webpack: ^4.0.0 || ^5.0.0
-      webpack-cli: '*'
     peerDependenciesMeta:
       webpack-cli:
         optional: true
