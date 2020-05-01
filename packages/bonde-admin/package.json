@@ -92,7 +92,8 @@
     "string": "^3.3.3",
     "tinycolor2": "^1.4.1",
     "url-join": "^4.0.1",
-    "uuid": "^3.3.3"
+    "uuid": "^3.3.3",
+    "snyk": "^1.316.1"
   },
   "engines": {
     "node": ">=8"
@@ -103,7 +104,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "coverage": "npm run test -- --watchAll=false --coverage"
+    "coverage": "npm run test -- --watchAll=false --coverage",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -114,5 +117,6 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "version": "0.16.5"
+  "version": "0.16.5",
+  "snyk": true
 }
