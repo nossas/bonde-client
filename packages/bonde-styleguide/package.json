@@ -15,16 +15,18 @@
     "prop-types": "^15.7.2",
     "recharts": "^1.6.2",
     "styled-components": "^4.3.2",
-    "webfontloader": "^1.6.28"
+    "webfontloader": "^1.6.28",
+    "snyk": "^1.316.1"
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production babel src --out-dir dist --copy-files",
-    "prepare": "yarn build",
+    "prepare": "yarn run snyk-protect && yarn build",
     "dev": "yarn build --watch",
     "build:server": "styleguidist build",
     "test": "echo \"Error: no test specified\" && exit 0",
     "eject": "react-scripts eject",
-    "start": "styleguidist server"
+    "start": "styleguidist server",
+    "snyk-protect": "snyk protect"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -65,5 +67,6 @@
     "react-styleguidist": "^9.1.13",
     "stylelint-config-styled-components": "^0.1.1",
     "webpack": "^4.38.0"
-  }
+  },
+  "snyk": true
 }
