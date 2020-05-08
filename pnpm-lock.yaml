@@ -34,7 +34,7 @@ importers:
       ts-jest: 24.3.0_jest@24.9.0
       tsc-watch: 4.2.3_typescript@3.8.3
       typescript: 3.8.3
-      webpack-dev-server: 3.10.3
+      webpack-dev-server: 3.11.0
     specifiers:
       '@types/debug': ^4.1.5
       '@types/dotenv': ^6.1.1
@@ -67,7 +67,7 @@ importers:
       ts-jest: ^24.1.0
       tsc-watch: ^4.0.0
       typescript: ^3.6.4
-      webpack-dev-server: 3.10.3
+      webpack-dev-server: 3.11.0
       ws: ^7.1.2
   packages/bonde-admin:
     dependencies:
@@ -4337,7 +4337,7 @@ packages:
     dependencies:
       '@types/events': 3.0.0
       '@types/minimatch': 3.0.3
-      '@types/node': 12.12.35
+      '@types/node': 12.12.38
     resolution:
       integrity: sha512-1Bh06cbWJUHMC97acuD6UMG29nMt0Aqz1vF3guLfG+kHHJhy3AyohZFFxYk2f7Q1SQIrNwvncxAE0N/9s70F2w==
   /@types/graphql/0.10.2:
@@ -4394,8 +4394,12 @@ packages:
     resolution:
       integrity: sha512-tHq6qdbT9U1IRSGf14CL0pUlULksvY9OZ+5eEgl1N7t+OA3tGvNpxJCzuKQlsNgCVwbAs670L1vcVQi8j9HjnA==
   /@types/node/12.12.35:
+    dev: true
     resolution:
       integrity: sha512-ASYsaKecA7TUsDrqIGPNk3JeEox0z/0XR/WsJJ8BIX/9+SkMSImQXKWfU/yBrSyc7ZSE/NPqLu36Nur0miCFfQ==
+  /@types/node/12.12.38:
+    resolution:
+      integrity: sha512-75eLjX0pFuTcUXnnWmALMzzkYorjND0ezNEycaKesbUBg9eGZp4GHPuDmkRc4mQQvIpe29zrzATNRA6hkYqwmA==
   /@types/node/13.11.1:
     resolution:
       integrity: sha512-eWQGP3qtxwL8FGneRrC5DwrJLGN4/dH1clNTuLfN81HCrxVtxRjygDTUoZJ5ASlDEeo0ppYFQjQIlXhtXpOn6g==
@@ -4523,7 +4527,6 @@ packages:
       functional-red-black-tree: 1.0.1
       regexpp: 3.1.0
       tsutils: 3.17.1_typescript@3.8.3
-      typescript: 3.8.3
     dev: true
     engines:
       node: ^8.10.0 || ^10.13.0 || >=11.10.1
@@ -4610,7 +4613,6 @@ packages:
       '@typescript-eslint/typescript-estree': 2.28.0_typescript@3.8.3
       eslint: 6.8.0
       eslint-visitor-keys: 1.1.0
-      typescript: 3.8.3
     dev: true
     engines:
       node: ^8.10.0 || ^10.13.0 || >=11.10.1
@@ -4650,7 +4652,6 @@ packages:
       lodash: 4.17.15
       semver: 6.3.0
       tsutils: 3.17.1_typescript@3.8.3
-      typescript: 3.8.3
     dev: true
     engines:
       node: ^8.10.0 || ^10.13.0 || >=11.10.1
@@ -5080,7 +5081,7 @@ packages:
       integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==
   /accepts/1.3.7:
     dependencies:
-      mime-types: 2.1.26
+      mime-types: 2.1.27
       negotiator: 0.6.2
     engines:
       node: '>= 0.6'
@@ -5183,9 +5184,9 @@ packages:
       react: ^0.14 || ^15.0.0 || ^16.0.0-alpha
     resolution:
       integrity: sha512-jUh2/hfKsRjNFC4XONQrxo/n/3GG4Tn6Hl0WlFQN5PY9OMC9loSCoAYKnZsWaP8wEfd5xcrPloK0Zg6iS1xwVA==
-  /ajv-errors/1.0.1_ajv@6.12.0:
+  /ajv-errors/1.0.1_ajv@6.12.2:
     dependencies:
-      ajv: 6.12.0
+      ajv: 6.12.2
     peerDependencies:
       ajv: '>=5.0.0'
     resolution:
@@ -5193,6 +5194,13 @@ packages:
   /ajv-keywords/3.4.1_ajv@6.12.0:
     dependencies:
       ajv: 6.12.0
+    peerDependencies:
+      ajv: ^6.9.1
+    resolution:
+      integrity: sha512-RO1ibKvd27e6FEShVFfPALuHI3WjSVNeK5FIsmme/LYRNxjKuNj+Dt7bucLa6NdSv3JcVTyMlm9kGR84z1XpaQ==
+  /ajv-keywords/3.4.1_ajv@6.12.2:
+    dependencies:
+      ajv: 6.12.2
     peerDependencies:
       ajv: ^6.9.1
     resolution:
@@ -5205,6 +5213,14 @@ packages:
       uri-js: 4.2.2
     resolution:
       integrity: sha512-D6gFiFA0RRLyUbvijN74DWAjXSFxWKaWP7mldxkVhyhAV3+SWA9HEJPHQ2c9soIeTFJqcSdFDGFgdqs1iUU2Hw==
+  /ajv/6.12.2:
+    dependencies:
+      fast-deep-equal: 3.1.1
+      fast-json-stable-stringify: 2.1.0
+      json-schema-traverse: 0.4.1
+      uri-js: 4.2.2
+    resolution:
+      integrity: sha512-k+V+hzjm5q/Mr8ef/1Y9goCmlsK4I6Sm74teeyGvFk1XrOsbsKLjEdrvny42CZ+a8sXbk8KWpY/bDwS+FLL2UQ==
   /ajv/6.5.3:
     dependencies:
       fast-deep-equal: 2.0.1
@@ -7662,8 +7678,9 @@ packages:
       path-is-absolute: 1.0.1
       readdirp: 2.2.1
       upath: 1.2.0
+    deprecated: Chokidar 2 will break on node v14+. Upgrade to chokidar 3 with 15x less dependencies.
     optionalDependencies:
-      fsevents: 1.2.12
+      fsevents: 1.2.13
     resolution:
       integrity: sha512-ZmZUazfOzf0Nve7duiCKD23PFSCs4JPoYyccjUFF3aQkQadqBhfzhjkwBH2mNOG9cTBwhamM37EIsIkZw3nRgg==
   /chokidar/3.3.1:
@@ -8046,7 +8063,7 @@ packages:
       integrity: sha1-ntZ18TzFRQHTCVCkhv9qe6OrGF8=
   /compressible/2.0.18:
     dependencies:
-      mime-db: 1.43.0
+      mime-db: 1.44.0
     engines:
       node: '>= 0.6'
     resolution:
@@ -11253,6 +11270,19 @@ packages:
     requiresBuild: true
     resolution:
       integrity: sha512-Ggd/Ktt7E7I8pxZRbGIs7vwqAPscSESMrCSkx2FtWeqmheJgCo2R74fTsZFCifr0VTPwqRpPv17+6b8Zp7th0Q==
+  /fsevents/1.2.13:
+    dependencies:
+      bindings: 1.5.0
+      nan: 2.14.1
+    deprecated: fsevents 1 will break on node v14+ and could be using insecure binaries. Upgrade to fsevents 2.
+    engines:
+      node: '>= 4.0'
+    optional: true
+    os:
+      - darwin
+    requiresBuild: true
+    resolution:
+      integrity: sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw==
   /fsevents/1.2.4:
     bundledDependencies:
       - node-pre-gyp
@@ -11556,6 +11586,9 @@ packages:
   /graceful-fs/4.2.3:
     resolution:
       integrity: sha512-a30VEBm4PEdx1dRB7MFK7BejejvCvBronbLjht+sHuGYj8PHs7M/5Z+rt5lw551vZ7yfTCj4Vuyy3mSJytDWRQ==
+  /graceful-fs/4.2.4:
+    resolution:
+      integrity: sha512-WjKPNJF79dtJAVniUlGGWHYGz2jWxT6VhN/4m1NdkbZ2nOsEF+cI1Edgql5zCRhs/VsQYRvrXctxktVXZUkixw==
   /graphlib/2.1.8:
     dependencies:
       lodash: 4.17.15
@@ -14770,6 +14803,11 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha512-+5dsGEEovYbT8UY9yD7eE4XTc4UwJ1jBYlgaQQF38ENsKR3wj/8q8RFZrF9WIZpB2V1ArTVFUva8sAul1NzRzQ==
+  /mime-db/1.44.0:
+    engines:
+      node: '>= 0.6'
+    resolution:
+      integrity: sha512-/NOTfLrsPBVeH7YtFPgsVWveuL+4SjjYxaQ1xtM1KMFj7HdxlBlxeyNLzhyJVx7r4rZGJAZ/6lkKCitSc/Nmpg==
   /mime-types/2.1.18:
     dependencies:
       mime-db: 1.33.0
@@ -14785,6 +14823,13 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha512-01paPWYgLrkqAyrlDorC1uDwl2p3qZT7yl806vW7DvDoxwXi46jsjFbg+WdwotBIk6/MbEhO/dh5aZ5sNj/dWQ==
+  /mime-types/2.1.27:
+    dependencies:
+      mime-db: 1.44.0
+    engines:
+      node: '>= 0.6'
+    resolution:
+      integrity: sha512-JIhqnCasI9yD+SsmkquHBxTSEuZdQX5BuQnS2Vc7puQQQ+8yiP5AY5uWhpdv4YL4VM5c6iliiYWPgJ/nJQLp7w==
   /mime/1.6.0:
     engines:
       node: '>=4'
@@ -14797,6 +14842,13 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-LRxmNwziLPT828z+4YkNzloCFC2YM4wrB99k+AV5ZbEyfGNWfG8SO1FUXLmLDBSo89NrJZ4DIWeLjy1CHGhMGA==
+  /mime/2.4.5:
+    dev: true
+    engines:
+      node: '>=4.0.0'
+    hasBin: true
+    resolution:
+      integrity: sha512-3hQhEUF027BuxZjQA3s7rIv/7VCQPa27hN9u9g87sEkWaKwQPuXOkVKtOeiyUrnWqTDiOs8Ed2rwg733mB0R5w==
   /mimic-fn/1.2.0:
     dev: true
     engines:
@@ -15066,6 +15118,10 @@ packages:
   /nan/2.14.0:
     resolution:
       integrity: sha512-INOFj37C7k3AfaNTtX8RhsTw7qRy7eLET14cROi9+5HAVbbHuIWUHEauBv5qT4Av2tWasiTY1Jw6puUNqRJXQg==
+  /nan/2.14.1:
+    optional: true
+    resolution:
+      integrity: sha512-isWHgVjnFjh2x2yuJ/tj3JbwoHu3UC2dX5G/88Cm24yB6YopVgxvBObDY7n5xW6ExmFhJpSEQqFPvq9zaXc8Jw==
   /nanomatch/1.2.13:
     dependencies:
       arr-diff: 4.0.0
@@ -16261,6 +16317,16 @@ packages:
       node: '>= 0.12.0'
     resolution:
       integrity: sha512-6ElJnHBbxVA1XSLgBp7G1FiCkQdlqGzuF7DswL5tcea+E8UpuvPU7beVAjjRwCioTS9ZluNbu+ZyRvgTsmqEBg==
+  /portfinder/1.0.26:
+    dependencies:
+      async: 2.6.3
+      debug: 3.2.6
+      mkdirp: 0.5.5
+    dev: true
+    engines:
+      node: '>= 0.12.0'
+    resolution:
+      integrity: sha512-Xi7mKxJHHMI3rIUrnm/jjUgwhbYMkp/XKEcZX3aG4BrumLpq3nmoQMX+ClYnDZnZ/New7IatC1no5RX0zo1vXQ==
   /posix-character-classes/0.1.1:
     engines:
       node: '>=0.10.0'
@@ -18792,7 +18858,7 @@ packages:
       integrity: sha512-BViHy7LKeTz4oNnkcLJ+lVSL6vpiFeX6/d3oSH8zCW7UxP2onchk+vTGB143xuFjHS3deTgkKoXXymXqymiIdA==
   /readdirp/2.2.1:
     dependencies:
-      graceful-fs: 4.2.3
+      graceful-fs: 4.2.4
       micromatch: 3.1.10
       readable-stream: 2.3.7
     engines:
@@ -19739,9 +19805,9 @@ packages:
       integrity: sha512-v/iwU6wvwGK8HbU9yi3/nhGzP0yGSuhQMzL6ySiec1FSrZZDkhm4noOSWzrNFo/jEc+SJY6jRTwuwbSXJPDUnQ==
   /schema-utils/1.0.0:
     dependencies:
-      ajv: 6.12.0
-      ajv-errors: 1.0.1_ajv@6.12.0
-      ajv-keywords: 3.4.1_ajv@6.12.0
+      ajv: 6.12.2
+      ajv-errors: 1.0.1_ajv@6.12.2
+      ajv-keywords: 3.4.1_ajv@6.12.2
     engines:
       node: '>= 4'
     resolution:
@@ -19859,7 +19925,7 @@ packages:
       debug: 2.6.9
       escape-html: 1.0.3
       http-errors: 1.6.3
-      mime-types: 2.1.26
+      mime-types: 2.1.27
       parseurl: 1.3.3
     engines:
       node: '>= 0.8.0'
@@ -20477,6 +20543,14 @@ packages:
       uuid: 3.4.0
     resolution:
       integrity: sha512-V48klKZl8T6MzatbLlzzRNhMepEys9Y4oGFpypBFFn1gLI/QQ9HtLLyWJNbPlwGLelOVOEijUbTTJeLLI59jLw==
+  /sockjs/0.3.20:
+    dependencies:
+      faye-websocket: 0.10.0
+      uuid: 3.4.0
+      websocket-driver: 0.6.5
+    dev: true
+    resolution:
+      integrity: sha512-SpmVOVpdq0DJc0qArhF3E5xsxvaiqGNb73XfgBpK1y3UD5gs8DSo8aCTsuT5pX8rssdc2NDIzANwP9eCAiSdTA==
   /sort-keys/1.1.2:
     dependencies:
       is-plain-obj: 1.1.0
@@ -21688,7 +21762,7 @@ packages:
   /type-is/1.6.18:
     dependencies:
       media-typer: 0.3.0
-      mime-types: 2.1.26
+      mime-types: 2.1.27
     engines:
       node: '>= 0.6'
     resolution:
@@ -22154,7 +22228,7 @@ packages:
   /webpack-dev-middleware/3.7.2:
     dependencies:
       memory-fs: 0.4.1
-      mime: 2.4.4
+      mime: 2.4.5
       mkdirp: 0.5.5
       range-parser: 1.2.1
       webpack-log: 2.0.0
@@ -22221,53 +22295,6 @@ packages:
       webpack: ^4.0.0
     resolution:
       integrity: sha512-mGXDgz5SlTxcF3hUpfC8hrQ11yhAttuUQWf1Wmb+6zo3x6rb7b9mIfuQvAPLdfDRCGRGvakBWHdHOa0I9p/EVQ==
-  /webpack-dev-server/3.10.3:
-    dependencies:
-      ansi-html: 0.0.7
-      bonjour: 3.5.0
-      chokidar: 2.1.8
-      compression: 1.7.4
-      connect-history-api-fallback: 1.6.0
-      debug: 4.1.1
-      del: 4.1.1
-      express: 4.17.1
-      html-entities: 1.3.1
-      http-proxy-middleware: 0.19.1
-      import-local: 2.0.0
-      internal-ip: 4.3.0
-      ip: 1.1.5
-      is-absolute-url: 3.0.3
-      killable: 1.0.1
-      loglevel: 1.6.8
-      opn: 5.5.0
-      p-retry: 3.0.1
-      portfinder: 1.0.25
-      schema-utils: 1.0.0
-      selfsigned: 1.10.7
-      semver: 6.3.0
-      serve-index: 1.9.1
-      sockjs: 0.3.19
-      sockjs-client: 1.4.0
-      spdy: 4.0.2
-      strip-ansi: 3.0.1
-      supports-color: 6.1.0
-      url: 0.11.0
-      webpack-dev-middleware: 3.7.2
-      webpack-log: 2.0.0
-      ws: 6.2.1
-      yargs: 12.0.5
-    dev: true
-    engines:
-      node: '>= 6.11.5'
-    hasBin: true
-    peerDependencies:
-      webpack: ^4.0.0 || ^5.0.0
-      webpack-cli: '*'
-    peerDependenciesMeta:
-      webpack-cli:
-        optional: true
-    resolution:
-      integrity: sha512-e4nWev8YzEVNdOMcNzNeCN947sWJNd43E5XvsJzbAL08kGc2frm1tQ32hTJslRS+H65LCb/AaUCYU7fjHCpDeQ==
   /webpack-dev-server/3.10.3_webpack@4.42.0:
     dependencies:
       ansi-html: 0.0.7
@@ -22316,6 +22343,52 @@ packages:
         optional: true
     resolution:
       integrity: sha512-e4nWev8YzEVNdOMcNzNeCN947sWJNd43E5XvsJzbAL08kGc2frm1tQ32hTJslRS+H65LCb/AaUCYU7fjHCpDeQ==
+  /webpack-dev-server/3.11.0:
+    dependencies:
+      ansi-html: 0.0.7
+      bonjour: 3.5.0
+      chokidar: 2.1.8
+      compression: 1.7.4
+      connect-history-api-fallback: 1.6.0
+      debug: 4.1.1
+      del: 4.1.1
+      express: 4.17.1
+      html-entities: 1.3.1
+      http-proxy-middleware: 0.19.1
+      import-local: 2.0.0
+      internal-ip: 4.3.0
+      ip: 1.1.5
+      is-absolute-url: 3.0.3
+      killable: 1.0.1
+      loglevel: 1.6.8
+      opn: 5.5.0
+      p-retry: 3.0.1
+      portfinder: 1.0.26
+      schema-utils: 1.0.0
+      selfsigned: 1.10.7
+      semver: 6.3.0
+      serve-index: 1.9.1
+      sockjs: 0.3.20
+      sockjs-client: 1.4.0
+      spdy: 4.0.2
+      strip-ansi: 3.0.1
+      supports-color: 6.1.0
+      url: 0.11.0
+      webpack-dev-middleware: 3.7.2
+      webpack-log: 2.0.0
+      ws: 6.2.1
+      yargs: 13.3.2
+    dev: true
+    engines:
+      node: '>= 6.11.5'
+    hasBin: true
+    peerDependencies:
+      webpack: ^4.0.0 || ^5.0.0
+    peerDependenciesMeta:
+      webpack-cli:
+        optional: true
+    resolution:
+      integrity: sha512-PUxZ+oSTxogFQgkTtFndEtJIPNmml7ExwufBZ9L2/Xyyd5PnOL5UreWe5ZT7IU25DSdykL9p1MLQzmLh2ljSeg==
   /webpack-log/2.0.0:
     dependencies:
       ansi-colors: 3.2.4
@@ -22456,6 +22529,14 @@ packages:
       webpack: '*'
     resolution:
       integrity: sha512-SGfYMigqEfdGchGhFFJ9KyRpQKnipvEvjc1TwrXEPCM6H5Wywu10ka8o3KGrMzSMxMQKt8aCHUFh5DaQ9UmyRg==
+  /websocket-driver/0.6.5:
+    dependencies:
+      websocket-extensions: 0.1.3
+    dev: true
+    engines:
+      node: '>=0.6.0'
+    resolution:
+      integrity: sha1-XLJVbOuF9Dc8bYI4qmkchFThOjY=
   /websocket-driver/0.7.3:
     dependencies:
       http-parser-js: 0.4.10
@@ -22962,6 +23043,7 @@ packages:
     dependencies:
       camelcase: 5.3.1
       decamelize: 1.2.0
+    dev: false
     resolution:
       integrity: sha512-C6kB/WJDiaxONLJQnF8ccx9SEeoTTLek8RVbaOIsrAUS8VrBEXfmeSnCZxygc+XC2sNMBIwOOnfcxiynjHsVSQ==
   /yargs-parser/13.1.2:
@@ -23040,6 +23122,7 @@ packages:
       which-module: 2.0.0
       y18n: 4.0.0
       yargs-parser: 11.1.1
+    dev: false
     resolution:
       integrity: sha512-Lhz8TLaYnxq/2ObqHDql8dX8CJi97oHxrjUcYtzKbbykPtVW9WB+poxI+NM2UIzsMgNCZTIf0AQwsjK5yMAqZw==
   /yargs/13.3.2:
