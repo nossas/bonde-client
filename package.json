@@ -29,7 +29,7 @@
     "ts-jest": "^24.1.0",
     "tsc-watch": "^4.0.0",
     "typescript": "^3.6.4",
-    "webpack-dev-server": "3.10.3"
+    "webpack-dev-server": "3.11.0"
   },
   "scripts": {
     "lint": "eslint **/*.ts",
