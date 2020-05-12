@@ -38,19 +38,19 @@ pipeline:
       status: success
       branch: [hotfix/*, release/*, feature/*, support/*, develop]
 
-  codecov:
-    image: plugins/codecov
-    secrets: [ codecov_token ]
-    group: build
-    paths:
-      - packages/bonde-admin/coverage
-      - packages/bonde-admin-canary/coverage
-      - packages/bonde-public/coverage
-      - packages/bonde-webpage/coverage
-      - packages/bonde-styleguide/coverage
-    when:
-      status: success
-      event: [push, tag]
+  # codecov:
+  #   image: plugins/codecov
+  #   secrets: [ codecov_token ]
+  #   group: build
+  #   paths:
+  #     - packages/bonde-admin/coverage
+  #     - packages/bonde-admin-canary/coverage
+  #     - packages/bonde-public/coverage
+  #     - packages/bonde-webpage/coverage
+  #     - packages/bonde-styleguide/coverage
+  #   when:
+  #     status: success
+  #     event: [push, tag]
 
   publish-public:
     image: plugins/docker
