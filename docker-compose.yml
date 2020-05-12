@@ -1,0 +1,218 @@
+version: '2'
+# volumes:
+#   redis_data:
+#     driver: local
+#   s3_data:
+#     driver: local
+#   pgmaster_data:
+#     driver: local
+services:
+  # s3:
+  #   extends:
+  #     file: docker-compose.common.yml
+  #     service: s3
+  # traefik:
+  #   extends:
+  #     file: docker-compose.common.yml
+  #     service: traefik
+  cross-storage:
+    image: nossas/bonde-cross-storage:feature-bonde-permissions
+    # build: ../bonde-cross-storage
+    ports:
+      - "8888:80"
+    environment:
+      - NGINX_PORT=80
+    command: /bin/bash -c "exec nginx -g 'daemon off;'"
+    labels:
+      traefik.frontend.rule: Host:cross-storage.bonde.devel
+      traefik.enable: 'true'
+      traefik.alias: cross-storage
+      traefik.port: '80'
+  accounts-client:
+    # image: nossas/bonde-auth-client:feature-auth-ci
+    build: ../bonde-auth
+    ports:
+    - "5000:5000"
+    environment:
+      NODE_ENV: development
+      DEBUG: bonde-accounts-client
+      PORT: 5000
+      REACT_APP_DOMAIN_CROSS_STORAGE: http://cross-storage.bonde.devel
+      REACT_APP_HASURA_API_URL: https://api-graphql.staging.bonde.org/v1/graphql
+      REACT_APP_ADMIN_URL: http://admin-canary.bonde.devel:5001/admin
+    command: pnpm m run dev --filter bonde-accounts-client
+    volumes:
+      - ../bonde-auth:/usr/src/app/
+    labels:
+      traefik.frontend.rule: Host:accounts.bonde.devel
+      traefik.port: '5000'
+      traefik.enable: 'true'
+  admin-canary:
+    build: ./
+    ports:
+    - "5001:5001"
+    environment:
+      NODE_ENV: development
+      DEBUG: bonde-admin-canary
+      PORT: 5001
+      REACT_APP_LOGIN_URL: http://accounts.bonde.devel:5000/login
+      REACT_APP_DOMAIN_CROSS_STORAGE: http://cross-storage.bonde.devel
+      REACT_APP_DOMAIN_API_GRAPHQL: http://api-graphql.staging.bonde.org/v1/graphql
+      REACT_APP_DOMAIN_ADMIN: http://app.bonde.devel:5002
+      REACT_APP_DOMAIN_BOT: http://chatbot.bonde.devel:5003
+      REACT_APP_DOMAIN_REDES: http://redes.bonde.devel:5004
+    command: pnpm m run dev --filter=bonde-admin-canary
+    volumes:
+      - ./:/usr/src/app/
+    labels:
+      traefik.frontend.rule: Host:admin-canary.bonde.devel
+      traefik.port: '5001'
+      traefik.enable: 'true'
+  admin:
+    build: ./
+    ports:
+    - "5002:5002"
+    environment:
+      NODE_ENV: development
+      DEBUG: bonde-admin
+      PORT: 5002
+      REACT_APP_LOGIN_URL: http://accounts.bonde.devel:5000/login
+      REACT_APP_DOMAIN_CROSS_STORAGE: http://cross-storage.bonde.devel
+      REACT_APP_DOMAIN_API_GRAPHQL: http://api-graphql.staging.bonde.org/v1/graphql
+      REACT_APP_DOMAIN_ADMIN_CANARY: http://admin-canary.bonde.devel:5001
+      REACT_APP_DOMAIN_ADMIN: http://app.bonde.devel:5002
+      REACT_APP_DOMAIN_BOT: http://chatbot.bonde.devel:5003
+      REACT_APP_DOMAIN_REDES: http://redes.bonde.devel:5004
+      REACT_APP_DOMAIN_PUBLIC: staging.bonde.org
+      REACT_APP_AWS_BUCKET: bonde-assets-staging
+    command: pnpm m run dev --filter=bonde-admin
+    volumes:
+      - ./:/usr/src/app/
+    labels:
+      traefik.frontend.rule: Host:app.bonde.devel
+      traefik.port: '5002'
+      traefik.enable: 'true'
+  # pgmaster:
+  #   extends:
+  #     file: docker-compose.common.yml
+  #     service: pgmaster
+  # redis:
+  #   extends:
+  #     file: docker-compose.common.yml
+  #     service: redis
+  # migrations:
+  #   extends:
+  #     file: docker-compose.workers.yml
+  #     service: migrations
+  #   depends_on:
+  #   - pgmaster
+  #   environment:
+  #     DATABASE_URL: postgres://monkey_user:monkey_pass@pgmaster/bonde
+  #   volumes:
+  #   - ./../bonde-migrations/:/volumes
+  # api-rest:
+  #   extends:
+  #     file: docker-compose.apis.yml
+  #     service: api-rest
+  #   depends_on:
+  #   - pgmaster
+  #   labels:
+  #     traefik.frontend.rule: Host:api-rest.bonde.devel
+  #     traefik.port: '3000'
+  #     traefik.enable: 'true'
+  #     traefik.alias: api-rest
+  # api-v2:
+  #   extends:
+  #     file: docker-compose.apis.yml
+  #     service: api-v2
+  #   depends_on:
+  #   - pgmaster
+  # api-graphql:
+  #   extends:
+  #     file: docker-compose.apis.yml
+  #     service: api-graphql
+  #   depends_on:
+  #   - pgmaster
+  #   - api-v2
+  #   - webhook-auth
+  #   ports:
+  #   - "5007:8080"
+  #   environment:
+  #     HASURA_GRAPHQL_ADMIN_SECRET: "segredo123"
+  #     HASURA_GRAPHQL_AUTH_HOOK: http://webhook-auth:4001/hasura
+  #     HASURA_GRAPHQL_AUTH_HOOK_MODE: "GET"
+  #     WEBHOOK_MAIL_URL: http://listener-notifications:8080/webhook
+  #     WEBHOOK_ACTIVISTS_PRESSURE_URL: http://pipeline-activists-to-notifications:8080/webhook/pressure
+  #     WEBHOOK_INVITATIONS_URL: http://webhook-auth:4001/invitations
+  #   labels:
+  #     traefik.frontend.rule: Host:api-graphql.bonde.devel
+  #     traefik.enable: 'true'
+  #     traefik.alias: api-graphql
+  #     traefik.port: '8080'
+  # webhook-auth:
+  #   extends:
+  #     file: docker-compose.auth.yml
+  #     service: webhook-auth
+  #   environment:
+  #     PORT: 4001
+  #     GRAPHQL_HTTP_URL: http://api-graphql:8080/v1/graphql
+  #   labels:
+  #     traefik.frontend.rule: Host:webhook.auth.bonde.devel
+  #     traefik.port: '4001'
+  #     traefik.enable: 'true'
+  # api-auth:
+  #   extends:
+  #     file: docker-compose.auth.yml
+  #     service: api-auth
+  #   environment:
+  #     PORT: 4001
+  #     GRAPHQL_HTTP_URL: http://api-graphql:8080/v1/graphql
+  #   labels:
+  #     traefik.frontend.rule: Host:api.auth.bonde.devel
+  #     traefik.port: '4001'
+  #     traefik.enable: 'true'
+  # listener-chatbot:
+  #   extends:
+  #     file: docker-compose.listeners.yml
+  #     service: chatbot
+  #   depends_on:
+  #   - api-graphql
+  #   environment:
+  #     PORT: 5000
+  #     APP_DOMAIN: http://chatbot.bonde.devel
+  #   labels:
+  #     traefik.frontend.rule: Host:chatbot.bonde.devel
+  #     traefik.port: '5000'
+  #     traefik.enable: 'true'
+  # pipeline-registries-to-zendesk:
+  #   extends:
+  #     file: docker-compose.pipelines.yml
+  #     service: registries-to-zendesk
+  #   depends_on:
+  #   - api-graphql
+  # listener-notifications:
+  #   extends:
+  #     file: docker-compose.listeners.yml
+  #     service: notifications
+  #   depends_on:
+  #   - api-graphql
+  #   - smtp
+  # pipeline-activists-to-notifications:
+  #   extends:
+  #     file: docker-compose.pipelines.yml
+  #     service: activists-to-notifications
+  #   depends_on:
+  #   - api-graphql
+  # listener-redes:
+  #   extends:
+  #     file: docker-compose.listeners.yml
+  #     service: redes
+  #   depends_on:
+  #   - api-graphql
+  # listener-redes-geolocation:
+  #   extends:
+  #     file: docker-compose.listeners.yml
+  #     service: redes-geolocation
+  #   depends_on:
+  #   - api-graphql
+

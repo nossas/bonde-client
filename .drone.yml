@@ -30,9 +30,9 @@ pipeline:
     commands:
       - export REACT_APP_PAGARME_KEY=$STAG_PAGARME_KEY
       - export REACT_APP_SENTRY_DSN_PUBLIC=$STAG_SENTRY_DSN_PUBLIC
-      - export REACT_APP_HASURA_SECRET=$STAG_HASURA_KEY
-      - yarn lerna run build
-    secrets: [ stag_pagarme_key, stag_sentry_dsn_public, stag_hasura_key ]
+      # - export REACT_APP_HASURA_SECRET=$STAG_HASURA_KEY
+      - yarn lerna run build --scope bonde-public
+    secrets: [ stag_pagarme_key, stag_sentry_dsn_public ]
     group: build
     when:
       status: success
@@ -65,148 +65,148 @@ pipeline:
       status: success
       branch: [hotfix/*, release/*, feature/*, support/*, develop]
 
-  publish-styleguide:
-    image: plugins/docker
-    repo: nossas/bonde-styleguide
-    secrets: [ docker_username, docker_password ]
-    dockerfile: packages/bonde-styleguide/Dockerfile
-    context: packages/bonde-styleguide/
-    group: publish
-    tags:
-      - ${DRONE_BRANCH/\//-}
-    when:
-      status: success
-      branch: [hotfix/*, release/*, feature/*, support/*, develop]
+  # publish-styleguide:
+  #   image: plugins/docker
+  #   repo: nossas/bonde-styleguide
+  #   secrets: [ docker_username, docker_password ]
+  #   dockerfile: packages/bonde-styleguide/Dockerfile
+  #   context: packages/bonde-styleguide/
+  #   group: publish
+  #   tags:
+  #     - ${DRONE_BRANCH/\//-}
+  #   when:
+  #     status: success
+  #     branch: [hotfix/*, release/*, feature/*, support/*, develop]
 
-  publish-admin-canary:
-    image: plugins/docker
-    repo: nossas/bonde-admin-canary
-    secrets: [ docker_username, docker_password ]
-    dockerfile: packages/bonde-admin-canary/Dockerfile
-    context: packages/bonde-admin-canary/
-    group: publish
-    tags:
-      - ${DRONE_BRANCH/\//-}
-    when:
-      status: success
-      branch: [hotfix/*, release/*, feature/*, support/*, develop]
+  # publish-admin-canary:
+  #   image: plugins/docker
+  #   repo: nossas/bonde-admin-canary
+  #   secrets: [ docker_username, docker_password ]
+  #   dockerfile: packages/bonde-admin-canary/Dockerfile
+  #   context: packages/bonde-admin-canary/
+  #   group: publish
+  #   tags:
+  #     - ${DRONE_BRANCH/\//-}
+  #   when:
+  #     status: success
+  #     branch: [hotfix/*, release/*, feature/*, support/*, develop]
 
-  publish-admin:
-    image: plugins/docker
-    repo: nossas/bonde-admin
-    secrets: [ docker_username, docker_password ]
-    dockerfile: packages/bonde-admin/Dockerfile
-    context: packages/bonde-admin/
-    group: publish
-    tags:
-      - ${DRONE_BRANCH/\//-}
-    when:
-      status: success
-      branch: [hotfix/*, release/*, feature/*, support/*, develop]
+  # publish-admin:
+  #   image: plugins/docker
+  #   repo: nossas/bonde-admin
+  #   secrets: [ docker_username, docker_password ]
+  #   dockerfile: packages/bonde-admin/Dockerfile
+  #   context: packages/bonde-admin/
+  #   group: publish
+  #   tags:
+  #     - ${DRONE_BRANCH/\//-}
+  #   when:
+  #     status: success
+  #     branch: [hotfix/*, release/*, feature/*, support/*, develop]
 
-  dev-deploy-public:
-    image: peloton/drone-rancher
-    url: http://cluster.bonde.org
-    service: webservers/public
-    docker_image: nossas/bonde-public:${DRONE_BRANCH/\//-}
-    timeout: 360
-    confirm: true
-    group: deploy
-    secrets: [ rancher_access_key, rancher_secret_key ]
-    when:
-      status: success
-      branch: [hotfix/*, release/*, feature/*, support/*]
+  # dev-deploy-public:
+  #   image: peloton/drone-rancher
+  #   url: http://cluster.bonde.org
+  #   service: webservers/public
+  #   docker_image: nossas/bonde-public:${DRONE_BRANCH/\//-}
+  #   timeout: 360
+  #   confirm: true
+  #   group: deploy
+  #   secrets: [ rancher_access_key, rancher_secret_key ]
+  #   when:
+  #     status: success
+  #     branch: [hotfix/*, release/*, feature/*, support/*]
 
-  dev-deploy-styleguide:
-    image: peloton/drone-rancher
-    url: http://cluster.bonde.org
-    service: webservers/styleguide
-    docker_image: nossas/bonde-styleguide:${DRONE_BRANCH/\//-}
-    timeout: 360
-    confirm: true
-    group: deploy
-    secrets: [ rancher_access_key, rancher_secret_key ]
-    when:
-      status: success
-      branch: [hotfix/*, release/*, feature/*, support/*]
+  # dev-deploy-styleguide:
+  #   image: peloton/drone-rancher
+  #   url: http://cluster.bonde.org
+  #   service: webservers/styleguide
+  #   docker_image: nossas/bonde-styleguide:${DRONE_BRANCH/\//-}
+  #   timeout: 360
+  #   confirm: true
+  #   group: deploy
+  #   secrets: [ rancher_access_key, rancher_secret_key ]
+  #   when:
+  #     status: success
+  #     branch: [hotfix/*, release/*, feature/*, support/*]
 
-  dev-deploy-admin-canary:
-    image: peloton/drone-rancher
-    url: http://cluster.bonde.org
-    service: webservers/admin-canary
-    docker_image: nossas/bonde-admin-canary:${DRONE_BRANCH/\//-}
-    timeout: 360
-    confirm: true
-    group: deploy
-    secrets: [ rancher_access_key, rancher_secret_key ]
-    when:
-      status: success
-      branch: [hotfix/*, release/*, feature/*, support/*]
+  # dev-deploy-admin-canary:
+  #   image: peloton/drone-rancher
+  #   url: http://cluster.bonde.org
+  #   service: webservers/admin-canary
+  #   docker_image: nossas/bonde-admin-canary:${DRONE_BRANCH/\//-}
+  #   timeout: 360
+  #   confirm: true
+  #   group: deploy
+  #   secrets: [ rancher_access_key, rancher_secret_key ]
+  #   when:
+  #     status: success
+  #     branch: [hotfix/*, release/*, feature/*, support/*]
 
-  dev-deploy-admin:
-    image: peloton/drone-rancher
-    url: http://cluster.bonde.org
-    service: webservers/admin
-    docker_image: nossas/bonde-admin:${DRONE_BRANCH/\//-}
-    timeout: 360
-    confirm: true
-    group: deploy
-    secrets: [ rancher_access_key, rancher_secret_key ]
-    when:
-      status: success
-      branch: [hotfix/*, release/*, feature/*, support/*]
+  # dev-deploy-admin:
+  #   image: peloton/drone-rancher
+  #   url: http://cluster.bonde.org
+  #   service: webservers/admin
+  #   docker_image: nossas/bonde-admin:${DRONE_BRANCH/\//-}
+  #   timeout: 360
+  #   confirm: true
+  #   group: deploy
+  #   secrets: [ rancher_access_key, rancher_secret_key ]
+  #   when:
+  #     status: success
+  #     branch: [hotfix/*, release/*, feature/*, support/*]
 
-  staging-deploy-public:
-    image: peloton/drone-rancher
-    url: http://cluster.bonde.org
-    service: webservers/public
-    docker_image: nossas/bonde-public:${DRONE_BRANCH/\//-}
-    timeout: 360
-    confirm: true
-    group: deploy
-    secrets: [ rancher_access_key, rancher_secret_key ]
-    when:
-      status: success
-      branch: [develop]
+  # staging-deploy-public:
+  #   image: peloton/drone-rancher
+  #   url: http://cluster.bonde.org
+  #   service: webservers/public
+  #   docker_image: nossas/bonde-public:${DRONE_BRANCH/\//-}
+  #   timeout: 360
+  #   confirm: true
+  #   group: deploy
+  #   secrets: [ rancher_access_key, rancher_secret_key ]
+  #   when:
+  #     status: success
+  #     branch: [develop]
 
-  staging-deploy-styleguide:
-    image: peloton/drone-rancher
-    url: http://cluster.bonde.org
-    service: webservers/styleguide
-    docker_image: nossas/bonde-styleguide:${DRONE_BRANCH/\//-}
-    timeout: 360
-    confirm: true
-    group: deploy
-    secrets: [ rancher_access_key, rancher_secret_key ]
-    when:
-      status: success
-      branch: [develop]
+  # staging-deploy-styleguide:
+  #   image: peloton/drone-rancher
+  #   url: http://cluster.bonde.org
+  #   service: webservers/styleguide
+  #   docker_image: nossas/bonde-styleguide:${DRONE_BRANCH/\//-}
+  #   timeout: 360
+  #   confirm: true
+  #   group: deploy
+  #   secrets: [ rancher_access_key, rancher_secret_key ]
+  #   when:
+  #     status: success
+  #     branch: [develop]
 
-  staging-deploy-admin-canary:
-    image: peloton/drone-rancher
-    url: http://cluster.bonde.org
-    service: webservers/admin-canary
-    docker_image: nossas/bonde-admin-canary:${DRONE_BRANCH/\//-}
-    timeout: 360
-    confirm: true
-    group: deploy
-    secrets: [ rancher_access_key, rancher_secret_key ]
-    when:
-      status: success
-      branch: [develop]
+  # staging-deploy-admin-canary:
+  #   image: peloton/drone-rancher
+  #   url: http://cluster.bonde.org
+  #   service: webservers/admin-canary
+  #   docker_image: nossas/bonde-admin-canary:${DRONE_BRANCH/\//-}
+  #   timeout: 360
+  #   confirm: true
+  #   group: deploy
+  #   secrets: [ rancher_access_key, rancher_secret_key ]
+  #   when:
+  #     status: success
+  #     branch: [develop]
 
-  staging-deploy-admin:
-    image: peloton/drone-rancher
-    url: http://cluster.bonde.org
-    service: webservers/admin
-    docker_image: nossas/bonde-admin:${DRONE_BRANCH/\//-}
-    timeout: 360
-    confirm: true
-    group: deploy
-    secrets: [ rancher_access_key, rancher_secret_key ]
-    when:
-      status: success
-      branch: [develop]
+  # staging-deploy-admin:
+  #   image: peloton/drone-rancher
+  #   url: http://cluster.bonde.org
+  #   service: webservers/admin
+  #   docker_image: nossas/bonde-admin:${DRONE_BRANCH/\//-}
+  #   timeout: 360
+  #   confirm: true
+  #   group: deploy
+  #   secrets: [ rancher_access_key, rancher_secret_key ]
+  #   when:
+  #     status: success
+  #     branch: [develop]
 
   production-build:
     image: node:10-alpine
@@ -225,7 +225,7 @@ pipeline:
     commands:
       - export REACT_APP_PAGARME_KEY=$PROD_PAGARME_KEY
       - export REACT_APP_SENTRY_DSN_PUBLIC=$PROD_SENTRY_DSN_PUBLIC
-      - yarn lerna run build
+      - yarn lerna run build --scope bonde-public
     secrets: [ prod_pagarme_key, prod_sentry_dsn_public ]
     when:
       status: success
@@ -245,84 +245,84 @@ pipeline:
       status: success
       event: tag
 
-  production-publish-admin:
-    image: plugins/docker
-    repo: nossas/bonde-admin
-    secrets: [ docker_username, docker_password ]
-    dockerfile: packages/bonde-admin/Dockerfile
-    context: packages/bonde-admin/
-    group: publish
-    tags:
-      - ${DRONE_TAG##v}
-      - latest
-    when:
-      status: success
-      event: tag
+  # production-publish-admin:
+  #   image: plugins/docker
+  #   repo: nossas/bonde-admin
+  #   secrets: [ docker_username, docker_password ]
+  #   dockerfile: packages/bonde-admin/Dockerfile
+  #   context: packages/bonde-admin/
+  #   group: publish
+  #   tags:
+  #     - ${DRONE_TAG##v}
+  #     - latest
+  #   when:
+  #     status: success
+  #     event: tag
 
-  production-publish-admin-canary:
-    image: plugins/docker
-    repo: nossas/bonde-admin-canary
-    secrets: [ docker_username, docker_password ]
-    dockerfile: packages/bonde-admin-canary/Dockerfile
-    context: packages/bonde-admin-canary/
-    group: publish
-    tags:
-      - ${DRONE_TAG##v}
-      - latest
-    when:
-      status: success
-      event: tag
+  # production-publish-admin-canary:
+  #   image: plugins/docker
+  #   repo: nossas/bonde-admin-canary
+  #   secrets: [ docker_username, docker_password ]
+  #   dockerfile: packages/bonde-admin-canary/Dockerfile
+  #   context: packages/bonde-admin-canary/
+  #   group: publish
+  #   tags:
+  #     - ${DRONE_TAG##v}
+  #     - latest
+  #   when:
+  #     status: success
+  #     event: tag
 
-  production-deploy-public:
-    image: peloton/drone-rancher
-    url: http://cluster.bonde.org
-    service: webservers/public
-    docker_image: "nossas/bonde-public:${DRONE_TAG##v}"
-    timeout: 360
-    confirm: true
-    group: deploy
-    secrets:
-      - source: rancher_access_key_prod
-        target: rancher_access_key
-      - source: rancher_secret_key_prod
-        target: rancher_secret_key
-    when:
-      status: success
-      event: tag
+  # production-deploy-public:
+  #   image: peloton/drone-rancher
+  #   url: http://cluster.bonde.org
+  #   service: webservers/public
+  #   docker_image: "nossas/bonde-public:${DRONE_TAG##v}"
+  #   timeout: 360
+  #   confirm: true
+  #   group: deploy
+  #   secrets:
+  #     - source: rancher_access_key_prod
+  #       target: rancher_access_key
+  #     - source: rancher_secret_key_prod
+  #       target: rancher_secret_key
+  #   when:
+  #     status: success
+  #     event: tag
 
-  production-deploy-admin:
-    image: peloton/drone-rancher
-    url: http://cluster.bonde.org
-    service: webservers/admin
-    docker_image: "nossas/bonde-admin:${DRONE_TAG##v}"
-    timeout: 360
-    group: deploy
-    confirm: true
-    secrets:
-      - source: rancher_access_key_prod
-        target: rancher_access_key
-      - source: rancher_secret_key_prod
-        target: rancher_secret_key
-    when:
-      status: success
-      event: tag
+  # production-deploy-admin:
+  #   image: peloton/drone-rancher
+  #   url: http://cluster.bonde.org
+  #   service: webservers/admin
+  #   docker_image: "nossas/bonde-admin:${DRONE_TAG##v}"
+  #   timeout: 360
+  #   group: deploy
+  #   confirm: true
+  #   secrets:
+  #     - source: rancher_access_key_prod
+  #       target: rancher_access_key
+  #     - source: rancher_secret_key_prod
+  #       target: rancher_secret_key
+  #   when:
+  #     status: success
+  #     event: tag
 
-  production-deploy-admin-canary:
-    image: peloton/drone-rancher
-    url: http://cluster.bonde.org
-    service: webservers/admin-canary
-    docker_image: "nossas/bonde-admin-canary:${DRONE_TAG##v}"
-    timeout: 360
-    confirm: true
-    group: deploy
-    secrets:
-      - source: rancher_access_key_prod
-        target: rancher_access_key
-      - source: rancher_secret_key_prod
-        target: rancher_secret_key
-    when:
-      status: success
-      event: tag
+  # production-deploy-admin-canary:
+  #   image: peloton/drone-rancher
+  #   url: http://cluster.bonde.org
+  #   service: webservers/admin-canary
+  #   docker_image: "nossas/bonde-admin-canary:${DRONE_TAG##v}"
+  #   timeout: 360
+  #   confirm: true
+  #   group: deploy
+  #   secrets:
+  #     - source: rancher_access_key_prod
+  #       target: rancher_access_key
+  #     - source: rancher_secret_key_prod
+  #       target: rancher_secret_key
+  #   when:
+  #     status: success
+  #     event: tag
 
   notify:
     image: plugins/slack

@@ -12,21 +12,21 @@ const httpLink = createHttpLink({
   uri: publicRuntimeConfig.domainApiGraphql || 'http://api-v2.bonde.devel'
 })
 
-const authLink = setContext((_, { headers }) => {
-  const hasuraToken = publicRuntimeConfig.hasuraSecret || 'segredo123'
+// const authLink = setContext((_, { headers }) => {
+//   const hasuraToken = publicRuntimeConfig.hasuraSecret || 'segredo123'
 
-  return {
-    headers: {
-      ...headers,
-      'x-hasura-admin-secret': hasuraToken
-    }
-  }
-})
+//   return {
+//     headers: {
+//       ...headers,
+//       'x-hasura-admin-secret': hasuraToken
+//     }
+//   }
+// })
 
 const cache = new InMemoryCache()
 
 export default new ApolloClient({
-  link: ApolloLink.from([authLink, httpLink]),
+  link: ApolloLink.from([httpLink]),
   cache,
   connectToDevTools: true
 })
