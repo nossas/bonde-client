@@ -27,7 +27,7 @@
     "jest": "^24.9.0",
     "supertest": "^4.0.2",
     "ts-jest": "^24.1.0",
-    "tsc-watch": "^4.0.0",
+    "tsc-watch": "^4.2.5",
     "typescript": "^3.6.4",
     "webpack-dev-server": "3.10.3"
   },
