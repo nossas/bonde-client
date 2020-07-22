@@ -262,7 +262,7 @@ importers:
       graphql: 0.13.2
       graphql-tag: 2.10.3_graphql@0.13.2
       history: 4.10.1
-      i18next: 11.10.2
+      i18next: 19.6.2
       i18next-browser-languagedetector: 2.2.4
       i18next-xhr-backend: 1.5.1
       lowdb: 1.0.0
@@ -277,7 +277,7 @@ importers:
       react-autosuggest: 9.4.3_react@16.13.1
       react-dom: 16.13.1_react@16.13.1
       react-final-form: 6.5.0_react@16.13.1
-      react-i18next: 7.13.0_i18next@11.10.2+react@16.13.1
+      react-i18next: 7.13.0_i18next@19.6.2+react@16.13.1
       react-json-view: 1.19.1_react-dom@16.13.1+react@16.13.1
       react-loadable: 5.5.0_react@16.13.1
       react-redux: 7.2.0_49f644e2f7de4182503f8b93abece808
@@ -340,7 +340,7 @@ importers:
       graphql: ^0.13.2
       graphql-tag: ^2.9.2
       history: ^4.10.1
-      i18next: ^11.3.3
+      i18next: ^19.6.2
       i18next-browser-languagedetector: ^2.2.0
       i18next-xhr-backend: ^1.5.1
       jsdom: ^11.11.0
@@ -3064,6 +3064,12 @@ packages:
       regenerator-runtime: 0.13.5
     resolution:
       integrity: sha512-RzGO0RLSdokm9Ipe/YD+7ww8X2Ro79qiXZF3HU9ljrM+qnJmH1Vqth+hbiQZy761LnMJTMitHDuKVYTk3k4dLw==
+  /@babel/runtime/7.10.5:
+    dependencies:
+      regenerator-runtime: 0.13.6
+    dev: false
+    resolution:
+      integrity: sha512-otddXKhdNn7d0ptoFRHtMLa8LqDxLYwTjB4nYgM1yy5N6gU/MUf8zqyyLltCH3yAVitBzmwK4us+DD0l/MauAg==
   /@babel/runtime/7.2.0:
     dependencies:
       regenerator-runtime: 0.12.1
@@ -10875,10 +10881,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-9OLdC/9YxDvTFcgsH5t2BHCODHEotHCa6h7Ly0EUlUC7Y2GS09UeoHOGj3gWKQ3HCqXz8NlH4gOrK3NNc9vPuw==
-  /i18next/11.10.2:
+  /i18next/19.6.2:
+    dependencies:
+      '@babel/runtime': 7.10.5
     dev: false
     resolution:
-      integrity: sha512-1rowdX8PqrvsdFhYb3v0A/LlIHLQL1HTa4ia29IzhvNAg2fesNV7R1jXibWLmLQdz3FfTB8RuqSqDEjIawXruA==
+      integrity: sha512-Zyd/Z32FY+sD+Eg6sLj5DeDSlrIN3WZ4onuOBRGcjDx/rvodsyUZ9TJ2Y+3aD9Vu8MPbiMU2WesIER/rs1ioyw==
   /iconv-lite/0.4.24:
     dependencies:
       safer-buffer: 2.1.2
@@ -16427,11 +16435,11 @@ packages:
       react: '>=15.0.0'
     resolution:
       integrity: sha512-CnwD822LU8NDBnjCpZ4ySh8L6HYyngViTZLfBBb3NjtrpN8m49clH8hidHouq20I51Y6TpCTISCBbqiY5GamwA==
-  /react-i18next/7.13.0_i18next@11.10.2+react@16.13.1:
+  /react-i18next/7.13.0_i18next@19.6.2+react@16.13.1:
     dependencies:
       hoist-non-react-statics: 2.5.5
       html-parse-stringify2: 2.0.1
-      i18next: 11.10.2
+      i18next: 19.6.2
       prop-types: 15.7.2
       react: 16.13.1
     dev: false
@@ -17410,6 +17418,10 @@ packages:
   /regenerator-runtime/0.13.5:
     resolution:
       integrity: sha512-ZS5w8CpKFinUzOwW3c83oPeVXoNsrLsaCoLtJvAClH135j/R77RuymhiSErhm2lKcwSCIpmvIWSbDkIfAqKQlA==
+  /regenerator-runtime/0.13.6:
+    dev: false
+    resolution:
+      integrity: sha512-GmwlGiazQEbOwQWDdbbaP10i15pGtScYWLbMZuu+RKRz0cZ+g8IUONazBnaZqe7j1670IV1HgE4/8iy7CQPf4Q==
   /regenerator-transform/0.14.4:
     dependencies:
       '@babel/runtime': 7.10.3
