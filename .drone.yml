@@ -24,7 +24,7 @@ pipeline:
       - curl -L https://unpkg.com/@pnpm/self-installer | node
       - export REACT_APP_PAGARME_KEY=$STAG_PAGARME_KEY
       - pnpm i
-      - pnpm m run build --filter bonde-diagram --filter bonde-admin
+      - pnpm m run build
     secrets: [ stag_pagarme_key ]
     group: build
     when:
@@ -38,8 +38,8 @@ pipeline:
     commands:
       - apk --update add curl
       - curl -L https://unpkg.com/@pnpm/self-installer | node
-      - pnpm m run test --filter bonde-diagram --filter bonde-admin
-      - pnpm m run coverage --filter bonde-diagram --filter bonde-admin
+      - pnpm m run test
+      - pnpm m run coverage
     when:
       event: [push]
 

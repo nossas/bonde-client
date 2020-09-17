@@ -92,7 +92,8 @@
     "string": "^3.3.3",
     "tinycolor2": "^1.4.1",
     "url-join": "^4.0.1",
-    "uuid": "^3.3.3"
+    "uuid": "^3.3.3",
+    "webpack": "4.42.0"
   },
   "engines": {
     "node": ">=8"
