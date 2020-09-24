@@ -51,7 +51,7 @@
     "babel-plugin-transform-react-remove-prop-types": "0.4.21",
     "basscss-sass": "^4.0.0",
     "classnames": "^2.2.6",
-    "draft-js": "^0.10.5",
+    "draft-js": "^0.11.7",
     "exenv": "^1.2.2",
     "format-number": "^3.0.0",
     "graphql": "^14.1.1",
