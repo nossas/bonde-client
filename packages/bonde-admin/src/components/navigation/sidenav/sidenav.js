@@ -2,10 +2,17 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { FormattedMessage } from 'react-intl'
+import urljoin from 'url-join'
 
 import * as paths from 'paths'
 
 if (require('exenv').canUseDOM) require('./sidenav.scss')
+
+const handleExternalClick = (path) => (e) => {
+  e.preventDefault();
+  const url = urljoin(process.env.REACT_APP_DOMAIN_ADMIN_CANARY, path);
+  window.open(url, '_self');
+}
 
 const Sidenav = ({ children, community }) => (
   <nav className='sidenav clearfix'>
@@ -24,7 +31,7 @@ const Sidenav = ({ children, community }) => (
             <Link to={paths.mobilizations()}>{community.name || 'Bonde'}</Link>
           </div>
           <div className='item-community-change'>
-            <Link to={paths.communityInfo()}>
+            <button type='button' onClick={handleExternalClick('/community/settings')}>
               <i className='fa fa-cog mr1' />
               <span>
                 <FormattedMessage
@@ -32,12 +39,8 @@ const Sidenav = ({ children, community }) => (
                   defaultMessage='Configurações'
                 />
               </span>
-            </Link>
-            <button onClick={(e) => {
-              e.preventDefault()
-              const domain = process.env.REACT_APP_DOMAIN_ADMIN_CANARY || 'http://admin-canary.bonde.devel:5002'
-              window.open(`${domain}/admin`, '_self')
-            }}>
+            </button>
+            <button type='button' onClick={handleExternalClick('/admin')}>
               <i className='fa fa-refresh mr1' />
               <span>
                 <FormattedMessage
