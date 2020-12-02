@@ -55,3 +55,6 @@
 [submodule "client/packages/storage"]
 	path = client/packages/storage
 	url = git@github.com:nossas/bonde-cross-storage
+[submodule "server/redirect"]
+	path = server/redirect
+	url = git@github.com:nossas/bonde-redirect
