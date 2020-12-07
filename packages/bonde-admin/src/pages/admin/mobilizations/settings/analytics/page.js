@@ -56,7 +56,7 @@ const MobilizationsSettingsAnalyticsPage = props => {
                   defaultMessage='ID do Google Analytics'
                 />
               </ControlLabel>
-              <FormControl type='text' placeholder='UA-00000000-0' />
+              <FormControl type='text' placeholder='UA-00000000-0 ou G-A00A0AAAA0' />
             </FormGroup>
           </SettingsForm>
         </li>

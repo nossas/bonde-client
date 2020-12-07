@@ -47,6 +47,9 @@ describe('client/utils/validation-helper', () => {
     it('should return true for MO-87654321-0123123123', () => {
       expect(validator.isValidCodeGA('MO-87654321-0123123123')).to.be.true
     })
+    it('should return true for G-AAAAAA00000', () => {
+      expect(validator.isValidCodeGA('G-AAAAAA00000')).to.be.true
+    })
   })
 
   describe('isValidFromEmail', () => {

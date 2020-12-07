@@ -6,8 +6,9 @@ const regexDomain = /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})
 export const isValidDomain = domain => regexDomain.test(domain)
 
 // Validates Google Analytics Code
-const regexCodeGA = /(UA|YT|MO)-\d+-\d+/i
-export const isValidCodeGA = codeGA => regexCodeGA.test(codeGA)
+const regexCodeUA = /((UA|YT|MO)-\d+-\d+)/i
+const regexCodeGA = /G-\w+/i
+export const isValidCodeGA = codeGA => regexCodeUA.test(codeGA) || regexCodeGA.test(codeGA)
 
 const regexDDMMYYYY = /^\d{2}\/\d{2}\/\d{4}$/ // 00/00/0000
 export const date = value => ({
