@@ -21,11 +21,11 @@ type Props = {
   widgetId: number;
 };
 
-const SimpleTargetsForm = ({ widgetId }: Props): React.ReactElement => {
-  const [saveSimpleTargets] = useMutation(UPDATE_WIDGET_SETTINGS);
+const GroupTargetsForm = ({ widgetId }: Props): React.ReactElement => {
+  const [saveUniqueTargets] = useMutation(UPDATE_WIDGET_SETTINGS);
   const onSubmit = async (widgetId: number, { subject, body }: Form) => {
     try {
-      await saveSimpleTargets({
+      await saveUniqueTargets({
         variables: {
           id: { _eq: widgetId },
           settings: {
@@ -96,4 +96,4 @@ const SimpleTargetsForm = ({ widgetId }: Props): React.ReactElement => {
   );
 };
 
-export default SimpleTargetsForm;
+export default GroupTargetsForm;
