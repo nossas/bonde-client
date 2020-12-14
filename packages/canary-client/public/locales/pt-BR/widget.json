@@ -12,5 +12,34 @@
         "success": "Alvo eliminado."
       }
     }
+  },
+  "settings": {
+    "navigation": {
+      "settings": "Configurações",
+      "adjusts": "Ajustes",
+      "autofire": "Mensagem de Agradecimento",
+      "finish": "Pós-Ação"
+    },
+    "autofire": {
+      "title": "Mensagem de Agradecimento",
+      "subtitle": "Configure um e-mail de agradecimento que será enviado após a ação ser finalizada.",
+      "validators": {
+        "required": "Campo Obrigatório",
+        "isEmail": "Email inválido",
+        "noSpecialCharacter": "Não utilize números ou caractéres especiais"
+      },
+      "label": {
+        "sendersName": "Nome do remetente",
+        "sendersEmail": "Email do remetente",
+        "emailSubject": "Assunto do email",
+        "emailBody": "Corpo do email"
+      },
+      "placeholder": {
+        "sendersName": "Adicione o nome do remetente",
+        "sendersEmail": "Adicione o email do remetente",
+        "emailSubject": "Adicione o assunto do email",
+        "emailBody": "Adicione o corpo do email"
+      }
+    }
   }
 }

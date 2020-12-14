@@ -8,6 +8,8 @@ import { Widget } from "../FetchWidgets";
 import Labels from "../Labels";
 import TabRoute from "../TabRoute";
 import ConfigurePressureTargets from "../ConfigurePressureTargets";
+import AutofireForm from "../AutofireForm";
+import { useTranslation } from "react-i18next";
 
 const Tabs = styled.div`
   ${Tab} {
@@ -32,6 +34,7 @@ type Props = {
 const Settings = ({ widgets }: Props) => {
   const match = useRouteMatch();
   const { widgetId } = useParams();
+  const { t } = useTranslation("widget");
 
   const widget = widgets.filter((w: Widget) => w.id === Number(widgetId))[0];
 
@@ -69,7 +72,7 @@ const Settings = ({ widgets }: Props) => {
                   className={is(/\/widgets\/\d+\/settings\/*$/) ? "active" : ""}
                   onClick={() => push("")}
                 >
-                  Configurações
+                  {t("settings.navigation.settings")}
                 </Tab>
                 <Tab
                   className={
@@ -77,10 +80,24 @@ const Settings = ({ widgets }: Props) => {
                   }
                   onClick={() => push(`/adjusts`)}
                 >
-                  Ajustes
+                  {t("settings.navigation.adjusts")}
                 </Tab>
-                <Tab>Mensagem de agradecimento</Tab>
-                <Tab>Pós-ação</Tab>
+                <Tab
+                  className={
+                    is(/\/widgets\/\d+\/settings\/autofire\/*$/) ? "active" : ""
+                  }
+                  onClick={() => push(`/autofire`)}
+                >
+                  {t("settings.navigation.autofire")}
+                </Tab>
+                <Tab
+                  className={
+                    is(/\/widgets\/\d+\/settings\/finish\/*$/) ? "active" : ""
+                  }
+                  onClick={() => push(`/finish`)}
+                >
+                  {t("settings.navigation.finish")}
+                </Tab>
               </Tabs>
             )}
           </TabRoute>
@@ -94,6 +111,12 @@ const Settings = ({ widgets }: Props) => {
             </Route>
             <Route exact path={`${match.path}/adjusts`}>
               <Header.H4>Ajustes</Header.H4>
+            </Route>
+            <Route exact path={`${match.path}/autofire`}>
+              <AutofireForm widget={widget} />
+            </Route>
+            <Route exact path={`${match.path}/finish`}>
+              <Header.H4>Pós-ação</Header.H4>
             </Route>
           </Switch>
         </Col>

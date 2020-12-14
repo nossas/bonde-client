@@ -12,5 +12,34 @@
         "success": "Objetivo eliminado."
       }
     }
+  },
+  "settings": {
+    "navigation": {
+      "settings": "Configuración",
+      "adjusts": "Ajustes",
+      "autofire": "Mensaje de Agradecimiento",
+      "finish": "Acción Posterior"
+    },
+    "autofire": {
+      "validators": {
+        "required": "Campo Requerido",
+        "isEmail": "Correo electrónico inválido",
+        "noSpecialCharacter": "No use números ni caracteres especiales"
+      },
+      "title": "Mensaje de Agradecimiento",
+      "subtitle": "Configure un correo electrónico de agradecimiento que se enviará después de que se tome la acción.",
+      "label": {
+        "sendersName": "Remitente Nombre",
+        "sendersEmail": "Remitente correo electrónico",
+        "emailSubject": "Asunto del correo electrónico",
+        "emailBody": "Cuerpo del correo electrónico"
+      },
+      "placeholder": {
+        "sendersName": "Agregue el nombre del remitente",
+        "sendersEmail": "Agregue el correo electrónico del remitente",
+        "emailSubject": "Agregue un asunto de correo electrónico",
+        "emailBody": "Agregue un cuerpo de correo electrónico"
+      }
+    }
   }
 }

@@ -12,5 +12,34 @@
         "success": "Target deleted."
       }
     }
+  },
+  "settings": {
+    "autofire": {
+      "title": "Thank you message",
+      "subtitle": "Set up a thank you email that will be sent after the action is submitted.",
+      "validators": {
+        "required": "Required field",
+        "isEmail": "Invalid email",
+        "noSpecialCharacter": "Do not use numbers or special characters"
+      },
+      "label": {
+        "sendersName": "Sender's Name",
+        "sendersEmail": "Sender's Email",
+        "emailSubject": "Email Subject",
+        "emailBody": "Email Body"
+      },
+      "placeholder": {
+        "sendersName": "Set a sender name",
+        "sendersEmail": "Set a sender email",
+        "emailSubject": "Set an email subject",
+        "emailBody": "Set an email body"
+      }
+    },
+    "navigation": {
+      "settings": "Settings",
+      "adjusts": "Adjusts",
+      "autofire": "Thank You Message",
+      "finish": "Post Action"
+    }
   }
 }
