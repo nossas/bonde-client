@@ -48,9 +48,9 @@ const UniqueTargetsForm = ({ widgetId }: Props): React.ReactElement => {
             <>
               <div
                 css={css`
-                  position: absolute;
-                  bottom: 480px;
-                  left: 1090px;
+                  position: relative;
+                  bottom: 240px;
+                  left: 1030px;
                   width: 150px;
                 `}
               >

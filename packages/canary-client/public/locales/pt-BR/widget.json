@@ -4,5 +4,13 @@
   },
   "navigation": {
     "home": "Início"
+  },
+  "pressure": {
+    "target": {
+      "delete": {
+        "error": "Houve um erro ao deletar o alvo",
+        "success": "Alvo eliminado."
+      }
+    }
   }
 }

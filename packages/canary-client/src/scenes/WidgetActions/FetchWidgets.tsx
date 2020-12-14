@@ -3,7 +3,7 @@ import { gql, useQuery } from 'bonde-core-tools';
 import { Hint, Loading } from 'bonde-components';
 
 const widgetsByCommunityGQL = gql`
-  query ($communityId: Int!) {
+  query FetchWidgets ($communityId: Int!) {
     widgets (
       where: {
         _and: [

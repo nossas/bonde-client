@@ -1,16 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { css } from "styled-components/macro";
 import {
   Card,
   Header,
   ConnectedForm,
   InputField,
-  TextareaField,
   Button,
-  Label
+  Label,
 } from "bonde-components";
 import { useMutation } from "bonde-core-tools";
 import UPDATE_WIDGET_SETTINGS from "../UpdateWidgetSettings";
+import Popups from "./Popups";
+import PressureTargets from "./PressureTargets";
+import { PressureTarget as PressureTargetsType } from "./FetchPressureTargets";
 
 type Form = {
   subject: string;
@@ -22,6 +24,12 @@ type Props = {
 };
 
 const GroupTargetsForm = ({ widgetId }: Props): React.ReactElement => {
+  const [modalType, setModal] = useState<
+    "insert" | "update" | "delete" | undefined
+  >();
+  const [pressureTarget, setPressureTarget] = useState<
+    PressureTargetsType | undefined
+  >();
   const [saveUniqueTargets] = useMutation(UPDATE_WIDGET_SETTINGS);
   const onSubmit = async (widgetId: number, { subject, body }: Form) => {
     try {
@@ -49,8 +57,8 @@ const GroupTargetsForm = ({ widgetId }: Props): React.ReactElement => {
               <div
                 css={css`
                   position: absolute;
-                  bottom: 680px;
-                  left: 1090px;
+                  top: -180px;
+                  left: 1070px;
                   width: 150px;
                 `}
               >
@@ -69,29 +77,38 @@ const GroupTargetsForm = ({ widgetId }: Props): React.ReactElement => {
                   placeholder="Ex: Selecione seu estado"
                   label="NOME DO CAMPO DE SELEÇÃO"
                 />
-                <Label>ADICIONAR GRUPO DE ALVOS</Label>
-                <div
-                  css={css`
-                    border: 1px solid #eee;
-                  `}
-                >
-                  <Button secondary> + ADD GRUPO DE ALVOS</Button>
-                </div>
-                <InputField
-                  name="subject"
-                  placeholder="Escreva um assunto"
-                  label="ASSUNTO DO EMAIL PARA OS ALVOS"
-                />
-                <TextareaField
-                  name="body"
-                  placeholder="Escreva aqui o email..."
-                  label="CORPO DO EMAIL PARA OS ALVOS"
-                />
+                <Label>
+                  ADICIONAR GRUPO DE ALVOS
+                  <div
+                    css={css`
+                      border: 1px solid #eee;
+                      margin-bottom: 15px;
+                      height: 60px;
+                      display: flex;
+                    `}
+                  >
+                    <Button onClick={() => setModal("insert")} secondary>
+                      + ADD GRUPO DE ALVOS
+                    </Button>
+                  </div>
+                  <PressureTargets
+                    setModal={setModal}
+                    widgetId={widgetId}
+                    setPressureTarget={setPressureTarget}
+                  />
+                </Label>
               </div>
             </>
           )}
         </ConnectedForm>
       </Card>
+      <Popups
+        pressureTarget={pressureTarget}
+        modalType={modalType}
+        setModal={setModal}
+        widgetId={widgetId}
+        setPressureTarget={setPressureTarget}
+      />
     </>
   );
 };

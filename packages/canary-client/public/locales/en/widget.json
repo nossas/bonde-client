@@ -4,5 +4,13 @@
   },
   "navigation": {
     "home": "Home"
+  },
+  "pressure": {
+    "target": {
+      "delete": {
+        "error": "There was an error while deleting your target.",
+        "success": "Target deleted."
+      }
+    }
   }
 }
