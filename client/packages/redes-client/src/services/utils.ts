@@ -297,14 +297,21 @@ export const stripIndividualFromData = (
 type Coordinates = {
   latitude: string;
   longitude: string;
-}
+};
 
-export const calcDistance = (pointA: number[], pointB: number[]): number | undefined => {
+export const calcDistance = (
+  pointA: number[],
+  pointB: number[]
+): number | undefined => {
   if (
     typeof pointA[0] !== "number" ||
     typeof pointA[1] !== "number" ||
     typeof pointB[0] !== "number" ||
-    typeof pointB[1] !== "number"
+    typeof pointB[1] !== "number" ||
+    isNaN(pointA[0]) ||
+    isNaN(pointA[1]) ||
+    isNaN(pointB[0]) ||
+    isNaN(pointB[1])
   )
     return undefined;
   const a = turf.point(pointA);
@@ -313,20 +320,26 @@ export const calcDistance = (pointA: number[], pointB: number[]): number | undef
   return Number(turf.distance(a, b));
 };
 
-export const addDistance = (coordinates: Coordinates, data?: Individual[]): any => data 
-  ? data.map((i: any) => {
-      const pointA = [
-        Number(coordinates.longitude),
-        Number(coordinates.latitude),
-      ];
-      const pointB = [
-        Number(i.coordinates.longitude),
-        Number(i.coordinates.latitude),
-      ];
-      const distance = calcDistance(pointA, pointB);
-      return {
-        ...i,
-        distance,
-      };
-  }).sort((a: any, b: any) => Number(a.distance) - Number(b.distance))
-  : []
+export const addDistance = (
+  coordinates: Coordinates,
+  data?: Individual[]
+): any =>
+  data
+    ? data
+        .map((i: any) => {
+          const pointA = [
+            Number(coordinates.longitude),
+            Number(coordinates.latitude),
+          ];
+          const pointB = [
+            Number(i.coordinates.longitude),
+            Number(i.coordinates.latitude),
+          ];
+          const distance = calcDistance(pointA, pointB);
+          return {
+            ...i,
+            distance,
+          };
+        })
+        .sort((a: any, b: any) => Number(a.distance) - Number(b.distance))
+    : [];

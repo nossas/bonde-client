@@ -38,9 +38,10 @@ const VOLUNTEERS_FOR_MATCH = gql`
         registration_number: { _is_null: false }
         atendimentos_em_andamento_calculado_: { _eq: 0 }
         state: { _neq: "int" }
-        city: { _neq: "Internacional" }
         _or: [{ phone: { _is_null: false } }, { whatsapp: { _is_null: false } }]
         _and: [
+          {city: { _neq: "Internacional" }}
+          {city: { _neq: "ZERO_RESULTS" }}
           { organization_id: $volunteerOrganizationId }
           { organization_id: { _is_null: false } }
           { longitude: { _is_null: false } }
@@ -83,8 +84,6 @@ const RECIPIENTS_FOR_MATCH = gql`
         individual: {
           organization_id: $recipientOrganizationId
           condition: { _eq: "inscrita" }
-          latitude: { _is_null: false }
-          longitude: { _is_null: false }
           email: { _is_null: false }
           name: { _is_null: false }
         }
@@ -93,6 +92,8 @@ const RECIPIENTS_FOR_MATCH = gql`
           { individual: { longitude: {_is_null: false} } }
           { individual: { latitude: {_neq: "ZERO_RESULTS"} } }
           { individual: { longitude: {_neq: "ZERO_RESULTS"} } }
+          { individual: { city: {_neq: "ZERO_RESULTS"} } }
+          { individual: { city: {_neq: "Internacional"} } }
         ]
       }
       order_by: { individual: { data_de_inscricao_no_bonde: asc } }
