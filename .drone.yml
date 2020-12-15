@@ -3,7 +3,7 @@ workspace:
 
 pipeline:
   build:
-    image: node:14-alpine
+    image: debian:10-slim
     environment:
       - REACT_APP_ENVIRONMENT=staging
       - REACT_APP_DOMAIN_ACCOUNTS=https://accounts.staging.bonde.org
@@ -22,12 +22,18 @@ pipeline:
       - REACT_APP_UPLOADS_URL=http://api-rest.staging.bonde.org/uploads
       - REACT_APP_ZENDESK_ORGANIZATIONS={"lawyer":360269610652,"individual":360273031591,"therapist":360282119532}
     commands:
-      - apk --update add curl
-      - curl -L https://unpkg.com/@pnpm/self-installer | node
       - export REACT_APP_AWS_ROUTE_IP=$AWS_ROUTE_IP
-      - pnpm i
-      - pnpm m run build
-    secrets: [ aws_route_ip ]
+      - export WAYPOINT_SERVER_ADDR=cluster-k8s.nossas.org:9701
+      - export WAYPOINT_SERVER_TLS=1
+      - export WAYPOINT_SERVER_TLS_SKIP_VERIFY=1
+      - export WAYPOINT_SERVER_TOKEN=$WAYPOINT_SERVER_TOKEN
+      - apt-get update && apt-get install -y curl gnupg2 software-properties-common
+      - curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add -
+      - apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com buster main"
+      - apt-get update && apt-get install -y waypoint
+      - waypoint init
+      - waypoint build
+    secrets: [ aws_route_ip, waypoint_server_token ]
     group: build
     when:
       status: success
@@ -64,17 +70,17 @@ pipeline:
       status: success
       event: tag
 
-  publish-staging-build:
-    image: plugins/docker
-    repo: nossas/bonde
-    dockerfile: Dockerfile
-    secrets: [docker_username, docker_password]
-    group: publish
-    tags:
-      - ${DRONE_BRANCH/\//-}
-    when:
-      status: success
-      event: [push]
+  # publish-staging-build:
+  #   image: plugins/docker
+  #   repo: nossas/bonde
+  #   dockerfile: Dockerfile
+  #   secrets: [docker_username, docker_password]
+  #   group: publish
+  #   tags:
+  #     - ${DRONE_BRANCH/\//-}
+  #   when:
+  #     status: success
+  #     event: [push]
 
   publish-production-build:
     image: plugins/docker
@@ -116,14 +122,21 @@ pipeline:
       event: [push]
 
   redes-staging-deploy:
-    image: peloton/drone-rancher
-    url: http://cluster.bonde.org
-    service: clients/redes
+    image: debian:10-slim
+    commands:
+      - export WAYPOINT_SERVER_ADDR=cluster-k8s.nossas.org:9701
+      - export WAYPOINT_SERVER_TLS=1
+      - export WAYPOINT_SERVER_TLS_SKIP_VERIFY=1
+      - export WAYPOINT_SERVER_TOKEN=$WAYPOINT_SERVER_TOKEN
+      - apt-get update && apt-get install -y curl gnupg2 software-properties-common
+      - curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add -
+      - apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com buster main"
+      - apt-get update && apt-get install -y waypoint
+      - waypoint build
     group: deploying
-    docker_image: nossas/bonde:${DRONE_BRANCH/\//-}
-    timeout: 360
-    confirm: true
-    secrets: [rancher_access_key, rancher_secret_key]
+    secrets: [waypoint_server_token]
+    commands:
+      - waypoint up
     when:
       status: success
       event: [push]

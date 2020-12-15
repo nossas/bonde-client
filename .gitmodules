@@ -1,60 +1,60 @@
 [submodule "libs/components"]
 	path = libs/components
-	url = git@github.com:nossas/bonde-components
+	url = https://github.com/nossas/bonde-components
 [submodule "libs/core-tools"]
 	path = libs/core-tools
-	url = git@github.com:nossas/bonde-core-tools
+	url = https://github.com/nossas/bonde-core-tools
 [submodule "server/api-graphql"]
 	path = server/api-graphql
-	url = git@github.com:nossas/bonde-apis
+	url = https://github.com/nossas/bonde-apis
 [submodule "server/api-rest"]
 	path = server/api-rest
-	url = git@github.com:nossas/bonde-server
+	url = https://github.com/nossas/bonde-server
 [submodule "server/webpage"]
 	path = server/webpage
-	url = git@github.com:nossas/bonde-webpage
+	url = https://github.com/nossas/bonde-webpage
 [submodule "server/redes"]
 	path = server/redes
-	url = git@github.com:nossas/bonde-redes
+	url = https://github.com/nossas/bonde-redes
 [submodule "libs/editor"]
 	path = libs/editor
-	url = git@github.com:nossas/slate-editor
+	url = https://github.com/nossas/slate-editor
 [submodule "server/chatbot"]
 	path = server/chatbot
-	url = git@github.com:nossas/bonde-chatbot
+	url = https://github.com/nossas/bonde-chatbot
 [submodule "server/migrations"]
 	path = server/migrations
-	url = git@github.com:nossas/bonde-migrations
+	url = https://github.com/nossas/bonde-migrations
 [submodule "server/experiments"]
 	path = server/experiments
-	url = git@github.com:nossas/bonde-experiments
+	url = https://github.com/nossas/bonde-experiments
 [submodule "libs/diagram"]
 	path = libs/diagram
-	url = git@github.com:nossas/bonde-diagram
+	url = https://github.com/nossas/bonde-diagram
 [submodule "server/phone"]
 	path = server/phone
-	url = git@github.com:nossas/bonde-phone
+	url = https://github.com/nossas/bonde-phone
 [submodule "server/payments"]
 	path = server/payments
-	url = git@github.com:nossas/bonde-payments
+	url = https://github.com/nossas/bonde-payments
 [submodule "manual"]
 	path = manual
-	url = git@github.com:nossas/manual-tech
+	url = https://github.com/nossas/manual-tech
 [submodule "devops"]
 	path = devops
-	url = git@github.com:nossas/bonde-install
+	url = https://github.com/nossas/bonde-install
 [submodule "server/mapa-do-acolhimento"]
 	path = server/mapa-do-acolhimento
-	url = git@github.com:nossas/mapa-do-acolhimento
+	url = https://github.com/nossas/mapa-do-acolhimento
 [submodule "server/webhooks"]
 	path = server/webhooks
-	url = git@github.com:nossas/bonde-auth.git
+	url = https://github.com/nossas/bonde-auth.git
 [submodule "server/deprecated-api-graphql"]
 	path = server/deprecated-api-graphql
-	url = git@github.com:nossas/bonde-graphql.git
+	url = https://github.com/nossas/bonde-graphql.git
 [submodule "client/packages/storage"]
 	path = client/packages/storage
-	url = git@github.com:nossas/bonde-cross-storage
+	url = https://github.com/nossas/bonde-cross-storage
 [submodule "server/redirect"]
 	path = server/redirect
-	url = git@github.com:nossas/bonde-redirect
+	url = https://github.com/nossas/bonde-redirect
