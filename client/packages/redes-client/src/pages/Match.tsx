@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { css } from "styled-components/macro";
 import { Button, Header, Text, Empty } from "bonde-components";
+import { useMutation, useSession } from "bonde-core-tools";
 import { useLocation, useHistory } from "react-router-dom";
 
 import { Table, Popup } from "../components";
@@ -17,7 +18,7 @@ type Props = {
     }: {
       children: (data: any) => React.ReactElement;
     }) => React.ReactElement | null;
-    CreateRelationship: string;
+    CreateRelationship: any;
     ColumnsMatch: (
       setIndividual: (individual: any) => void,
       setModal: (value: boolean) => void,
@@ -27,11 +28,17 @@ type Props = {
 };
 
 export default function Match({
-  data: { FetchIndividualsForMatch, ColumnsMatch, CreateRelationship },
+  data: {
+    FetchIndividualsForMatch,
+    ColumnsMatch,
+    CreateRelationship,
+  },
   groups,
 }: Props): React.ReactElement {
+  const [createRelationship, { loading }] = useMutation(CreateRelationship);
+  const { user, community } = useSession()
   const [isOpen, setModal] = useState<boolean>(false);
-  const [, isVolunteerSelected] = useSelectedGroup();
+  const [selectedGroup, isVolunteerSelected] = useSelectedGroup();
   const [state, dispatch] = useFilter();
   const { state: linkState } = useLocation();
   const { goBack } = useHistory();
@@ -46,11 +53,14 @@ export default function Match({
       value: {
         [isVolunteerSelected
           ? "volunteer"
-          : "recipient"]: linkState as Individual,
+          : "recipient"]: {
+            ...linkState as Individual,
+            group: selectedGroup
+          },
       },
     });
     dispatch({ type: "rows", value: 30 });
-  }, [dispatch, isVolunteerSelected, linkState]);
+  }, [dispatch, isVolunteerSelected, linkState, selectedGroup]);
 
   return (
     <>
@@ -76,7 +86,9 @@ export default function Match({
                 }
               `}
             >
-              <Empty message={`Ops! Não encontramos nenhum resultado para essa busca. Confira na lista de ${matchGroup} se há pessoas disponíveis para fazer o match.`}/>
+              <Empty
+                message={`Ops! Não encontramos nenhum resultado para essa busca. Confira na lista de ${matchGroup} se há pessoas disponíveis para fazer o match.`}
+              />
             </div>
           ) : (
             <div
@@ -107,7 +119,10 @@ export default function Match({
         isOpen={isOpen}
         match={state.match}
         setModal={setModal}
-        CreateRelationship={CreateRelationship}
+        createRelationship={createRelationship}
+        user={user}
+        community={community}
+        loading={loading}
       />
     </>
   );

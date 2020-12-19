@@ -2,12 +2,15 @@ import React from "react";
 import { gql, useQuery } from "bonde-core-tools";
 import { CheckCommunity } from "../../components";
 import { useFilterState } from "../../services/FilterProvider";
-import { addDistance } from "../../services/utils";
+import { useCommunityExtra } from "../../services/CommunityExtraProvider";
 
 import {
   getVolunteerOrganizationId,
   zendeskOrganizations,
   stripIndividualFromData,
+  addDistance,
+  getVolunteerGroup,
+  addGroup,
 } from "../../services/utils";
 // import { MapaIndividual } from "../../types";
 
@@ -69,9 +72,7 @@ const VOLUNTEERS_FOR_MATCH = gql`
 `;
 
 const RECIPIENTS_FOR_MATCH = gql`
-  query RecipientsForMatch(
-    $recipientOrganizationId: bigint_comparison_exp!
-  ) {
+  query RecipientsForMatch($recipientOrganizationId: bigint_comparison_exp!) {
     recipients: solidarity_tickets(
       where: {
         status: { _nin: ["deleted", "solved"] }
@@ -88,12 +89,10 @@ const RECIPIENTS_FOR_MATCH = gql`
           name: { _is_null: false }
         }
         _and: [
-          { individual: { latitude: {_is_null: false} } }
-          { individual: { longitude: {_is_null: false} } }
-          { individual: { latitude: {_neq: "ZERO_RESULTS"} } }
-          { individual: { longitude: {_neq: "ZERO_RESULTS"} } }
-          { individual: { city: {_neq: "ZERO_RESULTS"} } }
-          { individual: { city: {_neq: "Internacional"} } }
+          { individual: { latitude: { _is_null: false } } }
+          { individual: { longitude: { _is_null: false } } }
+          { individual: { latitude: { _neq: "ZERO_RESULTS" } } }
+          { individual: { longitude: { _neq: "ZERO_RESULTS" } } }
         ]
       }
       order_by: { individual: { data_de_inscricao_no_bonde: asc } }
@@ -142,32 +141,30 @@ const FetchIndividualsForMatch = ({
   subject,
   children,
   monthlyTimestamp,
-  coordinates
+  coordinates,
 }: Props) => {
   const { rows, offset } = useFilterState();
+  const { groups } = useCommunityExtra();
 
-  const recipientVariables = {
-    recipientOrganizationId: {
-      _eq: zendeskOrganizations["individual"],
-    },
-  };
+  let variables;
+  let query;
 
-  const volunteerVariables = {
-    volunteerOrganizationId: {
-      _eq: getVolunteerOrganizationId(subject),
-    },
-    lastMonth: { _gte: monthlyTimestamp },
-  };
-
-  const variables =
-    organizationId !== zendeskOrganizations["individual"]
-      ? recipientVariables
-      : volunteerVariables;
-
-  const query =
-    organizationId !== zendeskOrganizations["individual"]
-      ? RECIPIENTS_FOR_MATCH
-      : VOLUNTEERS_FOR_MATCH;
+  if (organizationId !== zendeskOrganizations["individual"]) {
+    variables = {
+      recipientOrganizationId: {
+        _eq: zendeskOrganizations["individual"],
+      },
+    };
+    query = RECIPIENTS_FOR_MATCH;
+  } else {
+    variables = {
+      volunteerOrganizationId: {
+        _eq: getVolunteerOrganizationId(subject),
+      },
+      lastMonth: { _gte: monthlyTimestamp },
+    };
+    query = VOLUNTEERS_FOR_MATCH;
+  }
 
   const { loading, error, data } = useQuery(query, {
     variables,
@@ -184,40 +181,45 @@ const FetchIndividualsForMatch = ({
     return <p>Error</p>;
   }
 
-  const newData = data.volunteers
-    ? data.volunteers
-        .map((user: MatchVolunteerIndividual) => {
-          const { id } = user;
-          const countForwardings = data.pendingTickets.filter(
-            (ticket: MatchTickets) => ticket.volunteersUserId === id
-          ).length;
+  let individuals;
+  let group;
 
-          const availabilityCount = 1 - (countForwardings || 0);
+  if (organizationId !== zendeskOrganizations["individual"]) {
+    individuals = stripIndividualFromData(data.recipients);
+    group = groups.find((group) => !group.isVolunteer);
+  } else {
+    group = getVolunteerGroup(groups, getVolunteerOrganizationId(subject));
+    individuals = data.volunteers
+      .map((user: MatchVolunteerIndividual) => {
+        const { id } = user;
+        // Check if the volunteer has a match with status "encaminhamento__realizado" in the last 30 days
+        const countForwardings = data.pendingTickets.filter(
+          (ticket: MatchTickets) => ticket.volunteersUserId === id
+        ).length;
 
-          return {
-            ...user,
-            ultimosEncaminhamentosRealizados: countForwardings,
-            availabilityCount,
-            coordinates: {
-              latitude: user.latitude,
-              longitude: user.longitude,
-            },
-          };
-        })
-        .filter(
-          (user: MatchVolunteerIndividual) => (user.availabilityCount || 0) > 0
-        )
-    : undefined;
+        const availabilityCount = 1 - (countForwardings || 0);
 
-  const individuals = organizationId !== zendeskOrganizations["individual"] 
-    ? stripIndividualFromData(data.recipients)
-    : newData
+        return {
+          ...user,
+          ultimosEncaminhamentosRealizados: countForwardings,
+          availabilityCount,
+          coordinates: {
+            latitude: user.latitude,
+            longitude: user.longitude,
+          },
+        };
+      })
+      .filter(
+        (user: MatchVolunteerIndividual) => (user.availabilityCount || 0) > 0
+      );
+  }
 
-  const addDistanceToData = addDistance(coordinates, individuals)
+  const addDistanceToData = addDistance(coordinates, individuals);
+  const addGroupToData = addGroup(addDistanceToData, group);
 
   return children({
-    data: addDistanceToData.slice(offset, (rows + offset)),
-    count: individuals.length
+    data: addGroupToData.slice(offset, rows + offset),
+    count: individuals.length,
   });
 };
 

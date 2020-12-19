@@ -33,3 +33,35 @@ export type MatchesData = {
     };
   };
 };
+
+export type MapaMatchVariables = {
+  input: {
+    recipient: {
+      external_id: string | null;
+      nome_msr: string;
+      ticket_id: number;
+      organization_id: number;
+      requester_id: number;
+    };
+    agent?: number;
+    volunteer: {
+      name: string;
+      user_id: number;
+      organization_id: number;
+      registration_number: string;
+      phone: string;
+      whatsapp: string;
+    };
+    community_id: number;
+  };
+};
+
+export type RedesMatchVariables = {
+  input: {
+    recipient_id: number;
+    volunteer_id: number;
+    status: string;
+  };
+  recipientId: number;
+  volunteerId: number;
+};

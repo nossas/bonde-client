@@ -9,7 +9,7 @@ export default function Error({
 }: {
   match: {
     recipient: Individual;
-    volunteer: Individual;
+    volunteer: Omit<Individual, 'userStatus' | 'ticketId' | 'externalId'>;
   };
   onSubmit: () => void;
   errorMsg: string;

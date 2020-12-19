@@ -11,7 +11,7 @@ export type MapaIndividual = {
   longitude: string;
   state: string;
   availability: string;
-  formEntryId: string;
+  formEntryId: number;
   tipoDeAcolhimento: string | null;
   createdAt: string;
   encaminhamentosRealizados: string;
@@ -28,6 +28,7 @@ export type MapaIndividualTicket = {
   subject: string;
   relationshipStatus: string;
   userStatus: string;
+  externalId: string | null;
 };
 
 export type Individual = {
@@ -35,8 +36,8 @@ export type Individual = {
   firstName: string;
   lastName?: string;
   email: string;
-  whatsapp: string;
-  phone: string;
+  whatsapp: string | null;
+  phone: string | null;
   zipcode: string;
   address: string;
   city: string;
@@ -46,15 +47,15 @@ export type Individual = {
   };
   state: string;
   availability: string;
-  formEntryId: string;
-  tipoDeAcolhimento?: string | null;
+  formEntryId: number;
+  tipoDeAcolhimento: string | null;
   createdAt: string;
   encaminhamentosRealizados?: string;
   atendimentosConcluidos?: string;
   atendimentosEmAndamento?: string;
-  userStatus: string;
+  userStatus: string | null;
   updatedAt: string;
-  organizationId?: number;
+  organizationId: number;
   subject?: string;
   group?: {
     isVolunteer: boolean;
@@ -65,9 +66,9 @@ export type Individual = {
       };
     };
   };
-  externalId?: number;
-  ticketId?: number;
-  registrationNumber: string;
+  externalId: string | null;
+  ticketId: number;
+  registrationNumber: string | null;
   extras?: Record<string, any>;
 };
 

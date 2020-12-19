@@ -4,7 +4,7 @@
     "start": "serve -s build",
     "dev": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
     "lint": "eslint . --fix --ext js,ts,tsx",
     "eject": "react-scripts eject"
   },
@@ -13,6 +13,7 @@
     "@turf/turf": "^5.1.6",
     "@types/react-table": "^7.0.22",
     "deep-object-diff": "^1.1.0",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
     "react-table": "^7.6.0"
   }
 }

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { css } from "styled-components/macro";
 
 import { Modal, Button, Loading, Icon } from "bonde-components";
-import { useSession, useMutation } from "bonde-core-tools";
 
 import { Default, Error } from ".";
 import { useFilterDispatch } from "../../services/FilterProvider";
@@ -12,7 +11,7 @@ import {
   MAPA_DO_ACOLHIMENTO_COMMUNITY,
   getAgentZendeskUserId
 } from "../../services/utils";
-import { Individual } from "../../types";
+import { Individual, MapaMatchVariables, RedesMatchVariables } from "../../types";
 
 type MatchUsers = {
   input: {
@@ -25,14 +24,14 @@ type MatchUsers = {
   volunteerId: number;
 }
 
-const getVariables = (
+export const getVariables = (
   match: {
     recipient: Individual;
-    volunteer: Individual;
+    volunteer: Omit<Individual, 'userStatus' | 'ticketId' | 'externalId'>;
   },
   user: any,
   communityId?: number
-) => {
+):  MapaMatchVariables | RedesMatchVariables => {
   if (communityId === MAPA_DO_ACOLHIMENTO_COMMUNITY) {
     const { recipient, volunteer } = match
     return {
@@ -49,9 +48,9 @@ const getVariables = (
           name: volunteer.firstName,
           user_id: volunteer.id,
           organization_id: volunteer.organizationId,
-          registration_number: volunteer.registrationNumber,
-          phone: volunteer.phone,
-          whatsapp: volunteer.whatsapp,
+          registration_number: volunteer.registrationNumber || "0",
+          phone: volunteer.phone || "0",
+          whatsapp: volunteer.whatsapp || "0",
         },
         community_id: communityId
       }
@@ -72,22 +71,30 @@ const getVariables = (
   return usersForMatch
 };
 
+type Props = {
+  match: {
+    recipient: Individual;
+    volunteer: Omit<Individual, 'userStatus' | 'ticketId' | 'externalId'>;
+  };
+  setModal: (value: boolean) => void;
+  isOpen: boolean;
+  createRelationship: (args: { variables: Record<string, any>}) => Promise<any>;
+  user: any,
+  community?: {
+    id: number
+  },  
+  loading: boolean
+}
+
 export default function Popups({
   match,
   isOpen,
   setModal,
-  CreateRelationship: CREATE_RELATIONSHIP,
-}: {
-  match: {
-    recipient: Individual;
-    volunteer: Individual;
-  };
-  setModal: (value: boolean) => void;
-  isOpen: boolean;
-  CreateRelationship: any;
-}): React.ReactElement {
-  const [createRelationship, { loading }] = useMutation(CREATE_RELATIONSHIP);
-  const { user, community } = useSession();
+  createRelationship,
+  loading,
+  user,
+  community
+}: Props): React.ReactElement {
   const dispatch = useFilterDispatch();
   const [error, setError] = useState<string | undefined>();
   const [data, setData] = useState();

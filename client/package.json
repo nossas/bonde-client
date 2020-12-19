@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "license": "AGPL-3.0",
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
+    "@testing-library/user-event": "^12.6.0",
     "@types/jest": "24.0.0",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
@@ -15,6 +15,7 @@
     "bonde-components": "0.0.4-alpha.28",
     "bonde-core-tools": "0.1.7-alpha.8",
     "eslint": "6.6.0",
+    "faker": "^5.1.0",
     "i18next": "^19.6.3",
     "i18next-browser-languagedetector": "^5.0.1",
     "i18next-http-backend": "^1.0.17",
@@ -52,6 +53,7 @@
     ]
   },
   "devDependencies": {
+    "@types/faker": "^5.1.5",
     "@typescript-eslint/eslint-plugin": "^3.10.1",
     "@typescript-eslint/parser": "^3.10.1",
     "eslint": "^6.6.0",

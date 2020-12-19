@@ -39,10 +39,10 @@ const columns = (
     width: 200,
   },
   {
-    accessor: "tipoDeAcolhimento",
-    Header: "Tipo",
+    accessor: "subject",
+    Header: "Assunto",
     className: isVolunteerSelected ? "hide" : "",
-    Cell: ({ value }: valueString): ReactElement => CellStatus({ value }),
+    Cell: ({ value }: valueString): ReactElement => <span>{value || "-"}</span>,
   },
   {
     accessor: "address",

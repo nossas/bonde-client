@@ -7,16 +7,15 @@ import {
   MAPA_DO_ACOLHIMENTO_COMMUNITY,
   zendeskOrganizations,
 } from "../../../services/utils";
+import { Individual } from "../../../types";
 
 const BtnSearchMatch = ({
   original,
 }: {
-  original: {
-    email: string;
-    userStatus: string;
-    availability: string;
-    organizationId?: number;
-  };
+  original: Pick<
+    Individual,
+    "email" | "userStatus" | "availability" | "organizationId"
+  >;
 }): React.ReactElement => {
   const { community } = useSession();
   const isDisabled =
