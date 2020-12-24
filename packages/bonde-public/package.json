@@ -21,7 +21,7 @@
     "apollo-link": "^1.2.13",
     "apollo-link-context": "^1.0.18",
     "apollo-link-http": "^1.5.15",
-    "axios": "0.19.0",
+    "axios": "0.21.1",
     "bonde-webpage": "workspace:0.16.4",
     "chain-function": "^1.0.0",
     "classnames": "2.2.6",
