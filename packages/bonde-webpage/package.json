@@ -44,7 +44,7 @@
     "@slate-editor/strikethrough-plugin": "5.1.0",
     "@slate-editor/underline-plugin": "5.1.0",
     "apollo-client": "^2.4.12",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "babel-loader": "8.0.6",
     "babel-plugin-dynamic-import-node": "2.2.0",
     "babel-plugin-macros": "2.4.4",
