@@ -55,6 +55,9 @@ export class Pressure extends Component {
 
   getTargetList () {
     const { targets } = this.props.widget.settings || { targets: '' }
+    
+    if (typeof targets === 'object') return targets
+
     return targets && targets.split(';').filter(target => !!target.trim())
   }
 
