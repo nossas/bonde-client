@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import classnames from 'classnames'
 import { intlShape } from 'react-intl'
+import urljoin from 'url-join'
 import { Loading } from 'components/await'
 import WidgetOverlay from './widget-overlay.connected'
 
@@ -31,7 +32,14 @@ const Widget = ({ saving, mobilization, block, widget, update, editable, intl, h
       {editable && redirect ? (
         <WidgetOverlay
           widget={widget}
-          onEdit={() => history.push(redirect)}
+          onEdit={() => {
+            if (widget.kind === 'pressure') {
+              const url = urljoin(process.env.REACT_APP_DOMAIN_ADMIN_CANARY, `/widgets/${widget.id}/settings`);
+              window.open(url, '_self');
+            } else {
+              history.push(redirect);
+            }
+          }}
           onDelete={() => {
             const message = intl.formatMessage({
               id: 'c--content-widget.delete-widget.confirm.message',
