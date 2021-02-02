@@ -1,7 +1,8 @@
 packages:
   # all packages in subdirs of packages/ and components/
   - '.'
-  - 'packages/*'
+  - 'packages/**'
   - '!packages/bonde-core-tools'
+  - '!packages/example-client'
   # exclude packages that are inside test/ directories
   - '!**/test/**'
