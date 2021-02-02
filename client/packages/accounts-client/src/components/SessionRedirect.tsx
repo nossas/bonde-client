@@ -4,11 +4,12 @@ import { useSession } from 'bonde-core-tools';
 
 interface SessionRedirectProps {
   paths: string[];
-  to: string;
+  to?: string;
   loading: any;
+  children?: any;
 }
 
-const SessionRedirect: React.FC<SessionRedirectProps> = ({ children, loading: Loading, paths, to }) => {
+const SessionRedirect: React.FC<SessionRedirectProps> = ({ children, loading: Loading, paths }: SessionRedirectProps) => {
   const { isLogged } = useSession();
   const location = useLocation();
 

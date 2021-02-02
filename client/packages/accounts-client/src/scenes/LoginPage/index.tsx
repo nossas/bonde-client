@@ -20,7 +20,7 @@ interface LoginPageProps {
   to: string;
 }
 
-const LoginPage: React.FC<LoginPageProps> = ({ to }) => {
+const LoginPage: React.FC<LoginPageProps> = ({ to }: LoginPageProps) => {
   const { login } = useSession();
   const { search } = useLocation();
   const [authenticate] = useMutation(LoginMutation);

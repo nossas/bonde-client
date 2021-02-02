@@ -14,7 +14,7 @@ const { composeValidators, required, isEmail, min } = Validators;
 
 interface LoginFormProps {
   onSubmit: any;
-};
+}
 
 const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
   const { t } = useTranslation('auth');

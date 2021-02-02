@@ -15,7 +15,7 @@ import { useMutation, gql } from "bonde-core-tools";
 
 const { isEmail } = Validators;
 const appDomain =
-  process.env.REACT_APP_DOMAIN_ACCOUNTS || "http://accounts.bonde.devel:5000";
+  process.env.REACT_APP_DOMAIN_ACCOUNTS || "http://localhost:5000";
 
 const forgetPasswordMutation = gql`
   mutation RequestForgetPassword(

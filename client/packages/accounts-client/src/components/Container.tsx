@@ -4,7 +4,7 @@ import { Link as LinkStyled } from 'bonde-components';
 interface ContainerProps {
   reverse?: boolean;
   column?: boolean;
-};
+}
 
 const Container = styled.div<ContainerProps>`
   display: flex;
@@ -17,13 +17,13 @@ const Container = styled.div<ContainerProps>`
     margin-right: 10px;
   }
   > div:nth-child(2) {
-    margin-right: 0; 
+    margin-right: 0;
   }
 
   @media only screen and (max-width: 768px) {
     ${props => props.column && `
       flex-direction: column;
-      
+
       > div {
         flex-grow: 1;
         margin: 0;

@@ -10,7 +10,7 @@ const BaseStyled = styled.div`
   flex-direction: row;
   height: 100vh;
   background-color: #fff;
-  
+
   @media only screen and (max-width: 768px) {
     flex-direction: column;
     justify-content: center;
@@ -48,7 +48,7 @@ interface WrapperStyledProps {
   background?: string;
   hide?: 'mobile' | 'desktop';
   inverted?: boolean;
-};
+}
 
 const WrapperStyled = styled.div<WrapperStyledProps>`
   position: relative;
@@ -121,7 +121,7 @@ const BaseLayout = ({ children }: any) => {
       <WrapperStyled>
         {children}
         <LanguageTool>
-          {languages.map(({ flag: Flag, locale }, index) => (
+          {languages.map(({ flag: Flag, locale }) => (
             <button
               key={`language-button-${locale}`}
               className={locale === i18n.language ? 'active' : undefined}
