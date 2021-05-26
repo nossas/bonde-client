@@ -12,7 +12,7 @@
     "dotenv": "^8.2.0",
     "pg": "^8.5.1",
     "pg-hstore": "^2.3.3",
-    "redis": "^3.0.2",
+    "redis": "^3.1.1",
     "sequelize": "^6.5.0",
     "typescript": "^3.2.2"
   }
