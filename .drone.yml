@@ -29,8 +29,7 @@ pipeline:
       - export REACT_APP_PAGARME_KEY=$STAG_PAGARME_KEY
       - cd clients
       - pnpm i
-      - pnpm m run build --filter bonde-core-tools --filter bonde-components
-      - pnpm m run build --filter accounts-client --filter canary-client
+      - pnpm m run build
       - cd deprecated/admin
       - pnpm i
       - pnpm m run build --filter bonde-webpage
@@ -68,8 +67,7 @@ pipeline:
       - export REACT_APP_PAGARME_KEY=$PROD_PAGARME_KEY
       - cd clients
       - pnpm i
-      - pnpm m run build --filter bonde-core-tools --filter bonde-components
-      - pnpm m run build --filter accounts-client --filter canary-client
+      - pnpm m run build
       - cd deprecated/admin
       - pnpm i
       - pnpm m run build --filter bonde-webpage

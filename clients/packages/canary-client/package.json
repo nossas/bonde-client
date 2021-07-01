@@ -24,6 +24,8 @@
     "@slate-editor/state-logger": "^5.1.0",
     "@slate-editor/strikethrough-plugin": "^5.1.0",
     "@slate-editor/toggle-readonly": "^5.1.0",
+    "bonde-components": "workspace:0.0.4-alpha.32",
+    "bonde-core-tools": "workspace:0.1.7-alpha.10",
     "@slate-editor/underline-plugin": "^5.1.0",
     "@types/downloadjs": "^1.4.2",
     "@types/graceful-fs": "^4.1.5",

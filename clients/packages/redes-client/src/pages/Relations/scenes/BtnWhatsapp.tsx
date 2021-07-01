@@ -3,6 +3,7 @@ import React from "react";
 import { Icon, Theme as theme } from "bonde-components";
 import { whatsappLink } from "../../../services/utils";
 import styled from "styled-components";
+import { css } from "styled-components/macro";
 import { Individual } from "../../../types";
 
 const Grid = styled.div`
