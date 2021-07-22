@@ -82,6 +82,9 @@ export default function Relations({
             <>
               <Header.H4>Total ({count})</Header.H4>
               <Table
+                // A query que carrega os matches do Mapa do Acolhimento
+                // não considera o preenchimento de um agent como objeto
+                // e sim como um valor número que é definido como o agent_id
                 data={
                   community?.id === MAPA_DO_ACOLHIMENTO_COMMUNITY
                     ? deconstructAgent(relationships)

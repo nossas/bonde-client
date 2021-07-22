@@ -1,7 +1,12 @@
 {
-  "name": "bonde-clients",
+  "name": "bonde-client",
   "version": "0.1.0",
   "license": "AGPL-3.0",
+  "scripts": {
+    "test": "pnpm m run test",
+    "build": "pnpm m run build",
+    "start": "pnpm m run start"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
@@ -15,13 +20,12 @@
     "@types/react-router-dom": "^5.1.5",
     "@types/styled-components": "^5.1.2",
     "babel-plugin-transform-async-to-promises": "^0.8.15",
-    "bonde-components": "workspace:0.0.4-alpha.32",
-    "bonde-core-tools": "workspace:0.1.7-alpha.10",
     "faker": "^5.1.0",
     "i18next": "^19.6.3",
     "i18next-browser-languagedetector": "^5.0.1",
     "i18next-http-backend": "^1.0.17",
     "jest": "24.9.0",
+    "pnpm": "^6.7.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-grid-system": "7.0.3",

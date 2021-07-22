@@ -99,8 +99,8 @@ export default function Popups({
   const [error, setError] = useState<string | undefined>();
   const [data, setData] = useState();
   const [customLink, setCustomLink] = useState({
-    volunteer: "",
-    recipient: "",
+    volunteerUrl: "",
+    recipientUrl: "",
   });
 
   const handleClick = async () => {
@@ -193,7 +193,7 @@ export default function Popups({
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href={customLink.volunteer}
+                href={customLink.volunteerUrl}
                 style={{ textDecoration: "none" }}
               >
                 <Button>
@@ -204,7 +204,7 @@ export default function Popups({
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href={customLink.recipient}
+                href={customLink.recipientUrl}
                 style={{ textDecoration: "none" }}
               >
                 <Button>

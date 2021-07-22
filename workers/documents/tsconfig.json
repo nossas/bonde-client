@@ -8,6 +8,7 @@
       "sourceMap": true,
       "outDir": "dist",
       "baseUrl": ".",
+      "lib": ["es2020"],
       "paths": {
         "*": [
           "node_modules/*",

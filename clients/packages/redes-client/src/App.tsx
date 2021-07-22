@@ -37,11 +37,20 @@ const App = (): React.ReactElement => {
     process.env.REACT_APP_DOMAIN_ADMIN_CANARY ||
     "http://bonde.devel:5001/admin";
 
+  console.info('Build environment:', environment);
+  // Extra config
+  const config: any = {
+    // Setup local cross-storage and staging api
+    crossStorage: process.env.REACT_APP_DOMAIN_CROSS_STORAGE || 'http://bonde.devel:5003',
+    apiGraphql: process.env.REACT_APP_DOMAIN_API_GRAPHQL || 'http://api-graphql.bonde.devel/v1/graphql'
+  };
+
   return (
     <BondeSessionProvider
       fetchData
       environment={environment as Environment}
       loading={SessionLoading}
+      extraConfig={config}
     >
       <FilterProvider>
         <CommunityExtraProvider>
