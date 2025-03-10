@@ -25,7 +25,7 @@ services:
       - "6379:6379"
 
   router-api:
-    image: nossas/bonde-router:v0.0.2
+    image: nossas/bonde-router:hotfix-task-update-caddy
     platform: linux/amd64
     command: uvicorn caddy_api.api:app --reload --host 0.0.0.0
     ports:
@@ -46,9 +46,11 @@ services:
       - CADDY_API_URL=http://caddy:2019
 
   router-celery:
-    image: nossas/bonde-router:v0.0.2
+    image: nossas/bonde-router:hotfix-task-update-caddy
     platform: linux/amd64
-    command: celery -A caddy_api.manager.celery_app.app worker --loglevel=info
+    command: sh -c "celery -A caddy_api.manager.celery_app.app worker --loglevel=info & celery -A caddy_api.manager.celery_app.app flower"
+    ports:
+      - "5555:5555"
     volumes:
       - ./data/caddy_etc:/app/data/caddy
     depends_on:
@@ -96,6 +98,8 @@ services:
 
   api-graphql:
     image: hasura/graphql-engine:v2.44.0
+    volumes:
+      - ./hasura:/hasura
     environment:
       - HASURA_GRAPHQL_DATABASE_URL=${BONDE_DATABASE_URL:-postgres://user:pass@postgres:5432/bonde}
       - HASURA_GRAPHQL_VOTEPELOCLIMA_DATABASE_URL=${VOTEPELOCLIMA_DATABASE_URL:-postgres://user:pass@postgres:5432/bonde}
@@ -103,8 +107,10 @@ services:
       - HASURA_GRAPHQL_ADMIN_SECRET=admin
       - HASURA_GRAPHQL_JWT_SECRET=${HASURA_GRAPHQL_JWT_SECRET}
       - HASURA_GRAPHQL_UNAUTHORIZED_ROLE=anonymous
+      - HASURA_GRAPHQL_ENABLED_LOG_TYPES=startup,http-log,webhook-log,websocket-log,query-log
       - HASURA_GRAPHQL_LOG_LEVEL=debug
       - HASURA_GRAPHQL_CORS_DOMAIN=*
+      - HASURA_GRAPHQL_METADATA_DIRECTORY=/hasura/metadata
       - PORT=8080
       # Váriaveis de ambiente usadas dentro do Hasura
       - API_ROUTER_URL=http://router-api:8000
@@ -116,14 +122,14 @@ services:
       - API_REDES_URL=http://api-redes:3000
       - N8N_WEBHOOK_URL=http://n8n:5678
       - HASURA_CRON_SECRET=${HASURA_CRON_SECRET}
-    restart: always
+    restart: unless-stopped
     pull_policy: always
 
   api-accounts:
     image: nossas/bonde-apis:v1.6.0
     platform: linux/amd64
     command: pnpm --filter accounts-api start
-    restart: always
+    restart: unless-stopped
     pull_policy: always
     environment:
       ACCOUNTS_REGISTER_URL: https://accounts.bonde.devel/register
