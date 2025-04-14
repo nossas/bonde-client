@@ -77,7 +77,7 @@ services:
       - AWS_ID=${AWS_ACCESS_KEY_ID:-xxxxxxx}
       - AWS_SECRET=${AWS_SECRET_ACCESS_KEY:-xxxxxx}
       - AWS_ROUTE53_REGION=${AWS_REGION:-us-east-1}
-      - AWS_BUCKET=${API_REST_AWS_BUCKET:-hub-central}
+      - AWS_BUCKET=${API_REST_AWS_BUCKET:-hub-central-dev}
       - AWS_ENDPOINT=${AWS_ENDPOINT:-https://s3.amazonaws.com}
       - AWS_ROUTE53_SYNC=${AWS_ROUTE53_SYNC:-force}
       - AWS_ROUTE_IP=${AWS_ROUTE_IP:-127.0.0.1}
@@ -142,7 +142,7 @@ services:
       PORT: '3000'
 
   api-activists:
-    image: nossas/bonde-apis:v1.6.0
+    image: nossas/bonde-apis:feature-generic-widget-action
     platform: linux/amd64
     command: pnpm --filter activists-api start
     restart: unless-stopped
@@ -245,12 +245,17 @@ services:
       - DB_LOGGING_OPTIONS=all
       - DB_POSTGRESDB_SSL_ENABLED=true
       - DB_POSTGRESDB_SSL_REJECT_UNAUTHORIZED=false
+      - N8N_SMTP_HOST=mailhog
+      - N8N_SMTP_PORT=1025
+      - N8N_SMTP_USER=user
+      - N8N_SMTP_PASS=pass
+      - N8N_SMTP_SENDER=noreply@bonde.devel
     volumes:
       - ./data/n8n:/home/node/.n8n
   
   # Versão pública do BONDE
   public:
-    image: nossas/bonde-public:latest
+    image: nossas/bonde-public:feature-tinymce-styles
     platform: linux/amd64
     # Usa contexto local para rodar desenvolvimento
     # build:
