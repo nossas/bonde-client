@@ -97,7 +97,7 @@ services:
       - WEB_MEMORY=1024
 
   api-graphql:
-    image: hasura/graphql-engine:v2.44.0
+    image: hasura/graphql-engine:latest
     volumes:
       - ./hasura:/hasura
     environment:
