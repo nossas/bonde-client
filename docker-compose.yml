@@ -122,6 +122,7 @@ services:
       - API_REDES_URL=http://api-redes:3000
       - N8N_WEBHOOK_URL=http://n8n:5678
       - HASURA_CRON_SECRET=${HASURA_CRON_SECRET}
+      - N8N_WEBHOOK_TRIGGER_POSTGRES_URL=${N8N_WEBHOOK_TRIGGER_POSTGRES_URL}
     restart: unless-stopped
     pull_policy: always
 
