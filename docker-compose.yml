@@ -120,6 +120,7 @@ services:
       - API_NOTIFICATIONS_URL=http://api-notifications:3000
       - API_PAYMENTS_URL=http://api-payments:3000
       - API_REDES_URL=http://api-redes:3000
+      - API_UPLOADS_URL=http://api-rest:3000/uploads
       - N8N_WEBHOOK_URL=http://n8n:5678
       - HASURA_CRON_SECRET=${HASURA_CRON_SECRET}
       - N8N_WEBHOOK_TRIGGER_POSTGRES_URL=${N8N_WEBHOOK_TRIGGER_POSTGRES_URL}
